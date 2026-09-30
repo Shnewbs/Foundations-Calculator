@@ -1,0 +1,15 @@
+{
+  "name": "Hunger Processor",
+  "category": "foundations_calculator:machines",
+  "icon": "foundations_calculator:hunger_processor",
+  "sortnum": 42,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Purpose$()$pCollects hunger nutrient from matching modules, supported food values and a matching nutrition network; fills an appropriate destination module.$p$(l)Set up and operate$()$p1. Supply food or a module with hunger in the input role.$p2. Put the destination Hunger/Nutrition Module in the special module slot.$p3. Connect mature Amethyst leaves through matching piping/logs for world collection.$p$(l)When it does not run$()$pFE is not the stored hunger quantity. A full module, exhausted food source or denied leaf harvest can pause transfer.$pRead the active server settings below before copying default costs from another installation. For special slot roles, use the machine screen labels. Settings reporting does not inspect or mutate a placed machine.$pActual server settings: live server values are available in the native or master Foundations reader.$pCrafting / obtaining this machine: live recipe details are available in the native or master Foundations reader.$p$(l:foundations_calculator:troubleshooting/no_progress)General operating checklist$()"
+    }
+  ],
+  "extra_recipe_mappings": {
+    "foundations_calculator:hunger_processor": 0
+  }
+}

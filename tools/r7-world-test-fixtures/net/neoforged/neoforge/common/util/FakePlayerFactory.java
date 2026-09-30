@@ -1,0 +1,6 @@
+package net.neoforged.neoforge.common.util;
+import java.util.*;import com.mojang.authlib.GameProfile;import net.minecraft.server.level.ServerLevel;import net.minecraft.core.*;import net.minecraft.world.*;import net.minecraft.world.item.ItemStack;import net.minecraft.world.level.GameType;
+public class FakePlayerFactory {public static Actor last;private static final Map<ServerLevel,Map<GameProfile,Actor>> actors=new HashMap<>();public static Actor get(ServerLevel level,GameProfile profile){return last=actors.computeIfAbsent(level,k->new HashMap<>()).computeIfAbsent(profile,k->new Actor(profile));}
+public static class Actor {public final GameProfile profile;public final Mode gameMode=new Mode();public boolean mayUse=true;private double x=4,y=5,z=6;public ItemStack hand=new ItemStack("original");Actor(GameProfile profile){this.profile=profile;}public double getX(){return x;}public double getY(){return y;}public double getZ(){return z;}public void setPos(double a,double b,double c){x=a;y=b;z=c;}public ItemStack getMainHandItem(){return hand;}public void setItemInHand(InteractionHand ignored,ItemStack stack){hand=stack;}public boolean mayUseItemAt(BlockPos pos,Direction side,ItemStack stack){return mayUse;}public UUID getUUID(){return profile.id();}}
+public static class Mode {public void changeGameModeForPlayer(GameType type){}}
+}

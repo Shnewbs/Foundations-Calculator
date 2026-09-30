@@ -1,0 +1,15 @@
+{
+  "name": "Dynamic Calculator",
+  "category": "foundations_calculator:machines",
+  "icon": "foundations_calculator:dynamic_calculator",
+  "sortnum": 36,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Purpose$()$pRuns Basic, Scientific and Atomic lanes in one validated hollow shell. The lanes share output storage, rather than maintaining three independent output inventories.$p$(l)Set up and operate$()$p1. Build the controller-relative shell described in Multiblocks.$p2. Put Basic inputs in positions 1\u20132, Scientific in 3\u20134, Atomic in 5\u20137.$p3. Supply FE and keep shared outputs clear.$p4. Wait for the scheduled structure check after correcting a missing wall.$p$(l)When it does not run$()$pAn occupied interior, wrong corner material, unloaded shell position or blocked shared output can stop all lanes.$pRead the active server settings below before copying default costs from another installation. For special slot roles, use the machine screen labels. Settings reporting does not inspect or mutate a placed machine.$pActual server settings: live server values are available in the native or master Foundations reader.$pCrafting / obtaining this machine: live recipe details are available in the native or master Foundations reader.$p$(l:foundations_calculator:multiblocks/dynamic)Exact default shell layers$()"
+    }
+  ],
+  "extra_recipe_mappings": {
+    "foundations_calculator:dynamic_calculator": 0
+  }
+}

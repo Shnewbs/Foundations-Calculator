@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "foundations_calculator:legacy_calculator/blocks/wood/planks_diamond"
+  }
+}

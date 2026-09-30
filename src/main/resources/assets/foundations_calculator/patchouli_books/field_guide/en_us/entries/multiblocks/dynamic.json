@@ -1,0 +1,12 @@
+{
+  "name": "Dynamic Calculator: hollow shell",
+  "category": "foundations_calculator:multiblocks",
+  "icon": "foundations_calculator:info_calculator",
+  "sortnum": 17,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "At the shipped radius of three, build a 7\u00d77\u00d77 hollow cube. The controller sits in the middle of one vertical wall. The center is three blocks inside the controller at its height. The entire 5\u00d75\u00d75 interior must be air.$pStable Stone forms the top/bottom perimeter and the four vertical corner pillars. Flawless Glass fills the rest of the shell, except the controller. The diagrams below show each distinct layer; repeat the indicated plain middle layer.$pBottom and top: heights \u22123 and +3: see the native or master Foundations reader for the interactive or layered view.$pMiddle layers at \u22122, \u22121, +1, +2: see the native or master Foundations reader for the interactive or layered view.$pController layer: height 0: see the native or master Foundations reader for the interactive or layered view.$p$(l)Exact radius-3 shell materials$()$pStable Stone \u2014 68$pFlawless Glass \u2014 149$pDynamic controller \u2014 1$p$(o)The structure radius is configurable. These counts and diagrams are for radius 3 only. Structure validation refuses unloaded targets and does not fill the cube for you.$()$pActual server settings: live server values are available in the native or master Foundations reader.$p$(l:foundations_calculator:machines/dynamic_calculator)Input lanes and operating behavior$()"
+    }
+  ]
+}

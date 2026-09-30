@@ -1,0 +1,30 @@
+{
+  "type": "foundations_calculator:process",
+  "machine": "calculator",
+  "ingredients": [
+    {
+      "ingredient": {
+        "item": "minecraft:pumpkin"
+      },
+      "count": 1
+    },
+    {
+      "ingredient": {
+        "item": "minecraft:hay_block"
+      },
+      "count": 1
+    }
+  ],
+  "results": [
+    {
+      "stack": {
+        "id": "foundations_calculator:scarecrow",
+        "count": 1
+      }
+    }
+  ],
+  "energy": 0,
+  "ticks": 1,
+  "value": 0,
+  "research": false
+}

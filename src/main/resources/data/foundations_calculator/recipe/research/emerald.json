@@ -1,0 +1,23 @@
+{
+  "type": "foundations_calculator:process",
+  "machine": "research",
+  "ingredients": [
+    {
+      "ingredient": [
+        {
+          "tag": "c:ores/emerald"
+        },
+        {
+          "tag": "c:gems/emerald"
+        },
+        {
+          "tag": "c:storage_blocks/emerald"
+        }
+      ]
+    }
+  ],
+  "results": [],
+  "energy": 1000,
+  "ticks": 100,
+  "research_group": "emerald"
+}

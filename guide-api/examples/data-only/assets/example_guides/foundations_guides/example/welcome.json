@@ -1,0 +1,24 @@
+{
+  "id": "example_guides:welcome",
+  "chapter": "example_guides:start",
+  "title": "A Second Publisher",
+  "order": 0,
+  "items": [
+    "minecraft:book"
+  ],
+  "keywords": [
+    "example",
+    "master guide"
+  ],
+  "blocks": [
+    {
+      "type": "paragraph",
+      "text": "This guide is published by a different mod, without a Calculator dependency."
+    },
+    {
+      "type": "link",
+      "text": "Open Calculator (only when installed)",
+      "target": "foundations_calculator:field_guide#foundations_calculator:getting_started/welcome"
+    }
+  ]
+}

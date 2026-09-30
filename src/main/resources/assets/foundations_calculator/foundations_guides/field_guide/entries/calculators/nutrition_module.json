@@ -1,0 +1,44 @@
+{
+  "id": "foundations_calculator:calculators/nutrition_module",
+  "chapter": "foundations_calculator:calculators",
+  "title": "Nutrition Module",
+  "order": 82,
+  "items": [
+    "foundations_calculator:nutrition_module"
+  ],
+  "keywords": [
+    "module",
+    "nutrition_module"
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "Purpose"
+    },
+    {
+      "type": "paragraph",
+      "text": "Combines health and hunger storage and can restore automatically while carried or installed."
+    },
+    {
+      "type": "heading",
+      "text": "Use"
+    },
+    {
+      "type": "paragraph",
+      "text": "Fill each nutrient type through its matching source. Watch the respective quantities; one nutrient cannot substitute for the other."
+    },
+    {
+      "type": "link",
+      "text": "Using modules inside a Flawless Calculator",
+      "target": "foundations_calculator:calculators/installing"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtain this module",
+      "target": "item:foundations_calculator:nutrition_module",
+      "options": {
+        "profile": ""
+      }
+    }
+  ]
+}

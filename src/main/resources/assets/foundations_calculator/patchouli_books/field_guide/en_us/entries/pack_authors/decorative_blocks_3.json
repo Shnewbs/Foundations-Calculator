@@ -1,0 +1,30 @@
+{
+  "name": "Decorative blocks \u00b7 3",
+  "category": "foundations_calculator:pack_authors",
+  "icon": "foundations_calculator:reinforced_dirt_brick_gate",
+  "sortnum": 104,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "This reference groups related inventory entries. Each recipe section reads the current world. An item may have no crafting result when it comes from harvesting, world generation, a program action or creative tools.$pItem: foundations_calculator:reinforced_dirt_brick_gate$pObtaining Reinforced Dirt Brick Gate: live recipe details are available in the native or master Foundations reader.$pItem: foundations_calculator:stable_glass$pObtaining Stable Glass: live recipe details are available in the native or master Foundations reader.$pItem: foundations_calculator:clear_stable_glass$pObtaining Clear Stable Glass: live recipe details are available in the native or master Foundations reader.$pItem: foundations_calculator:reinforced_iron_block$pObtaining Reinforced Iron Block: live recipe details are available in the native or master Foundations reader.$pItem: foundations_calculator:redstone_ingot_block$pObtaining Redstone Ingot Block: live recipe details are available in the native or master Foundations reader.$pItem: foundations_calculator:stable_stone_normal$pObtaining Stable Stone Normal: live recipe details are available in the native or master Foundations reader.$pItem: foundations_calculator:stable_stone_black$pObtaining Stable Stone Black: live recipe details are available in the native or master Foundations reader.$pItem: foundations_calculator:stable_stone_blue$pObtaining Stable Stone Blue: live recipe details are available in the native or master Foundations reader."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Item: foundations_calculator:stable_stone_brown$pObtaining Stable Stone Brown: live recipe details are available in the native or master Foundations reader.$pItem: foundations_calculator:stable_stone_cyan$pObtaining Stable Stone Cyan: live recipe details are available in the native or master Foundations reader.$pItem: foundations_calculator:stable_stone_green$pObtaining Stable Stone Green: live recipe details are available in the native or master Foundations reader.$pItem: foundations_calculator:stable_stone_light_blue$pObtaining Stable Stone Light Blue: live recipe details are available in the native or master Foundations reader."
+    }
+  ],
+  "extra_recipe_mappings": {
+    "foundations_calculator:reinforced_dirt_brick_gate": 0,
+    "foundations_calculator:stable_glass": 0,
+    "foundations_calculator:clear_stable_glass": 0,
+    "foundations_calculator:reinforced_iron_block": 0,
+    "foundations_calculator:redstone_ingot_block": 0,
+    "foundations_calculator:stable_stone_normal": 0,
+    "foundations_calculator:stable_stone_black": 0,
+    "foundations_calculator:stable_stone_blue": 0,
+    "foundations_calculator:stable_stone_brown": 0,
+    "foundations_calculator:stable_stone_cyan": 0,
+    "foundations_calculator:stable_stone_green": 0,
+    "foundations_calculator:stable_stone_light_blue": 0
+  }
+}

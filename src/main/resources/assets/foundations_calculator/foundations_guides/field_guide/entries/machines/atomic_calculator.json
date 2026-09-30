@@ -1,0 +1,82 @@
+{
+  "id": "foundations_calculator:machines/atomic_calculator",
+  "chapter": "foundations_calculator:machines",
+  "title": "Atomic Calculator",
+  "order": 35,
+  "items": [
+    "foundations_calculator:atomic_calculator"
+  ],
+  "keywords": [
+    "atomic_calculator",
+    "Placed three-input Atomic calculation"
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "Purpose"
+    },
+    {
+      "type": "paragraph",
+      "text": "Placed three-input Atomic calculation. It uses the atomic recipe family and ordinary server process overrides."
+    },
+    {
+      "type": "heading",
+      "text": "Set up and operate"
+    },
+    {
+      "type": "steps",
+      "rows": [
+        [
+          "Open an Atomic recipe and collect all three input requirements."
+        ],
+        [
+          "Put them in the machine input area and supply power if required."
+        ],
+        [
+          "Leave the result area free and verify the owner’s research access."
+        ]
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "When it does not run"
+    },
+    {
+      "type": "paragraph",
+      "text": "A Basic or Scientific recipe will not match simply because its ingredients fit the available slots."
+    },
+    {
+      "type": "paragraph",
+      "text": "Read the active server settings below before copying default costs from another installation. For special slot roles, use the machine screen labels. Settings reporting does not inspect or mutate a placed machine."
+    },
+    {
+      "type": "live",
+      "text": "Actual server settings",
+      "target": "foundations_calculator",
+      "options": {
+        "key": "machine/atomic_calculator"
+      }
+    },
+    {
+      "type": "recipe",
+      "text": "Processing / value recipes",
+      "target": "machine:atomic",
+      "options": {
+        "profile": "atomic_calculator"
+      }
+    },
+    {
+      "type": "recipe",
+      "text": "Crafting / obtaining this machine",
+      "target": "item:foundations_calculator:atomic_calculator",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "link",
+      "text": "General operating checklist",
+      "target": "foundations_calculator:troubleshooting/no_progress"
+    }
+  ]
+}

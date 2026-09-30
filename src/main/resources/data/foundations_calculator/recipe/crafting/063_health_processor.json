@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "ABA",
+    "BCB",
+    "ABA"
+  ],
+  "key": {
+    "A": {
+      "item": "foundations_calculator:large_tanzanite"
+    },
+    "B": {
+      "item": "foundations_calculator:flawless_diamond"
+    },
+    "C": {
+      "item": "foundations_calculator:advanced_assembly"
+    }
+  },
+  "result": {
+    "id": "foundations_calculator:health_processor",
+    "count": 1
+  }
+}

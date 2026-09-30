@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "foundations_calculator:reinforced_iron_block"
+    }
+  ],
+  "result": {
+    "id": "foundations_calculator:reinforced_iron_ingot",
+    "count": 9
+  }
+}

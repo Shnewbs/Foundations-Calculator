@@ -1,0 +1,171 @@
+{
+  "id": "foundations_calculator:pack_authors/tree_and_crop_products_1",
+  "chapter": "foundations_calculator:pack_authors",
+  "title": "Tree and crop products · 1",
+  "order": 100,
+  "items": [
+    "foundations_calculator:broccoli",
+    "foundations_calculator:pear",
+    "foundations_calculator:rotten_pear",
+    "foundations_calculator:cooked_broccoli",
+    "foundations_calculator:amethyst_planks",
+    "foundations_calculator:amethyst_sapling",
+    "foundations_calculator:tanzanite_planks",
+    "foundations_calculator:tanzanite_sapling",
+    "foundations_calculator:pear_log",
+    "foundations_calculator:pear_planks",
+    "foundations_calculator:pear_leaves",
+    "foundations_calculator:pear_sapling"
+  ],
+  "keywords": [],
+  "blocks": [
+    {
+      "type": "paragraph",
+      "text": "This reference groups related inventory entries. Each recipe section reads the current world. An item may have no crafting result when it comes from harvesting, world generation, a program action or creative tools."
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:broccoli"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Broccoli",
+      "target": "item:foundations_calculator:broccoli",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:pear"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Pear",
+      "target": "item:foundations_calculator:pear",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:rotten_pear"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Rotten Pear",
+      "target": "item:foundations_calculator:rotten_pear",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:cooked_broccoli"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Cooked Broccoli",
+      "target": "item:foundations_calculator:cooked_broccoli",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:amethyst_planks"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Amethyst Planks",
+      "target": "item:foundations_calculator:amethyst_planks",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:amethyst_sapling"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Amethyst Sapling",
+      "target": "item:foundations_calculator:amethyst_sapling",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:tanzanite_planks"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Tanzanite Planks",
+      "target": "item:foundations_calculator:tanzanite_planks",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:tanzanite_sapling"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Tanzanite Sapling",
+      "target": "item:foundations_calculator:tanzanite_sapling",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:pear_log"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Pear Log",
+      "target": "item:foundations_calculator:pear_log",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:pear_planks"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Pear Planks",
+      "target": "item:foundations_calculator:pear_planks",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:pear_leaves"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Pear Leaves",
+      "target": "item:foundations_calculator:pear_leaves",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:pear_sapling"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Pear Sapling",
+      "target": "item:foundations_calculator:pear_sapling",
+      "options": {
+        "profile": ""
+      }
+    }
+  ]
+}

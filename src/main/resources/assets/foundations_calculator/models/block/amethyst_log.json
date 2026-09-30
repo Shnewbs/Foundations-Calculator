@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "side": "foundations_calculator:legacy_calculator/blocks/wood/log_amethyst_side",
+    "end": "foundations_calculator:legacy_calculator/blocks/wood/log_amethyst_top"
+  }
+}

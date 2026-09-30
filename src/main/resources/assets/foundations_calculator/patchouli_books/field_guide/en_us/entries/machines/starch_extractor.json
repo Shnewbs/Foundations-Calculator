@@ -1,0 +1,15 @@
+{
+  "name": "Starch Extractor",
+  "category": "foundations_calculator:machines",
+  "icon": "foundations_calculator:starch_extractor",
+  "sortnum": 63,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Purpose$()$pConsumes recipe-defined nutrient and furnace fuel to produce FE over the fuel\u2019s burn time.$p$(l)Set up and operate$()$p1. Put valid furnace fuel in the first input.$p2. Put an accepted starch-value ingredient in the second input.$p3. Accumulate enough nutrient for a fuel start, then export FE.$p$(l)When it does not run$()$pFuel alone is insufficient if the nutrient reservoir is below its configured start cost.$pRead the active server settings below before copying default costs from another installation. For special slot roles, use the machine screen labels. Settings reporting does not inspect or mutate a placed machine.$pActual server settings: live server values are available in the native or master Foundations reader.$pProcessing / value recipes: live recipe details are available in the native or master Foundations reader.$pCrafting / obtaining this machine: live recipe details are available in the native or master Foundations reader.$p$(l:foundations_calculator:troubleshooting/no_progress)General operating checklist$()"
+    }
+  ],
+  "extra_recipe_mappings": {
+    "foundations_calculator:starch_extractor": 0
+  }
+}

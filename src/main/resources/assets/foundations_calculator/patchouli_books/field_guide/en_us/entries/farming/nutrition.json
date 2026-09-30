@@ -1,0 +1,20 @@
+{
+  "name": "Nutrition modules, leaves and processors",
+  "category": "foundations_calculator:farming",
+  "icon": "foundations_calculator:amethyst_piping",
+  "sortnum": 22,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Hunger and health are separate stored nutrients, not FE. Matching modules collect them, processors transfer or produce them, and restoration uses the player\u2019s current need and the module\u2019s available contents.$p$(l)Sources and routes$()$pAmethyst leaves \u2014 Hunger nutrient; matching piping/logs reach a Hunger Processor.$pTanzanite leaves \u2014 Health nutrient; matching piping/logs reach a Health Processor.$pHunger Processor \u2014 Can accept food nutrition and matching module contents.$pHealth Processor \u2014 Uses its recipe-defined health sources and matching module contents.$pNutrition Module \u2014 Carries both nutrient types and can restore automatically while carried/installed.$pNutrition-network traversal is bounded and checks loaded chunks. The shipped visit limit is 512 positions; this is a safety boundary, not a chunk loader. A disconnected tree or denied leaf harvest can stop collection without changing the processor inventory.$p$(l:foundations_calculator:machines/hunger_processor)Hunger Processor$()$p$(l:foundations_calculator:machines/health_processor)Health Processor$()$p$(l:foundations_calculator:machines/stone_assimilator)Stone Assimilator$()$p$(l:foundations_calculator:calculators/nutrition_module)Nutrition Module$()"
+    }
+  ],
+  "extra_recipe_mappings": {
+    "foundations_calculator:amethyst_piping": 0,
+    "foundations_calculator:tanzanite_piping": 0,
+    "foundations_calculator:amethyst_log": 0,
+    "foundations_calculator:tanzanite_log": 0,
+    "foundations_calculator:amethyst_leaves": 0,
+    "foundations_calculator:tanzanite_leaves": 0
+  }
+}

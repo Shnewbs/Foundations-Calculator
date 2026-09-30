@@ -1,0 +1,9 @@
+{
+  "parent": "foundations_calculator:legacy_calculator/item/sonarsword",
+  "textures": {
+    "particle": "foundations_calculator:legacy_calculator/model/tools/gold_0",
+    "0": "foundations_calculator:legacy_calculator/model/tools/gold_0",
+    "1": "foundations_calculator:legacy_calculator/model/tools/gold_1",
+    "2": "foundations_calculator:legacy_calculator/model/tools/gold_2"
+  }
+}

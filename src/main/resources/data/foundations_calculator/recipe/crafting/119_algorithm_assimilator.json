@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " S ",
+    "IPI",
+    " I "
+  ],
+  "key": {
+    "P": {
+      "item": "foundations_calculator:algorithm_separator"
+    },
+    "I": {
+      "item": "foundations_calculator:reinforced_iron_block"
+    },
+    "S": {
+      "item": "foundations_calculator:sickle"
+    }
+  },
+  "result": {
+    "id": "foundations_calculator:algorithm_assimilator",
+    "count": 1
+  }
+}

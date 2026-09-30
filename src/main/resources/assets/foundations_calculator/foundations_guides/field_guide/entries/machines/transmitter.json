@@ -1,0 +1,70 @@
+{
+  "id": "foundations_calculator:machines/transmitter",
+  "chapter": "foundations_calculator:machines",
+  "title": "Transmitter",
+  "order": 62,
+  "items": [
+    "foundations_calculator:transmitter"
+  ],
+  "keywords": [
+    "transmitter",
+    "A nearby Conductor Mast support block affecting strike intervals and output"
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "Purpose"
+    },
+    {
+      "type": "paragraph",
+      "text": "A nearby Conductor Mast support block affecting strike intervals and output."
+    },
+    {
+      "type": "heading",
+      "text": "Set up and operate"
+    },
+    {
+      "type": "steps",
+      "rows": [
+        [
+          "Place within the configured mast range."
+        ],
+        [
+          "Pair with a valid mast setup."
+        ],
+        [
+          "Measure complete burst cycles rather than one isolated tick."
+        ]
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "When it does not run"
+    },
+    {
+      "type": "paragraph",
+      "text": "It is not a wireless item pipe or a standalone FE generator; its role belongs to the mast program."
+    },
+    {
+      "type": "live",
+      "text": "Actual server settings",
+      "target": "foundations_calculator",
+      "options": {
+        "key": "machine/transmitter"
+      }
+    },
+    {
+      "type": "recipe",
+      "text": "Crafting / obtaining this machine",
+      "target": "item:foundations_calculator:transmitter",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "link",
+      "text": "General operating checklist",
+      "target": "foundations_calculator:troubleshooting/no_progress"
+    }
+  ]
+}

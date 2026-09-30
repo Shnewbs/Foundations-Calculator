@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "foundations_calculator:amethyst_block"
+    }
+  ],
+  "result": {
+    "id": "foundations_calculator:large_amethyst",
+    "count": 9
+  }
+}

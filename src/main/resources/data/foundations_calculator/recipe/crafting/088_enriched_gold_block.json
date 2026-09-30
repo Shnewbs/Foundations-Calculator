@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "AAA",
+    "AAA",
+    "AAA"
+  ],
+  "key": {
+    "A": {
+      "item": "foundations_calculator:enriched_gold_ingot"
+    }
+  },
+  "result": {
+    "id": "foundations_calculator:enriched_gold_block",
+    "count": 1
+  }
+}

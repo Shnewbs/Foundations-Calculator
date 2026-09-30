@@ -1,0 +1,74 @@
+{
+  "id": "foundations_calculator:machines/flawless_greenhouse",
+  "chapter": "foundations_calculator:machines",
+  "title": "Flawless Greenhouse",
+  "order": 56,
+  "items": [
+    "foundations_calculator:flawless_greenhouse"
+  ],
+  "keywords": [
+    "flawless_greenhouse",
+    "Manual four-wide greenhouse with configurable interior length and two central crop columns"
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "Purpose"
+    },
+    {
+      "type": "paragraph",
+      "text": "Manual four-wide greenhouse with configurable interior length and two central crop columns."
+    },
+    {
+      "type": "heading",
+      "text": "Set up and operate"
+    },
+    {
+      "type": "steps",
+      "rows": [
+        [
+          "Assemble Stable Stone ends, Flawless Glass walls and Bottom Quartz Slab roof."
+        ],
+        [
+          "Put the CO₂ Generator at the correct near corner with matching facing."
+        ],
+        [
+          "Use all fourteen seed inputs and supply FE."
+        ]
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "When it does not run"
+    },
+    {
+      "type": "paragraph",
+      "text": "It has no automatic Build or Demolish controls. Wrong slab half, a missing end pillar or an over-limit length invalidates the layout."
+    },
+    {
+      "type": "paragraph",
+      "text": "Read the active server settings below before copying default costs from another installation. For special slot roles, use the machine screen labels. Settings reporting does not inspect or mutate a placed machine."
+    },
+    {
+      "type": "live",
+      "text": "Actual server settings",
+      "target": "foundations_calculator",
+      "options": {
+        "key": "machine/flawless_greenhouse"
+      }
+    },
+    {
+      "type": "recipe",
+      "text": "Crafting / obtaining this machine",
+      "target": "item:foundations_calculator:flawless_greenhouse",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "link",
+      "text": "Construction plans and layers",
+      "target": "foundations_calculator:multiblocks/flawless_greenhouse"
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "id": "foundations_calculator:machines/weather_controller",
+  "chapter": "foundations_calculator:machines",
+  "title": "Weather Controller",
+  "order": 69,
+  "items": [
+    "foundations_calculator:weather_controller"
+  ],
+  "keywords": [
+    "weather_controller",
+    "Changes Time, Rain or Thunder after its powered/redstone-driven operation completes"
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "Purpose"
+    },
+    {
+      "type": "paragraph",
+      "text": "Changes Time, Rain or Thunder after its powered/redstone-driven operation completes."
+    },
+    {
+      "type": "heading",
+      "text": "Set up and operate"
+    },
+    {
+      "type": "steps",
+      "rows": [
+        [
+          "Choose the mode and desired state."
+        ],
+        [
+          "Supply FE and a redstone signal."
+        ],
+        [
+          "Maintain power through the configured operating duration, then allow its cooldown."
+        ]
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "When it does not run"
+    },
+    {
+      "type": "paragraph",
+      "text": "Unlike many ordinary machines, no redstone signal means no operation. If the world already has the target state, another change may be unnecessary."
+    },
+    {
+      "type": "paragraph",
+      "text": "Read the active server settings below before copying default costs from another installation. For special slot roles, use the machine screen labels. Settings reporting does not inspect or mutate a placed machine."
+    },
+    {
+      "type": "live",
+      "text": "Actual server settings",
+      "target": "foundations_calculator",
+      "options": {
+        "key": "machine/weather_controller"
+      }
+    },
+    {
+      "type": "recipe",
+      "text": "Crafting / obtaining this machine",
+      "target": "item:foundations_calculator:weather_controller",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "link",
+      "text": "General operating checklist",
+      "target": "foundations_calculator:troubleshooting/no_progress"
+    }
+  ]
+}

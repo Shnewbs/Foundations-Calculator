@@ -1,0 +1,81 @@
+{
+  "id": "foundations_calculator:calculators/materials",
+  "chapter": "foundations_calculator:calculators",
+  "title": "Crafting components, tools and decorative materials",
+  "order": 90,
+  "items": [
+    "foundations_calculator:calculator_assembly",
+    "foundations_calculator:advanced_assembly",
+    "foundations_calculator:atomic_module",
+    "foundations_calculator:end_diamond",
+    "foundations_calculator:sickle",
+    "foundations_calculator:obsidian_key"
+  ],
+  "keywords": [
+    "crafting components",
+    "assembly",
+    "tools"
+  ],
+  "blocks": [
+    {
+      "type": "paragraph",
+      "text": "Calculator Assembly, Advanced Assembly and Atomic Module are progression crafting components. Similar names do not mean they open their own usable module screen. Use their live recipe references to distinguish ingredients from installed tools."
+    },
+    {
+      "type": "recipe",
+      "text": "Calculator Assembly",
+      "target": "item:foundations_calculator:calculator_assembly",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "recipe",
+      "text": "Advanced Assembly",
+      "target": "item:foundations_calculator:advanced_assembly",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "recipe",
+      "text": "Uses for Atomic Module",
+      "target": "uses:foundations_calculator:atomic_module",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": "Material families include stable stone, reinforced materials, gems/shards, redstone/enriched-gold ingredients, Calculator trees, and decorative Sonar Core blocks. Their crafting links remain data-driven. Search a specific item ID to find its group, then use the recipe links supplied in that group."
+    },
+    {
+      "type": "paragraph",
+      "text": "Tools such as the Sickle and Obsidian Key perform their dedicated block interactions. The reusable End Diamond throws an ender-pearl-like projectile while retaining the item. Tool durability, cooldowns and material properties are independently configurable."
+    },
+    {
+      "type": "recipe",
+      "text": "Reusable End Diamond",
+      "target": "item:foundations_calculator:end_diamond",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "recipe",
+      "text": "Sickle",
+      "target": "item:foundations_calculator:sickle",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "recipe",
+      "text": "Obsidian Key",
+      "target": "item:foundations_calculator:obsidian_key",
+      "options": {
+        "profile": ""
+      }
+    }
+  ]
+}

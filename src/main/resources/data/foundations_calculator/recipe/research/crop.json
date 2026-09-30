@@ -1,0 +1,26 @@
+{
+  "type": "foundations_calculator:process",
+  "machine": "research",
+  "ingredients": [
+    {
+      "ingredient": [
+        {
+          "item": "minecraft:wheat"
+        },
+        {
+          "item": "minecraft:potato"
+        },
+        {
+          "item": "minecraft:carrot"
+        },
+        {
+          "tag": "c:crops"
+        }
+      ]
+    }
+  ],
+  "results": [],
+  "energy": 1000,
+  "ticks": 100,
+  "research_group": "crop"
+}

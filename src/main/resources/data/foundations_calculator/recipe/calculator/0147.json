@@ -1,0 +1,25 @@
+{
+  "type": "foundations_calculator:process",
+  "machine": "calculator",
+  "ingredients": [
+    {
+      "ingredient": {
+        "item": "foundations_calculator:soil"
+      },
+      "count": 2
+    }
+  ],
+  "results": [
+    {
+      "stack": {
+        "id": "minecraft:dirt",
+        "count": 1
+      }
+    }
+  ],
+  "energy": 0,
+  "ticks": 1,
+  "value": 0,
+  "research": true,
+  "research_group": "dirt"
+}

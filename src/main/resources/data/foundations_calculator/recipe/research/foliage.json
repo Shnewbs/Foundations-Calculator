@@ -1,0 +1,32 @@
+{
+  "type": "foundations_calculator:process",
+  "machine": "research",
+  "ingredients": [
+    {
+      "ingredient": [
+        {
+          "item": "minecraft:dead_bush"
+        },
+        {
+          "item": "minecraft:vine"
+        },
+        {
+          "item": "minecraft:lily_pad"
+        },
+        {
+          "item": "minecraft:tall_grass"
+        },
+        {
+          "item": "minecraft:large_fern"
+        },
+        {
+          "tag": "minecraft:tall_flowers"
+        }
+      ]
+    }
+  ],
+  "results": [],
+  "energy": 1000,
+  "ticks": 100,
+  "research_group": "foliage"
+}

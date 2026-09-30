@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/stairs",
+  "textures": {
+    "bottom": "foundations_calculator:legacy_calculator/blocks/wood/planks_tanzanite",
+    "top": "foundations_calculator:legacy_calculator/blocks/wood/planks_tanzanite",
+    "side": "foundations_calculator:legacy_calculator/blocks/wood/planks_tanzanite"
+  }
+}

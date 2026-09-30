@@ -1,0 +1,31 @@
+{
+  "type": "foundations_calculator:process",
+  "machine": "calculator",
+  "ingredients": [
+    {
+      "ingredient": {
+        "item": "minecraft:brick"
+      },
+      "count": 1
+    },
+    {
+      "ingredient": {
+        "item": "minecraft:brick"
+      },
+      "count": 1
+    }
+  ],
+  "results": [
+    {
+      "stack": {
+        "id": "minecraft:nether_brick",
+        "count": 4
+      }
+    }
+  ],
+  "energy": 0,
+  "ticks": 1,
+  "value": 0,
+  "research": true,
+  "research_group": "nether"
+}

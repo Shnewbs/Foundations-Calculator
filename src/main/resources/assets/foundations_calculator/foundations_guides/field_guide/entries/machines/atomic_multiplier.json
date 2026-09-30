@@ -1,0 +1,74 @@
+{
+  "id": "foundations_calculator:machines/atomic_multiplier",
+  "chapter": "foundations_calculator:machines",
+  "title": "Atomic Multiplier",
+  "order": 45,
+  "items": [
+    "foundations_calculator:atomic_multiplier"
+  ],
+  "keywords": [
+    "atomic_multiplier",
+    "Duplicates eligible stackable input using circuit boards and a large FE batch"
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "Purpose"
+    },
+    {
+      "type": "paragraph",
+      "text": "Duplicates eligible stackable input using circuit boards and a large FE batch. The blacklist excludes protected progression items."
+    },
+    {
+      "type": "heading",
+      "text": "Set up and operate"
+    },
+    {
+      "type": "steps",
+      "rows": [
+        [
+          "Put one eligible stackable item and seven circuit boards in the first eight input slots."
+        ],
+        [
+          "Accumulate the current full batch cost; the default is 1.5 billion FE."
+        ],
+        [
+          "Leave room for four copies and let the batch complete."
+        ]
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "When it does not run"
+    },
+    {
+      "type": "paragraph",
+      "text": "Unstackable or blacklisted items are refused. Increasing cable voltage does not bypass the item blacklist or the FE requirement."
+    },
+    {
+      "type": "paragraph",
+      "text": "Read the active server settings below before copying default costs from another installation. For special slot roles, use the machine screen labels. Settings reporting does not inspect or mutate a placed machine."
+    },
+    {
+      "type": "live",
+      "text": "Actual server settings",
+      "target": "foundations_calculator",
+      "options": {
+        "key": "machine/atomic_multiplier"
+      }
+    },
+    {
+      "type": "recipe",
+      "text": "Crafting / obtaining this machine",
+      "target": "item:foundations_calculator:atomic_multiplier",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "link",
+      "text": "General operating checklist",
+      "target": "foundations_calculator:troubleshooting/no_progress"
+    }
+  ]
+}

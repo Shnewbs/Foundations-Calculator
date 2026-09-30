@@ -1,0 +1,15 @@
+{
+  "name": "Calculator Screen Block",
+  "category": "foundations_calculator:machines",
+  "icon": "foundations_calculator:calculator_screen",
+  "sortnum": 75,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Purpose$()$pMounted energy display for the adjacent face of an FE-compatible block.$p$(l)Set up and operate$()$p1. Use the Calculator Screen item on a horizontal face of an energy block.$p2. Read that face\u2019s stored energy and capacity.$p3. Recheck the target capability when rotating or replacing the block.$p$(l)When it does not run$()$pThis is a display, not a battery, converter or power cable.$pActual server settings: live server values are available in the native or master Foundations reader.$p$(l:foundations_calculator:troubleshooting/no_progress)General operating checklist$()"
+    }
+  ],
+  "extra_recipe_mappings": {
+    "foundations_calculator:calculator_screen": 0
+  }
+}

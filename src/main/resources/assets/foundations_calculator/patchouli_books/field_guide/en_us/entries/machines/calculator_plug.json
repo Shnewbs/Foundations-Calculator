@@ -1,0 +1,15 @@
+{
+  "name": "Calculator Plug",
+  "category": "foundations_calculator:machines",
+  "icon": "foundations_calculator:calculator_plug",
+  "sortnum": 59,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Purpose$()$pHolds a circuit board to contribute stability to a Locator platform.$p$(l)Set up and operate$()$p1. Place the plug at controller height on Stable Stone.$p2. Insert a stable analysed board.$p3. Read the active state and recheck the surrounding Locator square.$p$(l)When it does not run$()$pA dirty chip or unanalysed/unstable board is not a stabilizing board. Plugs are not generic FE storage blocks.$pRead the active server settings below before copying default costs from another installation. For special slot roles, use the machine screen labels. Settings reporting does not inspect or mutate a placed machine.$pActual server settings: live server values are available in the native or master Foundations reader.$pCrafting / obtaining this machine: live recipe details are available in the native or master Foundations reader.$p$(l:foundations_calculator:troubleshooting/no_progress)General operating checklist$()"
+    }
+  ],
+  "extra_recipe_mappings": {
+    "foundations_calculator:calculator_plug": 0
+  }
+}

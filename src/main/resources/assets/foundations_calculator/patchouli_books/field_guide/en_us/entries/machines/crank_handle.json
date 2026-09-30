@@ -1,0 +1,15 @@
+{
+  "name": "Crank Handle",
+  "category": "foundations_calculator:machines",
+  "icon": "foundations_calculator:crank_handle",
+  "sortnum": 67,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Purpose$()$pAuxiliary crank component associated with the hand-powered setup.$p$(l)Set up and operate$()$p1. Use the current recipe to obtain the part when needed.$p2. Install/use it in the generator\u2019s intended setup rather than expecting a processing inventory.$p3. Read the generator page for FE behavior.$p$(l)When it does not run$()$pThe handle is not a general processor and has no separate normal recipe-processing cycle.$pActual server settings: live server values are available in the native or master Foundations reader.$pCrafting / obtaining this machine: live recipe details are available in the native or master Foundations reader.$p$(l:foundations_calculator:troubleshooting/no_progress)General operating checklist$()"
+    }
+  ],
+  "extra_recipe_mappings": {
+    "foundations_calculator:crank_handle": 0
+  }
+}

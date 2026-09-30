@@ -1,0 +1,15 @@
+{
+  "name": "Reassembly Chamber",
+  "category": "foundations_calculator:machines",
+  "icon": "foundations_calculator:reassembly_chamber",
+  "sortnum": 48,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Purpose$()$pRepairs damaged circuits into their matching clean boards.$p$(l)Set up and operate$()$p1. Insert a Damaged circuit, not a clean board.$p2. Supply the process energy and duration.$p3. Collect the board and analyse it for state-dependent uses.$p$(l)When it does not run$()$pDirty circuits belong in Restoration or Processing.$pRead the active server settings below before copying default costs from another installation. For special slot roles, use the machine screen labels. Settings reporting does not inspect or mutate a placed machine.$pActual server settings: live server values are available in the native or master Foundations reader.$pProcessing / value recipes: live recipe details are available in the native or master Foundations reader.$pCrafting / obtaining this machine: live recipe details are available in the native or master Foundations reader.$p$(l:foundations_calculator:troubleshooting/no_progress)General operating checklist$()"
+    }
+  ],
+  "extra_recipe_mappings": {
+    "foundations_calculator:reassembly_chamber": 0
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "SSS",
+    "SDS",
+    "SSS"
+  ],
+  "key": {
+    "D": {
+      "item": "minecraft:ink_sac"
+    },
+    "S": {
+      "item": "foundations_calculator:stable_stone_normal"
+    }
+  },
+  "result": {
+    "id": "foundations_calculator:stable_stone_black",
+    "count": 8
+  }
+}

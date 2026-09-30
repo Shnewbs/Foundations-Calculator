@@ -1,0 +1,12 @@
+{
+  "name": "Calculator Locator: plugs and stabilizing walls",
+  "category": "foundations_calculator:multiblocks",
+  "icon": "foundations_calculator:info_calculator",
+  "sortnum": 18,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Bind a Locator Module by using it, then insert it in the Locator. At the shipped supported radii 1\u201311, surround the controller with a square of Calculator Plugs. Every plug sits directly over Stable Stone. An outside Stable Stone perimeter runs around the square at heights \u22121 and 0; its outer corners are optional.$pRadius 1 example: controller/plug level: see the native or master Foundations reader for the interactive or layered view.$pRadius 1 example: height \u22121: see the native or master Foundations reader for the interactive or layered view.$pStable analysed boards in plugs stabilize the machine. At the default threshold of seven stable plugs the owner need not be present. Below that threshold the owner must be in the same dimension; instability can affect the owner or time, subject to server settings.$pLarger valid squares require more plugs and base blocks. Do not mistake the outer wall for another ring of plugs. A valid binding and correct structure are distinct requirements.$pActual server settings: live server values are available in the native or master Foundations reader.$p$(l:foundations_calculator:machines/calculator_locator)Locator operation$()$p$(l:foundations_calculator:machines/calculator_plug)Plug board state$()"
+    }
+  ]
+}

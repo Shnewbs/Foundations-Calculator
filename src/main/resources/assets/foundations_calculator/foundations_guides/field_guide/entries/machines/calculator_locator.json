@@ -1,0 +1,77 @@
+{
+  "id": "foundations_calculator:machines/calculator_locator",
+  "chapter": "foundations_calculator:machines",
+  "title": "Calculator Locator",
+  "order": 58,
+  "items": [
+    "foundations_calculator:calculator_locator"
+  ],
+  "keywords": [
+    "calculator_locator",
+    "Owner-bound FE generator whose plug platform and stable boards determine valid operation and instability"
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "Purpose"
+    },
+    {
+      "type": "paragraph",
+      "text": "Owner-bound FE generator whose plug platform and stable boards determine valid operation and instability."
+    },
+    {
+      "type": "heading",
+      "text": "Set up and operate"
+    },
+    {
+      "type": "steps",
+      "rows": [
+        [
+          "Bind and insert a Locator Module."
+        ],
+        [
+          "Build the square of plugs, base blocks and outside wall."
+        ],
+        [
+          "Insert stable analysed boards in plugs."
+        ],
+        [
+          "Provide output space or a battery to receive generated energy."
+        ]
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "When it does not run"
+    },
+    {
+      "type": "paragraph",
+      "text": "Below the stabilization threshold the owner must be nearby in the same dimension. A bound module is not a replacement for a valid structure."
+    },
+    {
+      "type": "paragraph",
+      "text": "Read the active server settings below before copying default costs from another installation. For special slot roles, use the machine screen labels. Settings reporting does not inspect or mutate a placed machine."
+    },
+    {
+      "type": "live",
+      "text": "Actual server settings",
+      "target": "foundations_calculator",
+      "options": {
+        "key": "machine/calculator_locator"
+      }
+    },
+    {
+      "type": "recipe",
+      "text": "Crafting / obtaining this machine",
+      "target": "item:foundations_calculator:calculator_locator",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "link",
+      "text": "Locator platform diagram",
+      "target": "foundations_calculator:multiblocks/locator"
+    }
+  ]
+}

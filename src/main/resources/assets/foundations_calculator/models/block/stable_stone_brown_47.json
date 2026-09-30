@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "particle": "foundations_calculator:legacy_sonarcore/blocks/connected/stablestone_brown",
+    "north": "foundations_calculator:legacy_sonarcore/blocks/connected/stablestone_brown",
+    "east": "foundations_calculator:legacy_sonarcore/blocks/connected/stablestone_13_brown",
+    "south": "foundations_calculator:legacy_sonarcore/blocks/connected/stablestone_brown",
+    "west": "foundations_calculator:legacy_sonarcore/blocks/connected/stablestone_brown",
+    "up": "foundations_calculator:legacy_sonarcore/blocks/connected/stablestone_brown",
+    "down": "foundations_calculator:legacy_sonarcore/blocks/connected/stablestone_12_brown"
+  }
+}

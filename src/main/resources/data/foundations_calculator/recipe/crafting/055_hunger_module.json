@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "ADA",
+    "BCB",
+    "AEA"
+  ],
+  "key": {
+    "B": {
+      "tag": "foundations_calculator:gems/amethyst"
+    },
+    "A": {
+      "item": "foundations_calculator:shard_amethyst"
+    },
+    "C": {
+      "item": "minecraft:golden_apple"
+    },
+    "D": {
+      "item": "foundations_calculator:calculator_screen"
+    },
+    "E": {
+      "item": "foundations_calculator:redstone_ingot"
+    }
+  },
+  "result": {
+    "id": "foundations_calculator:hunger_module",
+    "count": 1
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "id": "foundations_calculator:machines/reassembly_chamber",
+  "chapter": "foundations_calculator:machines",
+  "title": "Reassembly Chamber",
+  "order": 48,
+  "items": [
+    "foundations_calculator:reassembly_chamber"
+  ],
+  "keywords": [
+    "reassembly_chamber",
+    "Repairs damaged circuits into their matching clean boards"
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "Purpose"
+    },
+    {
+      "type": "paragraph",
+      "text": "Repairs damaged circuits into their matching clean boards."
+    },
+    {
+      "type": "heading",
+      "text": "Set up and operate"
+    },
+    {
+      "type": "steps",
+      "rows": [
+        [
+          "Insert a Damaged circuit, not a clean board."
+        ],
+        [
+          "Supply the process energy and duration."
+        ],
+        [
+          "Collect the board and analyse it for state-dependent uses."
+        ]
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "When it does not run"
+    },
+    {
+      "type": "paragraph",
+      "text": "Dirty circuits belong in Restoration or Processing."
+    },
+    {
+      "type": "paragraph",
+      "text": "Read the active server settings below before copying default costs from another installation. For special slot roles, use the machine screen labels. Settings reporting does not inspect or mutate a placed machine."
+    },
+    {
+      "type": "live",
+      "text": "Actual server settings",
+      "target": "foundations_calculator",
+      "options": {
+        "key": "machine/reassembly_chamber"
+      }
+    },
+    {
+      "type": "recipe",
+      "text": "Processing / value recipes",
+      "target": "machine:reassembly_chamber",
+      "options": {
+        "profile": "reassembly_chamber"
+      }
+    },
+    {
+      "type": "recipe",
+      "text": "Crafting / obtaining this machine",
+      "target": "item:foundations_calculator:reassembly_chamber",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "link",
+      "text": "General operating checklist",
+      "target": "foundations_calculator:troubleshooting/no_progress"
+    }
+  ]
+}

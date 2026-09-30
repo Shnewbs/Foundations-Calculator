@@ -1,0 +1,15 @@
+{
+  "name": "Stone Separator",
+  "category": "foundations_calculator:machines",
+  "icon": "foundations_calculator:stone_separator",
+  "sortnum": 40,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Purpose$()$pSeparates configured stone, wood and other basic materials into useful products. One input can produce multiple outputs.$p$(l)Set up and operate$()$p1. Choose a live Stone Separator recipe.$p2. Supply its exact ingredient and full batch energy.$p3. Reserve space for every output, including secondary products such as sticks or shards.$p$(l)When it does not run$()$pAn empty secondary output destination can matter as much as the primary one; check all pending results.$pRead the active server settings below before copying default costs from another installation. For special slot roles, use the machine screen labels. Settings reporting does not inspect or mutate a placed machine.$pActual server settings: live server values are available in the native or master Foundations reader.$pProcessing / value recipes: live recipe details are available in the native or master Foundations reader.$pCrafting / obtaining this machine: live recipe details are available in the native or master Foundations reader.$p$(l:foundations_calculator:troubleshooting/no_progress)General operating checklist$()"
+    }
+  ],
+  "extra_recipe_mappings": {
+    "foundations_calculator:stone_separator": 0
+  }
+}

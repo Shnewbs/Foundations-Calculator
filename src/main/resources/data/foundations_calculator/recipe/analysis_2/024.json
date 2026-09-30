@@ -1,0 +1,22 @@
+{
+  "type": "foundations_calculator:process",
+  "machine": "analysis_2",
+  "ingredients": [
+    {
+      "ingredient": {
+        "tag": "foundations_calculator:circuit_boards"
+      }
+    }
+  ],
+  "results": [
+    {
+      "stack": {
+        "id": "foundations_calculator:health_processor",
+        "count": 1
+      }
+    }
+  ],
+  "value": 8,
+  "energy": 0,
+  "ticks": 1
+}

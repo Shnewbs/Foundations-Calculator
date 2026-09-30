@@ -1,0 +1,22 @@
+{
+  "values": {
+    "foundations_calculator:coal_dust": {
+      "burn_time": 1000
+    },
+    "foundations_calculator:enriched_coal": {
+      "burn_time": 5000
+    },
+    "foundations_calculator:purified_coal": {
+      "burn_time": 10000
+    },
+    "foundations_calculator:fire_coal": {
+      "burn_time": 25000
+    },
+    "foundations_calculator:controlled_fuel": {
+      "burn_time": 80000
+    },
+    "foundations_calculator:fire_diamond": {
+      "burn_time": 160000
+    }
+  }
+}

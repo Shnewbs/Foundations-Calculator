@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "EAE",
+    "DBD",
+    "FCF"
+  ],
+  "key": {
+    "A": {
+      "item": "foundations_calculator:fabrication_chamber"
+    },
+    "B": {
+      "item": "foundations_calculator:atomic_assembly"
+    },
+    "C": {
+      "item": "foundations_calculator:end_diamond"
+    },
+    "D": {
+      "item": "foundations_calculator:atomic_module"
+    },
+    "E": {
+      "item": "foundations_calculator:calculator_plug"
+    },
+    "F": {
+      "tag": "foundations_calculator:stable_stone"
+    }
+  },
+  "result": {
+    "id": "foundations_calculator:atomic_multiplier",
+    "count": 1
+  }
+}

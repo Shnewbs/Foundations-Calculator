@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "A  ",
+    "AA ",
+    "AAA"
+  ],
+  "key": {
+    "A": {
+      "item": "foundations_calculator:amethyst_planks"
+    }
+  },
+  "result": {
+    "id": "foundations_calculator:amethyst_stairs",
+    "count": 4
+  }
+}

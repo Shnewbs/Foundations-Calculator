@@ -1,0 +1,15 @@
+{
+  "name": "Reinforced Furnace",
+  "category": "foundations_calculator:machines",
+  "icon": "foundations_calculator:reinforced_furnace",
+  "sortnum": 38,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Purpose$()$pElectric furnace using current furnace-smelting recipes, not fuel burn time as its FE cost. It retains returned containers and completed outputs.$p$(l)Set up and operate$()$p1. Place a smeltable item in the input.$p2. Provide enough FE for the configured furnace batch.$p3. Leave room for the output and any crafting remainder.$p$(l)When it does not run$()$pThe furnace\u2019s process cost/time are machine settings; they are not the same as an ingredient\u2019s furnace fuel value.$pRead the active server settings below before copying default costs from another installation. For special slot roles, use the machine screen labels. Settings reporting does not inspect or mutate a placed machine.$pActual server settings: live server values are available in the native or master Foundations reader.$pCrafting / obtaining this machine: live recipe details are available in the native or master Foundations reader.$p$(l:foundations_calculator:troubleshooting/no_progress)General operating checklist$()"
+    }
+  ],
+  "extra_recipe_mappings": {
+    "foundations_calculator:reinforced_furnace": 0
+  }
+}

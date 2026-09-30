@@ -1,0 +1,17 @@
+{
+  "type": "foundations_calculator:process",
+  "machine": "health_processor",
+  "ingredients": [
+    {
+      "ingredient": {
+        "item": "minecraft:white_wool"
+      },
+      "count": 1
+    }
+  ],
+  "results": [],
+  "energy": 0,
+  "ticks": 1,
+  "value": 3,
+  "research": false
+}

@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "IRI",
+    "CFC",
+    "IRI"
+  ],
+  "key": {
+    "I": {
+      "item": "foundations_calculator:reinforced_iron_ingot"
+    },
+    "R": {
+      "item": "minecraft:redstone"
+    },
+    "C": {
+      "item": "foundations_calculator:calculator_assembly"
+    },
+    "F": {
+      "item": "foundations_calculator:reinforced_furnace"
+    }
+  },
+  "result": {
+    "id": "foundations_calculator:smelting_module"
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "type": "foundations_calculator:process",
+  "machine": "flawless",
+  "ingredients": [
+    {
+      "ingredient": {
+        "item": "foundations_calculator:flawless_diamond"
+      },
+      "count": 1
+    },
+    {
+      "ingredient": {
+        "tag": "c:glass_blocks"
+      },
+      "count": 1
+    },
+    {
+      "ingredient": {
+        "tag": "c:glass_blocks"
+      },
+      "count": 1
+    },
+    {
+      "ingredient": {
+        "item": "foundations_calculator:flawless_diamond"
+      },
+      "count": 1
+    }
+  ],
+  "results": [
+    {
+      "stack": {
+        "id": "foundations_calculator:flawless_glass",
+        "count": 4
+      }
+    }
+  ],
+  "energy": 0,
+  "ticks": 1,
+  "value": 0,
+  "research": false
+}

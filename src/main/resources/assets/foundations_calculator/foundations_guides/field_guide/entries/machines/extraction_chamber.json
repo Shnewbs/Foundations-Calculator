@@ -1,0 +1,82 @@
+{
+  "id": "foundations_calculator:machines/extraction_chamber",
+  "chapter": "foundations_calculator:machines",
+  "title": "Extraction Chamber",
+  "order": 46,
+  "items": [
+    "foundations_calculator:extraction_chamber"
+  ],
+  "keywords": [
+    "extraction_chamber",
+    "Turns dirt/cobblestone into Soil/Small Stone and can find dirty or damaged circuits"
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "Purpose"
+    },
+    {
+      "type": "paragraph",
+      "text": "Turns dirt/cobblestone into Soil/Small Stone and can find dirty or damaged circuits. It produces raw circuits, not analysed boards."
+    },
+    {
+      "type": "heading",
+      "text": "Set up and operate"
+    },
+    {
+      "type": "steps",
+      "rows": [
+        [
+          "Choose dirt or cobblestone according to the recipe."
+        ],
+        [
+          "Supply the complete batch cost and wait through the duration."
+        ],
+        [
+          "Separate guaranteed material output from chance-based circuit output."
+        ]
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "When it does not run"
+    },
+    {
+      "type": "paragraph",
+      "text": "Not receiving a chip on every cycle is expected for chance results. Use Precision recipes when you need a more specific route."
+    },
+    {
+      "type": "paragraph",
+      "text": "Read the active server settings below before copying default costs from another installation. For special slot roles, use the machine screen labels. Settings reporting does not inspect or mutate a placed machine."
+    },
+    {
+      "type": "live",
+      "text": "Actual server settings",
+      "target": "foundations_calculator",
+      "options": {
+        "key": "machine/extraction_chamber"
+      }
+    },
+    {
+      "type": "recipe",
+      "text": "Processing / value recipes",
+      "target": "machine:extraction_chamber",
+      "options": {
+        "profile": "extraction_chamber"
+      }
+    },
+    {
+      "type": "recipe",
+      "text": "Crafting / obtaining this machine",
+      "target": "item:foundations_calculator:extraction_chamber",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "link",
+      "text": "General operating checklist",
+      "target": "foundations_calculator:troubleshooting/no_progress"
+    }
+  ]
+}

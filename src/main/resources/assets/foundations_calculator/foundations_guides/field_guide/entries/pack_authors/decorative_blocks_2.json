@@ -1,0 +1,171 @@
+{
+  "id": "foundations_calculator:pack_authors/decorative_blocks_2",
+  "chapter": "foundations_calculator:pack_authors",
+  "title": "Decorative blocks · 2",
+  "order": 103,
+  "items": [
+    "foundations_calculator:reinforced_stone_gate",
+    "foundations_calculator:reinforced_stone_brick",
+    "foundations_calculator:reinforced_stone_brick_stairs",
+    "foundations_calculator:reinforced_stone_brick_fence",
+    "foundations_calculator:reinforced_stone_brick_gate",
+    "foundations_calculator:reinforced_dirt_block",
+    "foundations_calculator:reinforced_dirt_stairs",
+    "foundations_calculator:reinforced_dirt_fence",
+    "foundations_calculator:reinforced_dirt_gate",
+    "foundations_calculator:reinforced_dirt_brick",
+    "foundations_calculator:reinforced_dirt_brick_stairs",
+    "foundations_calculator:reinforced_dirt_brick_fence"
+  ],
+  "keywords": [],
+  "blocks": [
+    {
+      "type": "paragraph",
+      "text": "This reference groups related inventory entries. Each recipe section reads the current world. An item may have no crafting result when it comes from harvesting, world generation, a program action or creative tools."
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:reinforced_stone_gate"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Reinforced Stone Gate",
+      "target": "item:foundations_calculator:reinforced_stone_gate",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:reinforced_stone_brick"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Reinforced Stone Brick",
+      "target": "item:foundations_calculator:reinforced_stone_brick",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:reinforced_stone_brick_stairs"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Reinforced Stone Brick Stairs",
+      "target": "item:foundations_calculator:reinforced_stone_brick_stairs",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:reinforced_stone_brick_fence"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Reinforced Stone Brick Fence",
+      "target": "item:foundations_calculator:reinforced_stone_brick_fence",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:reinforced_stone_brick_gate"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Reinforced Stone Brick Gate",
+      "target": "item:foundations_calculator:reinforced_stone_brick_gate",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:reinforced_dirt_block"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Reinforced Dirt Block",
+      "target": "item:foundations_calculator:reinforced_dirt_block",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:reinforced_dirt_stairs"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Reinforced Dirt Stairs",
+      "target": "item:foundations_calculator:reinforced_dirt_stairs",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:reinforced_dirt_fence"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Reinforced Dirt Fence",
+      "target": "item:foundations_calculator:reinforced_dirt_fence",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:reinforced_dirt_gate"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Reinforced Dirt Gate",
+      "target": "item:foundations_calculator:reinforced_dirt_gate",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:reinforced_dirt_brick"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Reinforced Dirt Brick",
+      "target": "item:foundations_calculator:reinforced_dirt_brick",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:reinforced_dirt_brick_stairs"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Reinforced Dirt Brick Stairs",
+      "target": "item:foundations_calculator:reinforced_dirt_brick_stairs",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:reinforced_dirt_brick_fence"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Reinforced Dirt Brick Fence",
+      "target": "item:foundations_calculator:reinforced_dirt_brick_fence",
+      "options": {
+        "profile": ""
+      }
+    }
+  ]
+}

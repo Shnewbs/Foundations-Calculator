@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "RR",
+    " S",
+    " S"
+  ],
+  "key": {
+    "R": {
+      "item": "foundations_calculator:reinforced_iron_ingot"
+    },
+    "S": {
+      "tag": "c:rods/wooden"
+    }
+  },
+  "result": {
+    "id": "foundations_calculator:reinforced_iron_hoe",
+    "count": 1
+  }
+}

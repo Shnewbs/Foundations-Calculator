@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "DCD",
+    "WAW",
+    "DWD"
+  ],
+  "key": {
+    "D": {
+      "tag": "foundations_calculator:reinforced_stone"
+    },
+    "A": {
+      "item": "foundations_calculator:atomic_assembly"
+    },
+    "C": {
+      "item": "foundations_calculator:calculator_screen"
+    },
+    "W": {
+      "tag": "c:gems/diamond"
+    }
+  },
+  "result": {
+    "id": "foundations_calculator:atomic_calculator",
+    "count": 1
+  }
+}

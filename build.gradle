@@ -1,0 +1,181 @@
+plugins {
+    id 'java-library'
+    id 'net.neoforged.moddev' version '2.0.147'
+}
+version = mod_version
+group = 'com.foundations.calculator'
+base { archivesName = 'FoundationsCalculator' }
+java { toolchain.languageVersion = JavaLanguageVersion.of(21); withSourcesJar() }
+neoForge {
+    version = '21.1.250'
+    runs {
+        client {
+            client()
+            if(project.hasProperty('powerSmoke')) {
+                systemProperty 'foundations.powerSmoke','true'
+                systemProperty 'neoforge.enableGameTest','true'
+            }
+            if(project.hasProperty('viewerSmoke')) systemProperty 'foundations.viewerSmoke','true'
+            if(project.hasProperty('clientSmoke')) {
+                systemProperty 'foundations.clientSmoke','true'
+                programArguments.addAll('--width','1280','--height','960')
+            }
+        }
+        server { server(); programArgument '--nogui' }
+        gameTestServer { type = 'gameTestServer'; systemProperty 'neoforge.enabledGameTestNamespaces', 'foundations_calculator' }
+    }
+    mods { foundations_calculator { sourceSet(sourceSets.main) } }
+}
+repositories { mavenCentral() }
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.11.4')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+tasks.named('test', Test) { useJUnitPlatform() }
+tasks.withType(JavaCompile).configureEach { options.encoding = 'UTF-8' }
+processResources {
+    inputs.property 'version', project.version
+    exclude 'META-INF/neoforge.mods.toml'
+    inputs.file('src/main/resources/META-INF/neoforge.mods.toml')
+    doLast {
+        def metadata = file("$destinationDir/META-INF/neoforge.mods.toml")
+        metadata.parentFile.mkdirs()
+        metadata.setText(file('src/main/resources/META-INF/neoforge.mods.toml').getText('UTF-8').replace('${version}', project.version.toString()), 'UTF-8')
+    }
+}
+jar { from('LICENSE'); from('NOTICE.md') }
+
+// Integration tests are compiled against the real game and excluded from released JARs.
+sourceSets {
+    gameTest {
+        compileClasspath += sourceSets.main.output + sourceSets.main.compileClasspath
+        runtimeClasspath += sourceSets.main.output + sourceSets.main.runtimeClasspath
+    }
+}
+neoForge.mods.foundations_calculator.sourceSet(sourceSets.gameTest)
+if (project.hasProperty('withKubeJS')) {
+    repositories { maven { url = 'https://maven.latvian.dev/releases' } }
+    dependencies {
+        runtimeOnly('dev.latvian.mods:kubejs-neoforge:2101.7.2-build.379') { transitive = false }
+        runtimeOnly('dev.latvian.mods:rhino:2101.2.7-build.81') { transitive = false }
+    }
+}
+if (project.hasProperty('withKubeJS')) {
+    def installScripts = tasks.register('installKubeJsGameTests', Copy) {
+        from 'src/gameTest/kubejs'
+        into 'run/kubejs'
+    }
+    tasks.matching { it.name == 'runGameTestServer' }.configureEach { dependsOn installScripts }
+}
+
+// The development server can return exit code zero after an early loading crash.
+// Require Minecraft's positive completion report as well as the process exit code.
+tasks.named('runGameTestServer') {
+    def captured = new ByteArrayOutputStream()
+    doFirst {
+        captured.reset()
+        standardOutput = new OutputStream() {
+            @Override void write(int value) { System.out.write(value); captured.write(value) }
+            @Override void write(byte[] data, int offset, int length) { System.out.write(data, offset, length); captured.write(data, offset, length) }
+            @Override void flush() { System.out.flush(); captured.flush() }
+        }
+        errorOutput = standardOutput
+    }
+    doLast {
+        def output = captured.toString('UTF-8')
+        file('build').mkdirs()
+        file('build/gametest-output.log').setText(output, 'UTF-8')
+        def completed = (output =~ /All (\d+) required tests passed/)
+        if (!completed.find() || completed.group(1).toInteger() < 124) {
+            throw new GradleException('Minecraft did not report all 124 or more required 0.0.2a.R2 GameTests passing. Read build/gametest-output.log.')
+        }
+        if (output.contains('[KubeJS Server/]: Error') || output.contains('Error parsing recipe schema') || output.contains('Parsing error loading recipe') || output.contains('Errors found in the scripts')) {
+            throw new GradleException('GameTests completed but a datapack or script failed to load. Read build/gametest-output.log.')
+        }
+    }
+}
+
+// Optional APIs are compile-only. A normal release still needs only NeoForge.
+repositories { maven { url = 'https://api.modrinth.com/maven'; content { includeGroup 'maven.modrinth' } } }
+def integrationVersions = [jei:'ufHUqt9b', emi:'5sIPA1To', jade:'eYz2YBGT', crafttweaker:'BVOSHJwc', mekanism:'5KzzycBT', ae2:'KDnFUmMm', mi:'s5PDXbfR']
+dependencies {
+    integrationVersions.each { name, release ->
+        compileOnly("maven.modrinth:${name == "mi" ? "modern-industrialization" : name}:${release}") { transitive = false }
+        if ((project.hasProperty('withIntegrations') && (name != 'gtceu' || !project.hasProperty('withoutGtceu'))) || project.hasProperty('with' + name.capitalize())) {
+            runtimeOnly("maven.modrinth:${name == "mi" ? "modern-industrialization" : name}:${release}") { transitive = false }
+        }
+    }
+}
+
+if (project.hasProperty('withIntegrations') || project.hasProperty('withAe2') || project.hasProperty('withMi')) {
+    dependencies { runtimeOnly('maven.modrinth:guideme:hFpGwC6q') { transitive = false } }
+}
+if (project.hasProperty('withIntegrations') || project.hasProperty('withCrafttweaker')) {
+    def scripts = tasks.register('installCraftTweakerGameTests', Copy) {
+        from 'src/gameTest/crafttweaker'
+        into 'run/scripts'
+    }
+    tasks.matching { it.name == 'runGameTestServer' }.configureEach { dependsOn scripts }
+}
+
+// Timestamped official snapshot: the 7.0.2 public release crashes dedicated servers.
+// Pin exact bytes instead of following a moving SNAPSHOT dependency.
+repositories { maven { url = 'https://maven.gtceu.com'; content { includeGroup 'com.gregtechceu.gtceu' } } }
+def gtVersion = '8.0.0-20260928.082845-98'
+dependencies {
+    compileOnly("com.gregtechceu.gtceu:gtceu-1.21.1:${gtVersion}") { transitive = false }
+    if ((project.hasProperty('withIntegrations') && !project.hasProperty('withoutGtceu')) || project.hasProperty('withGtceu')) {
+        runtimeOnly("com.gregtechceu.gtceu:gtceu-1.21.1:${gtVersion}") { transitive = false }
+    }
+}
+
+repositories { maven { url = 'https://modmaven.dev'; content { includeGroup 'dev.technici4n' } } }
+dependencies { compileOnly('dev.technici4n:GrandPower:3.0.0') { transitive = false } }
+if (project.hasProperty('withGrandpower')) {
+    dependencies { runtimeOnly('dev.technici4n:GrandPower:3.0.0') { transitive = false } }
+}
+
+
+
+// R7-HF1: these JUnit tests exercise production code that implements NeoForge's
+// IEnergyStorage. ModDevGradle's platform dependencies are source-set scoped:
+// adding src/testSupport alone does not put NeoForge on test compile/runtime paths.
+// Use the plugin's public API to wire BOTH paths to the same pinned platform.
+// The tests are plain arithmetic/policy tests; no game/mod bootstrap is needed.
+// Do not add tools/offline-test-fixtures to Gradle or package test output in the mod.
+neoForge.addModdingDependenciesTo(sourceSets.test)
+
+// The same arithmetic regression suite also has a dependency-free, test-only launcher.
+sourceSets.test.java.srcDir('src/testSupport/java')
+
+// 0.0.2a retains the R8 version-negotiated, mod-neutral API identity across all publishers and master readers.
+// The vetted Java-only artifact is shipped in this local Maven directory for repeatable builds.
+repositories { maven { url = uri('guide-api/repository'); content { includeGroup 'com.foundations' } } }
+dependencies {
+    jarJar(implementation('com.foundations:foundations-guide-api')) {
+        version { strictly '[1.0,2.0)'; prefer '1.0.0' }
+    }
+}
+sourceSets.test.java.srcDir('guide-api/src/test/java')
+// Do not require Python merely to build: verify the same source/artifact hashes in Gradle.
+def checkGuideApi = tasks.register('verifyGuideApi') {
+    inputs.dir('guide-api/src/main/java')
+    inputs.dir('guide-api/repository')
+    inputs.file('guide-api/artifact-integrity.json')
+    doLast {
+        def record = new groovy.json.JsonSlurper().parse(file('guide-api/artifact-integrity.json'))
+        def hash = { File f -> java.security.MessageDigest.getInstance('SHA-256').digest(f.bytes).encodeHex().toString() }
+        def actual = [:]
+        fileTree('guide-api/src/main/java').matching { include '**/*.java' }.files.each { f ->
+            actual[file('guide-api').toPath().relativize(f.toPath()).toString().replace('\\','/')] = hash(f)
+        }
+        if (actual != record.sources) throw new GradleException('Guide API sources differ from the bundled artifact. Rebuild via tools/rebuild_guide_api.py before compiling.')
+        record.artifacts.each { path, expected ->
+            def artifact = file('guide-api/' + path)
+            if (!artifact.isFile() || hash(artifact) != expected) throw new GradleException('Guide API integrity failure: ' + path)
+        }
+    }
+}
+tasks.named('compileJava') { dependsOn checkGuideApi }
+tasks.named('test') { dependsOn checkGuideApi }

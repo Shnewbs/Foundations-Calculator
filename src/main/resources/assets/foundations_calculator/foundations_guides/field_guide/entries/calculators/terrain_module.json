@@ -1,0 +1,52 @@
+{
+  "id": "foundations_calculator:calculators/terrain_module",
+  "chapter": "foundations_calculator:calculators",
+  "title": "Terrain Module",
+  "order": 83,
+  "items": [
+    "foundations_calculator:terrain_module"
+  ],
+  "keywords": [
+    "module",
+    "terrain_module"
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "Purpose"
+    },
+    {
+      "type": "paragraph",
+      "text": "Cycles among the basic grass/dirt/stone terrain choices."
+    },
+    {
+      "type": "heading",
+      "text": "Use"
+    },
+    {
+      "type": "paragraph",
+      "text": "Sneak-use to choose the replacement from the supported list, then use on a matching convertible material. The ordinary terrain module is a bounded material-conversion tool, not the unrestricted Atomic Terrain selector."
+    },
+    {
+      "type": "link",
+      "text": "Using modules inside a Flawless Calculator",
+      "target": "foundations_calculator:calculators/installing"
+    },
+    {
+      "type": "live",
+      "text": "Actual server settings",
+      "target": "foundations_calculator",
+      "options": {
+        "key": "module/terrain_module"
+      }
+    },
+    {
+      "type": "recipe",
+      "text": "Obtain this module",
+      "target": "item:foundations_calculator:terrain_module",
+      "options": {
+        "profile": ""
+      }
+    }
+  ]
+}

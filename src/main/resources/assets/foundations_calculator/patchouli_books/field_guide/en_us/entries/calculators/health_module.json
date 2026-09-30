@@ -1,0 +1,15 @@
+{
+  "name": "Health Module",
+  "category": "foundations_calculator:calculators",
+  "icon": "foundations_calculator:health_module",
+  "sortnum": 81,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Purpose$()$pStores health nutrient for restoration.$p$(l)Use$()$pFill from matching Tanzanite leaves or a Health Processor. Use it to restore health from available contents.$p$(l:foundations_calculator:calculators/installing)Using modules inside a Flawless Calculator$()$pObtain this module: live recipe details are available in the native or master Foundations reader."
+    }
+  ],
+  "extra_recipe_mappings": {
+    "foundations_calculator:health_module": 0
+  }
+}

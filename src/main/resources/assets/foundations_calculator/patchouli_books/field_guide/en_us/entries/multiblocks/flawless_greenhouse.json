@@ -1,0 +1,16 @@
+{
+  "name": "Flawless Greenhouse: manual frame and roof",
+  "category": "foundations_calculator:multiblocks",
+  "icon": "foundations_calculator:info_calculator",
+  "sortnum": 16,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Build this greenhouse manually. Choose an interior length L within the server limit (shipped maximum 64). Its total width is four blocks. The controller is side 0, inside 0, height 0. The two central columns hold crops; the outer columns provide walls and irrigation.$p$(l)Frame rules$()$pNear and far ends \u2014 Inside 0 and L+1; side 0\u20133 at height \u22121 are Stable Stone.$pEnd pillars \u2014 Side 0 and 3 at heights 0 and 1 are Stable Stone. The near controller replaces one corner.$pRoof \u2014 Every row from inside 0 through L+1: side 0\u20133 at height 2 are Bottom Quartz Slabs.$pSide walls \u2014 Inside 1\u2013L: sides 0 and 3 at heights 0 and 1 are Flawless Glass.$pGrowing cells \u2014 Inside 1\u2013L: sides 1 and 2 at height 0 above dirt/farmland.$pIrrigation \u2014 Inside 1\u2013L: sides 0 and 3 at height \u22121 start as convertible dirt/grass/farmland.$pExample L=3: roof, height 2: see the native or master Foundations reader for the interactive or layered view.$pExample L=3: height 1: see the native or master Foundations reader for the interactive or layered view.$pExample L=3: height 0: see the native or master Foundations reader for the interactive or layered view.$pExample L=3: height \u22121: see the native or master Foundations reader for the interactive or layered view.$pPlace a CO\u2082 Generator at side 3, inside 0, height 0, facing the same way as the controller. All fourteen greenhouse inputs can hold seeds. This tier has no automatic Build or Demolish controls."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Actual server settings: live server values are available in the native or master Foundations reader.$p$(l:foundations_calculator:machines/co2_generator)CO\u2082 Generator and Controlled Fuel$()$p$(l:foundations_calculator:farming/growing)Farming cycle and crop tiers$()"
+    }
+  ]
+}

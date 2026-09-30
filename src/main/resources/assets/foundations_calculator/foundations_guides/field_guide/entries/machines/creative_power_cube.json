@@ -1,0 +1,74 @@
+{
+  "id": "foundations_calculator:machines/creative_power_cube",
+  "chapter": "foundations_calculator:machines",
+  "title": "Creative Power Cube",
+  "order": 34,
+  "items": [
+    "foundations_calculator:creative_power_cube"
+  ],
+  "keywords": [
+    "creative_power_cube",
+    "Creative/testing power supply"
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "Purpose"
+    },
+    {
+      "type": "paragraph",
+      "text": "Creative/testing power supply. It replenishes stored FE; it is not intended as a survival progression reward."
+    },
+    {
+      "type": "heading",
+      "text": "Set up and operate"
+    },
+    {
+      "type": "steps",
+      "rows": [
+        [
+          "Place it in a test world."
+        ],
+        [
+          "Enable a permitted output face."
+        ],
+        [
+          "Use it to isolate receiver-side problems, then retest with a finite survival source."
+        ]
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "When it does not run"
+    },
+    {
+      "type": "paragraph",
+      "text": "Do not treat a test with an unlimited source as proof that your normal generator can meet the required throughput."
+    },
+    {
+      "type": "paragraph",
+      "text": "Read the active server settings below before copying default costs from another installation. For special slot roles, use the machine screen labels. Settings reporting does not inspect or mutate a placed machine."
+    },
+    {
+      "type": "live",
+      "text": "Actual server settings",
+      "target": "foundations_calculator",
+      "options": {
+        "key": "machine/creative_power_cube"
+      }
+    },
+    {
+      "type": "recipe",
+      "text": "Crafting / obtaining this machine",
+      "target": "item:foundations_calculator:creative_power_cube",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "link",
+      "text": "General operating checklist",
+      "target": "foundations_calculator:troubleshooting/no_progress"
+    }
+  ]
+}

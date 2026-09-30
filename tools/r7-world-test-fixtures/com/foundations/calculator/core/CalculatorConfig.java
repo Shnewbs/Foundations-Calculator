@@ -1,0 +1,1 @@
+package com.foundations.calculator.core;import java.util.*;public class CalculatorConfig {public static final Map<String,Boolean> flags=new HashMap<>();public static boolean flag(String key,boolean fallback){return flags.getOrDefault(key,fallback);}}

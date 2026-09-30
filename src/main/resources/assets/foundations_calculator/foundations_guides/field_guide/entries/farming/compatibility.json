@@ -1,0 +1,46 @@
+{
+  "id": "foundations_calculator:farming/compatibility",
+  "chapter": "foundations_calculator:farming",
+  "title": "External crops and protection-aware adapters",
+  "order": 21,
+  "items": [],
+  "keywords": [
+    "TFC",
+    "TerraFirmaCraft",
+    "modded crops",
+    "PlantAdapter",
+    "claims",
+    "saplings"
+  ],
+  "blocks": [
+    {
+      "type": "paragraph",
+      "text": "Ordinary CropBlock seeds use the normal planting path and mature crop loot tables. Generic NeoForge planting support broadens acceptance, but a special crop with unusual multi-block growth or harvest behavior needs an explicit PlantAdapter."
+    },
+    {
+      "type": "paragraph",
+      "text": "The R7 safety default requires an owner for protected machine world actions. Opaque external plant callbacks and sapling/tree growth are not invoked by default because checking one target cannot authorize every block an unknown callback might later modify."
+    },
+    {
+      "type": "callout",
+      "text": "protection.allowLegacyPlantCallbacks=true is a less-protected opt-in, not a promise that a claim mod will approve every callback. Prefer a protected adapter that checks its actual affected positions. An unavailable external plant is not evidence that native greenhouse geometry is wrong."
+    },
+    {
+      "type": "paragraph",
+      "text": "Preflights refuse unloaded targets, unrelated block entities and unbreakable blocks on the reviewed machine paths. Denied actions do not award Calculator harvesting drops or consume the associated construction materials. Test the actual installed protection mod before public-server use."
+    },
+    {
+      "type": "live",
+      "text": "Actual server settings",
+      "target": "foundations_calculator",
+      "options": {
+        "key": "protection"
+      }
+    },
+    {
+      "type": "link",
+      "text": "Owner and denied-target failures",
+      "target": "foundations_calculator:troubleshooting/construction"
+    }
+  ]
+}

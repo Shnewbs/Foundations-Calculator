@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "id": "example_guides:field_guide",
+  "owner": "example_guides",
+  "title": "Example Field Guide",
+  "icon": "minecraft:book",
+  "revision": "1",
+  "landing": "example_guides:welcome",
+  "chapters": [
+    "chapter.json"
+  ],
+  "entries": [
+    "welcome.json"
+  ]
+}

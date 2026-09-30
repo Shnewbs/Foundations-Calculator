@@ -1,0 +1,15 @@
+{
+  "name": "Restoration Chamber",
+  "category": "foundations_calculator:machines",
+  "icon": "foundations_calculator:restoration_chamber",
+  "sortnum": 47,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Purpose$()$pCleans dirty circuits into matching clean board variants.$p$(l)Set up and operate$()$p1. Insert a Dirty circuit in an input slot.$p2. Supply its process cost and leave output room.$p3. Send the resulting board to analysis when a later use requires analysed state.$p$(l)When it does not run$()$pDamaged circuits belong in Reassembly or Processing, not this cleaning-only path.$pRead the active server settings below before copying default costs from another installation. For special slot roles, use the machine screen labels. Settings reporting does not inspect or mutate a placed machine.$pActual server settings: live server values are available in the native or master Foundations reader.$pProcessing / value recipes: live recipe details are available in the native or master Foundations reader.$pCrafting / obtaining this machine: live recipe details are available in the native or master Foundations reader.$p$(l:foundations_calculator:troubleshooting/no_progress)General operating checklist$()"
+    }
+  ],
+  "extra_recipe_mappings": {
+    "foundations_calculator:restoration_chamber": 0
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "  B",
+    "BBB",
+    "A B"
+  ],
+  "key": {
+    "A": {
+      "item": "foundations_calculator:purified_obsidian"
+    },
+    "B": {
+      "item": "foundations_calculator:enriched_gold_ingot"
+    }
+  },
+  "result": {
+    "id": "foundations_calculator:obsidian_key",
+    "count": 1
+  }
+}

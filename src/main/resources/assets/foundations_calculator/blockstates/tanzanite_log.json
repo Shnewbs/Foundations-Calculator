@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=y": {
+      "model": "foundations_calculator:block/tanzanite_log"
+    },
+    "axis=x": {
+      "model": "foundations_calculator:block/tanzanite_log",
+      "x": 90,
+      "y": 90
+    },
+    "axis=z": {
+      "model": "foundations_calculator:block/tanzanite_log",
+      "x": 90
+    }
+  }
+}

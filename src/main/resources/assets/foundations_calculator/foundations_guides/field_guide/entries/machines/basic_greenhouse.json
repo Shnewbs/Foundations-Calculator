@@ -1,0 +1,74 @@
+{
+  "id": "foundations_calculator:machines/basic_greenhouse",
+  "chapter": "foundations_calculator:machines",
+  "title": "Basic Greenhouse",
+  "order": 54,
+  "items": [
+    "foundations_calculator:basic_greenhouse"
+  ],
+  "keywords": [
+    "basic_greenhouse",
+    "Automatically constructed starter greenhouse with eight growing cells around central water"
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "Purpose"
+    },
+    {
+      "type": "paragraph",
+      "text": "Automatically constructed starter greenhouse with eight growing cells around central water."
+    },
+    {
+      "type": "heading",
+      "text": "Set up and operate"
+    },
+    {
+      "type": "steps",
+      "rows": [
+        [
+          "Load logs, stairs, glass and planks into its first four inputs, then press Build."
+        ],
+        [
+          "Prepare dirt/grass beneath the growing area and supply compatible seeds."
+        ],
+        [
+          "Use a Gas Lantern for carbon and an outside chest for permitted seed/produce automation."
+        ]
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "When it does not run"
+    },
+    {
+      "type": "paragraph",
+      "text": "Its roof is wider than the crop area. Wrong construction-slot order, missing energy, denied targets or higher-tier seeds can stall it."
+    },
+    {
+      "type": "paragraph",
+      "text": "Read the active server settings below before copying default costs from another installation. For special slot roles, use the machine screen labels. Settings reporting does not inspect or mutate a placed machine."
+    },
+    {
+      "type": "live",
+      "text": "Actual server settings",
+      "target": "foundations_calculator",
+      "options": {
+        "key": "machine/basic_greenhouse"
+      }
+    },
+    {
+      "type": "recipe",
+      "text": "Crafting / obtaining this machine",
+      "target": "item:foundations_calculator:basic_greenhouse",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "link",
+      "text": "Construction plans and layers",
+      "target": "foundations_calculator:multiblocks/basic_greenhouse"
+    }
+  ]
+}

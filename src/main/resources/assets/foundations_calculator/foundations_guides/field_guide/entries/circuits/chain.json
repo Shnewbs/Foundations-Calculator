@@ -1,0 +1,127 @@
+{
+  "id": "foundations_calculator:circuits/chain",
+  "chapter": "foundations_calculator:circuits",
+  "title": "The complete circuit-processing chain",
+  "order": 6,
+  "items": [
+    "foundations_calculator:circuit_dirty_0",
+    "foundations_calculator:circuit_dirty_1",
+    "foundations_calculator:circuit_dirty_2",
+    "foundations_calculator:circuit_dirty_3",
+    "foundations_calculator:circuit_dirty_4",
+    "foundations_calculator:circuit_dirty_5",
+    "foundations_calculator:circuit_dirty_6",
+    "foundations_calculator:circuit_dirty_7",
+    "foundations_calculator:circuit_dirty_8",
+    "foundations_calculator:circuit_dirty_9",
+    "foundations_calculator:circuit_dirty_10",
+    "foundations_calculator:circuit_dirty_11",
+    "foundations_calculator:circuit_dirty_12",
+    "foundations_calculator:circuit_dirty_13",
+    "foundations_calculator:circuit_damaged_0",
+    "foundations_calculator:circuit_damaged_1",
+    "foundations_calculator:circuit_damaged_2",
+    "foundations_calculator:circuit_damaged_3",
+    "foundations_calculator:circuit_damaged_4",
+    "foundations_calculator:circuit_damaged_5",
+    "foundations_calculator:circuit_damaged_6",
+    "foundations_calculator:circuit_damaged_7",
+    "foundations_calculator:circuit_damaged_8",
+    "foundations_calculator:circuit_damaged_9",
+    "foundations_calculator:circuit_damaged_10",
+    "foundations_calculator:circuit_damaged_11",
+    "foundations_calculator:circuit_damaged_12",
+    "foundations_calculator:circuit_damaged_13"
+  ],
+  "keywords": [
+    "dirty chip",
+    "damaged chip",
+    "circuit chain",
+    "stable"
+  ],
+  "blocks": [
+    {
+      "type": "paragraph",
+      "text": "Circuits have both an item variant and stored analysis state. A dirty or damaged circuit, a clean unanalysed board, an analysed board and an analysed stable board are not interchangeable just because they share a number."
+    },
+    {
+      "type": "table",
+      "text": "Processing route",
+      "rows": [
+        [
+          "Extraction / Precision",
+          "Find dirty or damaged circuits from their configured inputs."
+        ],
+        [
+          "Restoration",
+          "Clean dirty circuits into matching boards."
+        ],
+        [
+          "Reassembly",
+          "Repair damaged circuits into matching boards."
+        ],
+        [
+          "Processing",
+          "Combines the cleaning and repair roles."
+        ],
+        [
+          "Analysis",
+          "Analyse clean boards; reveals stability and can award items/FE."
+        ],
+        [
+          "Fabrication / Plugs / Multiplication",
+          "Use the exact board variants and state required by the operation."
+        ]
+      ]
+    },
+    {
+      "type": "steps",
+      "rows": [
+        [
+          "Start with a raw chip and read its actual item name: Dirty or Damaged."
+        ],
+        [
+          "Select the cleaning/repair machine that handles that type."
+        ],
+        [
+          "After processing, move the resulting clean board into the Analysing Chamber."
+        ],
+        [
+          "Read the analysed/stable tooltip before placing the board in a Fabrication recipe or Calculator Plug."
+        ],
+        [
+          "Do not reinsert an already analysed board expecting another analysis reward."
+        ]
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "The analyser has data-driven rewards. Its board state is saved on the item. The guide shows public instructions and recipe state requirements; it does not alter the board, reroll its data, or grant rewards."
+    },
+    {
+      "type": "link",
+      "text": "Extraction",
+      "target": "foundations_calculator:machines/extraction_chamber"
+    },
+    {
+      "type": "link",
+      "text": "Precision",
+      "target": "foundations_calculator:machines/precision_chamber"
+    },
+    {
+      "type": "link",
+      "text": "Cleaning and repair",
+      "target": "foundations_calculator:machines/processing_chamber"
+    },
+    {
+      "type": "link",
+      "text": "Analysis",
+      "target": "foundations_calculator:machines/analysing_chamber"
+    },
+    {
+      "type": "link",
+      "text": "Dirty chip not running",
+      "target": "foundations_calculator:troubleshooting/dirty_chip"
+    }
+  ]
+}

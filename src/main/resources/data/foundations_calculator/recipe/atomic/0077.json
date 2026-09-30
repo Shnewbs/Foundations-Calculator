@@ -1,0 +1,36 @@
+{
+  "type": "foundations_calculator:process",
+  "machine": "atomic",
+  "ingredients": [
+    {
+      "ingredient": {
+        "item": "minecraft:blaze_rod"
+      },
+      "count": 1
+    },
+    {
+      "ingredient": {
+        "item": "foundations_calculator:flawless_diamond"
+      },
+      "count": 1
+    },
+    {
+      "ingredient": {
+        "item": "minecraft:blaze_rod"
+      },
+      "count": 1
+    }
+  ],
+  "results": [
+    {
+      "stack": {
+        "id": "foundations_calculator:fire_diamond",
+        "count": 1
+      }
+    }
+  ],
+  "energy": 0,
+  "ticks": 1,
+  "value": 0,
+  "research": false
+}

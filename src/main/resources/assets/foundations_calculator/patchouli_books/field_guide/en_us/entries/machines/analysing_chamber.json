@@ -1,0 +1,15 @@
+{
+  "name": "Analysing Chamber",
+  "category": "foundations_calculator:machines",
+  "icon": "foundations_calculator:analysing_chamber",
+  "sortnum": 51,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Purpose$()$pAnalyses clean circuit boards, reveals stability, returns the analysed board and can award recipe-driven items or FE.$p$(l)Set up and operate$()$p1. Clean or repair the raw chip first.$p2. Insert the unanalysed clean board.$p3. Leave room for the board and additional rewards.$p4. Read the returned board tooltip before fabrication or plug use.$p$(l)When it does not run$()$pAlready analysed boards do not run again. The analyser can also export generated/reward energy, subject to its sides.$pRead the active server settings below before copying default costs from another installation. For special slot roles, use the machine screen labels. Settings reporting does not inspect or mutate a placed machine.$pActual server settings: live server values are available in the native or master Foundations reader.$pCrafting / obtaining this machine: live recipe details are available in the native or master Foundations reader.$p$(l:foundations_calculator:troubleshooting/no_progress)General operating checklist$()"
+    }
+  ],
+  "extra_recipe_mappings": {
+    "foundations_calculator:analysing_chamber": 0
+  }
+}

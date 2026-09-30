@@ -1,0 +1,19 @@
+{
+  "name": "Your first working workshop",
+  "category": "foundations_calculator:getting_started",
+  "icon": "foundations_calculator:calculator",
+  "sortnum": 2,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Once the quick start works, expand it into a small reliable workshop: a Calculator, stable power, one or more processing machines, a Power Cube or equivalent buffer, and storage for every output. Follow live crafting and process recipes rather than a fixed shopping list.$p1. Choose a Calculator recipe that matches your available inputs. Portable calculations complete when you press Calculate; their recipe time field does not create a hidden timer.$p2. Keep generation and storage simple until you understand the energy route. Use the Power page if an EU/J/FE adapter is involved.$p3. Use Extraction to obtain intermediate materials and circuit drops, then Restoration/Reassembly/Analysis in the correct order.$p4. Give each placed machine enough stored energy for the complete batch and leave room for its result before diagnosing it as broken.$p5. Run one batch manually, then enable automation only on intended sides. Input and Disabled faces are not valid export faces.$p6. Add Research, modules, greenhouses and larger automation after the base chain is dependable. If something stops, search the symptom in Troubleshooting before changing multiple configs.$pBasic calculations: live recipe details are available in the native or master Foundations reader.$p$(l:foundations_calculator:machines/hand_cranked_generator)Hand-Cranked Generator$()$p$(l:foundations_calculator:machines/power_cube)Power Cube$()$p$(l:foundations_calculator:machines/extraction_chamber)Extraction Chamber$()"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(l:foundations_calculator:circuits/chain)Follow the circuit chain$()$p$(l:foundations_calculator:troubleshooting/no_progress)Machine has power but no progress$()"
+    }
+  ],
+  "extra_recipe_mappings": {
+    "foundations_calculator:calculator": 0
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "name": "Getting Started: First 10 Minutes",
+  "category": "foundations_calculator:getting_started",
+  "icon": "foundations_calculator:calculator",
+  "sortnum": 1,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "This page is the shortest practical route into Calculator. It intentionally avoids a giant shopping list because recipes, power costs and research requirements can be changed by the server or pack.$p1. Craft the Calculator using the live recipe below. Keep the Field Guide nearby: the same item can always bring you back to these instructions.$p2. Make or connect a basic power source. The Hand-Cranked Generator is the built-in early option; an external FE source also works when its route is enabled.$p3. Place a Power Cube if you want a visible energy buffer between generation and machines. Set its sides so energy enters from the source and exits toward the machine.$p4. Craft an Extraction Chamber. Feed it a valid early input such as the recipe list shows, supply the full batch energy, and leave output space.$p5. When you get Dirty or Damaged circuit material, do not put it directly into Analysis. Restore Dirty chips, Reassemble Damaged chips, then Analyse clean boards.$p6. Build a Research Chamber when a recipe says it is locked. Study the required sample; the guide can show your current research snapshot but reading the page does not unlock it.$p7. After one manual batch works, configure item sides and automation. Test one connection at a time before adding Transfer Upgrades or a large pipe network.$pCraft the Calculator: live recipe details are available in the native or master Foundations reader."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Craft the Extraction Chamber: live recipe details are available in the native or master Foundations reader.$p$(l:foundations_calculator:machines/hand_cranked_generator)Hand-Cranked Generator$()$p$(l:foundations_calculator:machines/power_cube)Power Cube$()$p$(l:foundations_calculator:machines/extraction_chamber)Extraction Chamber$()$p$(l:foundations_calculator:circuits/chain)Circuit processing order$()$p$(l:foundations_calculator:research/study)Research and samples$()$p$(l:foundations_calculator:getting_started/first_workshop)Continue: build a complete workshop$()"
+    }
+  ],
+  "priority": true,
+  "extra_recipe_mappings": {
+    "foundations_calculator:calculator": 0,
+    "foundations_calculator:extraction_chamber": 0
+  }
+}

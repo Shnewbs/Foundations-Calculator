@@ -1,0 +1,15 @@
+{
+  "name": "Docking Station",
+  "category": "foundations_calculator:machines",
+  "icon": "foundations_calculator:docking_station",
+  "sortnum": 44,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Purpose$()$pAutomates the recipe family of a calculator inserted in its special slot.$p$(l)Set up and operate$()$p1. Insert Basic, Scientific, Atomic or Flawless Calculator in the calculator slot.$p2. Supply that device\u2019s required ingredients in the inputs.$p3. Provide the docking batch energy and output room.$p$(l)When it does not run$()$pWith no recognized calculator installed, the recipe family is none. A charged device alone does not replace the station\u2019s machine energy.$pRead the active server settings below before copying default costs from another installation. For special slot roles, use the machine screen labels. Settings reporting does not inspect or mutate a placed machine.$pActual server settings: live server values are available in the native or master Foundations reader.$pCrafting / obtaining this machine: live recipe details are available in the native or master Foundations reader.$p$(l:foundations_calculator:troubleshooting/no_progress)General operating checklist$()"
+    }
+  ],
+  "extra_recipe_mappings": {
+    "foundations_calculator:docking_station": 0
+  }
+}

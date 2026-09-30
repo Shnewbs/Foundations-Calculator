@@ -1,0 +1,67 @@
+{
+  "id": "foundations_calculator:pack_authors/tree_and_crop_products_2",
+  "chapter": "foundations_calculator:pack_authors",
+  "title": "Tree and crop products · 2",
+  "order": 101,
+  "items": [
+    "foundations_calculator:diamond_log",
+    "foundations_calculator:diamond_planks",
+    "foundations_calculator:diamond_leaves",
+    "foundations_calculator:diamond_sapling"
+  ],
+  "keywords": [],
+  "blocks": [
+    {
+      "type": "paragraph",
+      "text": "This reference groups related inventory entries. Each recipe section reads the current world. An item may have no crafting result when it comes from harvesting, world generation, a program action or creative tools."
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:diamond_log"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Diamond Log",
+      "target": "item:foundations_calculator:diamond_log",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:diamond_planks"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Diamond Planks",
+      "target": "item:foundations_calculator:diamond_planks",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:diamond_leaves"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Diamond Leaves",
+      "target": "item:foundations_calculator:diamond_leaves",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:diamond_sapling"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Diamond Sapling",
+      "target": "item:foundations_calculator:diamond_sapling",
+      "options": {
+        "profile": ""
+      }
+    }
+  ]
+}

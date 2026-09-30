@@ -1,0 +1,148 @@
+{
+  "id": "foundations_calculator:multiblocks/dynamic",
+  "chapter": "foundations_calculator:multiblocks",
+  "title": "Dynamic Calculator: hollow shell",
+  "order": 17,
+  "items": [],
+  "keywords": [
+    "7x7x7",
+    "hollow cube",
+    "air inside",
+    "stable stone"
+  ],
+  "blocks": [
+    {
+      "type": "paragraph",
+      "text": "At the shipped radius of three, build a 7×7×7 hollow cube. The controller sits in the middle of one vertical wall. The center is three blocks inside the controller at its height. The entire 5×5×5 interior must be air."
+    },
+    {
+      "type": "paragraph",
+      "text": "Stable Stone forms the top/bottom perimeter and the four vertical corner pillars. Flawless Glass fills the rest of the shell, except the controller. The diagrams below show each distinct layer; repeat the indicated plain middle layer."
+    },
+    {
+      "type": "layers",
+      "text": "Bottom and top: heights −3 and +3",
+      "rows": [
+        [
+          "SSSSSSS"
+        ],
+        [
+          "SGGGGGS"
+        ],
+        [
+          "SGGGGGS"
+        ],
+        [
+          "SGGGGGS"
+        ],
+        [
+          "SGGGGGS"
+        ],
+        [
+          "SGGGGGS"
+        ],
+        [
+          "SSSSSSS"
+        ]
+      ],
+      "options": {
+        "legend": "S Stable Stone · G Flawless Glass"
+      }
+    },
+    {
+      "type": "layers",
+      "text": "Middle layers at −2, −1, +1, +2",
+      "rows": [
+        [
+          "SGGGGGS"
+        ],
+        [
+          "G.....G"
+        ],
+        [
+          "G.....G"
+        ],
+        [
+          "G.....G"
+        ],
+        [
+          "G.....G"
+        ],
+        [
+          "G.....G"
+        ],
+        [
+          "SGGGGGS"
+        ]
+      ],
+      "options": {
+        "legend": "Dots must be air, not a chest, torch or decorative block."
+      }
+    },
+    {
+      "type": "layers",
+      "text": "Controller layer: height 0",
+      "rows": [
+        [
+          "SGGCGGS"
+        ],
+        [
+          "G.....G"
+        ],
+        [
+          "G.....G"
+        ],
+        [
+          "G.....G"
+        ],
+        [
+          "G.....G"
+        ],
+        [
+          "G.....G"
+        ],
+        [
+          "SGGGGGS"
+        ]
+      ],
+      "options": {
+        "legend": "Near wall contains C. Inside increases downward."
+      }
+    },
+    {
+      "type": "table",
+      "text": "Exact radius-3 shell materials",
+      "rows": [
+        [
+          "Stable Stone",
+          "68"
+        ],
+        [
+          "Flawless Glass",
+          "149"
+        ],
+        [
+          "Dynamic controller",
+          "1"
+        ]
+      ]
+    },
+    {
+      "type": "callout",
+      "text": "The structure radius is configurable. These counts and diagrams are for radius 3 only. Structure validation refuses unloaded targets and does not fill the cube for you."
+    },
+    {
+      "type": "live",
+      "text": "Actual server settings",
+      "target": "foundations_calculator",
+      "options": {
+        "key": "machine/dynamic_calculator"
+      }
+    },
+    {
+      "type": "link",
+      "text": "Input lanes and operating behavior",
+      "target": "foundations_calculator:machines/dynamic_calculator"
+    }
+  ]
+}

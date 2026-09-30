@@ -1,0 +1,171 @@
+{
+  "id": "foundations_calculator:pack_authors/materials_and_equipment_2",
+  "chapter": "foundations_calculator:pack_authors",
+  "title": "Materials and equipment · 2",
+  "order": 94,
+  "items": [
+    "foundations_calculator:reinforced_pickaxe",
+    "foundations_calculator:enriched_gold_pickaxe",
+    "foundations_calculator:reinforced_iron_pickaxe",
+    "foundations_calculator:redstone_pickaxe",
+    "foundations_calculator:weakened_diamond_pickaxe",
+    "foundations_calculator:flawless_diamond_pickaxe",
+    "foundations_calculator:fire_diamond_pickaxe",
+    "foundations_calculator:electric_pickaxe",
+    "foundations_calculator:end_forged_pickaxe",
+    "foundations_calculator:reinforced_axe",
+    "foundations_calculator:enriched_gold_axe",
+    "foundations_calculator:reinforced_iron_axe"
+  ],
+  "keywords": [],
+  "blocks": [
+    {
+      "type": "paragraph",
+      "text": "This reference groups related inventory entries. Each recipe section reads the current world. An item may have no crafting result when it comes from harvesting, world generation, a program action or creative tools."
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:reinforced_pickaxe"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Reinforced Pickaxe",
+      "target": "item:foundations_calculator:reinforced_pickaxe",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:enriched_gold_pickaxe"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Enriched Gold Pickaxe",
+      "target": "item:foundations_calculator:enriched_gold_pickaxe",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:reinforced_iron_pickaxe"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Reinforced Iron Pickaxe",
+      "target": "item:foundations_calculator:reinforced_iron_pickaxe",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:redstone_pickaxe"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Redstone Pickaxe",
+      "target": "item:foundations_calculator:redstone_pickaxe",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:weakened_diamond_pickaxe"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Weakened Diamond Pickaxe",
+      "target": "item:foundations_calculator:weakened_diamond_pickaxe",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:flawless_diamond_pickaxe"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Flawless Diamond Pickaxe",
+      "target": "item:foundations_calculator:flawless_diamond_pickaxe",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:fire_diamond_pickaxe"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Fire Diamond Pickaxe",
+      "target": "item:foundations_calculator:fire_diamond_pickaxe",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:electric_pickaxe"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Electric Pickaxe",
+      "target": "item:foundations_calculator:electric_pickaxe",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:end_forged_pickaxe"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining End Forged Pickaxe",
+      "target": "item:foundations_calculator:end_forged_pickaxe",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:reinforced_axe"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Reinforced Axe",
+      "target": "item:foundations_calculator:reinforced_axe",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:enriched_gold_axe"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Enriched Gold Axe",
+      "target": "item:foundations_calculator:enriched_gold_axe",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:reinforced_iron_axe"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Reinforced Iron Axe",
+      "target": "item:foundations_calculator:reinforced_iron_axe",
+      "options": {
+        "profile": ""
+      }
+    }
+  ]
+}

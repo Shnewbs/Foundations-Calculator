@@ -1,0 +1,15 @@
+{
+  "name": "Fabrication Chamber",
+  "category": "foundations_calculator:machines",
+  "icon": "foundations_calculator:fabrication_chamber",
+  "sortnum": 53,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Purpose$()$pBuilds configured devices and upgrades from exact combinations of analysed circuit boards.$p$(l)Set up and operate$()$p1. Use the recipe card to identify board numbers and state requirements.$p2. Analyse required boards before insertion.$p3. Provide FE and keep the finished-device output free.$p$(l)When it does not run$()$pA board with the right number but no analysed state cannot satisfy an analysed ingredient.$pRead the active server settings below before copying default costs from another installation. For special slot roles, use the machine screen labels. Settings reporting does not inspect or mutate a placed machine.$pActual server settings: live server values are available in the native or master Foundations reader.$pProcessing / value recipes: live recipe details are available in the native or master Foundations reader.$pCrafting / obtaining this machine: live recipe details are available in the native or master Foundations reader.$p$(l:foundations_calculator:troubleshooting/no_progress)General operating checklist$()"
+    }
+  ],
+  "extra_recipe_mappings": {
+    "foundations_calculator:fabrication_chamber": 0
+  }
+}

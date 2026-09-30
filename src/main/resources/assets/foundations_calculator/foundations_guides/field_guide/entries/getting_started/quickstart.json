@@ -1,0 +1,95 @@
+{
+  "id": "foundations_calculator:getting_started/quickstart",
+  "chapter": "foundations_calculator:getting_started",
+  "title": "Getting Started: First 10 Minutes",
+  "order": 1,
+  "items": [
+    "foundations_calculator:calculator",
+    "foundations_calculator:extraction_chamber"
+  ],
+  "keywords": [
+    "quick start",
+    "first ten minutes",
+    "beginner",
+    "tutorial",
+    "first machine"
+  ],
+  "blocks": [
+    {
+      "type": "paragraph",
+      "text": "This page is the shortest practical route into Calculator. It intentionally avoids a giant shopping list because recipes, power costs and research requirements can be changed by the server or pack."
+    },
+    {
+      "type": "steps",
+      "rows": [
+        [
+          "Craft the Calculator using the live recipe below. Keep the Field Guide nearby: the same item can always bring you back to these instructions."
+        ],
+        [
+          "Make or connect a basic power source. The Hand-Cranked Generator is the built-in early option; an external FE source also works when its route is enabled."
+        ],
+        [
+          "Place a Power Cube if you want a visible energy buffer between generation and machines. Set its sides so energy enters from the source and exits toward the machine."
+        ],
+        [
+          "Craft an Extraction Chamber. Feed it a valid early input such as the recipe list shows, supply the full batch energy, and leave output space."
+        ],
+        [
+          "When you get Dirty or Damaged circuit material, do not put it directly into Analysis. Restore Dirty chips, Reassemble Damaged chips, then Analyse clean boards."
+        ],
+        [
+          "Build a Research Chamber when a recipe says it is locked. Study the required sample; the guide can show your current research snapshot but reading the page does not unlock it."
+        ],
+        [
+          "After one manual batch works, configure item sides and automation. Test one connection at a time before adding Transfer Upgrades or a large pipe network."
+        ]
+      ]
+    },
+    {
+      "type": "recipe",
+      "text": "Craft the Calculator",
+      "target": "item:foundations_calculator:calculator",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "recipe",
+      "text": "Craft the Extraction Chamber",
+      "target": "item:foundations_calculator:extraction_chamber",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "link",
+      "text": "Hand-Cranked Generator",
+      "target": "foundations_calculator:machines/hand_cranked_generator"
+    },
+    {
+      "type": "link",
+      "text": "Power Cube",
+      "target": "foundations_calculator:machines/power_cube"
+    },
+    {
+      "type": "link",
+      "text": "Extraction Chamber",
+      "target": "foundations_calculator:machines/extraction_chamber"
+    },
+    {
+      "type": "link",
+      "text": "Circuit processing order",
+      "target": "foundations_calculator:circuits/chain"
+    },
+    {
+      "type": "link",
+      "text": "Research and samples",
+      "target": "foundations_calculator:research/study"
+    },
+    {
+      "type": "link",
+      "text": "Continue: build a complete workshop",
+      "target": "foundations_calculator:getting_started/first_workshop"
+    }
+  ]
+}

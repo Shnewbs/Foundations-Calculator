@@ -1,0 +1,30 @@
+{
+  "name": "Materials and equipment \u00b7 3",
+  "category": "foundations_calculator:pack_authors",
+  "icon": "foundations_calculator:redstone_axe",
+  "sortnum": 95,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "This reference groups related inventory entries. Each recipe section reads the current world. An item may have no crafting result when it comes from harvesting, world generation, a program action or creative tools.$pItem: foundations_calculator:redstone_axe$pObtaining Redstone Axe: live recipe details are available in the native or master Foundations reader.$pItem: foundations_calculator:weakened_diamond_axe$pObtaining Weakened Diamond Axe: live recipe details are available in the native or master Foundations reader.$pItem: foundations_calculator:flawless_diamond_axe$pObtaining Flawless Diamond Axe: live recipe details are available in the native or master Foundations reader.$pItem: foundations_calculator:fire_diamond_axe$pObtaining Fire Diamond Axe: live recipe details are available in the native or master Foundations reader.$pItem: foundations_calculator:electric_axe$pObtaining Electric Axe: live recipe details are available in the native or master Foundations reader.$pItem: foundations_calculator:end_forged_axe$pObtaining End Forged Axe: live recipe details are available in the native or master Foundations reader.$pItem: foundations_calculator:reinforced_shovel$pObtaining Reinforced Shovel: live recipe details are available in the native or master Foundations reader.$pItem: foundations_calculator:enriched_gold_shovel$pObtaining Enriched Gold Shovel: live recipe details are available in the native or master Foundations reader."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Item: foundations_calculator:reinforced_iron_shovel$pObtaining Reinforced Iron Shovel: live recipe details are available in the native or master Foundations reader.$pItem: foundations_calculator:redstone_shovel$pObtaining Redstone Shovel: live recipe details are available in the native or master Foundations reader.$pItem: foundations_calculator:weakened_diamond_shovel$pObtaining Weakened Diamond Shovel: live recipe details are available in the native or master Foundations reader.$pItem: foundations_calculator:flawless_diamond_shovel$pObtaining Flawless Diamond Shovel: live recipe details are available in the native or master Foundations reader."
+    }
+  ],
+  "extra_recipe_mappings": {
+    "foundations_calculator:redstone_axe": 0,
+    "foundations_calculator:weakened_diamond_axe": 0,
+    "foundations_calculator:flawless_diamond_axe": 0,
+    "foundations_calculator:fire_diamond_axe": 0,
+    "foundations_calculator:electric_axe": 0,
+    "foundations_calculator:end_forged_axe": 0,
+    "foundations_calculator:reinforced_shovel": 0,
+    "foundations_calculator:enriched_gold_shovel": 0,
+    "foundations_calculator:reinforced_iron_shovel": 0,
+    "foundations_calculator:redstone_shovel": 0,
+    "foundations_calculator:weakened_diamond_shovel": 0,
+    "foundations_calculator:flawless_diamond_shovel": 0
+  }
+}

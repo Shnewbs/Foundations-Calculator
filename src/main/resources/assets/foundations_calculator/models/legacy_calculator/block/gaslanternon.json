@@ -1,0 +1,6 @@
+{
+  "parent": "foundations_calculator:legacy_calculator/block/lantern",
+  "textures": {
+    "0": "foundations_calculator:legacy_calculator/model/gas_lantern_on"
+  }
+}

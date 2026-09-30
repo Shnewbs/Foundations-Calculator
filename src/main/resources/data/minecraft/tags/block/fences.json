@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    "foundations_calculator:amethyst_fence",
+    "foundations_calculator:tanzanite_fence",
+    "foundations_calculator:pear_fence",
+    "foundations_calculator:diamond_fence",
+    "foundations_calculator:reinforced_stone_fence",
+    "foundations_calculator:reinforced_stone_brick_fence",
+    "foundations_calculator:reinforced_dirt_fence",
+    "foundations_calculator:reinforced_dirt_brick_fence"
+  ]
+}

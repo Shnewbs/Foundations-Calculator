@@ -1,0 +1,15 @@
+{
+  "name": "Magnetic Flux",
+  "category": "foundations_calculator:machines",
+  "icon": "foundations_calculator:magnetic_flux",
+  "sortnum": 68,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Purpose$()$pCollects nearby item entities into the inventory directly below it using an eight-slot filter.$p$(l)Set up and operate$()$p1. Put representative items in filter slots.$p2. Choose whitelist/blacklist and item/tag versus component matching.$p3. Place a receiving inventory underneath and remove a disabling redstone signal.$p$(l)When it does not run$()$pAn entity remains in the world when transfer is blocked. Filter mode, range or a full inventory can explain no collection.$pRead the active server settings below before copying default costs from another installation. For special slot roles, use the machine screen labels. Settings reporting does not inspect or mutate a placed machine.$pActual server settings: live server values are available in the native or master Foundations reader.$pCrafting / obtaining this machine: live recipe details are available in the native or master Foundations reader.$p$(l:foundations_calculator:troubleshooting/no_progress)General operating checklist$()"
+    }
+  ],
+  "extra_recipe_mappings": {
+    "foundations_calculator:magnetic_flux": 0
+  }
+}

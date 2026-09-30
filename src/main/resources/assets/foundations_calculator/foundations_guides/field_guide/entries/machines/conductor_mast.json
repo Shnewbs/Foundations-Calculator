@@ -1,0 +1,82 @@
+{
+  "id": "foundations_calculator:machines/conductor_mast",
+  "chapter": "foundations_calculator:machines",
+  "title": "Conductor Mast",
+  "order": 60,
+  "items": [
+    "foundations_calculator:conductor_mast"
+  ],
+  "keywords": [
+    "conductor_mast",
+    "Tall generator with burst-based lightning output and linked Weather Stations/Transmitters"
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "Purpose"
+    },
+    {
+      "type": "paragraph",
+      "text": "Tall generator with burst-based lightning output and linked Weather Stations/Transmitters."
+    },
+    {
+      "type": "heading",
+      "text": "Set up and operate"
+    },
+    {
+      "type": "steps",
+      "rows": [
+        [
+          "Leave the reserved vertical height clear."
+        ],
+        [
+          "Place stations at the same height within their configured range."
+        ],
+        [
+          "Provide buffer space and a permitted output route."
+        ]
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "When it does not run"
+    },
+    {
+      "type": "paragraph",
+      "text": "Output is burst-based. A full buffer or slow connection can make the mast appear idle between strikes."
+    },
+    {
+      "type": "paragraph",
+      "text": "Read the active server settings below before copying default costs from another installation. For special slot roles, use the machine screen labels. Settings reporting does not inspect or mutate a placed machine."
+    },
+    {
+      "type": "live",
+      "text": "Actual server settings",
+      "target": "foundations_calculator",
+      "options": {
+        "key": "machine/conductor_mast"
+      }
+    },
+    {
+      "type": "recipe",
+      "text": "Processing / value recipes",
+      "target": "machine:conductor_mast",
+      "options": {
+        "profile": "conductor_mast"
+      }
+    },
+    {
+      "type": "recipe",
+      "text": "Crafting / obtaining this machine",
+      "target": "item:foundations_calculator:conductor_mast",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "link",
+      "text": "Mast and station placement",
+      "target": "foundations_calculator:multiblocks/mast"
+    }
+  ]
+}

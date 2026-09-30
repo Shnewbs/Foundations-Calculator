@@ -1,0 +1,546 @@
+[
+  {
+    "category": 1,
+    "roll": 1,
+    "result": {
+      "id": "foundations_calculator:calculator",
+      "count": 1
+    }
+  },
+  {
+    "category": 1,
+    "roll": 2,
+    "result": {
+      "id": "foundations_calculator:reinforced_dirt_block",
+      "count": 1
+    }
+  },
+  {
+    "category": 1,
+    "roll": 3,
+    "result": {
+      "id": "foundations_calculator:reinforced_stone_block",
+      "count": 1
+    }
+  },
+  {
+    "category": 1,
+    "roll": 4,
+    "result": {
+      "id": "foundations_calculator:small_stone",
+      "count": 1
+    }
+  },
+  {
+    "category": 1,
+    "roll": 5,
+    "result": {
+      "id": "foundations_calculator:soil",
+      "count": 1
+    }
+  },
+  {
+    "category": 1,
+    "roll": 6,
+    "result": {
+      "id": "foundations_calculator:power_cube",
+      "count": 1
+    }
+  },
+  {
+    "category": 1,
+    "roll": 7,
+    "result": {
+      "id": "foundations_calculator:broccoli",
+      "count": 1
+    }
+  },
+  {
+    "category": 1,
+    "roll": 8,
+    "result": {
+      "id": "foundations_calculator:reinforced_iron_axe",
+      "count": 1
+    }
+  },
+  {
+    "category": 1,
+    "roll": 9,
+    "result": {
+      "id": "foundations_calculator:reinforced_iron_sword",
+      "count": 1
+    }
+  },
+  {
+    "category": 1,
+    "roll": 10,
+    "result": {
+      "id": "foundations_calculator:crank_handle",
+      "count": 1
+    }
+  },
+  {
+    "category": 1,
+    "roll": 11,
+    "result": {
+      "id": "foundations_calculator:hand_cranked_generator",
+      "count": 1
+    }
+  },
+  {
+    "category": 1,
+    "roll": 12,
+    "result": {
+      "id": "foundations_calculator:broccoli_seeds",
+      "count": 1
+    }
+  },
+  {
+    "category": 1,
+    "roll": 13,
+    "result": {
+      "id": "foundations_calculator:grenade",
+      "count": 1
+    }
+  },
+  {
+    "category": 1,
+    "roll": 14,
+    "result": {
+      "id": "foundations_calculator:calculator_assembly",
+      "count": 1
+    }
+  },
+  {
+    "category": 1,
+    "roll": 15,
+    "result": {
+      "id": "foundations_calculator:calculator_screen",
+      "count": 1
+    }
+  },
+  {
+    "category": 1,
+    "roll": 16,
+    "result": {
+      "id": "foundations_calculator:enriched_gold_axe",
+      "count": 1
+    }
+  },
+  {
+    "category": 1,
+    "roll": 17,
+    "result": {
+      "id": "foundations_calculator:enriched_gold_pickaxe",
+      "count": 1
+    }
+  },
+  {
+    "category": 2,
+    "roll": 1,
+    "result": {
+      "id": "foundations_calculator:enriched_gold",
+      "count": 1
+    }
+  },
+  {
+    "category": 2,
+    "roll": 2,
+    "result": {
+      "id": "foundations_calculator:circuit_damaged_0",
+      "count": 1
+    }
+  },
+  {
+    "category": 2,
+    "roll": 3,
+    "result": {
+      "id": "foundations_calculator:circuit_dirty_0",
+      "count": 1
+    }
+  },
+  {
+    "category": 2,
+    "roll": 4,
+    "result": {
+      "id": "foundations_calculator:advanced_terrain_module",
+      "count": 1
+    }
+  },
+  {
+    "category": 2,
+    "roll": 5,
+    "result": {
+      "id": "foundations_calculator:scientific_calculator",
+      "count": 1
+    }
+  },
+  {
+    "category": 2,
+    "roll": 6,
+    "result": {
+      "id": "foundations_calculator:terrain_module",
+      "count": 1
+    }
+  },
+  {
+    "category": 2,
+    "roll": 7,
+    "result": {
+      "id": "foundations_calculator:crafting_calculator",
+      "count": 1
+    }
+  },
+  {
+    "category": 2,
+    "roll": 8,
+    "result": {
+      "id": "foundations_calculator:health_processor",
+      "count": 1
+    }
+  },
+  {
+    "category": 2,
+    "roll": 9,
+    "result": {
+      "id": "foundations_calculator:large_amethyst",
+      "count": 1
+    }
+  },
+  {
+    "category": 2,
+    "roll": 10,
+    "result": {
+      "id": "foundations_calculator:large_tanzanite",
+      "count": 1
+    }
+  },
+  {
+    "category": 2,
+    "roll": 11,
+    "result": {
+      "id": "foundations_calculator:amethyst_log",
+      "count": 1
+    }
+  },
+  {
+    "category": 2,
+    "roll": 12,
+    "result": {
+      "id": "foundations_calculator:tanzanite_log",
+      "count": 1
+    }
+  },
+  {
+    "category": 2,
+    "roll": 13,
+    "result": {
+      "id": "foundations_calculator:flawless_diamond",
+      "count": 1
+    }
+  },
+  {
+    "category": 2,
+    "roll": 14,
+    "result": {
+      "id": "foundations_calculator:enriched_coal",
+      "count": 1
+    }
+  },
+  {
+    "category": 2,
+    "roll": 15,
+    "result": {
+      "id": "foundations_calculator:starch_extractor",
+      "count": 1
+    }
+  },
+  {
+    "category": 3,
+    "roll": 1,
+    "result": {
+      "id": "foundations_calculator:energy_module",
+      "count": 1
+    }
+  },
+  {
+    "category": 3,
+    "roll": 2,
+    "result": {
+      "id": "foundations_calculator:health_module",
+      "count": 1
+    }
+  },
+  {
+    "category": 3,
+    "roll": 3,
+    "result": {
+      "id": "foundations_calculator:hunger_module",
+      "count": 1
+    }
+  },
+  {
+    "category": 3,
+    "roll": 4,
+    "result": {
+      "id": "foundations_calculator:amethyst_sapling",
+      "count": 1
+    }
+  },
+  {
+    "category": 3,
+    "roll": 5,
+    "result": {
+      "id": "foundations_calculator:tanzanite_sapling",
+      "count": 1
+    }
+  },
+  {
+    "category": 3,
+    "roll": 6,
+    "result": {
+      "id": "foundations_calculator:hunger_processor",
+      "count": 1
+    }
+  },
+  {
+    "category": 3,
+    "roll": 7,
+    "result": {
+      "id": "foundations_calculator:health_processor",
+      "count": 1
+    }
+  },
+  {
+    "category": 3,
+    "roll": 8,
+    "result": {
+      "id": "foundations_calculator:large_amethyst",
+      "count": 1
+    }
+  },
+  {
+    "category": 3,
+    "roll": 9,
+    "result": {
+      "id": "foundations_calculator:large_tanzanite",
+      "count": 1
+    }
+  },
+  {
+    "category": 3,
+    "roll": 10,
+    "result": {
+      "id": "foundations_calculator:tanzanite_log",
+      "count": 1
+    }
+  },
+  {
+    "category": 4,
+    "roll": 11,
+    "result": {
+      "id": "minecraft:obsidian",
+      "count": 1
+    }
+  },
+  {
+    "category": 4,
+    "roll": 1,
+    "result": {
+      "id": "foundations_calculator:advanced_assembly",
+      "count": 1
+    }
+  },
+  {
+    "category": 4,
+    "roll": 2,
+    "result": {
+      "id": "foundations_calculator:algorithm_separator",
+      "count": 1
+    }
+  },
+  {
+    "category": 4,
+    "roll": 3,
+    "result": {
+      "id": "foundations_calculator:stone_separator",
+      "count": 1
+    }
+  },
+  {
+    "category": 4,
+    "roll": 4,
+    "result": {
+      "id": "foundations_calculator:atomic_module",
+      "count": 1
+    }
+  },
+  {
+    "category": 4,
+    "roll": 5,
+    "result": {
+      "id": "minecraft:emerald",
+      "count": 1
+    }
+  },
+  {
+    "category": 4,
+    "roll": 6,
+    "result": {
+      "id": "minecraft:diamond",
+      "count": 1
+    }
+  },
+  {
+    "category": 4,
+    "roll": 7,
+    "result": {
+      "id": "foundations_calculator:flawless_diamond_sword",
+      "count": 1
+    }
+  },
+  {
+    "category": 4,
+    "roll": 8,
+    "result": {
+      "id": "foundations_calculator:electric_hoe",
+      "count": 1
+    }
+  },
+  {
+    "category": 4,
+    "roll": 9,
+    "result": {
+      "id": "foundations_calculator:end_forged_hoe",
+      "count": 1
+    }
+  },
+  {
+    "category": 4,
+    "roll": 10,
+    "result": {
+      "id": "minecraft:ender_pearl",
+      "count": 1
+    }
+  },
+  {
+    "category": 4,
+    "roll": 11,
+    "result": {
+      "id": "foundations_calculator:fiddledew_fruit",
+      "count": 1
+    }
+  },
+  {
+    "category": 4,
+    "roll": 12,
+    "result": {
+      "id": "foundations_calculator:flawless_glass",
+      "count": 1
+    }
+  },
+  {
+    "category": 4,
+    "roll": 13,
+    "result": {
+      "id": "foundations_calculator:stable_stone_normal",
+      "count": 1
+    }
+  },
+  {
+    "category": 4,
+    "roll": 14,
+    "result": {
+      "id": "foundations_calculator:purified_obsidian",
+      "count": 1
+    }
+  },
+  {
+    "category": 4,
+    "roll": 15,
+    "result": {
+      "id": "foundations_calculator:obsidian_key",
+      "count": 1
+    }
+  },
+  {
+    "category": 5,
+    "roll": 1,
+    "result": {
+      "id": "foundations_calculator:calculator_locator",
+      "count": 1
+    }
+  },
+  {
+    "category": 5,
+    "roll": 2,
+    "result": {
+      "id": "foundations_calculator:calculator_plug",
+      "count": 1
+    }
+  },
+  {
+    "category": 5,
+    "roll": 3,
+    "result": {
+      "id": "foundations_calculator:flawless_calculator",
+      "count": 1
+    }
+  },
+  {
+    "category": 5,
+    "roll": 4,
+    "result": {
+      "id": "foundations_calculator:atomic_assembly",
+      "count": 1
+    }
+  },
+  {
+    "category": 5,
+    "roll": 5,
+    "result": {
+      "id": "foundations_calculator:atomic_calculator",
+      "count": 1
+    }
+  },
+  {
+    "category": 5,
+    "roll": 6,
+    "result": {
+      "id": "minecraft:ender_eye",
+      "count": 1
+    }
+  },
+  {
+    "category": 5,
+    "roll": 7,
+    "result": {
+      "id": "minecraft:nether_star",
+      "count": 1
+    }
+  },
+  {
+    "category": 5,
+    "roll": 8,
+    "result": {
+      "id": "minecraft:beacon",
+      "count": 1
+    }
+  },
+  {
+    "category": 5,
+    "roll": 9,
+    "result": {
+      "id": "foundations_calculator:end_diamond",
+      "count": 1
+    }
+  },
+  {
+    "category": 5,
+    "roll": 10,
+    "result": {
+      "id": "foundations_calculator:flawless_greenhouse",
+      "count": 1
+    }
+  }
+]

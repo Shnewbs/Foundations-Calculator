@@ -1,0 +1,196 @@
+{
+  "variants": {
+    "down=false,east=false,north=false,south=false,up=false,west=false": {
+      "model": "foundations_calculator:block/clear_stable_glass_0"
+    },
+    "down=false,east=false,north=false,south=false,up=true,west=false": {
+      "model": "foundations_calculator:block/clear_stable_glass_1"
+    },
+    "down=true,east=false,north=false,south=false,up=false,west=false": {
+      "model": "foundations_calculator:block/clear_stable_glass_2"
+    },
+    "down=false,east=false,north=true,south=false,up=false,west=false": {
+      "model": "foundations_calculator:block/clear_stable_glass_3"
+    },
+    "down=false,east=false,north=false,south=true,up=false,west=false": {
+      "model": "foundations_calculator:block/clear_stable_glass_4"
+    },
+    "down=false,east=false,north=false,south=false,up=false,west=true": {
+      "model": "foundations_calculator:block/clear_stable_glass_5"
+    },
+    "down=false,east=true,north=false,south=false,up=false,west=false": {
+      "model": "foundations_calculator:block/clear_stable_glass_6"
+    },
+    "down=false,east=true,north=false,south=false,up=true,west=false": {
+      "model": "foundations_calculator:block/clear_stable_glass_7"
+    },
+    "down=false,east=false,north=false,south=false,up=true,west=true": {
+      "model": "foundations_calculator:block/clear_stable_glass_8"
+    },
+    "down=true,east=true,north=false,south=false,up=false,west=false": {
+      "model": "foundations_calculator:block/clear_stable_glass_9"
+    },
+    "down=true,east=false,north=false,south=false,up=false,west=true": {
+      "model": "foundations_calculator:block/clear_stable_glass_10"
+    },
+    "down=false,east=false,north=true,south=false,up=true,west=false": {
+      "model": "foundations_calculator:block/clear_stable_glass_11"
+    },
+    "down=false,east=false,north=false,south=true,up=true,west=false": {
+      "model": "foundations_calculator:block/clear_stable_glass_12"
+    },
+    "down=true,east=false,north=true,south=false,up=false,west=false": {
+      "model": "foundations_calculator:block/clear_stable_glass_13"
+    },
+    "down=true,east=false,north=false,south=true,up=false,west=false": {
+      "model": "foundations_calculator:block/clear_stable_glass_14"
+    },
+    "down=false,east=true,north=true,south=false,up=false,west=false": {
+      "model": "foundations_calculator:block/clear_stable_glass_15"
+    },
+    "down=false,east=true,north=false,south=true,up=false,west=false": {
+      "model": "foundations_calculator:block/clear_stable_glass_16"
+    },
+    "down=false,east=false,north=true,south=false,up=false,west=true": {
+      "model": "foundations_calculator:block/clear_stable_glass_17"
+    },
+    "down=false,east=false,north=false,south=true,up=false,west=true": {
+      "model": "foundations_calculator:block/clear_stable_glass_18"
+    },
+    "down=true,east=false,north=false,south=false,up=true,west=false": {
+      "model": "foundations_calculator:block/clear_stable_glass_19"
+    },
+    "down=false,east=true,north=false,south=false,up=false,west=true": {
+      "model": "foundations_calculator:block/clear_stable_glass_20"
+    },
+    "down=false,east=false,north=true,south=true,up=false,west=false": {
+      "model": "foundations_calculator:block/clear_stable_glass_21"
+    },
+    "down=true,east=false,north=false,south=false,up=true,west=true": {
+      "model": "foundations_calculator:block/clear_stable_glass_22"
+    },
+    "down=true,east=false,north=false,south=true,up=true,west=false": {
+      "model": "foundations_calculator:block/clear_stable_glass_23"
+    },
+    "down=true,east=true,north=false,south=false,up=true,west=false": {
+      "model": "foundations_calculator:block/clear_stable_glass_24"
+    },
+    "down=true,east=false,north=true,south=false,up=true,west=false": {
+      "model": "foundations_calculator:block/clear_stable_glass_25"
+    },
+    "down=false,east=false,north=true,south=true,up=false,west=true": {
+      "model": "foundations_calculator:block/clear_stable_glass_26"
+    },
+    "down=false,east=true,north=true,south=true,up=false,west=false": {
+      "model": "foundations_calculator:block/clear_stable_glass_27"
+    },
+    "down=false,east=true,north=false,south=false,up=true,west=true": {
+      "model": "foundations_calculator:block/clear_stable_glass_28"
+    },
+    "down=false,east=true,north=false,south=true,up=false,west=true": {
+      "model": "foundations_calculator:block/clear_stable_glass_29"
+    },
+    "down=true,east=true,north=false,south=false,up=false,west=true": {
+      "model": "foundations_calculator:block/clear_stable_glass_30"
+    },
+    "down=false,east=true,north=true,south=false,up=false,west=true": {
+      "model": "foundations_calculator:block/clear_stable_glass_31"
+    },
+    "down=false,east=false,north=true,south=true,up=true,west=false": {
+      "model": "foundations_calculator:block/clear_stable_glass_32"
+    },
+    "down=true,east=false,north=true,south=true,up=false,west=false": {
+      "model": "foundations_calculator:block/clear_stable_glass_33"
+    },
+    "down=false,east=true,north=false,south=true,up=true,west=false": {
+      "model": "foundations_calculator:block/clear_stable_glass_34"
+    },
+    "down=false,east=false,north=false,south=true,up=true,west=true": {
+      "model": "foundations_calculator:block/clear_stable_glass_35"
+    },
+    "down=false,east=true,north=true,south=false,up=true,west=false": {
+      "model": "foundations_calculator:block/clear_stable_glass_36"
+    },
+    "down=true,east=true,north=true,south=false,up=false,west=false": {
+      "model": "foundations_calculator:block/clear_stable_glass_37"
+    },
+    "down=true,east=true,north=false,south=true,up=false,west=false": {
+      "model": "foundations_calculator:block/clear_stable_glass_38"
+    },
+    "down=true,east=false,north=false,south=true,up=false,west=true": {
+      "model": "foundations_calculator:block/clear_stable_glass_39"
+    },
+    "down=true,east=false,north=true,south=false,up=false,west=true": {
+      "model": "foundations_calculator:block/clear_stable_glass_40"
+    },
+    "down=false,east=false,north=true,south=false,up=true,west=true": {
+      "model": "foundations_calculator:block/clear_stable_glass_41"
+    },
+    "down=true,east=true,north=false,south=false,up=true,west=true": {
+      "model": "foundations_calculator:block/clear_stable_glass_42"
+    },
+    "down=false,east=true,north=true,south=true,up=false,west=true": {
+      "model": "foundations_calculator:block/clear_stable_glass_43"
+    },
+    "down=true,east=false,north=true,south=true,up=true,west=false": {
+      "model": "foundations_calculator:block/clear_stable_glass_44"
+    },
+    "down=true,east=false,north=true,south=false,up=true,west=true": {
+      "model": "foundations_calculator:block/clear_stable_glass_45"
+    },
+    "down=true,east=false,north=true,south=true,up=false,west=true": {
+      "model": "foundations_calculator:block/clear_stable_glass_46"
+    },
+    "down=false,east=false,north=true,south=true,up=true,west=true": {
+      "model": "foundations_calculator:block/clear_stable_glass_47"
+    },
+    "down=true,east=false,north=false,south=true,up=true,west=true": {
+      "model": "foundations_calculator:block/clear_stable_glass_48"
+    },
+    "down=true,east=true,north=true,south=false,up=true,west=false": {
+      "model": "foundations_calculator:block/clear_stable_glass_49"
+    },
+    "down=true,east=true,north=false,south=true,up=true,west=false": {
+      "model": "foundations_calculator:block/clear_stable_glass_50"
+    },
+    "down=false,east=true,north=true,south=true,up=true,west=false": {
+      "model": "foundations_calculator:block/clear_stable_glass_51"
+    },
+    "down=true,east=true,north=true,south=true,up=false,west=false": {
+      "model": "foundations_calculator:block/clear_stable_glass_52"
+    },
+    "down=false,east=true,north=false,south=true,up=true,west=true": {
+      "model": "foundations_calculator:block/clear_stable_glass_53"
+    },
+    "down=true,east=true,north=false,south=true,up=false,west=true": {
+      "model": "foundations_calculator:block/clear_stable_glass_54"
+    },
+    "down=false,east=true,north=true,south=false,up=true,west=true": {
+      "model": "foundations_calculator:block/clear_stable_glass_55"
+    },
+    "down=true,east=true,north=true,south=false,up=false,west=true": {
+      "model": "foundations_calculator:block/clear_stable_glass_56"
+    },
+    "down=true,east=true,north=true,south=true,up=false,west=true": {
+      "model": "foundations_calculator:block/clear_stable_glass_57"
+    },
+    "down=true,east=true,north=false,south=true,up=true,west=true": {
+      "model": "foundations_calculator:block/clear_stable_glass_58"
+    },
+    "down=true,east=false,north=true,south=true,up=true,west=true": {
+      "model": "foundations_calculator:block/clear_stable_glass_59"
+    },
+    "down=true,east=true,north=true,south=true,up=true,west=false": {
+      "model": "foundations_calculator:block/clear_stable_glass_60"
+    },
+    "down=true,east=true,north=true,south=false,up=true,west=true": {
+      "model": "foundations_calculator:block/clear_stable_glass_61"
+    },
+    "down=false,east=true,north=true,south=true,up=true,west=true": {
+      "model": "foundations_calculator:block/clear_stable_glass_62"
+    },
+    "down=true,east=true,north=true,south=true,up=true,west=true": {
+      "model": "foundations_calculator:block/clear_stable_glass_63"
+    }
+  }
+}

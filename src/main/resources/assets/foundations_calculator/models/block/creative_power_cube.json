@@ -1,0 +1,12 @@
+{
+  "parent": "foundations_calculator:legacy_calculator/block/sonarmachine",
+  "textures": {
+    "particle": "foundations_calculator:legacy_calculator/blocks/creativepowercube_front",
+    "north": "foundations_calculator:legacy_calculator/blocks/creativepowercube_front",
+    "east": "foundations_calculator:legacy_calculator/blocks/creativepowercube_side",
+    "south": "foundations_calculator:legacy_calculator/blocks/creativepowercube_side",
+    "west": "foundations_calculator:legacy_calculator/blocks/creativepowercube_side",
+    "up": "foundations_calculator:legacy_calculator/blocks/creativepowercube_side",
+    "down": "foundations_calculator:legacy_calculator/blocks/creativepowercube_side"
+  }
+}

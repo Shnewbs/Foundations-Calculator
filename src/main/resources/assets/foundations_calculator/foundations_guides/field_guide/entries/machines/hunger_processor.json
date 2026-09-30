@@ -1,0 +1,74 @@
+{
+  "id": "foundations_calculator:machines/hunger_processor",
+  "chapter": "foundations_calculator:machines",
+  "title": "Hunger Processor",
+  "order": 42,
+  "items": [
+    "foundations_calculator:hunger_processor"
+  ],
+  "keywords": [
+    "hunger_processor",
+    "Collects hunger nutrient from matching modules, supported food values and a matching nutrition network; fills an appropriate des"
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "Purpose"
+    },
+    {
+      "type": "paragraph",
+      "text": "Collects hunger nutrient from matching modules, supported food values and a matching nutrition network; fills an appropriate destination module."
+    },
+    {
+      "type": "heading",
+      "text": "Set up and operate"
+    },
+    {
+      "type": "steps",
+      "rows": [
+        [
+          "Supply food or a module with hunger in the input role."
+        ],
+        [
+          "Put the destination Hunger/Nutrition Module in the special module slot."
+        ],
+        [
+          "Connect mature Amethyst leaves through matching piping/logs for world collection."
+        ]
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "When it does not run"
+    },
+    {
+      "type": "paragraph",
+      "text": "FE is not the stored hunger quantity. A full module, exhausted food source or denied leaf harvest can pause transfer."
+    },
+    {
+      "type": "paragraph",
+      "text": "Read the active server settings below before copying default costs from another installation. For special slot roles, use the machine screen labels. Settings reporting does not inspect or mutate a placed machine."
+    },
+    {
+      "type": "live",
+      "text": "Actual server settings",
+      "target": "foundations_calculator",
+      "options": {
+        "key": "machine/hunger_processor"
+      }
+    },
+    {
+      "type": "recipe",
+      "text": "Crafting / obtaining this machine",
+      "target": "item:foundations_calculator:hunger_processor",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "link",
+      "text": "General operating checklist",
+      "target": "foundations_calculator:troubleshooting/no_progress"
+    }
+  ]
+}

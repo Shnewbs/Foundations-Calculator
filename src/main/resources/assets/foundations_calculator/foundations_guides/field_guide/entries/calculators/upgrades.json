@@ -1,0 +1,73 @@
+{
+  "id": "foundations_calculator:calculators/upgrades",
+  "chapter": "foundations_calculator:calculators",
+  "title": "Speed, energy, transfer and void upgrades",
+  "order": 31,
+  "items": [
+    "foundations_calculator:speed_upgrade",
+    "foundations_calculator:energy_upgrade"
+  ],
+  "keywords": [
+    "upgrade",
+    "speed",
+    "efficiency"
+  ],
+  "blocks": [
+    {
+      "type": "table",
+      "text": "Choose the right behavior",
+      "rows": [
+        [
+          "Speed Upgrade",
+          "Reduces the ordinary processor duration according to the configured bonus."
+        ],
+        [
+          "Energy Upgrade",
+          "Reduces eligible process cost according to the configured discount."
+        ],
+        [
+          "Transfer Upgrade",
+          "Actively exports finished items through permitted output faces."
+        ],
+        [
+          "Void Upgrade",
+          "Explicitly discards completed overflow when enabled. This is intentionally lossy."
+        ]
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "Special machine programs can have their own timing and energy rules; a visible upgrade slot does not mean every world action uses the ordinary process formula. The recipe reader labels its baseline calculations as before installed upgrades."
+    },
+    {
+      "type": "paragraph",
+      "text": "Transfer throughput scales with upgrade count up to its configured cap. In the shipped settings each Transfer Upgrade contributes four items per transfer, with a cap of 64. These are defaults, not a substitute for the server configuration."
+    },
+    {
+      "type": "recipe",
+      "text": "Obtain Speed Upgrades",
+      "target": "item:foundations_calculator:speed_upgrade",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "recipe",
+      "text": "Obtain Energy Upgrades",
+      "target": "item:foundations_calculator:energy_upgrade",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "link",
+      "text": "Transfer directions",
+      "target": "foundations_calculator:troubleshooting/automation"
+    },
+    {
+      "type": "link",
+      "text": "Void and blocked output",
+      "target": "foundations_calculator:troubleshooting/blocked_output"
+    }
+  ]
+}

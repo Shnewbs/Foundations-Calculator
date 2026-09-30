@@ -1,0 +1,15 @@
+{
+  "name": "Rain Sensor",
+  "category": "foundations_calculator:machines",
+  "icon": "foundations_calculator:rain_sensor",
+  "sortnum": 70,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Purpose$()$pEmits redstone strength 15 while the world is raining.$p$(l)Set up and operate$()$p1. Place the sensor and connect redstone.$p2. Compare the output during dry and rainy weather.$p3. Use it as a signal, not as an inventory-based processor.$p$(l)When it does not run$()$pLocal visual shelter does not create a separate per-block rainfall state for this sensor.$pActual server settings: live server values are available in the native or master Foundations reader.$pCrafting / obtaining this machine: live recipe details are available in the native or master Foundations reader.$p$(l:foundations_calculator:troubleshooting/no_progress)General operating checklist$()"
+    }
+  ],
+  "extra_recipe_mappings": {
+    "foundations_calculator:rain_sensor": 0
+  }
+}

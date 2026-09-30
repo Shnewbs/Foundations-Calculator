@@ -1,0 +1,22 @@
+{
+  "type": "foundations_calculator:process",
+  "machine": "analysis_1",
+  "ingredients": [
+    {
+      "ingredient": {
+        "tag": "foundations_calculator:circuit_boards"
+      }
+    }
+  ],
+  "results": [
+    {
+      "stack": {
+        "id": "foundations_calculator:hand_cranked_generator",
+        "count": 1
+      }
+    }
+  ],
+  "value": 11,
+  "energy": 0,
+  "ticks": 1
+}

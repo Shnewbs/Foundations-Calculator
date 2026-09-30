@@ -1,0 +1,17 @@
+{
+  "type": "foundations_calculator:process",
+  "machine": "health_processor",
+  "ingredients": [
+    {
+      "ingredient": {
+        "item": "minecraft:golden_apple"
+      },
+      "count": 1
+    }
+  ],
+  "results": [],
+  "energy": 0,
+  "ticks": 1,
+  "value": 150,
+  "research": false
+}

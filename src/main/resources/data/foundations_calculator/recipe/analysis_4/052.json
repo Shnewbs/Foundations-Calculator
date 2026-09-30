@@ -1,0 +1,22 @@
+{
+  "type": "foundations_calculator:process",
+  "machine": "analysis_4",
+  "ingredients": [
+    {
+      "ingredient": {
+        "tag": "foundations_calculator:circuit_boards"
+      }
+    }
+  ],
+  "results": [
+    {
+      "stack": {
+        "id": "minecraft:ender_pearl",
+        "count": 1
+      }
+    }
+  ],
+  "value": 10,
+  "energy": 0,
+  "ticks": 1
+}

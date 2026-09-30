@@ -1,0 +1,60 @@
+{
+  "id": "foundations_calculator:troubleshooting/blocked_output",
+  "chapter": "foundations_calculator:troubleshooting",
+  "title": "Blocked outputs, retention and deliberate voiding",
+  "order": 27,
+  "items": [
+    "foundations_calculator:void_upgrade"
+  ],
+  "keywords": [
+    "overflow",
+    "full chest",
+    "lost output",
+    "pending",
+    "void"
+  ],
+  "blocks": [
+    {
+      "type": "paragraph",
+      "text": "Completed results are retained when ordinary output storage is full. The machine can pause with a finished batch waiting, even when power and input look correct. Drain the destination before expecting another batch."
+    },
+    {
+      "type": "paragraph",
+      "text": "The Void Upgrade explicitly permits disposal of completed results that do not fit. It is not a performance upgrade or a required part of automation. Leave it out when lossless storage is important."
+    },
+    {
+      "type": "paragraph",
+      "text": "Configured capacity reductions preserve existing excess contents rather than deleting them immediately. A previously full buffer may therefore exceed a newly lowered capacity until energy or items are withdrawn."
+    },
+    {
+      "type": "steps",
+      "rows": [
+        [
+          "Open the target inventory and verify actual free space for the exact item/components."
+        ],
+        [
+          "Check output side mode and receiver insertion rules."
+        ],
+        [
+          "Remove or account for any Void Upgrade."
+        ],
+        [
+          "Drain the blockage and confirm processing resumes."
+        ],
+        [
+          "For save/restart testing, use a copy of the world and compare exact counts before and after."
+        ]
+      ]
+    },
+    {
+      "type": "link",
+      "text": "Upgrade behavior",
+      "target": "foundations_calculator:calculators/upgrades"
+    },
+    {
+      "type": "link",
+      "text": "Moving machines safely",
+      "target": "foundations_calculator:troubleshooting/dismantling"
+    }
+  ]
+}

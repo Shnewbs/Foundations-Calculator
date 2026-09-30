@@ -1,0 +1,74 @@
+{
+  "id": "foundations_calculator:machines/advanced_greenhouse",
+  "chapter": "foundations_calculator:machines",
+  "title": "Advanced Greenhouse",
+  "order": 55,
+  "items": [
+    "foundations_calculator:advanced_greenhouse"
+  ],
+  "keywords": [
+    "advanced_greenhouse",
+    "Larger automatically constructed greenhouse with 45 growing positions and four irrigation corners"
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "Purpose"
+    },
+    {
+      "type": "paragraph",
+      "text": "Larger automatically constructed greenhouse with 45 growing positions and four irrigation corners."
+    },
+    {
+      "type": "heading",
+      "text": "Set up and operate"
+    },
+    {
+      "type": "steps",
+      "rows": [
+        [
+          "Clear the full roof and foundation bounds."
+        ],
+        [
+          "Supply the four construction materials in order and use Build."
+        ],
+        [
+          "Plant compatible seeds, including Prunae, and manage CO₂ with a lantern."
+        ]
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "When it does not run"
+    },
+    {
+      "type": "paragraph",
+      "text": "Fiddledew still needs Flawless tier. An enlarged greenhouse does not bypass protection or ordinary crop survival rules."
+    },
+    {
+      "type": "paragraph",
+      "text": "Read the active server settings below before copying default costs from another installation. For special slot roles, use the machine screen labels. Settings reporting does not inspect or mutate a placed machine."
+    },
+    {
+      "type": "live",
+      "text": "Actual server settings",
+      "target": "foundations_calculator",
+      "options": {
+        "key": "machine/advanced_greenhouse"
+      }
+    },
+    {
+      "type": "recipe",
+      "text": "Crafting / obtaining this machine",
+      "target": "item:foundations_calculator:advanced_greenhouse",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "link",
+      "text": "Construction plans and layers",
+      "target": "foundations_calculator:multiblocks/advanced_greenhouse"
+    }
+  ]
+}

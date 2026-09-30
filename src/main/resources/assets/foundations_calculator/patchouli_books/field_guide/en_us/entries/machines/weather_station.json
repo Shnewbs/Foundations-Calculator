@@ -1,0 +1,15 @@
+{
+  "name": "Weather Station",
+  "category": "foundations_calculator:machines",
+  "icon": "foundations_calculator:weather_station",
+  "sortnum": 61,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Purpose$()$pLinks to a nearby Conductor Mast and increases its generation behavior.$p$(l)Set up and operate$()$p1. Place it on the same level as a mast within the configured search distance.$p2. Right-click to inspect the linked mast.$p3. Wait through the mast\u2019s burst/strike schedule when testing.$p$(l)When it does not run$()$pA closer mast can become the chosen link; distance and level are part of discovery, not just visual proximity.$pActual server settings: live server values are available in the native or master Foundations reader.$pCrafting / obtaining this machine: live recipe details are available in the native or master Foundations reader.$p$(l:foundations_calculator:troubleshooting/no_progress)General operating checklist$()"
+    }
+  ],
+  "extra_recipe_mappings": {
+    "foundations_calculator:weather_station": 0
+  }
+}

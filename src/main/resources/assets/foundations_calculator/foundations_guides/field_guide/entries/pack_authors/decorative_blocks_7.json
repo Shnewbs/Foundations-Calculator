@@ -1,0 +1,80 @@
+{
+  "id": "foundations_calculator:pack_authors/decorative_blocks_7",
+  "chapter": "foundations_calculator:pack_authors",
+  "title": "Decorative blocks · 7",
+  "order": 108,
+  "items": [
+    "foundations_calculator:stable_stone_black_rimmed_pink",
+    "foundations_calculator:stable_stone_black_rimmed_plain",
+    "foundations_calculator:stable_stone_black_rimmed_purple",
+    "foundations_calculator:stable_stone_black_rimmed_red",
+    "foundations_calculator:stable_stone_black_rimmed_yellow"
+  ],
+  "keywords": [],
+  "blocks": [
+    {
+      "type": "paragraph",
+      "text": "This reference groups related inventory entries. Each recipe section reads the current world. An item may have no crafting result when it comes from harvesting, world generation, a program action or creative tools."
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:stable_stone_black_rimmed_pink"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Stable Stone Black Rimmed Pink",
+      "target": "item:foundations_calculator:stable_stone_black_rimmed_pink",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:stable_stone_black_rimmed_plain"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Stable Stone Black Rimmed Plain",
+      "target": "item:foundations_calculator:stable_stone_black_rimmed_plain",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:stable_stone_black_rimmed_purple"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Stable Stone Black Rimmed Purple",
+      "target": "item:foundations_calculator:stable_stone_black_rimmed_purple",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:stable_stone_black_rimmed_red"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Stable Stone Black Rimmed Red",
+      "target": "item:foundations_calculator:stable_stone_black_rimmed_red",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:stable_stone_black_rimmed_yellow"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Stable Stone Black Rimmed Yellow",
+      "target": "item:foundations_calculator:stable_stone_black_rimmed_yellow",
+      "options": {
+        "profile": ""
+      }
+    }
+  ]
+}

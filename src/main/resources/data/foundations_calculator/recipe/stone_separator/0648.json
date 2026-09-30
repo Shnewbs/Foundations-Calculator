@@ -1,0 +1,30 @@
+{
+  "type": "foundations_calculator:process",
+  "machine": "stone_separator",
+  "ingredients": [
+    {
+      "ingredient": {
+        "tag": "c:storage_blocks/lapis"
+      },
+      "count": 1
+    }
+  ],
+  "results": [
+    {
+      "stack": {
+        "id": "foundations_calculator:large_amethyst",
+        "count": 1
+      }
+    },
+    {
+      "stack": {
+        "id": "foundations_calculator:shard_amethyst",
+        "count": 1
+      }
+    }
+  ],
+  "energy": 500,
+  "ticks": 200,
+  "value": 0,
+  "research": false
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/fence_inventory",
+  "textures": {
+    "texture": "foundations_calculator:legacy_calculator/blocks/wood/planks_tanzanite"
+  }
+}

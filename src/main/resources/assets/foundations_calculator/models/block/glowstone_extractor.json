@@ -1,0 +1,7 @@
+{
+  "parent": "foundations_calculator:legacy_calculator/block/extractor",
+  "textures": {
+    "0": "foundations_calculator:legacy_calculator/model/glowstone_generator_0",
+    "1": "foundations_calculator:legacy_calculator/model/glowstone_generator_1"
+  }
+}

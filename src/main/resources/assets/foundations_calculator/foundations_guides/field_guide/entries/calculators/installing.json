@@ -1,0 +1,68 @@
+{
+  "id": "foundations_calculator:calculators/installing",
+  "chapter": "foundations_calculator:calculators",
+  "title": "Installing and selecting modules",
+  "order": 5,
+  "items": [
+    "foundations_calculator:atomic_assembly",
+    "foundations_calculator:flawless_assembly"
+  ],
+  "keywords": [
+    "installation",
+    "select module",
+    "shift",
+    "sneak"
+  ],
+  "blocks": [
+    {
+      "type": "paragraph",
+      "text": "The Module Workstation edits the modules stored inside a Flawless Calculator. The calculator component is the sole owner of the module contents; the workstation is not a second copy of the inventory."
+    },
+    {
+      "type": "steps",
+      "rows": [
+        [
+          "Put the Flawless Calculator in the workstation Calculator slot."
+        ],
+        [
+          "Place supported modules in the module positions, up to the server-configured limit. The shipped maximum is 16."
+        ],
+        [
+          "Remove the Flawless Calculator. Its installed modules and their inventories travel with it."
+        ],
+        [
+          "Sneak-use the calculator to cycle the selected module. The selection label tells you which action a normal use will perform."
+        ],
+        [
+          "Return to the ordinary Flawless calculation selection when you need the four-input recipes instead of a module action."
+        ]
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "Atomic Assembly exposes the three-lane Dynamic Module. Flawless Assembly exposes flawless calculation. Storage remains inside its module; installed Energy Modules add storage. Installed ender pearls and grenades use FE rather than consuming the installed item."
+    },
+    {
+      "type": "callout",
+      "text": "Not every similarly named crafting component is an installable module. In particular Atomic Module is a component, not a usable workstation module. Read the live crafting references before installing or consuming rare materials."
+    },
+    {
+      "type": "live",
+      "text": "Actual server settings",
+      "target": "foundations_calculator",
+      "options": {
+        "key": "module/flawless_calculator"
+      }
+    },
+    {
+      "type": "link",
+      "text": "Module Workstation reference",
+      "target": "foundations_calculator:machines/module_workstation"
+    },
+    {
+      "type": "link",
+      "text": "Storage Module",
+      "target": "foundations_calculator:calculators/storage_module"
+    }
+  ]
+}

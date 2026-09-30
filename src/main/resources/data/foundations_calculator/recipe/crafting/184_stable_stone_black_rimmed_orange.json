@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "foundations_calculator:stable_stone_rimmed_orange"
+    }
+  ],
+  "result": {
+    "id": "foundations_calculator:stable_stone_black_rimmed_orange",
+    "count": 1
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "type": "foundations_calculator:process",
+  "machine": "calculator",
+  "ingredients": [
+    {
+      "ingredient": {
+        "item": "foundations_calculator:small_stone"
+      },
+      "count": 2
+    }
+  ],
+  "results": [
+    {
+      "stack": {
+        "id": "minecraft:stone",
+        "count": 1
+      }
+    }
+  ],
+  "energy": 0,
+  "ticks": 1,
+  "value": 0,
+  "research": true,
+  "research_group": "stone"
+}

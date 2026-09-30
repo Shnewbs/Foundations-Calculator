@@ -1,0 +1,15 @@
+{
+  "name": "Stone Assimilator",
+  "category": "foundations_calculator:machines",
+  "icon": "foundations_calculator:stone_assimilator",
+  "sortnum": 71,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Purpose$()$pCollects health or hunger from mature Calculator-tree leaves into a matching module.$p$(l)Set up and operate$()$p1. Place beside a three-block trunk, facing away from it.$p2. Provide at least the required nearby leaf count.$p3. Insert a module with matching nutrient capacity and allow leaf maturity.$p$(l)When it does not run$()$pWrong trunk orientation, insufficient mature leaves, a full module or denied world actions can stop collection.$pRead the active server settings below before copying default costs from another installation. For special slot roles, use the machine screen labels. Settings reporting does not inspect or mutate a placed machine.$pActual server settings: live server values are available in the native or master Foundations reader.$pCrafting / obtaining this machine: live recipe details are available in the native or master Foundations reader.$p$(l:foundations_calculator:troubleshooting/no_progress)General operating checklist$()"
+    }
+  ],
+  "extra_recipe_mappings": {
+    "foundations_calculator:stone_assimilator": 0
+  }
+}

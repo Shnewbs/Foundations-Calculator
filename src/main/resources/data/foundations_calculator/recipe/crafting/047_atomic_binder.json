@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " A ",
+    "ADA",
+    " A "
+  ],
+  "key": {
+    "A": {
+      "tag": "foundations_calculator:reinforced_stone"
+    },
+    "D": {
+      "item": "foundations_calculator:enriched_gold"
+    }
+  },
+  "result": {
+    "id": "foundations_calculator:atomic_binder",
+    "count": 8
+  }
+}

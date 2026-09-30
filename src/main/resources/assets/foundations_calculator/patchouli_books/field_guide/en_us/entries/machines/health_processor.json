@@ -1,0 +1,15 @@
+{
+  "name": "Health Processor",
+  "category": "foundations_calculator:machines",
+  "icon": "foundations_calculator:health_processor",
+  "sortnum": 43,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Purpose$()$pCollects recipe-defined health nutrient or existing health-module contents and fills a destination module. Matching Tanzanite networks can supply leaf nutrient.$p$(l)Set up and operate$()$p1. Inspect the current Health Processor value recipes.$p2. Place the destination Health/Nutrition Module in its module slot.$p3. Connect compatible leaves and keep the traversal loaded and permitted.$p$(l)When it does not run$()$pNot every edible item is a health source. The health program uses its own value recipes.$pRead the active server settings below before copying default costs from another installation. For special slot roles, use the machine screen labels. Settings reporting does not inspect or mutate a placed machine.$pActual server settings: live server values are available in the native or master Foundations reader.$pProcessing / value recipes: live recipe details are available in the native or master Foundations reader.$pCrafting / obtaining this machine: live recipe details are available in the native or master Foundations reader.$p$(l:foundations_calculator:troubleshooting/no_progress)General operating checklist$()"
+    }
+  ],
+  "extra_recipe_mappings": {
+    "foundations_calculator:health_processor": 0
+  }
+}

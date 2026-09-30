@@ -1,0 +1,17 @@
+{
+  "type": "foundations_calculator:process",
+  "machine": "starch_extractor",
+  "ingredients": [
+    {
+      "ingredient": {
+        "item": "foundations_calculator:broccoli_seeds"
+      },
+      "count": 1
+    }
+  ],
+  "results": [],
+  "energy": 0,
+  "ticks": 1,
+  "value": 800,
+  "research": false
+}

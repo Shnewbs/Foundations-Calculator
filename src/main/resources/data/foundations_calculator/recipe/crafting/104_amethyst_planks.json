@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "foundations_calculator:amethyst_log"
+    }
+  ],
+  "result": {
+    "id": "foundations_calculator:amethyst_planks",
+    "count": 4
+  }
+}

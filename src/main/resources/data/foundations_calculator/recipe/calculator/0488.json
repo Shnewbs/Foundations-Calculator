@@ -1,0 +1,31 @@
+{
+  "type": "foundations_calculator:process",
+  "machine": "calculator",
+  "ingredients": [
+    {
+      "ingredient": {
+        "item": "minecraft:rose_bush"
+      },
+      "count": 1
+    },
+    {
+      "ingredient": {
+        "item": "minecraft:rose_bush"
+      },
+      "count": 1
+    }
+  ],
+  "results": [
+    {
+      "stack": {
+        "id": "minecraft:fern",
+        "count": 2
+      }
+    }
+  ],
+  "energy": 0,
+  "ticks": 1,
+  "value": 0,
+  "research": true,
+  "research_group": "foliage"
+}

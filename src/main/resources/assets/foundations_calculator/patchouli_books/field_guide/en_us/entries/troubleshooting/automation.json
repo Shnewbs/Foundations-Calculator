@@ -1,0 +1,15 @@
+{
+  "name": "Automation that respects sides",
+  "category": "foundations_calculator:troubleshooting",
+  "icon": "foundations_calculator:transfer_upgrade",
+  "sortnum": 26,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "The Transfer Upgrade is an active exporter. External pipes pull through the exposed sided inventory. Both must respect the item-automation master setting and the face\u2019s output mode. An Input or Disabled face is not an output face.$pGreenhouse chest import and export are separate directions on the front-facing connection. An Output-only front can export produce but cannot import seeds. An Input-only front can import seeds but cannot export produce. Auto may allow both for that program.$p1. Manually complete one batch with empty output slots.$p2. Set the desired face to Output and connect an inventory whose facing side accepts the result.$p3. Check machine.<id>.itemAutomation and the Transfer Upgrade\u2019s actual presence/count.$p4. Remove input-only or Disabled faces from the export route.$p5. Fill the destination deliberately and verify that products remain pending rather than disappearing.$p6. Change the side back and retest. A pipe\u2019s own filter, channel, or extraction rule can still refuse the item.$p$(o)Energy ports are governed by energy side and adapter policies, not just item-automation switches. Test the item and energy routes separately.$()$p$(l:foundations_calculator:power/routing)Energy routing$()$p$(l:foundations_calculator:troubleshooting/blocked_output)Pending results and Void Upgrade$()"
+    }
+  ],
+  "extra_recipe_mappings": {
+    "foundations_calculator:transfer_upgrade": 0
+  }
+}

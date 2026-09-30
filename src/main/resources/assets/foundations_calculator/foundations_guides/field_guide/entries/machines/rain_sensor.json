@@ -1,0 +1,70 @@
+{
+  "id": "foundations_calculator:machines/rain_sensor",
+  "chapter": "foundations_calculator:machines",
+  "title": "Rain Sensor",
+  "order": 70,
+  "items": [
+    "foundations_calculator:rain_sensor"
+  ],
+  "keywords": [
+    "rain_sensor",
+    "Emits redstone strength 15 while the world is raining"
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "Purpose"
+    },
+    {
+      "type": "paragraph",
+      "text": "Emits redstone strength 15 while the world is raining."
+    },
+    {
+      "type": "heading",
+      "text": "Set up and operate"
+    },
+    {
+      "type": "steps",
+      "rows": [
+        [
+          "Place the sensor and connect redstone."
+        ],
+        [
+          "Compare the output during dry and rainy weather."
+        ],
+        [
+          "Use it as a signal, not as an inventory-based processor."
+        ]
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "When it does not run"
+    },
+    {
+      "type": "paragraph",
+      "text": "Local visual shelter does not create a separate per-block rainfall state for this sensor."
+    },
+    {
+      "type": "live",
+      "text": "Actual server settings",
+      "target": "foundations_calculator",
+      "options": {
+        "key": "machine/rain_sensor"
+      }
+    },
+    {
+      "type": "recipe",
+      "text": "Crafting / obtaining this machine",
+      "target": "item:foundations_calculator:rain_sensor",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "link",
+      "text": "General operating checklist",
+      "target": "foundations_calculator:troubleshooting/no_progress"
+    }
+  ]
+}

@@ -1,0 +1,94 @@
+{
+  "id": "foundations_calculator:multiblocks/locator",
+  "chapter": "foundations_calculator:multiblocks",
+  "title": "Calculator Locator: plugs and stabilizing walls",
+  "order": 18,
+  "items": [],
+  "keywords": [
+    "locator",
+    "radius",
+    "plug ring",
+    "binding",
+    "stability"
+  ],
+  "blocks": [
+    {
+      "type": "paragraph",
+      "text": "Bind a Locator Module by using it, then insert it in the Locator. At the shipped supported radii 1–11, surround the controller with a square of Calculator Plugs. Every plug sits directly over Stable Stone. An outside Stable Stone perimeter runs around the square at heights −1 and 0; its outer corners are optional."
+    },
+    {
+      "type": "layers",
+      "text": "Radius 1 example: controller/plug level",
+      "rows": [
+        [
+          ".SSS."
+        ],
+        [
+          "SKKKS"
+        ],
+        [
+          "SKCKS"
+        ],
+        [
+          "SKKKS"
+        ],
+        [
+          ".SSS."
+        ]
+      ],
+      "options": {
+        "legend": "K Calculator Plug · C Locator · S perimeter wall · optional outer corners shown as dots"
+      }
+    },
+    {
+      "type": "layers",
+      "text": "Radius 1 example: height −1",
+      "rows": [
+        [
+          ".SSS."
+        ],
+        [
+          "SSSSS"
+        ],
+        [
+          "SS.SS"
+        ],
+        [
+          "SSSSS"
+        ],
+        [
+          ".SSS."
+        ]
+      ],
+      "options": {
+        "legend": "Stable Stone beneath every plug; the center under the controller is not a plug-base requirement."
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": "Stable analysed boards in plugs stabilize the machine. At the default threshold of seven stable plugs the owner need not be present. Below that threshold the owner must be in the same dimension; instability can affect the owner or time, subject to server settings."
+    },
+    {
+      "type": "paragraph",
+      "text": "Larger valid squares require more plugs and base blocks. Do not mistake the outer wall for another ring of plugs. A valid binding and correct structure are distinct requirements."
+    },
+    {
+      "type": "live",
+      "text": "Actual server settings",
+      "target": "foundations_calculator",
+      "options": {
+        "key": "machine/calculator_locator"
+      }
+    },
+    {
+      "type": "link",
+      "text": "Locator operation",
+      "target": "foundations_calculator:machines/calculator_locator"
+    },
+    {
+      "type": "link",
+      "text": "Plug board state",
+      "target": "foundations_calculator:machines/calculator_plug"
+    }
+  ]
+}

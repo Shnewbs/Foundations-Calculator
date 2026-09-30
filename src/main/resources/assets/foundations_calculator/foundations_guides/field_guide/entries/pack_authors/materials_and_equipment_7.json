@@ -1,0 +1,132 @@
+{
+  "id": "foundations_calculator:pack_authors/materials_and_equipment_7",
+  "chapter": "foundations_calculator:pack_authors",
+  "title": "Materials and equipment · 7",
+  "order": 99,
+  "items": [
+    "foundations_calculator:calculator_screen_block",
+    "foundations_calculator:amethyst_block",
+    "foundations_calculator:tanzanite_block",
+    "foundations_calculator:enriched_gold_block",
+    "foundations_calculator:weakened_diamond_block",
+    "foundations_calculator:flawless_diamond_block",
+    "foundations_calculator:fire_diamond_block",
+    "foundations_calculator:electric_diamond_block",
+    "foundations_calculator:end_diamond_block"
+  ],
+  "keywords": [],
+  "blocks": [
+    {
+      "type": "paragraph",
+      "text": "This reference groups related inventory entries. Each recipe section reads the current world. An item may have no crafting result when it comes from harvesting, world generation, a program action or creative tools."
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:calculator_screen_block"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Calculator Screen Block",
+      "target": "item:foundations_calculator:calculator_screen_block",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:amethyst_block"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Amethyst Block",
+      "target": "item:foundations_calculator:amethyst_block",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:tanzanite_block"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Tanzanite Block",
+      "target": "item:foundations_calculator:tanzanite_block",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:enriched_gold_block"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Enriched Gold Block",
+      "target": "item:foundations_calculator:enriched_gold_block",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:weakened_diamond_block"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Weakened Diamond Block",
+      "target": "item:foundations_calculator:weakened_diamond_block",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:flawless_diamond_block"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Flawless Diamond Block",
+      "target": "item:foundations_calculator:flawless_diamond_block",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:fire_diamond_block"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Fire Diamond Block",
+      "target": "item:foundations_calculator:fire_diamond_block",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:electric_diamond_block"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Electric Diamond Block",
+      "target": "item:foundations_calculator:electric_diamond_block",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:end_diamond_block"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining End Diamond Block",
+      "target": "item:foundations_calculator:end_diamond_block",
+      "options": {
+        "profile": ""
+      }
+    }
+  ]
+}

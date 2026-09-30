@@ -1,0 +1,31 @@
+{
+  "type": "foundations_calculator:process",
+  "machine": "calculator",
+  "ingredients": [
+    {
+      "ingredient": {
+        "item": "minecraft:crafting_table"
+      },
+      "count": 1
+    },
+    {
+      "ingredient": {
+        "tag": "c:cobblestones"
+      },
+      "count": 1
+    }
+  ],
+  "results": [
+    {
+      "stack": {
+        "id": "minecraft:furnace",
+        "count": 1
+      }
+    }
+  ],
+  "energy": 0,
+  "ticks": 1,
+  "value": 0,
+  "research": true,
+  "research_group": "furnace"
+}

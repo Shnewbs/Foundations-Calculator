@@ -1,0 +1,85 @@
+{
+  "id": "foundations_calculator:machines/processing_chamber",
+  "chapter": "foundations_calculator:machines",
+  "title": "Processing Chamber",
+  "order": 50,
+  "items": [
+    "foundations_calculator:processing_chamber"
+  ],
+  "keywords": [
+    "processing_chamber",
+    "Combines dirty-circuit cleaning and damaged-circuit repair in one machine"
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "Purpose"
+    },
+    {
+      "type": "paragraph",
+      "text": "Combines dirty-circuit cleaning and damaged-circuit repair in one machine."
+    },
+    {
+      "type": "heading",
+      "text": "Set up and operate"
+    },
+    {
+      "type": "steps",
+      "rows": [
+        [
+          "Place a Dirty or Damaged circuit in the process input."
+        ],
+        [
+          "Check that the corresponding server recipe is present."
+        ],
+        [
+          "Provide full batch energy and clear output slots."
+        ],
+        [
+          "Move the resulting clean board into the analyser."
+        ]
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "When it does not run"
+    },
+    {
+      "type": "paragraph",
+      "text": "A clean/already analysed board is not the dirty/damaged input this chamber expects."
+    },
+    {
+      "type": "paragraph",
+      "text": "Read the active server settings below before copying default costs from another installation. For special slot roles, use the machine screen labels. Settings reporting does not inspect or mutate a placed machine."
+    },
+    {
+      "type": "live",
+      "text": "Actual server settings",
+      "target": "foundations_calculator",
+      "options": {
+        "key": "machine/processing_chamber"
+      }
+    },
+    {
+      "type": "recipe",
+      "text": "Processing / value recipes",
+      "target": "machine:processing_chamber",
+      "options": {
+        "profile": "processing_chamber"
+      }
+    },
+    {
+      "type": "recipe",
+      "text": "Crafting / obtaining this machine",
+      "target": "item:foundations_calculator:processing_chamber",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "link",
+      "text": "General operating checklist",
+      "target": "foundations_calculator:troubleshooting/no_progress"
+    }
+  ]
+}

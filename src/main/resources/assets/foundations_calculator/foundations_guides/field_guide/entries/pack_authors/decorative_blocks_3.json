@@ -1,0 +1,171 @@
+{
+  "id": "foundations_calculator:pack_authors/decorative_blocks_3",
+  "chapter": "foundations_calculator:pack_authors",
+  "title": "Decorative blocks · 3",
+  "order": 104,
+  "items": [
+    "foundations_calculator:reinforced_dirt_brick_gate",
+    "foundations_calculator:stable_glass",
+    "foundations_calculator:clear_stable_glass",
+    "foundations_calculator:reinforced_iron_block",
+    "foundations_calculator:redstone_ingot_block",
+    "foundations_calculator:stable_stone_normal",
+    "foundations_calculator:stable_stone_black",
+    "foundations_calculator:stable_stone_blue",
+    "foundations_calculator:stable_stone_brown",
+    "foundations_calculator:stable_stone_cyan",
+    "foundations_calculator:stable_stone_green",
+    "foundations_calculator:stable_stone_light_blue"
+  ],
+  "keywords": [],
+  "blocks": [
+    {
+      "type": "paragraph",
+      "text": "This reference groups related inventory entries. Each recipe section reads the current world. An item may have no crafting result when it comes from harvesting, world generation, a program action or creative tools."
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:reinforced_dirt_brick_gate"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Reinforced Dirt Brick Gate",
+      "target": "item:foundations_calculator:reinforced_dirt_brick_gate",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:stable_glass"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Stable Glass",
+      "target": "item:foundations_calculator:stable_glass",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:clear_stable_glass"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Clear Stable Glass",
+      "target": "item:foundations_calculator:clear_stable_glass",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:reinforced_iron_block"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Reinforced Iron Block",
+      "target": "item:foundations_calculator:reinforced_iron_block",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:redstone_ingot_block"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Redstone Ingot Block",
+      "target": "item:foundations_calculator:redstone_ingot_block",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:stable_stone_normal"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Stable Stone Normal",
+      "target": "item:foundations_calculator:stable_stone_normal",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:stable_stone_black"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Stable Stone Black",
+      "target": "item:foundations_calculator:stable_stone_black",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:stable_stone_blue"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Stable Stone Blue",
+      "target": "item:foundations_calculator:stable_stone_blue",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:stable_stone_brown"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Stable Stone Brown",
+      "target": "item:foundations_calculator:stable_stone_brown",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:stable_stone_cyan"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Stable Stone Cyan",
+      "target": "item:foundations_calculator:stable_stone_cyan",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:stable_stone_green"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Stable Stone Green",
+      "target": "item:foundations_calculator:stable_stone_green",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:stable_stone_light_blue"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Stable Stone Light Blue",
+      "target": "item:foundations_calculator:stable_stone_light_blue",
+      "options": {
+        "profile": ""
+      }
+    }
+  ]
+}

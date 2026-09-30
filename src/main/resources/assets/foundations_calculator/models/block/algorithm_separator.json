@@ -1,0 +1,12 @@
+{
+  "parent": "foundations_calculator:legacy_calculator/block/sonarmachine",
+  "textures": {
+    "particle": "foundations_calculator:legacy_calculator/blocks/algorithmseperator_front_1",
+    "north": "foundations_calculator:legacy_calculator/blocks/algorithmseperator_front_1",
+    "east": "foundations_calculator:legacy_calculator/blocks/algorithmseperator_slot1",
+    "south": "foundations_calculator:legacy_calculator/blocks/algorithmseperator_slot1",
+    "west": "foundations_calculator:legacy_calculator/blocks/algorithmseperator_slot1",
+    "up": "foundations_calculator:legacy_calculator/blocks/algorithmseperator_slot1",
+    "down": "foundations_calculator:legacy_calculator/blocks/algorithmseperator_slot1"
+  }
+}

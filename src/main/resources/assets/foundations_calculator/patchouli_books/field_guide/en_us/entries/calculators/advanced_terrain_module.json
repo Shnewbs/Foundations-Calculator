@@ -1,0 +1,15 @@
+{
+  "name": "Advanced Terrain Module",
+  "category": "foundations_calculator:calculators",
+  "icon": "foundations_calculator:advanced_terrain_module",
+  "sortnum": 84,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Purpose$()$pExtends the ordinary terrain choices with gravel, sand and cobblestone.$p$(l)Use$()$pSneak-use to cycle the supported replacement, then use on an accepted source. Costs are configurable; unsupported blocks are not transformed.$p$(l:foundations_calculator:calculators/installing)Using modules inside a Flawless Calculator$()$pActual server settings: live server values are available in the native or master Foundations reader.$pObtain this module: live recipe details are available in the native or master Foundations reader."
+    }
+  ],
+  "extra_recipe_mappings": {
+    "foundations_calculator:advanced_terrain_module": 0
+  }
+}

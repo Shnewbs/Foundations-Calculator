@@ -1,0 +1,24 @@
+{
+  "type": "foundations_calculator:process",
+  "machine": "calculator",
+  "ingredients": [
+    {
+      "ingredient": {
+        "item": "minecraft:bedrock"
+      }
+    },
+    {
+      "ingredient": {
+        "item": "minecraft:barrier"
+      }
+    }
+  ],
+  "results": [
+    {
+      "stack": {
+        "id": "minecraft:diamond"
+      }
+    }
+  ],
+  "ticks": 1
+}

@@ -1,0 +1,74 @@
+{
+  "id": "foundations_calculator:machines/gas_lantern_off",
+  "chapter": "foundations_calculator:machines",
+  "title": "Gas Lantern Off",
+  "order": 73,
+  "items": [
+    "foundations_calculator:gas_lantern_off"
+  ],
+  "keywords": [
+    "gas_lantern_off",
+    "Fuel-burning light source that contributes carbon to Basic/Advanced Greenhouses"
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "Purpose"
+    },
+    {
+      "type": "paragraph",
+      "text": "Fuel-burning light source that contributes carbon to Basic/Advanced Greenhouses."
+    },
+    {
+      "type": "heading",
+      "text": "Set up and operate"
+    },
+    {
+      "type": "steps",
+      "rows": [
+        [
+          "Put ordinary furnace fuel in the lantern."
+        ],
+        [
+          "Place it within the greenhouse’s eligible space."
+        ],
+        [
+          "Keep it burning and observe greenhouse carbon over time."
+        ]
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "When it does not run"
+    },
+    {
+      "type": "paragraph",
+      "text": "The item’s registry ID says off because active state controls its lighting. A spent lantern cannot provide ongoing carbon."
+    },
+    {
+      "type": "paragraph",
+      "text": "Read the active server settings below before copying default costs from another installation. For special slot roles, use the machine screen labels. Settings reporting does not inspect or mutate a placed machine."
+    },
+    {
+      "type": "live",
+      "text": "Actual server settings",
+      "target": "foundations_calculator",
+      "options": {
+        "key": "machine/gas_lantern_off"
+      }
+    },
+    {
+      "type": "recipe",
+      "text": "Crafting / obtaining this machine",
+      "target": "item:foundations_calculator:gas_lantern_off",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "link",
+      "text": "General operating checklist",
+      "target": "foundations_calculator:troubleshooting/no_progress"
+    }
+  ]
+}

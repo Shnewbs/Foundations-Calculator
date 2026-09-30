@@ -1,0 +1,20 @@
+{
+  "type": "foundations_calculator:process",
+  "machine": "research",
+  "ingredients": [
+    {
+      "ingredient": [
+        {
+          "item": "foundations_calculator:reinforced_stone_block"
+        },
+        {
+          "item": "foundations_calculator:reinforced_dirt_block"
+        }
+      ]
+    }
+  ],
+  "results": [],
+  "energy": 1000,
+  "ticks": 100,
+  "research_group": "reinforced_stone"
+}

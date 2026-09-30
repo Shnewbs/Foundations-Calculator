@@ -1,0 +1,15 @@
+{
+  "name": "Atomic Multiplier",
+  "category": "foundations_calculator:machines",
+  "icon": "foundations_calculator:atomic_multiplier",
+  "sortnum": 45,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Purpose$()$pDuplicates eligible stackable input using circuit boards and a large FE batch. The blacklist excludes protected progression items.$p$(l)Set up and operate$()$p1. Put one eligible stackable item and seven circuit boards in the first eight input slots.$p2. Accumulate the current full batch cost; the default is 1.5 billion FE.$p3. Leave room for four copies and let the batch complete.$p$(l)When it does not run$()$pUnstackable or blacklisted items are refused. Increasing cable voltage does not bypass the item blacklist or the FE requirement.$pRead the active server settings below before copying default costs from another installation. For special slot roles, use the machine screen labels. Settings reporting does not inspect or mutate a placed machine.$pActual server settings: live server values are available in the native or master Foundations reader.$pCrafting / obtaining this machine: live recipe details are available in the native or master Foundations reader.$p$(l:foundations_calculator:troubleshooting/no_progress)General operating checklist$()"
+    }
+  ],
+  "extra_recipe_mappings": {
+    "foundations_calculator:atomic_multiplier": 0
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "BCB",
+    "ADA",
+    "BCB"
+  ],
+  "key": {
+    "A": {
+      "item": "foundations_calculator:stone_separator"
+    },
+    "B": {
+      "item": "foundations_calculator:reinforced_iron_block"
+    },
+    "C": {
+      "item": "foundations_calculator:power_cube"
+    },
+    "D": {
+      "tag": "c:gems/diamond"
+    }
+  },
+  "result": {
+    "id": "foundations_calculator:algorithm_separator",
+    "count": 1
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "name": "Decorative blocks \u00b7 1",
+  "category": "foundations_calculator:pack_authors",
+  "icon": "foundations_calculator:flawless_glass",
+  "sortnum": 102,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "This reference groups related inventory entries. Each recipe section reads the current world. An item may have no crafting result when it comes from harvesting, world generation, a program action or creative tools.$pItem: foundations_calculator:flawless_glass$pObtaining Flawless Glass: live recipe details are available in the native or master Foundations reader.$pItem: foundations_calculator:amethyst_stairs$pObtaining Amethyst Stairs: live recipe details are available in the native or master Foundations reader.$pItem: foundations_calculator:amethyst_fence$pObtaining Amethyst Fence: live recipe details are available in the native or master Foundations reader.$pItem: foundations_calculator:tanzanite_stairs$pObtaining Tanzanite Stairs: live recipe details are available in the native or master Foundations reader.$pItem: foundations_calculator:tanzanite_fence$pObtaining Tanzanite Fence: live recipe details are available in the native or master Foundations reader.$pItem: foundations_calculator:pear_stairs$pObtaining Pear Stairs: live recipe details are available in the native or master Foundations reader.$pItem: foundations_calculator:pear_fence$pObtaining Pear Fence: live recipe details are available in the native or master Foundations reader.$pItem: foundations_calculator:diamond_stairs$pObtaining Diamond Stairs: live recipe details are available in the native or master Foundations reader.$pItem: foundations_calculator:diamond_fence"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Obtaining Diamond Fence: live recipe details are available in the native or master Foundations reader.$pItem: foundations_calculator:reinforced_stone_block$pObtaining Reinforced Stone Block: live recipe details are available in the native or master Foundations reader.$pItem: foundations_calculator:reinforced_stone_stairs$pObtaining Reinforced Stone Stairs: live recipe details are available in the native or master Foundations reader.$pItem: foundations_calculator:reinforced_stone_fence$pObtaining Reinforced Stone Fence: live recipe details are available in the native or master Foundations reader."
+    }
+  ],
+  "extra_recipe_mappings": {
+    "foundations_calculator:flawless_glass": 0,
+    "foundations_calculator:amethyst_stairs": 0,
+    "foundations_calculator:amethyst_fence": 0,
+    "foundations_calculator:tanzanite_stairs": 0,
+    "foundations_calculator:tanzanite_fence": 0,
+    "foundations_calculator:pear_stairs": 0,
+    "foundations_calculator:pear_fence": 0,
+    "foundations_calculator:diamond_stairs": 0,
+    "foundations_calculator:diamond_fence": 0,
+    "foundations_calculator:reinforced_stone_block": 0,
+    "foundations_calculator:reinforced_stone_stairs": 0,
+    "foundations_calculator:reinforced_stone_fence": 0
+  }
+}

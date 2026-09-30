@@ -1,0 +1,39 @@
+{
+  "type": "foundations_calculator:process",
+  "machine": "fabrication_chamber",
+  "ingredients": [
+    {
+      "ingredient": {
+        "item": "foundations_calculator:circuit_board_0"
+      },
+      "count": 1,
+      "circuit_state": 1
+    },
+    {
+      "ingredient": {
+        "item": "foundations_calculator:circuit_board_1"
+      },
+      "count": 1,
+      "circuit_state": 1
+    },
+    {
+      "ingredient": {
+        "item": "foundations_calculator:circuit_board_2"
+      },
+      "count": 1,
+      "circuit_state": 1
+    }
+  ],
+  "results": [
+    {
+      "stack": {
+        "id": "foundations_calculator:calculator",
+        "count": 1
+      }
+    }
+  ],
+  "energy": 1000,
+  "ticks": 200,
+  "value": 0,
+  "research": false
+}

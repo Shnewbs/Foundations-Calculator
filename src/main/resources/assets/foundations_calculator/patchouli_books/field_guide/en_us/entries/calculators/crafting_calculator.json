@@ -1,0 +1,15 @@
+{
+  "name": "Crafting Calculator",
+  "category": "foundations_calculator:calculators",
+  "icon": "foundations_calculator:crafting_calculator",
+  "sortnum": 89,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Purpose$()$pOpens a portable crafting grid using the configured FE activation cost.$p$(l)Use$()$pCharge it, use it and craft with the current server\u2019s crafting recipes. This is not a new process family and does not ignore ordinary crafting requirements.$p$(l:foundations_calculator:calculators/installing)Using modules inside a Flawless Calculator$()$pActual server settings: live server values are available in the native or master Foundations reader.$pObtain this module: live recipe details are available in the native or master Foundations reader."
+    }
+  ],
+  "extra_recipe_mappings": {
+    "foundations_calculator:crafting_calculator": 0
+  }
+}

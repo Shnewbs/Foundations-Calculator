@@ -1,0 +1,1 @@
+package net.minecraft.world.item; public class ItemStack { public static final ItemStack EMPTY=new ItemStack("air"); public final String name; public ItemStack(String name){this.name=name;} public ItemStack copy(){return new ItemStack(name);} }

@@ -1,0 +1,12 @@
+{
+  "name": "Conductor Mast and weather links",
+  "category": "foundations_calculator:multiblocks",
+  "icon": "foundations_calculator:info_calculator",
+  "sortnum": 19,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "A Conductor Mast reserves four blocks of height when placed. Upper sections belong to one controller; breaking an extension removes that structure and should return one controller, not four independent machines.$pVertical profile (top to bottom): see the native or master Foundations reader for the interactive or layered view.$pWeather Stations link to the nearest mast on the same height level within their configured search range. The shipped range is ten blocks. Transmitters within the shipped twenty-block range shorten the strike interval and can increase generation. Right-click a Weather Station to inspect its link.$pGeneration occurs in bursts, not a perfectly constant FE/t source. Leave buffer space and sufficient cable throughput before concluding that a paused burst is a failure.$pActual server settings: live server values are available in the native or master Foundations reader.$p$(l:foundations_calculator:machines/weather_station)Weather Station$()$p$(l:foundations_calculator:machines/transmitter)Transmitter$()"
+    }
+  ]
+}

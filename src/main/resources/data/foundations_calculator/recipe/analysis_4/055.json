@@ -1,0 +1,22 @@
+{
+  "type": "foundations_calculator:process",
+  "machine": "analysis_4",
+  "ingredients": [
+    {
+      "ingredient": {
+        "tag": "foundations_calculator:circuit_boards"
+      }
+    }
+  ],
+  "results": [
+    {
+      "stack": {
+        "id": "foundations_calculator:stable_stone_normal",
+        "count": 1
+      }
+    }
+  ],
+  "value": 13,
+  "energy": 0,
+  "ticks": 1
+}

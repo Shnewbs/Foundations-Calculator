@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "AAA",
+    "AAA",
+    "AAA"
+  ],
+  "key": {
+    "A": {
+      "item": "foundations_calculator:electric_diamond"
+    }
+  },
+  "result": {
+    "id": "foundations_calculator:electric_diamond_block",
+    "count": 1
+  }
+}

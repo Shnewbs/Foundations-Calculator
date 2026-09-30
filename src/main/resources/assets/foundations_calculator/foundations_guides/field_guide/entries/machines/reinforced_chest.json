@@ -1,0 +1,70 @@
+{
+  "id": "foundations_calculator:machines/reinforced_chest",
+  "chapter": "foundations_calculator:machines",
+  "title": "Reinforced Chest",
+  "order": 39,
+  "items": [
+    "foundations_calculator:reinforced_chest"
+  ],
+  "keywords": [
+    "reinforced_chest",
+    "General storage with an animated lid and viewer tracking"
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "Purpose"
+    },
+    {
+      "type": "paragraph",
+      "text": "General storage with an animated lid and viewer tracking. It does not need power to store items."
+    },
+    {
+      "type": "heading",
+      "text": "Set up and operate"
+    },
+    {
+      "type": "steps",
+      "rows": [
+        [
+          "Open it and insert items."
+        ],
+        [
+          "Connect permitted item automation as needed."
+        ],
+        [
+          "Close the menu before testing dismantling or viewer animation."
+        ]
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "When it does not run"
+    },
+    {
+      "type": "paragraph",
+      "text": "This is not the bulk-bin Storage Chamber. Lid appearance is a client setting and does not change item ownership."
+    },
+    {
+      "type": "live",
+      "text": "Actual server settings",
+      "target": "foundations_calculator",
+      "options": {
+        "key": "machine/reinforced_chest"
+      }
+    },
+    {
+      "type": "recipe",
+      "text": "Crafting / obtaining this machine",
+      "target": "item:foundations_calculator:reinforced_chest",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "link",
+      "text": "General operating checklist",
+      "target": "foundations_calculator:troubleshooting/no_progress"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "RR",
+    " S",
+    " S"
+  ],
+  "key": {
+    "R": {
+      "item": "foundations_calculator:flawless_diamond"
+    },
+    "S": {
+      "tag": "c:rods/wooden"
+    }
+  },
+  "result": {
+    "id": "foundations_calculator:flawless_diamond_hoe",
+    "count": 1
+  }
+}

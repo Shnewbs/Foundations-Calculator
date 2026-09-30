@@ -1,0 +1,22 @@
+{
+  "type": "foundations_calculator:process",
+  "machine": "analysis_4",
+  "ingredients": [
+    {
+      "ingredient": {
+        "tag": "foundations_calculator:circuit_boards"
+      }
+    }
+  ],
+  "results": [
+    {
+      "stack": {
+        "id": "minecraft:obsidian",
+        "count": 1
+      }
+    }
+  ],
+  "value": 11,
+  "energy": 0,
+  "ticks": 1
+}

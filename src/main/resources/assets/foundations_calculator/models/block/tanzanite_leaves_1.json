@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "foundations_calculator:legacy_calculator/blocks/wood/leaves_tanzanite_empty"
+  },
+  "render_type": "minecraft:cutout"
+}

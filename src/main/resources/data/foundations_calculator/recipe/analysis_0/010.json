@@ -1,0 +1,15 @@
+{
+  "type": "foundations_calculator:process",
+  "machine": "analysis_0",
+  "ingredients": [
+    {
+      "ingredient": {
+        "tag": "foundations_calculator:circuit_boards"
+      }
+    }
+  ],
+  "results": [],
+  "value": 10,
+  "energy": 750,
+  "ticks": 1
+}

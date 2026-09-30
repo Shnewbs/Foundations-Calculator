@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "foundations_calculator:redstone_ingot_block"
+    }
+  ],
+  "result": {
+    "id": "foundations_calculator:redstone_ingot",
+    "count": 9
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "id": "foundations_calculator:machines/calculator_screen_block",
+  "chapter": "foundations_calculator:machines",
+  "title": "Calculator Screen Block",
+  "order": 75,
+  "items": [
+    "foundations_calculator:calculator_screen"
+  ],
+  "keywords": [
+    "calculator_screen_block",
+    "Mounted energy display for the adjacent face of an FE-compatible block"
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "Purpose"
+    },
+    {
+      "type": "paragraph",
+      "text": "Mounted energy display for the adjacent face of an FE-compatible block."
+    },
+    {
+      "type": "heading",
+      "text": "Set up and operate"
+    },
+    {
+      "type": "steps",
+      "rows": [
+        [
+          "Use the Calculator Screen item on a horizontal face of an energy block."
+        ],
+        [
+          "Read that face’s stored energy and capacity."
+        ],
+        [
+          "Recheck the target capability when rotating or replacing the block."
+        ]
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "When it does not run"
+    },
+    {
+      "type": "paragraph",
+      "text": "This is a display, not a battery, converter or power cable."
+    },
+    {
+      "type": "live",
+      "text": "Actual server settings",
+      "target": "foundations_calculator",
+      "options": {
+        "key": "machine/calculator_screen_block"
+      }
+    },
+    {
+      "type": "link",
+      "text": "General operating checklist",
+      "target": "foundations_calculator:troubleshooting/no_progress"
+    }
+  ]
+}

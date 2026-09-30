@@ -1,0 +1,82 @@
+{
+  "id": "foundations_calculator:machines/redstone_extractor",
+  "chapter": "foundations_calculator:machines",
+  "title": "Redstone Extractor",
+  "order": 64,
+  "items": [
+    "foundations_calculator:redstone_extractor"
+  ],
+  "keywords": [
+    "redstone_extractor",
+    "Uses its redstone nutrient-value recipes and ordinary furnace fuel for ongoing FE generation"
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "Purpose"
+    },
+    {
+      "type": "paragraph",
+      "text": "Uses its redstone nutrient-value recipes and ordinary furnace fuel for ongoing FE generation."
+    },
+    {
+      "type": "heading",
+      "text": "Set up and operate"
+    },
+    {
+      "type": "steps",
+      "rows": [
+        [
+          "Supply fuel in input one."
+        ],
+        [
+          "Supply a redstone-value ingredient in input two."
+        ],
+        [
+          "Set an output side and monitor the nutrient reservoir."
+        ]
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "When it does not run"
+    },
+    {
+      "type": "paragraph",
+      "text": "An item accepted by the Starch Extractor is not automatically a valid redstone-value ingredient."
+    },
+    {
+      "type": "paragraph",
+      "text": "Read the active server settings below before copying default costs from another installation. For special slot roles, use the machine screen labels. Settings reporting does not inspect or mutate a placed machine."
+    },
+    {
+      "type": "live",
+      "text": "Actual server settings",
+      "target": "foundations_calculator",
+      "options": {
+        "key": "machine/redstone_extractor"
+      }
+    },
+    {
+      "type": "recipe",
+      "text": "Processing / value recipes",
+      "target": "machine:redstone_extractor",
+      "options": {
+        "profile": "redstone_extractor"
+      }
+    },
+    {
+      "type": "recipe",
+      "text": "Crafting / obtaining this machine",
+      "target": "item:foundations_calculator:redstone_extractor",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "link",
+      "text": "General operating checklist",
+      "target": "foundations_calculator:troubleshooting/no_progress"
+    }
+  ]
+}

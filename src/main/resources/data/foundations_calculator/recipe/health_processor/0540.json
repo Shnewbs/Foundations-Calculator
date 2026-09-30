@@ -1,0 +1,17 @@
+{
+  "type": "foundations_calculator:process",
+  "machine": "health_processor",
+  "ingredients": [
+    {
+      "ingredient": {
+        "item": "minecraft:fermented_spider_eye"
+      },
+      "count": 1
+    }
+  ],
+  "results": [],
+  "energy": 0,
+  "ticks": 1,
+  "value": 4,
+  "research": false
+}

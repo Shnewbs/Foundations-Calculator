@@ -1,0 +1,60 @@
+{
+  "id": "foundations_calculator:troubleshooting/power",
+  "chapter": "foundations_calculator:troubleshooting",
+  "title": "Connected cable, no energy transfer",
+  "order": 28,
+  "items": [],
+  "keywords": [
+    "no energy",
+    "power",
+    "cable",
+    "cannot charge",
+    "battery",
+    "voltage"
+  ],
+  "blocks": [
+    {
+      "type": "steps",
+      "rows": [
+        [
+          "Identify which API the actual route uses: FE, GT EU, Mekanism J, MI EU, GrandPower or an item-only adapter."
+        ],
+        [
+          "Check both the local face and the source/receiver face. Input/output terminology is relative to the Foundations buffer."
+        ],
+        [
+          "Verify the appropriate blockPorts or itemCharging scope, input/output gate, old compat master toggle and GT direction toggle."
+        ],
+        [
+          "Read the effective ratio and losses. An offer smaller than the conversion quantum cannot be rounded up."
+        ],
+        [
+          "For GT, check voltage, amperage, shared tick budget, battery tier and loss-adjusted packet cost."
+        ],
+        [
+          "Make space in the receiving buffer and test with a source that actually has stored power."
+        ],
+        [
+          "Use the Power button or /foundations power inspect while looking at a machine. Reports simulate readiness; they do not transfer energy or force-load chunks."
+        ]
+      ]
+    },
+    {
+      "type": "callout",
+      "text": "A disabled native-first adapter does not silently fall back to FE. A third-party source can still choose its own FE path if Calculator advertises it. This is a route-selection distinction, not a reason to add free conversion multipliers."
+    },
+    {
+      "type": "live",
+      "text": "Actual server settings",
+      "target": "foundations_calculator",
+      "options": {
+        "key": "power"
+      }
+    },
+    {
+      "type": "link",
+      "text": "Transfer quanta and conservative rounding",
+      "target": "foundations_calculator:power/rounding"
+    }
+  ]
+}

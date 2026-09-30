@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "RR",
+    "RS",
+    " S"
+  ],
+  "key": {
+    "R": {
+      "item": "foundations_calculator:enriched_gold_ingot"
+    },
+    "S": {
+      "tag": "c:rods/wooden"
+    }
+  },
+  "result": {
+    "id": "foundations_calculator:enriched_gold_axe",
+    "count": 1
+  }
+}

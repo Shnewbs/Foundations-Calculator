@@ -1,0 +1,15 @@
+{
+  "name": "Redstone Extractor",
+  "category": "foundations_calculator:machines",
+  "icon": "foundations_calculator:redstone_extractor",
+  "sortnum": 64,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Purpose$()$pUses its redstone nutrient-value recipes and ordinary furnace fuel for ongoing FE generation.$p$(l)Set up and operate$()$p1. Supply fuel in input one.$p2. Supply a redstone-value ingredient in input two.$p3. Set an output side and monitor the nutrient reservoir.$p$(l)When it does not run$()$pAn item accepted by the Starch Extractor is not automatically a valid redstone-value ingredient.$pRead the active server settings below before copying default costs from another installation. For special slot roles, use the machine screen labels. Settings reporting does not inspect or mutate a placed machine.$pActual server settings: live server values are available in the native or master Foundations reader.$pProcessing / value recipes: live recipe details are available in the native or master Foundations reader.$pCrafting / obtaining this machine: live recipe details are available in the native or master Foundations reader.$p$(l:foundations_calculator:troubleshooting/no_progress)General operating checklist$()"
+    }
+  ],
+  "extra_recipe_mappings": {
+    "foundations_calculator:redstone_extractor": 0
+  }
+}

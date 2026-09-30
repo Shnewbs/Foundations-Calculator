@@ -1,0 +1,36 @@
+// Minecraft 1.21.1, KubeJS 2101.x, Foundations Calculator 0.0.1a.
+// Copy to kubejs/server_scripts/ and remove the .example suffix to enable.
+// These are intentionally opt-in recipes. /reload applies server recipe changes.
+ServerEvents.recipes(event => {
+  // JSON route: ingredient tags, counts, FE cost, ticks, byproducts and chance.
+  event.custom({
+    type: 'foundations_calculator:process',
+    machine: 'stone_separator',
+    ingredients: [{ ingredient: { tag: 'c:raw_materials/iron' }, count: 1 }],
+    results: [
+      { stack: { id: 'foundations_calculator:reinforced_iron_ingot', count: 2 } },
+      { stack: { id: 'foundations_calculator:small_stone', count: 1 }, chance: 0.5 }
+    ],
+    energy: 1000,
+    ticks: 100
+  }).id('foundations_calculator:pack/raw_iron_separation')
+
+  // Native builder supplied by the bundled optional KubeJS recipe schema.
+  event.recipes.foundations_calculator.process(
+    'calculator',
+    [{ ingredient: 'minecraft:cobblestone', count: 1 }, { ingredient: 'minecraft:flint', count: 1 }],
+    [{ stack: '2x foundations_calculator:reinforced_stone_block' }]
+  ).id('foundations_calculator:pack/flint_reinforcement')
+
+  // Exact-id removal avoids changing unrelated Calculator recipes.
+  // event.remove({ id: 'foundations_calculator:pack/flint_reinforcement' })
+
+  // Input/output filters understand the nested ingredient and result arrays.
+  // event.replaceInput({ type: 'foundations_calculator:process' }, 'minecraft:flint', 'minecraft:iron_nugget')
+  // event.replaceOutput({ id: 'foundations_calculator:pack/raw_iron_separation' }, 'foundations_calculator:small_stone', 'minecraft:gravel')
+})
+
+ServerEvents.tags('item', event => {
+  // Optional: include custom pack materials in the original progression.
+  // event.add('foundations_calculator:reinforced_stone', 'kubejs:your_reinforced_stone')
+})

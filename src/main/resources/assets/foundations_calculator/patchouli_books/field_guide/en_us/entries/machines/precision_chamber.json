@@ -1,0 +1,15 @@
+{
+  "name": "Precision Chamber",
+  "category": "foundations_calculator:machines",
+  "icon": "foundations_calculator:precision_chamber",
+  "sortnum": 49,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Purpose$()$pProvides configured precision extraction routes, including specific block-to-circuit results alongside small-stone output.$p$(l)Set up and operate$()$p1. Read the recipe for the exact desired circuit variant.$p2. Provide the specified source block/tag.$p3. Supply FE and collect both ordinary and circuit results.$p$(l)When it does not run$()$pSome recipes choose a random variant while others specify a particular chip. The live output card identifies random-circuit results.$pRead the active server settings below before copying default costs from another installation. For special slot roles, use the machine screen labels. Settings reporting does not inspect or mutate a placed machine.$pActual server settings: live server values are available in the native or master Foundations reader.$pProcessing / value recipes: live recipe details are available in the native or master Foundations reader.$pCrafting / obtaining this machine: live recipe details are available in the native or master Foundations reader.$p$(l:foundations_calculator:troubleshooting/no_progress)General operating checklist$()"
+    }
+  ],
+  "extra_recipe_mappings": {
+    "foundations_calculator:precision_chamber": 0
+  }
+}

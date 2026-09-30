@@ -1,0 +1,23 @@
+{
+  "type": "foundations_calculator:process",
+  "machine": "research",
+  "ingredients": [
+    {
+      "ingredient": [
+        {
+          "item": "minecraft:clay_ball"
+        },
+        {
+          "item": "minecraft:clay"
+        },
+        {
+          "item": "minecraft:terracotta"
+        }
+      ]
+    }
+  ],
+  "results": [],
+  "energy": 1000,
+  "ticks": 100,
+  "research_group": "clay_block"
+}

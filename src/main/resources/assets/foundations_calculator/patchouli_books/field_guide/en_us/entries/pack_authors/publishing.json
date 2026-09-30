@@ -1,0 +1,16 @@
+{
+  "name": "Publishing to the future master guide",
+  "category": "foundations_calculator:pack_authors",
+  "icon": "foundations_calculator:info_calculator",
+  "sortnum": 92,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "The portable Guide API separates descriptor/content from rendering and live values. Calculator\u2019s standalone reader and any compatible master host consume the same immutable books, chapters, entries and structured page blocks.$p$(l)Static resource layout$()$pManifest \u2014 assets/<owner>/foundations_guides/<book>/book.json$pChapter \u2014 chapters/<name>.json referenced by the manifest$pEntry \u2014 entries/<path>.json referenced by the manifest$pGuide identity \u2014 Namespaced and stable, for example foundations_calculator:field_guide.$pEntry identity \u2014 Stable namespaced target, independent of screen class or page number.$pStatic guides require no Java dependency on Calculator. A publisher places valid resources in its own namespace, declares its owner/required mods, and uses contract schema 1. Unknown extensions require a useful text fallback; unsupported schema versions are diagnosed.$pJava hosts and live providers use the small shared com.foundations:foundations-guide-api artifact. It is an embedded, version-selected library\u2014not a separate required Core mod. Do not copy its classes into each mod or shade/relocate them. The SDK documents the shared Jar-in-Jar coordinates.$pA host declares API version, page capabilities and acceptance, then opens an exact guide/entry target inside its reader. No positive acceptance means standalone fallback. Reading does not require all source items and never grants research. If the host is removed, existing source books remain usable."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(o)0.0.2a retains the contract and development fixture, not the finished master-guide mod. Unrelated third-party books need explicit adapters. No automatic parsing of arbitrary external screens is claimed.$()$pThe SDK and schema examples are included in the source release. Use the development second-guide fixture to test discovery, resource reload, cross-guide links, host acceptance and fallback before publishing another provider."
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "id": "foundations_calculator:power/gregtech",
+  "chapter": "foundations_calculator:power",
+  "title": "GregTech voltage, amperage and tiers",
+  "order": 11,
+  "items": [],
+  "keywords": [
+    "LV",
+    "overvoltage",
+    "over voltage",
+    "amps",
+    "packet",
+    "battery tier"
+  ],
+  "blocks": [
+    {
+      "type": "paragraph",
+      "text": "GT cable networks exchange complete voltage/amperage packets. Calculator does not pretend those cables are a generic simulated FE battery. Output sends only packets the target advertises it can accept; input accepts only whole packets that fit the configured limits and FE buffer."
+    },
+    {
+      "type": "paragraph",
+      "text": "The shipped output is LV: 32 EU at one amp per tick. The shipped input budget is four amps per tick, shared across faces. These are defaults; the effective settings below are authoritative for your server."
+    },
+    {
+      "type": "paragraph",
+      "text": "A per-machine voltage or amperage override of zero inherits the global GT value. Battery charger/item tiers are separate from the cable settings. Refused over-voltage packets do not cause Calculator to explode. GT cables still apply their own cable losses."
+    },
+    {
+      "type": "steps",
+      "rows": [
+        [
+          "Confirm the installed GT version matches the pinned integration target in the source documentation."
+        ],
+        [
+          "Set compatible machine and cable tiers; do not use a larger ratio to imitate a voltage tier."
+        ],
+        [
+          "Set the face to the correct energy direction."
+        ],
+        [
+          "Check whether the shared per-tick amp budget is already exhausted by another face."
+        ],
+        [
+          "Use Power diagnostics on a nearby machine for the exact packet limits and refusal reason."
+        ]
+      ]
+    },
+    {
+      "type": "live",
+      "text": "Actual server settings",
+      "target": "foundations_calculator",
+      "options": {
+        "key": "power"
+      }
+    },
+    {
+      "type": "link",
+      "text": "Native routing versus FE facades",
+      "target": "foundations_calculator:power/routing"
+    }
+  ]
+}

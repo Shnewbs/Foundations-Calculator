@@ -1,0 +1,15 @@
+{
+  "name": "Atomic Terrain Module",
+  "category": "foundations_calculator:calculators",
+  "icon": "foundations_calculator:atomic_terrain_module",
+  "sortnum": 85,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Purpose$()$pStores a source and replacement selection for permission-checked block exchange.$p$(l)Use$()$pSneak-use the source block, then sneak-use the replacement. Use on the selected source material to exchange it. Carry replacement blocks when required; containers, unbreakable blocks and blacklist entries are refused.$p$(l:foundations_calculator:calculators/installing)Using modules inside a Flawless Calculator$()$pActual server settings: live server values are available in the native or master Foundations reader.$pObtain this module: live recipe details are available in the native or master Foundations reader."
+    }
+  ],
+  "extra_recipe_mappings": {
+    "foundations_calculator:atomic_terrain_module": 0
+  }
+}

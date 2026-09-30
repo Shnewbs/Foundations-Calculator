@@ -1,0 +1,20 @@
+{
+  "name": "Welcome to Foundations Calculator",
+  "category": "foundations_calculator:getting_started",
+  "icon": "foundations_calculator:info_calculator",
+  "sortnum": 0,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Welcome to Foundations Calculator. This Field Guide is the home manual for the mod: calculators, machines, circuits, research, power systems, greenhouses, automation and troubleshooting all live here. You can read it from the Calculator book itself, through a compatible master-guide reader, or through the generated Patchouli mirror when Patchouli is installed.$p$(l)Start here if this is your first time$()$p1. Open Getting Started: First 10 Minutes. It gives you a short route from your first Calculator to your first powered processing machine.$p2. Use the search box whenever you know the name of a machine, material, circuit state or symptom.$p3. Follow blue related-entry links instead of trying to memorize the whole book. Back and Forward preserve your reading trail.$p4. When a page shows live values, those values come from the current server. Static examples are labelled as defaults and can differ in a customized pack.$p$(o)This guide explains the mod; it does not grant research or bypass server progression. Reading an entry, Patchouli page, or master-guide page never unlocks a recipe by itself.$()$p$(l)One guide, several readers$()$pThe same Foundations Guide API content remains available to a future master-guide mod. R9 also publishes a resource-only Patchouli mirror under foundations_calculator:field_guide. Patchouli does not create a second Calculator book item: it is told to use the existing Foundations Calculator Field Guide item."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(l:foundations_calculator:getting_started/quickstart)Getting Started: First 10 Minutes$()$p$(l:foundations_calculator:getting_started/first_workshop)Build your first workshop$()$p$(l:foundations_calculator:power/eu_conversion)Understand EU, FE and joules$()$p$(l:foundations_calculator:troubleshooting/no_progress)Machine powered but not processing$()$pYour existing research and mastery: live server values are available in the native or master Foundations reader."
+    }
+  ],
+  "priority": true,
+  "extra_recipe_mappings": {
+    "foundations_calculator:info_calculator": 0
+  }
+}

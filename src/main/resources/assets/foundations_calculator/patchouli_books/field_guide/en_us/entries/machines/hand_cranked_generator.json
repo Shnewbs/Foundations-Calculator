@@ -1,0 +1,15 @@
+{
+  "name": "Hand Cranked Generator",
+  "category": "foundations_calculator:machines",
+  "icon": "foundations_calculator:hand_cranked_generator",
+  "sortnum": 66,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Purpose$()$pManual FE source for starting or testing a small workshop.$p$(l)Set up and operate$()$p1. Place the generator and use its crank interaction.$p2. Connect a permitted energy output to your first buffer or machine.$p3. Repeat until the full intended process batch is funded.$p$(l)When it does not run$()$pA large late-game recipe can require far more FE than repeated cranking is convenient for. The server can change energy per use.$pRead the active server settings below before copying default costs from another installation. For special slot roles, use the machine screen labels. Settings reporting does not inspect or mutate a placed machine.$pActual server settings: live server values are available in the native or master Foundations reader.$pCrafting / obtaining this machine: live recipe details are available in the native or master Foundations reader.$p$(l:foundations_calculator:troubleshooting/no_progress)General operating checklist$()"
+    }
+  ],
+  "extra_recipe_mappings": {
+    "foundations_calculator:hand_cranked_generator": 0
+  }
+}

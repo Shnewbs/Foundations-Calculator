@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "ABA",
+    "BCB",
+    "ABA"
+  ],
+  "key": {
+    "A": {
+      "item": "foundations_calculator:large_amethyst"
+    },
+    "B": {
+      "item": "foundations_calculator:redstone_ingot"
+    },
+    "C": {
+      "item": "foundations_calculator:advanced_assembly"
+    }
+  },
+  "result": {
+    "id": "foundations_calculator:hunger_processor",
+    "count": 1
+  }
+}

@@ -1,0 +1,196 @@
+{
+  "variants": {
+    "down=false,east=false,north=false,south=false,up=false,west=false": {
+      "model": "foundations_calculator:block/stable_stone_magenta_0"
+    },
+    "down=false,east=false,north=false,south=false,up=true,west=false": {
+      "model": "foundations_calculator:block/stable_stone_magenta_1"
+    },
+    "down=true,east=false,north=false,south=false,up=false,west=false": {
+      "model": "foundations_calculator:block/stable_stone_magenta_2"
+    },
+    "down=false,east=false,north=true,south=false,up=false,west=false": {
+      "model": "foundations_calculator:block/stable_stone_magenta_3"
+    },
+    "down=false,east=false,north=false,south=true,up=false,west=false": {
+      "model": "foundations_calculator:block/stable_stone_magenta_4"
+    },
+    "down=false,east=false,north=false,south=false,up=false,west=true": {
+      "model": "foundations_calculator:block/stable_stone_magenta_5"
+    },
+    "down=false,east=true,north=false,south=false,up=false,west=false": {
+      "model": "foundations_calculator:block/stable_stone_magenta_6"
+    },
+    "down=false,east=true,north=false,south=false,up=true,west=false": {
+      "model": "foundations_calculator:block/stable_stone_magenta_7"
+    },
+    "down=false,east=false,north=false,south=false,up=true,west=true": {
+      "model": "foundations_calculator:block/stable_stone_magenta_8"
+    },
+    "down=true,east=true,north=false,south=false,up=false,west=false": {
+      "model": "foundations_calculator:block/stable_stone_magenta_9"
+    },
+    "down=true,east=false,north=false,south=false,up=false,west=true": {
+      "model": "foundations_calculator:block/stable_stone_magenta_10"
+    },
+    "down=false,east=false,north=true,south=false,up=true,west=false": {
+      "model": "foundations_calculator:block/stable_stone_magenta_11"
+    },
+    "down=false,east=false,north=false,south=true,up=true,west=false": {
+      "model": "foundations_calculator:block/stable_stone_magenta_12"
+    },
+    "down=true,east=false,north=true,south=false,up=false,west=false": {
+      "model": "foundations_calculator:block/stable_stone_magenta_13"
+    },
+    "down=true,east=false,north=false,south=true,up=false,west=false": {
+      "model": "foundations_calculator:block/stable_stone_magenta_14"
+    },
+    "down=false,east=true,north=true,south=false,up=false,west=false": {
+      "model": "foundations_calculator:block/stable_stone_magenta_15"
+    },
+    "down=false,east=true,north=false,south=true,up=false,west=false": {
+      "model": "foundations_calculator:block/stable_stone_magenta_16"
+    },
+    "down=false,east=false,north=true,south=false,up=false,west=true": {
+      "model": "foundations_calculator:block/stable_stone_magenta_17"
+    },
+    "down=false,east=false,north=false,south=true,up=false,west=true": {
+      "model": "foundations_calculator:block/stable_stone_magenta_18"
+    },
+    "down=true,east=false,north=false,south=false,up=true,west=false": {
+      "model": "foundations_calculator:block/stable_stone_magenta_19"
+    },
+    "down=false,east=true,north=false,south=false,up=false,west=true": {
+      "model": "foundations_calculator:block/stable_stone_magenta_20"
+    },
+    "down=false,east=false,north=true,south=true,up=false,west=false": {
+      "model": "foundations_calculator:block/stable_stone_magenta_21"
+    },
+    "down=true,east=false,north=false,south=false,up=true,west=true": {
+      "model": "foundations_calculator:block/stable_stone_magenta_22"
+    },
+    "down=true,east=false,north=false,south=true,up=true,west=false": {
+      "model": "foundations_calculator:block/stable_stone_magenta_23"
+    },
+    "down=true,east=true,north=false,south=false,up=true,west=false": {
+      "model": "foundations_calculator:block/stable_stone_magenta_24"
+    },
+    "down=true,east=false,north=true,south=false,up=true,west=false": {
+      "model": "foundations_calculator:block/stable_stone_magenta_25"
+    },
+    "down=false,east=false,north=true,south=true,up=false,west=true": {
+      "model": "foundations_calculator:block/stable_stone_magenta_26"
+    },
+    "down=false,east=true,north=true,south=true,up=false,west=false": {
+      "model": "foundations_calculator:block/stable_stone_magenta_27"
+    },
+    "down=false,east=true,north=false,south=false,up=true,west=true": {
+      "model": "foundations_calculator:block/stable_stone_magenta_28"
+    },
+    "down=false,east=true,north=false,south=true,up=false,west=true": {
+      "model": "foundations_calculator:block/stable_stone_magenta_29"
+    },
+    "down=true,east=true,north=false,south=false,up=false,west=true": {
+      "model": "foundations_calculator:block/stable_stone_magenta_30"
+    },
+    "down=false,east=true,north=true,south=false,up=false,west=true": {
+      "model": "foundations_calculator:block/stable_stone_magenta_31"
+    },
+    "down=false,east=false,north=true,south=true,up=true,west=false": {
+      "model": "foundations_calculator:block/stable_stone_magenta_32"
+    },
+    "down=true,east=false,north=true,south=true,up=false,west=false": {
+      "model": "foundations_calculator:block/stable_stone_magenta_33"
+    },
+    "down=false,east=true,north=false,south=true,up=true,west=false": {
+      "model": "foundations_calculator:block/stable_stone_magenta_34"
+    },
+    "down=false,east=false,north=false,south=true,up=true,west=true": {
+      "model": "foundations_calculator:block/stable_stone_magenta_35"
+    },
+    "down=false,east=true,north=true,south=false,up=true,west=false": {
+      "model": "foundations_calculator:block/stable_stone_magenta_36"
+    },
+    "down=true,east=true,north=true,south=false,up=false,west=false": {
+      "model": "foundations_calculator:block/stable_stone_magenta_37"
+    },
+    "down=true,east=true,north=false,south=true,up=false,west=false": {
+      "model": "foundations_calculator:block/stable_stone_magenta_38"
+    },
+    "down=true,east=false,north=false,south=true,up=false,west=true": {
+      "model": "foundations_calculator:block/stable_stone_magenta_39"
+    },
+    "down=true,east=false,north=true,south=false,up=false,west=true": {
+      "model": "foundations_calculator:block/stable_stone_magenta_40"
+    },
+    "down=false,east=false,north=true,south=false,up=true,west=true": {
+      "model": "foundations_calculator:block/stable_stone_magenta_41"
+    },
+    "down=true,east=true,north=false,south=false,up=true,west=true": {
+      "model": "foundations_calculator:block/stable_stone_magenta_42"
+    },
+    "down=false,east=true,north=true,south=true,up=false,west=true": {
+      "model": "foundations_calculator:block/stable_stone_magenta_43"
+    },
+    "down=true,east=false,north=true,south=true,up=true,west=false": {
+      "model": "foundations_calculator:block/stable_stone_magenta_44"
+    },
+    "down=true,east=false,north=true,south=false,up=true,west=true": {
+      "model": "foundations_calculator:block/stable_stone_magenta_45"
+    },
+    "down=true,east=false,north=true,south=true,up=false,west=true": {
+      "model": "foundations_calculator:block/stable_stone_magenta_46"
+    },
+    "down=false,east=false,north=true,south=true,up=true,west=true": {
+      "model": "foundations_calculator:block/stable_stone_magenta_47"
+    },
+    "down=true,east=false,north=false,south=true,up=true,west=true": {
+      "model": "foundations_calculator:block/stable_stone_magenta_48"
+    },
+    "down=true,east=true,north=true,south=false,up=true,west=false": {
+      "model": "foundations_calculator:block/stable_stone_magenta_49"
+    },
+    "down=true,east=true,north=false,south=true,up=true,west=false": {
+      "model": "foundations_calculator:block/stable_stone_magenta_50"
+    },
+    "down=false,east=true,north=true,south=true,up=true,west=false": {
+      "model": "foundations_calculator:block/stable_stone_magenta_51"
+    },
+    "down=true,east=true,north=true,south=true,up=false,west=false": {
+      "model": "foundations_calculator:block/stable_stone_magenta_52"
+    },
+    "down=false,east=true,north=false,south=true,up=true,west=true": {
+      "model": "foundations_calculator:block/stable_stone_magenta_53"
+    },
+    "down=true,east=true,north=false,south=true,up=false,west=true": {
+      "model": "foundations_calculator:block/stable_stone_magenta_54"
+    },
+    "down=false,east=true,north=true,south=false,up=true,west=true": {
+      "model": "foundations_calculator:block/stable_stone_magenta_55"
+    },
+    "down=true,east=true,north=true,south=false,up=false,west=true": {
+      "model": "foundations_calculator:block/stable_stone_magenta_56"
+    },
+    "down=true,east=true,north=true,south=true,up=false,west=true": {
+      "model": "foundations_calculator:block/stable_stone_magenta_57"
+    },
+    "down=true,east=true,north=false,south=true,up=true,west=true": {
+      "model": "foundations_calculator:block/stable_stone_magenta_58"
+    },
+    "down=true,east=false,north=true,south=true,up=true,west=true": {
+      "model": "foundations_calculator:block/stable_stone_magenta_59"
+    },
+    "down=true,east=true,north=true,south=true,up=true,west=false": {
+      "model": "foundations_calculator:block/stable_stone_magenta_60"
+    },
+    "down=true,east=true,north=true,south=false,up=true,west=true": {
+      "model": "foundations_calculator:block/stable_stone_magenta_61"
+    },
+    "down=false,east=true,north=true,south=true,up=true,west=true": {
+      "model": "foundations_calculator:block/stable_stone_magenta_62"
+    },
+    "down=true,east=true,north=true,south=true,up=true,west=true": {
+      "model": "foundations_calculator:block/stable_stone_magenta_63"
+    }
+  }
+}

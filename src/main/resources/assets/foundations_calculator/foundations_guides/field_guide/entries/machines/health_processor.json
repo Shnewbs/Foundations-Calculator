@@ -1,0 +1,82 @@
+{
+  "id": "foundations_calculator:machines/health_processor",
+  "chapter": "foundations_calculator:machines",
+  "title": "Health Processor",
+  "order": 43,
+  "items": [
+    "foundations_calculator:health_processor"
+  ],
+  "keywords": [
+    "health_processor",
+    "Collects recipe-defined health nutrient or existing health-module contents and fills a destination module"
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "Purpose"
+    },
+    {
+      "type": "paragraph",
+      "text": "Collects recipe-defined health nutrient or existing health-module contents and fills a destination module. Matching Tanzanite networks can supply leaf nutrient."
+    },
+    {
+      "type": "heading",
+      "text": "Set up and operate"
+    },
+    {
+      "type": "steps",
+      "rows": [
+        [
+          "Inspect the current Health Processor value recipes."
+        ],
+        [
+          "Place the destination Health/Nutrition Module in its module slot."
+        ],
+        [
+          "Connect compatible leaves and keep the traversal loaded and permitted."
+        ]
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "When it does not run"
+    },
+    {
+      "type": "paragraph",
+      "text": "Not every edible item is a health source. The health program uses its own value recipes."
+    },
+    {
+      "type": "paragraph",
+      "text": "Read the active server settings below before copying default costs from another installation. For special slot roles, use the machine screen labels. Settings reporting does not inspect or mutate a placed machine."
+    },
+    {
+      "type": "live",
+      "text": "Actual server settings",
+      "target": "foundations_calculator",
+      "options": {
+        "key": "machine/health_processor"
+      }
+    },
+    {
+      "type": "recipe",
+      "text": "Processing / value recipes",
+      "target": "machine:health_processor",
+      "options": {
+        "profile": "health_processor"
+      }
+    },
+    {
+      "type": "recipe",
+      "text": "Crafting / obtaining this machine",
+      "target": "item:foundations_calculator:health_processor",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "link",
+      "text": "General operating checklist",
+      "target": "foundations_calculator:troubleshooting/no_progress"
+    }
+  ]
+}

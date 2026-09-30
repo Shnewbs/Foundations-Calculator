@@ -1,0 +1,77 @@
+{
+  "id": "foundations_calculator:farming/nutrition",
+  "chapter": "foundations_calculator:farming",
+  "title": "Nutrition modules, leaves and processors",
+  "order": 22,
+  "items": [
+    "foundations_calculator:amethyst_piping",
+    "foundations_calculator:tanzanite_piping",
+    "foundations_calculator:amethyst_log",
+    "foundations_calculator:tanzanite_log",
+    "foundations_calculator:amethyst_leaves",
+    "foundations_calculator:tanzanite_leaves"
+  ],
+  "keywords": [
+    "food",
+    "healing",
+    "health",
+    "hunger",
+    "nutrition network"
+  ],
+  "blocks": [
+    {
+      "type": "paragraph",
+      "text": "Hunger and health are separate stored nutrients, not FE. Matching modules collect them, processors transfer or produce them, and restoration uses the player’s current need and the module’s available contents."
+    },
+    {
+      "type": "table",
+      "text": "Sources and routes",
+      "rows": [
+        [
+          "Amethyst leaves",
+          "Hunger nutrient; matching piping/logs reach a Hunger Processor."
+        ],
+        [
+          "Tanzanite leaves",
+          "Health nutrient; matching piping/logs reach a Health Processor."
+        ],
+        [
+          "Hunger Processor",
+          "Can accept food nutrition and matching module contents."
+        ],
+        [
+          "Health Processor",
+          "Uses its recipe-defined health sources and matching module contents."
+        ],
+        [
+          "Nutrition Module",
+          "Carries both nutrient types and can restore automatically while carried/installed."
+        ]
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "Nutrition-network traversal is bounded and checks loaded chunks. The shipped visit limit is 512 positions; this is a safety boundary, not a chunk loader. A disconnected tree or denied leaf harvest can stop collection without changing the processor inventory."
+    },
+    {
+      "type": "link",
+      "text": "Hunger Processor",
+      "target": "foundations_calculator:machines/hunger_processor"
+    },
+    {
+      "type": "link",
+      "text": "Health Processor",
+      "target": "foundations_calculator:machines/health_processor"
+    },
+    {
+      "type": "link",
+      "text": "Stone Assimilator",
+      "target": "foundations_calculator:machines/stone_assimilator"
+    },
+    {
+      "type": "link",
+      "text": "Nutrition Module",
+      "target": "foundations_calculator:calculators/nutrition_module"
+    }
+  ]
+}

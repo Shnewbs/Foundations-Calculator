@@ -1,0 +1,171 @@
+{
+  "id": "foundations_calculator:pack_authors/materials_and_equipment_5",
+  "chapter": "foundations_calculator:pack_authors",
+  "title": "Materials and equipment · 5",
+  "order": 97,
+  "items": [
+    "foundations_calculator:enriched_gold",
+    "foundations_calculator:enriched_gold_ingot",
+    "foundations_calculator:reinforced_iron_ingot",
+    "foundations_calculator:redstone_ingot",
+    "foundations_calculator:weakened_diamond",
+    "foundations_calculator:flawless_diamond",
+    "foundations_calculator:fire_diamond",
+    "foundations_calculator:electric_diamond",
+    "foundations_calculator:large_amethyst",
+    "foundations_calculator:small_amethyst",
+    "foundations_calculator:shard_amethyst",
+    "foundations_calculator:large_tanzanite"
+  ],
+  "keywords": [],
+  "blocks": [
+    {
+      "type": "paragraph",
+      "text": "This reference groups related inventory entries. Each recipe section reads the current world. An item may have no crafting result when it comes from harvesting, world generation, a program action or creative tools."
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:enriched_gold"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Enriched Gold",
+      "target": "item:foundations_calculator:enriched_gold",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:enriched_gold_ingot"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Enriched Gold Ingot",
+      "target": "item:foundations_calculator:enriched_gold_ingot",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:reinforced_iron_ingot"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Reinforced Iron Ingot",
+      "target": "item:foundations_calculator:reinforced_iron_ingot",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:redstone_ingot"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Redstone Ingot",
+      "target": "item:foundations_calculator:redstone_ingot",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:weakened_diamond"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Weakened Diamond",
+      "target": "item:foundations_calculator:weakened_diamond",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:flawless_diamond"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Flawless Diamond",
+      "target": "item:foundations_calculator:flawless_diamond",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:fire_diamond"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Fire Diamond",
+      "target": "item:foundations_calculator:fire_diamond",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:electric_diamond"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Electric Diamond",
+      "target": "item:foundations_calculator:electric_diamond",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:large_amethyst"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Large Amethyst",
+      "target": "item:foundations_calculator:large_amethyst",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:small_amethyst"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Small Amethyst",
+      "target": "item:foundations_calculator:small_amethyst",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:shard_amethyst"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Shard Amethyst",
+      "target": "item:foundations_calculator:shard_amethyst",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:large_tanzanite"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Large Tanzanite",
+      "target": "item:foundations_calculator:large_tanzanite",
+      "options": {
+        "profile": ""
+      }
+    }
+  ]
+}

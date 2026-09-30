@@ -1,0 +1,60 @@
+{
+  "id": "foundations_calculator:circuits/boards",
+  "chapter": "foundations_calculator:circuits",
+  "title": "Board variants, analysis and stability",
+  "order": 7,
+  "items": [
+    "foundations_calculator:circuit_board_0",
+    "foundations_calculator:circuit_board_1",
+    "foundations_calculator:circuit_board_2",
+    "foundations_calculator:circuit_board_3",
+    "foundations_calculator:circuit_board_4",
+    "foundations_calculator:circuit_board_5",
+    "foundations_calculator:circuit_board_6",
+    "foundations_calculator:circuit_board_7",
+    "foundations_calculator:circuit_board_8",
+    "foundations_calculator:circuit_board_9",
+    "foundations_calculator:circuit_board_10",
+    "foundations_calculator:circuit_board_11",
+    "foundations_calculator:circuit_board_12",
+    "foundations_calculator:circuit_board_13"
+  ],
+  "keywords": [
+    "analysed",
+    "analyzed",
+    "circuit_state",
+    "stable board"
+  ],
+  "blocks": [
+    {
+      "type": "paragraph",
+      "text": "There are fourteen board variants. Matching the board number is necessary when a recipe asks for a particular variant, and a state requirement can add another condition. The recipe panel labels analysed and analysed AND stable requirements separately."
+    },
+    {
+      "type": "paragraph",
+      "text": "An ordinary clean board needs analysis before it can satisfy an analysed requirement. A stable board also needs the analysed flag when a recipe requires both. Fabrication and Locator stabilization have different acceptance rules; do not infer one from the other."
+    },
+    {
+      "type": "paragraph",
+      "text": "A Calculator Plug activates when it holds a stable board. The Locator counts those plugs. Its owner-presence requirement and instability behavior are described in the Locator chapter, not in the recipe browser."
+    },
+    {
+      "type": "recipe",
+      "text": "Fabrication requirements",
+      "target": "machine:fabrication_chamber",
+      "options": {
+        "profile": "fabrication_chamber"
+      }
+    },
+    {
+      "type": "link",
+      "text": "Calculator Plug",
+      "target": "foundations_calculator:machines/calculator_plug"
+    },
+    {
+      "type": "link",
+      "text": "Calculator Locator",
+      "target": "foundations_calculator:machines/calculator_locator"
+    }
+  ]
+}

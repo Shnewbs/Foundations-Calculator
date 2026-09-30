@@ -1,0 +1,82 @@
+{
+  "id": "foundations_calculator:machines/glowstone_extractor",
+  "chapter": "foundations_calculator:machines",
+  "title": "Glowstone Extractor",
+  "order": 65,
+  "items": [
+    "foundations_calculator:glowstone_extractor"
+  ],
+  "keywords": [
+    "glowstone_extractor",
+    "Uses its glowstone-value ingredient family plus furnace fuel to generate FE"
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "Purpose"
+    },
+    {
+      "type": "paragraph",
+      "text": "Uses its glowstone-value ingredient family plus furnace fuel to generate FE."
+    },
+    {
+      "type": "heading",
+      "text": "Set up and operate"
+    },
+    {
+      "type": "steps",
+      "rows": [
+        [
+          "Provide valid furnace fuel."
+        ],
+        [
+          "Provide an ingredient shown in this extractor’s value recipes."
+        ],
+        [
+          "Keep a receiving buffer available."
+        ]
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "When it does not run"
+    },
+    {
+      "type": "paragraph",
+      "text": "Nutrient and burn time are separate resources. A zero nutrient input cannot be repaired by increasing the EU conversion rate."
+    },
+    {
+      "type": "paragraph",
+      "text": "Read the active server settings below before copying default costs from another installation. For special slot roles, use the machine screen labels. Settings reporting does not inspect or mutate a placed machine."
+    },
+    {
+      "type": "live",
+      "text": "Actual server settings",
+      "target": "foundations_calculator",
+      "options": {
+        "key": "machine/glowstone_extractor"
+      }
+    },
+    {
+      "type": "recipe",
+      "text": "Processing / value recipes",
+      "target": "machine:glowstone_extractor",
+      "options": {
+        "profile": "glowstone_extractor"
+      }
+    },
+    {
+      "type": "recipe",
+      "text": "Crafting / obtaining this machine",
+      "target": "item:foundations_calculator:glowstone_extractor",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "link",
+      "text": "General operating checklist",
+      "target": "foundations_calculator:troubleshooting/no_progress"
+    }
+  ]
+}

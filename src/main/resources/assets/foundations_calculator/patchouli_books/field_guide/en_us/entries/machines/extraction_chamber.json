@@ -1,0 +1,15 @@
+{
+  "name": "Extraction Chamber",
+  "category": "foundations_calculator:machines",
+  "icon": "foundations_calculator:extraction_chamber",
+  "sortnum": 46,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Purpose$()$pTurns dirt/cobblestone into Soil/Small Stone and can find dirty or damaged circuits. It produces raw circuits, not analysed boards.$p$(l)Set up and operate$()$p1. Choose dirt or cobblestone according to the recipe.$p2. Supply the complete batch cost and wait through the duration.$p3. Separate guaranteed material output from chance-based circuit output.$p$(l)When it does not run$()$pNot receiving a chip on every cycle is expected for chance results. Use Precision recipes when you need a more specific route.$pRead the active server settings below before copying default costs from another installation. For special slot roles, use the machine screen labels. Settings reporting does not inspect or mutate a placed machine.$pActual server settings: live server values are available in the native or master Foundations reader.$pProcessing / value recipes: live recipe details are available in the native or master Foundations reader.$pCrafting / obtaining this machine: live recipe details are available in the native or master Foundations reader.$p$(l:foundations_calculator:troubleshooting/no_progress)General operating checklist$()"
+    }
+  ],
+  "extra_recipe_mappings": {
+    "foundations_calculator:extraction_chamber": 0
+  }
+}

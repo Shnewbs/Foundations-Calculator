@@ -1,0 +1,21 @@
+{
+  "name": "Greenhouse growing cycle",
+  "category": "foundations_calculator:farming",
+  "icon": "foundations_calculator:broccoli_seeds",
+  "sortnum": 20,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Greenhouses combine structure validation, irrigation, farmland preparation, planting, harvesting and optional accelerated growth. Correct material geometry alone does not guarantee that every crop can survive in every position.$p1. Build or assemble the correct greenhouse tier and leave its growing cells available.$p2. Prepare the required dirt/grass underneath the crop positions. Automatic farmland and water placement must be enabled and permitted by protection checks.$p3. Supply seeds compatible with that tier. Basic/Advanced reserve their first four input slots for construction materials; Flawless can use all fourteen inputs for seeds.$p4. Place a chest directly outside the controller for seed import and produce export, or use internal storage. Its side mode must allow the requested direction.$p5. Supply FE and suitable CO\u2082. Watch for pending output, a disabled side, Pause, or redstone before adding more fuel.$p6. Allow ordinary crop light/survival rules. A greenhouse does not invent a valid harvest contract for an arbitrary third-party plant.$p$(l)Native crop tiers$()$pBroccoli \u2014 Can also grow outside a greenhouse.$pPrunae \u2014 Requires at least Advanced tier for greenhouse planting.$pFiddledew \u2014 Requires Flawless tier.$pGas Lanterns supply CO\u2082 to Basic and Advanced structures; Flawless uses its correctly positioned CO\u2082 Generator. Carbon changes growth intervals. Planting, growth, harvest, water and farmland each have separate energy/settings controls."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Actual server settings: live server values are available in the native or master Foundations reader.$p$(l:foundations_calculator:farming/compatibility)External plants and protected callbacks$()$p$(l:foundations_calculator:machines/gas_lantern_off)Gas Lantern$()"
+    }
+  ],
+  "extra_recipe_mappings": {
+    "foundations_calculator:broccoli_seeds": 0,
+    "foundations_calculator:prunae_seeds": 0,
+    "foundations_calculator:fiddledew_fruit": 0
+  }
+}

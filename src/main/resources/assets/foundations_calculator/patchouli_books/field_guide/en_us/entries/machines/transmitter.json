@@ -1,0 +1,15 @@
+{
+  "name": "Transmitter",
+  "category": "foundations_calculator:machines",
+  "icon": "foundations_calculator:transmitter",
+  "sortnum": 62,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Purpose$()$pA nearby Conductor Mast support block affecting strike intervals and output.$p$(l)Set up and operate$()$p1. Place within the configured mast range.$p2. Pair with a valid mast setup.$p3. Measure complete burst cycles rather than one isolated tick.$p$(l)When it does not run$()$pIt is not a wireless item pipe or a standalone FE generator; its role belongs to the mast program.$pActual server settings: live server values are available in the native or master Foundations reader.$pCrafting / obtaining this machine: live recipe details are available in the native or master Foundations reader.$p$(l:foundations_calculator:troubleshooting/no_progress)General operating checklist$()"
+    }
+  ],
+  "extra_recipe_mappings": {
+    "foundations_calculator:transmitter": 0
+  }
+}

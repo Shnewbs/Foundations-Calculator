@@ -1,0 +1,15 @@
+{
+  "name": "Energy Module",
+  "category": "foundations_calculator:calculators",
+  "icon": "foundations_calculator:energy_module",
+  "sortnum": 86,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Purpose$()$pAdds FE storage, including additional storage when installed in a Flawless Calculator.$p$(l)Use$()$pCharge it through a compatible charger. Use it to read stored energy. Extra storage is not an energy generator and does not override a charger\u2019s rate or native tier.$p$(l:foundations_calculator:calculators/installing)Using modules inside a Flawless Calculator$()$pActual server settings: live server values are available in the native or master Foundations reader.$pObtain this module: live recipe details are available in the native or master Foundations reader."
+    }
+  ],
+  "extra_recipe_mappings": {
+    "foundations_calculator:energy_module": 0
+  }
+}

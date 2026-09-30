@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "AAA",
+    "AAA",
+    "AAA"
+  ],
+  "key": {
+    "A": {
+      "item": "foundations_calculator:end_diamond"
+    }
+  },
+  "result": {
+    "id": "foundations_calculator:end_diamond_block",
+    "count": 1
+  }
+}

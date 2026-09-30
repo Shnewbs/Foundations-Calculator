@@ -1,0 +1,15 @@
+{
+  "name": "Creative Power Cube",
+  "category": "foundations_calculator:machines",
+  "icon": "foundations_calculator:creative_power_cube",
+  "sortnum": 34,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Purpose$()$pCreative/testing power supply. It replenishes stored FE; it is not intended as a survival progression reward.$p$(l)Set up and operate$()$p1. Place it in a test world.$p2. Enable a permitted output face.$p3. Use it to isolate receiver-side problems, then retest with a finite survival source.$p$(l)When it does not run$()$pDo not treat a test with an unlimited source as proof that your normal generator can meet the required throughput.$pRead the active server settings below before copying default costs from another installation. For special slot roles, use the machine screen labels. Settings reporting does not inspect or mutate a placed machine.$pActual server settings: live server values are available in the native or master Foundations reader.$pCrafting / obtaining this machine: live recipe details are available in the native or master Foundations reader.$p$(l:foundations_calculator:troubleshooting/no_progress)General operating checklist$()"
+    }
+  ],
+  "extra_recipe_mappings": {
+    "foundations_calculator:creative_power_cube": 0
+  }
+}

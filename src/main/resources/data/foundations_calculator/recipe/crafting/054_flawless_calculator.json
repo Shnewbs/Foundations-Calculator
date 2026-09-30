@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "FSF",
+    "DAD",
+    "FEF"
+  ],
+  "key": {
+    "F": {
+      "item": "foundations_calculator:flawless_diamond"
+    },
+    "D": {
+      "tag": "c:gems/diamond"
+    },
+    "E": {
+      "item": "foundations_calculator:end_diamond"
+    },
+    "A": {
+      "item": "foundations_calculator:flawless_assembly"
+    },
+    "S": {
+      "item": "foundations_calculator:calculator_screen"
+    }
+  },
+  "result": {
+    "id": "foundations_calculator:flawless_calculator",
+    "count": 1
+  }
+}

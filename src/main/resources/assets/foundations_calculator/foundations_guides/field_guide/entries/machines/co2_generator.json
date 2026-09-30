@@ -1,0 +1,74 @@
+{
+  "id": "foundations_calculator:machines/co2_generator",
+  "chapter": "foundations_calculator:machines",
+  "title": "CO₂ Generator",
+  "order": 57,
+  "items": [
+    "foundations_calculator:co2_generator"
+  ],
+  "keywords": [
+    "co2_generator",
+    "Supplies carbon to a correctly aligned Flawless Greenhouse by burning fuel and consuming FE per fuel item"
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "Purpose"
+    },
+    {
+      "type": "paragraph",
+      "text": "Supplies carbon to a correctly aligned Flawless Greenhouse by burning fuel and consuming FE per fuel item."
+    },
+    {
+      "type": "heading",
+      "text": "Set up and operate"
+    },
+    {
+      "type": "steps",
+      "rows": [
+        [
+          "Place it three blocks to the specified side of the Flawless controller, same facing."
+        ],
+        [
+          "Provide a valid fuel and enough FE for the entire fuel start."
+        ],
+        [
+          "Use Controlled Fuel for the configured high-carbon pause/resume behavior."
+        ]
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "When it does not run"
+    },
+    {
+      "type": "paragraph",
+      "text": "At the shipped values Controlled Fuel pauses at 100% and resumes at 92%, preserving paused burn time. Wrong position/facing prevents the intended link."
+    },
+    {
+      "type": "paragraph",
+      "text": "Read the active server settings below before copying default costs from another installation. For special slot roles, use the machine screen labels. Settings reporting does not inspect or mutate a placed machine."
+    },
+    {
+      "type": "live",
+      "text": "Actual server settings",
+      "target": "foundations_calculator",
+      "options": {
+        "key": "machine/co2_generator"
+      }
+    },
+    {
+      "type": "recipe",
+      "text": "Crafting / obtaining this machine",
+      "target": "item:foundations_calculator:co2_generator",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "link",
+      "text": "General operating checklist",
+      "target": "foundations_calculator:troubleshooting/no_progress"
+    }
+  ]
+}

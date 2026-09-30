@@ -1,0 +1,20 @@
+{
+  "name": "Crafting components, tools and decorative materials",
+  "category": "foundations_calculator:calculators",
+  "icon": "foundations_calculator:calculator_assembly",
+  "sortnum": 90,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Calculator Assembly, Advanced Assembly and Atomic Module are progression crafting components. Similar names do not mean they open their own usable module screen. Use their live recipe references to distinguish ingredients from installed tools.$pCalculator Assembly: live recipe details are available in the native or master Foundations reader.$pAdvanced Assembly: live recipe details are available in the native or master Foundations reader.$pUses for Atomic Module: live recipe details are available in the native or master Foundations reader.$pMaterial families include stable stone, reinforced materials, gems/shards, redstone/enriched-gold ingredients, Calculator trees, and decorative Sonar Core blocks. Their crafting links remain data-driven. Search a specific item ID to find its group, then use the recipe links supplied in that group.$pTools such as the Sickle and Obsidian Key perform their dedicated block interactions. The reusable End Diamond throws an ender-pearl-like projectile while retaining the item. Tool durability, cooldowns and material properties are independently configurable.$pReusable End Diamond: live recipe details are available in the native or master Foundations reader.$pSickle: live recipe details are available in the native or master Foundations reader.$pObsidian Key: live recipe details are available in the native or master Foundations reader."
+    }
+  ],
+  "extra_recipe_mappings": {
+    "foundations_calculator:calculator_assembly": 0,
+    "foundations_calculator:advanced_assembly": 0,
+    "foundations_calculator:atomic_module": 0,
+    "foundations_calculator:end_diamond": 0,
+    "foundations_calculator:sickle": 0,
+    "foundations_calculator:obsidian_key": 0
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "id": "foundations_calculator:machines/dynamic_calculator",
+  "chapter": "foundations_calculator:machines",
+  "title": "Dynamic Calculator",
+  "order": 36,
+  "items": [
+    "foundations_calculator:dynamic_calculator"
+  ],
+  "keywords": [
+    "dynamic_calculator",
+    "Runs Basic, Scientific and Atomic lanes in one validated hollow shell"
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "Purpose"
+    },
+    {
+      "type": "paragraph",
+      "text": "Runs Basic, Scientific and Atomic lanes in one validated hollow shell. The lanes share output storage, rather than maintaining three independent output inventories."
+    },
+    {
+      "type": "heading",
+      "text": "Set up and operate"
+    },
+    {
+      "type": "steps",
+      "rows": [
+        [
+          "Build the controller-relative shell described in Multiblocks."
+        ],
+        [
+          "Put Basic inputs in positions 1–2, Scientific in 3–4, Atomic in 5–7."
+        ],
+        [
+          "Supply FE and keep shared outputs clear."
+        ],
+        [
+          "Wait for the scheduled structure check after correcting a missing wall."
+        ]
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "When it does not run"
+    },
+    {
+      "type": "paragraph",
+      "text": "An occupied interior, wrong corner material, unloaded shell position or blocked shared output can stop all lanes."
+    },
+    {
+      "type": "paragraph",
+      "text": "Read the active server settings below before copying default costs from another installation. For special slot roles, use the machine screen labels. Settings reporting does not inspect or mutate a placed machine."
+    },
+    {
+      "type": "live",
+      "text": "Actual server settings",
+      "target": "foundations_calculator",
+      "options": {
+        "key": "machine/dynamic_calculator"
+      }
+    },
+    {
+      "type": "recipe",
+      "text": "Crafting / obtaining this machine",
+      "target": "item:foundations_calculator:dynamic_calculator",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "link",
+      "text": "Exact default shell layers",
+      "target": "foundations_calculator:multiblocks/dynamic"
+    }
+  ]
+}

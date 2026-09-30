@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "SSS",
+    "SDS",
+    "SSS"
+  ],
+  "key": {
+    "D": {
+      "item": "minecraft:red_dye"
+    },
+    "S": {
+      "item": "foundations_calculator:stable_stone_normal"
+    }
+  },
+  "result": {
+    "id": "foundations_calculator:stable_stone_red",
+    "count": 8
+  }
+}

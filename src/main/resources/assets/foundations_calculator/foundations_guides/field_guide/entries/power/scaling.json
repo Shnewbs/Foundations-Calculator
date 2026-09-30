@@ -1,0 +1,72 @@
+{
+  "id": "foundations_calculator:power/scaling",
+  "chapter": "foundations_calculator:power",
+  "title": "Long buffers, units & scale",
+  "order": 9,
+  "items": [
+    "foundations_calculator:power_cube",
+    "foundations_calculator:advanced_power_cube"
+  ],
+  "keywords": [
+    "long energy",
+    "capacity",
+    "buffer",
+    "preset",
+    "high power",
+    "scale"
+  ],
+  "blocks": [
+    {
+      "type": "paragraph",
+      "text": "0.0.2a stores Calculator machine and powered-item energy with 64-bit counters. NeoForge FE remains an int-valued compatibility capability, so a single FE call is bounded even when the underlying buffer is much larger. Native long-valued adapters can see the full buffer."
+    },
+    {
+      "type": "table",
+      "text": "Scale controls",
+      "rows": [
+        [
+          "energy.machineCapacityMultiplier",
+          "Multiplies every machine buffer after its normal machine capacity."
+        ],
+        [
+          "machine.<id>.capacityMultiplier",
+          "Per-machine multiplier applied after the configured base capacity."
+        ],
+        [
+          "energy.itemCapacityMultiplier",
+          "Multiplies Calculator/module item buffers."
+        ],
+        [
+          "module.<id>.capacityMultiplier",
+          "Per-item/module multiplier."
+        ],
+        [
+          "energy.transferMultiplier",
+          "Multiplies transfer/charging limits without changing conversion ratios."
+        ]
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "Existing R9 machine saves migrate automatically because the Energy NBT field is read as a long. Powered items retain the legacy int energy component for downgrade visibility and add a long component for values above 2,147,483,647 FE."
+    },
+    {
+      "type": "callout",
+      "text": "Large buffers do not make one transfer unlimited. FE, GT packet limits, machine transfer rates, item charge rates, side modes and adapter policy still cap each operation."
+    },
+    {
+      "type": "paragraph",
+      "text": "Client setting information.energyUnit can display FE or an explicitly configured GT EU, Mekanism J or MI EU view. If an external ratio is inherited rather than explicitly configured, the GUI falls back to FE instead of guessing."
+    },
+    {
+      "type": "link",
+      "text": "EU, FE, J and conversion policy",
+      "target": "foundations_calculator:power/eu_conversion"
+    },
+    {
+      "type": "link",
+      "text": "Pack configuration and presets",
+      "target": "foundations_calculator:pack_authors/configuration"
+    }
+  ]
+}

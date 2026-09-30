@@ -1,0 +1,30 @@
+{
+  "name": "Materials and equipment \u00b7 2",
+  "category": "foundations_calculator:pack_authors",
+  "icon": "foundations_calculator:reinforced_pickaxe",
+  "sortnum": 94,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "This reference groups related inventory entries. Each recipe section reads the current world. An item may have no crafting result when it comes from harvesting, world generation, a program action or creative tools.$pItem: foundations_calculator:reinforced_pickaxe$pObtaining Reinforced Pickaxe: live recipe details are available in the native or master Foundations reader.$pItem: foundations_calculator:enriched_gold_pickaxe$pObtaining Enriched Gold Pickaxe: live recipe details are available in the native or master Foundations reader.$pItem: foundations_calculator:reinforced_iron_pickaxe$pObtaining Reinforced Iron Pickaxe: live recipe details are available in the native or master Foundations reader.$pItem: foundations_calculator:redstone_pickaxe$pObtaining Redstone Pickaxe: live recipe details are available in the native or master Foundations reader.$pItem: foundations_calculator:weakened_diamond_pickaxe$pObtaining Weakened Diamond Pickaxe: live recipe details are available in the native or master Foundations reader.$pItem: foundations_calculator:flawless_diamond_pickaxe$pObtaining Flawless Diamond Pickaxe: live recipe details are available in the native or master Foundations reader.$pItem: foundations_calculator:fire_diamond_pickaxe$pObtaining Fire Diamond Pickaxe: live recipe details are available in the native or master Foundations reader.$pItem: foundations_calculator:electric_pickaxe"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Obtaining Electric Pickaxe: live recipe details are available in the native or master Foundations reader.$pItem: foundations_calculator:end_forged_pickaxe$pObtaining End Forged Pickaxe: live recipe details are available in the native or master Foundations reader.$pItem: foundations_calculator:reinforced_axe$pObtaining Reinforced Axe: live recipe details are available in the native or master Foundations reader.$pItem: foundations_calculator:enriched_gold_axe$pObtaining Enriched Gold Axe: live recipe details are available in the native or master Foundations reader.$pItem: foundations_calculator:reinforced_iron_axe$pObtaining Reinforced Iron Axe: live recipe details are available in the native or master Foundations reader."
+    }
+  ],
+  "extra_recipe_mappings": {
+    "foundations_calculator:reinforced_pickaxe": 0,
+    "foundations_calculator:enriched_gold_pickaxe": 0,
+    "foundations_calculator:reinforced_iron_pickaxe": 0,
+    "foundations_calculator:redstone_pickaxe": 0,
+    "foundations_calculator:weakened_diamond_pickaxe": 0,
+    "foundations_calculator:flawless_diamond_pickaxe": 0,
+    "foundations_calculator:fire_diamond_pickaxe": 0,
+    "foundations_calculator:electric_pickaxe": 0,
+    "foundations_calculator:end_forged_pickaxe": 0,
+    "foundations_calculator:reinforced_axe": 0,
+    "foundations_calculator:enriched_gold_axe": 0,
+    "foundations_calculator:reinforced_iron_axe": 0
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "type": "foundations_calculator:process",
+  "machine": "calculator",
+  "ingredients": [
+    {
+      "ingredient": {
+        "item": "foundations_calculator:lantern"
+      },
+      "count": 1
+    },
+    {
+      "ingredient": {
+        "item": "foundations_calculator:lantern"
+      },
+      "count": 1
+    }
+  ],
+  "results": [
+    {
+      "stack": {
+        "id": "foundations_calculator:gas_lantern_off",
+        "count": 1
+      }
+    }
+  ],
+  "energy": 0,
+  "ticks": 1,
+  "value": 0,
+  "research": false
+}

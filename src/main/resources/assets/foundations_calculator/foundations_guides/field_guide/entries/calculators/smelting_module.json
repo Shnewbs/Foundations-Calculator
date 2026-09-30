@@ -1,0 +1,52 @@
+{
+  "id": "foundations_calculator:calculators/smelting_module",
+  "chapter": "foundations_calculator:calculators",
+  "title": "Smelting Module",
+  "order": 88,
+  "items": [
+    "foundations_calculator:smelting_module"
+  ],
+  "keywords": [
+    "module",
+    "smelting_module"
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "Purpose"
+    },
+    {
+      "type": "paragraph",
+      "text": "Portable electric smelting with inputs, outputs and a Returns area for empty containers."
+    },
+    {
+      "type": "heading",
+      "text": "Use"
+    },
+    {
+      "type": "paragraph",
+      "text": "Put in a smeltable input and charge the module/carrier. Processing can continue while carried or installed when the server enables background processing. Full outputs or insufficient energy pause safely."
+    },
+    {
+      "type": "link",
+      "text": "Using modules inside a Flawless Calculator",
+      "target": "foundations_calculator:calculators/installing"
+    },
+    {
+      "type": "live",
+      "text": "Actual server settings",
+      "target": "foundations_calculator",
+      "options": {
+        "key": "module/smelting_module"
+      }
+    },
+    {
+      "type": "recipe",
+      "text": "Obtain this module",
+      "target": "item:foundations_calculator:smelting_module",
+      "options": {
+        "profile": ""
+      }
+    }
+  ]
+}

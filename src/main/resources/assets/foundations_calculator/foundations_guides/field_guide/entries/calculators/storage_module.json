@@ -1,0 +1,44 @@
+{
+  "id": "foundations_calculator:calculators/storage_module",
+  "chapter": "foundations_calculator:calculators",
+  "title": "Storage Module",
+  "order": 77,
+  "items": [
+    "foundations_calculator:storage_module"
+  ],
+  "keywords": [
+    "module",
+    "storage_module"
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "Purpose"
+    },
+    {
+      "type": "paragraph",
+      "text": "Stores a carried inventory. When installed, its contents remain part of the Flawless Calculator component."
+    },
+    {
+      "type": "heading",
+      "text": "Use"
+    },
+    {
+      "type": "paragraph",
+      "text": "Open it, place items, close it, and check the same contents after selecting another module. It cannot be nested indiscriminately inside container items."
+    },
+    {
+      "type": "link",
+      "text": "Using modules inside a Flawless Calculator",
+      "target": "foundations_calculator:calculators/installing"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtain this module",
+      "target": "item:foundations_calculator:storage_module",
+      "options": {
+        "profile": ""
+      }
+    }
+  ]
+}

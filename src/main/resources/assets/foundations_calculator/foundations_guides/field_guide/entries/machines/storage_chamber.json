@@ -1,0 +1,74 @@
+{
+  "id": "foundations_calculator:machines/storage_chamber",
+  "chapter": "foundations_calculator:machines",
+  "title": "Storage Chamber",
+  "order": 52,
+  "items": [
+    "foundations_calculator:storage_chamber"
+  ],
+  "keywords": [
+    "storage_chamber",
+    "Bulk item storage with per-bin quantities and representative stacks rather than an ordinary chest grid"
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "Purpose"
+    },
+    {
+      "type": "paragraph",
+      "text": "Bulk item storage with per-bin quantities and representative stacks rather than an ordinary chest grid."
+    },
+    {
+      "type": "heading",
+      "text": "Set up and operate"
+    },
+    {
+      "type": "steps",
+      "rows": [
+        [
+          "Open the bulk-storage screen."
+        ],
+        [
+          "Insert an item into its intended bin and read the stored quantity."
+        ],
+        [
+          "Withdraw a test stack and verify the remaining total before connecting automation."
+        ]
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "When it does not run"
+    },
+    {
+      "type": "paragraph",
+      "text": "A full or filtered bin can refuse a different item/component set even when another bin is empty. Capacity decreases preserve existing excess contents."
+    },
+    {
+      "type": "paragraph",
+      "text": "Read the active server settings below before copying default costs from another installation. For special slot roles, use the machine screen labels. Settings reporting does not inspect or mutate a placed machine."
+    },
+    {
+      "type": "live",
+      "text": "Actual server settings",
+      "target": "foundations_calculator",
+      "options": {
+        "key": "machine/storage_chamber"
+      }
+    },
+    {
+      "type": "recipe",
+      "text": "Crafting / obtaining this machine",
+      "target": "item:foundations_calculator:storage_chamber",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "link",
+      "text": "General operating checklist",
+      "target": "foundations_calculator:troubleshooting/no_progress"
+    }
+  ]
+}

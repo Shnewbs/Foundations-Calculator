@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "foundations_calculator:block/weakened_diamond_block"
+    }
+  }
+}

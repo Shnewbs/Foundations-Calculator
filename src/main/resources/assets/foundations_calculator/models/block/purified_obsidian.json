@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "particle": "foundations_calculator:legacy_calculator/blocks/connected/purifiedobsidian",
+    "north": "foundations_calculator:legacy_calculator/blocks/connected/purifiedobsidian",
+    "east": "foundations_calculator:legacy_calculator/blocks/connected/purifiedobsidian",
+    "south": "foundations_calculator:legacy_calculator/blocks/connected/purifiedobsidian",
+    "west": "foundations_calculator:legacy_calculator/blocks/connected/purifiedobsidian",
+    "up": "foundations_calculator:legacy_calculator/blocks/connected/purifiedobsidian",
+    "down": "foundations_calculator:legacy_calculator/blocks/connected/purifiedobsidian"
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "id": "foundations_calculator:multiblocks/mast",
+  "chapter": "foundations_calculator:multiblocks",
+  "title": "Conductor Mast and weather links",
+  "order": 19,
+  "items": [],
+  "keywords": [
+    "lightning",
+    "mast height",
+    "burst",
+    "weather station"
+  ],
+  "blocks": [
+    {
+      "type": "paragraph",
+      "text": "A Conductor Mast reserves four blocks of height when placed. Upper sections belong to one controller; breaking an extension removes that structure and should return one controller, not four independent machines."
+    },
+    {
+      "type": "layers",
+      "text": "Vertical profile (top to bottom)",
+      "rows": [
+        [
+          "M"
+        ],
+        [
+          "M"
+        ],
+        [
+          "M"
+        ],
+        [
+          "C"
+        ]
+      ],
+      "options": {
+        "legend": "C controller/base; M reserved mast section. This is a side view, not a floor plan."
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": "Weather Stations link to the nearest mast on the same height level within their configured search range. The shipped range is ten blocks. Transmitters within the shipped twenty-block range shorten the strike interval and can increase generation. Right-click a Weather Station to inspect its link."
+    },
+    {
+      "type": "paragraph",
+      "text": "Generation occurs in bursts, not a perfectly constant FE/t source. Leave buffer space and sufficient cable throughput before concluding that a paused burst is a failure."
+    },
+    {
+      "type": "live",
+      "text": "Actual server settings",
+      "target": "foundations_calculator",
+      "options": {
+        "key": "machine/conductor_mast"
+      }
+    },
+    {
+      "type": "link",
+      "text": "Weather Station",
+      "target": "foundations_calculator:machines/weather_station"
+    },
+    {
+      "type": "link",
+      "text": "Transmitter",
+      "target": "foundations_calculator:machines/transmitter"
+    }
+  ]
+}

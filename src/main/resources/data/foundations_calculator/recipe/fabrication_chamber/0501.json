@@ -1,0 +1,25 @@
+{
+  "type": "foundations_calculator:process",
+  "machine": "fabrication_chamber",
+  "ingredients": [
+    {
+      "ingredient": {
+        "item": "foundations_calculator:circuit_board_5"
+      },
+      "count": 50,
+      "circuit_state": 1
+    }
+  ],
+  "results": [
+    {
+      "stack": {
+        "id": "foundations_calculator:warp_module",
+        "count": 1
+      }
+    }
+  ],
+  "energy": 1000,
+  "ticks": 200,
+  "value": 0,
+  "research": false
+}

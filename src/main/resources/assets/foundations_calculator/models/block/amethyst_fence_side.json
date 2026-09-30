@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/fence_side",
+  "textures": {
+    "texture": "foundations_calculator:legacy_calculator/blocks/wood/planks_amethyst"
+  }
+}

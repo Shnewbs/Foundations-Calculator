@@ -1,0 +1,18 @@
+{
+  "name": "Tree and crop products \u00b7 2",
+  "category": "foundations_calculator:pack_authors",
+  "icon": "foundations_calculator:diamond_log",
+  "sortnum": 101,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "This reference groups related inventory entries. Each recipe section reads the current world. An item may have no crafting result when it comes from harvesting, world generation, a program action or creative tools.$pItem: foundations_calculator:diamond_log$pObtaining Diamond Log: live recipe details are available in the native or master Foundations reader.$pItem: foundations_calculator:diamond_planks$pObtaining Diamond Planks: live recipe details are available in the native or master Foundations reader.$pItem: foundations_calculator:diamond_leaves$pObtaining Diamond Leaves: live recipe details are available in the native or master Foundations reader.$pItem: foundations_calculator:diamond_sapling$pObtaining Diamond Sapling: live recipe details are available in the native or master Foundations reader."
+    }
+  ],
+  "extra_recipe_mappings": {
+    "foundations_calculator:diamond_log": 0,
+    "foundations_calculator:diamond_planks": 0,
+    "foundations_calculator:diamond_leaves": 0,
+    "foundations_calculator:diamond_sapling": 0
+  }
+}

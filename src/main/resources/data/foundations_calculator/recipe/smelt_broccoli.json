@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "ingredient": {
+    "item": "foundations_calculator:broccoli"
+  },
+  "result": {
+    "id": "foundations_calculator:cooked_broccoli"
+  },
+  "experience": 0.2,
+  "cookingtime": 200
+}

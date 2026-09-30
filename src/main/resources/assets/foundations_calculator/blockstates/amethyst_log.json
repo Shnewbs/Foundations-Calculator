@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=y": {
+      "model": "foundations_calculator:block/amethyst_log"
+    },
+    "axis=x": {
+      "model": "foundations_calculator:block/amethyst_log",
+      "x": 90,
+      "y": 90
+    },
+    "axis=z": {
+      "model": "foundations_calculator:block/amethyst_log",
+      "x": 90
+    }
+  }
+}

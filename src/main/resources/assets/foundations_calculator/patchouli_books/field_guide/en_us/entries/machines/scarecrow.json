@@ -1,0 +1,15 @@
+{
+  "name": "Scarecrow",
+  "category": "foundations_calculator:machines",
+  "icon": "foundations_calculator:scarecrow",
+  "sortnum": 74,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Purpose$()$pPeriodically attempts accelerated growth on a nearby eligible plant.$p$(l)Set up and operate$()$p1. Place it within the configured range of crops.$p2. Allow the growth interval to elapse.$p3. Check plant eligibility, maturity and the protected-callback policy.$p$(l)When it does not run$()$pOne interval attempts a bounded growth action; it does not instantly grow every plant in the area.$pRead the active server settings below before copying default costs from another installation. For special slot roles, use the machine screen labels. Settings reporting does not inspect or mutate a placed machine.$pActual server settings: live server values are available in the native or master Foundations reader.$pCrafting / obtaining this machine: live recipe details are available in the native or master Foundations reader.$p$(l:foundations_calculator:troubleshooting/no_progress)General operating checklist$()"
+    }
+  ],
+  "extra_recipe_mappings": {
+    "foundations_calculator:scarecrow": 0
+  }
+}

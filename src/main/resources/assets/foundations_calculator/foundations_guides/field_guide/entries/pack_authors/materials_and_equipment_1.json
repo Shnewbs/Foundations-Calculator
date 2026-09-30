@@ -1,0 +1,171 @@
+{
+  "id": "foundations_calculator:pack_authors/materials_and_equipment_1",
+  "chapter": "foundations_calculator:pack_authors",
+  "title": "Materials and equipment · 1",
+  "order": 93,
+  "items": [
+    "foundations_calculator:soil",
+    "foundations_calculator:small_stone",
+    "foundations_calculator:atomic_binder",
+    "foundations_calculator:reinforced_sword",
+    "foundations_calculator:enriched_gold_sword",
+    "foundations_calculator:reinforced_iron_sword",
+    "foundations_calculator:redstone_sword",
+    "foundations_calculator:weakened_diamond_sword",
+    "foundations_calculator:flawless_diamond_sword",
+    "foundations_calculator:fire_diamond_sword",
+    "foundations_calculator:electric_sword",
+    "foundations_calculator:end_forged_sword"
+  ],
+  "keywords": [],
+  "blocks": [
+    {
+      "type": "paragraph",
+      "text": "This reference groups related inventory entries. Each recipe section reads the current world. An item may have no crafting result when it comes from harvesting, world generation, a program action or creative tools."
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:soil"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Soil",
+      "target": "item:foundations_calculator:soil",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:small_stone"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Small Stone",
+      "target": "item:foundations_calculator:small_stone",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:atomic_binder"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Atomic Binder",
+      "target": "item:foundations_calculator:atomic_binder",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:reinforced_sword"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Reinforced Sword",
+      "target": "item:foundations_calculator:reinforced_sword",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:enriched_gold_sword"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Enriched Gold Sword",
+      "target": "item:foundations_calculator:enriched_gold_sword",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:reinforced_iron_sword"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Reinforced Iron Sword",
+      "target": "item:foundations_calculator:reinforced_iron_sword",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:redstone_sword"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Redstone Sword",
+      "target": "item:foundations_calculator:redstone_sword",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:weakened_diamond_sword"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Weakened Diamond Sword",
+      "target": "item:foundations_calculator:weakened_diamond_sword",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:flawless_diamond_sword"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Flawless Diamond Sword",
+      "target": "item:foundations_calculator:flawless_diamond_sword",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:fire_diamond_sword"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Fire Diamond Sword",
+      "target": "item:foundations_calculator:fire_diamond_sword",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:electric_sword"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Electric Sword",
+      "target": "item:foundations_calculator:electric_sword",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:end_forged_sword"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining End Forged Sword",
+      "target": "item:foundations_calculator:end_forged_sword",
+      "options": {
+        "profile": ""
+      }
+    }
+  ]
+}

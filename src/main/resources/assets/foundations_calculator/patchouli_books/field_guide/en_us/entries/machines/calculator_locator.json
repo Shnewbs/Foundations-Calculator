@@ -1,0 +1,15 @@
+{
+  "name": "Calculator Locator",
+  "category": "foundations_calculator:machines",
+  "icon": "foundations_calculator:calculator_locator",
+  "sortnum": 58,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Purpose$()$pOwner-bound FE generator whose plug platform and stable boards determine valid operation and instability.$p$(l)Set up and operate$()$p1. Bind and insert a Locator Module.$p2. Build the square of plugs, base blocks and outside wall.$p3. Insert stable analysed boards in plugs.$p4. Provide output space or a battery to receive generated energy.$p$(l)When it does not run$()$pBelow the stabilization threshold the owner must be nearby in the same dimension. A bound module is not a replacement for a valid structure.$pRead the active server settings below before copying default costs from another installation. For special slot roles, use the machine screen labels. Settings reporting does not inspect or mutate a placed machine.$pActual server settings: live server values are available in the native or master Foundations reader.$pCrafting / obtaining this machine: live recipe details are available in the native or master Foundations reader.$p$(l:foundations_calculator:multiblocks/locator)Locator platform diagram$()"
+    }
+  ],
+  "extra_recipe_mappings": {
+    "foundations_calculator:calculator_locator": 0
+  }
+}

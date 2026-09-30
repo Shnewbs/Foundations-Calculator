@@ -1,0 +1,15 @@
+{
+  "name": "Module Workstation",
+  "category": "foundations_calculator:machines",
+  "icon": "foundations_calculator:module_workstation",
+  "sortnum": 37,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Purpose$()$pEdits modules inside a Flawless Calculator. Removing the calculator takes its installed contents with it.$p$(l)Set up and operate$()$p1. Insert the Flawless Calculator in its labelled slot.$p2. Install supported modules into the module slots.$p3. Remove it and sneak-use it to choose an installed action.$p$(l)When it does not run$()$pAtomic Module and ordinary assembly ingredients are not automatically usable modules. See the installation chapter for accepted categories.$pRead the active server settings below before copying default costs from another installation. For special slot roles, use the machine screen labels. Settings reporting does not inspect or mutate a placed machine.$pActual server settings: live server values are available in the native or master Foundations reader.$pCrafting / obtaining this machine: live recipe details are available in the native or master Foundations reader.$p$(l:foundations_calculator:troubleshooting/no_progress)General operating checklist$()"
+    }
+  ],
+  "extra_recipe_mappings": {
+    "foundations_calculator:module_workstation": 0
+  }
+}

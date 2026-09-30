@@ -1,0 +1,19 @@
+{
+  "name": "Decorative blocks \u00b7 7",
+  "category": "foundations_calculator:pack_authors",
+  "icon": "foundations_calculator:stable_stone_black_rimmed_pink",
+  "sortnum": 108,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "This reference groups related inventory entries. Each recipe section reads the current world. An item may have no crafting result when it comes from harvesting, world generation, a program action or creative tools.$pItem: foundations_calculator:stable_stone_black_rimmed_pink$pObtaining Stable Stone Black Rimmed Pink: live recipe details are available in the native or master Foundations reader.$pItem: foundations_calculator:stable_stone_black_rimmed_plain$pObtaining Stable Stone Black Rimmed Plain: live recipe details are available in the native or master Foundations reader.$pItem: foundations_calculator:stable_stone_black_rimmed_purple$pObtaining Stable Stone Black Rimmed Purple: live recipe details are available in the native or master Foundations reader.$pItem: foundations_calculator:stable_stone_black_rimmed_red$pObtaining Stable Stone Black Rimmed Red: live recipe details are available in the native or master Foundations reader.$pItem: foundations_calculator:stable_stone_black_rimmed_yellow$pObtaining Stable Stone Black Rimmed Yellow: live recipe details are available in the native or master Foundations reader."
+    }
+  ],
+  "extra_recipe_mappings": {
+    "foundations_calculator:stable_stone_black_rimmed_pink": 0,
+    "foundations_calculator:stable_stone_black_rimmed_plain": 0,
+    "foundations_calculator:stable_stone_black_rimmed_purple": 0,
+    "foundations_calculator:stable_stone_black_rimmed_red": 0,
+    "foundations_calculator:stable_stone_black_rimmed_yellow": 0
+  }
+}

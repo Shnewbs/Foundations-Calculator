@@ -1,0 +1,73 @@
+{
+  "id": "foundations_calculator:power/routing",
+  "chapter": "foundations_calculator:power",
+  "title": "Native routing, FE facades and charging",
+  "order": 12,
+  "items": [],
+  "keywords": [
+    "native first",
+    "FE first",
+    "routing",
+    "charger",
+    "battery",
+    "GrandPower"
+  ],
+  "blocks": [
+    {
+      "type": "paragraph",
+      "text": "With native-first routing, Calculator prefers its native adapter for an external target. If that native adapter exists but is disabled or refuses the operation, Calculator does not silently try the target’s FE facade to evade the native policy."
+    },
+    {
+      "type": "paragraph",
+      "text": "Setting power.routing.preferNative to false deliberately prefers an available FE facade. A native ratio or loss then does not govern that FE path. A source in another mod chooses the capability it pushes into; Calculator cannot force that source to choose EU or J."
+    },
+    {
+      "type": "paragraph",
+      "text": "Closing power.fe.blockPorts closes Calculator’s direct FE machine capability and its generic FE block sends without disabling its underlying FE store. Native adapters can still use that store when permitted. Calculator-to-Calculator transfers stay FE rather than converting twice."
+    },
+    {
+      "type": "table",
+      "text": "Item slots",
+      "rows": [
+        [
+          "Power Cube Discharge",
+          "Drain a battery or supported consumable into the cube."
+        ],
+        [
+          "Power Cube Charge",
+          "Send stored FE into a supported powered item."
+        ],
+        [
+          "Processing-machine Power",
+          "Normally accept discharge into the machine."
+        ],
+        [
+          "Special slots",
+          "Some machines use the same slot index for a calculator, module or locator binding instead."
+        ]
+      ]
+    },
+    {
+      "type": "callout",
+      "text": "Calculator machine and powered-item buffers are long-valued in 0.0.2a. NeoForge FE still moves int-sized requests, while native long adapters and the Foundations long-energy API can expose the full buffer."
+    },
+    {
+      "type": "live",
+      "text": "Actual server settings",
+      "target": "foundations_calculator",
+      "options": {
+        "key": "power"
+      }
+    },
+    {
+      "type": "link",
+      "text": "Power Cube",
+      "target": "foundations_calculator:machines/power_cube"
+    },
+    {
+      "type": "link",
+      "text": "Diagnose an inactive transfer",
+      "target": "foundations_calculator:troubleshooting/power"
+    }
+  ]
+}

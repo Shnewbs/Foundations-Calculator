@@ -1,0 +1,22 @@
+{
+  "type": "foundations_calculator:process",
+  "machine": "analysis_3",
+  "ingredients": [
+    {
+      "ingredient": {
+        "tag": "foundations_calculator:circuit_boards"
+      }
+    }
+  ],
+  "results": [
+    {
+      "stack": {
+        "id": "foundations_calculator:hunger_module",
+        "count": 1
+      }
+    }
+  ],
+  "value": 3,
+  "energy": 0,
+  "ticks": 1
+}

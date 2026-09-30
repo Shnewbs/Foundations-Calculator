@@ -1,0 +1,30 @@
+{
+  "type": "foundations_calculator:process",
+  "machine": "calculator",
+  "ingredients": [
+    {
+      "ingredient": {
+        "item": "foundations_calculator:reinforced_sword"
+      },
+      "count": 1
+    },
+    {
+      "ingredient": {
+        "item": "foundations_calculator:reinforced_pickaxe"
+      },
+      "count": 1
+    }
+  ],
+  "results": [
+    {
+      "stack": {
+        "id": "foundations_calculator:wrench",
+        "count": 1
+      }
+    }
+  ],
+  "energy": 0,
+  "ticks": 1,
+  "value": 0,
+  "research": false
+}

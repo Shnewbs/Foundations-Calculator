@@ -1,0 +1,26 @@
+{
+  "artifact": "com.foundations:foundations-guide-api:1.0.0",
+  "sources": {
+    "src/main/java/com/foundations/guide/api/GuideApi.java": "cf2f674e05cc15d9cd906eecff31202d382e5734aeff4d8efa652b15f1023834",
+    "src/main/java/com/foundations/guide/api/GuideData.java": "38c44d80b1273c2fc2aa3c120a340f9049c4de0e3d32cf6a1fa1982f23d77444",
+    "src/main/java/com/foundations/guide/api/GuideJson.java": "551e3ec1e212825cd352e9bc739627dbe5c9420e2ec14ee343dee873fbda14ba",
+    "src/main/java/com/foundations/guide/api/GuideNavigation.java": "7f383fd42f7aa295297bc3ade5247a0eff9f570f3fe180a08ffa55faa2ea6388",
+    "src/main/java/com/foundations/guide/api/GuideParser.java": "b14b8dfb2bc1de9326f3c7c7a305458d56a9b0ec9cb2a7870c725fbed46e4be9",
+    "src/main/java/com/foundations/guide/api/GuideSearch.java": "b9099030a6bc73401e7953a7b0ed6b8200622ab520b7c41441355e9e3b1fe7ad",
+    "src/main/java/com/foundations/guide/api/GuideSnapshotCache.java": "d8a3797030045ed5648e4fc2f3975f50770076c8fe50dfd2e0a2936990f021e2"
+  },
+  "artifacts": {
+    "repository/com/foundations/foundations-guide-api/1.0.0/foundations-guide-api-1.0.0-sources.jar": "c371309b1e49c86debe395d307bf953748ae09d36e615012881b84ab2b167d01",
+    "repository/com/foundations/foundations-guide-api/1.0.0/foundations-guide-api-1.0.0-sources.jar.sha1": "9a8a6e582e0e618413bb1a0cacbf36c28802dde8562ab367a9c78bd341241962",
+    "repository/com/foundations/foundations-guide-api/1.0.0/foundations-guide-api-1.0.0-sources.jar.sha256": "ff01ad06f06fd0c03a275c3ca887566821c6a23baadca1a95e3933e6873f4b3b",
+    "repository/com/foundations/foundations-guide-api/1.0.0/foundations-guide-api-1.0.0.jar": "47cb301512bd4846674190e8965ca343901c3e5e9164d95cc562a8080b88ab72",
+    "repository/com/foundations/foundations-guide-api/1.0.0/foundations-guide-api-1.0.0.jar.sha1": "990957de1848d8cc68a18c9c4e03a2f4950343819e61af673cb9c8a76d57dd26",
+    "repository/com/foundations/foundations-guide-api/1.0.0/foundations-guide-api-1.0.0.jar.sha256": "8840f86c378e45af01607ee56fd696f6aacb9d3ec0bb08d27e64efbaa2e11701",
+    "repository/com/foundations/foundations-guide-api/1.0.0/foundations-guide-api-1.0.0.pom": "e4180cfa89fda23eea0948f7ecabdb783cf6a022b0a7b8582f8c35f5b708e307",
+    "repository/com/foundations/foundations-guide-api/1.0.0/foundations-guide-api-1.0.0.pom.sha1": "7bda401c5924db3c763eb624c74f84112a7533b61bea2da3c43af27890513b13",
+    "repository/com/foundations/foundations-guide-api/1.0.0/foundations-guide-api-1.0.0.pom.sha256": "3fb78c40201d7a02552342ff5f92c57c7b2ab331bf2732e795a807242e8bb315",
+    "repository/com/foundations/foundations-guide-api/maven-metadata.xml": "7c78b9a95ae3511416c99e1c0dfb5dd5d6fad64bea82112fafc43e98627dc7c8",
+    "repository/com/foundations/foundations-guide-api/maven-metadata.xml.sha1": "820a6540135bc969456597c4df9dc6b5ffcb9fa9e9a4b7e3872e4740c6246481",
+    "repository/com/foundations/foundations-guide-api/maven-metadata.xml.sha256": "7d14f307aab253a6fb170b3da1cd2af4920247652b3f98510e936b67830cc8f5"
+  }
+}

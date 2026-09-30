@@ -1,0 +1,15 @@
+{
+  "name": "Glowstone Extractor",
+  "category": "foundations_calculator:machines",
+  "icon": "foundations_calculator:glowstone_extractor",
+  "sortnum": 65,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Purpose$()$pUses its glowstone-value ingredient family plus furnace fuel to generate FE.$p$(l)Set up and operate$()$p1. Provide valid furnace fuel.$p2. Provide an ingredient shown in this extractor\u2019s value recipes.$p3. Keep a receiving buffer available.$p$(l)When it does not run$()$pNutrient and burn time are separate resources. A zero nutrient input cannot be repaired by increasing the EU conversion rate.$pRead the active server settings below before copying default costs from another installation. For special slot roles, use the machine screen labels. Settings reporting does not inspect or mutate a placed machine.$pActual server settings: live server values are available in the native or master Foundations reader.$pProcessing / value recipes: live recipe details are available in the native or master Foundations reader.$pCrafting / obtaining this machine: live recipe details are available in the native or master Foundations reader.$p$(l:foundations_calculator:troubleshooting/no_progress)General operating checklist$()"
+    }
+  ],
+  "extra_recipe_mappings": {
+    "foundations_calculator:glowstone_extractor": 0
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "name": "Atomic Calculator",
+  "category": "foundations_calculator:machines",
+  "icon": "foundations_calculator:atomic_calculator",
+  "sortnum": 35,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Purpose$()$pPlaced three-input Atomic calculation. It uses the atomic recipe family and ordinary server process overrides.$p$(l)Set up and operate$()$p1. Open an Atomic recipe and collect all three input requirements.$p2. Put them in the machine input area and supply power if required.$p3. Leave the result area free and verify the owner\u2019s research access.$p$(l)When it does not run$()$pA Basic or Scientific recipe will not match simply because its ingredients fit the available slots.$pRead the active server settings below before copying default costs from another installation. For special slot roles, use the machine screen labels. Settings reporting does not inspect or mutate a placed machine.$pActual server settings: live server values are available in the native or master Foundations reader.$pProcessing / value recipes: live recipe details are available in the native or master Foundations reader.$pCrafting / obtaining this machine: live recipe details are available in the native or master Foundations reader.$p$(l:foundations_calculator:troubleshooting/no_progress)General operating checklist$()"
+    }
+  ],
+  "extra_recipe_mappings": {
+    "foundations_calculator:atomic_calculator": 0
+  }
+}

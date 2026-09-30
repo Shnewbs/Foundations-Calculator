@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " R ",
+    "APA",
+    "RRR"
+  ],
+  "key": {
+    "R": {
+      "tag": "foundations_calculator:reinforced_stone"
+    },
+    "P": {
+      "item": "foundations_calculator:power_cube"
+    },
+    "A": {
+      "item": "foundations_calculator:calculator_assembly"
+    }
+  },
+  "result": {
+    "id": "foundations_calculator:docking_station",
+    "count": 1
+  }
+}

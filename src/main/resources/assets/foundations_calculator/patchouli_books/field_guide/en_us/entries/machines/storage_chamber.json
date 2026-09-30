@@ -1,0 +1,15 @@
+{
+  "name": "Storage Chamber",
+  "category": "foundations_calculator:machines",
+  "icon": "foundations_calculator:storage_chamber",
+  "sortnum": 52,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Purpose$()$pBulk item storage with per-bin quantities and representative stacks rather than an ordinary chest grid.$p$(l)Set up and operate$()$p1. Open the bulk-storage screen.$p2. Insert an item into its intended bin and read the stored quantity.$p3. Withdraw a test stack and verify the remaining total before connecting automation.$p$(l)When it does not run$()$pA full or filtered bin can refuse a different item/component set even when another bin is empty. Capacity decreases preserve existing excess contents.$pRead the active server settings below before copying default costs from another installation. For special slot roles, use the machine screen labels. Settings reporting does not inspect or mutate a placed machine.$pActual server settings: live server values are available in the native or master Foundations reader.$pCrafting / obtaining this machine: live recipe details are available in the native or master Foundations reader.$p$(l:foundations_calculator:troubleshooting/no_progress)General operating checklist$()"
+    }
+  ],
+  "extra_recipe_mappings": {
+    "foundations_calculator:storage_chamber": 0
+  }
+}

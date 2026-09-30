@@ -1,0 +1,25 @@
+{
+  "type": "foundations_calculator:process",
+  "machine": "fabrication_chamber",
+  "ingredients": [
+    {
+      "ingredient": {
+        "item": "foundations_calculator:circuit_board_7"
+      },
+      "count": 1,
+      "circuit_state": 1
+    }
+  ],
+  "results": [
+    {
+      "stack": {
+        "id": "foundations_calculator:energy_upgrade",
+        "count": 1
+      }
+    }
+  ],
+  "energy": 1000,
+  "ticks": 200,
+  "value": 0,
+  "research": false
+}

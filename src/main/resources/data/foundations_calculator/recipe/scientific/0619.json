@@ -1,0 +1,30 @@
+{
+  "type": "foundations_calculator:process",
+  "machine": "scientific",
+  "ingredients": [
+    {
+      "ingredient": {
+        "item": "foundations_calculator:enriched_coal"
+      },
+      "count": 1
+    },
+    {
+      "ingredient": {
+        "item": "foundations_calculator:enriched_gold_ingot"
+      },
+      "count": 1
+    }
+  ],
+  "results": [
+    {
+      "stack": {
+        "id": "foundations_calculator:purified_coal",
+        "count": 1
+      }
+    }
+  ],
+  "energy": 0,
+  "ticks": 1,
+  "value": 0,
+  "research": false
+}

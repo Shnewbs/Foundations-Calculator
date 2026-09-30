@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/crop",
+  "textures": {
+    "crop": "foundations_calculator:legacy_calculator/blocks/crops/prunaeplant4"
+  },
+  "render_type": "minecraft:cutout"
+}

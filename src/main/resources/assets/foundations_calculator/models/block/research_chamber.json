@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "particle": "foundations_calculator:legacy_calculator/model/analysing_chamber_side_1",
+    "up": "foundations_calculator:legacy_calculator/model/analysing_chamber_slot1",
+    "down": "foundations_calculator:legacy_calculator/model/analysing_chamber2_slot1",
+    "north": "foundations_calculator:legacy_calculator/model/fabrication_chamber_front",
+    "east": "foundations_calculator:legacy_calculator/model/analysing_chamber_side_1",
+    "south": "foundations_calculator:legacy_calculator/model/analysing_chamber_side_1",
+    "west": "foundations_calculator:legacy_calculator/model/analysing_chamber_side_1"
+  }
+}

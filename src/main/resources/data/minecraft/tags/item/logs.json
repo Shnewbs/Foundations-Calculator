@@ -1,0 +1,15 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:oak_log",
+    "foundations_calculator:amethyst_log",
+    "foundations_calculator:tanzanite_log",
+    "foundations_calculator:pear_log",
+    "foundations_calculator:diamond_log",
+    "minecraft:spruce_log",
+    "minecraft:birch_log",
+    "minecraft:jungle_log",
+    "minecraft:acacia_log",
+    "minecraft:dark_oak_log"
+  ]
+}

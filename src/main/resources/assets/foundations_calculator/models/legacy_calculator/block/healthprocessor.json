@@ -1,0 +1,11 @@
+{
+  "parent": "foundations_calculator:legacy_calculator/block/sonarmachine",
+  "textures": {
+    "north": "foundations_calculator:legacy_calculator/blocks/healthprocessor_front2",
+    "east": "foundations_calculator:legacy_calculator/blocks/healthprocessor_slot2",
+    "south": "foundations_calculator:legacy_calculator/blocks/healthprocessor_slot2",
+    "west": "foundations_calculator:legacy_calculator/blocks/healthprocessor_slot2",
+    "up": "foundations_calculator:legacy_calculator/blocks/healthprocessor_slot2",
+    "down": "foundations_calculator:legacy_calculator/blocks/healthprocessor_slot2"
+  }
+}

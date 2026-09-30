@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "foundations_calculator:legacy_calculator/blocks/wood/sapling_diamond"
+  },
+  "render_type": "minecraft:cutout"
+}

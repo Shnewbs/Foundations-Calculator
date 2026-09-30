@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "foundations_calculator:reinforced_stone_gate",
+    "foundations_calculator:reinforced_stone_brick_gate",
+    "foundations_calculator:reinforced_dirt_gate",
+    "foundations_calculator:reinforced_dirt_brick_gate"
+  ]
+}

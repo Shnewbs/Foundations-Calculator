@@ -1,0 +1,17 @@
+{
+  "type": "foundations_calculator:process",
+  "machine": "starch_extractor",
+  "ingredients": [
+    {
+      "ingredient": {
+        "tag": "c:crops/potato"
+      },
+      "count": 1
+    }
+  ],
+  "results": [],
+  "energy": 0,
+  "ticks": 1,
+  "value": 1000,
+  "research": false
+}

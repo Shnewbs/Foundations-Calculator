@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "ADA",
+    "BCB",
+    "AEA"
+  ],
+  "key": {
+    "B": {
+      "tag": "foundations_calculator:gems/tanzanite"
+    },
+    "A": {
+      "item": "foundations_calculator:shard_tanzanite"
+    },
+    "C": {
+      "item": "foundations_calculator:atomic_binder"
+    },
+    "D": {
+      "item": "foundations_calculator:calculator_screen"
+    },
+    "E": {
+      "item": "foundations_calculator:flawless_diamond"
+    }
+  },
+  "result": {
+    "id": "foundations_calculator:health_module",
+    "count": 1
+  }
+}

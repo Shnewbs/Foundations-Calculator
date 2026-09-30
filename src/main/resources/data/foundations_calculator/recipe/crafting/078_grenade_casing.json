@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "R R",
+    "RRR"
+  ],
+  "key": {
+    "R": {
+      "tag": "foundations_calculator:reinforced_stone"
+    }
+  },
+  "result": {
+    "id": "foundations_calculator:grenade_casing",
+    "count": 1
+  }
+}

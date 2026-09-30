@@ -1,0 +1,30 @@
+{
+  "type": "foundations_calculator:process",
+  "machine": "scientific",
+  "ingredients": [
+    {
+      "ingredient": {
+        "item": "foundations_calculator:calculator"
+      },
+      "count": 1
+    },
+    {
+      "ingredient": {
+        "item": "foundations_calculator:redstone_ingot"
+      },
+      "count": 1
+    }
+  ],
+  "results": [
+    {
+      "stack": {
+        "id": "foundations_calculator:terrain_module",
+        "count": 1
+      }
+    }
+  ],
+  "energy": 0,
+  "ticks": 1,
+  "value": 0,
+  "research": false
+}

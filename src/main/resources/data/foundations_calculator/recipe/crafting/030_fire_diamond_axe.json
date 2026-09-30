@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "RR",
+    "RS",
+    " S"
+  ],
+  "key": {
+    "R": {
+      "item": "foundations_calculator:fire_diamond"
+    },
+    "S": {
+      "tag": "c:rods/wooden"
+    }
+  },
+  "result": {
+    "id": "foundations_calculator:fire_diamond_axe",
+    "count": 1
+  }
+}

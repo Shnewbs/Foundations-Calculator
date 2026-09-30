@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "CSC",
+    "BAB",
+    "CCC"
+  ],
+  "key": {
+    "B": {
+      "item": "minecraft:stone_button"
+    },
+    "A": {
+      "item": "minecraft:crafting_table"
+    },
+    "S": {
+      "item": "foundations_calculator:calculator_screen"
+    },
+    "C": {
+      "tag": "c:cobblestones"
+    }
+  },
+  "result": {
+    "id": "foundations_calculator:crafting_calculator",
+    "count": 1
+  }
+}

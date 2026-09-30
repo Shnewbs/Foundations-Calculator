@@ -1,0 +1,8 @@
+{
+  "parent": "foundations_calculator:legacy_calculator/block/atomicmultiplier",
+  "textures": {
+    "particle": "foundations_calculator:legacy_sonarcore/blocks/connected/stablestonerimmed",
+    "0": "foundations_calculator:legacy_calculator/model/atomic_multiplier",
+    "1": "foundations_calculator:legacy_sonarcore/blocks/connected/stablestonerimmed"
+  }
+}

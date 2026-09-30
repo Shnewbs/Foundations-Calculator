@@ -1,0 +1,16 @@
+{
+  "name": "EU, FE, J and conversion policy",
+  "category": "foundations_calculator:power",
+  "icon": "foundations_calculator:info_calculator",
+  "sortnum": 8,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Calculator stores FE internally. Native adapters accept or send supported external units at the boundary. EU is therefore an accepted connection type, not a replacement for the internal buffer.$p$(l)Electrical adapters$()$pNeoForge FE \u2014 Native FE input/output. RF/IF/CF branding is compatible only where that mod exposes FE.$pGregTech CEu \u2014 EU packets with voltage and amperage limits; separate native battery rules.$pMekanism \u2014 Joules via native machine and item APIs.$pModern Industrialization \u2014 EU via the MI energy API.$pGrandPower \u2014 Long-valued FE API with a 1:1 base unit.$pApplied Energistics 2 \u2014 AE-powered items only; not a direct native grid port.$pEach native adapter has independent block-port and item-charging gates, input/output gates, and applicable loss settings. Input means native energy enters Foundations storage, including discharging an external battery. Output means Foundations energy leaves storage, including charging an external battery.$p$(l)Ratio keys$()$pcompat.gtceu.fePerEU \u2014 0 inherits the higher of GT direction ratios; a positive integer fixes FE per EU.$ppower.mekanism.joulesPerFE \u2014 0 inherits Mekanism; a positive decimal fixes J per FE.$ppower.modernIndustrialization.fePerEU \u2014 0 inherits MI; a positive decimal fixes FE per EU.$pcompat.aeEnergyToFE \u2014 FE per AE for powered items."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Voltage is packet size and amperage is packet count per tick. Neither is the EU/FE exchange rate. Port capacity, side modes, native item tier restrictions and shared packet budgets still apply.$pEffective server adapters, ratios, losses and warnings: live server values are available in the native or master Foundations reader.$p$(l:foundations_calculator:power/rounding)Whole units, losses and conversion loops$()$p$(l:foundations_calculator:power/gregtech)GregTech packet rules$()$p$(l:foundations_calculator:power/routing)Which API does a connection use?$()"
+    }
+  ]
+}

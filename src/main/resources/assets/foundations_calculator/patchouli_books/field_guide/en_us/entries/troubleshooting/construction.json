@@ -1,0 +1,12 @@
+{
+  "name": "Build, harvest or planting stopped",
+  "category": "foundations_calculator:troubleshooting",
+  "icon": "foundations_calculator:info_calculator",
+  "sortnum": 29,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "1. Confirm the machine has a valid owner and the actual target positions are loaded.$p2. Read denied-world-action status. Ask an authorized owner/admin to resolve permission, rather than disabling protection as the first fix.$p3. Check the entire construction bounds, including roofs, overhangs and below-ground layers.$p4. Refill the correct construction input: logs, stairs, glass, planks. Seeds do not replace a missing wall material.$p5. Supply energy for each placement, farmland/water action or harvest.$p6. For a manual structure, compare each layer and orientation; it has no automatic Build action.$p7. For a modded crop or sapling, check whether its protected PlantAdapter exists. Legacy callback support is intentionally off by default.$p8. Check pending outputs before Demolish or harvest; completed recovery must have somewhere to go.$pActual server settings: live server values are available in the native or master Foundations reader.$p$(l:foundations_calculator:multiblocks/coordinates)Controller-relative plans$()$p$(l:foundations_calculator:farming/compatibility)Third-party crop boundaries$()"
+    }
+  ]
+}

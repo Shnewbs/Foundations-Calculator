@@ -1,0 +1,15 @@
+{
+  "name": "Research Chamber",
+  "category": "foundations_calculator:machines",
+  "icon": "foundations_calculator:research_chamber",
+  "sortnum": 76,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Purpose$()$pStudies a sample and unlocks its category for the owner or configured shared research state.$p$(l)Set up and operate$()$p1. Place the chamber with a valid owner.$p2. Insert a sample listed in Research.$p3. Supply study energy and wait for completion.$p4. Read the unlock message and retry the newly available recipe.$p$(l)When it does not run$()$pA sample for an already unlocked group will not repeatedly create rewards. Sample consumption is a separate server option.$pRead the active server settings below before copying default costs from another installation. For special slot roles, use the machine screen labels. Settings reporting does not inspect or mutate a placed machine.$pActual server settings: live server values are available in the native or master Foundations reader.$pProcessing / value recipes: live recipe details are available in the native or master Foundations reader.$pCrafting / obtaining this machine: live recipe details are available in the native or master Foundations reader.$p$(l:foundations_calculator:troubleshooting/no_progress)General operating checklist$()"
+    }
+  ],
+  "extra_recipe_mappings": {
+    "foundations_calculator:research_chamber": 0
+  }
+}

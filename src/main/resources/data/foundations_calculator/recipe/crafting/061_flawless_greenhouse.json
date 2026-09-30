@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "BBB",
+    "CAC",
+    "BBB"
+  ],
+  "key": {
+    "A": {
+      "item": "foundations_calculator:atomic_assembly"
+    },
+    "B": {
+      "item": "foundations_calculator:flawless_glass"
+    },
+    "C": {
+      "item": "foundations_calculator:advanced_greenhouse"
+    }
+  },
+  "result": {
+    "id": "foundations_calculator:flawless_greenhouse",
+    "count": 1
+  }
+}

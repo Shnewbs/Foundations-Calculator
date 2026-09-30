@@ -1,0 +1,454 @@
+{
+  "id": "foundations_calculator:multiblocks/advanced_greenhouse",
+  "chapter": "foundations_calculator:multiblocks",
+  "title": "Advanced Greenhouse: complete default layers",
+  "order": 15,
+  "items": [],
+  "keywords": [
+    "blueprint",
+    "roof",
+    "stairs",
+    "dimensions",
+    "material list"
+  ],
+  "blocks": [
+    {
+      "type": "paragraph",
+      "text": "The Advanced controller constructs this imported blueprint with Build. Its first four inputs are logs, wooden stairs, glass, and planks, in that order. Fill those slots, supply FE, and remove obstructions. Construction resumes where it stopped."
+    },
+    {
+      "type": "table",
+      "text": "Exact default structural materials (controller, floor, water and seeds are additional)",
+      "rows": [
+        [
+          "Logs",
+          "30"
+        ],
+        [
+          "Wooden stairs",
+          "180"
+        ],
+        [
+          "Glass",
+          "92"
+        ],
+        [
+          "Planks",
+          "42"
+        ],
+        [
+          "Unique structural blocks",
+          "344"
+        ]
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "Clear side -5 to 5, inside -1 to 9, and height -1 to 7. The diagrams below show structural blocks only. C is the existing controller; dots are not a request to replace terrain."
+    },
+    {
+      "type": "paragraph",
+      "text": "Provide dirt/grass beneath the growing cells. Basic has eight crops in its 3×3 area with central water; Advanced has 45 crops in a 7×7 area with four irrigation corners. Roof stairs are oriented by automatic construction, so supply stairs rather than placing a flat slab roof."
+    },
+    {
+      "type": "callout",
+      "text": "R7 owner/protection preflights still apply. Missing owner, denied target, unloaded chunk or obstruction can stop a build. Never bypass a claim merely to complete a diagram. Demolish only recovers matching blocks after removal succeeds."
+    },
+    {
+      "type": "layers",
+      "text": "Height -1; inside increases downward",
+      "rows": [
+        [
+          "..........."
+        ],
+        [
+          "..PPP.PPP.."
+        ],
+        [
+          "..........."
+        ],
+        [
+          "..........."
+        ],
+        [
+          "..........."
+        ],
+        [
+          "..........."
+        ],
+        [
+          "..........."
+        ],
+        [
+          "..........."
+        ],
+        [
+          "..........."
+        ],
+        [
+          "..PP...PP.."
+        ],
+        [
+          "..........."
+        ]
+      ],
+      "options": {
+        "legend": "L logs · T stairs · G glass · P planks · C controller"
+      }
+    },
+    {
+      "type": "layers",
+      "text": "Height 0; inside increases downward",
+      "rows": [
+        [
+          "..........."
+        ],
+        [
+          ".LGGGCGGGL."
+        ],
+        [
+          ".P.......P."
+        ],
+        [
+          ".P.......P."
+        ],
+        [
+          ".P.......P."
+        ],
+        [
+          ".L.......L."
+        ],
+        [
+          ".P.......P."
+        ],
+        [
+          ".P.......P."
+        ],
+        [
+          ".P.......P."
+        ],
+        [
+          ".LGGP.PGGL."
+        ],
+        [
+          "..........."
+        ]
+      ],
+      "options": {
+        "legend": "L logs · T stairs · G glass · P planks · C controller"
+      }
+    },
+    {
+      "type": "layers",
+      "text": "Height 1; inside increases downward",
+      "rows": [
+        [
+          "..........."
+        ],
+        [
+          ".LGGGLGGGL."
+        ],
+        [
+          ".G.......G."
+        ],
+        [
+          ".G.......G."
+        ],
+        [
+          ".G.......G."
+        ],
+        [
+          ".L.......L."
+        ],
+        [
+          ".G.......G."
+        ],
+        [
+          ".G.......G."
+        ],
+        [
+          ".G.......G."
+        ],
+        [
+          ".LGGP.PGGL."
+        ],
+        [
+          "..........."
+        ]
+      ],
+      "options": {
+        "legend": "L logs · T stairs · G glass · P planks · C controller"
+      }
+    },
+    {
+      "type": "layers",
+      "text": "Height 2; inside increases downward",
+      "rows": [
+        [
+          "..........."
+        ],
+        [
+          ".LGGGLGGGL."
+        ],
+        [
+          ".G.......G."
+        ],
+        [
+          ".G.......G."
+        ],
+        [
+          ".G.......G."
+        ],
+        [
+          ".L.......L."
+        ],
+        [
+          ".G.......G."
+        ],
+        [
+          ".G.......G."
+        ],
+        [
+          ".G.......G."
+        ],
+        [
+          ".LGGPPPGGL."
+        ],
+        [
+          "..........."
+        ]
+      ],
+      "options": {
+        "legend": "L logs · T stairs · G glass · P planks · C controller"
+      }
+    },
+    {
+      "type": "layers",
+      "text": "Height 3; inside increases downward",
+      "rows": [
+        [
+          "TT.......TT"
+        ],
+        [
+          "TLGGGLGGGLT"
+        ],
+        [
+          "TT.......TT"
+        ],
+        [
+          "TT.......TT"
+        ],
+        [
+          "TT.......TT"
+        ],
+        [
+          "TL.......LT"
+        ],
+        [
+          "TT.......TT"
+        ],
+        [
+          "TT.......TT"
+        ],
+        [
+          "TT.......TT"
+        ],
+        [
+          "TLGGGGGGGLT"
+        ],
+        [
+          "TT.......TT"
+        ]
+      ],
+      "options": {
+        "legend": "L logs · T stairs · G glass · P planks · C controller"
+      }
+    },
+    {
+      "type": "layers",
+      "text": "Height 4; inside increases downward",
+      "rows": [
+        [
+          ".TT.....TT."
+        ],
+        [
+          ".TGGGLGGGT."
+        ],
+        [
+          ".TT.....TT."
+        ],
+        [
+          ".TT.....TT."
+        ],
+        [
+          ".TT.....TT."
+        ],
+        [
+          ".TT.....TT."
+        ],
+        [
+          ".TT.....TT."
+        ],
+        [
+          ".TT.....TT."
+        ],
+        [
+          ".TT.....TT."
+        ],
+        [
+          ".TGGGGGGGT."
+        ],
+        [
+          ".TT.....TT."
+        ]
+      ],
+      "options": {
+        "legend": "L logs · T stairs · G glass · P planks · C controller"
+      }
+    },
+    {
+      "type": "layers",
+      "text": "Height 5; inside increases downward",
+      "rows": [
+        [
+          "..TT...TT.."
+        ],
+        [
+          "..TGGLGGT.."
+        ],
+        [
+          "..TT...TT.."
+        ],
+        [
+          "..TT...TT.."
+        ],
+        [
+          "..TT...TT.."
+        ],
+        [
+          "..TT...TT.."
+        ],
+        [
+          "..TT...TT.."
+        ],
+        [
+          "..TT...TT.."
+        ],
+        [
+          "..TT...TT.."
+        ],
+        [
+          "..TGGGGGT.."
+        ],
+        [
+          "..TT...TT.."
+        ]
+      ],
+      "options": {
+        "legend": "L logs · T stairs · G glass · P planks · C controller"
+      }
+    },
+    {
+      "type": "layers",
+      "text": "Height 6; inside increases downward",
+      "rows": [
+        [
+          "...TT.TT..."
+        ],
+        [
+          "...TPLPT..."
+        ],
+        [
+          "...TT.TT..."
+        ],
+        [
+          "...TT.TT..."
+        ],
+        [
+          "...TT.TT..."
+        ],
+        [
+          "...TT.TT..."
+        ],
+        [
+          "...TT.TT..."
+        ],
+        [
+          "...TT.TT..."
+        ],
+        [
+          "...TT.TT..."
+        ],
+        [
+          "...TGGGT..."
+        ],
+        [
+          "...TT.TT..."
+        ]
+      ],
+      "options": {
+        "legend": "L logs · T stairs · G glass · P planks · C controller"
+      }
+    },
+    {
+      "type": "layers",
+      "text": "Height 7; inside increases downward",
+      "rows": [
+        [
+          "....TPT...."
+        ],
+        [
+          "....TPT...."
+        ],
+        [
+          "....TPT...."
+        ],
+        [
+          "....TPT...."
+        ],
+        [
+          "....TPT...."
+        ],
+        [
+          "....TPT...."
+        ],
+        [
+          "....TPT...."
+        ],
+        [
+          "....TPT...."
+        ],
+        [
+          "....TPT...."
+        ],
+        [
+          "....TPT...."
+        ],
+        [
+          "....TPT...."
+        ]
+      ],
+      "options": {
+        "legend": "L logs · T stairs · G glass · P planks · C controller"
+      }
+    },
+    {
+      "type": "live",
+      "text": "Actual server settings",
+      "target": "foundations_calculator",
+      "options": {
+        "key": "machine/advanced_greenhouse"
+      }
+    },
+    {
+      "type": "link",
+      "text": "Planting and greenhouse operation",
+      "target": "foundations_calculator:farming/growing"
+    },
+    {
+      "type": "link",
+      "text": "Construction stopped",
+      "target": "foundations_calculator:troubleshooting/construction"
+    }
+  ]
+}

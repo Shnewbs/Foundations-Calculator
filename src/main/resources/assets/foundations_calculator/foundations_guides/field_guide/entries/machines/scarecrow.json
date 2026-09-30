@@ -1,0 +1,74 @@
+{
+  "id": "foundations_calculator:machines/scarecrow",
+  "chapter": "foundations_calculator:machines",
+  "title": "Scarecrow",
+  "order": 74,
+  "items": [
+    "foundations_calculator:scarecrow"
+  ],
+  "keywords": [
+    "scarecrow",
+    "Periodically attempts accelerated growth on a nearby eligible plant"
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "Purpose"
+    },
+    {
+      "type": "paragraph",
+      "text": "Periodically attempts accelerated growth on a nearby eligible plant."
+    },
+    {
+      "type": "heading",
+      "text": "Set up and operate"
+    },
+    {
+      "type": "steps",
+      "rows": [
+        [
+          "Place it within the configured range of crops."
+        ],
+        [
+          "Allow the growth interval to elapse."
+        ],
+        [
+          "Check plant eligibility, maturity and the protected-callback policy."
+        ]
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "When it does not run"
+    },
+    {
+      "type": "paragraph",
+      "text": "One interval attempts a bounded growth action; it does not instantly grow every plant in the area."
+    },
+    {
+      "type": "paragraph",
+      "text": "Read the active server settings below before copying default costs from another installation. For special slot roles, use the machine screen labels. Settings reporting does not inspect or mutate a placed machine."
+    },
+    {
+      "type": "live",
+      "text": "Actual server settings",
+      "target": "foundations_calculator",
+      "options": {
+        "key": "machine/scarecrow"
+      }
+    },
+    {
+      "type": "recipe",
+      "text": "Crafting / obtaining this machine",
+      "target": "item:foundations_calculator:scarecrow",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "link",
+      "text": "General operating checklist",
+      "target": "foundations_calculator:troubleshooting/no_progress"
+    }
+  ]
+}

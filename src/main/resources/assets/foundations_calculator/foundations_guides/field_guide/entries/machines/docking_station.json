@@ -1,0 +1,74 @@
+{
+  "id": "foundations_calculator:machines/docking_station",
+  "chapter": "foundations_calculator:machines",
+  "title": "Docking Station",
+  "order": 44,
+  "items": [
+    "foundations_calculator:docking_station"
+  ],
+  "keywords": [
+    "docking_station",
+    "Automates the recipe family of a calculator inserted in its special slot"
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "Purpose"
+    },
+    {
+      "type": "paragraph",
+      "text": "Automates the recipe family of a calculator inserted in its special slot."
+    },
+    {
+      "type": "heading",
+      "text": "Set up and operate"
+    },
+    {
+      "type": "steps",
+      "rows": [
+        [
+          "Insert Basic, Scientific, Atomic or Flawless Calculator in the calculator slot."
+        ],
+        [
+          "Supply that device’s required ingredients in the inputs."
+        ],
+        [
+          "Provide the docking batch energy and output room."
+        ]
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "When it does not run"
+    },
+    {
+      "type": "paragraph",
+      "text": "With no recognized calculator installed, the recipe family is none. A charged device alone does not replace the station’s machine energy."
+    },
+    {
+      "type": "paragraph",
+      "text": "Read the active server settings below before copying default costs from another installation. For special slot roles, use the machine screen labels. Settings reporting does not inspect or mutate a placed machine."
+    },
+    {
+      "type": "live",
+      "text": "Actual server settings",
+      "target": "foundations_calculator",
+      "options": {
+        "key": "machine/docking_station"
+      }
+    },
+    {
+      "type": "recipe",
+      "text": "Crafting / obtaining this machine",
+      "target": "item:foundations_calculator:docking_station",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "link",
+      "text": "General operating checklist",
+      "target": "foundations_calculator:troubleshooting/no_progress"
+    }
+  ]
+}

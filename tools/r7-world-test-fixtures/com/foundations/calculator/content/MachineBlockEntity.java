@@ -1,0 +1,5 @@
+package com.foundations.calculator.content;
+import java.util.*;import net.minecraft.core.BlockPos;import net.minecraft.server.level.ServerLevel;
+public class MachineBlockEntity {public ServerLevel level;public boolean removed;public UUID owner=UUID.fromString("ae0d64c5-c349-4d04-bc19-2d79a68ba5a7");public final Program program=new Program();public int changes;public MachineBlockEntity(ServerLevel level){this.level=level;}public Object getLevel(){return level;}public BlockPos getBlockPos(){return new BlockPos(0,64,0);}public boolean isRemoved(){return removed;}public UUID owner(){return owner;}public void setChanged(){changes++;}
+public static class Program {private final Map<String,Object> data=new HashMap<>();public String getString(String k){return (String)data.getOrDefault(k,"");}public long getLong(String k){return (long)data.getOrDefault(k,0L);}public void putLong(String k,long v){data.put(k,v);}public void putString(String k,String v){data.put(k,v);}public void remove(String k){data.remove(k);}public boolean contains(String k){return data.containsKey(k);}}
+}

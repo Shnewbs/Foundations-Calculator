@@ -1,0 +1,82 @@
+{
+  "id": "foundations_calculator:machines/stone_separator",
+  "chapter": "foundations_calculator:machines",
+  "title": "Stone Separator",
+  "order": 40,
+  "items": [
+    "foundations_calculator:stone_separator"
+  ],
+  "keywords": [
+    "stone_separator",
+    "Separates configured stone, wood and other basic materials into useful products"
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "Purpose"
+    },
+    {
+      "type": "paragraph",
+      "text": "Separates configured stone, wood and other basic materials into useful products. One input can produce multiple outputs."
+    },
+    {
+      "type": "heading",
+      "text": "Set up and operate"
+    },
+    {
+      "type": "steps",
+      "rows": [
+        [
+          "Choose a live Stone Separator recipe."
+        ],
+        [
+          "Supply its exact ingredient and full batch energy."
+        ],
+        [
+          "Reserve space for every output, including secondary products such as sticks or shards."
+        ]
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "When it does not run"
+    },
+    {
+      "type": "paragraph",
+      "text": "An empty secondary output destination can matter as much as the primary one; check all pending results."
+    },
+    {
+      "type": "paragraph",
+      "text": "Read the active server settings below before copying default costs from another installation. For special slot roles, use the machine screen labels. Settings reporting does not inspect or mutate a placed machine."
+    },
+    {
+      "type": "live",
+      "text": "Actual server settings",
+      "target": "foundations_calculator",
+      "options": {
+        "key": "machine/stone_separator"
+      }
+    },
+    {
+      "type": "recipe",
+      "text": "Processing / value recipes",
+      "target": "machine:stone_separator",
+      "options": {
+        "profile": "stone_separator"
+      }
+    },
+    {
+      "type": "recipe",
+      "text": "Crafting / obtaining this machine",
+      "target": "item:foundations_calculator:stone_separator",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "link",
+      "text": "General operating checklist",
+      "target": "foundations_calculator:troubleshooting/no_progress"
+    }
+  ]
+}

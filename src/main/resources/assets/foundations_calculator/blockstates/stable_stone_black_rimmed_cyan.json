@@ -1,0 +1,196 @@
+{
+  "variants": {
+    "down=false,east=false,north=false,south=false,up=false,west=false": {
+      "model": "foundations_calculator:block/stable_stone_black_rimmed_cyan_0"
+    },
+    "down=false,east=false,north=false,south=false,up=true,west=false": {
+      "model": "foundations_calculator:block/stable_stone_black_rimmed_cyan_1"
+    },
+    "down=true,east=false,north=false,south=false,up=false,west=false": {
+      "model": "foundations_calculator:block/stable_stone_black_rimmed_cyan_2"
+    },
+    "down=false,east=false,north=true,south=false,up=false,west=false": {
+      "model": "foundations_calculator:block/stable_stone_black_rimmed_cyan_3"
+    },
+    "down=false,east=false,north=false,south=true,up=false,west=false": {
+      "model": "foundations_calculator:block/stable_stone_black_rimmed_cyan_4"
+    },
+    "down=false,east=false,north=false,south=false,up=false,west=true": {
+      "model": "foundations_calculator:block/stable_stone_black_rimmed_cyan_5"
+    },
+    "down=false,east=true,north=false,south=false,up=false,west=false": {
+      "model": "foundations_calculator:block/stable_stone_black_rimmed_cyan_6"
+    },
+    "down=false,east=true,north=false,south=false,up=true,west=false": {
+      "model": "foundations_calculator:block/stable_stone_black_rimmed_cyan_7"
+    },
+    "down=false,east=false,north=false,south=false,up=true,west=true": {
+      "model": "foundations_calculator:block/stable_stone_black_rimmed_cyan_8"
+    },
+    "down=true,east=true,north=false,south=false,up=false,west=false": {
+      "model": "foundations_calculator:block/stable_stone_black_rimmed_cyan_9"
+    },
+    "down=true,east=false,north=false,south=false,up=false,west=true": {
+      "model": "foundations_calculator:block/stable_stone_black_rimmed_cyan_10"
+    },
+    "down=false,east=false,north=true,south=false,up=true,west=false": {
+      "model": "foundations_calculator:block/stable_stone_black_rimmed_cyan_11"
+    },
+    "down=false,east=false,north=false,south=true,up=true,west=false": {
+      "model": "foundations_calculator:block/stable_stone_black_rimmed_cyan_12"
+    },
+    "down=true,east=false,north=true,south=false,up=false,west=false": {
+      "model": "foundations_calculator:block/stable_stone_black_rimmed_cyan_13"
+    },
+    "down=true,east=false,north=false,south=true,up=false,west=false": {
+      "model": "foundations_calculator:block/stable_stone_black_rimmed_cyan_14"
+    },
+    "down=false,east=true,north=true,south=false,up=false,west=false": {
+      "model": "foundations_calculator:block/stable_stone_black_rimmed_cyan_15"
+    },
+    "down=false,east=true,north=false,south=true,up=false,west=false": {
+      "model": "foundations_calculator:block/stable_stone_black_rimmed_cyan_16"
+    },
+    "down=false,east=false,north=true,south=false,up=false,west=true": {
+      "model": "foundations_calculator:block/stable_stone_black_rimmed_cyan_17"
+    },
+    "down=false,east=false,north=false,south=true,up=false,west=true": {
+      "model": "foundations_calculator:block/stable_stone_black_rimmed_cyan_18"
+    },
+    "down=true,east=false,north=false,south=false,up=true,west=false": {
+      "model": "foundations_calculator:block/stable_stone_black_rimmed_cyan_19"
+    },
+    "down=false,east=true,north=false,south=false,up=false,west=true": {
+      "model": "foundations_calculator:block/stable_stone_black_rimmed_cyan_20"
+    },
+    "down=false,east=false,north=true,south=true,up=false,west=false": {
+      "model": "foundations_calculator:block/stable_stone_black_rimmed_cyan_21"
+    },
+    "down=true,east=false,north=false,south=false,up=true,west=true": {
+      "model": "foundations_calculator:block/stable_stone_black_rimmed_cyan_22"
+    },
+    "down=true,east=false,north=false,south=true,up=true,west=false": {
+      "model": "foundations_calculator:block/stable_stone_black_rimmed_cyan_23"
+    },
+    "down=true,east=true,north=false,south=false,up=true,west=false": {
+      "model": "foundations_calculator:block/stable_stone_black_rimmed_cyan_24"
+    },
+    "down=true,east=false,north=true,south=false,up=true,west=false": {
+      "model": "foundations_calculator:block/stable_stone_black_rimmed_cyan_25"
+    },
+    "down=false,east=false,north=true,south=true,up=false,west=true": {
+      "model": "foundations_calculator:block/stable_stone_black_rimmed_cyan_26"
+    },
+    "down=false,east=true,north=true,south=true,up=false,west=false": {
+      "model": "foundations_calculator:block/stable_stone_black_rimmed_cyan_27"
+    },
+    "down=false,east=true,north=false,south=false,up=true,west=true": {
+      "model": "foundations_calculator:block/stable_stone_black_rimmed_cyan_28"
+    },
+    "down=false,east=true,north=false,south=true,up=false,west=true": {
+      "model": "foundations_calculator:block/stable_stone_black_rimmed_cyan_29"
+    },
+    "down=true,east=true,north=false,south=false,up=false,west=true": {
+      "model": "foundations_calculator:block/stable_stone_black_rimmed_cyan_30"
+    },
+    "down=false,east=true,north=true,south=false,up=false,west=true": {
+      "model": "foundations_calculator:block/stable_stone_black_rimmed_cyan_31"
+    },
+    "down=false,east=false,north=true,south=true,up=true,west=false": {
+      "model": "foundations_calculator:block/stable_stone_black_rimmed_cyan_32"
+    },
+    "down=true,east=false,north=true,south=true,up=false,west=false": {
+      "model": "foundations_calculator:block/stable_stone_black_rimmed_cyan_33"
+    },
+    "down=false,east=true,north=false,south=true,up=true,west=false": {
+      "model": "foundations_calculator:block/stable_stone_black_rimmed_cyan_34"
+    },
+    "down=false,east=false,north=false,south=true,up=true,west=true": {
+      "model": "foundations_calculator:block/stable_stone_black_rimmed_cyan_35"
+    },
+    "down=false,east=true,north=true,south=false,up=true,west=false": {
+      "model": "foundations_calculator:block/stable_stone_black_rimmed_cyan_36"
+    },
+    "down=true,east=true,north=true,south=false,up=false,west=false": {
+      "model": "foundations_calculator:block/stable_stone_black_rimmed_cyan_37"
+    },
+    "down=true,east=true,north=false,south=true,up=false,west=false": {
+      "model": "foundations_calculator:block/stable_stone_black_rimmed_cyan_38"
+    },
+    "down=true,east=false,north=false,south=true,up=false,west=true": {
+      "model": "foundations_calculator:block/stable_stone_black_rimmed_cyan_39"
+    },
+    "down=true,east=false,north=true,south=false,up=false,west=true": {
+      "model": "foundations_calculator:block/stable_stone_black_rimmed_cyan_40"
+    },
+    "down=false,east=false,north=true,south=false,up=true,west=true": {
+      "model": "foundations_calculator:block/stable_stone_black_rimmed_cyan_41"
+    },
+    "down=true,east=true,north=false,south=false,up=true,west=true": {
+      "model": "foundations_calculator:block/stable_stone_black_rimmed_cyan_42"
+    },
+    "down=false,east=true,north=true,south=true,up=false,west=true": {
+      "model": "foundations_calculator:block/stable_stone_black_rimmed_cyan_43"
+    },
+    "down=true,east=false,north=true,south=true,up=true,west=false": {
+      "model": "foundations_calculator:block/stable_stone_black_rimmed_cyan_44"
+    },
+    "down=true,east=false,north=true,south=false,up=true,west=true": {
+      "model": "foundations_calculator:block/stable_stone_black_rimmed_cyan_45"
+    },
+    "down=true,east=false,north=true,south=true,up=false,west=true": {
+      "model": "foundations_calculator:block/stable_stone_black_rimmed_cyan_46"
+    },
+    "down=false,east=false,north=true,south=true,up=true,west=true": {
+      "model": "foundations_calculator:block/stable_stone_black_rimmed_cyan_47"
+    },
+    "down=true,east=false,north=false,south=true,up=true,west=true": {
+      "model": "foundations_calculator:block/stable_stone_black_rimmed_cyan_48"
+    },
+    "down=true,east=true,north=true,south=false,up=true,west=false": {
+      "model": "foundations_calculator:block/stable_stone_black_rimmed_cyan_49"
+    },
+    "down=true,east=true,north=false,south=true,up=true,west=false": {
+      "model": "foundations_calculator:block/stable_stone_black_rimmed_cyan_50"
+    },
+    "down=false,east=true,north=true,south=true,up=true,west=false": {
+      "model": "foundations_calculator:block/stable_stone_black_rimmed_cyan_51"
+    },
+    "down=true,east=true,north=true,south=true,up=false,west=false": {
+      "model": "foundations_calculator:block/stable_stone_black_rimmed_cyan_52"
+    },
+    "down=false,east=true,north=false,south=true,up=true,west=true": {
+      "model": "foundations_calculator:block/stable_stone_black_rimmed_cyan_53"
+    },
+    "down=true,east=true,north=false,south=true,up=false,west=true": {
+      "model": "foundations_calculator:block/stable_stone_black_rimmed_cyan_54"
+    },
+    "down=false,east=true,north=true,south=false,up=true,west=true": {
+      "model": "foundations_calculator:block/stable_stone_black_rimmed_cyan_55"
+    },
+    "down=true,east=true,north=true,south=false,up=false,west=true": {
+      "model": "foundations_calculator:block/stable_stone_black_rimmed_cyan_56"
+    },
+    "down=true,east=true,north=true,south=true,up=false,west=true": {
+      "model": "foundations_calculator:block/stable_stone_black_rimmed_cyan_57"
+    },
+    "down=true,east=true,north=false,south=true,up=true,west=true": {
+      "model": "foundations_calculator:block/stable_stone_black_rimmed_cyan_58"
+    },
+    "down=true,east=false,north=true,south=true,up=true,west=true": {
+      "model": "foundations_calculator:block/stable_stone_black_rimmed_cyan_59"
+    },
+    "down=true,east=true,north=true,south=true,up=true,west=false": {
+      "model": "foundations_calculator:block/stable_stone_black_rimmed_cyan_60"
+    },
+    "down=true,east=true,north=true,south=false,up=true,west=true": {
+      "model": "foundations_calculator:block/stable_stone_black_rimmed_cyan_61"
+    },
+    "down=false,east=true,north=true,south=true,up=true,west=true": {
+      "model": "foundations_calculator:block/stable_stone_black_rimmed_cyan_62"
+    },
+    "down=true,east=true,north=true,south=true,up=true,west=true": {
+      "model": "foundations_calculator:block/stable_stone_black_rimmed_cyan_63"
+    }
+  }
+}

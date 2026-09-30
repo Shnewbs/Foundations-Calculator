@@ -1,0 +1,12 @@
+{
+  "name": "GregTech voltage, amperage and tiers",
+  "category": "foundations_calculator:power",
+  "icon": "foundations_calculator:info_calculator",
+  "sortnum": 11,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "GT cable networks exchange complete voltage/amperage packets. Calculator does not pretend those cables are a generic simulated FE battery. Output sends only packets the target advertises it can accept; input accepts only whole packets that fit the configured limits and FE buffer.$pThe shipped output is LV: 32 EU at one amp per tick. The shipped input budget is four amps per tick, shared across faces. These are defaults; the effective settings below are authoritative for your server.$pA per-machine voltage or amperage override of zero inherits the global GT value. Battery charger/item tiers are separate from the cable settings. Refused over-voltage packets do not cause Calculator to explode. GT cables still apply their own cable losses.$p1. Confirm the installed GT version matches the pinned integration target in the source documentation.$p2. Set compatible machine and cable tiers; do not use a larger ratio to imitate a voltage tier.$p3. Set the face to the correct energy direction.$p4. Check whether the shared per-tick amp budget is already exhausted by another face.$p5. Use Power diagnostics on a nearby machine for the exact packet limits and refusal reason.$pActual server settings: live server values are available in the native or master Foundations reader.$p$(l:foundations_calculator:power/routing)Native routing versus FE facades$()"
+    }
+  ]
+}

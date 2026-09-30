@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "AAA",
+    "AAA",
+    "AAA"
+  ],
+  "key": {
+    "A": {
+      "tag": "foundations_calculator:gems/amethyst"
+    }
+  },
+  "result": {
+    "id": "foundations_calculator:large_amethyst",
+    "count": 1
+  }
+}

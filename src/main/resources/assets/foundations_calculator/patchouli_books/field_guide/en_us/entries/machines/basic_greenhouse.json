@@ -1,0 +1,15 @@
+{
+  "name": "Basic Greenhouse",
+  "category": "foundations_calculator:machines",
+  "icon": "foundations_calculator:basic_greenhouse",
+  "sortnum": 54,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Purpose$()$pAutomatically constructed starter greenhouse with eight growing cells around central water.$p$(l)Set up and operate$()$p1. Load logs, stairs, glass and planks into its first four inputs, then press Build.$p2. Prepare dirt/grass beneath the growing area and supply compatible seeds.$p3. Use a Gas Lantern for carbon and an outside chest for permitted seed/produce automation.$p$(l)When it does not run$()$pIts roof is wider than the crop area. Wrong construction-slot order, missing energy, denied targets or higher-tier seeds can stall it.$pRead the active server settings below before copying default costs from another installation. For special slot roles, use the machine screen labels. Settings reporting does not inspect or mutate a placed machine.$pActual server settings: live server values are available in the native or master Foundations reader.$pCrafting / obtaining this machine: live recipe details are available in the native or master Foundations reader.$p$(l:foundations_calculator:multiblocks/basic_greenhouse)Construction plans and layers$()"
+    }
+  ],
+  "extra_recipe_mappings": {
+    "foundations_calculator:basic_greenhouse": 0
+  }
+}

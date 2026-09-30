@@ -1,0 +1,16 @@
+{
+  "name": "Slots, faces and completed batches",
+  "category": "foundations_calculator:getting_started",
+  "icon": "foundations_calculator:info_calculator",
+  "sortnum": 3,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "The shared machine screen gives different machines a common layout, but the program decides which slots are valid. Do not treat every visible inventory slot as an interchangeable input.$p$(l)Typical process inventory$()$pInputs \u2014 The labelled input area; special programs may reserve particular slots.$pOutputs \u2014 Six ordinary result slots, internally 14\u201319.$pPower / module \u2014 The special slot, internally 20; its role depends on the machine.$pUpgrades \u2014 Speed, Energy, Transfer and Void where supported.$pA completed batch can put results in retained overflow while normal outputs are blocked. Ordinary operation waits rather than discarding those results. The Void Upgrade is the explicit exception: it permits overflow disposal.$pAutomatic side mode follows the machine role. Input, Output and Disabled override a face. External item pipes and the Transfer Upgrade must both obey the machine automation master switch and those side modes. Energy has its own capability and direction settings.$p1. Confirm the slot label and accepted ingredient, including any analysed/stable circuit requirement.$p2. Test with no redstone signal unless the machine specifically needs one.$p3. Empty outputs and retained overflow before assuming the recipe is broken.$p4. Use Sides or the wrench to select the intended input and output faces.$p$(l:foundations_calculator:troubleshooting/automation)Automation rules and safe exports$()"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(l:foundations_calculator:troubleshooting/blocked_output)Blocked output and pending results$()"
+    }
+  ]
+}

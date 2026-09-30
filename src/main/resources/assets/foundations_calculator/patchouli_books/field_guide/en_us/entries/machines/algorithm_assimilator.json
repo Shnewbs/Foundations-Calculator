@@ -1,0 +1,15 @@
+{
+  "name": "Algorithm Assimilator",
+  "category": "foundations_calculator:machines",
+  "icon": "foundations_calculator:algorithm_assimilator",
+  "sortnum": 72,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Purpose$()$pCollects pear/diamond tree products into its bulk bins when its adjacent tree satisfies the program.$p$(l)Set up and operate$()$p1. Place beside the three-block trunk, facing away.$p2. Maintain a valid tree with the required leaf count.$p3. Let leaves mature and withdraw products from the bins.$p$(l)When it does not run$()$pThis collects configured tree products, not arbitrary drops from any modded tree.$pRead the active server settings below before copying default costs from another installation. For special slot roles, use the machine screen labels. Settings reporting does not inspect or mutate a placed machine.$pActual server settings: live server values are available in the native or master Foundations reader.$pCrafting / obtaining this machine: live recipe details are available in the native or master Foundations reader.$p$(l:foundations_calculator:troubleshooting/no_progress)General operating checklist$()"
+    }
+  ],
+  "extra_recipe_mappings": {
+    "foundations_calculator:algorithm_assimilator": 0
+  }
+}

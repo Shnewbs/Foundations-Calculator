@@ -1,0 +1,36 @@
+{
+  "type": "foundations_calculator:process",
+  "machine": "atomic",
+  "ingredients": [
+    {
+      "ingredient": {
+        "item": "foundations_calculator:energy_module"
+      },
+      "count": 1
+    },
+    {
+      "ingredient": {
+        "item": "foundations_calculator:fire_diamond"
+      },
+      "count": 1
+    },
+    {
+      "ingredient": {
+        "item": "foundations_calculator:energy_module"
+      },
+      "count": 1
+    }
+  ],
+  "results": [
+    {
+      "stack": {
+        "id": "foundations_calculator:conductor_mast",
+        "count": 1
+      }
+    }
+  ],
+  "energy": 0,
+  "ticks": 1,
+  "value": 0,
+  "research": false
+}

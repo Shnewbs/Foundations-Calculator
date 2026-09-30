@@ -1,0 +1,28 @@
+{
+  "variants": {
+    "age=0": {
+      "model": "foundations_calculator:block/crop_fiddledew_0"
+    },
+    "age=1": {
+      "model": "foundations_calculator:block/crop_fiddledew_1"
+    },
+    "age=2": {
+      "model": "foundations_calculator:block/crop_fiddledew_2"
+    },
+    "age=3": {
+      "model": "foundations_calculator:block/crop_fiddledew_3"
+    },
+    "age=4": {
+      "model": "foundations_calculator:block/crop_fiddledew_4"
+    },
+    "age=5": {
+      "model": "foundations_calculator:block/crop_fiddledew_5"
+    },
+    "age=6": {
+      "model": "foundations_calculator:block/crop_fiddledew_6"
+    },
+    "age=7": {
+      "model": "foundations_calculator:block/crop_fiddledew_7"
+    }
+  }
+}

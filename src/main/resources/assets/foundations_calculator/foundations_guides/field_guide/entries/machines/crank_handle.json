@@ -1,0 +1,70 @@
+{
+  "id": "foundations_calculator:machines/crank_handle",
+  "chapter": "foundations_calculator:machines",
+  "title": "Crank Handle",
+  "order": 67,
+  "items": [
+    "foundations_calculator:crank_handle"
+  ],
+  "keywords": [
+    "crank_handle",
+    "Auxiliary crank component associated with the hand-powered setup"
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "Purpose"
+    },
+    {
+      "type": "paragraph",
+      "text": "Auxiliary crank component associated with the hand-powered setup."
+    },
+    {
+      "type": "heading",
+      "text": "Set up and operate"
+    },
+    {
+      "type": "steps",
+      "rows": [
+        [
+          "Use the current recipe to obtain the part when needed."
+        ],
+        [
+          "Install/use it in the generator’s intended setup rather than expecting a processing inventory."
+        ],
+        [
+          "Read the generator page for FE behavior."
+        ]
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "When it does not run"
+    },
+    {
+      "type": "paragraph",
+      "text": "The handle is not a general processor and has no separate normal recipe-processing cycle."
+    },
+    {
+      "type": "live",
+      "text": "Actual server settings",
+      "target": "foundations_calculator",
+      "options": {
+        "key": "machine/crank_handle"
+      }
+    },
+    {
+      "type": "recipe",
+      "text": "Crafting / obtaining this machine",
+      "target": "item:foundations_calculator:crank_handle",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "link",
+      "text": "General operating checklist",
+      "target": "foundations_calculator:troubleshooting/no_progress"
+    }
+  ]
+}

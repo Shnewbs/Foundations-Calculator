@@ -1,0 +1,156 @@
+{
+  "process_counts": {
+    "algorithm_separator": 6,
+    "atomic": 22,
+    "calculator": 390,
+    "conductor_mast": 3,
+    "extraction_chamber": 2,
+    "fabrication_chamber": 12,
+    "flawless": 13,
+    "glowstone_extractor": 3,
+    "health_processor": 19,
+    "precision_chamber": 16,
+    "processing_chamber": 28,
+    "reassembly_chamber": 14,
+    "redstone_extractor": 4,
+    "restoration_chamber": 14,
+    "scientific": 12,
+    "starch_extractor": 15,
+    "stone_separator": 12,
+    "harvest": 2,
+    "analysis_1": 17,
+    "analysis_2": 15,
+    "analysis_3": 10,
+    "analysis_4": 16,
+    "analysis_5": 10,
+    "analysis_0": 11
+  },
+  "crafting_count": 206,
+  "analysis_rewards": 68,
+  "skipped_invalid_declarations": [
+    {
+      "source_index": 145,
+      "reason": "Original declaration does not contain the required number of item inputs",
+      "recipe": {
+        "type": "CalculatorRecipes",
+        "args": [
+          {
+            "item": "Blocks.STONE",
+            "count": 1,
+            "meta": 0
+          },
+          {
+            "item": "Calculator.small_stone",
+            "count": 1,
+            "meta": 0
+          },
+          {
+            "research": "STONE"
+          }
+        ]
+      }
+    },
+    {
+      "source_index": 147,
+      "reason": "Original declaration does not contain the required number of item inputs",
+      "recipe": {
+        "type": "CalculatorRecipes",
+        "args": [
+          {
+            "item": "Blocks.DIRT",
+            "count": 1,
+            "meta": 0,
+            "stable": false,
+            "analysed": false
+          },
+          {
+            "item": "Calculator.soil",
+            "count": 1,
+            "meta": 0
+          },
+          {
+            "research": "DIRT"
+          }
+        ]
+      }
+    },
+    {
+      "source_index": 312,
+      "reason": "Original declaration does not contain the required number of item inputs",
+      "recipe": {
+        "type": "CalculatorRecipes",
+        "args": [
+          {
+            "item": "Blocks.PLANKS",
+            "count": 2,
+            "meta": 5,
+            "stable": false,
+            "analysed": false
+          },
+          {
+            "item": "Blocks.PLANKS",
+            "count": 1,
+            "meta": 0,
+            "stable": false,
+            "analysed": false
+          },
+          {
+            "research": "PLANKS"
+          }
+        ]
+      }
+    },
+    {
+      "source_index": 359,
+      "reason": "Original declaration does not contain the required number of item inputs",
+      "recipe": {
+        "type": "CalculatorRecipes",
+        "args": [
+          {
+            "item": "Blocks.LEAVES2",
+            "count": 2,
+            "meta": 0,
+            "stable": false,
+            "analysed": false
+          },
+          {
+            "item": "Blocks.LEAVES",
+            "count": 1,
+            "meta": 2,
+            "stable": false,
+            "analysed": false
+          },
+          {
+            "research": "LEAVES"
+          }
+        ]
+      }
+    },
+    {
+      "source_index": 362,
+      "reason": "Original declaration does not contain the required number of item inputs",
+      "recipe": {
+        "type": "CalculatorRecipes",
+        "args": [
+          {
+            "item": "Blocks.LEAVES2",
+            "count": 2,
+            "meta": 1,
+            "stable": false,
+            "analysed": false
+          },
+          {
+            "item": "Blocks.LEAVES",
+            "count": 1,
+            "meta": 0,
+            "stable": false,
+            "analysed": false
+          },
+          {
+            "research": "LEAVES"
+          }
+        ]
+      }
+    }
+  ]
+}

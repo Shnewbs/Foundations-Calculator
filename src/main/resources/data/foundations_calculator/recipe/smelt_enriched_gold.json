@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "ingredient": {
+    "item": "foundations_calculator:enriched_gold"
+  },
+  "result": {
+    "id": "foundations_calculator:enriched_gold_ingot"
+  },
+  "experience": 0.8,
+  "cookingtime": 200
+}

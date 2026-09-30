@@ -1,0 +1,82 @@
+{
+  "id": "foundations_calculator:machines/fabrication_chamber",
+  "chapter": "foundations_calculator:machines",
+  "title": "Fabrication Chamber",
+  "order": 53,
+  "items": [
+    "foundations_calculator:fabrication_chamber"
+  ],
+  "keywords": [
+    "fabrication_chamber",
+    "Builds configured devices and upgrades from exact combinations of analysed circuit boards"
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "Purpose"
+    },
+    {
+      "type": "paragraph",
+      "text": "Builds configured devices and upgrades from exact combinations of analysed circuit boards."
+    },
+    {
+      "type": "heading",
+      "text": "Set up and operate"
+    },
+    {
+      "type": "steps",
+      "rows": [
+        [
+          "Use the recipe card to identify board numbers and state requirements."
+        ],
+        [
+          "Analyse required boards before insertion."
+        ],
+        [
+          "Provide FE and keep the finished-device output free."
+        ]
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "When it does not run"
+    },
+    {
+      "type": "paragraph",
+      "text": "A board with the right number but no analysed state cannot satisfy an analysed ingredient."
+    },
+    {
+      "type": "paragraph",
+      "text": "Read the active server settings below before copying default costs from another installation. For special slot roles, use the machine screen labels. Settings reporting does not inspect or mutate a placed machine."
+    },
+    {
+      "type": "live",
+      "text": "Actual server settings",
+      "target": "foundations_calculator",
+      "options": {
+        "key": "machine/fabrication_chamber"
+      }
+    },
+    {
+      "type": "recipe",
+      "text": "Processing / value recipes",
+      "target": "machine:fabrication_chamber",
+      "options": {
+        "profile": "fabrication_chamber"
+      }
+    },
+    {
+      "type": "recipe",
+      "text": "Crafting / obtaining this machine",
+      "target": "item:foundations_calculator:fabrication_chamber",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "link",
+      "text": "General operating checklist",
+      "target": "foundations_calculator:troubleshooting/no_progress"
+    }
+  ]
+}

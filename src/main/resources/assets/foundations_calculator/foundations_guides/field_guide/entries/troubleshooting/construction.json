@@ -1,0 +1,64 @@
+{
+  "id": "foundations_calculator:troubleshooting/construction",
+  "chapter": "foundations_calculator:troubleshooting",
+  "title": "Build, harvest or planting stopped",
+  "order": 29,
+  "items": [],
+  "keywords": [
+    "build failed",
+    "claim",
+    "owner",
+    "demolish",
+    "unloaded",
+    "obstruction"
+  ],
+  "blocks": [
+    {
+      "type": "steps",
+      "rows": [
+        [
+          "Confirm the machine has a valid owner and the actual target positions are loaded."
+        ],
+        [
+          "Read denied-world-action status. Ask an authorized owner/admin to resolve permission, rather than disabling protection as the first fix."
+        ],
+        [
+          "Check the entire construction bounds, including roofs, overhangs and below-ground layers."
+        ],
+        [
+          "Refill the correct construction input: logs, stairs, glass, planks. Seeds do not replace a missing wall material."
+        ],
+        [
+          "Supply energy for each placement, farmland/water action or harvest."
+        ],
+        [
+          "For a manual structure, compare each layer and orientation; it has no automatic Build action."
+        ],
+        [
+          "For a modded crop or sapling, check whether its protected PlantAdapter exists. Legacy callback support is intentionally off by default."
+        ],
+        [
+          "Check pending outputs before Demolish or harvest; completed recovery must have somewhere to go."
+        ]
+      ]
+    },
+    {
+      "type": "live",
+      "text": "Actual server settings",
+      "target": "foundations_calculator",
+      "options": {
+        "key": "protection"
+      }
+    },
+    {
+      "type": "link",
+      "text": "Controller-relative plans",
+      "target": "foundations_calculator:multiblocks/coordinates"
+    },
+    {
+      "type": "link",
+      "text": "Third-party crop boundaries",
+      "target": "foundations_calculator:farming/compatibility"
+    }
+  ]
+}

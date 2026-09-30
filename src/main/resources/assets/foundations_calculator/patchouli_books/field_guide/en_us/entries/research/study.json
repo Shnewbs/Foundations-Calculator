@@ -1,0 +1,15 @@
+{
+  "name": "Research without a second progression system",
+  "category": "foundations_calculator:research",
+  "icon": "foundations_calculator:research_chamber",
+  "sortnum": 23,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "The Research Chamber studies a sample and unlocks the corresponding research group. Unlocks are stored on the server per player or in the configured server-wide shared state. Bookmarks and reading history never count as research.$p1. Open Research using the button in this book to see the sample list and current unlock display.$p2. Place a valid sample in an owned Research Chamber.$p3. Supply the current study cost and wait through its duration. The sample is kept by default; a server option can consume it.$p4. After completion, retry the newly unlocked calculator recipe with the correct family, counts and free result slots.$pMastery records completed Calculator, Scientific, Atomic and Flawless batches. It is informational in this port: reaching a target does not secretly award an item or create a new recipe gate.$p$(o)Packaged guide prose is public. A reader lock icon cannot make a shipped paragraph secret. Future providers must filter genuinely restricted live information server-side rather than relying on UI hiding.$()$pActual server settings: live server values are available in the native or master Foundations reader.$pActual research samples and study recipes: live recipe details are available in the native or master Foundations reader.$p$(l:foundations_calculator:machines/research_chamber)Research Chamber reference$()"
+    }
+  ],
+  "extra_recipe_mappings": {
+    "foundations_calculator:research_chamber": 0
+  }
+}

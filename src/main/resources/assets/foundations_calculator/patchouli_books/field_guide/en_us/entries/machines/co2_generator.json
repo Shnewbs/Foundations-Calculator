@@ -1,0 +1,15 @@
+{
+  "name": "CO\u2082 Generator",
+  "category": "foundations_calculator:machines",
+  "icon": "foundations_calculator:co2_generator",
+  "sortnum": 57,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Purpose$()$pSupplies carbon to a correctly aligned Flawless Greenhouse by burning fuel and consuming FE per fuel item.$p$(l)Set up and operate$()$p1. Place it three blocks to the specified side of the Flawless controller, same facing.$p2. Provide a valid fuel and enough FE for the entire fuel start.$p3. Use Controlled Fuel for the configured high-carbon pause/resume behavior.$p$(l)When it does not run$()$pAt the shipped values Controlled Fuel pauses at 100% and resumes at 92%, preserving paused burn time. Wrong position/facing prevents the intended link.$pRead the active server settings below before copying default costs from another installation. For special slot roles, use the machine screen labels. Settings reporting does not inspect or mutate a placed machine.$pActual server settings: live server values are available in the native or master Foundations reader.$pCrafting / obtaining this machine: live recipe details are available in the native or master Foundations reader.$p$(l:foundations_calculator:troubleshooting/no_progress)General operating checklist$()"
+    }
+  ],
+  "extra_recipe_mappings": {
+    "foundations_calculator:co2_generator": 0
+  }
+}

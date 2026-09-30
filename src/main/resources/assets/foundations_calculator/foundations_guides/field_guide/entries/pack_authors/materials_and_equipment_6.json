@@ -1,0 +1,171 @@
+{
+  "id": "foundations_calculator:pack_authors/materials_and_equipment_6",
+  "chapter": "foundations_calculator:pack_authors",
+  "title": "Materials and equipment · 6",
+  "order": 98,
+  "items": [
+    "foundations_calculator:small_tanzanite",
+    "foundations_calculator:shard_tanzanite",
+    "foundations_calculator:coal_dust",
+    "foundations_calculator:enriched_coal",
+    "foundations_calculator:purified_coal",
+    "foundations_calculator:fire_coal",
+    "foundations_calculator:controlled_fuel",
+    "foundations_calculator:grenade_casing",
+    "foundations_calculator:baby_grenade",
+    "foundations_calculator:grenade",
+    "foundations_calculator:purified_obsidian",
+    "foundations_calculator:lantern"
+  ],
+  "keywords": [],
+  "blocks": [
+    {
+      "type": "paragraph",
+      "text": "This reference groups related inventory entries. Each recipe section reads the current world. An item may have no crafting result when it comes from harvesting, world generation, a program action or creative tools."
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:small_tanzanite"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Small Tanzanite",
+      "target": "item:foundations_calculator:small_tanzanite",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:shard_tanzanite"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Shard Tanzanite",
+      "target": "item:foundations_calculator:shard_tanzanite",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:coal_dust"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Coal Dust",
+      "target": "item:foundations_calculator:coal_dust",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:enriched_coal"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Enriched Coal",
+      "target": "item:foundations_calculator:enriched_coal",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:purified_coal"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Purified Coal",
+      "target": "item:foundations_calculator:purified_coal",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:fire_coal"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Fire Coal",
+      "target": "item:foundations_calculator:fire_coal",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:controlled_fuel"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Controlled Fuel",
+      "target": "item:foundations_calculator:controlled_fuel",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:grenade_casing"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Grenade Casing",
+      "target": "item:foundations_calculator:grenade_casing",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:baby_grenade"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Baby Grenade",
+      "target": "item:foundations_calculator:baby_grenade",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:grenade"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Grenade",
+      "target": "item:foundations_calculator:grenade",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:purified_obsidian"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Purified Obsidian",
+      "target": "item:foundations_calculator:purified_obsidian",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:lantern"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Lantern",
+      "target": "item:foundations_calculator:lantern",
+      "options": {
+        "profile": ""
+      }
+    }
+  ]
+}

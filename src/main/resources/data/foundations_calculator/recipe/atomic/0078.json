@@ -1,0 +1,36 @@
+{
+  "type": "foundations_calculator:process",
+  "machine": "atomic",
+  "ingredients": [
+    {
+      "ingredient": {
+        "item": "minecraft:end_stone"
+      },
+      "count": 1
+    },
+    {
+      "ingredient": {
+        "item": "foundations_calculator:electric_diamond"
+      },
+      "count": 1
+    },
+    {
+      "ingredient": {
+        "item": "minecraft:obsidian"
+      },
+      "count": 1
+    }
+  ],
+  "results": [
+    {
+      "stack": {
+        "id": "foundations_calculator:end_diamond",
+        "count": 1
+      }
+    }
+  ],
+  "energy": 0,
+  "ticks": 1,
+  "value": 0,
+  "research": false
+}

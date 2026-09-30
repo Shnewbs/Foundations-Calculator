@@ -1,0 +1,82 @@
+{
+  "id": "foundations_calculator:machines/starch_extractor",
+  "chapter": "foundations_calculator:machines",
+  "title": "Starch Extractor",
+  "order": 63,
+  "items": [
+    "foundations_calculator:starch_extractor"
+  ],
+  "keywords": [
+    "starch_extractor",
+    "Consumes recipe-defined nutrient and furnace fuel to produce FE over the fuel’s burn time"
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "Purpose"
+    },
+    {
+      "type": "paragraph",
+      "text": "Consumes recipe-defined nutrient and furnace fuel to produce FE over the fuel’s burn time."
+    },
+    {
+      "type": "heading",
+      "text": "Set up and operate"
+    },
+    {
+      "type": "steps",
+      "rows": [
+        [
+          "Put valid furnace fuel in the first input."
+        ],
+        [
+          "Put an accepted starch-value ingredient in the second input."
+        ],
+        [
+          "Accumulate enough nutrient for a fuel start, then export FE."
+        ]
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "When it does not run"
+    },
+    {
+      "type": "paragraph",
+      "text": "Fuel alone is insufficient if the nutrient reservoir is below its configured start cost."
+    },
+    {
+      "type": "paragraph",
+      "text": "Read the active server settings below before copying default costs from another installation. For special slot roles, use the machine screen labels. Settings reporting does not inspect or mutate a placed machine."
+    },
+    {
+      "type": "live",
+      "text": "Actual server settings",
+      "target": "foundations_calculator",
+      "options": {
+        "key": "machine/starch_extractor"
+      }
+    },
+    {
+      "type": "recipe",
+      "text": "Processing / value recipes",
+      "target": "machine:starch_extractor",
+      "options": {
+        "profile": "starch_extractor"
+      }
+    },
+    {
+      "type": "recipe",
+      "text": "Crafting / obtaining this machine",
+      "target": "item:foundations_calculator:starch_extractor",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "link",
+      "text": "General operating checklist",
+      "target": "foundations_calculator:troubleshooting/no_progress"
+    }
+  ]
+}

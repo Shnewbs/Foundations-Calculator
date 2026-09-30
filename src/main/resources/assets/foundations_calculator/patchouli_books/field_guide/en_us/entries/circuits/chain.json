@@ -1,0 +1,46 @@
+{
+  "name": "The complete circuit-processing chain",
+  "category": "foundations_calculator:circuits",
+  "icon": "foundations_calculator:circuit_dirty_0",
+  "sortnum": 6,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Circuits have both an item variant and stored analysis state. A dirty or damaged circuit, a clean unanalysed board, an analysed board and an analysed stable board are not interchangeable just because they share a number.$p$(l)Processing route$()$pExtraction / Precision \u2014 Find dirty or damaged circuits from their configured inputs.$pRestoration \u2014 Clean dirty circuits into matching boards.$pReassembly \u2014 Repair damaged circuits into matching boards.$pProcessing \u2014 Combines the cleaning and repair roles.$pAnalysis \u2014 Analyse clean boards; reveals stability and can award items/FE.$pFabrication / Plugs / Multiplication \u2014 Use the exact board variants and state required by the operation.$p1. Start with a raw chip and read its actual item name: Dirty or Damaged.$p2. Select the cleaning/repair machine that handles that type.$p3. After processing, move the resulting clean board into the Analysing Chamber.$p4. Read the analysed/stable tooltip before placing the board in a Fabrication recipe or Calculator Plug.$p5. Do not reinsert an already analysed board expecting another analysis reward.$pThe analyser has data-driven rewards. Its board state is saved on the item. The guide shows public instructions and recipe state requirements; it does not alter the board, reroll its data, or grant rewards.$p$(l:foundations_calculator:machines/extraction_chamber)Extraction$()$p$(l:foundations_calculator:machines/precision_chamber)Precision$()"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(l:foundations_calculator:machines/processing_chamber)Cleaning and repair$()$p$(l:foundations_calculator:machines/analysing_chamber)Analysis$()$p$(l:foundations_calculator:troubleshooting/dirty_chip)Dirty chip not running$()"
+    }
+  ],
+  "extra_recipe_mappings": {
+    "foundations_calculator:circuit_dirty_0": 0,
+    "foundations_calculator:circuit_dirty_1": 0,
+    "foundations_calculator:circuit_dirty_2": 0,
+    "foundations_calculator:circuit_dirty_3": 0,
+    "foundations_calculator:circuit_dirty_4": 0,
+    "foundations_calculator:circuit_dirty_5": 0,
+    "foundations_calculator:circuit_dirty_6": 0,
+    "foundations_calculator:circuit_dirty_7": 0,
+    "foundations_calculator:circuit_dirty_8": 0,
+    "foundations_calculator:circuit_dirty_9": 0,
+    "foundations_calculator:circuit_dirty_10": 0,
+    "foundations_calculator:circuit_dirty_11": 0,
+    "foundations_calculator:circuit_dirty_12": 0,
+    "foundations_calculator:circuit_dirty_13": 0,
+    "foundations_calculator:circuit_damaged_0": 0,
+    "foundations_calculator:circuit_damaged_1": 0,
+    "foundations_calculator:circuit_damaged_2": 0,
+    "foundations_calculator:circuit_damaged_3": 0,
+    "foundations_calculator:circuit_damaged_4": 0,
+    "foundations_calculator:circuit_damaged_5": 0,
+    "foundations_calculator:circuit_damaged_6": 0,
+    "foundations_calculator:circuit_damaged_7": 0,
+    "foundations_calculator:circuit_damaged_8": 0,
+    "foundations_calculator:circuit_damaged_9": 0,
+    "foundations_calculator:circuit_damaged_10": 0,
+    "foundations_calculator:circuit_damaged_11": 0,
+    "foundations_calculator:circuit_damaged_12": 0,
+    "foundations_calculator:circuit_damaged_13": 0
+  }
+}

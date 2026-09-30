@@ -1,0 +1,15 @@
+{
+  "name": "Moving machines without losing their contents",
+  "category": "foundations_calculator:troubleshooting",
+  "icon": "foundations_calculator:wrench",
+  "sortnum": 30,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Use the wrench deliberately. A normal face use cycles side modes. Sneak-use dismantles a supported machine while preserving its inventory, FE and settings when the relevant preservation options are enabled.$p1. Stop input automation and let the current batch finish or pause it.$p2. Check pending results and external connections.$p3. Sneak-use the wrench and confirm that exactly one machine item was returned.$p4. Place it again and compare inventory, charge, side settings and module contents.$p5. Recheck owner/protection status at the new site before restarting world-changing actions.$pBreaking a multi-block machine extension removes the owning controller structure rather than creating independent copies of each section. When testing a new release, use a copied world before moving valuable machinery.$pObtain the wrench: live recipe details are available in the native or master Foundations reader.$p$(l:foundations_calculator:troubleshooting/automation)Reconnect sided automation$()"
+    }
+  ],
+  "extra_recipe_mappings": {
+    "foundations_calculator:wrench": 0
+  }
+}

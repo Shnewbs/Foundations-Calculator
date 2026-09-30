@@ -1,0 +1,82 @@
+{
+  "id": "foundations_calculator:machines/precision_chamber",
+  "chapter": "foundations_calculator:machines",
+  "title": "Precision Chamber",
+  "order": 49,
+  "items": [
+    "foundations_calculator:precision_chamber"
+  ],
+  "keywords": [
+    "precision_chamber",
+    "Provides configured precision extraction routes, including specific block-to-circuit results alongside small-stone output"
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "Purpose"
+    },
+    {
+      "type": "paragraph",
+      "text": "Provides configured precision extraction routes, including specific block-to-circuit results alongside small-stone output."
+    },
+    {
+      "type": "heading",
+      "text": "Set up and operate"
+    },
+    {
+      "type": "steps",
+      "rows": [
+        [
+          "Read the recipe for the exact desired circuit variant."
+        ],
+        [
+          "Provide the specified source block/tag."
+        ],
+        [
+          "Supply FE and collect both ordinary and circuit results."
+        ]
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "When it does not run"
+    },
+    {
+      "type": "paragraph",
+      "text": "Some recipes choose a random variant while others specify a particular chip. The live output card identifies random-circuit results."
+    },
+    {
+      "type": "paragraph",
+      "text": "Read the active server settings below before copying default costs from another installation. For special slot roles, use the machine screen labels. Settings reporting does not inspect or mutate a placed machine."
+    },
+    {
+      "type": "live",
+      "text": "Actual server settings",
+      "target": "foundations_calculator",
+      "options": {
+        "key": "machine/precision_chamber"
+      }
+    },
+    {
+      "type": "recipe",
+      "text": "Processing / value recipes",
+      "target": "machine:precision_chamber",
+      "options": {
+        "profile": "precision_chamber"
+      }
+    },
+    {
+      "type": "recipe",
+      "text": "Crafting / obtaining this machine",
+      "target": "item:foundations_calculator:precision_chamber",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "link",
+      "text": "General operating checklist",
+      "target": "foundations_calculator:troubleshooting/no_progress"
+    }
+  ]
+}

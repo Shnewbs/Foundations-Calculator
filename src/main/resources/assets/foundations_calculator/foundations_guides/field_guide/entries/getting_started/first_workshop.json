@@ -1,0 +1,78 @@
+{
+  "id": "foundations_calculator:getting_started/first_workshop",
+  "chapter": "foundations_calculator:getting_started",
+  "title": "Your first working workshop",
+  "order": 2,
+  "items": [
+    "foundations_calculator:calculator"
+  ],
+  "keywords": [
+    "first machine",
+    "tutorial",
+    "early game",
+    "progression",
+    "workshop"
+  ],
+  "blocks": [
+    {
+      "type": "paragraph",
+      "text": "Once the quick start works, expand it into a small reliable workshop: a Calculator, stable power, one or more processing machines, a Power Cube or equivalent buffer, and storage for every output. Follow live crafting and process recipes rather than a fixed shopping list."
+    },
+    {
+      "type": "steps",
+      "rows": [
+        [
+          "Choose a Calculator recipe that matches your available inputs. Portable calculations complete when you press Calculate; their recipe time field does not create a hidden timer."
+        ],
+        [
+          "Keep generation and storage simple until you understand the energy route. Use the Power page if an EU/J/FE adapter is involved."
+        ],
+        [
+          "Use Extraction to obtain intermediate materials and circuit drops, then Restoration/Reassembly/Analysis in the correct order."
+        ],
+        [
+          "Give each placed machine enough stored energy for the complete batch and leave room for its result before diagnosing it as broken."
+        ],
+        [
+          "Run one batch manually, then enable automation only on intended sides. Input and Disabled faces are not valid export faces."
+        ],
+        [
+          "Add Research, modules, greenhouses and larger automation after the base chain is dependable. If something stops, search the symptom in Troubleshooting before changing multiple configs."
+        ]
+      ]
+    },
+    {
+      "type": "recipe",
+      "text": "Basic calculations",
+      "target": "machine:calculator",
+      "options": {
+        "profile": "calculator"
+      }
+    },
+    {
+      "type": "link",
+      "text": "Hand-Cranked Generator",
+      "target": "foundations_calculator:machines/hand_cranked_generator"
+    },
+    {
+      "type": "link",
+      "text": "Power Cube",
+      "target": "foundations_calculator:machines/power_cube"
+    },
+    {
+      "type": "link",
+      "text": "Extraction Chamber",
+      "target": "foundations_calculator:machines/extraction_chamber"
+    },
+    {
+      "type": "link",
+      "text": "Follow the circuit chain",
+      "target": "foundations_calculator:circuits/chain"
+    },
+    {
+      "type": "link",
+      "text": "Machine has power but no progress",
+      "target": "foundations_calculator:troubleshooting/no_progress"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "IDI",
+    "CAC",
+    "ITI"
+  ],
+  "key": {
+    "I": {
+      "item": "foundations_calculator:reinforced_iron_ingot"
+    },
+    "D": {
+      "item": "foundations_calculator:flawless_diamond"
+    },
+    "C": {
+      "item": "foundations_calculator:calculator_assembly"
+    },
+    "A": {
+      "item": "foundations_calculator:atomic_module"
+    },
+    "T": {
+      "item": "foundations_calculator:advanced_terrain_module"
+    }
+  },
+  "result": {
+    "id": "foundations_calculator:atomic_terrain_module"
+  }
+}

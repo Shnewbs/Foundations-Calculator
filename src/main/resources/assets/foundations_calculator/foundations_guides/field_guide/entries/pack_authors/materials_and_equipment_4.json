@@ -1,0 +1,171 @@
+{
+  "id": "foundations_calculator:pack_authors/materials_and_equipment_4",
+  "chapter": "foundations_calculator:pack_authors",
+  "title": "Materials and equipment · 4",
+  "order": 96,
+  "items": [
+    "foundations_calculator:fire_diamond_shovel",
+    "foundations_calculator:electric_shovel",
+    "foundations_calculator:end_forged_shovel",
+    "foundations_calculator:reinforced_hoe",
+    "foundations_calculator:enriched_gold_hoe",
+    "foundations_calculator:reinforced_iron_hoe",
+    "foundations_calculator:redstone_hoe",
+    "foundations_calculator:weakened_diamond_hoe",
+    "foundations_calculator:flawless_diamond_hoe",
+    "foundations_calculator:fire_diamond_hoe",
+    "foundations_calculator:electric_hoe",
+    "foundations_calculator:end_forged_hoe"
+  ],
+  "keywords": [],
+  "blocks": [
+    {
+      "type": "paragraph",
+      "text": "This reference groups related inventory entries. Each recipe section reads the current world. An item may have no crafting result when it comes from harvesting, world generation, a program action or creative tools."
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:fire_diamond_shovel"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Fire Diamond Shovel",
+      "target": "item:foundations_calculator:fire_diamond_shovel",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:electric_shovel"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Electric Shovel",
+      "target": "item:foundations_calculator:electric_shovel",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:end_forged_shovel"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining End Forged Shovel",
+      "target": "item:foundations_calculator:end_forged_shovel",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:reinforced_hoe"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Reinforced Hoe",
+      "target": "item:foundations_calculator:reinforced_hoe",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:enriched_gold_hoe"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Enriched Gold Hoe",
+      "target": "item:foundations_calculator:enriched_gold_hoe",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:reinforced_iron_hoe"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Reinforced Iron Hoe",
+      "target": "item:foundations_calculator:reinforced_iron_hoe",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:redstone_hoe"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Redstone Hoe",
+      "target": "item:foundations_calculator:redstone_hoe",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:weakened_diamond_hoe"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Weakened Diamond Hoe",
+      "target": "item:foundations_calculator:weakened_diamond_hoe",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:flawless_diamond_hoe"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Flawless Diamond Hoe",
+      "target": "item:foundations_calculator:flawless_diamond_hoe",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:fire_diamond_hoe"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Fire Diamond Hoe",
+      "target": "item:foundations_calculator:fire_diamond_hoe",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:electric_hoe"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Electric Hoe",
+      "target": "item:foundations_calculator:electric_hoe",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:end_forged_hoe"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining End Forged Hoe",
+      "target": "item:foundations_calculator:end_forged_hoe",
+      "options": {
+        "profile": ""
+      }
+    }
+  ]
+}

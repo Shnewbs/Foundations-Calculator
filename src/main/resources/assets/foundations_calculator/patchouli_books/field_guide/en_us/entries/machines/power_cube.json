@@ -1,0 +1,15 @@
+{
+  "name": "Power Cube",
+  "category": "foundations_calculator:machines",
+  "icon": "foundations_calculator:power_cube",
+  "sortnum": 32,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Purpose$()$pSmall FE buffer with a Discharge input and Charge output. Its charge rate is deliberately separate from its cable transfer rate.$p$(l)Set up and operate$()$p1. Feed FE from a permitted input face or discharge a supported battery/consumable.$p2. Put a powered item in Charge to transfer energy out of the cube.$p3. Connect output faces to machines and verify both side and adapter policies.$p$(l)When it does not run$()$pA slowly charging item may be limited by the configured item charge rate, not by the cube capacity. Empty FE or a full receiver also pauses charging.$pRead the active server settings below before copying default costs from another installation. For special slot roles, use the machine screen labels. Settings reporting does not inspect or mutate a placed machine.$pActual server settings: live server values are available in the native or master Foundations reader.$pCrafting / obtaining this machine: live recipe details are available in the native or master Foundations reader.$p$(l:foundations_calculator:troubleshooting/no_progress)General operating checklist$()"
+    }
+  ],
+  "extra_recipe_mappings": {
+    "foundations_calculator:power_cube": 0
+  }
+}

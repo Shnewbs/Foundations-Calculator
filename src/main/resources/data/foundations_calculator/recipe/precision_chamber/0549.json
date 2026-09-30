@@ -1,0 +1,30 @@
+{
+  "type": "foundations_calculator:process",
+  "machine": "precision_chamber",
+  "ingredients": [
+    {
+      "ingredient": {
+        "item": "minecraft:soul_sand"
+      },
+      "count": 1
+    }
+  ],
+  "results": [
+    {
+      "stack": {
+        "id": "foundations_calculator:soil",
+        "count": 2
+      }
+    },
+    {
+      "stack": {
+        "id": "foundations_calculator:circuit_dirty_4",
+        "count": 1
+      }
+    }
+  ],
+  "energy": 5000,
+  "ticks": 500,
+  "value": 0,
+  "research": false
+}

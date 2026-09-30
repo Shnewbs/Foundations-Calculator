@@ -1,0 +1,30 @@
+{
+  "type": "foundations_calculator:process",
+  "machine": "harvest",
+  "ingredients": [
+    {
+      "ingredient": {
+        "item": "foundations_calculator:diamond_leaves"
+      },
+      "count": 1
+    }
+  ],
+  "results": [
+    {
+      "stack": {
+        "id": "foundations_calculator:weakened_diamond",
+        "count": 1
+      }
+    },
+    {
+      "stack": {
+        "id": "foundations_calculator:flawless_diamond",
+        "count": 1
+      }
+    }
+  ],
+  "energy": 0,
+  "ticks": 1,
+  "value": 0,
+  "research": false
+}

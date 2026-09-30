@@ -1,0 +1,15 @@
+{
+  "name": "Algorithm Separator",
+  "category": "foundations_calculator:machines",
+  "icon": "foundations_calculator:algorithm_separator",
+  "sortnum": 41,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Purpose$()$pHigher-value separation recipes, including configured gem and redstone transformations. Its recipe family is distinct from the Stone Separator.$p$(l)Set up and operate$()$p1. Read the exact accepted tag or item in the recipe card.$p2. Supply the configured process energy.$p3. Collect every result and preserve any components required by later stages.$p$(l)When it does not run$()$pA Stone Separator recipe is not valid here unless the server explicitly adds it to this machine family.$pRead the active server settings below before copying default costs from another installation. For special slot roles, use the machine screen labels. Settings reporting does not inspect or mutate a placed machine.$pActual server settings: live server values are available in the native or master Foundations reader.$pProcessing / value recipes: live recipe details are available in the native or master Foundations reader.$pCrafting / obtaining this machine: live recipe details are available in the native or master Foundations reader.$p$(l:foundations_calculator:troubleshooting/no_progress)General operating checklist$()"
+    }
+  ],
+  "extra_recipe_mappings": {
+    "foundations_calculator:algorithm_separator": 0
+  }
+}

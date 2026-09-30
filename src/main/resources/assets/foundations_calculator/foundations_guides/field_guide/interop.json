@@ -1,0 +1,20 @@
+{
+  "guide": "foundations_calculator:field_guide",
+  "api_version": 1,
+  "landing": "foundations_calculator:getting_started/welcome",
+  "readers": {
+    "standalone": {
+      "item": "foundations_calculator:info_calculator"
+    },
+    "master": {
+      "contract": "com.foundations:foundations-guide-api:1.0.0",
+      "entry_target_format": "guide#entry"
+    },
+    "patchouli": {
+      "book": "foundations_calculator:field_guide",
+      "mode": "resource_mirror",
+      "generated_item": false,
+      "custom_book_item": "foundations_calculator:info_calculator"
+    }
+  }
+}

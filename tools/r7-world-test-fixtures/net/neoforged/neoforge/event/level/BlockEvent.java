@@ -1,0 +1,6 @@
+package net.neoforged.neoforge.event.level;
+import net.neoforged.bus.api.*;import net.minecraft.server.level.ServerLevel;import net.minecraft.core.BlockPos;import net.minecraft.world.level.block.state.BlockState;import net.neoforged.neoforge.common.util.*;
+public class BlockEvent extends Event {public final ServerLevel level;public final BlockPos pos;public final BlockState state;public BlockEvent(ServerLevel level,BlockPos pos,BlockState state){this.level=level;this.pos=pos;this.state=state;}public BlockState getState(){return state;}
+public static class BreakEvent extends BlockEvent implements ICancellableEvent {public final FakePlayerFactory.Actor actor;public BreakEvent(ServerLevel level,BlockPos pos,BlockState state,FakePlayerFactory.Actor actor){super(level,pos,state);this.actor=actor;}}
+public static class EntityPlaceEvent extends BlockEvent implements ICancellableEvent {public final BlockSnapshot snapshot;public final FakePlayerFactory.Actor actor;public EntityPlaceEvent(BlockSnapshot snapshot,BlockState against,FakePlayerFactory.Actor actor){super(snapshot.level(),snapshot.pos(),snapshot.state());this.snapshot=snapshot;this.actor=actor;}public BlockState getPlacedBlock(){return state;}}
+}

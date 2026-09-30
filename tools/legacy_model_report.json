@@ -1,0 +1,14 @@
+{
+  "Chamber": 18,
+  "Processing": 3,
+  "Split": 5,
+  "ConductorMast": 28,
+  "Transmitter": 7,
+  "Scarecrow": 7,
+  "DockingStation": 17,
+  "CrankHandle": 4,
+  "WeatherStationBase": 5,
+  "WeatherStationDish": 14,
+  "FabricationArm": 5,
+  "MagneticFlux": 7
+}

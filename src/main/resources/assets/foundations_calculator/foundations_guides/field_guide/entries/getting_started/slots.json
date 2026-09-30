@@ -1,0 +1,76 @@
+{
+  "id": "foundations_calculator:getting_started/slots",
+  "chapter": "foundations_calculator:getting_started",
+  "title": "Slots, faces and completed batches",
+  "order": 3,
+  "items": [],
+  "keywords": [
+    "input slots",
+    "output slots",
+    "battery",
+    "pending"
+  ],
+  "blocks": [
+    {
+      "type": "paragraph",
+      "text": "The shared machine screen gives different machines a common layout, but the program decides which slots are valid. Do not treat every visible inventory slot as an interchangeable input."
+    },
+    {
+      "type": "table",
+      "text": "Typical process inventory",
+      "rows": [
+        [
+          "Inputs",
+          "The labelled input area; special programs may reserve particular slots."
+        ],
+        [
+          "Outputs",
+          "Six ordinary result slots, internally 14–19."
+        ],
+        [
+          "Power / module",
+          "The special slot, internally 20; its role depends on the machine."
+        ],
+        [
+          "Upgrades",
+          "Speed, Energy, Transfer and Void where supported."
+        ]
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "A completed batch can put results in retained overflow while normal outputs are blocked. Ordinary operation waits rather than discarding those results. The Void Upgrade is the explicit exception: it permits overflow disposal."
+    },
+    {
+      "type": "paragraph",
+      "text": "Automatic side mode follows the machine role. Input, Output and Disabled override a face. External item pipes and the Transfer Upgrade must both obey the machine automation master switch and those side modes. Energy has its own capability and direction settings."
+    },
+    {
+      "type": "steps",
+      "rows": [
+        [
+          "Confirm the slot label and accepted ingredient, including any analysed/stable circuit requirement."
+        ],
+        [
+          "Test with no redstone signal unless the machine specifically needs one."
+        ],
+        [
+          "Empty outputs and retained overflow before assuming the recipe is broken."
+        ],
+        [
+          "Use Sides or the wrench to select the intended input and output faces."
+        ]
+      ]
+    },
+    {
+      "type": "link",
+      "text": "Automation rules and safe exports",
+      "target": "foundations_calculator:troubleshooting/automation"
+    },
+    {
+      "type": "link",
+      "text": "Blocked output and pending results",
+      "target": "foundations_calculator:troubleshooting/blocked_output"
+    }
+  ]
+}

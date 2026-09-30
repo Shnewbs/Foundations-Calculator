@@ -1,0 +1,12 @@
+{
+  "parent": "foundations_calculator:legacy_calculator/block/sonarmachine",
+  "textures": {
+    "particle": "foundations_calculator:legacy_calculator/blocks/module_workstation_side",
+    "north": "foundations_calculator:legacy_calculator/blocks/module_workstation_side",
+    "east": "foundations_calculator:legacy_calculator/blocks/module_workstation_front",
+    "south": "foundations_calculator:legacy_calculator/blocks/module_workstation_front",
+    "west": "foundations_calculator:legacy_calculator/blocks/module_workstation_front",
+    "up": "foundations_calculator:legacy_calculator/blocks/module_workstation_front",
+    "down": "foundations_calculator:legacy_calculator/blocks/module_workstation_front"
+  }
+}

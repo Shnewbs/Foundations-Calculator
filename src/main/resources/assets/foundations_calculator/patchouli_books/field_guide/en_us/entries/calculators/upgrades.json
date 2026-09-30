@@ -1,0 +1,16 @@
+{
+  "name": "Speed, energy, transfer and void upgrades",
+  "category": "foundations_calculator:calculators",
+  "icon": "foundations_calculator:speed_upgrade",
+  "sortnum": 31,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Choose the right behavior$()$pSpeed Upgrade \u2014 Reduces the ordinary processor duration according to the configured bonus.$pEnergy Upgrade \u2014 Reduces eligible process cost according to the configured discount.$pTransfer Upgrade \u2014 Actively exports finished items through permitted output faces.$pVoid Upgrade \u2014 Explicitly discards completed overflow when enabled. This is intentionally lossy.$pSpecial machine programs can have their own timing and energy rules; a visible upgrade slot does not mean every world action uses the ordinary process formula. The recipe reader labels its baseline calculations as before installed upgrades.$pTransfer throughput scales with upgrade count up to its configured cap. In the shipped settings each Transfer Upgrade contributes four items per transfer, with a cap of 64. These are defaults, not a substitute for the server configuration.$pObtain Speed Upgrades: live recipe details are available in the native or master Foundations reader.$pObtain Energy Upgrades: live recipe details are available in the native or master Foundations reader.$p$(l:foundations_calculator:troubleshooting/automation)Transfer directions$()$p$(l:foundations_calculator:troubleshooting/blocked_output)Void and blocked output$()"
+    }
+  ],
+  "extra_recipe_mappings": {
+    "foundations_calculator:speed_upgrade": 0,
+    "foundations_calculator:energy_upgrade": 0
+  }
+}

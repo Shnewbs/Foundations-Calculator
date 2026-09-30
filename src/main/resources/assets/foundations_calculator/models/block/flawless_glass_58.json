@@ -1,0 +1,13 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "particle": "foundations_calculator:legacy_calculator/blocks/connected/flawlessglass",
+    "north": "foundations_calculator:legacy_calculator/blocks/connected/flawlessglass_15",
+    "east": "foundations_calculator:legacy_calculator/blocks/connected/flawlessglass",
+    "south": "foundations_calculator:legacy_calculator/blocks/connected/flawlessglass",
+    "west": "foundations_calculator:legacy_calculator/blocks/connected/flawlessglass",
+    "up": "foundations_calculator:legacy_calculator/blocks/connected/flawlessglass",
+    "down": "foundations_calculator:legacy_calculator/blocks/connected/flawlessglass"
+  },
+  "render_type": "minecraft:translucent"
+}

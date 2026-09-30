@@ -1,0 +1,82 @@
+{
+  "id": "foundations_calculator:machines/algorithm_separator",
+  "chapter": "foundations_calculator:machines",
+  "title": "Algorithm Separator",
+  "order": 41,
+  "items": [
+    "foundations_calculator:algorithm_separator"
+  ],
+  "keywords": [
+    "algorithm_separator",
+    "Higher-value separation recipes, including configured gem and redstone transformations"
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "Purpose"
+    },
+    {
+      "type": "paragraph",
+      "text": "Higher-value separation recipes, including configured gem and redstone transformations. Its recipe family is distinct from the Stone Separator."
+    },
+    {
+      "type": "heading",
+      "text": "Set up and operate"
+    },
+    {
+      "type": "steps",
+      "rows": [
+        [
+          "Read the exact accepted tag or item in the recipe card."
+        ],
+        [
+          "Supply the configured process energy."
+        ],
+        [
+          "Collect every result and preserve any components required by later stages."
+        ]
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "When it does not run"
+    },
+    {
+      "type": "paragraph",
+      "text": "A Stone Separator recipe is not valid here unless the server explicitly adds it to this machine family."
+    },
+    {
+      "type": "paragraph",
+      "text": "Read the active server settings below before copying default costs from another installation. For special slot roles, use the machine screen labels. Settings reporting does not inspect or mutate a placed machine."
+    },
+    {
+      "type": "live",
+      "text": "Actual server settings",
+      "target": "foundations_calculator",
+      "options": {
+        "key": "machine/algorithm_separator"
+      }
+    },
+    {
+      "type": "recipe",
+      "text": "Processing / value recipes",
+      "target": "machine:algorithm_separator",
+      "options": {
+        "profile": "algorithm_separator"
+      }
+    },
+    {
+      "type": "recipe",
+      "text": "Crafting / obtaining this machine",
+      "target": "item:foundations_calculator:algorithm_separator",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "link",
+      "text": "General operating checklist",
+      "target": "foundations_calculator:troubleshooting/no_progress"
+    }
+  ]
+}

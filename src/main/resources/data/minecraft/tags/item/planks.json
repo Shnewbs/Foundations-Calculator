@@ -1,0 +1,15 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:oak_planks",
+    "foundations_calculator:amethyst_planks",
+    "foundations_calculator:tanzanite_planks",
+    "foundations_calculator:pear_planks",
+    "foundations_calculator:diamond_planks",
+    "minecraft:spruce_planks",
+    "minecraft:birch_planks",
+    "minecraft:jungle_planks",
+    "minecraft:acacia_planks",
+    "minecraft:dark_oak_planks"
+  ]
+}

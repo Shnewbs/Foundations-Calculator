@@ -1,0 +1,64 @@
+{
+  "id": "foundations_calculator:troubleshooting/automation",
+  "chapter": "foundations_calculator:troubleshooting",
+  "title": "Automation that respects sides",
+  "order": 26,
+  "items": [
+    "foundations_calculator:transfer_upgrade"
+  ],
+  "keywords": [
+    "pipe",
+    "sided",
+    "input",
+    "output",
+    "disabled",
+    "master switch"
+  ],
+  "blocks": [
+    {
+      "type": "paragraph",
+      "text": "The Transfer Upgrade is an active exporter. External pipes pull through the exposed sided inventory. Both must respect the item-automation master setting and the face’s output mode. An Input or Disabled face is not an output face."
+    },
+    {
+      "type": "paragraph",
+      "text": "Greenhouse chest import and export are separate directions on the front-facing connection. An Output-only front can export produce but cannot import seeds. An Input-only front can import seeds but cannot export produce. Auto may allow both for that program."
+    },
+    {
+      "type": "steps",
+      "rows": [
+        [
+          "Manually complete one batch with empty output slots."
+        ],
+        [
+          "Set the desired face to Output and connect an inventory whose facing side accepts the result."
+        ],
+        [
+          "Check machine.<id>.itemAutomation and the Transfer Upgrade’s actual presence/count."
+        ],
+        [
+          "Remove input-only or Disabled faces from the export route."
+        ],
+        [
+          "Fill the destination deliberately and verify that products remain pending rather than disappearing."
+        ],
+        [
+          "Change the side back and retest. A pipe’s own filter, channel, or extraction rule can still refuse the item."
+        ]
+      ]
+    },
+    {
+      "type": "callout",
+      "text": "Energy ports are governed by energy side and adapter policies, not just item-automation switches. Test the item and energy routes separately."
+    },
+    {
+      "type": "link",
+      "text": "Energy routing",
+      "target": "foundations_calculator:power/routing"
+    },
+    {
+      "type": "link",
+      "text": "Pending results and Void Upgrade",
+      "target": "foundations_calculator:troubleshooting/blocked_output"
+    }
+  ]
+}

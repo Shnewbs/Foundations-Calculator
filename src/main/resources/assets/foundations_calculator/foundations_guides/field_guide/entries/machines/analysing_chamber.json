@@ -1,0 +1,77 @@
+{
+  "id": "foundations_calculator:machines/analysing_chamber",
+  "chapter": "foundations_calculator:machines",
+  "title": "Analysing Chamber",
+  "order": 51,
+  "items": [
+    "foundations_calculator:analysing_chamber"
+  ],
+  "keywords": [
+    "analysing_chamber",
+    "Analyses clean circuit boards, reveals stability, returns the analysed board and can award recipe-driven items or FE"
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "Purpose"
+    },
+    {
+      "type": "paragraph",
+      "text": "Analyses clean circuit boards, reveals stability, returns the analysed board and can award recipe-driven items or FE."
+    },
+    {
+      "type": "heading",
+      "text": "Set up and operate"
+    },
+    {
+      "type": "steps",
+      "rows": [
+        [
+          "Clean or repair the raw chip first."
+        ],
+        [
+          "Insert the unanalysed clean board."
+        ],
+        [
+          "Leave room for the board and additional rewards."
+        ],
+        [
+          "Read the returned board tooltip before fabrication or plug use."
+        ]
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "When it does not run"
+    },
+    {
+      "type": "paragraph",
+      "text": "Already analysed boards do not run again. The analyser can also export generated/reward energy, subject to its sides."
+    },
+    {
+      "type": "paragraph",
+      "text": "Read the active server settings below before copying default costs from another installation. For special slot roles, use the machine screen labels. Settings reporting does not inspect or mutate a placed machine."
+    },
+    {
+      "type": "live",
+      "text": "Actual server settings",
+      "target": "foundations_calculator",
+      "options": {
+        "key": "machine/analysing_chamber"
+      }
+    },
+    {
+      "type": "recipe",
+      "text": "Crafting / obtaining this machine",
+      "target": "item:foundations_calculator:analysing_chamber",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "link",
+      "text": "General operating checklist",
+      "target": "foundations_calculator:troubleshooting/no_progress"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "AAA",
+    "CBC",
+    "AAA"
+  ],
+  "key": {
+    "A": {
+      "tag": "c:rods/wooden"
+    },
+    "B": {
+      "item": "foundations_calculator:power_cube"
+    },
+    "C": {
+      "tag": "minecraft:planks"
+    }
+  },
+  "result": {
+    "id": "foundations_calculator:hand_cranked_generator",
+    "count": 1
+  }
+}

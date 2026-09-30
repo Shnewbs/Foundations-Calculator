@@ -1,0 +1,66 @@
+{
+  "id": "foundations_calculator:troubleshooting/no_progress",
+  "chapter": "foundations_calculator:troubleshooting",
+  "title": "Powered machine, no progress",
+  "order": 24,
+  "items": [],
+  "keywords": [
+    "does nothing",
+    "not working",
+    "stuck",
+    "no recipe",
+    "redstone",
+    "paused"
+  ],
+  "blocks": [
+    {
+      "type": "steps",
+      "rows": [
+        [
+          "Read the machine status. Confirm the content and machine are enabled by the server."
+        ],
+        [
+          "Remove redstone or turn off Pause unless this particular program needs a signal. The Weather Controller is an important exception: it needs a signal to act."
+        ],
+        [
+          "Check the exact recipe family, ingredient counts, circuit variant and analysis/stability requirement. A full FE bar cannot make an unmatched recipe run."
+        ],
+        [
+          "Confirm research for the machine owner, not merely a different nearby player."
+        ],
+        [
+          "Make room in every output and pending-result destination. Do not install a Void Upgrade simply to conceal blocked storage."
+        ],
+        [
+          "Compare stored FE with the full required batch cost, including overrides. Available cable throughput is not the same as enough stored energy."
+        ],
+        [
+          "For a world machine, inspect structure, owner, loaded chunks and denied-action status."
+        ],
+        [
+          "If the problem persists, keep the relevant game log and the machine/configuration details. Do not change several ratios and recipes simultaneously."
+        ]
+      ]
+    },
+    {
+      "type": "link",
+      "text": "A dirty or damaged chip will not process",
+      "target": "foundations_calculator:troubleshooting/dirty_chip"
+    },
+    {
+      "type": "link",
+      "text": "Outputs are blocked",
+      "target": "foundations_calculator:troubleshooting/blocked_output"
+    },
+    {
+      "type": "link",
+      "text": "Energy is not transferring",
+      "target": "foundations_calculator:troubleshooting/power"
+    },
+    {
+      "type": "link",
+      "text": "A structure or crop action is denied",
+      "target": "foundations_calculator:troubleshooting/construction"
+    }
+  ]
+}

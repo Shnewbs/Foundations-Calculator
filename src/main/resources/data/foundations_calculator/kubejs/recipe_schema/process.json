@@ -1,0 +1,119 @@
+{
+  "keys": [
+    {
+      "name": "machine",
+      "type": "string"
+    },
+    {
+      "name": "ingredients",
+      "type": {
+        "type": "list",
+        "component": {
+          "type": "custom_object",
+          "keys": [
+            {
+              "name": "ingredient",
+              "component": "optional_ingredient"
+            },
+            {
+              "name": "count",
+              "component": {
+                "type": "int",
+                "min": 1,
+                "max": 64
+              },
+              "optional": true
+            },
+            {
+              "name": "circuit_state",
+              "component": {
+                "type": "int",
+                "min": 0,
+                "max": 2
+              },
+              "optional": true
+            }
+          ]
+        },
+        "min": 1,
+        "max": 14
+      },
+      "role": "input"
+    },
+    {
+      "name": "results",
+      "type": {
+        "type": "list",
+        "component": {
+          "type": "custom_object",
+          "keys": [
+            {
+              "name": "stack",
+              "component": "item_stack"
+            },
+            {
+              "name": "chance",
+              "component": {
+                "type": "double",
+                "min": 0.0,
+                "max": 1.0
+              },
+              "optional": true
+            },
+            {
+              "name": "random_circuit",
+              "component": "string",
+              "optional": true
+            }
+          ]
+        },
+        "min": 0,
+        "max": 6
+      },
+      "role": "output"
+    },
+    {
+      "name": "energy",
+      "type": {
+        "type": "int",
+        "min": 0
+      },
+      "optional": 0
+    },
+    {
+      "name": "ticks",
+      "type": {
+        "type": "int",
+        "min": 1
+      },
+      "optional": 200
+    },
+    {
+      "name": "value",
+      "type": {
+        "type": "int",
+        "min": 0
+      },
+      "optional": 0
+    },
+    {
+      "name": "research",
+      "type": "boolean",
+      "optional": false
+    },
+    {
+      "name": "research_group",
+      "type": "string",
+      "optional": "general"
+    }
+  ],
+  "constructors": [
+    {
+      "keys": [
+        "machine",
+        "ingredients",
+        "results"
+      ]
+    }
+  ]
+}

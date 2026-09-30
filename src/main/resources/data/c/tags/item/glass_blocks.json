@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:glass",
+    "foundations_calculator:flawless_glass",
+    "foundations_calculator:stable_glass",
+    "foundations_calculator:clear_stable_glass"
+  ]
+}

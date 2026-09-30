@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "AAA",
+    "ADA",
+    "AAA"
+  ],
+  "key": {
+    "A": {
+      "tag": "c:cobblestones"
+    },
+    "D": {
+      "item": "minecraft:furnace"
+    }
+  },
+  "result": {
+    "id": "foundations_calculator:power_cube",
+    "count": 1
+  }
+}

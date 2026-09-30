@@ -1,0 +1,74 @@
+{
+  "id": "foundations_calculator:machines/reinforced_furnace",
+  "chapter": "foundations_calculator:machines",
+  "title": "Reinforced Furnace",
+  "order": 38,
+  "items": [
+    "foundations_calculator:reinforced_furnace"
+  ],
+  "keywords": [
+    "reinforced_furnace",
+    "Electric furnace using current furnace-smelting recipes, not fuel burn time as its FE cost"
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "Purpose"
+    },
+    {
+      "type": "paragraph",
+      "text": "Electric furnace using current furnace-smelting recipes, not fuel burn time as its FE cost. It retains returned containers and completed outputs."
+    },
+    {
+      "type": "heading",
+      "text": "Set up and operate"
+    },
+    {
+      "type": "steps",
+      "rows": [
+        [
+          "Place a smeltable item in the input."
+        ],
+        [
+          "Provide enough FE for the configured furnace batch."
+        ],
+        [
+          "Leave room for the output and any crafting remainder."
+        ]
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "When it does not run"
+    },
+    {
+      "type": "paragraph",
+      "text": "The furnace’s process cost/time are machine settings; they are not the same as an ingredient’s furnace fuel value."
+    },
+    {
+      "type": "paragraph",
+      "text": "Read the active server settings below before copying default costs from another installation. For special slot roles, use the machine screen labels. Settings reporting does not inspect or mutate a placed machine."
+    },
+    {
+      "type": "live",
+      "text": "Actual server settings",
+      "target": "foundations_calculator",
+      "options": {
+        "key": "machine/reinforced_furnace"
+      }
+    },
+    {
+      "type": "recipe",
+      "text": "Crafting / obtaining this machine",
+      "target": "item:foundations_calculator:reinforced_furnace",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "link",
+      "text": "General operating checklist",
+      "target": "foundations_calculator:troubleshooting/no_progress"
+    }
+  ]
+}

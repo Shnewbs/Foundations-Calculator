@@ -1,0 +1,74 @@
+{
+  "id": "foundations_calculator:machines/module_workstation",
+  "chapter": "foundations_calculator:machines",
+  "title": "Module Workstation",
+  "order": 37,
+  "items": [
+    "foundations_calculator:module_workstation"
+  ],
+  "keywords": [
+    "module_workstation",
+    "Edits modules inside a Flawless Calculator"
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "Purpose"
+    },
+    {
+      "type": "paragraph",
+      "text": "Edits modules inside a Flawless Calculator. Removing the calculator takes its installed contents with it."
+    },
+    {
+      "type": "heading",
+      "text": "Set up and operate"
+    },
+    {
+      "type": "steps",
+      "rows": [
+        [
+          "Insert the Flawless Calculator in its labelled slot."
+        ],
+        [
+          "Install supported modules into the module slots."
+        ],
+        [
+          "Remove it and sneak-use it to choose an installed action."
+        ]
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "When it does not run"
+    },
+    {
+      "type": "paragraph",
+      "text": "Atomic Module and ordinary assembly ingredients are not automatically usable modules. See the installation chapter for accepted categories."
+    },
+    {
+      "type": "paragraph",
+      "text": "Read the active server settings below before copying default costs from another installation. For special slot roles, use the machine screen labels. Settings reporting does not inspect or mutate a placed machine."
+    },
+    {
+      "type": "live",
+      "text": "Actual server settings",
+      "target": "foundations_calculator",
+      "options": {
+        "key": "machine/module_workstation"
+      }
+    },
+    {
+      "type": "recipe",
+      "text": "Crafting / obtaining this machine",
+      "target": "item:foundations_calculator:module_workstation",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "link",
+      "text": "General operating checklist",
+      "target": "foundations_calculator:troubleshooting/no_progress"
+    }
+  ]
+}

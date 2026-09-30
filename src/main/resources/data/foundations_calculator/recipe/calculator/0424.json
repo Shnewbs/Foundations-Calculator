@@ -1,0 +1,31 @@
+{
+  "type": "foundations_calculator:process",
+  "machine": "calculator",
+  "ingredients": [
+    {
+      "ingredient": {
+        "item": "minecraft:light_gray_stained_glass_pane"
+      },
+      "count": 1
+    },
+    {
+      "ingredient": {
+        "item": "minecraft:light_gray_stained_glass_pane"
+      },
+      "count": 1
+    }
+  ],
+  "results": [
+    {
+      "stack": {
+        "id": "minecraft:gray_stained_glass_pane",
+        "count": 2
+      }
+    }
+  ],
+  "energy": 0,
+  "ticks": 1,
+  "value": 0,
+  "research": true,
+  "research_group": "glass_pane"
+}

@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "C C",
+    "ABA"
+  ],
+  "key": {
+    "A": {
+      "item": "foundations_calculator:reinforced_iron_block"
+    },
+    "B": {
+      "item": "foundations_calculator:storage_chamber"
+    },
+    "C": {
+      "item": "foundations_calculator:reinforced_iron_ingot"
+    }
+  },
+  "result": {
+    "id": "foundations_calculator:fabrication_chamber",
+    "count": 1
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "CSC",
+    "BAB",
+    "CAC"
+  ],
+  "key": {
+    "B": {
+      "tag": "foundations_calculator:reinforced_stone"
+    },
+    "A": {
+      "item": "foundations_calculator:calculator_assembly"
+    },
+    "S": {
+      "item": "foundations_calculator:calculator_screen"
+    },
+    "C": {
+      "item": "foundations_calculator:enriched_gold_ingot"
+    }
+  },
+  "result": {
+    "id": "foundations_calculator:scientific_calculator",
+    "count": 1
+  }
+}

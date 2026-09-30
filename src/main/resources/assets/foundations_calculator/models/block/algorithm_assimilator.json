@@ -1,0 +1,8 @@
+{
+  "parent": "foundations_calculator:legacy_calculator/block/assimilator",
+  "textures": {
+    "particle": "foundations_calculator:legacy_calculator/model/algorithm_assimilator_base",
+    "0": "foundations_calculator:legacy_calculator/model/algorithm_assimilator_base",
+    "1": "foundations_calculator:legacy_calculator/model/algorithm_assimilator_sap"
+  }
+}

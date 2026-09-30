@@ -1,0 +1,168 @@
+{
+  "id": "foundations_calculator:multiblocks/flawless_greenhouse",
+  "chapter": "foundations_calculator:multiblocks",
+  "title": "Flawless Greenhouse: manual frame and roof",
+  "order": 16,
+  "items": [],
+  "keywords": [
+    "quartz",
+    "flawless glass",
+    "manual build",
+    "L",
+    "roof"
+  ],
+  "blocks": [
+    {
+      "type": "paragraph",
+      "text": "Build this greenhouse manually. Choose an interior length L within the server limit (shipped maximum 64). Its total width is four blocks. The controller is side 0, inside 0, height 0. The two central columns hold crops; the outer columns provide walls and irrigation."
+    },
+    {
+      "type": "table",
+      "text": "Frame rules",
+      "rows": [
+        [
+          "Near and far ends",
+          "Inside 0 and L+1; side 0–3 at height −1 are Stable Stone."
+        ],
+        [
+          "End pillars",
+          "Side 0 and 3 at heights 0 and 1 are Stable Stone. The near controller replaces one corner."
+        ],
+        [
+          "Roof",
+          "Every row from inside 0 through L+1: side 0–3 at height 2 are Bottom Quartz Slabs."
+        ],
+        [
+          "Side walls",
+          "Inside 1–L: sides 0 and 3 at heights 0 and 1 are Flawless Glass."
+        ],
+        [
+          "Growing cells",
+          "Inside 1–L: sides 1 and 2 at height 0 above dirt/farmland."
+        ],
+        [
+          "Irrigation",
+          "Inside 1–L: sides 0 and 3 at height −1 start as convertible dirt/grass/farmland."
+        ]
+      ]
+    },
+    {
+      "type": "layers",
+      "text": "Example L=3: roof, height 2",
+      "rows": [
+        [
+          "QQQQ"
+        ],
+        [
+          "QQQQ"
+        ],
+        [
+          "QQQQ"
+        ],
+        [
+          "QQQQ"
+        ],
+        [
+          "QQQQ"
+        ]
+      ],
+      "options": {
+        "legend": "Q = Bottom Quartz Slab, not a top or double slab."
+      }
+    },
+    {
+      "type": "layers",
+      "text": "Example L=3: height 1",
+      "rows": [
+        [
+          "S..S"
+        ],
+        [
+          "G..G"
+        ],
+        [
+          "G..G"
+        ],
+        [
+          "G..G"
+        ],
+        [
+          "S..S"
+        ]
+      ],
+      "options": {
+        "legend": "S Stable Stone · G Flawless Glass · dots clear"
+      }
+    },
+    {
+      "type": "layers",
+      "text": "Example L=3: height 0",
+      "rows": [
+        [
+          "C..S"
+        ],
+        [
+          "G..G"
+        ],
+        [
+          "G..G"
+        ],
+        [
+          "G..G"
+        ],
+        [
+          "S..S"
+        ]
+      ],
+      "options": {
+        "legend": "Central dots in interior rows are crop positions. CO₂ Generator may replace the near right S."
+      }
+    },
+    {
+      "type": "layers",
+      "text": "Example L=3: height −1",
+      "rows": [
+        [
+          "SSSS"
+        ],
+        [
+          "W..W"
+        ],
+        [
+          "W..W"
+        ],
+        [
+          "W..W"
+        ],
+        [
+          "SSSS"
+        ]
+      ],
+      "options": {
+        "legend": "W irrigation; central interior dots need dirt/farmland underneath crops."
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": "Place a CO₂ Generator at side 3, inside 0, height 0, facing the same way as the controller. All fourteen greenhouse inputs can hold seeds. This tier has no automatic Build or Demolish controls."
+    },
+    {
+      "type": "live",
+      "text": "Actual server settings",
+      "target": "foundations_calculator",
+      "options": {
+        "key": "machine/flawless_greenhouse"
+      }
+    },
+    {
+      "type": "link",
+      "text": "CO₂ Generator and Controlled Fuel",
+      "target": "foundations_calculator:machines/co2_generator"
+    },
+    {
+      "type": "link",
+      "text": "Farming cycle and crop tiers",
+      "target": "foundations_calculator:farming/growing"
+    }
+  ]
+}

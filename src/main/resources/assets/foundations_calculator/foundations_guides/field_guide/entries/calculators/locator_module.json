@@ -1,0 +1,44 @@
+{
+  "id": "foundations_calculator:calculators/locator_module",
+  "chapter": "foundations_calculator:calculators",
+  "title": "Locator Module",
+  "order": 87,
+  "items": [
+    "foundations_calculator:locator_module"
+  ],
+  "keywords": [
+    "module",
+    "locator_module"
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "Purpose"
+    },
+    {
+      "type": "paragraph",
+      "text": "Binds its owner identity for a Calculator Locator."
+    },
+    {
+      "type": "heading",
+      "text": "Use"
+    },
+    {
+      "type": "paragraph",
+      "text": "Use it to bind yourself, then place it in the Locator’s module slot. The book does not display the raw owner UUID or allow binding to another player."
+    },
+    {
+      "type": "link",
+      "text": "Using modules inside a Flawless Calculator",
+      "target": "foundations_calculator:calculators/installing"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtain this module",
+      "target": "item:foundations_calculator:locator_module",
+      "options": {
+        "profile": ""
+      }
+    }
+  ]
+}

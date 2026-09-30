@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "A  ",
+    "AA ",
+    "AAA"
+  ],
+  "key": {
+    "A": {
+      "item": "foundations_calculator:reinforced_dirt_block"
+    }
+  },
+  "result": {
+    "id": "foundations_calculator:reinforced_dirt_stairs",
+    "count": 4
+  }
+}

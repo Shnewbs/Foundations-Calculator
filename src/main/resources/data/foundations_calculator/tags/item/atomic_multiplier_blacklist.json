@@ -1,0 +1,14 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:nether_star",
+    "foundations_calculator:atomic_multiplier",
+    "foundations_calculator:end_diamond_block",
+    "foundations_calculator:electric_diamond_block",
+    "foundations_calculator:fire_diamond_block",
+    "foundations_calculator:flawless_diamond_block",
+    "foundations_calculator:electric_diamond",
+    "foundations_calculator:fire_diamond",
+    "foundations_calculator:flawless_diamond"
+  ]
+}

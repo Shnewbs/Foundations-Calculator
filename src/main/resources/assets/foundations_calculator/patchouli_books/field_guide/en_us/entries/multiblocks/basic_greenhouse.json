@@ -1,0 +1,16 @@
+{
+  "name": "Basic Greenhouse: complete default layers",
+  "category": "foundations_calculator:multiblocks",
+  "icon": "foundations_calculator:info_calculator",
+  "sortnum": 14,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "The Basic controller constructs this imported blueprint with Build. Its first four inputs are logs, wooden stairs, glass, and planks, in that order. Fill those slots, supply FE, and remove obstructions. Construction resumes where it stopped.$p$(l)Exact default structural materials (controller, floor, water and seeds are additional)$()$pLogs \u2014 18$pWooden stairs \u2014 56$pGlass \u2014 14$pPlanks \u2014 30$pUnique structural blocks \u2014 118$pClear side -3 to 3, inside -1 to 5, and height -1 to 4. The diagrams below show structural blocks only. C is the existing controller; dots are not a request to replace terrain.$pProvide dirt/grass beneath the growing cells. Basic has eight crops in its 3\u00d73 area with central water; Advanced has 45 crops in a 7\u00d77 area with four irrigation corners. Roof stairs are oriented by automatic construction, so supply stairs rather than placing a flat slab roof.$p$(o)R7 owner/protection preflights still apply. Missing owner, denied target, unloaded chunk or obstruction can stop a build. Never bypass a claim merely to complete a diagram. Demolish only recovers matching blocks after removal succeeds.$()$pHeight -1; inside increases downward: see the native or master Foundations reader for the interactive or layered view.$pHeight 0; inside increases downward: see the native or master Foundations reader for the interactive or layered view.$pHeight 1; inside increases downward: see the native or master Foundations reader for the interactive or layered view."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Height 2; inside increases downward: see the native or master Foundations reader for the interactive or layered view.$pHeight 3; inside increases downward: see the native or master Foundations reader for the interactive or layered view.$pHeight 4; inside increases downward: see the native or master Foundations reader for the interactive or layered view.$pActual server settings: live server values are available in the native or master Foundations reader.$p$(l:foundations_calculator:farming/growing)Planting and greenhouse operation$()$p$(l:foundations_calculator:troubleshooting/construction)Construction stopped$()"
+    }
+  ]
+}

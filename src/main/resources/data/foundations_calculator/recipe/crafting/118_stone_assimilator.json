@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " S ",
+    "IPI",
+    " I "
+  ],
+  "key": {
+    "P": {
+      "item": "foundations_calculator:stone_separator"
+    },
+    "I": {
+      "tag": "foundations_calculator:reinforced_stone"
+    },
+    "S": {
+      "item": "foundations_calculator:sickle"
+    }
+  },
+  "result": {
+    "id": "foundations_calculator:stone_assimilator",
+    "count": 1
+  }
+}

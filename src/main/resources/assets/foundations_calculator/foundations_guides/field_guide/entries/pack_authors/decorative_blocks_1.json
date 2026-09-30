@@ -1,0 +1,171 @@
+{
+  "id": "foundations_calculator:pack_authors/decorative_blocks_1",
+  "chapter": "foundations_calculator:pack_authors",
+  "title": "Decorative blocks · 1",
+  "order": 102,
+  "items": [
+    "foundations_calculator:flawless_glass",
+    "foundations_calculator:amethyst_stairs",
+    "foundations_calculator:amethyst_fence",
+    "foundations_calculator:tanzanite_stairs",
+    "foundations_calculator:tanzanite_fence",
+    "foundations_calculator:pear_stairs",
+    "foundations_calculator:pear_fence",
+    "foundations_calculator:diamond_stairs",
+    "foundations_calculator:diamond_fence",
+    "foundations_calculator:reinforced_stone_block",
+    "foundations_calculator:reinforced_stone_stairs",
+    "foundations_calculator:reinforced_stone_fence"
+  ],
+  "keywords": [],
+  "blocks": [
+    {
+      "type": "paragraph",
+      "text": "This reference groups related inventory entries. Each recipe section reads the current world. An item may have no crafting result when it comes from harvesting, world generation, a program action or creative tools."
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:flawless_glass"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Flawless Glass",
+      "target": "item:foundations_calculator:flawless_glass",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:amethyst_stairs"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Amethyst Stairs",
+      "target": "item:foundations_calculator:amethyst_stairs",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:amethyst_fence"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Amethyst Fence",
+      "target": "item:foundations_calculator:amethyst_fence",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:tanzanite_stairs"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Tanzanite Stairs",
+      "target": "item:foundations_calculator:tanzanite_stairs",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:tanzanite_fence"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Tanzanite Fence",
+      "target": "item:foundations_calculator:tanzanite_fence",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:pear_stairs"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Pear Stairs",
+      "target": "item:foundations_calculator:pear_stairs",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:pear_fence"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Pear Fence",
+      "target": "item:foundations_calculator:pear_fence",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:diamond_stairs"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Diamond Stairs",
+      "target": "item:foundations_calculator:diamond_stairs",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:diamond_fence"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Diamond Fence",
+      "target": "item:foundations_calculator:diamond_fence",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:reinforced_stone_block"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Reinforced Stone Block",
+      "target": "item:foundations_calculator:reinforced_stone_block",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:reinforced_stone_stairs"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Reinforced Stone Stairs",
+      "target": "item:foundations_calculator:reinforced_stone_stairs",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:reinforced_stone_fence"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Reinforced Stone Fence",
+      "target": "item:foundations_calculator:reinforced_stone_fence",
+      "options": {
+        "profile": ""
+      }
+    }
+  ]
+}

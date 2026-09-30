@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "IRI",
+    "CBC",
+    "IRI"
+  ],
+  "key": {
+    "I": {
+      "item": "foundations_calculator:reinforced_iron_ingot"
+    },
+    "R": {
+      "item": "minecraft:redstone"
+    },
+    "C": {
+      "item": "foundations_calculator:circuit_board_0"
+    },
+    "B": {
+      "item": "minecraft:bookshelf"
+    }
+  },
+  "result": {
+    "id": "foundations_calculator:research_chamber"
+  }
+}

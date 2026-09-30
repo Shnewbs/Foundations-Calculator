@@ -1,0 +1,171 @@
+{
+  "id": "foundations_calculator:pack_authors/materials_and_equipment_3",
+  "chapter": "foundations_calculator:pack_authors",
+  "title": "Materials and equipment · 3",
+  "order": 95,
+  "items": [
+    "foundations_calculator:redstone_axe",
+    "foundations_calculator:weakened_diamond_axe",
+    "foundations_calculator:flawless_diamond_axe",
+    "foundations_calculator:fire_diamond_axe",
+    "foundations_calculator:electric_axe",
+    "foundations_calculator:end_forged_axe",
+    "foundations_calculator:reinforced_shovel",
+    "foundations_calculator:enriched_gold_shovel",
+    "foundations_calculator:reinforced_iron_shovel",
+    "foundations_calculator:redstone_shovel",
+    "foundations_calculator:weakened_diamond_shovel",
+    "foundations_calculator:flawless_diamond_shovel"
+  ],
+  "keywords": [],
+  "blocks": [
+    {
+      "type": "paragraph",
+      "text": "This reference groups related inventory entries. Each recipe section reads the current world. An item may have no crafting result when it comes from harvesting, world generation, a program action or creative tools."
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:redstone_axe"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Redstone Axe",
+      "target": "item:foundations_calculator:redstone_axe",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:weakened_diamond_axe"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Weakened Diamond Axe",
+      "target": "item:foundations_calculator:weakened_diamond_axe",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:flawless_diamond_axe"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Flawless Diamond Axe",
+      "target": "item:foundations_calculator:flawless_diamond_axe",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:fire_diamond_axe"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Fire Diamond Axe",
+      "target": "item:foundations_calculator:fire_diamond_axe",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:electric_axe"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Electric Axe",
+      "target": "item:foundations_calculator:electric_axe",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:end_forged_axe"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining End Forged Axe",
+      "target": "item:foundations_calculator:end_forged_axe",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:reinforced_shovel"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Reinforced Shovel",
+      "target": "item:foundations_calculator:reinforced_shovel",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:enriched_gold_shovel"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Enriched Gold Shovel",
+      "target": "item:foundations_calculator:enriched_gold_shovel",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:reinforced_iron_shovel"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Reinforced Iron Shovel",
+      "target": "item:foundations_calculator:reinforced_iron_shovel",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:redstone_shovel"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Redstone Shovel",
+      "target": "item:foundations_calculator:redstone_shovel",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:weakened_diamond_shovel"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Weakened Diamond Shovel",
+      "target": "item:foundations_calculator:weakened_diamond_shovel",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "item",
+      "target": "foundations_calculator:flawless_diamond_shovel"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtaining Flawless Diamond Shovel",
+      "target": "item:foundations_calculator:flawless_diamond_shovel",
+      "options": {
+        "profile": ""
+      }
+    }
+  ]
+}

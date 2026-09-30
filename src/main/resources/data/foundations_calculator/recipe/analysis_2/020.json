@@ -1,0 +1,22 @@
+{
+  "type": "foundations_calculator:process",
+  "machine": "analysis_2",
+  "ingredients": [
+    {
+      "ingredient": {
+        "tag": "foundations_calculator:circuit_boards"
+      }
+    }
+  ],
+  "results": [
+    {
+      "stack": {
+        "id": "foundations_calculator:advanced_terrain_module",
+        "count": 1
+      }
+    }
+  ],
+  "value": 4,
+  "energy": 0,
+  "ticks": 1
+}

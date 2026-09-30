@@ -1,0 +1,108 @@
+{
+  "id": "foundations_calculator:power/eu_conversion",
+  "chapter": "foundations_calculator:power",
+  "title": "EU, FE, J and conversion policy",
+  "order": 8,
+  "items": [],
+  "keywords": [
+    "EU",
+    "FE",
+    "J",
+    "joules",
+    "voltage",
+    "conversion",
+    "Mekanism",
+    "GregTech",
+    "MI",
+    "AE2"
+  ],
+  "blocks": [
+    {
+      "type": "paragraph",
+      "text": "Calculator stores FE internally. Native adapters accept or send supported external units at the boundary. EU is therefore an accepted connection type, not a replacement for the internal buffer."
+    },
+    {
+      "type": "table",
+      "text": "Electrical adapters",
+      "rows": [
+        [
+          "NeoForge FE",
+          "Native FE input/output. RF/IF/CF branding is compatible only where that mod exposes FE."
+        ],
+        [
+          "GregTech CEu",
+          "EU packets with voltage and amperage limits; separate native battery rules."
+        ],
+        [
+          "Mekanism",
+          "Joules via native machine and item APIs."
+        ],
+        [
+          "Modern Industrialization",
+          "EU via the MI energy API."
+        ],
+        [
+          "GrandPower",
+          "Long-valued FE API with a 1:1 base unit."
+        ],
+        [
+          "Applied Energistics 2",
+          "AE-powered items only; not a direct native grid port."
+        ]
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "Each native adapter has independent block-port and item-charging gates, input/output gates, and applicable loss settings. Input means native energy enters Foundations storage, including discharging an external battery. Output means Foundations energy leaves storage, including charging an external battery."
+    },
+    {
+      "type": "table",
+      "text": "Ratio keys",
+      "rows": [
+        [
+          "compat.gtceu.fePerEU",
+          "0 inherits the higher of GT direction ratios; a positive integer fixes FE per EU."
+        ],
+        [
+          "power.mekanism.joulesPerFE",
+          "0 inherits Mekanism; a positive decimal fixes J per FE."
+        ],
+        [
+          "power.modernIndustrialization.fePerEU",
+          "0 inherits MI; a positive decimal fixes FE per EU."
+        ],
+        [
+          "compat.aeEnergyToFE",
+          "FE per AE for powered items."
+        ]
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "Voltage is packet size and amperage is packet count per tick. Neither is the EU/FE exchange rate. Port capacity, side modes, native item tier restrictions and shared packet budgets still apply."
+    },
+    {
+      "type": "live",
+      "text": "Effective server adapters, ratios, losses and warnings",
+      "target": "foundations_calculator",
+      "options": {
+        "key": "power"
+      }
+    },
+    {
+      "type": "link",
+      "text": "Whole units, losses and conversion loops",
+      "target": "foundations_calculator:power/rounding"
+    },
+    {
+      "type": "link",
+      "text": "GregTech packet rules",
+      "target": "foundations_calculator:power/gregtech"
+    },
+    {
+      "type": "link",
+      "text": "Which API does a connection use?",
+      "target": "foundations_calculator:power/routing"
+    }
+  ]
+}

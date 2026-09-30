@@ -1,0 +1,74 @@
+{
+  "id": "foundations_calculator:machines/power_cube",
+  "chapter": "foundations_calculator:machines",
+  "title": "Power Cube",
+  "order": 32,
+  "items": [
+    "foundations_calculator:power_cube"
+  ],
+  "keywords": [
+    "power_cube",
+    "Small FE buffer with a Discharge input and Charge output"
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "Purpose"
+    },
+    {
+      "type": "paragraph",
+      "text": "Small FE buffer with a Discharge input and Charge output. Its charge rate is deliberately separate from its cable transfer rate."
+    },
+    {
+      "type": "heading",
+      "text": "Set up and operate"
+    },
+    {
+      "type": "steps",
+      "rows": [
+        [
+          "Feed FE from a permitted input face or discharge a supported battery/consumable."
+        ],
+        [
+          "Put a powered item in Charge to transfer energy out of the cube."
+        ],
+        [
+          "Connect output faces to machines and verify both side and adapter policies."
+        ]
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "When it does not run"
+    },
+    {
+      "type": "paragraph",
+      "text": "A slowly charging item may be limited by the configured item charge rate, not by the cube capacity. Empty FE or a full receiver also pauses charging."
+    },
+    {
+      "type": "paragraph",
+      "text": "Read the active server settings below before copying default costs from another installation. For special slot roles, use the machine screen labels. Settings reporting does not inspect or mutate a placed machine."
+    },
+    {
+      "type": "live",
+      "text": "Actual server settings",
+      "target": "foundations_calculator",
+      "options": {
+        "key": "machine/power_cube"
+      }
+    },
+    {
+      "type": "recipe",
+      "text": "Crafting / obtaining this machine",
+      "target": "item:foundations_calculator:power_cube",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "link",
+      "text": "General operating checklist",
+      "target": "foundations_calculator:troubleshooting/no_progress"
+    }
+  ]
+}

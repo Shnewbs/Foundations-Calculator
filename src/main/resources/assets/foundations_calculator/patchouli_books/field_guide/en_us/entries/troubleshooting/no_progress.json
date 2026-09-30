@@ -1,0 +1,12 @@
+{
+  "name": "Powered machine, no progress",
+  "category": "foundations_calculator:troubleshooting",
+  "icon": "foundations_calculator:info_calculator",
+  "sortnum": 24,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "1. Read the machine status. Confirm the content and machine are enabled by the server.$p2. Remove redstone or turn off Pause unless this particular program needs a signal. The Weather Controller is an important exception: it needs a signal to act.$p3. Check the exact recipe family, ingredient counts, circuit variant and analysis/stability requirement. A full FE bar cannot make an unmatched recipe run.$p4. Confirm research for the machine owner, not merely a different nearby player.$p5. Make room in every output and pending-result destination. Do not install a Void Upgrade simply to conceal blocked storage.$p6. Compare stored FE with the full required batch cost, including overrides. Available cable throughput is not the same as enough stored energy.$p7. For a world machine, inspect structure, owner, loaded chunks and denied-action status.$p8. If the problem persists, keep the relevant game log and the machine/configuration details. Do not change several ratios and recipes simultaneously.$p$(l:foundations_calculator:troubleshooting/dirty_chip)A dirty or damaged chip will not process$()$p$(l:foundations_calculator:troubleshooting/blocked_output)Outputs are blocked$()$p$(l:foundations_calculator:troubleshooting/power)Energy is not transferring$()$p$(l:foundations_calculator:troubleshooting/construction)A structure or crop action is denied$()"
+    }
+  ]
+}

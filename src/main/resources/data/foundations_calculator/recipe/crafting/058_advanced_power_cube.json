@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "AAA",
+    "ADA",
+    "AAA"
+  ],
+  "key": {
+    "A": {
+      "item": "foundations_calculator:redstone_ingot"
+    },
+    "D": {
+      "item": "foundations_calculator:power_cube"
+    }
+  },
+  "result": {
+    "id": "foundations_calculator:advanced_power_cube",
+    "count": 1
+  }
+}

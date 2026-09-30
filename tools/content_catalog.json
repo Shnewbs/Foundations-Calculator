@@ -1,0 +1,2165 @@
+[
+  {
+    "field": "Calculator.itemInfoCalculator",
+    "id": "info_calculator",
+    "legacy": "infocalculator",
+    "kind": "item",
+    "constructor": "new InfoCalculator())"
+  },
+  {
+    "field": "Calculator.itemCalculator",
+    "id": "calculator",
+    "legacy": "calculator",
+    "kind": "item",
+    "constructor": "new SonarUsageModule(GuiModule.calculator, CalculatorConfig.CALCULATOR_STORAGE))"
+  },
+  {
+    "field": "Calculator.itemCraftingCalculator",
+    "id": "crafting_calculator",
+    "legacy": "craftingcalculator",
+    "kind": "item",
+    "constructor": "new SonarUsageModule(GuiModule.crafting, CalculatorConfig.CRAFTING_CALCULATOR_STORAGE))"
+  },
+  {
+    "field": "Calculator.itemScientificCalculator",
+    "id": "scientific_calculator",
+    "legacy": "scientificcalculator",
+    "kind": "item",
+    "constructor": "new SonarUsageModule(GuiModule.scientific, CalculatorConfig.SCIENTIFIC_CALCULATOR_STORAGE))"
+  },
+  {
+    "field": "Calculator.itemFlawlessCalculator",
+    "id": "flawless_calculator",
+    "legacy": "flawlesscalculator",
+    "kind": "item",
+    "constructor": "new FlawlessCalculator())"
+  },
+  {
+    "field": "Calculator.itemStorageModule",
+    "id": "storage_module",
+    "legacy": "storagemodule",
+    "kind": "item",
+    "constructor": "new SonarModule(GuiModule.storage))"
+  },
+  {
+    "field": "Calculator.itemWarpModule",
+    "id": "warp_module",
+    "legacy": "warpmodule",
+    "kind": "item",
+    "constructor": "new SonarUsageModule(new WarpModule(), CalculatorConfig.WARP_MODULE_STORAGE))"
+  },
+  {
+    "field": "Calculator.itemJumpModule",
+    "id": "jump_module",
+    "legacy": "jumpmodule",
+    "kind": "item",
+    "constructor": "new SonarUsageModule(new JumpModule(), CalculatorConfig.JUMP_MODULE_STORAGE))"
+  },
+  {
+    "field": "Calculator.itemHungerModule",
+    "id": "hunger_module",
+    "legacy": "hungermodule",
+    "kind": "item",
+    "constructor": "new HungerModule())"
+  },
+  {
+    "field": "Calculator.itemHealthModule",
+    "id": "health_module",
+    "legacy": "healthmodule",
+    "kind": "item",
+    "constructor": "new HealthModule())"
+  },
+  {
+    "field": "Calculator.itemNutritionModule",
+    "id": "nutrition_module",
+    "legacy": "nutritionmodule",
+    "kind": "item",
+    "constructor": "new NutritionModule())"
+  },
+  {
+    "field": "Calculator.itemTerrainModule",
+    "id": "terrain_module",
+    "legacy": "terrainmodule",
+    "kind": "item",
+    "constructor": "new TerrainModule())"
+  },
+  {
+    "field": "Calculator.itemAdvancedTerrainModule",
+    "id": "advanced_terrain_module",
+    "legacy": "advancedterrainmodule",
+    "kind": "item",
+    "constructor": "new AdvancedTerrainModule())"
+  },
+  {
+    "field": "Calculator.itemEnergyModule",
+    "id": "energy_module",
+    "legacy": "energymodule",
+    "kind": "item",
+    "constructor": "new SonarEnergyModule(new EnergyModule()))"
+  },
+  {
+    "field": "Calculator.itemLocatorModule",
+    "id": "locator_module",
+    "legacy": "locatormodule",
+    "kind": "item",
+    "constructor": "new LocatorModule())"
+  },
+  {
+    "field": "Calculator.soil",
+    "id": "soil",
+    "legacy": "soil",
+    "kind": "item",
+    "constructor": "new Soil())"
+  },
+  {
+    "field": "Calculator.small_stone",
+    "id": "small_stone",
+    "legacy": "smallstone",
+    "kind": "item",
+    "constructor": "new SmallStone())"
+  },
+  {
+    "field": "Calculator.speedUpgrade",
+    "id": "speed_upgrade",
+    "legacy": "speedupgrade",
+    "kind": "item",
+    "constructor": "new MachineUpgrade())"
+  },
+  {
+    "field": "Calculator.energyUpgrade",
+    "id": "energy_upgrade",
+    "legacy": "energyupgrade",
+    "kind": "item",
+    "constructor": "new MachineUpgrade())"
+  },
+  {
+    "field": "Calculator.voidUpgrade",
+    "id": "void_upgrade",
+    "legacy": "voidupgrade",
+    "kind": "item",
+    "constructor": "new MachineUpgrade())"
+  },
+  {
+    "field": "Calculator.transferUpgrade",
+    "id": "transfer_upgrade",
+    "legacy": "transferupgrade",
+    "kind": "item",
+    "constructor": "new MachineUpgrade())"
+  },
+  {
+    "field": "Calculator.calculator_screen",
+    "id": "calculator_screen",
+    "legacy": "calculatorscreen",
+    "kind": "item",
+    "constructor": "new CalculatorScreen())"
+  },
+  {
+    "field": "Calculator.calculator_assembly",
+    "id": "calculator_assembly",
+    "legacy": "calculatorassembly",
+    "kind": "item",
+    "constructor": "new Item())"
+  },
+  {
+    "field": "Calculator.advanced_assembly",
+    "id": "advanced_assembly",
+    "legacy": "advancedassembly",
+    "kind": "item",
+    "constructor": "new Item())"
+  },
+  {
+    "field": "Calculator.atomic_module",
+    "id": "atomic_module",
+    "legacy": "atomicmodule",
+    "kind": "item",
+    "constructor": "new Item())"
+  },
+  {
+    "field": "Calculator.atomic_assembly",
+    "id": "atomic_assembly",
+    "legacy": "atomicassembly",
+    "kind": "item",
+    "constructor": "new Item())"
+  },
+  {
+    "field": "Calculator.flawless_assembly",
+    "id": "flawless_assembly",
+    "legacy": "flawlessassembly",
+    "kind": "item",
+    "constructor": "new SonarItem())"
+  },
+  {
+    "field": "Calculator.atomic_binder",
+    "id": "atomic_binder",
+    "legacy": "atomicbinder",
+    "kind": "item",
+    "constructor": "new Item())"
+  },
+  {
+    "field": "Calculator.wrench",
+    "id": "wrench",
+    "legacy": "wrench",
+    "kind": "item",
+    "constructor": "new Wrench())"
+  },
+  {
+    "field": "Calculator.sickle",
+    "id": "sickle",
+    "legacy": "sickle",
+    "kind": "item",
+    "constructor": "new Sickle())"
+  },
+  {
+    "field": "Calculator.obsidianKey",
+    "id": "obsidian_key",
+    "legacy": "obsidiankey",
+    "kind": "item",
+    "constructor": "new ObsidianKey())"
+  },
+  {
+    "field": "Calculator.reinforced_sword",
+    "id": "reinforced_sword",
+    "legacy": "reinforcedsword",
+    "kind": "item",
+    "constructor": "new CalcSword(CalculatorConfig.TOOL_REINFORCED_STONE))"
+  },
+  {
+    "field": "Calculator.enrichedgold_sword",
+    "id": "enriched_gold_sword",
+    "legacy": "enrichedgoldsword",
+    "kind": "item",
+    "constructor": "new CalcSword(CalculatorConfig.TOOL_ENRICHED_GOLD))"
+  },
+  {
+    "field": "Calculator.reinforcediron_sword",
+    "id": "reinforced_iron_sword",
+    "legacy": "reinforcedironsword",
+    "kind": "item",
+    "constructor": "new CalcSword(CalculatorConfig.TOOL_REINFORCED_IRON))"
+  },
+  {
+    "field": "Calculator.redstone_sword",
+    "id": "redstone_sword",
+    "legacy": "redstonesword",
+    "kind": "item",
+    "constructor": "new CalcSword(CalculatorConfig.TOOL_REDSTONE_INGOT))"
+  },
+  {
+    "field": "Calculator.weakeneddiamond_sword",
+    "id": "weakened_diamond_sword",
+    "legacy": "weakeneddiamondsword",
+    "kind": "item",
+    "constructor": "new CalcSword(CalculatorConfig.TOOL_WEAKENED_DIAMOND))"
+  },
+  {
+    "field": "Calculator.flawlessdiamond_sword",
+    "id": "flawless_diamond_sword",
+    "legacy": "flawlessdiamondsword",
+    "kind": "item",
+    "constructor": "new CalcSword(CalculatorConfig.TOOL_FLAWLESS_DIAMOND))"
+  },
+  {
+    "field": "Calculator.firediamond_sword",
+    "id": "fire_diamond_sword",
+    "legacy": "firediamondsword",
+    "kind": "item",
+    "constructor": "new CalcSword(CalculatorConfig.TOOL_FIRE_DIAMOND))"
+  },
+  {
+    "field": "Calculator.electric_sword",
+    "id": "electric_sword",
+    "legacy": "electricsword",
+    "kind": "item",
+    "constructor": "new CalcSword(CalculatorConfig.TOOL_ELECTRIC_DIAMOND))"
+  },
+  {
+    "field": "Calculator.endforged_sword",
+    "id": "end_forged_sword",
+    "legacy": "endforgedsword",
+    "kind": "item",
+    "constructor": "new CalcSword(CalculatorConfig.TOOL_END_DIAMOND))"
+  },
+  {
+    "field": "Calculator.reinforced_pickaxe",
+    "id": "reinforced_pickaxe",
+    "legacy": "reinforcedpickaxe",
+    "kind": "item",
+    "constructor": "new CalcPickaxe(CalculatorConfig.TOOL_REINFORCED_STONE))"
+  },
+  {
+    "field": "Calculator.enrichedgold_pickaxe",
+    "id": "enriched_gold_pickaxe",
+    "legacy": "enrichedgoldpickaxe",
+    "kind": "item",
+    "constructor": "new CalcPickaxe(CalculatorConfig.TOOL_ENRICHED_GOLD))"
+  },
+  {
+    "field": "Calculator.reinforcediron_pickaxe",
+    "id": "reinforced_iron_pickaxe",
+    "legacy": "reinforcedironpickaxe",
+    "kind": "item",
+    "constructor": "new CalcPickaxe(CalculatorConfig.TOOL_REINFORCED_IRON))"
+  },
+  {
+    "field": "Calculator.redstone_pickaxe",
+    "id": "redstone_pickaxe",
+    "legacy": "redstonepickaxe",
+    "kind": "item",
+    "constructor": "new CalcPickaxe(CalculatorConfig.TOOL_REDSTONE_INGOT))"
+  },
+  {
+    "field": "Calculator.weakeneddiamond_pickaxe",
+    "id": "weakened_diamond_pickaxe",
+    "legacy": "weakeneddiamondpickaxe",
+    "kind": "item",
+    "constructor": "new CalcPickaxe(CalculatorConfig.TOOL_WEAKENED_DIAMOND))"
+  },
+  {
+    "field": "Calculator.flawlessdiamond_pickaxe",
+    "id": "flawless_diamond_pickaxe",
+    "legacy": "flawlessdiamondpickaxe",
+    "kind": "item",
+    "constructor": "new CalcPickaxe(CalculatorConfig.TOOL_FLAWLESS_DIAMOND))"
+  },
+  {
+    "field": "Calculator.firediamond_pickaxe",
+    "id": "fire_diamond_pickaxe",
+    "legacy": "firediamondpickaxe",
+    "kind": "item",
+    "constructor": "new CalcPickaxe(CalculatorConfig.TOOL_FIRE_DIAMOND))"
+  },
+  {
+    "field": "Calculator.electric_pickaxe",
+    "id": "electric_pickaxe",
+    "legacy": "electricpickaxe",
+    "kind": "item",
+    "constructor": "new CalcPickaxe(CalculatorConfig.TOOL_ELECTRIC_DIAMOND))"
+  },
+  {
+    "field": "Calculator.endforged_pickaxe",
+    "id": "end_forged_pickaxe",
+    "legacy": "endforgedpickaxe",
+    "kind": "item",
+    "constructor": "new CalcPickaxe(CalculatorConfig.TOOL_END_DIAMOND))"
+  },
+  {
+    "field": "Calculator.reinforced_axe",
+    "id": "reinforced_axe",
+    "legacy": "reinforcedaxe",
+    "kind": "item",
+    "constructor": "new CalcAxe(CalculatorConfig.TOOL_REINFORCED_STONE))"
+  },
+  {
+    "field": "Calculator.enrichedgold_axe",
+    "id": "enriched_gold_axe",
+    "legacy": "enrichedgoldaxe",
+    "kind": "item",
+    "constructor": "new CalcAxe(CalculatorConfig.TOOL_ENRICHED_GOLD))"
+  },
+  {
+    "field": "Calculator.reinforcediron_axe",
+    "id": "reinforced_iron_axe",
+    "legacy": "reinforcedironaxe",
+    "kind": "item",
+    "constructor": "new CalcAxe(CalculatorConfig.TOOL_REINFORCED_IRON))"
+  },
+  {
+    "field": "Calculator.redstone_axe",
+    "id": "redstone_axe",
+    "legacy": "redstoneaxe",
+    "kind": "item",
+    "constructor": "new CalcAxe(CalculatorConfig.TOOL_REDSTONE_INGOT))"
+  },
+  {
+    "field": "Calculator.weakeneddiamond_axe",
+    "id": "weakened_diamond_axe",
+    "legacy": "weakeneddiamondaxe",
+    "kind": "item",
+    "constructor": "new CalcAxe(CalculatorConfig.TOOL_WEAKENED_DIAMOND))"
+  },
+  {
+    "field": "Calculator.flawlessdiamond_axe",
+    "id": "flawless_diamond_axe",
+    "legacy": "flawlessdiamondaxe",
+    "kind": "item",
+    "constructor": "new CalcAxe(CalculatorConfig.TOOL_FLAWLESS_DIAMOND))"
+  },
+  {
+    "field": "Calculator.firediamond_axe",
+    "id": "fire_diamond_axe",
+    "legacy": "firediamondaxe",
+    "kind": "item",
+    "constructor": "new CalcAxe(CalculatorConfig.TOOL_FIRE_DIAMOND))"
+  },
+  {
+    "field": "Calculator.electric_axe",
+    "id": "electric_axe",
+    "legacy": "electricaxe",
+    "kind": "item",
+    "constructor": "new CalcAxe(CalculatorConfig.TOOL_ELECTRIC_DIAMOND))"
+  },
+  {
+    "field": "Calculator.endforged_axe",
+    "id": "end_forged_axe",
+    "legacy": "endforgedaxe",
+    "kind": "item",
+    "constructor": "new CalcAxe(CalculatorConfig.TOOL_END_DIAMOND))"
+  },
+  {
+    "field": "Calculator.reinforced_shovel",
+    "id": "reinforced_shovel",
+    "legacy": "reinforcedshovel",
+    "kind": "item",
+    "constructor": "new CalcShovel(CalculatorConfig.TOOL_REINFORCED_STONE))"
+  },
+  {
+    "field": "Calculator.enrichedgold_shovel",
+    "id": "enriched_gold_shovel",
+    "legacy": "enrichedgoldshovel",
+    "kind": "item",
+    "constructor": "new CalcShovel(CalculatorConfig.TOOL_ENRICHED_GOLD))"
+  },
+  {
+    "field": "Calculator.reinforcediron_shovel",
+    "id": "reinforced_iron_shovel",
+    "legacy": "reinforcedironshovel",
+    "kind": "item",
+    "constructor": "new CalcShovel(CalculatorConfig.TOOL_REINFORCED_IRON))"
+  },
+  {
+    "field": "Calculator.redstone_shovel",
+    "id": "redstone_shovel",
+    "legacy": "redstoneshovel",
+    "kind": "item",
+    "constructor": "new CalcShovel(CalculatorConfig.TOOL_REDSTONE_INGOT))"
+  },
+  {
+    "field": "Calculator.weakeneddiamond_shovel",
+    "id": "weakened_diamond_shovel",
+    "legacy": "weakeneddiamondshovel",
+    "kind": "item",
+    "constructor": "new CalcShovel(CalculatorConfig.TOOL_WEAKENED_DIAMOND))"
+  },
+  {
+    "field": "Calculator.flawlessdiamond_shovel",
+    "id": "flawless_diamond_shovel",
+    "legacy": "flawlessdiamondshovel",
+    "kind": "item",
+    "constructor": "new CalcShovel(CalculatorConfig.TOOL_FLAWLESS_DIAMOND))"
+  },
+  {
+    "field": "Calculator.firediamond_shovel",
+    "id": "fire_diamond_shovel",
+    "legacy": "firediamondshovel",
+    "kind": "item",
+    "constructor": "new CalcShovel(CalculatorConfig.TOOL_FIRE_DIAMOND))"
+  },
+  {
+    "field": "Calculator.electric_shovel",
+    "id": "electric_shovel",
+    "legacy": "electricshovel",
+    "kind": "item",
+    "constructor": "new CalcShovel(CalculatorConfig.TOOL_ELECTRIC_DIAMOND))"
+  },
+  {
+    "field": "Calculator.endforged_shovel",
+    "id": "end_forged_shovel",
+    "legacy": "endforgedshovel",
+    "kind": "item",
+    "constructor": "new CalcShovel(CalculatorConfig.TOOL_END_DIAMOND))"
+  },
+  {
+    "field": "Calculator.reinforced_hoe",
+    "id": "reinforced_hoe",
+    "legacy": "reinforcedhoe",
+    "kind": "item",
+    "constructor": "new CalcHoe(CalculatorConfig.TOOL_REINFORCED_STONE))"
+  },
+  {
+    "field": "Calculator.enrichedgold_hoe",
+    "id": "enriched_gold_hoe",
+    "legacy": "enrichedgoldhoe",
+    "kind": "item",
+    "constructor": "new CalcHoe(CalculatorConfig.TOOL_ENRICHED_GOLD))"
+  },
+  {
+    "field": "Calculator.reinforcediron_hoe",
+    "id": "reinforced_iron_hoe",
+    "legacy": "reinforcedironhoe",
+    "kind": "item",
+    "constructor": "new CalcHoe(CalculatorConfig.TOOL_REINFORCED_IRON))"
+  },
+  {
+    "field": "Calculator.redstone_hoe",
+    "id": "redstone_hoe",
+    "legacy": "redstonehoe",
+    "kind": "item",
+    "constructor": "new CalcHoe(CalculatorConfig.TOOL_REDSTONE_INGOT))"
+  },
+  {
+    "field": "Calculator.weakeneddiamond_hoe",
+    "id": "weakened_diamond_hoe",
+    "legacy": "weakeneddiamondhoe",
+    "kind": "item",
+    "constructor": "new CalcHoe(CalculatorConfig.TOOL_WEAKENED_DIAMOND))"
+  },
+  {
+    "field": "Calculator.flawlessdiamond_hoe",
+    "id": "flawless_diamond_hoe",
+    "legacy": "flawlessdiamondhoe",
+    "kind": "item",
+    "constructor": "new CalcHoe(CalculatorConfig.TOOL_FLAWLESS_DIAMOND))"
+  },
+  {
+    "field": "Calculator.firediamond_hoe",
+    "id": "fire_diamond_hoe",
+    "legacy": "firediamondhoe",
+    "kind": "item",
+    "constructor": "new CalcHoe(CalculatorConfig.TOOL_FIRE_DIAMOND))"
+  },
+  {
+    "field": "Calculator.electric_hoe",
+    "id": "electric_hoe",
+    "legacy": "electrichoe",
+    "kind": "item",
+    "constructor": "new CalcHoe(CalculatorConfig.TOOL_ELECTRIC_DIAMOND))"
+  },
+  {
+    "field": "Calculator.endforged_hoe",
+    "id": "end_forged_hoe",
+    "legacy": "endforgedhoe",
+    "kind": "item",
+    "constructor": "new CalcHoe(CalculatorConfig.TOOL_END_DIAMOND))"
+  },
+  {
+    "field": "Calculator.enrichedGold",
+    "id": "enriched_gold",
+    "legacy": "enrichedgold",
+    "kind": "item",
+    "constructor": "new Item())"
+  },
+  {
+    "field": "Calculator.enrichedgold_ingot",
+    "id": "enriched_gold_ingot",
+    "legacy": "enrichedgoldingot",
+    "kind": "item",
+    "constructor": "new Item())"
+  },
+  {
+    "field": "Calculator.reinforcediron_ingot",
+    "id": "reinforced_iron_ingot",
+    "legacy": "reinforcedironingot",
+    "kind": "item",
+    "constructor": "new Item())"
+  },
+  {
+    "field": "Calculator.redstone_ingot",
+    "id": "redstone_ingot",
+    "legacy": "redstoneingot",
+    "kind": "item",
+    "constructor": "new Item())"
+  },
+  {
+    "field": "Calculator.weakeneddiamond",
+    "id": "weakened_diamond",
+    "legacy": "weakeneddiamond",
+    "kind": "item",
+    "constructor": "new Item())"
+  },
+  {
+    "field": "Calculator.flawlessdiamond",
+    "id": "flawless_diamond",
+    "legacy": "flawlessdiamond",
+    "kind": "item",
+    "constructor": "new Item())"
+  },
+  {
+    "field": "Calculator.firediamond",
+    "id": "fire_diamond",
+    "legacy": "firediamond",
+    "kind": "item",
+    "constructor": "new SonarItemSimpleFuel(160000))"
+  },
+  {
+    "field": "Calculator.electricDiamond",
+    "id": "electric_diamond",
+    "legacy": "electricdiamond",
+    "kind": "item",
+    "constructor": "new Item())"
+  },
+  {
+    "field": "Calculator.endDiamond",
+    "id": "end_diamond",
+    "legacy": "enddiamond",
+    "kind": "item",
+    "constructor": "new EndDiamond())"
+  },
+  {
+    "field": "Calculator.large_amethyst",
+    "id": "large_amethyst",
+    "legacy": "largeamethyst",
+    "kind": "item",
+    "constructor": "new Item())"
+  },
+  {
+    "field": "Calculator.small_amethyst",
+    "id": "small_amethyst",
+    "legacy": "smallamethyst",
+    "kind": "item",
+    "constructor": "new Item())"
+  },
+  {
+    "field": "Calculator.shard_amethyst",
+    "id": "shard_amethyst",
+    "legacy": "shardamethyst",
+    "kind": "item",
+    "constructor": "new Item())"
+  },
+  {
+    "field": "Calculator.large_tanzanite",
+    "id": "large_tanzanite",
+    "legacy": "largetanzanite",
+    "kind": "item",
+    "constructor": "new Item())"
+  },
+  {
+    "field": "Calculator.small_tanzanite",
+    "id": "small_tanzanite",
+    "legacy": "smalltanzanite",
+    "kind": "item",
+    "constructor": "new Item())"
+  },
+  {
+    "field": "Calculator.shard_tanzanite",
+    "id": "shard_tanzanite",
+    "legacy": "shardtanzanite",
+    "kind": "item",
+    "constructor": "new Item())"
+  },
+  {
+    "field": "Calculator.broccoliSeeds",
+    "id": "broccoli_seeds",
+    "legacy": "broccoliseeds",
+    "kind": "item",
+    "constructor": "new SonarSeeds(cropBroccoliPlant, Blocks.FARMLAND, 0))"
+  },
+  {
+    "field": "Calculator.prunaeSeeds",
+    "id": "prunae_seeds",
+    "legacy": "prunaeseeds",
+    "kind": "item",
+    "constructor": "new SonarSeeds(cropPrunaePlant, Blocks.FARMLAND, 2))"
+  },
+  {
+    "field": "Calculator.fiddledewFruit",
+    "id": "fiddledew_fruit",
+    "legacy": "fiddledewfruit",
+    "kind": "item",
+    "constructor": "new SonarSeedsFood(16, 0.6F, cropFiddledewPlant, Blocks.FARMLAND, 3))"
+  },
+  {
+    "field": "Calculator.broccoli",
+    "id": "broccoli",
+    "legacy": "broccoli",
+    "kind": "item",
+    "constructor": "new ItemFood(1, 0.2F, false))"
+  },
+  {
+    "field": "Calculator.pear",
+    "id": "pear",
+    "legacy": "pear",
+    "kind": "item",
+    "constructor": "new ItemFood(12, 2.0F, false))"
+  },
+  {
+    "field": "Calculator.rotten_pear",
+    "id": "rotten_pear",
+    "legacy": "rottenpear",
+    "kind": "item",
+    "constructor": "new ItemFood(1, 0.1F, false))"
+  },
+  {
+    "field": "Calculator.cookedBroccoli",
+    "id": "cooked_broccoli",
+    "legacy": "cookedbroccoli",
+    "kind": "item",
+    "constructor": "new ItemFood(9, 0.6F, false))"
+  },
+  {
+    "field": "Calculator.coal_dust",
+    "id": "coal_dust",
+    "legacy": "coaldust",
+    "kind": "item",
+    "constructor": "new SonarItemSimpleFuel(1000))"
+  },
+  {
+    "field": "Calculator.enriched_coal",
+    "id": "enriched_coal",
+    "legacy": "enrichedcoal",
+    "kind": "item",
+    "constructor": "new SonarItemSimpleFuel(5000))"
+  },
+  {
+    "field": "Calculator.purified_coal",
+    "id": "purified_coal",
+    "legacy": "purifiedcoal",
+    "kind": "item",
+    "constructor": "new SonarItemSimpleFuel(10000))"
+  },
+  {
+    "field": "Calculator.firecoal",
+    "id": "fire_coal",
+    "legacy": "firecoal",
+    "kind": "item",
+    "constructor": "new SonarItemSimpleFuel(25000))"
+  },
+  {
+    "field": "Calculator.controlled_Fuel",
+    "id": "controlled_fuel",
+    "legacy": "controlledfuel",
+    "kind": "item",
+    "constructor": "new SonarItemSimpleFuel(80000))"
+  },
+  {
+    "field": "Calculator.grenadecasing",
+    "id": "grenade_casing",
+    "legacy": "grenadecasing",
+    "kind": "item",
+    "constructor": "new Item())"
+  },
+  {
+    "field": "Calculator.baby_grenade",
+    "id": "baby_grenade",
+    "legacy": "babygrenade",
+    "kind": "item",
+    "constructor": "new Grenade(0))"
+  },
+  {
+    "field": "Calculator.grenade",
+    "id": "grenade",
+    "legacy": "grenade",
+    "kind": "item",
+    "constructor": "new Grenade(1))"
+  },
+  {
+    "field": "Calculator.flawlessGlass",
+    "id": "flawless_glass",
+    "legacy": "flawlessglass",
+    "kind": "block",
+    "constructor": "new ConnectedBlock.Glass(Material.GLASS, 3)).setLightLevel(0.625F).setHardness(0.6F)"
+  },
+  {
+    "field": "Calculator.purifiedObsidian",
+    "id": "purified_obsidian",
+    "legacy": "purifiedobsidian",
+    "kind": "block",
+    "constructor": "new PurifiedObsidian(Material.ROCK, 4)).setBlockUnbreakable().setResistance(6000000.0F)"
+  },
+  {
+    "field": "Calculator.powerCube",
+    "id": "power_cube",
+    "legacy": "powercube",
+    "kind": "block",
+    "constructor": "TileEntityPowerCube.class).setProperties())"
+  },
+  {
+    "field": "Calculator.advancedPowerCube",
+    "id": "advanced_power_cube",
+    "legacy": "advancedpowercube",
+    "kind": "block",
+    "constructor": "TileEntityAdvancedPowerCube.class).setProperties())"
+  },
+  {
+    "field": "Calculator.creativePowerCube",
+    "id": "creative_power_cube",
+    "legacy": "creativepowercube",
+    "kind": "block",
+    "constructor": "TileEntityCreativePowerCube.class).setProperties())"
+  },
+  {
+    "field": "Calculator.atomicCalculator",
+    "id": "atomic_calculator",
+    "legacy": "atomiccalculator",
+    "kind": "block",
+    "constructor": "TileEntityCalculator.Atomic.class).setProperties())"
+  },
+  {
+    "field": "Calculator.dynamicCalculator",
+    "id": "dynamic_calculator",
+    "legacy": "dynamiccalculator",
+    "kind": "block",
+    "constructor": "TileEntityCalculator.Dynamic.class).setProperties())"
+  },
+  {
+    "field": "Calculator.moduleWorkstation",
+    "id": "module_workstation",
+    "legacy": "moduleworkstation",
+    "kind": "block",
+    "constructor": "TileEntityModuleWorkstation.class).setProperties())"
+  },
+  {
+    "field": "Calculator.reinforcedFurnace",
+    "id": "reinforced_furnace",
+    "legacy": "reinforcedfurnace",
+    "kind": "block",
+    "constructor": "TileEntityMachine.ReinforcedFurnace.class).setProperties())"
+  },
+  {
+    "field": "Calculator.reinforcedChest",
+    "id": "reinforced_chest",
+    "legacy": "reinforcedchest",
+    "kind": "block",
+    "constructor": "TileEntityReinforcedChest.class).setProperties())"
+  },
+  {
+    "field": "Calculator.stoneSeparator",
+    "id": "stone_separator",
+    "legacy": "stoneseparator",
+    "kind": "block",
+    "constructor": "new SmeltingBlock(BlockTypes.STONE).setHardness(1.0F).setResistance(20.0F))"
+  },
+  {
+    "field": "Calculator.algorithmSeparator",
+    "id": "algorithm_separator",
+    "legacy": "algorithmseparator",
+    "kind": "block",
+    "constructor": "new SmeltingBlock(BlockTypes.ALGORITHM).setHardness(1.0F).setResistance(20.0F))"
+  },
+  {
+    "field": "Calculator.hungerProcessor",
+    "id": "hunger_processor",
+    "legacy": "hungerprocessor",
+    "kind": "block",
+    "constructor": "TileEntityHungerProcessor.class).setProperties())"
+  },
+  {
+    "field": "Calculator.healthProcessor",
+    "id": "health_processor",
+    "legacy": "healthprocessor",
+    "kind": "block",
+    "constructor": "TileEntityHealthProcessor.class).setProperties())"
+  },
+  {
+    "field": "Calculator.amethystPiping",
+    "id": "amethyst_piping",
+    "legacy": "amethystpiping",
+    "kind": "block",
+    "constructor": "new Piping.Amethyst().setHardness(1.0F).setResistance(20.0F))"
+  },
+  {
+    "field": "Calculator.tanzanitePiping",
+    "id": "tanzanite_piping",
+    "legacy": "tanzanitepiping",
+    "kind": "block",
+    "constructor": "new Piping.Tanzanite().setHardness(1.0F).setResistance(20.0F))"
+  },
+  {
+    "field": "Calculator.dockingStation",
+    "id": "docking_station",
+    "legacy": "dockingstation",
+    "kind": "block",
+    "constructor": "new DockingStation().setLightLevel(0.625F).setHardness(1.0F).setResistance(20.0F))"
+  },
+  {
+    "field": "Calculator.atomicMultiplier",
+    "id": "atomic_multiplier",
+    "legacy": "atomicmultiplier",
+    "kind": "block",
+    "constructor": "new AtomicMultiplier().setLightLevel(0.625F).setHardness(1.0F).setResistance(20.0F))"
+  },
+  {
+    "field": "Calculator.extractionChamber",
+    "id": "extraction_chamber",
+    "legacy": "extractionchamber",
+    "kind": "block",
+    "constructor": "new SmeltingBlock.ChamberBlock(BlockTypes.EXTRACTION).setHardness(1.0F).setResistance(20.0F))"
+  },
+  {
+    "field": "Calculator.restorationChamber",
+    "id": "restoration_chamber",
+    "legacy": "restorationchamber",
+    "kind": "block",
+    "constructor": "new SmeltingBlock.ChamberBlock(BlockTypes.RESTORATION).setHardness(1.0F).setResistance(20.0F))"
+  },
+  {
+    "field": "Calculator.reassemblyChamber",
+    "id": "reassembly_chamber",
+    "legacy": "reassemblychamber",
+    "kind": "block",
+    "constructor": "new SmeltingBlock.ChamberBlock(BlockTypes.REASSEMBLY).setHardness(1.0F).setResistance(20.0F))"
+  },
+  {
+    "field": "Calculator.precisionChamber",
+    "id": "precision_chamber",
+    "legacy": "precisionchamber",
+    "kind": "block",
+    "constructor": "new SmeltingBlock.ChamberBlock(BlockTypes.PRECISION).setHardness(1.0F).setResistance(20.0F))"
+  },
+  {
+    "field": "Calculator.processingChamber",
+    "id": "processing_chamber",
+    "legacy": "processingchamber",
+    "kind": "block",
+    "constructor": "new SmeltingBlock.ChamberBlock(BlockTypes.PROCESSING).setHardness(1.0F).setResistance(20.0F))"
+  },
+  {
+    "field": "Calculator.analysingChamber",
+    "id": "analysing_chamber",
+    "legacy": "analysingchamber",
+    "kind": "block",
+    "constructor": "new AnalysingChamber().setHardness(1.0F).setResistance(20.0F))"
+  },
+  {
+    "field": "Calculator.storageChamber",
+    "id": "storage_chamber",
+    "legacy": "storagechamber",
+    "kind": "block",
+    "constructor": "new StorageChamber().setHardness(1.0F).setResistance(20.0F))"
+  },
+  {
+    "field": "Calculator.fabricationChamber",
+    "id": "fabrication_chamber",
+    "legacy": "fabricationchamber",
+    "kind": "block",
+    "constructor": "new FabricationChamber().setHardness(1.0F).setResistance(20.0F))"
+  },
+  {
+    "field": "Calculator.basicGreenhouse",
+    "id": "basic_greenhouse",
+    "legacy": "basicgreenhouse",
+    "kind": "block",
+    "constructor": "new Greenhouse.Basic().setHardness(1.0F).setResistance(20.0F))"
+  },
+  {
+    "field": "Calculator.advancedGreenhouse",
+    "id": "advanced_greenhouse",
+    "legacy": "advancedgreenhouse",
+    "kind": "block",
+    "constructor": "new Greenhouse.Advanced().setHardness(1.0F).setResistance(20.0F))"
+  },
+  {
+    "field": "Calculator.flawlessGreenhouse",
+    "id": "flawless_greenhouse",
+    "legacy": "flawlessgreenhouse",
+    "kind": "block",
+    "constructor": "new FlawlessGreenhouse().setHardness(1.0F).setResistance(20.0F))"
+  },
+  {
+    "field": "Calculator.CO2Generator",
+    "id": "co2_generator",
+    "legacy": "co2generator",
+    "kind": "block",
+    "constructor": "new CO2Generator().setHardness(1.0F).setResistance(20.0F))"
+  },
+  {
+    "field": "Calculator.calculatorlocator",
+    "id": "calculator_locator",
+    "legacy": "calculatorlocator",
+    "kind": "block",
+    "constructor": "new CalculatorLocator().setLightLevel(0.625F).setHardness(1.0F).setResistance(20.0F))"
+  },
+  {
+    "field": "Calculator.calculatorplug",
+    "id": "calculator_plug",
+    "legacy": "calculatorplug",
+    "kind": "block",
+    "constructor": "new CalculatorPlug().setLightLevel(0.625F).setHardness(1.0F).setResistance(20.0F))"
+  },
+  {
+    "field": "Calculator.conductorMast",
+    "id": "conductor_mast",
+    "legacy": "conductormast",
+    "kind": "block",
+    "constructor": "new ConductorMast().setLightLevel(0.625F).setHardness(1.0F).setResistance(20.0F))"
+  },
+  {
+    "field": "Calculator.weatherStation",
+    "id": "weather_station",
+    "legacy": "weatherstation",
+    "kind": "block",
+    "constructor": "new WeatherStation().setLightLevel(0.625F).setHardness(1.0F).setResistance(20.0F))"
+  },
+  {
+    "field": "Calculator.transmitter",
+    "id": "transmitter",
+    "legacy": "transmitter",
+    "kind": "block",
+    "constructor": "new Transmitter().setLightLevel(0.625F).setHardness(1.0F).setResistance(20.0F))"
+  },
+  {
+    "field": "Calculator.starchextractor",
+    "id": "starch_extractor",
+    "legacy": "starchextractor",
+    "kind": "block",
+    "constructor": "new ExtractorBlock(0).setLightLevel(0.625F).setHardness(1.0F).setResistance(20.0F))"
+  },
+  {
+    "field": "Calculator.redstoneextractor",
+    "id": "redstone_extractor",
+    "legacy": "redstoneextractor",
+    "kind": "block",
+    "constructor": "new ExtractorBlock(1).setLightLevel(0.625F).setHardness(1.0F).setResistance(20.0F))"
+  },
+  {
+    "field": "Calculator.glowstoneextractor",
+    "id": "glowstone_extractor",
+    "legacy": "glowstoneextractor",
+    "kind": "block",
+    "constructor": "new ExtractorBlock(2).setLightLevel(0.625F).setHardness(1.0F).setResistance(20.0F))"
+  },
+  {
+    "field": "Calculator.handcrankedGenerator",
+    "id": "hand_cranked_generator",
+    "legacy": "handcrankedgenerator",
+    "kind": "block",
+    "constructor": "new CrankedGenerator().setLightLevel(0.625F).setHardness(1.0F).setResistance(20.0F))"
+  },
+  {
+    "field": "Calculator.crankHandle",
+    "id": "crank_handle",
+    "legacy": "crankhandle",
+    "kind": "block",
+    "constructor": "new CrankHandle().setLightLevel(0.625F).setHardness(1.0F).setResistance(20.0F))"
+  },
+  {
+    "field": "Calculator.magneticFlux",
+    "id": "magnetic_flux",
+    "legacy": "magneticflux",
+    "kind": "block",
+    "constructor": "new MagneticFlux().setHardness(1.0F).setResistance(20.0F))"
+  },
+  {
+    "field": "Calculator.weatherController",
+    "id": "weather_controller",
+    "legacy": "weathercontroller",
+    "kind": "block",
+    "constructor": "new WeatherController().setLightLevel(0.625F).setHardness(1.0F).setResistance(20.0F))"
+  },
+  {
+    "field": "Calculator.rainSensor",
+    "id": "rain_sensor",
+    "legacy": "rainsensor",
+    "kind": "block",
+    "constructor": "new RainSensor().setLightLevel(0.625F).setHardness(1.0F).setResistance(20.0F))"
+  },
+  {
+    "field": "Calculator.stoneAssimilator",
+    "id": "stone_assimilator",
+    "legacy": "stoneassimilator",
+    "kind": "block",
+    "constructor": "new Assimilator(0).setLightLevel(0.625F).setHardness(1.0F).setResistance(20.0F))"
+  },
+  {
+    "field": "Calculator.algorithmAssimilator",
+    "id": "algorithm_assimilator",
+    "legacy": "algorithmassimilator",
+    "kind": "block",
+    "constructor": "new Assimilator(1).setLightLevel(0.625F).setHardness(1.0F).setResistance(20.0F))"
+  },
+  {
+    "field": "Calculator.gas_lantern_off",
+    "id": "gas_lantern_off",
+    "legacy": "gaslanternoff",
+    "kind": "block",
+    "constructor": "new GasLantern(false).setHardness(0.1F).setLightOpacity(100))"
+  },
+  {
+    "field": "Calculator.basic_lantern",
+    "id": "lantern",
+    "legacy": "lantern",
+    "kind": "block",
+    "constructor": "new BasicLantern().setHardness(0.1F).setLightLevel(0.9375F).setLightOpacity(100))"
+  },
+  {
+    "field": "Calculator.scarecrow",
+    "id": "scarecrow",
+    "legacy": "scarecrow",
+    "kind": "block",
+    "constructor": "new Scarecrow().setHardness(0.5F).setResistance(24.0F))"
+  },
+  {
+    "field": "Calculator.amethystLog",
+    "id": "amethyst_log",
+    "legacy": "amethystlog",
+    "kind": "block",
+    "constructor": "new CalculatorLogs())"
+  },
+  {
+    "field": "Calculator.amethystPlanks",
+    "id": "amethyst_planks",
+    "legacy": "amethystplanks",
+    "kind": "block",
+    "constructor": "new CalculatorPlanks())"
+  },
+  {
+    "field": "Calculator.amethystStairs",
+    "id": "amethyst_stairs",
+    "legacy": "amethyststairs",
+    "kind": "block",
+    "constructor": "new SonarStairs(amethystPlanks))"
+  },
+  {
+    "field": "Calculator.amethystFence",
+    "id": "amethyst_fence",
+    "legacy": "amethystfence",
+    "kind": "block",
+    "constructor": "new BlockFence(Material.WOOD, MapColor.PURPLE))"
+  },
+  {
+    "field": "Calculator.amethystLeaves",
+    "id": "amethyst_leaves",
+    "legacy": "amethystleaves",
+    "kind": "block",
+    "constructor": "new CalculatorLeaves(0))"
+  },
+  {
+    "field": "Calculator.amethystSapling",
+    "id": "amethyst_sapling",
+    "legacy": "amethystsapling",
+    "kind": "block",
+    "constructor": "new CalculatorSaplings(0))"
+  },
+  {
+    "field": "Calculator.tanzaniteLog",
+    "id": "tanzanite_log",
+    "legacy": "tanzanitelog",
+    "kind": "block",
+    "constructor": "new CalculatorLogs())"
+  },
+  {
+    "field": "Calculator.tanzanitePlanks",
+    "id": "tanzanite_planks",
+    "legacy": "tanzaniteplanks",
+    "kind": "block",
+    "constructor": "new CalculatorPlanks())"
+  },
+  {
+    "field": "Calculator.tanzaniteStairs",
+    "id": "tanzanite_stairs",
+    "legacy": "tanzanitestairs",
+    "kind": "block",
+    "constructor": "new SonarStairs(tanzanitePlanks))"
+  },
+  {
+    "field": "Calculator.tanzaniteFence",
+    "id": "tanzanite_fence",
+    "legacy": "tanzanitefence",
+    "kind": "block",
+    "constructor": "new BlockFence(Material.WOOD, MapColor.BLUE))"
+  },
+  {
+    "field": "Calculator.tanzaniteLeaves",
+    "id": "tanzanite_leaves",
+    "legacy": "tanzaniteleaves",
+    "kind": "block",
+    "constructor": "new CalculatorLeaves(1))"
+  },
+  {
+    "field": "Calculator.tanzaniteSapling",
+    "id": "tanzanite_sapling",
+    "legacy": "tanzanitesapling",
+    "kind": "block",
+    "constructor": "new CalculatorSaplings(1))"
+  },
+  {
+    "field": "Calculator.pearLog",
+    "id": "pear_log",
+    "legacy": "pearlog",
+    "kind": "block",
+    "constructor": "new CalculatorLogs())"
+  },
+  {
+    "field": "Calculator.pearPlanks",
+    "id": "pear_planks",
+    "legacy": "pearplanks",
+    "kind": "block",
+    "constructor": "new CalculatorPlanks())"
+  },
+  {
+    "field": "Calculator.pearStairs",
+    "id": "pear_stairs",
+    "legacy": "pearstairs",
+    "kind": "block",
+    "constructor": "new SonarStairs(pearPlanks))"
+  },
+  {
+    "field": "Calculator.pearFence",
+    "id": "pear_fence",
+    "legacy": "pearfence",
+    "kind": "block",
+    "constructor": "new BlockFence(Material.WOOD, MapColor.BROWN))"
+  },
+  {
+    "field": "Calculator.pearLeaves",
+    "id": "pear_leaves",
+    "legacy": "pearleaves",
+    "kind": "block",
+    "constructor": "new CalculatorLeaves(2))"
+  },
+  {
+    "field": "Calculator.pearSapling",
+    "id": "pear_sapling",
+    "legacy": "pearsapling",
+    "kind": "block",
+    "constructor": "new CalculatorSaplings(2))"
+  },
+  {
+    "field": "Calculator.diamondLog",
+    "id": "diamond_log",
+    "legacy": "diamondlog",
+    "kind": "block",
+    "constructor": "new CalculatorLogs())"
+  },
+  {
+    "field": "Calculator.diamondPlanks",
+    "id": "diamond_planks",
+    "legacy": "diamondplanks",
+    "kind": "block",
+    "constructor": "new CalculatorPlanks())"
+  },
+  {
+    "field": "Calculator.diamondStairs",
+    "id": "diamond_stairs",
+    "legacy": "diamondstairs",
+    "kind": "block",
+    "constructor": "new SonarStairs(diamondPlanks))"
+  },
+  {
+    "field": "Calculator.diamondFence",
+    "id": "diamond_fence",
+    "legacy": "diamondfence",
+    "kind": "block",
+    "constructor": "new BlockFence(Material.WOOD, MapColor.CYAN))"
+  },
+  {
+    "field": "Calculator.diamondLeaves",
+    "id": "diamond_leaves",
+    "legacy": "diamondleaves",
+    "kind": "block",
+    "constructor": "new CalculatorLeaves(3))"
+  },
+  {
+    "field": "Calculator.diamondSapling",
+    "id": "diamond_sapling",
+    "legacy": "diamondsapling",
+    "kind": "block",
+    "constructor": "new CalculatorSaplings(3))"
+  },
+  {
+    "field": "Calculator.calculatorScreen",
+    "id": "calculator_screen_block",
+    "legacy": "calculatorscreenblock",
+    "kind": "block",
+    "constructor": "screen"
+  },
+  {
+    "field": "Calculator.cropBroccoliPlant",
+    "id": "crop_broccoli",
+    "legacy": "cropbroccoli",
+    "kind": "block",
+    "constructor": "new CalculatorCrops(0, 0))"
+  },
+  {
+    "field": "Calculator.cropPrunaePlant",
+    "id": "crop_prunae",
+    "legacy": "cropprunae",
+    "kind": "block",
+    "constructor": "new CalculatorCrops(1, 2))"
+  },
+  {
+    "field": "Calculator.cropFiddledewPlant",
+    "id": "crop_fiddledew",
+    "legacy": "cropfiddledew",
+    "kind": "block",
+    "constructor": "new CalculatorCrops(2, 3))"
+  },
+  {
+    "field": "SonarCore.reinforcedStoneBlock",
+    "id": "reinforced_stone_block",
+    "legacy": "reinforcedstoneblock",
+    "kind": "block",
+    "constructor": "new BlockBase(Material.ROCK, 2.0f, 50.0f))"
+  },
+  {
+    "field": "SonarCore.reinforcedStoneStairs",
+    "id": "reinforced_stone_stairs",
+    "legacy": "reinforcedstonestairs",
+    "kind": "block",
+    "constructor": "new SonarStairs(reinforcedStoneBlock))"
+  },
+  {
+    "field": "SonarCore.reinforcedStoneFence",
+    "id": "reinforced_stone_fence",
+    "legacy": "reinforcedstonefence",
+    "kind": "block",
+    "constructor": "new SonarFence(Material.ROCK))"
+  },
+  {
+    "field": "SonarCore.reinforcedStoneGate",
+    "id": "reinforced_stone_gate",
+    "legacy": "reinforcedstonegate",
+    "kind": "block",
+    "constructor": "new SonarGate(reinforcedStoneBlock))"
+  },
+  {
+    "field": "SonarCore.reinforcedStoneBrick",
+    "id": "reinforced_stone_brick",
+    "legacy": "reinforcedstonebrick",
+    "kind": "block",
+    "constructor": "new BlockBase(Material.ROCK, 2.0f, 50.0f))"
+  },
+  {
+    "field": "SonarCore.reinforcedStoneBrickStairs",
+    "id": "reinforced_stone_brick_stairs",
+    "legacy": "reinforcedstonebrickstairs",
+    "kind": "block",
+    "constructor": "new SonarStairs(reinforcedStoneBrick))"
+  },
+  {
+    "field": "SonarCore.reinforcedStoneBrickFence",
+    "id": "reinforced_stone_brick_fence",
+    "legacy": "reinforcedstonebrickfence",
+    "kind": "block",
+    "constructor": "new SonarFence(Material.ROCK))"
+  },
+  {
+    "field": "SonarCore.reinforcedStoneBrickGate",
+    "id": "reinforced_stone_brick_gate",
+    "legacy": "reinforcedstonebrickgate",
+    "kind": "block",
+    "constructor": "new SonarGate(reinforcedStoneBrick))"
+  },
+  {
+    "field": "SonarCore.reinforcedDirtBlock",
+    "id": "reinforced_dirt_block",
+    "legacy": "reinforceddirtblock",
+    "kind": "block",
+    "constructor": "new BlockBase(Material.GROUND, 1.0f, 20.0f))"
+  },
+  {
+    "field": "SonarCore.reinforcedDirtStairs",
+    "id": "reinforced_dirt_stairs",
+    "legacy": "reinforceddirtstairs",
+    "kind": "block",
+    "constructor": "new SonarStairs(reinforcedDirtBlock))"
+  },
+  {
+    "field": "SonarCore.reinforcedDirtFence",
+    "id": "reinforced_dirt_fence",
+    "legacy": "reinforceddirtfence",
+    "kind": "block",
+    "constructor": "new SonarFence(Material.GROUND))"
+  },
+  {
+    "field": "SonarCore.reinforcedDirtGate",
+    "id": "reinforced_dirt_gate",
+    "legacy": "reinforceddirtgate",
+    "kind": "block",
+    "constructor": "new SonarGate(reinforcedDirtBlock))"
+  },
+  {
+    "field": "SonarCore.reinforcedDirtBrick",
+    "id": "reinforced_dirt_brick",
+    "legacy": "reinforceddirtbrick",
+    "kind": "block",
+    "constructor": "new BlockBase(Material.GROUND, 1.0f, 20.0f))"
+  },
+  {
+    "field": "SonarCore.reinforcedDirtBrickStairs",
+    "id": "reinforced_dirt_brick_stairs",
+    "legacy": "reinforceddirtbrickstairs",
+    "kind": "block",
+    "constructor": "new SonarStairs(reinforcedDirtBrick))"
+  },
+  {
+    "field": "SonarCore.reinforcedDirtBrickFence",
+    "id": "reinforced_dirt_brick_fence",
+    "legacy": "reinforceddirtbrickfence",
+    "kind": "block",
+    "constructor": "new SonarFence(Material.GROUND))"
+  },
+  {
+    "field": "SonarCore.reinforcedDirtBrickGate",
+    "id": "reinforced_dirt_brick_gate",
+    "legacy": "reinforceddirtbrickgate",
+    "kind": "block",
+    "constructor": "new SonarGate(reinforcedDirtBrick))"
+  },
+  {
+    "field": "SonarCore.stableGlass",
+    "id": "stable_glass",
+    "legacy": "stableglass",
+    "kind": "block",
+    "constructor": "new ConnectedBlock.Glass(Material.GLASS, 1)).setLightLevel(0.625F).setHardness(0.6F).setResistance(50.0f)"
+  },
+  {
+    "field": "SonarCore.clearStableGlass",
+    "id": "clear_stable_glass",
+    "legacy": "clearstableglass",
+    "kind": "block",
+    "constructor": "new ConnectedBlock.Glass(Material.GLASS, 2)).setLightLevel(0.625F).setHardness(0.6F).setResistance(50.0f)"
+  },
+  {
+    "field": "Calculator.material_block:0",
+    "id": "amethyst_block",
+    "legacy": "amethyst",
+    "kind": "block",
+    "constructor": "material"
+  },
+  {
+    "field": "Calculator.material_block:1",
+    "id": "tanzanite_block",
+    "legacy": "tanzanite",
+    "kind": "block",
+    "constructor": "material"
+  },
+  {
+    "field": "Calculator.material_block:2",
+    "id": "enriched_gold_block",
+    "legacy": "enriched_gold",
+    "kind": "block",
+    "constructor": "material"
+  },
+  {
+    "field": "Calculator.material_block:3",
+    "id": "reinforced_iron_block",
+    "legacy": "reinforced_iron",
+    "kind": "block",
+    "constructor": "material"
+  },
+  {
+    "field": "Calculator.material_block:4",
+    "id": "weakened_diamond_block",
+    "legacy": "weakened_diamond",
+    "kind": "block",
+    "constructor": "material"
+  },
+  {
+    "field": "Calculator.material_block:5",
+    "id": "flawless_diamond_block",
+    "legacy": "flawless_diamond",
+    "kind": "block",
+    "constructor": "material"
+  },
+  {
+    "field": "Calculator.material_block:6",
+    "id": "fire_diamond_block",
+    "legacy": "fire_diamond",
+    "kind": "block",
+    "constructor": "material"
+  },
+  {
+    "field": "Calculator.material_block:7",
+    "id": "electric_diamond_block",
+    "legacy": "electric_diamond",
+    "kind": "block",
+    "constructor": "material"
+  },
+  {
+    "field": "Calculator.material_block:8",
+    "id": "end_diamond_block",
+    "legacy": "end_diamond",
+    "kind": "block",
+    "constructor": "material"
+  },
+  {
+    "field": "Calculator.material_block:9",
+    "id": "redstone_ingot_block",
+    "legacy": "redstone_ingot",
+    "kind": "block",
+    "constructor": "material"
+  },
+  {
+    "field": "SonarCore.stable_stone[0]",
+    "id": "stable_stone_normal",
+    "legacy": "stablestone_normal",
+    "kind": "block",
+    "constructor": "stable"
+  },
+  {
+    "field": "SonarCore.stable_stone[1]",
+    "id": "stable_stone_black",
+    "legacy": "stablestone_black",
+    "kind": "block",
+    "constructor": "stable"
+  },
+  {
+    "field": "SonarCore.stable_stone[2]",
+    "id": "stable_stone_blue",
+    "legacy": "stablestone_blue",
+    "kind": "block",
+    "constructor": "stable"
+  },
+  {
+    "field": "SonarCore.stable_stone[3]",
+    "id": "stable_stone_brown",
+    "legacy": "stablestone_brown",
+    "kind": "block",
+    "constructor": "stable"
+  },
+  {
+    "field": "SonarCore.stable_stone[4]",
+    "id": "stable_stone_cyan",
+    "legacy": "stablestone_cyan",
+    "kind": "block",
+    "constructor": "stable"
+  },
+  {
+    "field": "SonarCore.stable_stone[5]",
+    "id": "stable_stone_green",
+    "legacy": "stablestone_green",
+    "kind": "block",
+    "constructor": "stable"
+  },
+  {
+    "field": "SonarCore.stable_stone[6]",
+    "id": "stable_stone_light_blue",
+    "legacy": "stablestone_lightblue",
+    "kind": "block",
+    "constructor": "stable"
+  },
+  {
+    "field": "SonarCore.stable_stone[7]",
+    "id": "stable_stone_light_grey",
+    "legacy": "stablestone_lightgrey",
+    "kind": "block",
+    "constructor": "stable"
+  },
+  {
+    "field": "SonarCore.stable_stone[8]",
+    "id": "stable_stone_lime",
+    "legacy": "stablestone_lime",
+    "kind": "block",
+    "constructor": "stable"
+  },
+  {
+    "field": "SonarCore.stable_stone[9]",
+    "id": "stable_stone_magenta",
+    "legacy": "stablestone_magenta",
+    "kind": "block",
+    "constructor": "stable"
+  },
+  {
+    "field": "SonarCore.stable_stone[10]",
+    "id": "stable_stone_orange",
+    "legacy": "stablestone_orange",
+    "kind": "block",
+    "constructor": "stable"
+  },
+  {
+    "field": "SonarCore.stable_stone[11]",
+    "id": "stable_stone_pink",
+    "legacy": "stablestone_pink",
+    "kind": "block",
+    "constructor": "stable"
+  },
+  {
+    "field": "SonarCore.stable_stone[12]",
+    "id": "stable_stone_plain",
+    "legacy": "stablestone_plain",
+    "kind": "block",
+    "constructor": "stable"
+  },
+  {
+    "field": "SonarCore.stable_stone[13]",
+    "id": "stable_stone_purple",
+    "legacy": "stablestone_purple",
+    "kind": "block",
+    "constructor": "stable"
+  },
+  {
+    "field": "SonarCore.stable_stone[14]",
+    "id": "stable_stone_red",
+    "legacy": "stablestone_red",
+    "kind": "block",
+    "constructor": "stable"
+  },
+  {
+    "field": "SonarCore.stable_stone[15]",
+    "id": "stable_stone_yellow",
+    "legacy": "stablestone_yellow",
+    "kind": "block",
+    "constructor": "stable"
+  },
+  {
+    "field": "SonarCore.stable_stone_rimmed[0]",
+    "id": "stable_stone_rimmed_normal",
+    "legacy": "stablestonerimmed_normal",
+    "kind": "block",
+    "constructor": "stable"
+  },
+  {
+    "field": "SonarCore.stable_stone_rimmed[1]",
+    "id": "stable_stone_rimmed_black",
+    "legacy": "stablestonerimmed_black",
+    "kind": "block",
+    "constructor": "stable"
+  },
+  {
+    "field": "SonarCore.stable_stone_rimmed[2]",
+    "id": "stable_stone_rimmed_blue",
+    "legacy": "stablestonerimmed_blue",
+    "kind": "block",
+    "constructor": "stable"
+  },
+  {
+    "field": "SonarCore.stable_stone_rimmed[3]",
+    "id": "stable_stone_rimmed_brown",
+    "legacy": "stablestonerimmed_brown",
+    "kind": "block",
+    "constructor": "stable"
+  },
+  {
+    "field": "SonarCore.stable_stone_rimmed[4]",
+    "id": "stable_stone_rimmed_cyan",
+    "legacy": "stablestonerimmed_cyan",
+    "kind": "block",
+    "constructor": "stable"
+  },
+  {
+    "field": "SonarCore.stable_stone_rimmed[5]",
+    "id": "stable_stone_rimmed_green",
+    "legacy": "stablestonerimmed_green",
+    "kind": "block",
+    "constructor": "stable"
+  },
+  {
+    "field": "SonarCore.stable_stone_rimmed[6]",
+    "id": "stable_stone_rimmed_light_blue",
+    "legacy": "stablestonerimmed_lightblue",
+    "kind": "block",
+    "constructor": "stable"
+  },
+  {
+    "field": "SonarCore.stable_stone_rimmed[7]",
+    "id": "stable_stone_rimmed_light_grey",
+    "legacy": "stablestonerimmed_lightgrey",
+    "kind": "block",
+    "constructor": "stable"
+  },
+  {
+    "field": "SonarCore.stable_stone_rimmed[8]",
+    "id": "stable_stone_rimmed_lime",
+    "legacy": "stablestonerimmed_lime",
+    "kind": "block",
+    "constructor": "stable"
+  },
+  {
+    "field": "SonarCore.stable_stone_rimmed[9]",
+    "id": "stable_stone_rimmed_magenta",
+    "legacy": "stablestonerimmed_magenta",
+    "kind": "block",
+    "constructor": "stable"
+  },
+  {
+    "field": "SonarCore.stable_stone_rimmed[10]",
+    "id": "stable_stone_rimmed_orange",
+    "legacy": "stablestonerimmed_orange",
+    "kind": "block",
+    "constructor": "stable"
+  },
+  {
+    "field": "SonarCore.stable_stone_rimmed[11]",
+    "id": "stable_stone_rimmed_pink",
+    "legacy": "stablestonerimmed_pink",
+    "kind": "block",
+    "constructor": "stable"
+  },
+  {
+    "field": "SonarCore.stable_stone_rimmed[12]",
+    "id": "stable_stone_rimmed_plain",
+    "legacy": "stablestonerimmed_plain",
+    "kind": "block",
+    "constructor": "stable"
+  },
+  {
+    "field": "SonarCore.stable_stone_rimmed[13]",
+    "id": "stable_stone_rimmed_purple",
+    "legacy": "stablestonerimmed_purple",
+    "kind": "block",
+    "constructor": "stable"
+  },
+  {
+    "field": "SonarCore.stable_stone_rimmed[14]",
+    "id": "stable_stone_rimmed_red",
+    "legacy": "stablestonerimmed_red",
+    "kind": "block",
+    "constructor": "stable"
+  },
+  {
+    "field": "SonarCore.stable_stone_rimmed[15]",
+    "id": "stable_stone_rimmed_yellow",
+    "legacy": "stablestonerimmed_yellow",
+    "kind": "block",
+    "constructor": "stable"
+  },
+  {
+    "field": "SonarCore.stable_stone_black_rimmed[0]",
+    "id": "stable_stone_black_rimmed_normal",
+    "legacy": "stablestoneblackrimmed_normal",
+    "kind": "block",
+    "constructor": "stable"
+  },
+  {
+    "field": "SonarCore.stable_stone_black_rimmed[1]",
+    "id": "stable_stone_black_rimmed_black",
+    "legacy": "stablestoneblackrimmed_black",
+    "kind": "block",
+    "constructor": "stable"
+  },
+  {
+    "field": "SonarCore.stable_stone_black_rimmed[2]",
+    "id": "stable_stone_black_rimmed_blue",
+    "legacy": "stablestoneblackrimmed_blue",
+    "kind": "block",
+    "constructor": "stable"
+  },
+  {
+    "field": "SonarCore.stable_stone_black_rimmed[3]",
+    "id": "stable_stone_black_rimmed_brown",
+    "legacy": "stablestoneblackrimmed_brown",
+    "kind": "block",
+    "constructor": "stable"
+  },
+  {
+    "field": "SonarCore.stable_stone_black_rimmed[4]",
+    "id": "stable_stone_black_rimmed_cyan",
+    "legacy": "stablestoneblackrimmed_cyan",
+    "kind": "block",
+    "constructor": "stable"
+  },
+  {
+    "field": "SonarCore.stable_stone_black_rimmed[5]",
+    "id": "stable_stone_black_rimmed_green",
+    "legacy": "stablestoneblackrimmed_green",
+    "kind": "block",
+    "constructor": "stable"
+  },
+  {
+    "field": "SonarCore.stable_stone_black_rimmed[6]",
+    "id": "stable_stone_black_rimmed_light_blue",
+    "legacy": "stablestoneblackrimmed_lightblue",
+    "kind": "block",
+    "constructor": "stable"
+  },
+  {
+    "field": "SonarCore.stable_stone_black_rimmed[7]",
+    "id": "stable_stone_black_rimmed_light_grey",
+    "legacy": "stablestoneblackrimmed_lightgrey",
+    "kind": "block",
+    "constructor": "stable"
+  },
+  {
+    "field": "SonarCore.stable_stone_black_rimmed[8]",
+    "id": "stable_stone_black_rimmed_lime",
+    "legacy": "stablestoneblackrimmed_lime",
+    "kind": "block",
+    "constructor": "stable"
+  },
+  {
+    "field": "SonarCore.stable_stone_black_rimmed[9]",
+    "id": "stable_stone_black_rimmed_magenta",
+    "legacy": "stablestoneblackrimmed_magenta",
+    "kind": "block",
+    "constructor": "stable"
+  },
+  {
+    "field": "SonarCore.stable_stone_black_rimmed[10]",
+    "id": "stable_stone_black_rimmed_orange",
+    "legacy": "stablestoneblackrimmed_orange",
+    "kind": "block",
+    "constructor": "stable"
+  },
+  {
+    "field": "SonarCore.stable_stone_black_rimmed[11]",
+    "id": "stable_stone_black_rimmed_pink",
+    "legacy": "stablestoneblackrimmed_pink",
+    "kind": "block",
+    "constructor": "stable"
+  },
+  {
+    "field": "SonarCore.stable_stone_black_rimmed[12]",
+    "id": "stable_stone_black_rimmed_plain",
+    "legacy": "stablestoneblackrimmed_plain",
+    "kind": "block",
+    "constructor": "stable"
+  },
+  {
+    "field": "SonarCore.stable_stone_black_rimmed[13]",
+    "id": "stable_stone_black_rimmed_purple",
+    "legacy": "stablestoneblackrimmed_purple",
+    "kind": "block",
+    "constructor": "stable"
+  },
+  {
+    "field": "SonarCore.stable_stone_black_rimmed[14]",
+    "id": "stable_stone_black_rimmed_red",
+    "legacy": "stablestoneblackrimmed_red",
+    "kind": "block",
+    "constructor": "stable"
+  },
+  {
+    "field": "SonarCore.stable_stone_black_rimmed[15]",
+    "id": "stable_stone_black_rimmed_yellow",
+    "legacy": "stablestoneblackrimmed_yellow",
+    "kind": "block",
+    "constructor": "stable"
+  },
+  {
+    "field": "Calculator.circuitBoard",
+    "id": "circuit_board_0",
+    "legacy": "circuitboard_0",
+    "kind": "item",
+    "constructor": "new CircuitBoard().setHasSubtypes(true).setMaxStackSize(1))",
+    "meta": 0
+  },
+  {
+    "field": "Calculator.circuitBoard",
+    "id": "circuit_board_1",
+    "legacy": "circuitboard_1",
+    "kind": "item",
+    "constructor": "new CircuitBoard().setHasSubtypes(true).setMaxStackSize(1))",
+    "meta": 1
+  },
+  {
+    "field": "Calculator.circuitBoard",
+    "id": "circuit_board_2",
+    "legacy": "circuitboard_2",
+    "kind": "item",
+    "constructor": "new CircuitBoard().setHasSubtypes(true).setMaxStackSize(1))",
+    "meta": 2
+  },
+  {
+    "field": "Calculator.circuitBoard",
+    "id": "circuit_board_3",
+    "legacy": "circuitboard_3",
+    "kind": "item",
+    "constructor": "new CircuitBoard().setHasSubtypes(true).setMaxStackSize(1))",
+    "meta": 3
+  },
+  {
+    "field": "Calculator.circuitBoard",
+    "id": "circuit_board_4",
+    "legacy": "circuitboard_4",
+    "kind": "item",
+    "constructor": "new CircuitBoard().setHasSubtypes(true).setMaxStackSize(1))",
+    "meta": 4
+  },
+  {
+    "field": "Calculator.circuitBoard",
+    "id": "circuit_board_5",
+    "legacy": "circuitboard_5",
+    "kind": "item",
+    "constructor": "new CircuitBoard().setHasSubtypes(true).setMaxStackSize(1))",
+    "meta": 5
+  },
+  {
+    "field": "Calculator.circuitBoard",
+    "id": "circuit_board_6",
+    "legacy": "circuitboard_6",
+    "kind": "item",
+    "constructor": "new CircuitBoard().setHasSubtypes(true).setMaxStackSize(1))",
+    "meta": 6
+  },
+  {
+    "field": "Calculator.circuitBoard",
+    "id": "circuit_board_7",
+    "legacy": "circuitboard_7",
+    "kind": "item",
+    "constructor": "new CircuitBoard().setHasSubtypes(true).setMaxStackSize(1))",
+    "meta": 7
+  },
+  {
+    "field": "Calculator.circuitBoard",
+    "id": "circuit_board_8",
+    "legacy": "circuitboard_8",
+    "kind": "item",
+    "constructor": "new CircuitBoard().setHasSubtypes(true).setMaxStackSize(1))",
+    "meta": 8
+  },
+  {
+    "field": "Calculator.circuitBoard",
+    "id": "circuit_board_9",
+    "legacy": "circuitboard_9",
+    "kind": "item",
+    "constructor": "new CircuitBoard().setHasSubtypes(true).setMaxStackSize(1))",
+    "meta": 9
+  },
+  {
+    "field": "Calculator.circuitBoard",
+    "id": "circuit_board_10",
+    "legacy": "circuitboard_10",
+    "kind": "item",
+    "constructor": "new CircuitBoard().setHasSubtypes(true).setMaxStackSize(1))",
+    "meta": 10
+  },
+  {
+    "field": "Calculator.circuitBoard",
+    "id": "circuit_board_11",
+    "legacy": "circuitboard_11",
+    "kind": "item",
+    "constructor": "new CircuitBoard().setHasSubtypes(true).setMaxStackSize(1))",
+    "meta": 11
+  },
+  {
+    "field": "Calculator.circuitBoard",
+    "id": "circuit_board_12",
+    "legacy": "circuitboard_12",
+    "kind": "item",
+    "constructor": "new CircuitBoard().setHasSubtypes(true).setMaxStackSize(1))",
+    "meta": 12
+  },
+  {
+    "field": "Calculator.circuitBoard",
+    "id": "circuit_board_13",
+    "legacy": "circuitboard_13",
+    "kind": "item",
+    "constructor": "new CircuitBoard().setHasSubtypes(true).setMaxStackSize(1))",
+    "meta": 13
+  },
+  {
+    "field": "Calculator.circuitDirty",
+    "id": "circuit_dirty_0",
+    "legacy": "circuitdirty_0",
+    "kind": "item",
+    "constructor": "new SonarMetaItem(14).setHasSubtypes(true).setMaxStackSize(1))",
+    "meta": 0
+  },
+  {
+    "field": "Calculator.circuitDirty",
+    "id": "circuit_dirty_1",
+    "legacy": "circuitdirty_1",
+    "kind": "item",
+    "constructor": "new SonarMetaItem(14).setHasSubtypes(true).setMaxStackSize(1))",
+    "meta": 1
+  },
+  {
+    "field": "Calculator.circuitDirty",
+    "id": "circuit_dirty_2",
+    "legacy": "circuitdirty_2",
+    "kind": "item",
+    "constructor": "new SonarMetaItem(14).setHasSubtypes(true).setMaxStackSize(1))",
+    "meta": 2
+  },
+  {
+    "field": "Calculator.circuitDirty",
+    "id": "circuit_dirty_3",
+    "legacy": "circuitdirty_3",
+    "kind": "item",
+    "constructor": "new SonarMetaItem(14).setHasSubtypes(true).setMaxStackSize(1))",
+    "meta": 3
+  },
+  {
+    "field": "Calculator.circuitDirty",
+    "id": "circuit_dirty_4",
+    "legacy": "circuitdirty_4",
+    "kind": "item",
+    "constructor": "new SonarMetaItem(14).setHasSubtypes(true).setMaxStackSize(1))",
+    "meta": 4
+  },
+  {
+    "field": "Calculator.circuitDirty",
+    "id": "circuit_dirty_5",
+    "legacy": "circuitdirty_5",
+    "kind": "item",
+    "constructor": "new SonarMetaItem(14).setHasSubtypes(true).setMaxStackSize(1))",
+    "meta": 5
+  },
+  {
+    "field": "Calculator.circuitDirty",
+    "id": "circuit_dirty_6",
+    "legacy": "circuitdirty_6",
+    "kind": "item",
+    "constructor": "new SonarMetaItem(14).setHasSubtypes(true).setMaxStackSize(1))",
+    "meta": 6
+  },
+  {
+    "field": "Calculator.circuitDirty",
+    "id": "circuit_dirty_7",
+    "legacy": "circuitdirty_7",
+    "kind": "item",
+    "constructor": "new SonarMetaItem(14).setHasSubtypes(true).setMaxStackSize(1))",
+    "meta": 7
+  },
+  {
+    "field": "Calculator.circuitDirty",
+    "id": "circuit_dirty_8",
+    "legacy": "circuitdirty_8",
+    "kind": "item",
+    "constructor": "new SonarMetaItem(14).setHasSubtypes(true).setMaxStackSize(1))",
+    "meta": 8
+  },
+  {
+    "field": "Calculator.circuitDirty",
+    "id": "circuit_dirty_9",
+    "legacy": "circuitdirty_9",
+    "kind": "item",
+    "constructor": "new SonarMetaItem(14).setHasSubtypes(true).setMaxStackSize(1))",
+    "meta": 9
+  },
+  {
+    "field": "Calculator.circuitDirty",
+    "id": "circuit_dirty_10",
+    "legacy": "circuitdirty_10",
+    "kind": "item",
+    "constructor": "new SonarMetaItem(14).setHasSubtypes(true).setMaxStackSize(1))",
+    "meta": 10
+  },
+  {
+    "field": "Calculator.circuitDirty",
+    "id": "circuit_dirty_11",
+    "legacy": "circuitdirty_11",
+    "kind": "item",
+    "constructor": "new SonarMetaItem(14).setHasSubtypes(true).setMaxStackSize(1))",
+    "meta": 11
+  },
+  {
+    "field": "Calculator.circuitDirty",
+    "id": "circuit_dirty_12",
+    "legacy": "circuitdirty_12",
+    "kind": "item",
+    "constructor": "new SonarMetaItem(14).setHasSubtypes(true).setMaxStackSize(1))",
+    "meta": 12
+  },
+  {
+    "field": "Calculator.circuitDirty",
+    "id": "circuit_dirty_13",
+    "legacy": "circuitdirty_13",
+    "kind": "item",
+    "constructor": "new SonarMetaItem(14).setHasSubtypes(true).setMaxStackSize(1))",
+    "meta": 13
+  },
+  {
+    "field": "Calculator.circuitDamaged",
+    "id": "circuit_damaged_0",
+    "legacy": "circuitdamaged_0",
+    "kind": "item",
+    "constructor": "new SonarMetaItem(14).setHasSubtypes(true).setMaxStackSize(1))",
+    "meta": 0
+  },
+  {
+    "field": "Calculator.circuitDamaged",
+    "id": "circuit_damaged_1",
+    "legacy": "circuitdamaged_1",
+    "kind": "item",
+    "constructor": "new SonarMetaItem(14).setHasSubtypes(true).setMaxStackSize(1))",
+    "meta": 1
+  },
+  {
+    "field": "Calculator.circuitDamaged",
+    "id": "circuit_damaged_2",
+    "legacy": "circuitdamaged_2",
+    "kind": "item",
+    "constructor": "new SonarMetaItem(14).setHasSubtypes(true).setMaxStackSize(1))",
+    "meta": 2
+  },
+  {
+    "field": "Calculator.circuitDamaged",
+    "id": "circuit_damaged_3",
+    "legacy": "circuitdamaged_3",
+    "kind": "item",
+    "constructor": "new SonarMetaItem(14).setHasSubtypes(true).setMaxStackSize(1))",
+    "meta": 3
+  },
+  {
+    "field": "Calculator.circuitDamaged",
+    "id": "circuit_damaged_4",
+    "legacy": "circuitdamaged_4",
+    "kind": "item",
+    "constructor": "new SonarMetaItem(14).setHasSubtypes(true).setMaxStackSize(1))",
+    "meta": 4
+  },
+  {
+    "field": "Calculator.circuitDamaged",
+    "id": "circuit_damaged_5",
+    "legacy": "circuitdamaged_5",
+    "kind": "item",
+    "constructor": "new SonarMetaItem(14).setHasSubtypes(true).setMaxStackSize(1))",
+    "meta": 5
+  },
+  {
+    "field": "Calculator.circuitDamaged",
+    "id": "circuit_damaged_6",
+    "legacy": "circuitdamaged_6",
+    "kind": "item",
+    "constructor": "new SonarMetaItem(14).setHasSubtypes(true).setMaxStackSize(1))",
+    "meta": 6
+  },
+  {
+    "field": "Calculator.circuitDamaged",
+    "id": "circuit_damaged_7",
+    "legacy": "circuitdamaged_7",
+    "kind": "item",
+    "constructor": "new SonarMetaItem(14).setHasSubtypes(true).setMaxStackSize(1))",
+    "meta": 7
+  },
+  {
+    "field": "Calculator.circuitDamaged",
+    "id": "circuit_damaged_8",
+    "legacy": "circuitdamaged_8",
+    "kind": "item",
+    "constructor": "new SonarMetaItem(14).setHasSubtypes(true).setMaxStackSize(1))",
+    "meta": 8
+  },
+  {
+    "field": "Calculator.circuitDamaged",
+    "id": "circuit_damaged_9",
+    "legacy": "circuitdamaged_9",
+    "kind": "item",
+    "constructor": "new SonarMetaItem(14).setHasSubtypes(true).setMaxStackSize(1))",
+    "meta": 9
+  },
+  {
+    "field": "Calculator.circuitDamaged",
+    "id": "circuit_damaged_10",
+    "legacy": "circuitdamaged_10",
+    "kind": "item",
+    "constructor": "new SonarMetaItem(14).setHasSubtypes(true).setMaxStackSize(1))",
+    "meta": 10
+  },
+  {
+    "field": "Calculator.circuitDamaged",
+    "id": "circuit_damaged_11",
+    "legacy": "circuitdamaged_11",
+    "kind": "item",
+    "constructor": "new SonarMetaItem(14).setHasSubtypes(true).setMaxStackSize(1))",
+    "meta": 11
+  },
+  {
+    "field": "Calculator.circuitDamaged",
+    "id": "circuit_damaged_12",
+    "legacy": "circuitdamaged_12",
+    "kind": "item",
+    "constructor": "new SonarMetaItem(14).setHasSubtypes(true).setMaxStackSize(1))",
+    "meta": 12
+  },
+  {
+    "field": "Calculator.circuitDamaged",
+    "id": "circuit_damaged_13",
+    "legacy": "circuitdamaged_13",
+    "kind": "item",
+    "constructor": "new SonarMetaItem(14).setHasSubtypes(true).setMaxStackSize(1))",
+    "meta": 13
+  },
+  {
+    "id": "research_chamber",
+    "kind": "block",
+    "field": "Foundations.research_chamber",
+    "legacy": "research_chamber",
+    "constructor": "R4 revival"
+  },
+  {
+    "id": "smelting_module",
+    "kind": "item",
+    "field": "Foundations.smelting_module",
+    "legacy": "smelting_module",
+    "constructor": "R4 revival"
+  },
+  {
+    "id": "atomic_terrain_module",
+    "kind": "item",
+    "field": "Foundations.atomic_terrain_module",
+    "legacy": "atomic_terrain_module",
+    "constructor": "R4 revival"
+  }
+]

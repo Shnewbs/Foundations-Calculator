@@ -1,0 +1,74 @@
+{
+  "id": "foundations_calculator:machines/calculator_plug",
+  "chapter": "foundations_calculator:machines",
+  "title": "Calculator Plug",
+  "order": 59,
+  "items": [
+    "foundations_calculator:calculator_plug"
+  ],
+  "keywords": [
+    "calculator_plug",
+    "Holds a circuit board to contribute stability to a Locator platform"
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "Purpose"
+    },
+    {
+      "type": "paragraph",
+      "text": "Holds a circuit board to contribute stability to a Locator platform."
+    },
+    {
+      "type": "heading",
+      "text": "Set up and operate"
+    },
+    {
+      "type": "steps",
+      "rows": [
+        [
+          "Place the plug at controller height on Stable Stone."
+        ],
+        [
+          "Insert a stable analysed board."
+        ],
+        [
+          "Read the active state and recheck the surrounding Locator square."
+        ]
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "When it does not run"
+    },
+    {
+      "type": "paragraph",
+      "text": "A dirty chip or unanalysed/unstable board is not a stabilizing board. Plugs are not generic FE storage blocks."
+    },
+    {
+      "type": "paragraph",
+      "text": "Read the active server settings below before copying default costs from another installation. For special slot roles, use the machine screen labels. Settings reporting does not inspect or mutate a placed machine."
+    },
+    {
+      "type": "live",
+      "text": "Actual server settings",
+      "target": "foundations_calculator",
+      "options": {
+        "key": "machine/calculator_plug"
+      }
+    },
+    {
+      "type": "recipe",
+      "text": "Crafting / obtaining this machine",
+      "target": "item:foundations_calculator:calculator_plug",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "link",
+      "text": "General operating checklist",
+      "target": "foundations_calculator:troubleshooting/no_progress"
+    }
+  ]
+}

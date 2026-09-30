@@ -1,0 +1,36 @@
+{
+  "type": "foundations_calculator:process",
+  "machine": "atomic",
+  "ingredients": [
+    {
+      "ingredient": {
+        "item": "foundations_calculator:tanzanite_log"
+      },
+      "count": 1
+    },
+    {
+      "ingredient": {
+        "item": "foundations_calculator:atomic_binder"
+      },
+      "count": 1
+    },
+    {
+      "ingredient": {
+        "item": "foundations_calculator:tanzanite_leaves"
+      },
+      "count": 1
+    }
+  ],
+  "results": [
+    {
+      "stack": {
+        "id": "foundations_calculator:tanzanite_sapling",
+        "count": 1
+      }
+    }
+  ],
+  "energy": 0,
+  "ticks": 1,
+  "value": 0,
+  "research": false
+}

@@ -1,0 +1,88 @@
+{
+  "id": "foundations_calculator:farming/growing",
+  "chapter": "foundations_calculator:farming",
+  "title": "Greenhouse growing cycle",
+  "order": 20,
+  "items": [
+    "foundations_calculator:broccoli_seeds",
+    "foundations_calculator:prunae_seeds",
+    "foundations_calculator:fiddledew_fruit"
+  ],
+  "keywords": [
+    "CO2",
+    "seeds",
+    "water",
+    "farmland",
+    "light",
+    "tier"
+  ],
+  "blocks": [
+    {
+      "type": "paragraph",
+      "text": "Greenhouses combine structure validation, irrigation, farmland preparation, planting, harvesting and optional accelerated growth. Correct material geometry alone does not guarantee that every crop can survive in every position."
+    },
+    {
+      "type": "steps",
+      "rows": [
+        [
+          "Build or assemble the correct greenhouse tier and leave its growing cells available."
+        ],
+        [
+          "Prepare the required dirt/grass underneath the crop positions. Automatic farmland and water placement must be enabled and permitted by protection checks."
+        ],
+        [
+          "Supply seeds compatible with that tier. Basic/Advanced reserve their first four input slots for construction materials; Flawless can use all fourteen inputs for seeds."
+        ],
+        [
+          "Place a chest directly outside the controller for seed import and produce export, or use internal storage. Its side mode must allow the requested direction."
+        ],
+        [
+          "Supply FE and suitable CO₂. Watch for pending output, a disabled side, Pause, or redstone before adding more fuel."
+        ],
+        [
+          "Allow ordinary crop light/survival rules. A greenhouse does not invent a valid harvest contract for an arbitrary third-party plant."
+        ]
+      ]
+    },
+    {
+      "type": "table",
+      "text": "Native crop tiers",
+      "rows": [
+        [
+          "Broccoli",
+          "Can also grow outside a greenhouse."
+        ],
+        [
+          "Prunae",
+          "Requires at least Advanced tier for greenhouse planting."
+        ],
+        [
+          "Fiddledew",
+          "Requires Flawless tier."
+        ]
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "Gas Lanterns supply CO₂ to Basic and Advanced structures; Flawless uses its correctly positioned CO₂ Generator. Carbon changes growth intervals. Planting, growth, harvest, water and farmland each have separate energy/settings controls."
+    },
+    {
+      "type": "live",
+      "text": "Actual server settings",
+      "target": "foundations_calculator",
+      "options": {
+        "key": "farming"
+      }
+    },
+    {
+      "type": "link",
+      "text": "External plants and protected callbacks",
+      "target": "foundations_calculator:farming/compatibility"
+    },
+    {
+      "type": "link",
+      "text": "Gas Lantern",
+      "target": "foundations_calculator:machines/gas_lantern_off"
+    }
+  ]
+}

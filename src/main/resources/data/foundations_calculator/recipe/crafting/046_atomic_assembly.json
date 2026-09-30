@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "BAB",
+    "AEA",
+    "BAB"
+  ],
+  "key": {
+    "E": {
+      "tag": "c:gems/emerald"
+    },
+    "A": {
+      "item": "foundations_calculator:atomic_module"
+    },
+    "B": {
+      "item": "foundations_calculator:advanced_assembly"
+    }
+  },
+  "result": {
+    "id": "foundations_calculator:atomic_assembly",
+    "count": 1
+  }
+}

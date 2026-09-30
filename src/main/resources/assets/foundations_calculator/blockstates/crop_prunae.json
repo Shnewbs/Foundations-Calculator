@@ -1,0 +1,28 @@
+{
+  "variants": {
+    "age=0": {
+      "model": "foundations_calculator:block/crop_prunae_0"
+    },
+    "age=1": {
+      "model": "foundations_calculator:block/crop_prunae_1"
+    },
+    "age=2": {
+      "model": "foundations_calculator:block/crop_prunae_2"
+    },
+    "age=3": {
+      "model": "foundations_calculator:block/crop_prunae_3"
+    },
+    "age=4": {
+      "model": "foundations_calculator:block/crop_prunae_4"
+    },
+    "age=5": {
+      "model": "foundations_calculator:block/crop_prunae_5"
+    },
+    "age=6": {
+      "model": "foundations_calculator:block/crop_prunae_6"
+    },
+    "age=7": {
+      "model": "foundations_calculator:block/crop_prunae_7"
+    }
+  }
+}

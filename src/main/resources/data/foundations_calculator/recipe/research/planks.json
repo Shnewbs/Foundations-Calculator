@@ -1,0 +1,20 @@
+{
+  "type": "foundations_calculator:process",
+  "machine": "research",
+  "ingredients": [
+    {
+      "ingredient": [
+        {
+          "tag": "minecraft:planks"
+        },
+        {
+          "tag": "minecraft:wooden_stairs"
+        }
+      ]
+    }
+  ],
+  "results": [],
+  "energy": 1000,
+  "ticks": 100,
+  "research_group": "planks"
+}

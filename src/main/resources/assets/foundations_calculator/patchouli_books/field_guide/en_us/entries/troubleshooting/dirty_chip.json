@@ -1,0 +1,12 @@
+{
+  "name": "Dirty chip will not process",
+  "category": "foundations_calculator:troubleshooting",
+  "icon": "foundations_calculator:info_calculator",
+  "sortnum": 25,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "A machine accepting power only proves its energy interface works. The chip still has to match a recipe in that machine\u2019s input slots.$p1. Read the item name: Dirty circuit, Damaged circuit or Circuit Board.$p2. Use Restoration for Dirty; Reassembly for Damaged; Processing handles both. Analysis expects a clean, not already analysed board.$p3. Put the chip in a process input, not the Power slot, an output or an upgrade slot.$p4. Open the matching machine recipe in this guide and verify that the server still provides it.$p5. Compare stored energy with the effective batch cost and leave output space. The progress duration can be changed in the server configuration.$p6. After one successful batch, test automation separately so a Disabled/Input-only output face does not hide the successful conversion.$pProcessing recipes: live recipe details are available in the native or master Foundations reader.$p$(l:foundations_calculator:circuits/chain)Full circuit chain$()"
+    }
+  ]
+}

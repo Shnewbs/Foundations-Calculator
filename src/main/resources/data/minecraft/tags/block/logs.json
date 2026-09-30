@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "foundations_calculator:amethyst_log",
+    "foundations_calculator:tanzanite_log",
+    "foundations_calculator:pear_log",
+    "foundations_calculator:diamond_log"
+  ]
+}

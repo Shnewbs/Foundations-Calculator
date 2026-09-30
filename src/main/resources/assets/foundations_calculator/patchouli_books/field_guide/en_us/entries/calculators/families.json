@@ -1,0 +1,16 @@
+{
+  "name": "Which calculator should I use?",
+  "category": "foundations_calculator:calculators",
+  "icon": "foundations_calculator:scientific_calculator",
+  "sortnum": 4,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Calculation families$()$pBasic Calculator \u2014 Two inputs; basic combinations and many research-gated conversions.$pScientific Calculator \u2014 Two inputs; a different recipe family, not an extra input slot.$pAtomic Calculator \u2014 Placed three-input atomic recipes.$pFlawless Calculator \u2014 Four-input flawless recipes plus installed modules.$pDocking Station \u2014 Uses the family of the calculator placed in its special slot.$pDynamic Calculator \u2014 Three lanes: basic inputs 1\u20132, scientific 3\u20134, atomic 5\u20137.$pA recipe is selected from the family supported by the current device. A Scientific recipe does not become a Basic recipe because both devices have two slots. Item components, required counts and research can also distinguish apparently similar ingredients.$pPortable operations are immediate and return their container contents safely when closed. A time field in their recipe data does not create a hidden processing timer. Placed processors use their program time and server overrides.$pScientific examples: live recipe details are available in the native or master Foundations reader.$pFlawless examples: live recipe details are available in the native or master Foundations reader.$p$(l:foundations_calculator:machines/docking_station)Docking Station$()$p$(l:foundations_calculator:machines/dynamic_calculator)Dynamic Calculator$()$p$(l:foundations_calculator:calculators/installing)Install and choose modules$()"
+    }
+  ],
+  "extra_recipe_mappings": {
+    "foundations_calculator:scientific_calculator": 0,
+    "foundations_calculator:flawless_calculator": 0
+  }
+}

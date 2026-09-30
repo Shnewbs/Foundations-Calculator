@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "BCB",
+    "CAC",
+    "BCB"
+  ],
+  "key": {
+    "A": {
+      "item": "foundations_calculator:reinforced_iron_block"
+    },
+    "B": {
+      "tag": "foundations_calculator:reinforced_stone"
+    },
+    "C": {
+      "item": "foundations_calculator:enriched_gold_ingot"
+    }
+  },
+  "result": {
+    "id": "foundations_calculator:basic_greenhouse",
+    "count": 1
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "parent": "foundations_calculator:legacy_calculator/block/sonarmachine",
+  "textures": {
+    "particle": "foundations_calculator:legacy_calculator/blocks/crank_front",
+    "north": "foundations_calculator:legacy_calculator/blocks/crank_front",
+    "east": "foundations_calculator:legacy_calculator/blocks/crank_side",
+    "south": "foundations_calculator:legacy_calculator/blocks/crank_side",
+    "west": "foundations_calculator:legacy_calculator/blocks/crank_side",
+    "up": "foundations_calculator:legacy_calculator/blocks/crank_top",
+    "down": "foundations_calculator:legacy_calculator/blocks/crank_top"
+  }
+}

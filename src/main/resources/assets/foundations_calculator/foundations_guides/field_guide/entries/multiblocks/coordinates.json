@@ -1,0 +1,100 @@
+{
+  "id": "foundations_calculator:multiblocks/coordinates",
+  "chapter": "foundations_calculator:multiblocks",
+  "title": "Reading controller-relative construction plans",
+  "order": 13,
+  "items": [],
+  "keywords": [
+    "orientation",
+    "front",
+    "inside",
+    "clockwise",
+    "layer",
+    "blueprint"
+  ],
+  "blocks": [
+    {
+      "type": "paragraph",
+      "text": "Every plan is relative to the controller, not fixed world north. Place it facing you. Inside is the opposite of that visible front. Side is clockwise from the inside direction. Height zero is the controller’s block level."
+    },
+    {
+      "type": "table",
+      "text": "Diagram symbols",
+      "rows": [
+        [
+          "C",
+          "Controller."
+        ],
+        [
+          "S",
+          "Stable Stone / supported stable-stone variant."
+        ],
+        [
+          "G",
+          "Glass; check the entry for ordinary or Flawless Glass."
+        ],
+        [
+          "L",
+          "Logs."
+        ],
+        [
+          "P",
+          "Planks."
+        ],
+        [
+          "T",
+          "Wooden stair in automatic greenhouse plans."
+        ],
+        [
+          "W",
+          "Water or irrigation cell."
+        ],
+        [
+          "Q",
+          "Bottom Quartz Slab in a flawless roof."
+        ],
+        [
+          ".",
+          "Air / clear space, unless the layer explicitly says otherwise."
+        ]
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "The rows of the default diagrams run from the near/outside end toward the inside end. Columns run from negative side to positive side. A roof overhang is part of the construction bounds even when it is outside the crop footprint."
+    },
+    {
+      "type": "paragraph",
+      "text": "Basic and Advanced Greenhouses build from controller inputs. Flawless Greenhouses, the Dynamic Calculator and Locator structure are manual layouts. Do not press Build expecting a manually assembled structure to appear."
+    },
+    {
+      "type": "callout",
+      "text": "Diagrams show shipped geometry, not a live ghost overlay. Server configuration can change supported Dynamic radius or Flawless length. Check the relevant server-values block before preparing materials."
+    },
+    {
+      "type": "link",
+      "text": "Basic Greenhouse layers",
+      "target": "foundations_calculator:multiblocks/basic_greenhouse"
+    },
+    {
+      "type": "link",
+      "text": "Advanced Greenhouse layers",
+      "target": "foundations_calculator:multiblocks/advanced_greenhouse"
+    },
+    {
+      "type": "link",
+      "text": "Flawless manual layers",
+      "target": "foundations_calculator:multiblocks/flawless_greenhouse"
+    },
+    {
+      "type": "link",
+      "text": "Dynamic Calculator layers",
+      "target": "foundations_calculator:multiblocks/dynamic"
+    },
+    {
+      "type": "link",
+      "text": "Locator platform",
+      "target": "foundations_calculator:multiblocks/locator"
+    }
+  ]
+}

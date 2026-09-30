@@ -1,0 +1,16 @@
+{
+  "name": "Installing and selecting modules",
+  "category": "foundations_calculator:calculators",
+  "icon": "foundations_calculator:atomic_assembly",
+  "sortnum": 5,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "The Module Workstation edits the modules stored inside a Flawless Calculator. The calculator component is the sole owner of the module contents; the workstation is not a second copy of the inventory.$p1. Put the Flawless Calculator in the workstation Calculator slot.$p2. Place supported modules in the module positions, up to the server-configured limit. The shipped maximum is 16.$p3. Remove the Flawless Calculator. Its installed modules and their inventories travel with it.$p4. Sneak-use the calculator to cycle the selected module. The selection label tells you which action a normal use will perform.$p5. Return to the ordinary Flawless calculation selection when you need the four-input recipes instead of a module action.$pAtomic Assembly exposes the three-lane Dynamic Module. Flawless Assembly exposes flawless calculation. Storage remains inside its module; installed Energy Modules add storage. Installed ender pearls and grenades use FE rather than consuming the installed item.$p$(o)Not every similarly named crafting component is an installable module. In particular Atomic Module is a component, not a usable workstation module. Read the live crafting references before installing or consuming rare materials.$()$pActual server settings: live server values are available in the native or master Foundations reader.$p$(l:foundations_calculator:machines/module_workstation)Module Workstation reference$()$p$(l:foundations_calculator:calculators/storage_module)Storage Module$()"
+    }
+  ],
+  "extra_recipe_mappings": {
+    "foundations_calculator:atomic_assembly": 0,
+    "foundations_calculator:flawless_assembly": 0
+  }
+}

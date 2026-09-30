@@ -1,0 +1,16 @@
+{
+  "name": "Native routing, FE facades and charging",
+  "category": "foundations_calculator:power",
+  "icon": "foundations_calculator:info_calculator",
+  "sortnum": 12,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "With native-first routing, Calculator prefers its native adapter for an external target. If that native adapter exists but is disabled or refuses the operation, Calculator does not silently try the target\u2019s FE facade to evade the native policy.$pSetting power.routing.preferNative to false deliberately prefers an available FE facade. A native ratio or loss then does not govern that FE path. A source in another mod chooses the capability it pushes into; Calculator cannot force that source to choose EU or J.$pClosing power.fe.blockPorts closes Calculator\u2019s direct FE machine capability and its generic FE block sends without disabling its underlying FE store. Native adapters can still use that store when permitted. Calculator-to-Calculator transfers stay FE rather than converting twice.$p$(l)Item slots$()$pPower Cube Discharge \u2014 Drain a battery or supported consumable into the cube.$pPower Cube Charge \u2014 Send stored FE into a supported powered item.$pProcessing-machine Power \u2014 Normally accept discharge into the machine.$pSpecial slots \u2014 Some machines use the same slot index for a calculator, module or locator binding instead.$p$(o)Calculator machine and powered-item buffers are long-valued in 0.0.2a. NeoForge FE still moves int-sized requests, while native long adapters and the Foundations long-energy API can expose the full buffer.$()$pActual server settings: live server values are available in the native or master Foundations reader."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(l:foundations_calculator:machines/power_cube)Power Cube$()$p$(l:foundations_calculator:troubleshooting/power)Diagnose an inactive transfer$()"
+    }
+  ]
+}

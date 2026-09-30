@@ -1,0 +1,24 @@
+{
+  "sources": [
+    {
+      "type": "minecraft:directory",
+      "source": "legacy_calculator/blocks",
+      "prefix": "legacy_calculator/blocks/"
+    },
+    {
+      "type": "minecraft:directory",
+      "source": "legacy_calculator/items",
+      "prefix": "legacy_calculator/items/"
+    },
+    {
+      "type": "minecraft:directory",
+      "source": "legacy_calculator/model",
+      "prefix": "legacy_calculator/model/"
+    },
+    {
+      "type": "minecraft:directory",
+      "source": "legacy_sonarcore/blocks",
+      "prefix": "legacy_sonarcore/blocks/"
+    }
+  ]
+}

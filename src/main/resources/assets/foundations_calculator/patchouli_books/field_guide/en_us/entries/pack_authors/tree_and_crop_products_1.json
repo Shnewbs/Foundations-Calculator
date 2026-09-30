@@ -1,0 +1,30 @@
+{
+  "name": "Tree and crop products \u00b7 1",
+  "category": "foundations_calculator:pack_authors",
+  "icon": "foundations_calculator:broccoli",
+  "sortnum": 100,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "This reference groups related inventory entries. Each recipe section reads the current world. An item may have no crafting result when it comes from harvesting, world generation, a program action or creative tools.$pItem: foundations_calculator:broccoli$pObtaining Broccoli: live recipe details are available in the native or master Foundations reader.$pItem: foundations_calculator:pear$pObtaining Pear: live recipe details are available in the native or master Foundations reader.$pItem: foundations_calculator:rotten_pear$pObtaining Rotten Pear: live recipe details are available in the native or master Foundations reader.$pItem: foundations_calculator:cooked_broccoli$pObtaining Cooked Broccoli: live recipe details are available in the native or master Foundations reader.$pItem: foundations_calculator:amethyst_planks$pObtaining Amethyst Planks: live recipe details are available in the native or master Foundations reader.$pItem: foundations_calculator:amethyst_sapling$pObtaining Amethyst Sapling: live recipe details are available in the native or master Foundations reader.$pItem: foundations_calculator:tanzanite_planks$pObtaining Tanzanite Planks: live recipe details are available in the native or master Foundations reader.$pItem: foundations_calculator:tanzanite_sapling$pObtaining Tanzanite Sapling: live recipe details are available in the native or master Foundations reader.$pItem: foundations_calculator:pear_log"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Obtaining Pear Log: live recipe details are available in the native or master Foundations reader.$pItem: foundations_calculator:pear_planks$pObtaining Pear Planks: live recipe details are available in the native or master Foundations reader.$pItem: foundations_calculator:pear_leaves$pObtaining Pear Leaves: live recipe details are available in the native or master Foundations reader.$pItem: foundations_calculator:pear_sapling$pObtaining Pear Sapling: live recipe details are available in the native or master Foundations reader."
+    }
+  ],
+  "extra_recipe_mappings": {
+    "foundations_calculator:broccoli": 0,
+    "foundations_calculator:pear": 0,
+    "foundations_calculator:rotten_pear": 0,
+    "foundations_calculator:cooked_broccoli": 0,
+    "foundations_calculator:amethyst_planks": 0,
+    "foundations_calculator:amethyst_sapling": 0,
+    "foundations_calculator:tanzanite_planks": 0,
+    "foundations_calculator:tanzanite_sapling": 0,
+    "foundations_calculator:pear_log": 0,
+    "foundations_calculator:pear_planks": 0,
+    "foundations_calculator:pear_leaves": 0,
+    "foundations_calculator:pear_sapling": 0
+  }
+}

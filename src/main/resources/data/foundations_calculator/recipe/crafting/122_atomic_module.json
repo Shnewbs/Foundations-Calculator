@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "GCG",
+    "CIC",
+    "GCG"
+  ],
+  "key": {
+    "C": {
+      "item": "foundations_calculator:calculator_assembly"
+    },
+    "G": {
+      "tag": "foundations_calculator:gems/tanzanite"
+    },
+    "I": {
+      "tag": "c:gems/diamond"
+    }
+  },
+  "result": {
+    "id": "foundations_calculator:atomic_module",
+    "count": 4
+  }
+}

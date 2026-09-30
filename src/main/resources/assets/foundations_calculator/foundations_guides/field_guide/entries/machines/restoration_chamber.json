@@ -1,0 +1,82 @@
+{
+  "id": "foundations_calculator:machines/restoration_chamber",
+  "chapter": "foundations_calculator:machines",
+  "title": "Restoration Chamber",
+  "order": 47,
+  "items": [
+    "foundations_calculator:restoration_chamber"
+  ],
+  "keywords": [
+    "restoration_chamber",
+    "Cleans dirty circuits into matching clean board variants"
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "Purpose"
+    },
+    {
+      "type": "paragraph",
+      "text": "Cleans dirty circuits into matching clean board variants."
+    },
+    {
+      "type": "heading",
+      "text": "Set up and operate"
+    },
+    {
+      "type": "steps",
+      "rows": [
+        [
+          "Insert a Dirty circuit in an input slot."
+        ],
+        [
+          "Supply its process cost and leave output room."
+        ],
+        [
+          "Send the resulting board to analysis when a later use requires analysed state."
+        ]
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "When it does not run"
+    },
+    {
+      "type": "paragraph",
+      "text": "Damaged circuits belong in Reassembly or Processing, not this cleaning-only path."
+    },
+    {
+      "type": "paragraph",
+      "text": "Read the active server settings below before copying default costs from another installation. For special slot roles, use the machine screen labels. Settings reporting does not inspect or mutate a placed machine."
+    },
+    {
+      "type": "live",
+      "text": "Actual server settings",
+      "target": "foundations_calculator",
+      "options": {
+        "key": "machine/restoration_chamber"
+      }
+    },
+    {
+      "type": "recipe",
+      "text": "Processing / value recipes",
+      "target": "machine:restoration_chamber",
+      "options": {
+        "profile": "restoration_chamber"
+      }
+    },
+    {
+      "type": "recipe",
+      "text": "Crafting / obtaining this machine",
+      "target": "item:foundations_calculator:restoration_chamber",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "link",
+      "text": "General operating checklist",
+      "target": "foundations_calculator:troubleshooting/no_progress"
+    }
+  ]
+}

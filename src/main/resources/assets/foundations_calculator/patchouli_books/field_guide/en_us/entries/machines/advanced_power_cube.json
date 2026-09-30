@@ -1,0 +1,15 @@
+{
+  "name": "Advanced Power Cube",
+  "category": "foundations_calculator:machines",
+  "icon": "foundations_calculator:advanced_power_cube",
+  "sortnum": 33,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Purpose$()$pA higher-tier FE buffer and item charger. It keeps the same distinction between storage, cable throughput and item-charging throughput.$p$(l)Set up and operate$()$p1. Supply power through a valid input or discharge slot.$p2. Place the target battery or tool in Charge.$p3. Set faces deliberately before attaching mixed EU/J/FE connections.$p$(l)When it does not run$()$pThe external item can impose its own tier, direction, capacity or transfer limit even when the cube has room and power.$pRead the active server settings below before copying default costs from another installation. For special slot roles, use the machine screen labels. Settings reporting does not inspect or mutate a placed machine.$pActual server settings: live server values are available in the native or master Foundations reader.$pCrafting / obtaining this machine: live recipe details are available in the native or master Foundations reader.$p$(l:foundations_calculator:troubleshooting/no_progress)General operating checklist$()"
+    }
+  ],
+  "extra_recipe_mappings": {
+    "foundations_calculator:advanced_power_cube": 0
+  }
+}

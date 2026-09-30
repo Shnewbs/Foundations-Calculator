@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "foundations_calculator:block/creative_power_cube",
+      "y": 0
+    },
+    "facing=east": {
+      "model": "foundations_calculator:block/creative_power_cube",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "foundations_calculator:block/creative_power_cube",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "foundations_calculator:block/creative_power_cube",
+      "y": 270
+    }
+  }
+}

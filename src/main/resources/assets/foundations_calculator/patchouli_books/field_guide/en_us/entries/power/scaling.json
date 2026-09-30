@@ -1,0 +1,20 @@
+{
+  "name": "Long buffers, units & scale",
+  "category": "foundations_calculator:power",
+  "icon": "foundations_calculator:power_cube",
+  "sortnum": 9,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "0.0.2a stores Calculator machine and powered-item energy with 64-bit counters. NeoForge FE remains an int-valued compatibility capability, so a single FE call is bounded even when the underlying buffer is much larger. Native long-valued adapters can see the full buffer.$p$(l)Scale controls$()$penergy.machineCapacityMultiplier \u2014 Multiplies every machine buffer after its normal machine capacity.$pmachine.<id>.capacityMultiplier \u2014 Per-machine multiplier applied after the configured base capacity.$penergy.itemCapacityMultiplier \u2014 Multiplies Calculator/module item buffers.$pmodule.<id>.capacityMultiplier \u2014 Per-item/module multiplier.$penergy.transferMultiplier \u2014 Multiplies transfer/charging limits without changing conversion ratios.$pExisting R9 machine saves migrate automatically because the Energy NBT field is read as a long. Powered items retain the legacy int energy component for downgrade visibility and add a long component for values above 2,147,483,647 FE.$p$(o)Large buffers do not make one transfer unlimited. FE, GT packet limits, machine transfer rates, item charge rates, side modes and adapter policy still cap each operation.$()$pClient setting information.energyUnit can display FE or an explicitly configured GT EU, Mekanism J or MI EU view. If an external ratio is inherited rather than explicitly configured, the GUI falls back to FE instead of guessing.$p$(l:foundations_calculator:power/eu_conversion)EU, FE, J and conversion policy$()"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(l:foundations_calculator:pack_authors/configuration)Pack configuration and presets$()"
+    }
+  ],
+  "extra_recipe_mappings": {
+    "foundations_calculator:power_cube": 0,
+    "foundations_calculator:advanced_power_cube": 0
+  }
+}

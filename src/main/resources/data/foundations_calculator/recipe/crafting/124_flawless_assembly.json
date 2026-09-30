@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "GCG",
+    "CAC",
+    "GCG"
+  ],
+  "key": {
+    "C": {
+      "item": "foundations_calculator:calculator_assembly"
+    },
+    "G": {
+      "item": "foundations_calculator:advanced_assembly"
+    },
+    "A": {
+      "item": "foundations_calculator:atomic_assembly"
+    }
+  },
+  "result": {
+    "id": "foundations_calculator:flawless_assembly",
+    "count": 1
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "parent": "foundations_calculator:legacy_calculator/block/calculatorplug",
+  "textures": {
+    "particle": "foundations_calculator:legacy_calculator/model/calculator_plug_base_off",
+    "0": "foundations_calculator:legacy_calculator/model/calculator_plug_base_off",
+    "1": "foundations_calculator:legacy_calculator/model/calculator_plug_off"
+  }
+}

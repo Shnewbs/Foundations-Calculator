@@ -1,0 +1,8 @@
+{
+  "parent": "foundations_calculator:legacy_calculator/item/sonarsword",
+  "textures": {
+    "0": "foundations_calculator:legacy_calculator/model/tools/flawless_diamond_0",
+    "1": "foundations_calculator:legacy_calculator/model/tools/flawless_diamond_1",
+    "2": "foundations_calculator:legacy_calculator/model/tools/flawless_diamond_2"
+  }
+}

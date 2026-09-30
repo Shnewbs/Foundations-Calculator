@@ -1,0 +1,16 @@
+{
+  "name": "Configuration and scripting reference",
+  "category": "foundations_calculator:pack_authors",
+  "icon": "foundations_calculator:info_calculator",
+  "sortnum": 91,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Gameplay settings belong to foundations_calculator-server.toml in the world\u2019s serverconfig location. Pack defaults can be distributed through defaultconfigs. Client appearance uses the client configuration; client edits cannot replace server rules.$pFor a repeatable configuration change, stop the server, edit the intended existing TOML key, and restart. /reload reloads data packs; it is not a universal TOML reload command. Programmatic changes should use the validated settings API and its change notification.$p$(l)Customization surfaces$()$pPer-content / per-machine \u2014 Enable entries, capacities, automation, transfer, energy, time and special behaviors.$pPer-recipe \u2014 Enable recipes, override energy/time and adjust result chance multipliers.$pData packs \u2014 Replace or add actual process recipe definitions.$pKubeJS \u2014 Optional recipe schema/raw recipe JSON; see examples/kubejs in source.$pCraftTweaker \u2014 Optional add/addJson/remove/removeMachine API; see source examples.$pClient resource packs \u2014 Replace guide book/chapter/entry JSON and illustration resources.$p$(o)Do not paste duplicate TOML tables or duplicate JSON object keys. Invalid guide packages are rejected with bounded diagnostics instead of being executed. Guide pages cannot run commands, read arbitrary files, or name Java classes.$()$pServer recipe values and unlocks are not hidden solely because a guide page is marked unavailable. Server authority belongs to the gameplay service and bounded snapshot provider."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(l)0.0.2a scale and balance$()$pLong-valued capacity multipliers are separate from conversion ratios. Use energy.machineCapacityMultiplier, energy.itemCapacityMultiplier and energy.transferMultiplier for pack-wide scale, then per-machine/module capacityMultiplier keys for exceptions.$pPresets are opt-in. balance.applyPreset=false preserves explicit R9 behavior. When enabled, balance.preset selects 1 Classic, 2 Balanced, 3 Expert or 4 High Power. /foundations config presets prints the exact effects without changing the file.$pOperators can use /foundations config and /foundations config machine <id> for readable effective settings instead of searching thousands of TOML lines.$p$(l:foundations_calculator:power/scaling)Long buffers, units & scale$()$p$(l:foundations_calculator:pack_authors/publishing)Publish a compatible guide$()$p$(l:foundations_calculator:power/eu_conversion)Conversion configuration$()"
+    }
+  ]
+}

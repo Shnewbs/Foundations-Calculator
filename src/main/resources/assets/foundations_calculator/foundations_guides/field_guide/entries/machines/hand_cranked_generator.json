@@ -1,0 +1,74 @@
+{
+  "id": "foundations_calculator:machines/hand_cranked_generator",
+  "chapter": "foundations_calculator:machines",
+  "title": "Hand Cranked Generator",
+  "order": 66,
+  "items": [
+    "foundations_calculator:hand_cranked_generator"
+  ],
+  "keywords": [
+    "hand_cranked_generator",
+    "Manual FE source for starting or testing a small workshop"
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "Purpose"
+    },
+    {
+      "type": "paragraph",
+      "text": "Manual FE source for starting or testing a small workshop."
+    },
+    {
+      "type": "heading",
+      "text": "Set up and operate"
+    },
+    {
+      "type": "steps",
+      "rows": [
+        [
+          "Place the generator and use its crank interaction."
+        ],
+        [
+          "Connect a permitted energy output to your first buffer or machine."
+        ],
+        [
+          "Repeat until the full intended process batch is funded."
+        ]
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "When it does not run"
+    },
+    {
+      "type": "paragraph",
+      "text": "A large late-game recipe can require far more FE than repeated cranking is convenient for. The server can change energy per use."
+    },
+    {
+      "type": "paragraph",
+      "text": "Read the active server settings below before copying default costs from another installation. For special slot roles, use the machine screen labels. Settings reporting does not inspect or mutate a placed machine."
+    },
+    {
+      "type": "live",
+      "text": "Actual server settings",
+      "target": "foundations_calculator",
+      "options": {
+        "key": "machine/hand_cranked_generator"
+      }
+    },
+    {
+      "type": "recipe",
+      "text": "Crafting / obtaining this machine",
+      "target": "item:foundations_calculator:hand_cranked_generator",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "link",
+      "text": "General operating checklist",
+      "target": "foundations_calculator:troubleshooting/no_progress"
+    }
+  ]
+}

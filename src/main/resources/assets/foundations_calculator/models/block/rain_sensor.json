@@ -1,0 +1,8 @@
+{
+  "parent": "foundations_calculator:legacy_calculator/block/machineslab",
+  "textures": {
+    "particle": "foundations_calculator:legacy_calculator/blocks/rain_sensor_top",
+    "top": "foundations_calculator:legacy_calculator/blocks/rain_sensor_top",
+    "side": "foundations_calculator:legacy_calculator/blocks/rain_sensor_bottom"
+  }
+}

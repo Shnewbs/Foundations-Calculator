@@ -1,0 +1,23 @@
+{
+  "type": "foundations_calculator:process",
+  "machine": "research",
+  "ingredients": [
+    {
+      "ingredient": [
+        {
+          "tag": "c:ores/iron"
+        },
+        {
+          "tag": "c:ingots/iron"
+        },
+        {
+          "tag": "c:storage_blocks/iron"
+        }
+      ]
+    }
+  ],
+  "results": [],
+  "energy": 1000,
+  "ticks": 100,
+  "research_group": "iron"
+}

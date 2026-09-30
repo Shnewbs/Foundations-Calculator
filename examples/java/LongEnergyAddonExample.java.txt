@@ -1,0 +1,22 @@
+// Documentation-only example: compile this in your addon against Calculator 0.0.2a.
+import com.foundations.calculator.api.FoundationsEnergy;
+import com.foundations.calculator.api.LongEnergyStorage;
+
+// Read a Calculator or addon-published canonical-FE long store.
+LongEnergyStorage power = FoundationsEnergy.longBlock(level, pos, face);
+if (power != null && power.canReceive()) {
+    long accepted = power.receive(5_000_000_000L, true); // simulation first
+}
+
+// Publish your own canonical-FE long item view. Return null for unsupported stacks.
+FoundationsEnergy.registerLongItem("my_addon", stack -> {
+    if (!supports(stack)) return null;
+    return new LongEnergyStorage() {
+        public long receive(long n, boolean simulate) { /* canonical FE */ return 0; }
+        public long extract(long n, boolean simulate) { return 0; }
+        public long stored() { return 0; }
+        public long capacity() { return 0; }
+        public boolean canReceive() { return true; }
+        public boolean canExtract() { return true; }
+    };
+});

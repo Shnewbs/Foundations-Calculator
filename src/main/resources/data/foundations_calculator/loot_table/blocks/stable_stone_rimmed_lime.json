@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "foundations_calculator:stable_stone_rimmed_lime"
+        }
+      ]
+    }
+  ]
+}

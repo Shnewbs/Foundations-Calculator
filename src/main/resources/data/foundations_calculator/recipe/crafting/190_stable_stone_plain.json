@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "SSS",
+    "SDS",
+    "SSS"
+  ],
+  "key": {
+    "D": {
+      "item": "minecraft:bone_meal"
+    },
+    "S": {
+      "item": "foundations_calculator:stable_stone_normal"
+    }
+  },
+  "result": {
+    "id": "foundations_calculator:stable_stone_plain",
+    "count": 8
+  }
+}

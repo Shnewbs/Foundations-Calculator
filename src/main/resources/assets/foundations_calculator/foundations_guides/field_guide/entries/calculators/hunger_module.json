@@ -1,0 +1,44 @@
+{
+  "id": "foundations_calculator:calculators/hunger_module",
+  "chapter": "foundations_calculator:calculators",
+  "title": "Hunger Module",
+  "order": 80,
+  "items": [
+    "foundations_calculator:hunger_module"
+  ],
+  "keywords": [
+    "module",
+    "hunger_module"
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "Purpose"
+    },
+    {
+      "type": "paragraph",
+      "text": "Stores hunger nutrient for restoration, rather than storing hunger as FE."
+    },
+    {
+      "type": "heading",
+      "text": "Use"
+    },
+    {
+      "type": "paragraph",
+      "text": "Fill it through matching mature leaves or a Hunger Processor. Use it to restore available hunger; check both player need and stored nutrient."
+    },
+    {
+      "type": "link",
+      "text": "Using modules inside a Flawless Calculator",
+      "target": "foundations_calculator:calculators/installing"
+    },
+    {
+      "type": "recipe",
+      "text": "Obtain this module",
+      "target": "item:foundations_calculator:hunger_module",
+      "options": {
+        "profile": ""
+      }
+    }
+  ]
+}

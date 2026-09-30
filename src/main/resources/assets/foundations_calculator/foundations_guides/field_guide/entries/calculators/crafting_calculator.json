@@ -1,0 +1,52 @@
+{
+  "id": "foundations_calculator:calculators/crafting_calculator",
+  "chapter": "foundations_calculator:calculators",
+  "title": "Crafting Calculator",
+  "order": 89,
+  "items": [
+    "foundations_calculator:crafting_calculator"
+  ],
+  "keywords": [
+    "module",
+    "crafting_calculator"
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "Purpose"
+    },
+    {
+      "type": "paragraph",
+      "text": "Opens a portable crafting grid using the configured FE activation cost."
+    },
+    {
+      "type": "heading",
+      "text": "Use"
+    },
+    {
+      "type": "paragraph",
+      "text": "Charge it, use it and craft with the current server’s crafting recipes. This is not a new process family and does not ignore ordinary crafting requirements."
+    },
+    {
+      "type": "link",
+      "text": "Using modules inside a Flawless Calculator",
+      "target": "foundations_calculator:calculators/installing"
+    },
+    {
+      "type": "live",
+      "text": "Actual server settings",
+      "target": "foundations_calculator",
+      "options": {
+        "key": "module/crafting_calculator"
+      }
+    },
+    {
+      "type": "recipe",
+      "text": "Obtain this module",
+      "target": "item:foundations_calculator:crafting_calculator",
+      "options": {
+        "profile": ""
+      }
+    }
+  ]
+}

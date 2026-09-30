@@ -1,0 +1,70 @@
+{
+  "id": "foundations_calculator:machines/weather_station",
+  "chapter": "foundations_calculator:machines",
+  "title": "Weather Station",
+  "order": 61,
+  "items": [
+    "foundations_calculator:weather_station"
+  ],
+  "keywords": [
+    "weather_station",
+    "Links to a nearby Conductor Mast and increases its generation behavior"
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "Purpose"
+    },
+    {
+      "type": "paragraph",
+      "text": "Links to a nearby Conductor Mast and increases its generation behavior."
+    },
+    {
+      "type": "heading",
+      "text": "Set up and operate"
+    },
+    {
+      "type": "steps",
+      "rows": [
+        [
+          "Place it on the same level as a mast within the configured search distance."
+        ],
+        [
+          "Right-click to inspect the linked mast."
+        ],
+        [
+          "Wait through the mast’s burst/strike schedule when testing."
+        ]
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "When it does not run"
+    },
+    {
+      "type": "paragraph",
+      "text": "A closer mast can become the chosen link; distance and level are part of discovery, not just visual proximity."
+    },
+    {
+      "type": "live",
+      "text": "Actual server settings",
+      "target": "foundations_calculator",
+      "options": {
+        "key": "machine/weather_station"
+      }
+    },
+    {
+      "type": "recipe",
+      "text": "Crafting / obtaining this machine",
+      "target": "item:foundations_calculator:weather_station",
+      "options": {
+        "profile": ""
+      }
+    },
+    {
+      "type": "link",
+      "text": "General operating checklist",
+      "target": "foundations_calculator:troubleshooting/no_progress"
+    }
+  ]
+}

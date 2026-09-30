@@ -1,0 +1,30 @@
+{
+  "name": "Materials and equipment \u00b7 1",
+  "category": "foundations_calculator:pack_authors",
+  "icon": "foundations_calculator:soil",
+  "sortnum": 93,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "This reference groups related inventory entries. Each recipe section reads the current world. An item may have no crafting result when it comes from harvesting, world generation, a program action or creative tools.$pItem: foundations_calculator:soil$pObtaining Soil: live recipe details are available in the native or master Foundations reader.$pItem: foundations_calculator:small_stone$pObtaining Small Stone: live recipe details are available in the native or master Foundations reader.$pItem: foundations_calculator:atomic_binder$pObtaining Atomic Binder: live recipe details are available in the native or master Foundations reader.$pItem: foundations_calculator:reinforced_sword$pObtaining Reinforced Sword: live recipe details are available in the native or master Foundations reader.$pItem: foundations_calculator:enriched_gold_sword$pObtaining Enriched Gold Sword: live recipe details are available in the native or master Foundations reader.$pItem: foundations_calculator:reinforced_iron_sword$pObtaining Reinforced Iron Sword: live recipe details are available in the native or master Foundations reader.$pItem: foundations_calculator:redstone_sword$pObtaining Redstone Sword: live recipe details are available in the native or master Foundations reader.$pItem: foundations_calculator:weakened_diamond_sword$pObtaining Weakened Diamond Sword: live recipe details are available in the native or master Foundations reader.$pItem: foundations_calculator:flawless_diamond_sword"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Obtaining Flawless Diamond Sword: live recipe details are available in the native or master Foundations reader.$pItem: foundations_calculator:fire_diamond_sword$pObtaining Fire Diamond Sword: live recipe details are available in the native or master Foundations reader.$pItem: foundations_calculator:electric_sword$pObtaining Electric Sword: live recipe details are available in the native or master Foundations reader.$pItem: foundations_calculator:end_forged_sword$pObtaining End Forged Sword: live recipe details are available in the native or master Foundations reader."
+    }
+  ],
+  "extra_recipe_mappings": {
+    "foundations_calculator:soil": 0,
+    "foundations_calculator:small_stone": 0,
+    "foundations_calculator:atomic_binder": 0,
+    "foundations_calculator:reinforced_sword": 0,
+    "foundations_calculator:enriched_gold_sword": 0,
+    "foundations_calculator:reinforced_iron_sword": 0,
+    "foundations_calculator:redstone_sword": 0,
+    "foundations_calculator:weakened_diamond_sword": 0,
+    "foundations_calculator:flawless_diamond_sword": 0,
+    "foundations_calculator:fire_diamond_sword": 0,
+    "foundations_calculator:electric_sword": 0,
+    "foundations_calculator:end_forged_sword": 0
+  }
+}

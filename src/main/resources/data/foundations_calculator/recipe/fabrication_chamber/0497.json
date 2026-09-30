@@ -1,0 +1,116 @@
+{
+  "type": "foundations_calculator:process",
+  "machine": "fabrication_chamber",
+  "ingredients": [
+    {
+      "ingredient": {
+        "item": "foundations_calculator:circuit_board_0"
+      },
+      "count": 4,
+      "circuit_state": 1
+    },
+    {
+      "ingredient": {
+        "item": "foundations_calculator:circuit_board_1"
+      },
+      "count": 4,
+      "circuit_state": 1
+    },
+    {
+      "ingredient": {
+        "item": "foundations_calculator:circuit_board_2"
+      },
+      "count": 4,
+      "circuit_state": 1
+    },
+    {
+      "ingredient": {
+        "item": "foundations_calculator:circuit_board_3"
+      },
+      "count": 4,
+      "circuit_state": 1
+    },
+    {
+      "ingredient": {
+        "item": "foundations_calculator:circuit_board_4"
+      },
+      "count": 4,
+      "circuit_state": 1
+    },
+    {
+      "ingredient": {
+        "item": "foundations_calculator:circuit_board_5"
+      },
+      "count": 4,
+      "circuit_state": 1
+    },
+    {
+      "ingredient": {
+        "item": "foundations_calculator:circuit_board_6"
+      },
+      "count": 4,
+      "circuit_state": 1
+    },
+    {
+      "ingredient": {
+        "item": "foundations_calculator:circuit_board_7"
+      },
+      "count": 4,
+      "circuit_state": 1
+    },
+    {
+      "ingredient": {
+        "item": "foundations_calculator:circuit_board_8"
+      },
+      "count": 4,
+      "circuit_state": 1
+    },
+    {
+      "ingredient": {
+        "item": "foundations_calculator:circuit_board_9"
+      },
+      "count": 4,
+      "circuit_state": 1
+    },
+    {
+      "ingredient": {
+        "item": "foundations_calculator:circuit_board_10"
+      },
+      "count": 4,
+      "circuit_state": 1
+    },
+    {
+      "ingredient": {
+        "item": "foundations_calculator:circuit_board_11"
+      },
+      "count": 4,
+      "circuit_state": 1
+    },
+    {
+      "ingredient": {
+        "item": "foundations_calculator:circuit_board_12"
+      },
+      "count": 4,
+      "circuit_state": 1
+    },
+    {
+      "ingredient": {
+        "item": "foundations_calculator:circuit_board_13"
+      },
+      "count": 4,
+      "circuit_state": 1
+    }
+  ],
+  "results": [
+    {
+      "stack": {
+        "id": "foundations_calculator:atomic_assembly",
+        "count": 1
+      }
+    }
+  ],
+  "energy": 1000,
+  "ticks": 200,
+  "value": 0,
+  "research": false
+}

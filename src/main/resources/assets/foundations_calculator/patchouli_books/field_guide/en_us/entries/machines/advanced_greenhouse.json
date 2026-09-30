@@ -1,0 +1,15 @@
+{
+  "name": "Advanced Greenhouse",
+  "category": "foundations_calculator:machines",
+  "icon": "foundations_calculator:advanced_greenhouse",
+  "sortnum": 55,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Purpose$()$pLarger automatically constructed greenhouse with 45 growing positions and four irrigation corners.$p$(l)Set up and operate$()$p1. Clear the full roof and foundation bounds.$p2. Supply the four construction materials in order and use Build.$p3. Plant compatible seeds, including Prunae, and manage CO\u2082 with a lantern.$p$(l)When it does not run$()$pFiddledew still needs Flawless tier. An enlarged greenhouse does not bypass protection or ordinary crop survival rules.$pRead the active server settings below before copying default costs from another installation. For special slot roles, use the machine screen labels. Settings reporting does not inspect or mutate a placed machine.$pActual server settings: live server values are available in the native or master Foundations reader.$pCrafting / obtaining this machine: live recipe details are available in the native or master Foundations reader.$p$(l:foundations_calculator:multiblocks/advanced_greenhouse)Construction plans and layers$()"
+    }
+  ],
+  "extra_recipe_mappings": {
+    "foundations_calculator:advanced_greenhouse": 0
+  }
+}

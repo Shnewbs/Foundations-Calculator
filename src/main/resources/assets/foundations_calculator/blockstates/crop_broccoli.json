@@ -1,0 +1,28 @@
+{
+  "variants": {
+    "age=0": {
+      "model": "foundations_calculator:block/crop_broccoli_0"
+    },
+    "age=1": {
+      "model": "foundations_calculator:block/crop_broccoli_1"
+    },
+    "age=2": {
+      "model": "foundations_calculator:block/crop_broccoli_2"
+    },
+    "age=3": {
+      "model": "foundations_calculator:block/crop_broccoli_3"
+    },
+    "age=4": {
+      "model": "foundations_calculator:block/crop_broccoli_4"
+    },
+    "age=5": {
+      "model": "foundations_calculator:block/crop_broccoli_5"
+    },
+    "age=6": {
+      "model": "foundations_calculator:block/crop_broccoli_6"
+    },
+    "age=7": {
+      "model": "foundations_calculator:block/crop_broccoli_7"
+    }
+  }
+}

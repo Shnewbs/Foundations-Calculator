@@ -1,0 +1,30 @@
+{
+  "name": "Decorative blocks \u00b7 4",
+  "category": "foundations_calculator:pack_authors",
+  "icon": "foundations_calculator:stable_stone_light_grey",
+  "sortnum": 105,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "This reference groups related inventory entries. Each recipe section reads the current world. An item may have no crafting result when it comes from harvesting, world generation, a program action or creative tools.$pItem: foundations_calculator:stable_stone_light_grey$pObtaining Stable Stone Light Grey: live recipe details are available in the native or master Foundations reader.$pItem: foundations_calculator:stable_stone_lime$pObtaining Stable Stone Lime: live recipe details are available in the native or master Foundations reader.$pItem: foundations_calculator:stable_stone_magenta$pObtaining Stable Stone Magenta: live recipe details are available in the native or master Foundations reader.$pItem: foundations_calculator:stable_stone_orange$pObtaining Stable Stone Orange: live recipe details are available in the native or master Foundations reader.$pItem: foundations_calculator:stable_stone_pink$pObtaining Stable Stone Pink: live recipe details are available in the native or master Foundations reader.$pItem: foundations_calculator:stable_stone_plain$pObtaining Stable Stone Plain: live recipe details are available in the native or master Foundations reader.$pItem: foundations_calculator:stable_stone_purple$pObtaining Stable Stone Purple: live recipe details are available in the native or master Foundations reader.$pItem: foundations_calculator:stable_stone_red$pObtaining Stable Stone Red: live recipe details are available in the native or master Foundations reader."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Item: foundations_calculator:stable_stone_yellow$pObtaining Stable Stone Yellow: live recipe details are available in the native or master Foundations reader.$pItem: foundations_calculator:stable_stone_rimmed_normal$pObtaining Stable Stone Rimmed Normal: live recipe details are available in the native or master Foundations reader.$pItem: foundations_calculator:stable_stone_rimmed_black$pObtaining Stable Stone Rimmed Black: live recipe details are available in the native or master Foundations reader.$pItem: foundations_calculator:stable_stone_rimmed_blue$pObtaining Stable Stone Rimmed Blue: live recipe details are available in the native or master Foundations reader."
+    }
+  ],
+  "extra_recipe_mappings": {
+    "foundations_calculator:stable_stone_light_grey": 0,
+    "foundations_calculator:stable_stone_lime": 0,
+    "foundations_calculator:stable_stone_magenta": 0,
+    "foundations_calculator:stable_stone_orange": 0,
+    "foundations_calculator:stable_stone_pink": 0,
+    "foundations_calculator:stable_stone_plain": 0,
+    "foundations_calculator:stable_stone_purple": 0,
+    "foundations_calculator:stable_stone_red": 0,
+    "foundations_calculator:stable_stone_yellow": 0,
+    "foundations_calculator:stable_stone_rimmed_normal": 0,
+    "foundations_calculator:stable_stone_rimmed_black": 0,
+    "foundations_calculator:stable_stone_rimmed_blue": 0
+  }
+}

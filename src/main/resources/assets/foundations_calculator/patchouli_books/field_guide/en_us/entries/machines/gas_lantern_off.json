@@ -1,0 +1,15 @@
+{
+  "name": "Gas Lantern Off",
+  "category": "foundations_calculator:machines",
+  "icon": "foundations_calculator:gas_lantern_off",
+  "sortnum": 73,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Purpose$()$pFuel-burning light source that contributes carbon to Basic/Advanced Greenhouses.$p$(l)Set up and operate$()$p1. Put ordinary furnace fuel in the lantern.$p2. Place it within the greenhouse\u2019s eligible space.$p3. Keep it burning and observe greenhouse carbon over time.$p$(l)When it does not run$()$pThe item\u2019s registry ID says off because active state controls its lighting. A spent lantern cannot provide ongoing carbon.$pRead the active server settings below before copying default costs from another installation. For special slot roles, use the machine screen labels. Settings reporting does not inspect or mutate a placed machine.$pActual server settings: live server values are available in the native or master Foundations reader.$pCrafting / obtaining this machine: live recipe details are available in the native or master Foundations reader.$p$(l:foundations_calculator:troubleshooting/no_progress)General operating checklist$()"
+    }
+  ],
+  "extra_recipe_mappings": {
+    "foundations_calculator:gas_lantern_off": 0
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "particle": "foundations_calculator:legacy_sonarcore/blocks/connected/stablestone_glass",
+    "north": "foundations_calculator:legacy_sonarcore/blocks/connected/stablestone_glass",
+    "east": "foundations_calculator:legacy_sonarcore/blocks/connected/stablestone_glass_4",
+    "south": "foundations_calculator:legacy_sonarcore/blocks/connected/stablestone_glass_2",
+    "west": "foundations_calculator:legacy_sonarcore/blocks/connected/stablestone_glass_5",
+    "up": "foundations_calculator:legacy_sonarcore/blocks/connected/stablestone_glass",
+    "down": "foundations_calculator:legacy_sonarcore/blocks/connected/stablestone_glass_1"
+  },
+  "render_type": "minecraft:translucent"
+}

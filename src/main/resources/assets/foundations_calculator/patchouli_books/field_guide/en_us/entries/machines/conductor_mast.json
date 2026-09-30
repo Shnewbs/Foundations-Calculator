@@ -1,0 +1,15 @@
+{
+  "name": "Conductor Mast",
+  "category": "foundations_calculator:machines",
+  "icon": "foundations_calculator:conductor_mast",
+  "sortnum": 60,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Purpose$()$pTall generator with burst-based lightning output and linked Weather Stations/Transmitters.$p$(l)Set up and operate$()$p1. Leave the reserved vertical height clear.$p2. Place stations at the same height within their configured range.$p3. Provide buffer space and a permitted output route.$p$(l)When it does not run$()$pOutput is burst-based. A full buffer or slow connection can make the mast appear idle between strikes.$pRead the active server settings below before copying default costs from another installation. For special slot roles, use the machine screen labels. Settings reporting does not inspect or mutate a placed machine.$pActual server settings: live server values are available in the native or master Foundations reader.$pProcessing / value recipes: live recipe details are available in the native or master Foundations reader.$pCrafting / obtaining this machine: live recipe details are available in the native or master Foundations reader.$p$(l:foundations_calculator:multiblocks/mast)Mast and station placement$()"
+    }
+  ],
+  "extra_recipe_mappings": {
+    "foundations_calculator:conductor_mast": 0
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "replace": false,
+  "values": [
+    "foundations_calculator:amethyst_log",
+    "foundations_calculator:amethyst_planks",
+    "foundations_calculator:amethyst_stairs",
+    "foundations_calculator:amethyst_fence",
+    "foundations_calculator:tanzanite_log",
+    "foundations_calculator:tanzanite_planks",
+    "foundations_calculator:tanzanite_stairs",
+    "foundations_calculator:tanzanite_fence",
+    "foundations_calculator:pear_log",
+    "foundations_calculator:pear_planks",
+    "foundations_calculator:pear_stairs",
+    "foundations_calculator:pear_fence",
+    "foundations_calculator:diamond_log",
+    "foundations_calculator:diamond_planks",
+    "foundations_calculator:diamond_stairs",
+    "foundations_calculator:diamond_fence",
+    "foundations_calculator:reinforced_stone_stairs",
+    "foundations_calculator:reinforced_stone_fence",
+    "foundations_calculator:reinforced_stone_gate",
+    "foundations_calculator:reinforced_stone_brick_stairs",
+    "foundations_calculator:reinforced_stone_brick_fence",
+    "foundations_calculator:reinforced_stone_brick_gate",
+    "foundations_calculator:reinforced_dirt_stairs",
+    "foundations_calculator:reinforced_dirt_fence",
+    "foundations_calculator:reinforced_dirt_gate",
+    "foundations_calculator:reinforced_dirt_brick_stairs",
+    "foundations_calculator:reinforced_dirt_brick_fence",
+    "foundations_calculator:reinforced_dirt_brick_gate"
+  ]
+}

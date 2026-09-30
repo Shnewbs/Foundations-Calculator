@@ -1,0 +1,15 @@
+{
+  "name": "Warp Module",
+  "category": "foundations_calculator:calculators",
+  "icon": "foundations_calculator:warp_module",
+  "sortnum": 78,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Purpose$()$pBinds a destination and teleports you there subject to energy, clearance, dimension and loading restrictions.$p$(l)Use$()$pSneak-use a permitted stable block to bind. Use the module normally to warp. By default the destination must be loaded and in the same dimension; two empty blocks above the bound position are required.$p$(l:foundations_calculator:calculators/installing)Using modules inside a Flawless Calculator$()$pActual server settings: live server values are available in the native or master Foundations reader.$pObtain this module: live recipe details are available in the native or master Foundations reader."
+    }
+  ],
+  "extra_recipe_mappings": {
+    "foundations_calculator:warp_module": 0
+  }
+}

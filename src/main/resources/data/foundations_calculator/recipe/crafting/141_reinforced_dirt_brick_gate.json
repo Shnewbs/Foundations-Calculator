@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "SAS",
+    "SAS"
+  ],
+  "key": {
+    "A": {
+      "item": "foundations_calculator:reinforced_dirt_brick"
+    },
+    "S": {
+      "tag": "c:rods/wooden"
+    }
+  },
+  "result": {
+    "id": "foundations_calculator:reinforced_dirt_brick_gate",
+    "count": 1
+  }
+}

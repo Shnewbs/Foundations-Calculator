@@ -1,0 +1,22 @@
+{
+  "type": "foundations_calculator:process",
+  "machine": "analysis_2",
+  "ingredients": [
+    {
+      "ingredient": {
+        "tag": "foundations_calculator:circuit_boards"
+      }
+    }
+  ],
+  "results": [
+    {
+      "stack": {
+        "id": "foundations_calculator:large_amethyst",
+        "count": 1
+      }
+    }
+  ],
+  "value": 9,
+  "energy": 0,
+  "ticks": 1
+}

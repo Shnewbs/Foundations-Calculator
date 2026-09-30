@@ -1,0 +1,87 @@
+{
+  "id": "foundations_calculator:calculators/families",
+  "chapter": "foundations_calculator:calculators",
+  "title": "Which calculator should I use?",
+  "order": 4,
+  "items": [
+    "foundations_calculator:scientific_calculator",
+    "foundations_calculator:flawless_calculator"
+  ],
+  "keywords": [
+    "two inputs",
+    "three inputs",
+    "four inputs",
+    "tiers"
+  ],
+  "blocks": [
+    {
+      "type": "table",
+      "text": "Calculation families",
+      "rows": [
+        [
+          "Basic Calculator",
+          "Two inputs; basic combinations and many research-gated conversions."
+        ],
+        [
+          "Scientific Calculator",
+          "Two inputs; a different recipe family, not an extra input slot."
+        ],
+        [
+          "Atomic Calculator",
+          "Placed three-input atomic recipes."
+        ],
+        [
+          "Flawless Calculator",
+          "Four-input flawless recipes plus installed modules."
+        ],
+        [
+          "Docking Station",
+          "Uses the family of the calculator placed in its special slot."
+        ],
+        [
+          "Dynamic Calculator",
+          "Three lanes: basic inputs 1–2, scientific 3–4, atomic 5–7."
+        ]
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "A recipe is selected from the family supported by the current device. A Scientific recipe does not become a Basic recipe because both devices have two slots. Item components, required counts and research can also distinguish apparently similar ingredients."
+    },
+    {
+      "type": "paragraph",
+      "text": "Portable operations are immediate and return their container contents safely when closed. A time field in their recipe data does not create a hidden processing timer. Placed processors use their program time and server overrides."
+    },
+    {
+      "type": "recipe",
+      "text": "Scientific examples",
+      "target": "machine:scientific",
+      "options": {
+        "profile": "scientific_calculator"
+      }
+    },
+    {
+      "type": "recipe",
+      "text": "Flawless examples",
+      "target": "machine:flawless",
+      "options": {
+        "profile": "flawless_calculator"
+      }
+    },
+    {
+      "type": "link",
+      "text": "Docking Station",
+      "target": "foundations_calculator:machines/docking_station"
+    },
+    {
+      "type": "link",
+      "text": "Dynamic Calculator",
+      "target": "foundations_calculator:machines/dynamic_calculator"
+    },
+    {
+      "type": "link",
+      "text": "Install and choose modules",
+      "target": "foundations_calculator:calculators/installing"
+    }
+  ]
+}

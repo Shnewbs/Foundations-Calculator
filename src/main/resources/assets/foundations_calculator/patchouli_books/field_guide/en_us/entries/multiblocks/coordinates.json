@@ -1,0 +1,16 @@
+{
+  "name": "Reading controller-relative construction plans",
+  "category": "foundations_calculator:multiblocks",
+  "icon": "foundations_calculator:info_calculator",
+  "sortnum": 13,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Every plan is relative to the controller, not fixed world north. Place it facing you. Inside is the opposite of that visible front. Side is clockwise from the inside direction. Height zero is the controller\u2019s block level.$p$(l)Diagram symbols$()$pC \u2014 Controller.$pS \u2014 Stable Stone / supported stable-stone variant.$pG \u2014 Glass; check the entry for ordinary or Flawless Glass.$pL \u2014 Logs.$pP \u2014 Planks.$pT \u2014 Wooden stair in automatic greenhouse plans.$pW \u2014 Water or irrigation cell.$pQ \u2014 Bottom Quartz Slab in a flawless roof.$p. \u2014 Air / clear space, unless the layer explicitly says otherwise.$pThe rows of the default diagrams run from the near/outside end toward the inside end. Columns run from negative side to positive side. A roof overhang is part of the construction bounds even when it is outside the crop footprint.$pBasic and Advanced Greenhouses build from controller inputs. Flawless Greenhouses, the Dynamic Calculator and Locator structure are manual layouts. Do not press Build expecting a manually assembled structure to appear.$p$(o)Diagrams show shipped geometry, not a live ghost overlay. Server configuration can change supported Dynamic radius or Flawless length. Check the relevant server-values block before preparing materials.$()$p$(l:foundations_calculator:multiblocks/basic_greenhouse)Basic Greenhouse layers$()$p$(l:foundations_calculator:multiblocks/advanced_greenhouse)Advanced Greenhouse layers$()"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(l:foundations_calculator:multiblocks/flawless_greenhouse)Flawless manual layers$()$p$(l:foundations_calculator:multiblocks/dynamic)Dynamic Calculator layers$()$p$(l:foundations_calculator:multiblocks/locator)Locator platform$()"
+    }
+  ]
+}

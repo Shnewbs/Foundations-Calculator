@@ -1,0 +1,22 @@
+{
+  "type": "foundations_calculator:process",
+  "machine": "analysis_5",
+  "ingredients": [
+    {
+      "ingredient": {
+        "tag": "foundations_calculator:circuit_boards"
+      }
+    }
+  ],
+  "results": [
+    {
+      "stack": {
+        "id": "minecraft:ender_eye",
+        "count": 1
+      }
+    }
+  ],
+  "value": 6,
+  "energy": 0,
+  "ticks": 1
+}

@@ -1,0 +1,15 @@
+{
+  "name": "Reinforced Chest",
+  "category": "foundations_calculator:machines",
+  "icon": "foundations_calculator:reinforced_chest",
+  "sortnum": 39,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Purpose$()$pGeneral storage with an animated lid and viewer tracking. It does not need power to store items.$p$(l)Set up and operate$()$p1. Open it and insert items.$p2. Connect permitted item automation as needed.$p3. Close the menu before testing dismantling or viewer animation.$p$(l)When it does not run$()$pThis is not the bulk-bin Storage Chamber. Lid appearance is a client setting and does not change item ownership.$pActual server settings: live server values are available in the native or master Foundations reader.$pCrafting / obtaining this machine: live recipe details are available in the native or master Foundations reader.$p$(l:foundations_calculator:troubleshooting/no_progress)General operating checklist$()"
+    }
+  ],
+  "extra_recipe_mappings": {
+    "foundations_calculator:reinforced_chest": 0
+  }
+}

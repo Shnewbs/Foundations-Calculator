@@ -1,0 +1,36 @@
+{
+  "type": "foundations_calculator:process",
+  "machine": "atomic",
+  "ingredients": [
+    {
+      "ingredient": {
+        "item": "foundations_calculator:reinforced_iron_block"
+      },
+      "count": 1
+    },
+    {
+      "ingredient": {
+        "item": "foundations_calculator:reinforced_chest"
+      },
+      "count": 1
+    },
+    {
+      "ingredient": {
+        "item": "foundations_calculator:reinforced_iron_block"
+      },
+      "count": 1
+    }
+  ],
+  "results": [
+    {
+      "stack": {
+        "id": "foundations_calculator:storage_chamber",
+        "count": 1
+      }
+    }
+  ],
+  "energy": 0,
+  "ticks": 1,
+  "value": 0,
+  "research": false
+}

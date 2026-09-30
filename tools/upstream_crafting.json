@@ -1,0 +1,4273 @@
+[
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.reinforced_axe",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      "RR ",
+      "RS ",
+      " S ",
+      "R",
+      "calculatorReinforcedStone",
+      "S",
+      "stickWood"
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.reinforced_pickaxe",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      "RRR",
+      " S ",
+      " S ",
+      "R",
+      "calculatorReinforcedStone",
+      "S",
+      "stickWood"
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.reinforced_shovel",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      " R ",
+      " S ",
+      " S ",
+      "R",
+      "calculatorReinforcedStone",
+      "S",
+      "stickWood"
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.reinforced_hoe",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      "RR ",
+      " S ",
+      " S ",
+      "R",
+      "calculatorReinforcedStone",
+      "S",
+      "stickWood"
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.reinforced_sword",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      " R ",
+      " R ",
+      " S ",
+      "R",
+      "calculatorReinforcedStone",
+      "S",
+      "stickWood"
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.reinforcediron_axe",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      "RR ",
+      "RS ",
+      " S ",
+      "R",
+      {
+        "item": "Calculator.reinforcediron_ingot",
+        "count": 1,
+        "meta": 0
+      },
+      "S",
+      "stickWood"
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.reinforcediron_pickaxe",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      "RRR",
+      " S ",
+      " S ",
+      "R",
+      {
+        "item": "Calculator.reinforcediron_ingot",
+        "count": 1,
+        "meta": 0
+      },
+      "S",
+      "stickWood"
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.reinforcediron_shovel",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      " R ",
+      " S ",
+      " S ",
+      "R",
+      {
+        "item": "Calculator.reinforcediron_ingot",
+        "count": 1,
+        "meta": 0
+      },
+      "S",
+      "stickWood"
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.reinforcediron_hoe",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      "RR ",
+      " S ",
+      " S ",
+      "R",
+      {
+        "item": "Calculator.reinforcediron_ingot",
+        "count": 1,
+        "meta": 0
+      },
+      "S",
+      "stickWood"
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.reinforcediron_sword",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      " R ",
+      " R ",
+      " S ",
+      "R",
+      {
+        "item": "Calculator.reinforcediron_ingot",
+        "count": 1,
+        "meta": 0
+      },
+      "S",
+      "stickWood"
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.redstone_axe",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      "RR ",
+      "RS ",
+      " S ",
+      "R",
+      {
+        "item": "Calculator.redstone_ingot",
+        "count": 1,
+        "meta": 0
+      },
+      "S",
+      "stickWood"
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.redstone_pickaxe",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      "RRR",
+      " S ",
+      " S ",
+      "R",
+      {
+        "item": "Calculator.redstone_ingot",
+        "count": 1,
+        "meta": 0
+      },
+      "S",
+      "stickWood"
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.redstone_shovel",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      " R ",
+      " S ",
+      " S ",
+      "R",
+      {
+        "item": "Calculator.redstone_ingot",
+        "count": 1,
+        "meta": 0
+      },
+      "S",
+      "stickWood"
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.redstone_hoe",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      "RR ",
+      " S ",
+      " S ",
+      "R",
+      {
+        "item": "Calculator.redstone_ingot",
+        "count": 1,
+        "meta": 0
+      },
+      "S",
+      "stickWood"
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.redstone_sword",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      " R ",
+      " R ",
+      " S ",
+      "R",
+      {
+        "item": "Calculator.redstone_ingot",
+        "count": 1,
+        "meta": 0
+      },
+      "S",
+      "stickWood"
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.enrichedgold_axe",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      "RR ",
+      "RS ",
+      " S ",
+      "R",
+      {
+        "item": "Calculator.enrichedgold_ingot",
+        "count": 1,
+        "meta": 0
+      },
+      "S",
+      "stickWood"
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.enrichedgold_pickaxe",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      "RRR",
+      " S ",
+      " S ",
+      "R",
+      {
+        "item": "Calculator.enrichedgold_ingot",
+        "count": 1,
+        "meta": 0
+      },
+      "S",
+      "stickWood"
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.enrichedgold_shovel",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      " R ",
+      " S ",
+      " S ",
+      "R",
+      {
+        "item": "Calculator.enrichedgold_ingot",
+        "count": 1,
+        "meta": 0
+      },
+      "S",
+      "stickWood"
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.enrichedgold_hoe",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      "RR ",
+      " S ",
+      " S ",
+      "R",
+      {
+        "item": "Calculator.enrichedgold_ingot",
+        "count": 1,
+        "meta": 0
+      },
+      "S",
+      "stickWood"
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.enrichedgold_sword",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      " R ",
+      " R ",
+      " S ",
+      "R",
+      {
+        "item": "Calculator.enrichedgold_ingot",
+        "count": 1,
+        "meta": 0
+      },
+      "S",
+      "stickWood"
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.weakeneddiamond_axe",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      "RR ",
+      "RS ",
+      " S ",
+      "R",
+      {
+        "item": "Calculator.weakeneddiamond",
+        "count": 1,
+        "meta": 0
+      },
+      "S",
+      "stickWood"
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.weakeneddiamond_pickaxe",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      "RRR",
+      " S ",
+      " S ",
+      "R",
+      {
+        "item": "Calculator.weakeneddiamond",
+        "count": 1,
+        "meta": 0
+      },
+      "S",
+      "stickWood"
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.weakeneddiamond_shovel",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      " R ",
+      " S ",
+      " S ",
+      "R",
+      {
+        "item": "Calculator.weakeneddiamond",
+        "count": 1,
+        "meta": 0
+      },
+      "S",
+      "stickWood"
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.weakeneddiamond_hoe",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      "RR ",
+      " S ",
+      " S ",
+      "R",
+      {
+        "item": "Calculator.weakeneddiamond",
+        "count": 1,
+        "meta": 0
+      },
+      "S",
+      "stickWood"
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.weakeneddiamond_sword",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      " R ",
+      " R ",
+      " S ",
+      "R",
+      {
+        "item": "Calculator.weakeneddiamond",
+        "count": 1,
+        "meta": 0
+      },
+      "S",
+      "stickWood"
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.flawlessdiamond_axe",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      "RR ",
+      "RS ",
+      " S ",
+      "R",
+      {
+        "item": "Calculator.flawlessdiamond",
+        "count": 1,
+        "meta": 0
+      },
+      "S",
+      "stickWood"
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.flawlessdiamond_pickaxe",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      "RRR",
+      " S ",
+      " S ",
+      "R",
+      {
+        "item": "Calculator.flawlessdiamond",
+        "count": 1,
+        "meta": 0
+      },
+      "S",
+      "stickWood"
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.flawlessdiamond_shovel",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      " R ",
+      " S ",
+      " S ",
+      "R",
+      {
+        "item": "Calculator.flawlessdiamond",
+        "count": 1,
+        "meta": 0
+      },
+      "S",
+      "stickWood"
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.flawlessdiamond_hoe",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      "RR ",
+      " S ",
+      " S ",
+      "R",
+      {
+        "item": "Calculator.flawlessdiamond",
+        "count": 1,
+        "meta": 0
+      },
+      "S",
+      "stickWood"
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.flawlessdiamond_sword",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      " R ",
+      " R ",
+      " S ",
+      "R",
+      {
+        "item": "Calculator.flawlessdiamond",
+        "count": 1,
+        "meta": 0
+      },
+      "S",
+      "stickWood"
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.firediamond_axe",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      "RR ",
+      "RS ",
+      " S ",
+      "R",
+      {
+        "item": "Calculator.firediamond",
+        "count": 1,
+        "meta": 0
+      },
+      "S",
+      "stickWood"
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.firediamond_pickaxe",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      "RRR",
+      " S ",
+      " S ",
+      "R",
+      {
+        "item": "Calculator.firediamond",
+        "count": 1,
+        "meta": 0
+      },
+      "S",
+      "stickWood"
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.firediamond_shovel",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      " R ",
+      " S ",
+      " S ",
+      "R",
+      {
+        "item": "Calculator.firediamond",
+        "count": 1,
+        "meta": 0
+      },
+      "S",
+      "stickWood"
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.firediamond_hoe",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      "RR ",
+      " S ",
+      " S ",
+      "R",
+      {
+        "item": "Calculator.firediamond",
+        "count": 1,
+        "meta": 0
+      },
+      "S",
+      "stickWood"
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.firediamond_sword",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      " R ",
+      " R ",
+      " S ",
+      "R",
+      {
+        "item": "Calculator.firediamond",
+        "count": 1,
+        "meta": 0
+      },
+      "S",
+      "stickWood"
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.electric_axe",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      "RR ",
+      "RS ",
+      " S ",
+      "R",
+      {
+        "item": "Calculator.electricDiamond",
+        "count": 1,
+        "meta": 0
+      },
+      "S",
+      "stickWood"
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.electric_pickaxe",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      "RRR",
+      " S ",
+      " S ",
+      "R",
+      {
+        "item": "Calculator.electricDiamond",
+        "count": 1,
+        "meta": 0
+      },
+      "S",
+      "stickWood"
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.electric_shovel",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      " R ",
+      " S ",
+      " S ",
+      "R",
+      {
+        "item": "Calculator.electricDiamond",
+        "count": 1,
+        "meta": 0
+      },
+      "S",
+      "stickWood"
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.electric_hoe",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      "RR ",
+      " S ",
+      " S ",
+      "R",
+      {
+        "item": "Calculator.electricDiamond",
+        "count": 1,
+        "meta": 0
+      },
+      "S",
+      "stickWood"
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.electric_sword",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      " R ",
+      " R ",
+      " S ",
+      "R",
+      {
+        "item": "Calculator.electricDiamond",
+        "count": 1,
+        "meta": 0
+      },
+      "S",
+      "stickWood"
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.endforged_axe",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      "RR ",
+      "RS ",
+      " S ",
+      "R",
+      {
+        "item": "Calculator.endDiamond",
+        "count": 1,
+        "meta": 0
+      },
+      "S",
+      "stickWood"
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.endforged_pickaxe",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      "RRR",
+      " S ",
+      " S ",
+      "R",
+      {
+        "item": "Calculator.endDiamond",
+        "count": 1,
+        "meta": 0
+      },
+      "S",
+      "stickWood"
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.endforged_shovel",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      " R ",
+      " S ",
+      " S ",
+      "R",
+      {
+        "item": "Calculator.endDiamond",
+        "count": 1,
+        "meta": 0
+      },
+      "S",
+      "stickWood"
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.endforged_hoe",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      "RR ",
+      " S ",
+      " S ",
+      "R",
+      {
+        "item": "Calculator.endDiamond",
+        "count": 1,
+        "meta": 0
+      },
+      "S",
+      "stickWood"
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.endforged_sword",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      " R ",
+      " R ",
+      " S ",
+      "R",
+      {
+        "item": "Calculator.endDiamond",
+        "count": 1,
+        "meta": 0
+      },
+      "S",
+      "stickWood"
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.calculator_screen",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      "CCC",
+      "CRC",
+      "CCC",
+      "C",
+      "cobblestone",
+      "R",
+      "dustRedstone"
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.atomic_assembly",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      "BAB",
+      "AEA",
+      "BAB",
+      "E",
+      "gemEmerald",
+      "A",
+      {
+        "item": "Calculator.atomic_module",
+        "count": 1,
+        "meta": 0
+      },
+      "B",
+      {
+        "item": "Calculator.advanced_assembly",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.atomic_binder",
+      "count": 8,
+      "meta": 0
+    },
+    "args": [
+      " A ",
+      "ADA",
+      " A ",
+      "A",
+      "calculatorReinforcedStone",
+      "D",
+      {
+        "item": "Calculator.enrichedGold",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.itemInfoCalculator",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      "CSC",
+      "BAB",
+      "CCC",
+      "B",
+      {
+        "item": "Blocks.STONE_BUTTON",
+        "count": 1,
+        "meta": 0
+      },
+      "A",
+      "dustRedstone",
+      "S",
+      {
+        "item": "Calculator.calculator_screen",
+        "count": 1,
+        "meta": 0
+      },
+      "C",
+      "cobblestone"
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.itemCalculator",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      "CSC",
+      "BAB",
+      "CCC",
+      "B",
+      {
+        "item": "Blocks.STONE_BUTTON",
+        "count": 1,
+        "meta": 0
+      },
+      "A",
+      {
+        "item": "Calculator.calculator_assembly",
+        "count": 1,
+        "meta": 0
+      },
+      "S",
+      {
+        "item": "Calculator.calculator_screen",
+        "count": 1,
+        "meta": 0
+      },
+      "C",
+      "cobblestone"
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.itemCraftingCalculator",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      "CSC",
+      "BAB",
+      "CCC",
+      "B",
+      {
+        "item": "Blocks.STONE_BUTTON",
+        "count": 1,
+        "meta": 0
+      },
+      "A",
+      {
+        "item": "Blocks.CRAFTING_TABLE",
+        "count": 1,
+        "meta": 0
+      },
+      "S",
+      {
+        "item": "Calculator.calculator_screen",
+        "count": 1,
+        "meta": 0
+      },
+      "C",
+      "cobblestone"
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.itemScientificCalculator",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      "CSC",
+      "BAB",
+      "CAC",
+      "B",
+      "calculatorReinforcedStone",
+      "A",
+      {
+        "item": "Calculator.calculator_assembly",
+        "count": 1,
+        "meta": 0
+      },
+      "S",
+      {
+        "item": "Calculator.calculator_screen",
+        "count": 1,
+        "meta": 0
+      },
+      "C",
+      {
+        "item": "Calculator.enrichedgold_ingot",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.atomicCalculator",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      "DCD",
+      "WAW",
+      "DWD",
+      "D",
+      "calculatorReinforcedStone",
+      "A",
+      {
+        "item": "Calculator.atomic_assembly",
+        "count": 1,
+        "meta": 0
+      },
+      "C",
+      {
+        "item": "Calculator.calculator_screen",
+        "count": 1,
+        "meta": 0
+      },
+      "W",
+      "gemDiamond"
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.dynamicCalculator",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      "RSR",
+      "MAM",
+      "RDR",
+      "D",
+      "gemDiamond",
+      "S",
+      {
+        "item": "Calculator.advanced_assembly",
+        "count": 1,
+        "meta": 0
+      },
+      "A",
+      {
+        "item": "Calculator.atomicCalculator",
+        "count": 1,
+        "meta": 0
+      },
+      "M",
+      {
+        "item": "Calculator.atomic_module",
+        "count": 1,
+        "meta": 0
+      },
+      "R",
+      "calculatorReinforcedStone"
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.itemFlawlessCalculator",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      "FSF",
+      "DAD",
+      "FEF",
+      "F",
+      {
+        "item": "Calculator.flawlessdiamond",
+        "count": 1,
+        "meta": 0
+      },
+      "D",
+      "gemDiamond",
+      "E",
+      {
+        "item": "Calculator.endDiamond",
+        "count": 1,
+        "meta": 0
+      },
+      "A",
+      {
+        "item": "Calculator.flawless_assembly",
+        "count": 1,
+        "meta": 0
+      },
+      "S",
+      {
+        "item": "Calculator.calculator_screen",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.itemHungerModule",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      "ADA",
+      "BCB",
+      "AEA",
+      "B",
+      "gemAmethyst",
+      "A",
+      {
+        "item": "Calculator.shard_amethyst",
+        "count": 1,
+        "meta": 0
+      },
+      "C",
+      {
+        "item": "Items.GOLDEN_APPLE",
+        "count": 1,
+        "meta": 0
+      },
+      "D",
+      {
+        "item": "Calculator.calculator_screen",
+        "count": 1,
+        "meta": 0
+      },
+      "E",
+      {
+        "item": "Calculator.redstone_ingot",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.itemHealthModule",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      "ADA",
+      "BCB",
+      "AEA",
+      "B",
+      "gemTanzanite",
+      "A",
+      {
+        "item": "Calculator.shard_tanzanite",
+        "count": 1,
+        "meta": 0
+      },
+      "C",
+      {
+        "item": "Calculator.atomic_binder",
+        "count": 1,
+        "meta": 0
+      },
+      "D",
+      {
+        "item": "Calculator.calculator_screen",
+        "count": 1,
+        "meta": 0
+      },
+      "E",
+      {
+        "item": "Calculator.flawlessdiamond",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.powerCube",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      "AAA",
+      "ADA",
+      "AAA",
+      "A",
+      "cobblestone",
+      "D",
+      {
+        "item": "Blocks.FURNACE",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.advancedPowerCube",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      "AAA",
+      "ADA",
+      "AAA",
+      "A",
+      {
+        "item": "Calculator.redstone_ingot",
+        "count": 1,
+        "meta": 0
+      },
+      "D",
+      {
+        "item": "Calculator.powerCube",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.basicGreenhouse",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      "BCB",
+      "CAC",
+      "BCB",
+      "A",
+      {
+        "item": "Calculator.material_block",
+        "count": 1,
+        "meta": 3
+      },
+      "B",
+      "calculatorReinforcedStone",
+      "C",
+      {
+        "item": "Calculator.enrichedgold_ingot",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.advancedGreenhouse",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      "BCB",
+      "CAC",
+      "BCB",
+      "A",
+      {
+        "item": "Calculator.basicGreenhouse",
+        "count": 1,
+        "meta": 0
+      },
+      "B",
+      {
+        "item": "Calculator.weakeneddiamond",
+        "count": 1,
+        "meta": 0
+      },
+      "C",
+      {
+        "item": "Calculator.large_tanzanite",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.flawlessGreenhouse",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      "BBB",
+      "CAC",
+      "BBB",
+      "A",
+      {
+        "item": "Calculator.atomic_assembly",
+        "count": 1,
+        "meta": 0
+      },
+      "B",
+      {
+        "item": "Calculator.flawlessGlass",
+        "count": 1,
+        "meta": 0
+      },
+      "C",
+      {
+        "item": "Calculator.advancedGreenhouse",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.hungerProcessor",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      "ABA",
+      "BCB",
+      "ABA",
+      "A",
+      {
+        "item": "Calculator.large_amethyst",
+        "count": 1,
+        "meta": 0
+      },
+      "B",
+      {
+        "item": "Calculator.redstone_ingot",
+        "count": 1,
+        "meta": 0
+      },
+      "C",
+      {
+        "item": "Calculator.advanced_assembly",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.healthProcessor",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      "ABA",
+      "BCB",
+      "ABA",
+      "A",
+      {
+        "item": "Calculator.large_tanzanite",
+        "count": 1,
+        "meta": 0
+      },
+      "B",
+      {
+        "item": "Calculator.flawlessdiamond",
+        "count": 1,
+        "meta": 0
+      },
+      "C",
+      {
+        "item": "Calculator.advanced_assembly",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.analysingChamber",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      "ABA",
+      "BCB",
+      "ABA",
+      "A",
+      {
+        "item": "Calculator.material_block",
+        "count": 1,
+        "meta": 3
+      },
+      "B",
+      {
+        "item": "Calculator.weakeneddiamond",
+        "count": 1,
+        "meta": 0
+      },
+      "C",
+      {
+        "item": "Calculator.advanced_assembly",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.fabricationChamber",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      "C C",
+      "ABA",
+      "A",
+      {
+        "item": "Calculator.material_block",
+        "count": 1,
+        "meta": 3
+      },
+      "B",
+      {
+        "item": "Calculator.storageChamber",
+        "count": 1,
+        "meta": 0
+      },
+      "C",
+      {
+        "item": "Calculator.reinforcediron_ingot",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.atomicMultiplier",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      "EAE",
+      "DBD",
+      "FCF",
+      "A",
+      {
+        "item": "Calculator.fabricationChamber",
+        "count": 1,
+        "meta": 0
+      },
+      "B",
+      {
+        "item": "Calculator.atomic_assembly",
+        "count": 1,
+        "meta": 0
+      },
+      "C",
+      {
+        "item": "Calculator.endDiamond",
+        "count": 1,
+        "meta": 0
+      },
+      "D",
+      {
+        "item": "Calculator.atomic_module",
+        "count": 1,
+        "meta": 0
+      },
+      "E",
+      {
+        "item": "Calculator.calculatorplug",
+        "count": 1,
+        "meta": 0
+      },
+      "F",
+      "sonarStableStone"
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.crankHandle",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      "  A",
+      "AAA",
+      "A  ",
+      "A",
+      "stickWood"
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.handcrankedGenerator",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      "AAA",
+      "CBC",
+      "AAA",
+      "A",
+      "stickWood",
+      "B",
+      {
+        "item": "Calculator.powerCube",
+        "count": 1,
+        "meta": 0
+      },
+      "C",
+      "plankWood"
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.calculatorlocator",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      " B ",
+      "CAC",
+      "DDD",
+      "A",
+      {
+        "item": "Calculator.calculatorplug",
+        "count": 1,
+        "meta": 0
+      },
+      "B",
+      {
+        "item": "Blocks.BEACON",
+        "count": 1,
+        "meta": 0
+      },
+      "C",
+      {
+        "item": "Calculator.atomic_assembly",
+        "count": 1,
+        "meta": 0
+      },
+      "D",
+      "sonarStableStone"
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.calculatorplug",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      " B ",
+      "CAC",
+      "DDD",
+      "A",
+      "sonarStableStone",
+      "B",
+      {
+        "item": "Calculator.itemEnergyModule",
+        "count": 1,
+        "meta": 0
+      },
+      "C",
+      {
+        "item": "Calculator.advanced_assembly",
+        "count": 1,
+        "meta": 0
+      },
+      "D",
+      {
+        "item": "Calculator.redstone_ingot",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.stoneSeparator",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      "AAA",
+      "BCB",
+      "AAA",
+      "B",
+      {
+        "item": "Calculator.powerCube",
+        "count": 1,
+        "meta": 0
+      },
+      "A",
+      "calculatorReinforcedStone",
+      "C",
+      {
+        "item": "Calculator.reinforcediron_ingot",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.extractionChamber",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      "ABA",
+      "BCB",
+      "ABA",
+      "A",
+      "calculatorReinforcedStone",
+      "B",
+      {
+        "item": "Calculator.weakeneddiamond",
+        "count": 1,
+        "meta": 0
+      },
+      "C",
+      {
+        "item": "Calculator.powerCube",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.restorationChamber",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      "ABA",
+      "BCB",
+      "ABA",
+      "A",
+      {
+        "item": "Calculator.redstone_ingot",
+        "count": 1,
+        "meta": 0
+      },
+      "B",
+      {
+        "item": "Calculator.weakeneddiamond",
+        "count": 1,
+        "meta": 0
+      },
+      "C",
+      {
+        "item": "Calculator.extractionChamber",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.reassemblyChamber",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      "ABA",
+      "BCB",
+      "ABA",
+      "A",
+      {
+        "item": "Calculator.enrichedGold",
+        "count": 1,
+        "meta": 0
+      },
+      "B",
+      {
+        "item": "Calculator.weakeneddiamond",
+        "count": 1,
+        "meta": 0
+      },
+      "C",
+      {
+        "item": "Calculator.extractionChamber",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.precisionChamber",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      "ABA",
+      "BCB",
+      "ABA",
+      "A",
+      {
+        "item": "Calculator.material_block",
+        "count": 1,
+        "meta": 3
+      },
+      "B",
+      {
+        "item": "Calculator.weakeneddiamond",
+        "count": 1,
+        "meta": 0
+      },
+      "C",
+      {
+        "item": "Calculator.extractionChamber",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.reinforcedFurnace",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      "AAA",
+      "ABA",
+      "AAA",
+      "A",
+      "calculatorReinforcedStone",
+      "B",
+      {
+        "item": "Calculator.powerCube",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.reinforcedChest",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      "ABA",
+      "BCB",
+      "ABA",
+      "A",
+      {
+        "item": "Calculator.material_block",
+        "count": 1,
+        "meta": 3
+      },
+      "B",
+      "calculatorReinforcedStone",
+      "C",
+      {
+        "item": "Blocks.CHEST",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.grenadecasing",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      "R R",
+      "RRR",
+      "R",
+      "calculatorReinforcedStone"
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.obsidianKey",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      "  B",
+      "BBB",
+      "A B",
+      "A",
+      {
+        "item": "Calculator.purifiedObsidian",
+        "count": 1,
+        "meta": 0
+      },
+      "B",
+      {
+        "item": "Calculator.enrichedgold_ingot",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.large_amethyst",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      "AAA",
+      "AAA",
+      "AAA",
+      "A",
+      "gemAmethyst"
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.small_amethyst",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      "AAA",
+      "AAA",
+      "AAA",
+      "A",
+      {
+        "item": "Calculator.shard_amethyst",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.large_tanzanite",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      "AAA",
+      "AAA",
+      "AAA",
+      "A",
+      "gemTanzanite"
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.small_tanzanite",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      "AAA",
+      "AAA",
+      "AAA",
+      "A",
+      {
+        "item": "Calculator.shard_tanzanite",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.material_block",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      "AAA",
+      "AAA",
+      "AAA",
+      "A",
+      {
+        "item": "Calculator.large_amethyst",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shapeless",
+    "output": {
+      "item": "Calculator.large_amethyst",
+      "count": 9,
+      "meta": 0
+    },
+    "args": [
+      {
+        "item": "Calculator.material_block",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.material_block",
+      "count": 1,
+      "meta": 1
+    },
+    "args": [
+      "AAA",
+      "AAA",
+      "AAA",
+      "A",
+      {
+        "item": "Calculator.large_tanzanite",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shapeless",
+    "output": {
+      "item": "Calculator.large_tanzanite",
+      "count": 9,
+      "meta": 0
+    },
+    "args": [
+      {
+        "item": "Calculator.material_block",
+        "count": 1,
+        "meta": 1
+      }
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.material_block",
+      "count": 1,
+      "meta": 2
+    },
+    "args": [
+      "AAA",
+      "AAA",
+      "AAA",
+      "A",
+      {
+        "item": "Calculator.enrichedgold_ingot",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shapeless",
+    "output": {
+      "item": "Calculator.enrichedgold_ingot",
+      "count": 9,
+      "meta": 0
+    },
+    "args": [
+      {
+        "item": "Calculator.material_block",
+        "count": 1,
+        "meta": 2
+      }
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.material_block",
+      "count": 1,
+      "meta": 3
+    },
+    "args": [
+      "AAA",
+      "AAA",
+      "AAA",
+      "A",
+      {
+        "item": "Calculator.reinforcediron_ingot",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shapeless",
+    "output": {
+      "item": "Calculator.reinforcediron_ingot",
+      "count": 9,
+      "meta": 0
+    },
+    "args": [
+      {
+        "item": "Calculator.material_block",
+        "count": 1,
+        "meta": 3
+      }
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.material_block",
+      "count": 1,
+      "meta": 4
+    },
+    "args": [
+      "AAA",
+      "AAA",
+      "AAA",
+      "A",
+      {
+        "item": "Calculator.weakeneddiamond",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shapeless",
+    "output": {
+      "item": "Calculator.weakeneddiamond",
+      "count": 9,
+      "meta": 0
+    },
+    "args": [
+      {
+        "item": "Calculator.material_block",
+        "count": 1,
+        "meta": 4
+      }
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.material_block",
+      "count": 1,
+      "meta": 5
+    },
+    "args": [
+      "AAA",
+      "AAA",
+      "AAA",
+      "A",
+      {
+        "item": "Calculator.flawlessdiamond",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shapeless",
+    "output": {
+      "item": "Calculator.flawlessdiamond",
+      "count": 9,
+      "meta": 0
+    },
+    "args": [
+      {
+        "item": "Calculator.material_block",
+        "count": 1,
+        "meta": 5
+      }
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.material_block",
+      "count": 1,
+      "meta": 6
+    },
+    "args": [
+      "AAA",
+      "AAA",
+      "AAA",
+      "A",
+      {
+        "item": "Calculator.firediamond",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shapeless",
+    "output": {
+      "item": "Calculator.firediamond",
+      "count": 9,
+      "meta": 0
+    },
+    "args": [
+      {
+        "item": "Calculator.material_block",
+        "count": 1,
+        "meta": 6
+      }
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.material_block",
+      "count": 1,
+      "meta": 7
+    },
+    "args": [
+      "AAA",
+      "AAA",
+      "AAA",
+      "A",
+      {
+        "item": "Calculator.electricDiamond",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shapeless",
+    "output": {
+      "item": "Calculator.electricDiamond",
+      "count": 9,
+      "meta": 0
+    },
+    "args": [
+      {
+        "item": "Calculator.material_block",
+        "count": 1,
+        "meta": 7
+      }
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.material_block",
+      "count": 1,
+      "meta": 8
+    },
+    "args": [
+      "AAA",
+      "AAA",
+      "AAA",
+      "A",
+      {
+        "item": "Calculator.endDiamond",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shapeless",
+    "output": {
+      "item": "Calculator.endDiamond",
+      "count": 9,
+      "meta": 0
+    },
+    "args": [
+      {
+        "item": "Calculator.material_block",
+        "count": 1,
+        "meta": 8
+      }
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.material_block",
+      "count": 1,
+      "meta": 9
+    },
+    "args": [
+      "AAA",
+      "AAA",
+      "AAA",
+      "A",
+      {
+        "item": "Calculator.redstone_ingot",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shapeless",
+    "output": {
+      "item": "Calculator.redstone_ingot",
+      "count": 9,
+      "meta": 0
+    },
+    "args": [
+      {
+        "item": "Calculator.material_block",
+        "count": 1,
+        "meta": 9
+      }
+    ]
+  },
+  {
+    "type": "shapeless",
+    "output": {
+      "item": "Calculator.amethystPlanks",
+      "count": 4,
+      "meta": 0
+    },
+    "args": [
+      {
+        "item": "Calculator.amethystLog",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shapeless",
+    "output": {
+      "item": "Calculator.tanzanitePlanks",
+      "count": 4,
+      "meta": 0
+    },
+    "args": [
+      {
+        "item": "Calculator.tanzaniteLog",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shapeless",
+    "output": {
+      "item": "Calculator.pearPlanks",
+      "count": 4,
+      "meta": 0
+    },
+    "args": [
+      {
+        "item": "Calculator.pearLog",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shapeless",
+    "output": {
+      "item": "Calculator.diamondPlanks",
+      "count": 4,
+      "meta": 0
+    },
+    "args": [
+      {
+        "item": "Calculator.diamondLog",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.amethystStairs",
+      "count": 4,
+      "meta": 0
+    },
+    "args": [
+      "A  ",
+      "AA ",
+      "AAA",
+      "A",
+      {
+        "item": "Calculator.amethystPlanks",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.tanzaniteStairs",
+      "count": 4,
+      "meta": 0
+    },
+    "args": [
+      "A  ",
+      "AA ",
+      "AAA",
+      "A",
+      {
+        "item": "Calculator.tanzanitePlanks",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.pearStairs",
+      "count": 4,
+      "meta": 0
+    },
+    "args": [
+      "A  ",
+      "AA ",
+      "AAA",
+      "A",
+      {
+        "item": "Calculator.pearPlanks",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.diamondStairs",
+      "count": 4,
+      "meta": 0
+    },
+    "args": [
+      "A  ",
+      "AA ",
+      "AAA",
+      "A",
+      {
+        "item": "Calculator.diamondPlanks",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.amethystFence",
+      "count": 6,
+      "meta": 0
+    },
+    "args": [
+      "ASA",
+      "ASA",
+      "A",
+      {
+        "item": "Calculator.amethystPlanks",
+        "count": 1,
+        "meta": 0
+      },
+      "S",
+      "stickWood"
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.tanzaniteFence",
+      "count": 6,
+      "meta": 0
+    },
+    "args": [
+      "ASA",
+      "ASA",
+      "A",
+      {
+        "item": "Calculator.tanzanitePlanks",
+        "count": 1,
+        "meta": 0
+      },
+      "S",
+      "stickWood"
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.pearFence",
+      "count": 6,
+      "meta": 0
+    },
+    "args": [
+      "ASA",
+      "ASA",
+      "A",
+      {
+        "item": "Calculator.pearPlanks",
+        "count": 1,
+        "meta": 0
+      },
+      "S",
+      "stickWood"
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.diamondFence",
+      "count": 6,
+      "meta": 0
+    },
+    "args": [
+      "ASA",
+      "ASA",
+      "A",
+      {
+        "item": "Calculator.diamondPlanks",
+        "count": 1,
+        "meta": 0
+      },
+      "S",
+      "stickWood"
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.dockingStation",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      " R ",
+      "APA",
+      "RRR",
+      "R",
+      "calculatorReinforcedStone",
+      "P",
+      {
+        "item": "Calculator.powerCube",
+        "count": 1,
+        "meta": 0
+      },
+      "A",
+      {
+        "item": "Calculator.calculator_assembly",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.weatherController",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      "DSD",
+      "RRR",
+      "S",
+      {
+        "item": "Items.NETHER_STAR",
+        "count": 1,
+        "meta": 0
+      },
+      "D",
+      {
+        "item": "Calculator.electricDiamond",
+        "count": 1,
+        "meta": 0
+      },
+      "R",
+      {
+        "item": "Calculator.rainSensor",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.stoneAssimilator",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      " S ",
+      "IPI",
+      " I ",
+      "P",
+      {
+        "item": "Calculator.stoneSeparator",
+        "count": 1,
+        "meta": 0
+      },
+      "I",
+      "calculatorReinforcedStone",
+      "S",
+      {
+        "item": "Calculator.sickle",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.algorithmAssimilator",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      " S ",
+      "IPI",
+      " I ",
+      "P",
+      {
+        "item": "Calculator.algorithmSeparator",
+        "count": 1,
+        "meta": 0
+      },
+      "I",
+      {
+        "item": "Calculator.material_block",
+        "count": 1,
+        "meta": 3
+      },
+      "S",
+      {
+        "item": "Calculator.sickle",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.calculator_assembly",
+      "count": 8,
+      "meta": 0
+    },
+    "args": [
+      "CBC",
+      "BCB",
+      "CBC",
+      "C",
+      "cobblestone",
+      "B",
+      {
+        "item": "Blocks.STONE_BUTTON",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.advanced_assembly",
+      "count": 4,
+      "meta": 0
+    },
+    "args": [
+      "GCG",
+      "CIC",
+      "GCG",
+      "C",
+      {
+        "item": "Calculator.calculator_assembly",
+        "count": 1,
+        "meta": 0
+      },
+      "G",
+      {
+        "item": "Calculator.enrichedgold_ingot",
+        "count": 1,
+        "meta": 0
+      },
+      "I",
+      {
+        "item": "Calculator.reinforcediron_ingot",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.atomic_module",
+      "count": 4,
+      "meta": 0
+    },
+    "args": [
+      "GCG",
+      "CIC",
+      "GCG",
+      "C",
+      {
+        "item": "Calculator.calculator_assembly",
+        "count": 1,
+        "meta": 0
+      },
+      "G",
+      "gemTanzanite",
+      "I",
+      "gemDiamond"
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.algorithmSeparator",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      "BCB",
+      "ADA",
+      "BCB",
+      "A",
+      {
+        "item": "Calculator.stoneSeparator",
+        "count": 1,
+        "meta": 0
+      },
+      "B",
+      {
+        "item": "Calculator.material_block",
+        "count": 1,
+        "meta": 3
+      },
+      "C",
+      {
+        "item": "Calculator.powerCube",
+        "count": 1,
+        "meta": 0
+      },
+      "D",
+      "gemDiamond"
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.flawless_assembly",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      "GCG",
+      "CAC",
+      "GCG",
+      "C",
+      {
+        "item": "Calculator.calculator_assembly",
+        "count": 1,
+        "meta": 0
+      },
+      "G",
+      {
+        "item": "Calculator.advanced_assembly",
+        "count": 1,
+        "meta": 0
+      },
+      "A",
+      {
+        "item": "Calculator.atomic_assembly",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "Calculator.moduleWorkstation",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      "GCG",
+      "CAC",
+      "GCG",
+      "C",
+      {
+        "item": "Calculator.atomic_binder",
+        "count": 1,
+        "meta": 0
+      },
+      "G",
+      "calculatorReinforcedStone",
+      "A",
+      {
+        "item": "Calculator.atomic_module",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shapeless",
+    "output": {
+      "item": "SonarCore.reinforcedStoneBrick",
+      "count": 2,
+      "meta": 0
+    },
+    "args": [
+      {
+        "item": "SonarCore.reinforcedStoneBlock",
+        "count": 1,
+        "meta": 0
+      },
+      {
+        "item": "SonarCore.reinforcedStoneBlock",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shapeless",
+    "output": {
+      "item": "SonarCore.stableStone[0]",
+      "count": 2,
+      "meta": 0
+    },
+    "args": [
+      {
+        "item": "SonarCore.reinforcedStoneBrick",
+        "count": 1,
+        "meta": 0
+      },
+      {
+        "item": "SonarCore.reinforcedStoneBrick",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shapeless",
+    "output": {
+      "item": "SonarCore.stableGlass",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      {
+        "item": "SonarCore.clearStableGlass",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shapeless",
+    "output": {
+      "item": "SonarCore.clearStableGlass",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      {
+        "item": "SonarCore.stableGlass",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "SonarCore.reinforcedStoneStairs",
+      "count": 4,
+      "meta": 0
+    },
+    "args": [
+      "A  ",
+      "AA ",
+      "AAA",
+      "A",
+      {
+        "item": "SonarCore.reinforcedStoneBlock",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "SonarCore.reinforcedStoneBrickStairs",
+      "count": 4,
+      "meta": 0
+    },
+    "args": [
+      "A  ",
+      "AA ",
+      "AAA",
+      "A",
+      {
+        "item": "SonarCore.reinforcedStoneBrick",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "SonarCore.reinforcedDirtStairs",
+      "count": 4,
+      "meta": 0
+    },
+    "args": [
+      "A  ",
+      "AA ",
+      "AAA",
+      "A",
+      {
+        "item": "SonarCore.reinforcedDirtBlock",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "SonarCore.reinforcedDirtBrickStairs",
+      "count": 4,
+      "meta": 0
+    },
+    "args": [
+      "A  ",
+      "AA ",
+      "AAA",
+      "A",
+      {
+        "item": "SonarCore.reinforcedDirtBrick",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "SonarCore.reinforcedStoneFence",
+      "count": 6,
+      "meta": 0
+    },
+    "args": [
+      "ASA",
+      "ASA",
+      "A",
+      {
+        "item": "SonarCore.reinforcedStoneBlock",
+        "count": 1,
+        "meta": 0
+      },
+      "S",
+      "stickWood"
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "SonarCore.reinforcedStoneBrickFence",
+      "count": 6,
+      "meta": 0
+    },
+    "args": [
+      "ASA",
+      "ASA",
+      "A",
+      {
+        "item": "SonarCore.reinforcedStoneBrick",
+        "count": 1,
+        "meta": 0
+      },
+      "S",
+      "stickWood"
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "SonarCore.reinforcedDirtFence",
+      "count": 6,
+      "meta": 0
+    },
+    "args": [
+      "ASA",
+      "ASA",
+      "A",
+      {
+        "item": "SonarCore.reinforcedDirtBlock",
+        "count": 1,
+        "meta": 0
+      },
+      "S",
+      "stickWood"
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "SonarCore.reinforcedDirtBrickFence",
+      "count": 6,
+      "meta": 0
+    },
+    "args": [
+      "ASA",
+      "ASA",
+      "A",
+      {
+        "item": "SonarCore.reinforcedDirtBrick",
+        "count": 1,
+        "meta": 0
+      },
+      "S",
+      "stickWood"
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "SonarCore.reinforcedStoneGate",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      "SAS",
+      "SAS",
+      "A",
+      {
+        "item": "SonarCore.reinforcedStoneBlock",
+        "count": 1,
+        "meta": 0
+      },
+      "S",
+      "stickWood"
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "SonarCore.reinforcedStoneBrickGate",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      "SAS",
+      "SAS",
+      "A",
+      {
+        "item": "SonarCore.reinforcedStoneBrick",
+        "count": 1,
+        "meta": 0
+      },
+      "S",
+      "stickWood"
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "SonarCore.reinforcedDirtGate",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      "SAS",
+      "SAS",
+      "A",
+      {
+        "item": "SonarCore.reinforcedDirtBlock",
+        "count": 1,
+        "meta": 0
+      },
+      "S",
+      "stickWood"
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "SonarCore.reinforcedDirtBrickGate",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      "SAS",
+      "SAS",
+      "A",
+      {
+        "item": "SonarCore.reinforcedDirtBrick",
+        "count": 1,
+        "meta": 0
+      },
+      "S",
+      "stickWood"
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "SonarCore.stableStone[0]",
+      "count": 8,
+      "meta": 0
+    },
+    "args": [
+      "SSS",
+      "SDS",
+      "SSS",
+      "D",
+      {
+        "item": "Items.DYE",
+        "count": 1,
+        "meta": 7
+      },
+      "S",
+      {
+        "item": "SonarCore.stableStone[0]",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shapeless",
+    "output": {
+      "item": "SonarCore.stablestonerimmedBlock[0]",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      {
+        "item": "SonarCore.stableStone[0]",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shapeless",
+    "output": {
+      "item": "SonarCore.stablestonerimmedblackBlock[0]",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      {
+        "item": "SonarCore.stablestonerimmedBlock[0]",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shapeless",
+    "output": {
+      "item": "SonarCore.stableStone[0]",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      {
+        "item": "SonarCore.stablestonerimmedblackBlock[0]",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "SonarCore.stableStone[1]",
+      "count": 8,
+      "meta": 0
+    },
+    "args": [
+      "SSS",
+      "SDS",
+      "SSS",
+      "D",
+      {
+        "item": "Items.DYE",
+        "count": 1,
+        "meta": 0
+      },
+      "S",
+      {
+        "item": "SonarCore.stableStone[0]",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shapeless",
+    "output": {
+      "item": "SonarCore.stablestonerimmedBlock[1]",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      {
+        "item": "SonarCore.stableStone[1]",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shapeless",
+    "output": {
+      "item": "SonarCore.stablestonerimmedblackBlock[1]",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      {
+        "item": "SonarCore.stablestonerimmedBlock[1]",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shapeless",
+    "output": {
+      "item": "SonarCore.stableStone[1]",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      {
+        "item": "SonarCore.stablestonerimmedblackBlock[1]",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "SonarCore.stableStone[2]",
+      "count": 8,
+      "meta": 0
+    },
+    "args": [
+      "SSS",
+      "SDS",
+      "SSS",
+      "D",
+      {
+        "item": "Items.DYE",
+        "count": 1,
+        "meta": 4
+      },
+      "S",
+      {
+        "item": "SonarCore.stableStone[0]",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shapeless",
+    "output": {
+      "item": "SonarCore.stablestonerimmedBlock[2]",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      {
+        "item": "SonarCore.stableStone[2]",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shapeless",
+    "output": {
+      "item": "SonarCore.stablestonerimmedblackBlock[2]",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      {
+        "item": "SonarCore.stablestonerimmedBlock[2]",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shapeless",
+    "output": {
+      "item": "SonarCore.stableStone[2]",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      {
+        "item": "SonarCore.stablestonerimmedblackBlock[2]",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "SonarCore.stableStone[3]",
+      "count": 8,
+      "meta": 0
+    },
+    "args": [
+      "SSS",
+      "SDS",
+      "SSS",
+      "D",
+      {
+        "item": "Items.DYE",
+        "count": 1,
+        "meta": 3
+      },
+      "S",
+      {
+        "item": "SonarCore.stableStone[0]",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shapeless",
+    "output": {
+      "item": "SonarCore.stablestonerimmedBlock[3]",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      {
+        "item": "SonarCore.stableStone[3]",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shapeless",
+    "output": {
+      "item": "SonarCore.stablestonerimmedblackBlock[3]",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      {
+        "item": "SonarCore.stablestonerimmedBlock[3]",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shapeless",
+    "output": {
+      "item": "SonarCore.stableStone[3]",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      {
+        "item": "SonarCore.stablestonerimmedblackBlock[3]",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "SonarCore.stableStone[4]",
+      "count": 8,
+      "meta": 0
+    },
+    "args": [
+      "SSS",
+      "SDS",
+      "SSS",
+      "D",
+      {
+        "item": "Items.DYE",
+        "count": 1,
+        "meta": 6
+      },
+      "S",
+      {
+        "item": "SonarCore.stableStone[0]",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shapeless",
+    "output": {
+      "item": "SonarCore.stablestonerimmedBlock[4]",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      {
+        "item": "SonarCore.stableStone[4]",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shapeless",
+    "output": {
+      "item": "SonarCore.stablestonerimmedblackBlock[4]",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      {
+        "item": "SonarCore.stablestonerimmedBlock[4]",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shapeless",
+    "output": {
+      "item": "SonarCore.stableStone[4]",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      {
+        "item": "SonarCore.stablestonerimmedblackBlock[4]",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "SonarCore.stableStone[5]",
+      "count": 8,
+      "meta": 0
+    },
+    "args": [
+      "SSS",
+      "SDS",
+      "SSS",
+      "D",
+      {
+        "item": "Items.DYE",
+        "count": 1,
+        "meta": 2
+      },
+      "S",
+      {
+        "item": "SonarCore.stableStone[0]",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shapeless",
+    "output": {
+      "item": "SonarCore.stablestonerimmedBlock[5]",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      {
+        "item": "SonarCore.stableStone[5]",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shapeless",
+    "output": {
+      "item": "SonarCore.stablestonerimmedblackBlock[5]",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      {
+        "item": "SonarCore.stablestonerimmedBlock[5]",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shapeless",
+    "output": {
+      "item": "SonarCore.stableStone[5]",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      {
+        "item": "SonarCore.stablestonerimmedblackBlock[5]",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "SonarCore.stableStone[6]",
+      "count": 8,
+      "meta": 0
+    },
+    "args": [
+      "SSS",
+      "SDS",
+      "SSS",
+      "D",
+      {
+        "item": "Items.DYE",
+        "count": 1,
+        "meta": 12
+      },
+      "S",
+      {
+        "item": "SonarCore.stableStone[0]",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shapeless",
+    "output": {
+      "item": "SonarCore.stablestonerimmedBlock[6]",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      {
+        "item": "SonarCore.stableStone[6]",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shapeless",
+    "output": {
+      "item": "SonarCore.stablestonerimmedblackBlock[6]",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      {
+        "item": "SonarCore.stablestonerimmedBlock[6]",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shapeless",
+    "output": {
+      "item": "SonarCore.stableStone[6]",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      {
+        "item": "SonarCore.stablestonerimmedblackBlock[6]",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "SonarCore.stableStone[7]",
+      "count": 8,
+      "meta": 0
+    },
+    "args": [
+      "SSS",
+      "SDS",
+      "SSS",
+      "D",
+      {
+        "item": "Items.DYE",
+        "count": 1,
+        "meta": 8
+      },
+      "S",
+      {
+        "item": "SonarCore.stableStone[0]",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shapeless",
+    "output": {
+      "item": "SonarCore.stablestonerimmedBlock[7]",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      {
+        "item": "SonarCore.stableStone[7]",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shapeless",
+    "output": {
+      "item": "SonarCore.stablestonerimmedblackBlock[7]",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      {
+        "item": "SonarCore.stablestonerimmedBlock[7]",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shapeless",
+    "output": {
+      "item": "SonarCore.stableStone[7]",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      {
+        "item": "SonarCore.stablestonerimmedblackBlock[7]",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "SonarCore.stableStone[8]",
+      "count": 8,
+      "meta": 0
+    },
+    "args": [
+      "SSS",
+      "SDS",
+      "SSS",
+      "D",
+      {
+        "item": "Items.DYE",
+        "count": 1,
+        "meta": 10
+      },
+      "S",
+      {
+        "item": "SonarCore.stableStone[0]",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shapeless",
+    "output": {
+      "item": "SonarCore.stablestonerimmedBlock[8]",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      {
+        "item": "SonarCore.stableStone[8]",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shapeless",
+    "output": {
+      "item": "SonarCore.stablestonerimmedblackBlock[8]",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      {
+        "item": "SonarCore.stablestonerimmedBlock[8]",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shapeless",
+    "output": {
+      "item": "SonarCore.stableStone[8]",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      {
+        "item": "SonarCore.stablestonerimmedblackBlock[8]",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "SonarCore.stableStone[9]",
+      "count": 8,
+      "meta": 0
+    },
+    "args": [
+      "SSS",
+      "SDS",
+      "SSS",
+      "D",
+      {
+        "item": "Items.DYE",
+        "count": 1,
+        "meta": 13
+      },
+      "S",
+      {
+        "item": "SonarCore.stableStone[0]",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shapeless",
+    "output": {
+      "item": "SonarCore.stablestonerimmedBlock[9]",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      {
+        "item": "SonarCore.stableStone[9]",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shapeless",
+    "output": {
+      "item": "SonarCore.stablestonerimmedblackBlock[9]",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      {
+        "item": "SonarCore.stablestonerimmedBlock[9]",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shapeless",
+    "output": {
+      "item": "SonarCore.stableStone[9]",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      {
+        "item": "SonarCore.stablestonerimmedblackBlock[9]",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "SonarCore.stableStone[10]",
+      "count": 8,
+      "meta": 0
+    },
+    "args": [
+      "SSS",
+      "SDS",
+      "SSS",
+      "D",
+      {
+        "item": "Items.DYE",
+        "count": 1,
+        "meta": 14
+      },
+      "S",
+      {
+        "item": "SonarCore.stableStone[0]",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shapeless",
+    "output": {
+      "item": "SonarCore.stablestonerimmedBlock[10]",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      {
+        "item": "SonarCore.stableStone[10]",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shapeless",
+    "output": {
+      "item": "SonarCore.stablestonerimmedblackBlock[10]",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      {
+        "item": "SonarCore.stablestonerimmedBlock[10]",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shapeless",
+    "output": {
+      "item": "SonarCore.stableStone[10]",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      {
+        "item": "SonarCore.stablestonerimmedblackBlock[10]",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "SonarCore.stableStone[11]",
+      "count": 8,
+      "meta": 0
+    },
+    "args": [
+      "SSS",
+      "SDS",
+      "SSS",
+      "D",
+      {
+        "item": "Items.DYE",
+        "count": 1,
+        "meta": 9
+      },
+      "S",
+      {
+        "item": "SonarCore.stableStone[0]",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shapeless",
+    "output": {
+      "item": "SonarCore.stablestonerimmedBlock[11]",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      {
+        "item": "SonarCore.stableStone[11]",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shapeless",
+    "output": {
+      "item": "SonarCore.stablestonerimmedblackBlock[11]",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      {
+        "item": "SonarCore.stablestonerimmedBlock[11]",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shapeless",
+    "output": {
+      "item": "SonarCore.stableStone[11]",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      {
+        "item": "SonarCore.stablestonerimmedblackBlock[11]",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "SonarCore.stableStone[12]",
+      "count": 8,
+      "meta": 0
+    },
+    "args": [
+      "SSS",
+      "SDS",
+      "SSS",
+      "D",
+      {
+        "item": "Items.DYE",
+        "count": 1,
+        "meta": 15
+      },
+      "S",
+      {
+        "item": "SonarCore.stableStone[0]",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shapeless",
+    "output": {
+      "item": "SonarCore.stablestonerimmedBlock[12]",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      {
+        "item": "SonarCore.stableStone[12]",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shapeless",
+    "output": {
+      "item": "SonarCore.stablestonerimmedblackBlock[12]",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      {
+        "item": "SonarCore.stablestonerimmedBlock[12]",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shapeless",
+    "output": {
+      "item": "SonarCore.stableStone[12]",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      {
+        "item": "SonarCore.stablestonerimmedblackBlock[12]",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "SonarCore.stableStone[13]",
+      "count": 8,
+      "meta": 0
+    },
+    "args": [
+      "SSS",
+      "SDS",
+      "SSS",
+      "D",
+      {
+        "item": "Items.DYE",
+        "count": 1,
+        "meta": 5
+      },
+      "S",
+      {
+        "item": "SonarCore.stableStone[0]",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shapeless",
+    "output": {
+      "item": "SonarCore.stablestonerimmedBlock[13]",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      {
+        "item": "SonarCore.stableStone[13]",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shapeless",
+    "output": {
+      "item": "SonarCore.stablestonerimmedblackBlock[13]",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      {
+        "item": "SonarCore.stablestonerimmedBlock[13]",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shapeless",
+    "output": {
+      "item": "SonarCore.stableStone[13]",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      {
+        "item": "SonarCore.stablestonerimmedblackBlock[13]",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "SonarCore.stableStone[14]",
+      "count": 8,
+      "meta": 0
+    },
+    "args": [
+      "SSS",
+      "SDS",
+      "SSS",
+      "D",
+      {
+        "item": "Items.DYE",
+        "count": 1,
+        "meta": 1
+      },
+      "S",
+      {
+        "item": "SonarCore.stableStone[0]",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shapeless",
+    "output": {
+      "item": "SonarCore.stablestonerimmedBlock[14]",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      {
+        "item": "SonarCore.stableStone[14]",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shapeless",
+    "output": {
+      "item": "SonarCore.stablestonerimmedblackBlock[14]",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      {
+        "item": "SonarCore.stablestonerimmedBlock[14]",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shapeless",
+    "output": {
+      "item": "SonarCore.stableStone[14]",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      {
+        "item": "SonarCore.stablestonerimmedblackBlock[14]",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shaped",
+    "output": {
+      "item": "SonarCore.stableStone[15]",
+      "count": 8,
+      "meta": 0
+    },
+    "args": [
+      "SSS",
+      "SDS",
+      "SSS",
+      "D",
+      {
+        "item": "Items.DYE",
+        "count": 1,
+        "meta": 11
+      },
+      "S",
+      {
+        "item": "SonarCore.stableStone[0]",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shapeless",
+    "output": {
+      "item": "SonarCore.stablestonerimmedBlock[15]",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      {
+        "item": "SonarCore.stableStone[15]",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shapeless",
+    "output": {
+      "item": "SonarCore.stablestonerimmedblackBlock[15]",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      {
+        "item": "SonarCore.stablestonerimmedBlock[15]",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  },
+  {
+    "type": "shapeless",
+    "output": {
+      "item": "SonarCore.stableStone[15]",
+      "count": 1,
+      "meta": 0
+    },
+    "args": [
+      {
+        "item": "SonarCore.stablestonerimmedblackBlock[15]",
+        "count": 1,
+        "meta": 0
+      }
+    ]
+  }
+]

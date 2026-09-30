@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " B ",
+    "CAC",
+    "DDD"
+  ],
+  "key": {
+    "A": {
+      "tag": "foundations_calculator:stable_stone"
+    },
+    "B": {
+      "item": "foundations_calculator:energy_module"
+    },
+    "C": {
+      "item": "foundations_calculator:advanced_assembly"
+    },
+    "D": {
+      "item": "foundations_calculator:redstone_ingot"
+    }
+  },
+  "result": {
+    "id": "foundations_calculator:calculator_plug",
+    "count": 1
+  }
+}

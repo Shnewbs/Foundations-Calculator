@@ -1,0 +1,65 @@
+{
+  "id": "foundations_calculator:power/rounding",
+  "chapter": "foundations_calculator:power",
+  "title": "Whole units, losses and converter loops",
+  "order": 10,
+  "items": [],
+  "keywords": [
+    "rounding",
+    "quantum",
+    "loss",
+    "free energy",
+    "loop",
+    "ratio"
+  ],
+  "blocks": [
+    {
+      "type": "paragraph",
+      "text": "Conversions must not round a tiny offer up into free power. The long-valued bridges move exact representable quanta; a remainder stays in its original storage instead of being invented or silently claimed as transferred."
+    },
+    {
+      "type": "table",
+      "text": "Illustrative arithmetic, not a server setting",
+      "rows": [
+        [
+          "2.5 J per FE, no loss",
+          "5 J converts to 2 FE; a smaller offer can be insufficient."
+        ],
+        [
+          "2.5 J per FE, 10% input loss",
+          "25 J converts to 9 FE."
+        ],
+        [
+          "4 FE per EU, 10% input loss",
+          "100 EU becomes 360 FE."
+        ],
+        [
+          "Same ratio, then 20% output loss",
+          "Those 360 FE become 72 EU."
+        ]
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "Input and output losses are independent, but the bridge uses one base ratio. Very precise ratios can require a large quantum. If that quantum exceeds the transfer rate or remaining buffer space, transfer pauses. That is not necessarily a broken cable."
+    },
+    {
+      "type": "paragraph",
+      "text": "GT block packets are rounded conservatively at packet boundaries, rather than using a fictional simulated packet API. Fractional AE item operations also use conservative rounding. No simulation is supposed to debit storage."
+    },
+    {
+      "type": "callout",
+      "text": "A safe round trip inside Calculator does not prove an entire modpack is free of converter loops. Another mod can use a different exchange rate. Prefer inherit, align all converters, or deliberately close incompatible routes. Changing rates with charged buffers changes their native-equivalent value; it does not rewrite stored FE."
+    },
+    {
+      "type": "link",
+      "text": "Read the actual server ratios",
+      "target": "foundations_calculator:power/eu_conversion"
+    },
+    {
+      "type": "link",
+      "text": "Power is connected but not moving",
+      "target": "foundations_calculator:troubleshooting/power"
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "name": "Materials and equipment \u00b7 5",
+  "category": "foundations_calculator:pack_authors",
+  "icon": "foundations_calculator:enriched_gold",
+  "sortnum": 97,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "This reference groups related inventory entries. Each recipe section reads the current world. An item may have no crafting result when it comes from harvesting, world generation, a program action or creative tools.$pItem: foundations_calculator:enriched_gold$pObtaining Enriched Gold: live recipe details are available in the native or master Foundations reader.$pItem: foundations_calculator:enriched_gold_ingot$pObtaining Enriched Gold Ingot: live recipe details are available in the native or master Foundations reader.$pItem: foundations_calculator:reinforced_iron_ingot$pObtaining Reinforced Iron Ingot: live recipe details are available in the native or master Foundations reader.$pItem: foundations_calculator:redstone_ingot$pObtaining Redstone Ingot: live recipe details are available in the native or master Foundations reader.$pItem: foundations_calculator:weakened_diamond$pObtaining Weakened Diamond: live recipe details are available in the native or master Foundations reader.$pItem: foundations_calculator:flawless_diamond$pObtaining Flawless Diamond: live recipe details are available in the native or master Foundations reader.$pItem: foundations_calculator:fire_diamond$pObtaining Fire Diamond: live recipe details are available in the native or master Foundations reader.$pItem: foundations_calculator:electric_diamond$pObtaining Electric Diamond: live recipe details are available in the native or master Foundations reader.$pItem: foundations_calculator:large_amethyst"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Obtaining Large Amethyst: live recipe details are available in the native or master Foundations reader.$pItem: foundations_calculator:small_amethyst$pObtaining Small Amethyst: live recipe details are available in the native or master Foundations reader.$pItem: foundations_calculator:shard_amethyst$pObtaining Shard Amethyst: live recipe details are available in the native or master Foundations reader.$pItem: foundations_calculator:large_tanzanite$pObtaining Large Tanzanite: live recipe details are available in the native or master Foundations reader."
+    }
+  ],
+  "extra_recipe_mappings": {
+    "foundations_calculator:enriched_gold": 0,
+    "foundations_calculator:enriched_gold_ingot": 0,
+    "foundations_calculator:reinforced_iron_ingot": 0,
+    "foundations_calculator:redstone_ingot": 0,
+    "foundations_calculator:weakened_diamond": 0,
+    "foundations_calculator:flawless_diamond": 0,
+    "foundations_calculator:fire_diamond": 0,
+    "foundations_calculator:electric_diamond": 0,
+    "foundations_calculator:large_amethyst": 0,
+    "foundations_calculator:small_amethyst": 0,
+    "foundations_calculator:shard_amethyst": 0,
+    "foundations_calculator:large_tanzanite": 0
+  }
+}

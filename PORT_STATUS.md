@@ -1,3 +1,5 @@
-# 0.0.5a platform status
+# 0.0.5a.R1 platform status
 
-Current implemented platform: 1.21.1. Native and integration CI must pass before publishing binary assets. Manual migration/client/performance acceptance remains pending. The 26.3 target requires Java 25 and separate API migration; no compatibility claim is made by this build.
+Implemented platform: Minecraft 1.21.1 / NeoForge 21.1.250. The revision adds overflow-safe high-capacity bank balancing. Native and integration CI must pass before its binary release.
+
+The separate port/26.3 branch is migrating Java 25, transactional energy/inventory APIs, persistent data, recipes and client rendering. No working 26.3 binary exists. The 0.1a/0.1b milestones remain open until their required gates pass.

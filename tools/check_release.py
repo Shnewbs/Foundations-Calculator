@@ -1,4 +1,4 @@
-"""Release audit for Foundations Calculator 0.0.2a.R2.
+"""Release audit for the current Foundations Calculator candidate.
 
 Run only after the native build and both GameTest modes. This script verifies that the
 candidate JAR matches current source/resources and that fresh local test evidence exists.
@@ -9,7 +9,7 @@ import json,re,zipfile,hashlib,struct,xml.etree.ElementTree as ET
 
 root=Path(__file__).resolve().parents[1]
 version=re.search(r'^mod_version=(.+)$',(root/'gradle.properties').read_text(),re.M)[1]
-assert re.fullmatch(r'0\.0\.[0-9]+a(?:\.R[0-9]+)?(?:-dev\.[0-9]+)?',version),f'Unexpected release version: {version}'
+assert re.fullmatch(r'(?:0\.0\.[0-9]+a|0\.1[ab])(?:\.R[0-9]+)?(?:-dev\.[0-9]+)?',version),f'Unexpected release version: {version}'
 required_tests=int(re.search(r'^required_gametests=(.+)$',(root/'gradle.properties').read_text(),re.M)[1])
 evidence=root/'validation'/version
 evidence.mkdir(parents=True,exist_ok=True)

@@ -52,15 +52,6 @@ public class MachineBlockEntity extends BlockEntity implements MenuProvider {
     private ItemStack clientDisplay=ItemStack.EMPTY;
     private int sentProgress,sentTotalTicks;
     private long sentEnergy,sentCrank;
-    private static long saturatingProduct(long a,long b){
-        if(a<=0||b<=0)return 0;
-        if(a>Long.MAX_VALUE/b)return Long.MAX_VALUE;
-        return a*b;
-    }
-    private static long saturatingSum(long a,long b){
-        a=Math.max(0L,a);b=Math.max(0L,b);
-        return a>Long.MAX_VALUE-b?Long.MAX_VALUE:a+b;
-    }
     public boolean workDue(int interval) {
         return level!=null&&StaggeredWork.due(level.getGameTime(),worldPosition.asLong(),Math.max(1,interval),
             CalculatorConfig.flag("performance.staggerWork",true));
@@ -252,9 +243,7 @@ public class MachineBlockEntity extends BlockEntity implements MenuProvider {
             if(CalculatorConfig.flag("automation.balanceCubes",true)&&MachineProfiles.storage(kind())&&program.getInt("Side"+side.get3DDataValue())==0
                 &&level.getBlockEntity(worldPosition.relative(side)) instanceof MachineBlockEntity bank
                 &&MachineProfiles.storage(bank.kind())&&bank.program.getInt("Side"+side.getOpposite().get3DDataValue())==0){
-                long surplus=saturatingProduct(energy.stored(),bank.energy.capacity())-saturatingProduct(bank.energy.stored(),energy.capacity());
-                long capacities=saturatingSum(energy.capacity(),bank.energy.capacity());
-                n=(int)Math.min(n,Math.max(0,surplus/capacities));
+                n=(int)EnergyBalancing.transfer(energy.stored(),energy.capacity(),bank.energy.stored(),bank.energy.capacity(),n);
             }
             energy.extractEnergy(Math.clamp(other.receiveEnergy(n,false),0,n),false);
         }

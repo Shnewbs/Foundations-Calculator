@@ -1,9 +1,8 @@
-# 0.0.5a — progression and configuration usability
+# 0.0.5a.R1 — high-capacity energy balancing
 
-- Added five informational advancements: Calculator, Scientific Calculator, Atomic Calculator, Processing Chamber and Research Chamber.
-- Added operator-only `/foundations config get <key>` and `/foundations config find <text>`; results are capped at 20 settings and suggestions at 50.
-- Distinguished synchronized configured values from derived machine totals.
-- Added native regressions for advancement loading and current server override reporting and command execution/permissions (130-test floor).
-- Retains 0.0.4a native long transfer scaling and 0.0.3a machine defaults/runtime fixes.
+- Fixed automatic power-cube balancing when capacity/energy cross-products exceed the signed-long range. Saturating both products previously erased their difference and stopped transfer.
+- Uses exact arithmetic for oversized stores, retaining an allocation-free path for ordinary storage and an immediate return for equal banks.
+- Added five JUnit regressions, including 5,000 deterministic oracle comparisons, and a native high-capacity cube transfer regression (131-test floor).
+- Includes all prior 0.0.5a, 0.0.4a and 0.0.3a-dev.1 changes.
 
-Platform: Minecraft 1.21.1. The 26.3 port is unfinished; 26.4 compatibility is unverified. Manual copied-world/client/performance acceptance remains pending.
+Platform: Minecraft 1.21.1 / NeoForge 21.1.250. This revision is on the path to 0.1a/0.1b; it does not include a working 26.3 port. Manual world/client/performance acceptance remains pending.

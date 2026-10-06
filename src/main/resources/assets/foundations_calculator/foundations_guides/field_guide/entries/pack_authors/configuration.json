@@ -73,7 +73,7 @@
     },
     {
       "type": "paragraph",
-      "text": "Operators can use /foundations config and /foundations config machine <id> for readable effective settings instead of searching thousands of TOML lines."
+      "text": "Operators can use /foundations config machine <id> for derived machine totals, /foundations config get <key> for synchronized configured values, and /foundations config find <text> to locate settings. These commands require operator permission and never change the configuration."
     },
     {
       "type": "link",

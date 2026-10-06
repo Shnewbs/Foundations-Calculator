@@ -1,10 +1,9 @@
-# 0.0.4a — native long transfer scaling
+# 0.0.5a — progression and configuration usability
 
-- Native long machine ports honor transfer multipliers above 2,147,483,647 FE per operation.
-- Standard NeoForge FE calls remain int-bounded; existing defaults and direction gates are retained.
-- A zero transfer multiplier now fully disables transfer and charging instead of leaving a one-FE floor.
-- Config diagnostics report standard FE and native long rates separately.
-- Added native regressions for large simulated/executed input and disabled faces (127-test floor).
-- Retains centralized machine defaults, Guide API runtime classpath and guarded FE registration priority.
+- Added five informational advancements: Calculator, Scientific Calculator, Atomic Calculator, Processing Chamber and Research Chamber.
+- Added operator-only `/foundations config get <key>` and `/foundations config find <text>`; results are capped at 20 settings and suggestions at 50.
+- Distinguished synchronized configured values from derived machine totals.
+- Added native regressions for advancement loading and current server override reporting and command execution/permissions (130-test floor).
+- Retains 0.0.4a native long transfer scaling and 0.0.3a machine defaults/runtime fixes.
 
-Platform: Minecraft 1.21.1. Processing costs, item charging and ordinary FE push routes remain int-bounded. No claim of universal 64-bit operation scaling or 26.3 compatibility. Manual world/client/performance acceptance remains pending.
+Platform: Minecraft 1.21.1. The 26.3 port is unfinished; 26.4 compatibility is unverified. Manual copied-world/client/performance acceptance remains pending.

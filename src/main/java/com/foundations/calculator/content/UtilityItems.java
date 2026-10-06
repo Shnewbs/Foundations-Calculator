@@ -24,43 +24,43 @@ public final class UtilityItems {
         Level level=c.getLevel();BlockPos pos=c.getClickedPos();if(!player.mayUseItemAt(pos,c.getClickedFace(),stack)||!level.mayInteract(player,pos))return InteractionResult.FAIL;
         var state=level.getBlockState(pos);
         if((kind.equals("soil")||kind.equals("small_stone"))&&player.isShiftKeyDown()&&(state.is(Blocks.DIRT)||state.is(Blocks.GRASS_BLOCK))){
-            if(!level.isClientSide&&level.setBlockAndUpdate(pos,(kind.equals("soil")?Blocks.FARMLAND:Blocks.GRAVEL).defaultBlockState())&&!player.isCreative())stack.shrink(1);return InteractionResult.sidedSuccess(level.isClientSide);
+            if(!level.isClientSide()&&level.setBlockAndUpdate(pos,(kind.equals("soil")?Blocks.FARMLAND:Blocks.GRAVEL).defaultBlockState())&&!player.isCreative())stack.shrink(1);return InteractionResult.sidedSuccess(level.isClientSide());
         }
         if(kind.equals("calculator_screen")){
             if(!c.getClickedFace().getAxis().isHorizontal()||com.foundations.calculator.api.FoundationsEnergy.block(level,pos,c.getClickedFace())==null)return InteractionResult.FAIL;
             BlockPos placed=pos.relative(c.getClickedFace());if(!level.getBlockState(placed).canBeReplaced()||!player.mayUseItemAt(placed,c.getClickedFace(),stack))return InteractionResult.FAIL;
-            if(!level.isClientSide&&level.setBlockAndUpdate(placed,Content.block("calculator_screen_block").defaultBlockState().setValue(MachineBlock.FACING,c.getClickedFace()))&&!player.isCreative())stack.shrink(1);
-            return InteractionResult.sidedSuccess(level.isClientSide);
+            if(!level.isClientSide()&&level.setBlockAndUpdate(placed,Content.block("calculator_screen_block").defaultBlockState().setValue(MachineBlock.FACING,c.getClickedFace()))&&!player.isCreative())stack.shrink(1);
+            return InteractionResult.sidedSuccess(level.isClientSide());
         }
         if(kind.equals("atomic_terrain_module"))return AtomicTerrainModule.use(stack,battery,c);
         if(kind.equals("terrain_module")||kind.equals("advanced_terrain_module")){
             List<Block> choices=new ArrayList<>(List.of(Blocks.GRASS_BLOCK,Blocks.DIRT,Blocks.STONE));if(kind.startsWith("advanced"))choices.addAll(List.of(Blocks.GRAVEL,Blocks.SAND,Blocks.COBBLESTONE));
-            CompoundTag tag=CircuitData.tag(stack);int mode=Math.floorMod(tag.getInt("TerrainMode"),choices.size());
+            CompoundTag tag=CircuitData.tag(stack);int mode=Math.floorMod(tag.getIntOr("TerrainMode",0),choices.size());
             if(player.isShiftKeyDown()){
-                if(!level.isClientSide){mode=(mode+1)%choices.size();tag.putInt("TerrainMode",mode);put(stack,tag);player.displayClientMessage(choices.get(mode).getName(),true);}return InteractionResult.sidedSuccess(level.isClientSide);
+                if(!level.isClientSide()){mode=(mode+1)%choices.size();tag.putInt("TerrainMode",mode);put(stack,tag);player.displayClientMessage(choices.get(mode).getName(),true);}return InteractionResult.sidedSuccess(level.isClientSide());
             }
             Block selected=choices.get(mode);if(!choices.contains(state.getBlock())||state.is(selected))return InteractionResult.PASS;
             int cost=CalculatorConfig.integer("module."+kind+".cost",1);
             if(!player.isCreative()&&(!(battery.getItem() instanceof CalculatorItem item)||item.energy(battery)<cost))return InteractionResult.FAIL;
-            if(!level.isClientSide&&level.setBlockAndUpdate(pos,selected.defaultBlockState())&&!player.isCreative())((CalculatorItem)battery.getItem()).storage(battery).extractEnergy(cost,false);
-            return InteractionResult.sidedSuccess(level.isClientSide);
+            if(!level.isClientSide()&&level.setBlockAndUpdate(pos,selected.defaultBlockState())&&!player.isCreative())((CalculatorItem)battery.getItem()).storage(battery).extractEnergy(cost,false);
+            return InteractionResult.sidedSuccess(level.isClientSide());
         }
         if(kind.equals("sickle")){
             if(!(state.getBlock() instanceof HarvestLeaves))return InteractionResult.PASS;
-            if(!level.isClientSide)for(ItemStack drop:MachinePrograms.harvestLeaves(level,pos))player.getInventory().placeItemBackInInventory(drop);
-            return InteractionResult.sidedSuccess(level.isClientSide);
+            if(!level.isClientSide())for(ItemStack drop:MachinePrograms.harvestLeaves(level,pos))player.getInventory().placeItemBackInInventory(drop);
+            return InteractionResult.sidedSuccess(level.isClientSide());
         }
         if(kind.equals("obsidian_key")&&(state.is(Blocks.OBSIDIAN)||state.is(Content.block("purified_obsidian")))){
-            if(!level.isClientSide){level.destroyBlock(pos,true,player);if(!player.isCreative())stack.hurtAndBreak(CalculatorConfig.integer("tools.obsidianKeyDamage",1),player,c.getHand()==InteractionHand.MAIN_HAND?EquipmentSlot.MAINHAND:EquipmentSlot.OFFHAND);}
-            return InteractionResult.sidedSuccess(level.isClientSide);
+            if(!level.isClientSide()){level.destroyBlock(pos,true,player);if(!player.isCreative())stack.hurtAndBreak(CalculatorConfig.integer("tools.obsidianKeyDamage",1),player,c.getHand()==InteractionHand.MAIN_HAND?EquipmentSlot.MAINHAND:EquipmentSlot.OFFHAND);}
+            return InteractionResult.sidedSuccess(level.isClientSide());
         }
         if(kind.equals("warp_module")&&player.isShiftKeyDown()&&(!CalculatorConfig.flag("module.warp_module.requireStableBlock",true)||stable(level,pos))){
-            if(!level.isClientSide){var tag=CircuitData.tag(stack);tag.putLong("WarpPos",pos.asLong());tag.putString("WarpDimension",level.dimension().location().toString());put(stack,tag);player.displayClientMessage(Component.literal("Warp destination bound."),true);}
-            return InteractionResult.sidedSuccess(level.isClientSide);
+            if(!level.isClientSide()){var tag=CircuitData.tag(stack);tag.putLong("WarpPos",pos.asLong());tag.putString("WarpDimension",level.dimension().location().toString());put(stack,tag);player.displayClientMessage(Component.literal("Warp destination bound."),true);}
+            return InteractionResult.sidedSuccess(level.isClientSide());
         }
         String nutrient=state.is(Content.block("amethyst_leaves"))?"hunger":state.is(Content.block("tanzanite_leaves"))?"health":"";
         if(!nutrient.isEmpty()&&NutritionData.capacity(stack,nutrient)>NutritionData.get(stack,nutrient)&&state.getValue(HarvestLeaves.AGE)>=CalculatorConfig.integer("plants.leafMatureAge",2)){
-            if(!level.isClientSide){NutritionData.add(stack,nutrient,CalculatorConfig.integer("nutrition.leafYield",1));level.setBlockAndUpdate(pos,state.setValue(HarvestLeaves.AGE,CalculatorConfig.integer("plants.leafHarvestResetAge",0)));}return InteractionResult.sidedSuccess(level.isClientSide);
+            if(!level.isClientSide()){NutritionData.add(stack,nutrient,CalculatorConfig.integer("nutrition.leafYield",1));level.setBlockAndUpdate(pos,state.setValue(HarvestLeaves.AGE,CalculatorConfig.integer("plants.leafHarvestResetAge",0)));}return InteractionResult.sidedSuccess(level.isClientSide());
         }return InteractionResult.PASS;
     }
     public static boolean use(String kind,ItemStack stack,ItemStack battery,Level level,Player player){
@@ -96,10 +96,10 @@ public final class UtilityItems {
             if(player.getCooldowns().isOnCooldown(battery.getItem()))return true;
             var target=CircuitData.tag(stack);
             if(!target.contains("WarpPos")){player.displayClientMessage(Component.literal("Sneak-use a destination block to bind the module."),true);return true;}
-            var dimension=net.minecraft.resources.ResourceKey.create(net.minecraft.core.registries.Registries.DIMENSION,net.minecraft.resources.Identifier.parse(target.getString("WarpDimension")));
+            var dimension=net.minecraft.resources.ResourceKey.create(net.minecraft.core.registries.Registries.DIMENSION,net.minecraft.resources.Identifier.parse(target.getStringOr("WarpDimension","")));
             var destination=level.getServer().getLevel(dimension);
             if(destination==null||!dimension.equals(level.dimension())&&!CalculatorConfig.flag("module.warp_module.crossDimension",false))return true;
-            BlockPos p=BlockPos.of(target.getLong("WarpPos"));
+            BlockPos p=BlockPos.of(target.getLongOr("WarpPos",0L));
             if(!destination.getWorldBorder().isWithinBounds(p)||destination.isOutsideBuildHeight(p.above(2)))return true;
             if(!destination.hasChunkAt(p)){if(!CalculatorConfig.flag("module.warp_module.loadDestination",false))return true;destination.getChunkAt(p);}
             if(CalculatorConfig.flag("module.warp_module.requireStableBlock",true)&&!stable(destination,p)||!destination.isEmptyBlock(p.above())||!destination.isEmptyBlock(p.above(2)))return true;

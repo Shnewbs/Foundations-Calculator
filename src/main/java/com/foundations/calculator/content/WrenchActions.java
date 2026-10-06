@@ -16,7 +16,7 @@ public final class WrenchActions {
         if(player==null||!level.mayInteract(player,pos)||!player.mayUseItemAt(pos,c.getClickedFace(),c.getItemInHand()))return InteractionResult.FAIL;
         if(!(level.getBlockEntity(pos) instanceof MachineBlockEntity m))return InteractionResult.PASS;
         if(player.isShiftKeyDown()&&CalculatorConfig.flag("tools.wrenchDismantle",true)){
-            if(level.isClientSide)return InteractionResult.SUCCESS;
+            if(level.isClientSide())return InteractionResult.SUCCESS;
             if(NeoForge.EVENT_BUS.post(new BlockEvent.BreakEvent(level,pos,state,player)).isCanceled())return InteractionResult.FAIL;
             if(CalculatorConfig.flag("tools.wrenchPreserveMachine",true)){
                 if(m.kind().equals("module_workstation"))ModuleWorkstation.flush(m);
@@ -28,9 +28,9 @@ public final class WrenchActions {
             return InteractionResult.CONSUME;
         }
         if(CalculatorConfig.flag("tools.wrenchSideCycling",true)){
-            if(!level.isClientSide){int side=c.getClickedFace().get3DDataValue();m.action(player,20+side);player.displayClientMessage(Component.literal(c.getClickedFace().getName()+": "+new String[]{"Automatic","Input","Output","Disabled"}[m.program.getInt("Side"+side)]),true);}
-        }else if(!level.isClientSide)level.setBlockAndUpdate(pos,state.cycle(MachineBlock.FACING));
-        return InteractionResult.sidedSuccess(level.isClientSide);
+            if(!level.isClientSide()){int side=c.getClickedFace().get3DDataValue();m.action(player,20+side);player.displayClientMessage(Component.literal(c.getClickedFace().getName()+": "+new String[]{"Automatic","Input","Output","Disabled"}[m.program.getIntOr("Side"+side,0)]),true);}
+        }else if(!level.isClientSide())level.setBlockAndUpdate(pos,state.cycle(MachineBlock.FACING));
+        return InteractionResult.sidedSuccess(level.isClientSide());
     }
     private WrenchActions(){}
 }

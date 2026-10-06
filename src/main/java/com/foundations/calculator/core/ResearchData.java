@@ -14,13 +14,13 @@ public final class ResearchData extends SavedData {
     public static volatile Set<String> clientGroups=Set.of();
     private long unlockRevision;
     public static long revision(Level level) {
-        return level.isClientSide ? clientGroups.hashCode() : get(level.getServer()).unlockRevision;
+        return level.isClientSide() ? clientGroups.hashCode() : get(level.getServer()).unlockRevision;
     }
     private final Map<UUID,Map<String,Long>> mastery=new HashMap<>();
     public Map<String,Long> mastery(UUID player){return player==null?Map.of():Collections.unmodifiableMap(mastery.getOrDefault(owner(player),Map.of()));}
     public static int target(String family){return CalculatorConfig.integer("research.mastery."+family,switch(family){case "calculator"->10000;case "scientific"->5000;case "atomic"->2500;default->1000;});}
     public static void completed(Level level,UUID player,String family){
-        if(level.isClientSide||player==null||!FAMILIES.contains(family)||!CalculatorConfig.flag("research.trackMastery",true))return;
+        if(level.isClientSide()||player==null||!FAMILIES.contains(family)||!CalculatorConfig.flag("research.trackMastery",true))return;
         var data=get(level.getServer());var counts=data.mastery.computeIfAbsent(owner(player),id->new HashMap<>());long old=counts.getOrDefault(family,0L);counts.put(family,old==Long.MAX_VALUE?old:old+1);data.setDirty();
         if(level.getGameTime()%20==0||old+1==target(family))syncAll(level.getServer());
     }
@@ -35,11 +35,11 @@ public final class ResearchData extends SavedData {
     public boolean revoke(UUID player,String group){var set=unlocked.get(owner(player));boolean changed=set!=null&&set.remove(group);if(changed){unlockRevision++;setDirty();}return changed;}
     public static boolean allowed(Level level,UUID player,ProcessRecipe recipe){
         if(!recipe.research()||CalculatorConfig.flag("enableLegacyResearchRecipes",false)||!CalculatorConfig.flag("research.requireUnlock",true))return true;
-        if(level.isClientSide)return clientGroups.contains(recipe.researchGroup().isBlank()?"general":recipe.researchGroup());
-        return !level.isClientSide&&level.getServer()!=null&&get(level.getServer()).groups(player).contains(recipe.researchGroup().isBlank()?"general":recipe.researchGroup());
+        if(level.isClientSide())return clientGroups.contains(recipe.researchGroup().isBlank()?"general":recipe.researchGroup());
+        return !level.isClientSide()&&level.getServer()!=null&&get(level.getServer()).groups(player).contains(recipe.researchGroup().isBlank()?"general":recipe.researchGroup());
     }
     public CompoundTag save(CompoundTag tag,HolderLookup.Provider lookup){
         ListTag players=new ListTag();unlocked.forEach((id,groups)->{CompoundTag p=new CompoundTag();p.putUUID("Player",id);ListTag list=new ListTag();groups.stream().sorted().forEach(s->list.add(StringTag.valueOf(s)));p.put("Groups",list);players.add(p);});tag.put("Players",players);ListTag counts=new ListTag();mastery.forEach((id,values)->{CompoundTag row=new CompoundTag();row.putUUID("Player",id);values.forEach(row::putLong);counts.add(row);});tag.put("Mastery",counts);return tag;
     }
-    public static ResearchData load(CompoundTag tag,HolderLookup.Provider lookup){ResearchData data=new ResearchData();for(Tag row:tag.getList("Players",Tag.TAG_COMPOUND)){CompoundTag p=(CompoundTag)row;if(!p.hasUUID("Player"))continue;Set<String> groups=new TreeSet<>();for(Tag g:p.getList("Groups",Tag.TAG_STRING))groups.add(g.getAsString());data.unlocked.put(p.getUUID("Player"),groups);}for(Tag entry:tag.getList("Mastery",Tag.TAG_COMPOUND)){var row=(CompoundTag)entry;if(row.hasUUID("Player")){Map<String,Long> counts=new HashMap<>();FAMILIES.forEach(family->counts.put(family,Math.max(0,row.getLong(family))));data.mastery.put(row.getUUID("Player"),counts);}}return data;}
+    public static ResearchData load(CompoundTag tag,HolderLookup.Provider lookup){ResearchData data=new ResearchData();for(Tag row:tag.getListOrEmpty("Players")){CompoundTag p=(CompoundTag)row;if(!p.hasUUID("Player"))continue;Set<String> groups=new TreeSet<>();for(Tag g:p.getListOrEmpty("Groups"))groups.add(g.getAsString());data.unlocked.put(p.getUUID("Player"),groups);}for(Tag entry:tag.getListOrEmpty("Mastery")){var row=(CompoundTag)entry;if(row.hasUUID("Player")){Map<String,Long> counts=new HashMap<>();FAMILIES.forEach(family->counts.put(family,Math.max(0,row.getLongOr(family,0L))));data.mastery.put(row.getUUID("Player"),counts);}}return data;}
 }

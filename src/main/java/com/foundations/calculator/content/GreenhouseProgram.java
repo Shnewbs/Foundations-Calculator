@@ -29,19 +29,19 @@ public final class GreenhouseProgram {
     }
     public static List<GreenhouseBlueprint.BlockPlace> blueprint(MachineBlockEntity m){return geometry(m).blueprint;}
     public static void tick(MachineBlockEntity m){
-        Level l=m.getLevel();int tier=tier(m),state=m.program.getInt("HouseState");
+        Level l=m.getLevel();int tier=tier(m),state=m.program.getIntOr("HouseState",0);
         if(tier<3&&(state==1||state==3)){build(m,state==3);return;}
         if(m.workDue(CalculatorConfig.integer("greenhouse.structureCheckInterval",20))||!m.program.contains("Checked")){
             boolean complete=tier==3?checkFlawless(m):checkBlueprint(m);
             m.program.putBoolean("Checked",true);m.program.putInt("HouseState",complete?2:0);m.setActive(complete);m.setChanged();
         }
-        if(m.program.getInt("HouseState")!=2||m.program.getBoolean("Paused")||l.hasNeighborSignal(m.getBlockPos()))return;
+        if(m.program.getIntOr("HouseState",0)!=2||m.program.getBooleanOr("Paused",false)||l.hasNeighborSignal(m.getBlockPos()))return;
         List<BlockPos> area=plantArea(m);
         if(m.workDue(CalculatorConfig.integer("greenhouse.carbonInterval",20))){
             importSeeds(m);int plants=0,lanterns=0;
             for(BlockPos p:area)if(l.hasChunkAt(p)&&l.getBlockState(p).getBlock() instanceof BonemealableBlock)plants++;
             int gas=0;
-            if(tier==3){if(l.hasChunkAt(relative(m,3,0,0))&&l.getBlockEntity(relative(m,3,0,0)) instanceof MachineBlockEntity gen&&gen.kind().equals("co2_generator"))gas=gen.program.getInt("GasAdd")*2;}
+            if(tier==3){if(l.hasChunkAt(relative(m,3,0,0))&&l.getBlockEntity(relative(m,3,0,0)) instanceof MachineBlockEntity gen&&gen.kind().equals("co2_generator"))gas=gen.program.getIntOr("GasAdd",0)*2;}
             else{
                 int range=tier==1?1:3,front=tier==1?2:4;
                 for(int x=-range;x<=range;x++)for(int z=-range;z<=range;z++)for(int y=0;y<(tier==1?3:5);y++){
@@ -49,17 +49,17 @@ public final class GreenhouseProgram {
                 }gas=(int)Math.min(Integer.MAX_VALUE,(long)lanterns*CalculatorConfig.integer("greenhouse.lanternCarbon",50));
             }
             int effective=tier==2?plants/5:plants;
-            m.program.putInt("Carbon",(int)Math.clamp(m.program.getInt("Carbon")+(l.isDay()?(long)gas-effective*(long)CalculatorConfig.integer("greenhouse.dayCarbonUse",8):(long)gas+effective*(long)CalculatorConfig.integer("greenhouse.nightCarbonGain",2)),0,100000));
+            m.program.putInt("Carbon",(int)Math.clamp(m.program.getIntOr("Carbon",0)+(l.isDay()?(long)gas-effective*(long)CalculatorConfig.integer("greenhouse.dayCarbonUse",8):(long)gas+effective*(long)CalculatorConfig.integer("greenhouse.nightCarbonGain",2)),0,100000));
             farmland(m,area);m.setChanged();
         }
         int plantInterval=tier==1?CalculatorConfig.integer("greenhouse.basicPlantInterval",60):tier==2?CalculatorConfig.integer("greenhouse.advancedPlantInterval",10):CalculatorConfig.integer("greenhouse.flawlessPlantInterval",2);
         if(m.workDue(plantInterval))tend(m,area);
-        int oxygen=100000-m.program.getInt("Carbon"),band=oxygen>=90000?0:oxygen>=50000?1:oxygen>=30000?2:oxygen>=10000?3:4;
+        int oxygen=100000-m.program.getIntOr("Carbon",0),band=oxygen>=90000?0:oxygen>=50000?1:oxygen>=30000?2:oxygen>=10000?3:4;
         int[][] intervals={{400,300,200,150,80},{300,200,100,50,15},{200,100,50,25,15}};
         m.totalTicks=CalculatorConfig.ticks(m.kind(),CalculatorConfig.integer("greenhouse."+(tier==1?"basic":tier==2?"advanced":"flawless")+"GrowthBand"+band,intervals[tier-1][band]));
         if(++m.progress>=m.totalTicks){
             m.progress=0;for(int i=0;i<(tier==3?Math.max(1,geometry(m).length):1)&&!area.isEmpty();i++){
-                BlockPos p=area.get(l.random.nextInt(area.size()));if(m.energy.getEnergyStored()>=CalculatorConfig.energy(m.kind(),CalculatorConfig.integer("greenhouse.growEnergy",150))&&l.hasChunkAt(p)&&MachinePrograms.grow(m,p)){m.energy.extractEnergy(CalculatorConfig.energy(m.kind(),CalculatorConfig.integer("greenhouse.growEnergy",150)),false);m.program.putInt("Grown",m.program.getInt("Grown")+1);}
+                BlockPos p=area.get(l.getRandom().nextInt(area.size()));if(m.energy.getEnergyStored()>=CalculatorConfig.energy(m.kind(),CalculatorConfig.integer("greenhouse.growEnergy",150))&&l.hasChunkAt(p)&&MachinePrograms.grow(m,p)){m.energy.extractEnergy(CalculatorConfig.energy(m.kind(),CalculatorConfig.integer("greenhouse.growEnergy",150)),false);m.program.putInt("Grown",m.program.getIntOr("Grown",0)+1);}
             }
         }m.setChanged();
     }
@@ -125,7 +125,7 @@ public final class GreenhouseProgram {
                     if(!replant)fallow.add(pos.asLong());
                     m.energy.extractEnergy(harvestCost,false);
                     for(ItemStack drop:result.drops())storeCrop(m,drop);
-                    m.program.putInt("Harvested",(int)Math.min(Integer.MAX_VALUE,(long)m.program.getInt("Harvested")+1));m.setChanged();
+                    m.program.putInt("Harvested",(int)Math.min(Integer.MAX_VALUE,(long)m.program.getIntOr("Harvested",0)+1));m.setChanged();
                 }
             }
             if(CalculatorConfig.flag("greenhouse.autoPlant",true)&&level.isEmptyBlock(pos)&&!fallow.contains(pos.asLong())&&m.energy.getEnergyStored()>=plantCost){
@@ -212,8 +212,8 @@ public final class GreenhouseProgram {
                 m.burnTime=CalculatorConfig.integer("greenhouse.co2FuelTicks",10000);m.energy.extractEnergy(CalculatorConfig.energy(m.kind(),CalculatorConfig.integer("greenhouse.co2FuelEnergy",100000)),false);
             }
         }
-        boolean controlled=m.program.getBoolean("Controlled"),running=!controlled||house.program.getInt("Carbon")<=CalculatorConfig.integer("greenhouse.controlledMinimumCarbon",92000)||m.program.getBoolean("GasRunning")&&house.program.getInt("Carbon")<CalculatorConfig.integer("greenhouse.controlledMaximumCarbon",100000);
-        m.program.putBoolean("GasRunning",running);m.program.putInt("GasAdd",running&&m.burnTime>0?(controlled?800:m.program.getInt("FuelGas")):0);
+        boolean controlled=m.program.getBooleanOr("Controlled",false),running=!controlled||house.program.getIntOr("Carbon",0)<=CalculatorConfig.integer("greenhouse.controlledMinimumCarbon",92000)||m.program.getBooleanOr("GasRunning",false)&&house.program.getIntOr("Carbon",0)<CalculatorConfig.integer("greenhouse.controlledMaximumCarbon",100000);
+        m.program.putBoolean("GasRunning",running);m.program.putInt("GasAdd",running&&m.burnTime>0?(controlled?800:m.program.getIntOr("FuelGas",0)):0);
         if(running&&m.burnTime>0)m.burnTime--;m.setActive(running&&m.burnTime>0);m.setChanged();
     }
 }

@@ -73,16 +73,16 @@ public class CalculatorItem extends Item {
         if(!CalculatorConfig.enabled(kind))return InteractionResultHolder.fail(carrier);
         if(kind.equals("flawless_calculator")){
             if(player.isShiftKeyDown()){
-                if(!level.isClientSide){
-                    CompoundTag tag=CircuitData.tag(carrier);int selected=tag.getInt("SelectedModule");
+                if(!level.isClientSide()){
+                    CompoundTag tag=CircuitData.tag(carrier);int selected=tag.getIntOr("SelectedModule",0);
                     for(int attempt=0;attempt<17;attempt++){selected=(selected+1)%17;tag.putInt("SelectedModule",selected);UtilityItems.put(carrier,tag);if(selected==0||!ModuleWorkstation.selected(carrier).isEmpty())break;}
                     ItemStack module=ModuleWorkstation.selected(carrier);player.displayClientMessage(Component.literal("Module: ").append(module.isEmpty()?Component.literal("Flawless calculation"):module.getHoverName()),true);
-                }return InteractionResultHolder.sidedSuccess(carrier,level.isClientSide);
+                }return InteractionResultHolder.sidedSuccess(carrier,level.isClientSide());
             }
             ItemStack selected=ModuleWorkstation.selected(carrier);if(!selected.isEmpty()){stack=selected;mode=switch(Content.path(selected)){case "atomic_assembly"->"dynamic_module";case "flawless_assembly"->"flawless_calculator";default->Content.path(selected);};}
         }
         if(!CalculatorConfig.enabled(mode))return InteractionResultHolder.fail(carrier);
-        if(level.isClientSide){if(mode.equals("info_calculator"))com.foundations.calculator.client.GuideScreen.open();return InteractionResultHolder.success(carrier);}
+        if(level.isClientSide()){if(mode.equals("info_calculator"))com.foundations.calculator.client.GuideScreen.open();return InteractionResultHolder.success(carrier);}
         if(mode.equals("info_calculator"))return InteractionResultHolder.consume(carrier);
         if(List.of("calculator","scientific_calculator","atomic_calculator","flawless_calculator","dynamic_module").contains(mode)){
             String selectedMode=mode;
@@ -108,7 +108,7 @@ public class CalculatorItem extends Item {
         ItemStack carrier=c.getItemInHand(),stack=carrier;String mode=kind;
         if(kind.equals("flawless_calculator")){ItemStack selected=ModuleWorkstation.selected(carrier);if(!selected.isEmpty()){stack=selected;mode=switch(Content.path(selected)){case "atomic_assembly"->"dynamic_module";case "flawless_assembly"->"flawless_calculator";default->Content.path(selected);};}}
         InteractionResult result=UtilityItems.onBlock(mode,stack,carrier,c);
-        if(stack!=carrier&&!c.getLevel().isClientSide)ModuleWorkstation.saveSelected(carrier,stack);
+        if(stack!=carrier&&!c.getLevel().isClientSide())ModuleWorkstation.saveSelected(carrier,stack);
         if(result!=InteractionResult.PASS)return result;
         Player player=c.getPlayer();var state=c.getLevel().getBlockState(c.getClickedPos());
         if(kind.equals("wrench"))return WrenchActions.use(c);
@@ -116,7 +116,7 @@ public class CalculatorItem extends Item {
     }
     public boolean canFitInsideContainerItems(){return !kind.equals("storage_module")&&!kind.equals("smelting_module")&&!kind.equals("flawless_calculator");}
     public void inventoryTick(ItemStack stack,Level level,net.minecraft.world.entity.Entity entity,int slot,boolean selected){
-        if(!level.isClientSide&&CalculatorConfig.flag("module.smelting_module.backgroundProcessing",true)){
+        if(!level.isClientSide()&&CalculatorConfig.flag("module.smelting_module.backgroundProcessing",true)){
             boolean open=entity instanceof Player p&&p.containerMenu instanceof com.foundations.calculator.menu.SmeltingModuleMenu menu&&menu.carrier==stack;
             if(kind.equals("smelting_module")&&!open)SmeltingModule.tick(stack,stack,level);
             if(kind.equals("flawless_calculator")&&!open){
@@ -127,14 +127,14 @@ public class CalculatorItem extends Item {
                 }
             }
         }
-        if(kind.equals("flawless_calculator")&&!level.isClientSide&&level.getGameTime()%CalculatorConfig.integer("nutrition.restoreInterval",10)==0&&entity instanceof Player player){
+        if(kind.equals("flawless_calculator")&&!level.isClientSide()&&level.getGameTime()%CalculatorConfig.integer("nutrition.restoreInterval",10)==0&&entity instanceof Player player){
             var modules=net.minecraft.core.NonNullList.withSize(16,ItemStack.EMPTY);stack.getOrDefault(Content.MODULES.get(),net.minecraft.world.item.component.ItemContainerContents.EMPTY).copyInto(modules);
             for(ItemStack module:modules){
                 if(Content.path(module).equals("nutrition_module"))NutritionData.restore(player,module,CalculatorConfig.integer("nutrition.automaticRestoreLimit",2));
                 
             }stack.set(Content.MODULES.get(),net.minecraft.world.item.component.ItemContainerContents.fromItems(modules));
         }
-        if(kind.equals("nutrition_module")&&!level.isClientSide&&level.getGameTime()%CalculatorConfig.integer("nutrition.restoreInterval",10)==0&&entity instanceof Player player)NutritionData.restore(player,stack,CalculatorConfig.integer("nutrition.automaticRestoreLimit",2));
+        if(kind.equals("nutrition_module")&&!level.isClientSide()&&level.getGameTime()%CalculatorConfig.integer("nutrition.restoreInterval",10)==0&&entity instanceof Player player)NutritionData.restore(player,stack,CalculatorConfig.integer("nutrition.automaticRestoreLimit",2));
     }
     public boolean isBarVisible(ItemStack stack){return capacity>0;}
     public int getBarWidth(ItemStack stack){long cap=maxEnergyLong(stack);return cap<=0?0:(int)Math.min(13,13.0*energyLong(stack)/Math.max(1L,cap));}
@@ -144,7 +144,7 @@ public class CalculatorItem extends Item {
         if(com.foundations.calculator.core.ClientConfig.flag(com.foundations.calculator.core.ClientConfig.ENERGY_TOOLTIPS)&&capacity>0)tooltip.add(Component.literal(com.foundations.calculator.core.EnergyDisplay.formatFE(energyLong(stack),maxEnergyLong(stack))));
         for(String type:List.of("health","hunger"))if(NutritionData.capacity(stack,type)>0)tooltip.add(Component.literal(type+": "+NutritionData.get(stack,type)));
         if(kind.equals("flawless_calculator")){ItemStack module=ModuleWorkstation.selected(stack);tooltip.add(Component.literal("Module: ").append(module.isEmpty()?Component.literal("Flawless calculation"):module.getHoverName()));tooltip.add(Component.literal("Sneak-use to select an installed module."));}
-        if(kind.equals("locator_module")&&CircuitData.tag(stack).hasUUID("Owner"))tooltip.add(Component.literal("Owner: "+CircuitData.tag(stack).getString("OwnerName")));
+        if(kind.equals("locator_module")&&CircuitData.tag(stack).hasUUID("Owner"))tooltip.add(Component.literal("Owner: "+CircuitData.tag(stack).getStringOr("OwnerName","")));
         if(com.foundations.calculator.core.ClientConfig.flag(com.foundations.calculator.core.ClientConfig.INSTRUCTIONS)&&kind.contains("terrain_module"))tooltip.add(Component.literal("Sneak-use a block to select material; use to transform ("+CalculatorConfig.integer("module."+kind+".cost",1)+" FE)."));
         if(com.foundations.calculator.core.ClientConfig.flag(com.foundations.calculator.core.ClientConfig.INSTRUCTIONS)&&kind.equals("warp_module"))tooltip.add(Component.literal("Sneak-use stable stone to bind; use to warp ("+CalculatorConfig.integer("module.warp_module.cost",1000)+" FE)."));
         if(kind.startsWith("circuit_board_"))tooltip.add(Component.literal(CircuitData.analysed(stack)?(CircuitData.stable(stack)?"Stable · analysed":"Analysed"):"Not analysed"));

@@ -15,7 +15,7 @@ public final class BulkStorageMenu extends AbstractContainerMenu {
         super(Content.BULK_MENU.get(),id);machine=m;size=m.bulk.getSlots();
         for(int i=0;i<size;i++){final int index=i;addSlot(new SlotItemHandler(new ItemStackHandler(size),i,16+(i%9)*24,40+(i/9)*30){
             public ItemStack getItem(){
-                if(inv.player.level().isClientSide)return super.getItem();
+                if(inv.player.level().isClientSide())return super.getItem();
                 ItemStack sample=m.bulk.getStackInSlot(index);
                 return sample.isEmpty()?ItemStack.EMPTY:sample.copyWithCount(1);
             }
@@ -23,7 +23,7 @@ public final class BulkStorageMenu extends AbstractContainerMenu {
         });}
         for(int row=0;row<3;row++)for(int col=0;col<9;col++)addSlot(new Slot(inv,col+row*9+9,43+col*18,153+row*18));
         for(int col=0;col<9;col++)addSlot(new Slot(inv,col,43+col*18,211));
-        counts=inv.player.level().isClientSide?new SimpleContainerData(size*2):new ContainerData(){public int get(int i){return i%2==0?m.bulk.count(i/2)&65535:m.bulk.count(i/2)>>>16;}public void set(int i,int v){}public int getCount(){return size*2;}};addDataSlots(counts);m.startOpen(inv.player);
+        counts=inv.player.level().isClientSide()?new SimpleContainerData(size*2):new ContainerData(){public int get(int i){return i%2==0?m.bulk.count(i/2)&65535:m.bulk.count(i/2)>>>16;}public void set(int i,int v){}public int getCount(){return size*2;}};addDataSlots(counts);m.startOpen(inv.player);
     }
     @Override public void removed(Player player){super.removed(player);machine.stopOpen(player);}
     public int count(int slot){return (counts.get(slot*2)&65535)|((counts.get(slot*2+1)&65535)<<16);}
@@ -31,7 +31,7 @@ public final class BulkStorageMenu extends AbstractContainerMenu {
     public void clicked(int slot,int button,ClickType type,Player player){
         if(!stillValid(player))return;
         if(slot>=0&&slot<size){
-            if(player.level().isClientSide)return;
+            if(player.level().isClientSide())return;
             if(type==ClickType.QUICK_MOVE){quickMoveStack(player,slot);return;}
             if(type!=ClickType.PICKUP||(button!=0&&button!=1))return;
             ItemStack carried=getCarried();
@@ -42,7 +42,7 @@ public final class BulkStorageMenu extends AbstractContainerMenu {
         super.clicked(slot,button,type,player);
     }
     public ItemStack quickMoveStack(Player player,int slot){
-        if(!stillValid(player)||player.level().isClientSide||slot<0||slot>=slots.size())return ItemStack.EMPTY;
+        if(!stillValid(player)||player.level().isClientSide()||slot<0||slot>=slots.size())return ItemStack.EMPTY;
         if(slot<size){ItemStack offered=machine.bulk.extractItem(slot,64,true),copy=offered.copy();if(!moveItemStackTo(offered,size,slots.size(),true))return ItemStack.EMPTY;machine.bulk.extractItem(slot,copy.getCount()-offered.getCount(),false);broadcastChanges();return copy;}
         Slot source=slots.get(slot);ItemStack stack=source.getItem(),copy=stack.copy();if(stack.isEmpty())return ItemStack.EMPTY;
         ItemStack remaining=stack.copy();for(int i=0;i<size&&!remaining.isEmpty();i++)remaining=machine.bulk.insertItem(i,remaining,false);

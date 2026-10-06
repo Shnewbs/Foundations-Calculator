@@ -9,8 +9,8 @@ import net.minecraft.world.item.component.CustomData;
 
 public final class CircuitData {
     public static CompoundTag tag(ItemStack s) { return s.getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag(); }
-    public static boolean analysed(ItemStack s) { return tag(s).getBoolean("Analysed"); }
-    public static boolean stable(ItemStack s) { return s.is(Content.item("soil"))||tag(s).getInt("Stable") == 1; }
+    public static boolean analysed(ItemStack s) { return tag(s).getBooleanOr("Analysed",false); }
+    public static boolean stable(ItemStack s) { return s.is(Content.item("soil"))||tag(s).getIntOr("Stable",0) == 1; }
     public static void initialize(ItemStack s, RandomSource random) {
         CompoundTag t=tag(s);
         if(t.contains("Stable"))return;
@@ -20,7 +20,7 @@ public final class CircuitData {
         s.set(DataComponents.CUSTOM_DATA,CustomData.of(t));
     }
     public static void markAnalysed(ItemStack s) {
-        CompoundTag t=tag(s);t.putBoolean("Analysed",true);t.putInt("Stable",t.getInt("Stable")==1?1:0);t.remove("Energy");for(int i=1;i<=6;i++)t.remove("Item"+i);s.set(DataComponents.CUSTOM_DATA,CustomData.of(t));
+        CompoundTag t=tag(s);t.putBoolean("Analysed",true);t.putInt("Stable",t.getIntOr("Stable",0)==1?1:0);t.remove("Energy");for(int i=1;i<=6;i++)t.remove("Item"+i);s.set(DataComponents.CUSTOM_DATA,CustomData.of(t));
     }
     private CircuitData() {}
 }

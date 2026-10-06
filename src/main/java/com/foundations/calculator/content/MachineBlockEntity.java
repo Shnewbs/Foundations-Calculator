@@ -68,16 +68,16 @@ public class MachineBlockEntity extends BlockEntity implements MenuProvider {
     public boolean itemInput(Direction side) {
         return AutomationRules.permits(CalculatorConfig.machineFlag(kind(),"itemAutomation"),
             !kind().equals("module_workstation")&&!kind().equals("magnetic_flux"),
-            side==null?0:program.getInt("Side"+side.get3DDataValue()),false);
+            side==null?0:program.getIntOr("Side"+side.get3DDataValue(),0),false);
     }
     public boolean itemOutput(Direction side) {
         return AutomationRules.permits(CalculatorConfig.machineFlag(kind(),"itemAutomation"),
             !kind().equals("module_workstation")&&!kind().equals("magnetic_flux"),
-            side==null?0:program.getInt("Side"+side.get3DDataValue()),true);
+            side==null?0:program.getIntOr("Side"+side.get3DDataValue(),0),true);
     }
     /** Returns whether a packet was requested, useful to native regression tests. */
     public boolean syncClientState() {
-        if(level==null||level.isClientSide||isRemoved())return false;
+        if(level==null||level.isClientSide()||isRemoved())return false;
         ItemStack display=inventory.getStackInSlot(0);
         boolean changed=clientProgram.differs(program)||sentProgress!=progress||sentTotalTicks!=totalTicks
             ||sentEnergy!=energy.stored()||sentCrank!=lastCrankTick||!ItemStack.matches(clientDisplay,display);
@@ -87,15 +87,15 @@ public class MachineBlockEntity extends BlockEntity implements MenuProvider {
         level.sendBlockUpdated(worldPosition,getBlockState(),getBlockState(),2);return true;
     }
     public void startOpen(Player player) {
-        if(level==null||level.isClientSide||!kind().equals("reinforced_chest")||player.isSpectator())return;
+        if(level==null||level.isClientSide()||!kind().equals("reinforced_chest")||player.isSpectator())return;
         if(chestOpeners.add(player.getUUID()))updateLid();
     }
     public void stopOpen(Player player) {
         if(chestOpeners.remove(player.getUUID()))updateLid();
     }
     private void updateLid() {
-        if(level==null||level.isClientSide||isRemoved())return;
-        boolean open=!chestOpeners.isEmpty();if(open==program.getBoolean("LidOpen"))return;
+        if(level==null||level.isClientSide()||isRemoved())return;
+        boolean open=!chestOpeners.isEmpty();if(open==program.getBooleanOr("LidOpen",false))return;
         program.putBoolean("LidOpen",open);setChanged();syncClientState();
         if(CalculatorConfig.flag("world.chestSounds",true))level.playSound(null,worldPosition,
             open?net.minecraft.sounds.SoundEvents.CHEST_OPEN:net.minecraft.sounds.SoundEvents.CHEST_CLOSE,
@@ -117,7 +117,7 @@ public class MachineBlockEntity extends BlockEntity implements MenuProvider {
         super(Content.MACHINE_ENTITY.get(),p,state);bulk=new BulkStorage(kind().equals("storage_chamber"),()->CalculatorConfig.integer(kind().equals("storage_chamber")?"storage.circuitChamberPerBin":kind().equals("algorithm_assimilator")?"storage.assimilatorPerBin":"storage.reinforcedChestPerBin",kind().equals("storage_chamber")?1024:kind().equals("algorithm_assimilator")?64:256),this::setChanged);
         energy=new StoredEnergy(()->CalculatorConfig.machineCapacity(kind(),MachineDefinition.forMachine(kind()).capacity()),this::setChanged);
     }
-    public int redstoneMode(){return program.contains("RedstoneMode")?program.getInt("RedstoneMode"):CalculatorConfig.machine(kind(),"defaultRedstoneMode",0);}
+    public int redstoneMode(){return program.contains("RedstoneMode")?program.getIntOr("RedstoneMode",0):CalculatorConfig.machine(kind(),"defaultRedstoneMode",0);}
     public java.util.UUID owner(){return program.hasUUID("Owner")?program.getUUID("Owner"):null;}
     public String kind(){return net.minecraft.core.registries.BuiltInRegistries.BLOCK.getKey(getBlockState().getBlock()).getPath();}
     public int inputCount(){return MachineDefinition.forMachine(kind()).inputCount();}
@@ -139,10 +139,10 @@ public class MachineBlockEntity extends BlockEntity implements MenuProvider {
         int amount=supportsUpgrades()?upgrades("speed_upgrade"):0;
         return Math.max(1,(int)(Math.max(1,base)/(1.0+amount*CalculatorConfig.decimal("upgrades.speedBonus",.25))));
     }
-    public boolean energySideInput(Direction side){if(!CalculatorConfig.machineFlag(kind(),"energyInput"))return false;int mode=side==null?0:program.getInt("Side"+side.get3DDataValue());return mode==1||mode==0&&!MachineProfiles.generator(kind());}
-    public boolean energySideOutput(Direction side){if(!CalculatorConfig.machineFlag(kind(),"energyOutput"))return false;int mode=side==null?0:program.getInt("Side"+side.get3DDataValue());return mode==2||mode==0&&(MachineProfiles.generator(kind())||MachineProfiles.storage(kind()));}
-    public boolean sideInput(Direction side){int mode=side==null?0:program.getInt("Side"+side.get3DDataValue());return mode==0||mode==1;}
-    public boolean sideOutput(Direction side){int mode=side==null?0:program.getInt("Side"+side.get3DDataValue());return mode==0||mode==2;}
+    public boolean energySideInput(Direction side){if(!CalculatorConfig.machineFlag(kind(),"energyInput"))return false;int mode=side==null?0:program.getIntOr("Side"+side.get3DDataValue(),0);return mode==1||mode==0&&!MachineProfiles.generator(kind());}
+    public boolean energySideOutput(Direction side){if(!CalculatorConfig.machineFlag(kind(),"energyOutput"))return false;int mode=side==null?0:program.getIntOr("Side"+side.get3DDataValue(),0);return mode==2||mode==0&&(MachineProfiles.generator(kind())||MachineProfiles.storage(kind()));}
+    public boolean sideInput(Direction side){int mode=side==null?0:program.getIntOr("Side"+side.get3DDataValue(),0);return mode==0||mode==1;}
+    public boolean sideOutput(Direction side){int mode=side==null?0:program.getIntOr("Side"+side.get3DDataValue(),0);return mode==0||mode==2;}
     public com.foundations.calculator.api.LongEnergyStorage longEnergyPort(Direction side){if(!usesEnergy())return null;return new com.foundations.calculator.api.LongEnergyStorage(){
         public long receive(long n,boolean simulate){return energySideInput(side)?energy.receive(Math.min(Math.max(0L,n),MachineProfiles.transferLong(kind())),simulate):0;}
         public long extract(long n,boolean simulate){return energySideOutput(side)?energy.extract(Math.min(Math.max(0L,n),MachineProfiles.transferLong(kind())),simulate):0;}
@@ -161,11 +161,11 @@ public class MachineBlockEntity extends BlockEntity implements MenuProvider {
             public int getSlots(){return base.getSlots();}
             public ItemStack getStackInSlot(int slot){return base.getStackInSlot(slot);}
             private boolean extra(int slot,boolean output){
-                int mode=face==null?0:program.getInt("Side"+face.get3DDataValue());
+                int mode=face==null?0:program.getIntOr("Side"+face.get3DDataValue(),0);
                 return mode==(output?2:1)&&(slot==20&&hasBatterySlot()&&CalculatorConfig.flag("automation.allowBatterySlotAccess",true)||slot>=21&&supportsUpgrades()&&CalculatorConfig.flag("automation.allowUpgradeSlotAccess",false));
             }
             public ItemStack insertItem(int slot,ItemStack stack,boolean simulate){
-                boolean normal=slot<inputCount()&&(face!=Direction.DOWN||program.getInt("Side"+Direction.DOWN.get3DDataValue())==1);
+                boolean normal=slot<inputCount()&&(face!=Direction.DOWN||program.getIntOr("Side"+Direction.DOWN.get3DDataValue(),0)==1);
                 return itemInput(face)&&(bulkInventory()||normal||extra(slot,false))?base.insertItem(slot,stack,simulate):stack;
             }
             public ItemStack extractItem(int slot,int count,boolean simulate){
@@ -173,7 +173,7 @@ public class MachineBlockEntity extends BlockEntity implements MenuProvider {
             }
             public int getSlotLimit(int slot){return base.getSlotLimit(slot);}
             public boolean isItemValid(int slot,ItemStack stack){return itemInput(face)&&base.isItemValid(slot,stack)&&(bulkInventory()||
-                    slot<inputCount()&&(face!=Direction.DOWN||program.getInt("Side"+Direction.DOWN.get3DDataValue())==1)||extra(slot,false));}
+                    slot<inputCount()&&(face!=Direction.DOWN||program.getIntOr("Side"+Direction.DOWN.get3DDataValue(),0)==1)||extra(slot,false));}
         };
     }
     public static void tick(Level level,BlockPos pos,BlockState state,MachineBlockEntity m){
@@ -181,9 +181,9 @@ public class MachineBlockEntity extends BlockEntity implements MenuProvider {
         // Early returns for idle, disabled, redstone-paused or blocked-output machines must not suppress UI updates.
         if(m.workDue(CalculatorConfig.integer("performance.clientSyncInterval",10)))m.syncClientState();
     }
-    public static void clientTick(Level level,BlockPos pos,BlockState state,MachineBlockEntity m){m.previousLid=m.lid;float speed=(float)ClientConfig.chestSpeed();m.lid=Math.clamp(m.lid+(m.program.getBoolean("LidOpen")?speed:-speed),0,1);}
+    public static void clientTick(Level level,BlockPos pos,BlockState state,MachineBlockEntity m){m.previousLid=m.lid;float speed=(float)ClientConfig.chestSpeed();m.lid=Math.clamp(m.lid+(m.program.getBooleanOr("LidOpen",false)?speed:-speed),0,1);}
     private void serverTick(){
-        if(level==null||level.isClientSide)return;
+        if(level==null||level.isClientSide())return;
         if(kind().equals("reinforced_chest"))recheckOpeners();
         if(storage()||!CalculatorConfig.machineEnabled(kind()))return;
         int redstone=redstoneMode();
@@ -249,9 +249,9 @@ public class MachineBlockEntity extends BlockEntity implements MenuProvider {
             int n=(int)Math.min(energy.stored(),MachineProfiles.transfer(kind()));
             // Automatic storage ports equalize banks instead of sending the same FE
             // backwards every tick. Explicit input/output sides retain forced routing.
-            if(CalculatorConfig.flag("automation.balanceCubes",true)&&MachineProfiles.storage(kind())&&program.getInt("Side"+side.get3DDataValue())==0
+            if(CalculatorConfig.flag("automation.balanceCubes",true)&&MachineProfiles.storage(kind())&&program.getIntOr("Side"+side.get3DDataValue(),0)==0
                 &&level.getBlockEntity(worldPosition.relative(side)) instanceof MachineBlockEntity bank
-                &&MachineProfiles.storage(bank.kind())&&bank.program.getInt("Side"+side.getOpposite().get3DDataValue())==0){
+                &&MachineProfiles.storage(bank.kind())&&bank.program.getIntOr("Side"+side.getOpposite().get3DDataValue(),0)==0){
                 long surplus=saturatingProduct(energy.stored(),bank.energy.capacity())-saturatingProduct(bank.energy.stored(),energy.capacity());
                 long capacities=saturatingSum(energy.capacity(),bank.energy.capacity());
                 n=(int)Math.min(n,Math.max(0,surplus/capacities));
@@ -269,7 +269,7 @@ public class MachineBlockEntity extends BlockEntity implements MenuProvider {
                     int count=recipe.allocation(input)[0];
                     for(int i=0;i<count;i++)if(feed.hasCraftingRemainingItem())pending.add(feed.getCraftingRemainingItem());
                     inventory.extractItem(1,count,false);nutrient+=recipe.value();
-                    for(var result:recipe.outputs()){ItemStack out=result.roll(level.random);if(!out.isEmpty())pending.add(out);}
+                    for(var result:recipe.outputs()){ItemStack out=result.roll(level.getRandom());if(!out.isEmpty())pending.add(out);}
                     setChanged();break;
                 }
             }
@@ -309,16 +309,16 @@ public class MachineBlockEntity extends BlockEntity implements MenuProvider {
         if(energy.getEnergyStored()<cost){if(!CalculatorConfig.machineFlag(kind(),"retainProgressWithoutPower"))progress=0;return;}
         if(++progress<totalTicks){setChanged();return;}progress=0;energy.extractEnergy(cost,false);
         circuit=inventory.extractItem(0,1,false);
-        CircuitData.initialize(circuit,level.random);
+        CircuitData.initialize(circuit,level.getRandom());
         CompoundTag tag=CircuitData.tag(circuit);
         ProcessInput input=new ProcessInput(List.of(circuit));
         for(int category=0;category<=6;category++){
-            int roll=tag.getInt(category==0?"Energy":"Item"+category);
+            int roll=tag.getIntOr(category==0?"Energy":"Item"+category,0);
             var reward=RecipeIndex.forMachine(level,"analysis_"+category).stream()
                 .filter(r->r.value().value()==roll&&r.value().matches(input,level)).findFirst();
             if(reward.isPresent()){
                 ProcessRecipe recipe=reward.get().value();
-                for(var result:recipe.outputs()){ItemStack out=result.roll(level.random);if(!out.isEmpty())pending.add(out);}
+                for(var result:recipe.outputs()){ItemStack out=result.roll(level.getRandom());if(!out.isEmpty())pending.add(out);}
                 energy.receiveEnergy(recipe.energy(),false);
             }
         }
@@ -343,7 +343,7 @@ public class MachineBlockEntity extends BlockEntity implements MenuProvider {
             if(value>0&&value<=Integer.MAX_VALUE-nutrient){
                 for(int i=0;i<count;i++)if(in.hasCraftingRemainingItem())pending.add(in.getCraftingRemainingItem());
                 inventory.extractItem(0,count,false);nutrient+=value;
-                if(recipe.isPresent())for(var result:recipe.get().value().outputs()){ItemStack out=result.roll(level.random);if(!out.isEmpty())pending.add(out);}
+                if(recipe.isPresent())for(var result:recipe.get().value().outputs()){ItemStack out=result.roll(level.getRandom());if(!out.isEmpty())pending.add(out);}
                 setChanged();
             }
         }
@@ -351,7 +351,7 @@ public class MachineBlockEntity extends BlockEntity implements MenuProvider {
         if(n>0){nutrient-=n;setChanged();}
     }
     public void dropContents(){
-        if(level==null||level.isClientSide||suppressDrops)return;
+        if(level==null||level.isClientSide()||suppressDrops)return;
         if(kind().equals("module_workstation")){ModuleWorkstation.flush(this);updatingModules=true;for(int i=0;i<16;i++)inventory.setStackInSlot(i,ItemStack.EMPTY);}
         for(int i=0;i<SIZE;i++){Containers.dropItemStack(level,worldPosition.getX()+.5,worldPosition.getY()+.5,worldPosition.getZ()+.5,inventory.getStackInSlot(i));inventory.setStackInSlot(i,ItemStack.EMPTY);}
         if(bulkInventory())for(int i=0;i<bulk.getSlots();i++)while(bulk.count(i)>0)Containers.dropItemStack(level,worldPosition.getX()+.5,worldPosition.getY()+.5,worldPosition.getZ()+.5,bulk.extractItem(i,64,false));
@@ -364,17 +364,17 @@ public class MachineBlockEntity extends BlockEntity implements MenuProvider {
         ListTag list=new ListTag();for(ItemStack s:pending)if(!s.isEmpty())list.add(s.save(lookup));tag.put("Pending",list);
     }
     protected void loadAdditional(CompoundTag tag,HolderLookup.Provider lookup){
-        super.loadAdditional(tag,lookup);program=tag.getCompound("Program").copy();
+        super.loadAdditional(tag,lookup);program=tag.getCompoundOrEmpty("Program").copy();
         chestOpeners.clear();program.remove("LidOpen");program.remove("Checked");program.remove("DynamicFormed");
         greenhouseGeometry=null;recipeSelection.clear();clientProgram.clear();
-        inventory.deserializeNBT(lookup,tag.getCompound("Inventory"));energy.load(tag.getLong("Energy"));
-        if(bulkInventory()){bulk.load(tag.getCompound("Bulk"),lookup);if(!tag.contains("Bulk"))for(int i=0;i<SIZE;i++){ItemStack left=inventory.getStackInSlot(i);for(int n=0;n<bulk.getSlots()&&!left.isEmpty();n++)left=bulk.insertItem(n,left,false);inventory.setStackInSlot(i,left);}}
-        progress=Math.max(0,tag.getInt("Progress"));burnTime=Math.max(0,tag.getInt("BurnTime"));nutrient=Math.max(0,tag.getInt("Nutrient"));activeRecipe=tag.getString("Recipe");
-        pending.clear();for(Tag t:tag.getList("Pending",Tag.TAG_COMPOUND))ItemStack.parse(lookup,t).ifPresent(pending::add);
+        inventory.deserializeNBT(lookup,tag.getCompoundOrEmpty("Inventory"));energy.load(tag.getLongOr("Energy",0L));
+        if(bulkInventory()){bulk.load(tag.getCompoundOrEmpty("Bulk"),lookup);if(!tag.contains("Bulk"))for(int i=0;i<SIZE;i++){ItemStack left=inventory.getStackInSlot(i);for(int n=0;n<bulk.getSlots()&&!left.isEmpty();n++)left=bulk.insertItem(n,left,false);inventory.setStackInSlot(i,left);}}
+        progress=Math.max(0,tag.getIntOr("Progress",0));burnTime=Math.max(0,tag.getIntOr("BurnTime",0));nutrient=Math.max(0,tag.getIntOr("Nutrient",0));activeRecipe=tag.getStringOr("Recipe","");
+        pending.clear();for(Tag t:tag.getListOrEmpty("Pending"))ItemStack.parse(lookup,t).ifPresent(pending::add);
     }
     public void setActive(boolean active){if(level!=null&&getBlockState().getValue(MachineBlock.ACTIVE)!=active)level.setBlockAndUpdate(worldPosition,getBlockState().setValue(MachineBlock.ACTIVE,active));}
     public boolean action(Player player,int action){
-        if(level==null||level.isClientSide||player.level()!=level||player.distanceToSqr(worldPosition.getCenter())>64||
+        if(level==null||level.isClientSide()||player.level()!=level||player.distanceToSqr(worldPosition.getCenter())>64||
             !level.mayInteract(player,worldPosition))return false;
         if(action==27){
             if(player instanceof net.minecraft.server.level.ServerPlayer sp && PowerDiagnostics.showMachine(sp,this)){
@@ -383,23 +383,23 @@ public class MachineBlockEntity extends BlockEntity implements MenuProvider {
             return false;
         }
         if(action==26){program.putInt("RedstoneMode",(redstoneMode()+1)%4);setChanged();return true;}
-        if(action>=20&&action<26){String key="Side"+(action-20);program.putInt(key,(program.getInt(key)+1)%4);setChanged();return true;}
+        if(action>=20&&action<26){String key="Side"+(action-20);program.putInt(key,(program.getIntOr(key,0)+1)%4);setChanged();return true;}
         switch(kind()){
             case "basic_greenhouse","advanced_greenhouse","flawless_greenhouse"->{
-                if(action==10){program.putBoolean("Paused",!program.getBoolean("Paused"));}
+                if(action==10){program.putBoolean("Paused",!program.getBooleanOr("Paused",false));}
                 else if(action==11&&!kind().equals("flawless_greenhouse"))program.putInt("HouseState",1);
                 else if(action==12&&!kind().equals("flawless_greenhouse"))program.putInt("HouseState",3);
                 else return false;
             }
-            case "weather_controller"->{if(action==10)program.putInt("Mode",(program.getInt("Mode")+1)%3);else if(action==11)program.putBoolean("Target",!program.getBoolean("Target"));else return false;progress=0;}
-            case "magnetic_flux"->{if(action==10)program.putBoolean("Whitelist",!program.getBoolean("Whitelist"));else if(action==11)program.putBoolean("MatchTags",!program.getBoolean("MatchTags"));else return false;}
+            case "weather_controller"->{if(action==10)program.putInt("Mode",(program.getIntOr("Mode",0)+1)%3);else if(action==11)program.putBoolean("Target",!program.getBooleanOr("Target",false));else return false;progress=0;}
+            case "magnetic_flux"->{if(action==10)program.putBoolean("Whitelist",!program.getBooleanOr("Whitelist",false));else if(action==11)program.putBoolean("MatchTags",!program.getBooleanOr("MatchTags",false));else return false;}
             default->{return false;}
         }setChanged();return true;
     }
     public void onDataPacket(net.minecraft.network.Connection connection,net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket packet,HolderLookup.Provider lookup){handleUpdateTag(packet.getTag(),lookup);}
     public net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket getUpdatePacket(){return net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket.create(this);}
     public CompoundTag getUpdateTag(HolderLookup.Provider lookup){CompoundTag tag=new CompoundTag();tag.put("Program",program.copy());tag.putInt("Progress",progress);tag.putInt("TotalTicks",totalTicks);tag.putLong("Energy",energy.stored());tag.putLong("LastCrank",lastCrankTick);if(!inventory.getStackInSlot(0).isEmpty())tag.put("Display",inventory.getStackInSlot(0).save(lookup));return tag;}
-    public void handleUpdateTag(CompoundTag tag,HolderLookup.Provider lookup){program=tag.getCompound("Program");progress=tag.getInt("Progress");totalTicks=tag.getInt("TotalTicks");energy.load(tag.getLong("Energy"));lastCrankTick=tag.getLong("LastCrank");inventory.setStackInSlot(0,tag.contains("Display")?ItemStack.parse(lookup,tag.get("Display")).orElse(ItemStack.EMPTY):ItemStack.EMPTY);}
+    public void handleUpdateTag(CompoundTag tag,HolderLookup.Provider lookup){program=tag.getCompoundOrEmpty("Program");progress=tag.getIntOr("Progress",0);totalTicks=tag.getIntOr("TotalTicks",0);energy.load(tag.getLongOr("Energy",0L));lastCrankTick=tag.getLongOr("LastCrank",0L);inventory.setStackInSlot(0,tag.contains("Display")?ItemStack.parse(lookup,tag.get("Display")).orElse(ItemStack.EMPTY):ItemStack.EMPTY);}
     public Component getDisplayName(){return getBlockState().getBlock().getName();}
     public AbstractContainerMenu createMenu(int id,Inventory inv,Player p){return bulkInventory()?new com.foundations.calculator.menu.BulkStorageMenu(id,inv,this):CalculatorMenu.forMachine(id,inv,this);}
 }

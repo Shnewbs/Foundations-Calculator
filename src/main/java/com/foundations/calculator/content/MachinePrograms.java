@@ -69,8 +69,8 @@ public final class MachinePrograms {
     }
     private static void weather(MachineBlockEntity m) {
         ServerLevel level=(ServerLevel)m.getLevel();CompoundTag s=m.program;
-        if(s.getInt("Cooldown")>0){s.putInt("Cooldown",s.getInt("Cooldown")-1);m.setChanged();return;}
-        int mode=s.getInt("Mode");boolean target=s.getBoolean("Target");
+        if(s.getIntOr("Cooldown",0)>0){s.putInt("Cooldown",s.getIntOr("Cooldown",0)-1);m.setChanged();return;}
+        int mode=s.getIntOr("Mode",0);boolean target=s.getBooleanOr("Target",false);
         boolean current=switch(mode){case 1->level.getLevelData().isRaining();case 2->level.getLevelData().isThundering();default->!level.isDay();};
         if(!level.hasNeighborSignal(m.getBlockPos())||current==target){m.progress=0;m.setActive(false);return;}
         m.totalTicks=CalculatorConfig.ticks(m.kind(),CalculatorConfig.integer("world.weatherDuration",100));
@@ -95,9 +95,9 @@ public final class MachinePrograms {
         if(burning){m.burnTime--;m.setChanged();}m.setActive(burning);
     }
     private static void scarecrow(MachineBlockEntity m) {
-        int ticks=m.program.getInt("GrowTicks")+1;m.program.putInt("GrowTicks",ticks);
+        int ticks=m.program.getIntOr("GrowTicks",0)+1;m.program.putInt("GrowTicks",ticks);
         if(ticks>=CalculatorConfig.SCARECROW_INTERVAL.get()){
-            m.program.putInt("GrowTicks",0);int range=CalculatorConfig.SCARECROW_RANGE.get();var r=m.getLevel().random;
+            m.program.putInt("GrowTicks",0);int range=CalculatorConfig.SCARECROW_RANGE.get();var r=m.getLevel().getRandom();
             BlockPos p=m.getBlockPos().offset(r.nextInt(2*range+1)-range,0,r.nextInt(2*range+1)-range);
             if(m.getLevel().hasChunkAt(p))grow(m,p);
         }m.setChanged();
@@ -114,8 +114,8 @@ public final class MachinePrograms {
             if(!MachineWorldActions.legacyAllowed(machine,pos,MachineWorldActions.Action.GROW))return false;
         }
         if(!MachineWorldActions.permits(machine,pos,state,null,new ItemStack(Items.BONE_MEAL),MachineWorldActions.Action.GROW))return false;
-        if(!plant.isBonemealSuccess(level,level.random,pos,state))return false;
-        plant.performBonemeal(level,level.random,pos,state);
+        if(!plant.isBonemealSuccess(level,level.getRandom(),pos,state))return false;
+        plant.performBonemeal(level,level.getRandom(),pos,state);
         // Native crops are single-block. Opaque opted-in callbacks retain their declared bonemeal success behavior.
         boolean changed=!state.equals(level.getBlockState(pos))||!bounded;
         if(changed)level.levelEvent(1505,pos,0);return changed;
@@ -123,13 +123,13 @@ public final class MachinePrograms {
     /** Raw addon helper. Machine callers must use the owner-aware overload above. */
     public static boolean grow(ServerLevel level,BlockPos pos){
         BlockState state=level.getBlockState(pos);
-        if(state.getBlock() instanceof BonemealableBlock b&&b.isValidBonemealTarget(level,pos,state)&&b.isBonemealSuccess(level,level.random,pos,state)){
-            b.performBonemeal(level,level.random,pos,state);level.levelEvent(1505,pos,0);return true;
+        if(state.getBlock() instanceof BonemealableBlock b&&b.isValidBonemealTarget(level,pos,state)&&b.isBonemealSuccess(level,level.getRandom(),pos,state)){
+            b.performBonemeal(level,level.getRandom(),pos,state);level.levelEvent(1505,pos,0);return true;
         }return false;
     }
     private static void magnet(MachineBlockEntity m) {
         Level level=m.getLevel();if(level.hasNeighborSignal(m.getBlockPos()))return;
-        boolean whitelist=m.program.getBoolean("Whitelist"),tags=m.program.getBoolean("MatchTags");
+        boolean whitelist=m.program.getBooleanOr("Whitelist",false),tags=m.program.getBooleanOr("MatchTags",false);
         Vec3 target=Vec3.atBottomCenterOf(m.getBlockPos()).add(0,.2,0);
         for(ItemEntity entity:level.getEntitiesOfClass(ItemEntity.class,new AABB(m.getBlockPos()).inflate(CalculatorConfig.integer("world.magnetRadius",10)))){
             ItemStack stack=entity.getItem();boolean matched=false;
@@ -145,7 +145,7 @@ public final class MachinePrograms {
     private static void assimilator(MachineBlockEntity m) {
         boolean stone=m.kind().equals("stone_assimilator");Level level=m.getLevel();
         if(stone)for(String type:List.of("health","hunger")){
-            int points=m.program.getInt(type);int sent=NutritionData.add(m.inventory.getStackInSlot(20),type,Math.min(CalculatorConfig.integer("nutrition.machineTransfer",4),points));
+            int points=m.program.getIntOr(type,0);int sent=NutritionData.add(m.inventory.getStackInSlot(20),type,Math.min(CalculatorConfig.integer("nutrition.machineTransfer",4),points));
             if(sent>0){m.program.putInt(type,points-sent);m.setChanged();}
         }
         if(!m.workDue(CalculatorConfig.integer("world.assimilatorInterval",30)))return;
@@ -158,7 +158,7 @@ public final class MachinePrograms {
             BlockState state=level.getBlockState(p);if(!(state.getBlock() instanceof HarvestLeaves)||state.getValue(HarvestLeaves.AGE)<CalculatorConfig.integer("plants.leafMatureAge",2))continue;
             String type=state.is(Content.block("amethyst_leaves"))?"hunger":state.is(Content.block("tanzanite_leaves"))?"health":"";
             if(stone&&!type.isEmpty()){
-                int points=m.program.getInt(type);if(points==Integer.MAX_VALUE)continue;
+                int points=m.program.getIntOr(type,0);if(points==Integer.MAX_VALUE)continue;
                 if(!MachineWorldActions.replace(m,p.immutable(),state,state.setValue(HarvestLeaves.AGE,
                     CalculatorConfig.integer("plants.leafHarvestResetAge",0)),ItemStack.EMPTY,MachineWorldActions.Action.LEAF_HARVEST))continue;
                 m.program.putInt(type,(int)Math.min(Integer.MAX_VALUE,(long)points+CalculatorConfig.integer("nutrition.leafYield",1)));m.setChanged();break;
@@ -210,7 +210,7 @@ public final class MachinePrograms {
         int cost=CalculatorConfig.energy(m.kind(),CalculatorConfig.MULTIPLIER_ENERGY.get());m.totalTicks=CalculatorConfig.ticks(m.kind(),CalculatorConfig.integer("world.atomicMultiplierTicks",1000));
         if(m.energy.getEnergyStored()<cost){if(!CalculatorConfig.machineFlag(m.kind(),"retainProgressWithoutPower"))m.progress=0;return;}
         String fingerprint=BuiltInRegistries.ITEM.getKey(input.getItem()).toString();
-        if(!fingerprint.equals(m.program.getString("MultiplierInput"))){m.progress=0;m.program.putString("MultiplierInput",fingerprint);}
+        if(!fingerprint.equals(m.program.getStringOr("MultiplierInput",""))){m.progress=0;m.program.putString("MultiplierInput",fingerprint);}
         if(++m.progress>=m.totalTicks){
             ItemStack result=input.copyWithCount(CalculatorConfig.integer("world.atomicMultiplierCopies",4));for(int i=0;i<=7;i++)m.inventory.extractItem(i,1,false);
             m.energy.extractEnergy(cost,false);m.pending.add(result);m.progress=0;
@@ -233,7 +233,7 @@ public final class MachinePrograms {
             if(size>0)for(int x=-size;x<=size;x++)for(int z=-size;z<=size;z++)if(level.getBlockEntity(m.getBlockPos().offset(x,0,z)) instanceof MachineBlockEntity plug&&plug.kind().equals("calculator_plug")&&CircuitData.stable(plug.inventory.getStackInSlot(0)))stable++;
             s.putInt("Stability",stable);m.setChanged();
         }
-        int size=s.getInt("Size"),stable=s.getInt("Stability");ItemStack module=m.inventory.getStackInSlot(0);CompoundTag owner=CircuitData.tag(module);
+        int size=s.getIntOr("Size",0),stable=s.getIntOr("Stability",0);ItemStack module=m.inventory.getStackInSlot(0);CompoundTag owner=CircuitData.tag(module);
         var player=owner.hasUUID("Owner")?level.getPlayerByUUID(owner.getUUID("Owner")):null;
         boolean active=Content.path(module).equals("locator_module")&&owner.hasUUID("Owner")&&size>0&&(stable>=CalculatorConfig.integer("generation.locatorStableThreshold",7)||player!=null)&&m.energy.stored()<m.energy.capacity();
         m.setActive(active);if(!active)return;
@@ -242,7 +242,7 @@ public final class MachinePrograms {
         output=(int)Math.min(Integer.MAX_VALUE,output*CalculatorConfig.decimal("generation.locatorMultiplier",2.0));m.energy.receiveEnergy(output,false);s.putInt("Generation",output);
         if(stable<CalculatorConfig.integer("generation.locatorTimeThreshold",5)&&CalculatorConfig.LOCATOR_TIME.get())((ServerLevel)level).setDayTime(level.getDayTime()+CalculatorConfig.integer("generation.locatorTimeAdvance",100));
         if(player!=null&&stable<CalculatorConfig.integer("generation.locatorStableThreshold",7)&&level.getGameTime()%CalculatorConfig.integer("generation.locatorEffectInterval",50)==0&&CalculatorConfig.LOCATOR_EFFECTS.get()){
-            int luck=1+level.random.nextInt(Math.max(1,40*(stable+1)-1));
+            int luck=1+level.getRandom().nextInt(Math.max(1,40*(stable+1)-1));
             if(stable==0||stable<2&&luck==1)level.explode(null,player.getX(),player.getY(),player.getZ(),(float)(4*CalculatorConfig.decimal("world.locatorExplosionMultiplier",1)),true,CalculatorConfig.flag("world.locatorBlockDamage",true)?Level.ExplosionInteraction.BLOCK:Level.ExplosionInteraction.NONE);
             else if(stable<4&&luck==2)player.igniteForSeconds(20);
             else if(stable<4&&(luck==3||luck==4))level.explode(null,player.getX(),player.getY(),player.getZ(),(float)((luck==3?8:6)*CalculatorConfig.decimal("world.locatorExplosionMultiplier",1)),true,CalculatorConfig.flag("world.locatorBlockDamage",true)?Level.ExplosionInteraction.BLOCK:Level.ExplosionInteraction.NONE);
@@ -263,20 +263,20 @@ public final class MachinePrograms {
         if(best==null)m.program.remove("Mast");else m.program.putLong("Mast",best.asLong());m.setActive(best!=null);m.setChanged();
     }
     private static void conductor(MachineBlockEntity m){
-        CompoundTag s=m.program;int wait=s.getInt("StrikeWait");
+        CompoundTag s=m.program;int wait=s.getIntOr("StrikeWait",0);
         if(wait<=0&&m.energy.stored()<m.energy.capacity()){
             int transmitters=0,stations=0;
             for(BlockPos p:BlockPos.betweenClosed(m.getBlockPos().offset(-CalculatorConfig.integer("generation.mastRadius",20),0,-CalculatorConfig.integer("generation.mastRadius",20)),m.getBlockPos().offset(CalculatorConfig.integer("generation.mastRadius",20),0,CalculatorConfig.integer("generation.mastRadius",20)))){
                 if(!m.getLevel().hasChunkAt(p)||!(m.getLevel().getBlockEntity(p) instanceof MachineBlockEntity other))continue;
                 if(other.kind().equals("transmitter"))transmitters++;
-                else if(other.kind().equals("weather_station")&&other.program.contains("Mast")&&other.program.getLong("Mast")==m.getBlockPos().asLong())stations++;
+                else if(other.kind().equals("weather_station")&&other.program.contains("Mast")&&other.program.getLongOr("Mast",0L)==m.getBlockPos().asLong())stations++;
             }
-            wait=(int)Math.min(Integer.MAX_VALUE,Math.max(CalculatorConfig.integer("generation.mastMinWait",250),(long)CalculatorConfig.integer("generation.mastBaseWait",1500)-(long)CalculatorConfig.integer("generation.mastWaitReduction",135)*transmitters)+(long)m.getLevel().random.nextInt(CalculatorConfig.integer("generation.mastRandomWait",300)));
+            wait=(int)Math.min(Integer.MAX_VALUE,Math.max(CalculatorConfig.integer("generation.mastMinWait",250),(long)CalculatorConfig.integer("generation.mastBaseWait",1500)-(long)CalculatorConfig.integer("generation.mastWaitReduction",135)*transmitters)+(long)m.getLevel().getRandom().nextInt(CalculatorConfig.integer("generation.mastRandomWait",300)));
             s.putInt("StrikePower",(int)Math.clamp((CalculatorConfig.integer("generation.mastBaseGeneration",25)+(double)stations*CalculatorConfig.integer("generation.weatherStationBonus",5))*Math.max(1,transmitters/4)*CalculatorConfig.decimal("generation.mastMultiplier",4),0,Integer.MAX_VALUE));
         }
         if(wait>0){wait--;s.putInt("StrikeWait",wait);if(wait==0){
             s.putInt("StrikeTicks",CalculatorConfig.integer("generation.mastBurstTicks",200));var bolt=EntityType.LIGHTNING_BOLT.create(m.getLevel());if(bolt!=null&&CalculatorConfig.flag("world.mastLightningVisual",true)){bolt.moveTo(Vec3.atBottomCenterOf(m.getBlockPos().above(4)));bolt.setVisualOnly(true);m.getLevel().addFreshEntity(bolt);}
         }}
-        int ticks=s.getInt("StrikeTicks");if(ticks>0){m.energy.receiveEnergy(s.getInt("StrikePower"),false);s.putInt("StrikeTicks",ticks-1);}m.setActive(ticks>0);m.setChanged();
+        int ticks=s.getIntOr("StrikeTicks",0);if(ticks>0){m.energy.receiveEnergy(s.getIntOr("StrikePower",0),false);s.putInt("StrikeTicks",ticks-1);}m.setActive(ticks>0);m.setChanged();
     }
 }

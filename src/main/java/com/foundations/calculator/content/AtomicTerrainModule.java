@@ -20,15 +20,15 @@ public final class AtomicTerrainModule {
         var player=c.getPlayer();var level=c.getLevel();var pos=c.getClickedPos();var state=level.getBlockState(pos);
         if(player==null||!level.mayInteract(player,pos)||!player.mayUseItemAt(pos,c.getClickedFace(),battery))return InteractionResult.FAIL;
         if(level.getBlockEntity(pos)!=null||state.getDestroySpeed(level,pos)<0||state.is(TagKey.create(Registries.BLOCK,Content.id("atomic_terrain_blacklist"))))return InteractionResult.FAIL;
-        if(level.isClientSide)return InteractionResult.SUCCESS;
+        if(level.isClientSide())return InteractionResult.SUCCESS;
         var tag=CircuitData.tag(module);
         if(player.isShiftKeyDown()){
             if(!tag.contains("TerrainSource")||tag.contains("TerrainTarget")){tag.putString("TerrainSource",BuiltInRegistries.BLOCK.getKey(state.getBlock()).toString());tag.remove("TerrainTarget");player.displayClientMessage(Component.literal("Source selected. Sneak-use the replacement material next."),true);}
             else {tag.put("TerrainTarget",NbtUtils.writeBlockState(state));player.displayClientMessage(Component.literal("Replacement selected. Use on the source material to replace it."),true);}
             UtilityItems.put(module,tag);return InteractionResult.CONSUME;
         }
-        if(!tag.contains("TerrainTarget")||!tag.getString("TerrainSource").equals(BuiltInRegistries.BLOCK.getKey(state.getBlock()).toString()))return InteractionResult.PASS;
-        var replacement=NbtUtils.readBlockState(level.holderLookup(Registries.BLOCK),tag.getCompound("TerrainTarget"));
+        if(!tag.contains("TerrainTarget")||!tag.getStringOr("TerrainSource","").equals(BuiltInRegistries.BLOCK.getKey(state.getBlock()).toString()))return InteractionResult.PASS;
+        var replacement=NbtUtils.readBlockState(level.holderLookup(Registries.BLOCK),tag.getCompoundOrEmpty("TerrainTarget"));
         if(replacement.isAir()||replacement.hasBlockEntity()||replacement.getDestroySpeed(level,pos)<0||replacement.is(state.getBlock())||!replacement.canSurvive(level,pos)||replacement.is(TagKey.create(Registries.BLOCK,Content.id("atomic_terrain_blacklist"))))return InteractionResult.FAIL;
         int slot=-1;boolean consume=!player.isCreative()&&CalculatorConfig.flag("module.atomic_terrain_module.requireReplacementItem",true);
         if(consume){for(int i=0;i<player.getInventory().items.size();i++)if(player.getInventory().getItem(i).is(replacement.getBlock().asItem())){slot=i;break;}if(slot<0){player.displayClientMessage(Component.literal("A replacement block is required in your inventory."),true);return InteractionResult.FAIL;}}

@@ -27,12 +27,12 @@ public final class ModuleWorkstation {
         calculator.set(Content.MODULES.get(),ItemContainerContents.fromItems(items));m.setChanged();
     }
     public static ItemStack selected(ItemStack calculator){
-        int slot=com.foundations.calculator.core.CircuitData.tag(calculator).getInt("SelectedModule")-1;
+        int slot=com.foundations.calculator.core.CircuitData.tag(calculator).getIntOr("SelectedModule",0)-1;
         if(slot<0||slot>=com.foundations.calculator.core.CalculatorConfig.integer("module.flawless_calculator.maxModules",16))return ItemStack.EMPTY;
         var items=NonNullList.withSize(16,ItemStack.EMPTY);calculator.getOrDefault(Content.MODULES.get(),ItemContainerContents.EMPTY).copyInto(items);return items.get(slot);
     }
     public static void saveSelected(ItemStack calculator,ItemStack module){
-        int slot=com.foundations.calculator.core.CircuitData.tag(calculator).getInt("SelectedModule")-1;if(slot<0||slot>=16)return;
+        int slot=com.foundations.calculator.core.CircuitData.tag(calculator).getIntOr("SelectedModule",0)-1;if(slot<0||slot>=16)return;
         var items=NonNullList.withSize(16,ItemStack.EMPTY);calculator.getOrDefault(Content.MODULES.get(),ItemContainerContents.EMPTY).copyInto(items);items.set(slot,module);calculator.set(Content.MODULES.get(),ItemContainerContents.fromItems(items));
     }
 }

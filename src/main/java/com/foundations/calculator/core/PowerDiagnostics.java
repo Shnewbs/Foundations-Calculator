@@ -119,10 +119,10 @@ public final class PowerDiagnostics {
         var state=MachineDiagnostics.machine(machine);
         lines.add("Machine: "+state.status().label+(state.requiredEnergy()>0?"; requires "+state.requiredEnergy()+" FE":""));
         if(machine.program.contains("WorldActionBlocked"))lines.add("Last blocked world action: "+
-            machine.program.getString("WorldActionBlocked")+" at "+BlockPos.of(machine.program.getLong("WorldActionPos")).toShortString());
+            machine.program.getStringOr("WorldActionBlocked","")+" at "+BlockPos.of(machine.program.getLongOr("WorldActionPos",0L)).toShortString());
         if(installed(PowerPolicy.GREGTECH))lines.add("GT limits: input "+GregTechEnergy.setting(machine,"inputVoltage",Integer.MAX_VALUE)+" EU, "+GregTechEnergy.setting(machine,"inputAmperage",4)+" A/t; output "+GregTechEnergy.setting(machine,"outputVoltage",32)+" EU, "+GregTechEnergy.setting(machine,"outputAmperage",1)+" A/t (shared by faces)");
         for(var side:Direction.values()) {
-            String mode=new String[]{"auto","input","output","disabled"}[Math.floorMod(machine.program.getInt("Side"+side.get3DDataValue()),4)];
+            String mode=new String[]{"auto","input","output","disabled"}[Math.floorMod(machine.program.getIntOr("Side"+side.get3DDataValue(),0),4)];
             lines.add(side.getName()+" ["+mode+"]: "+neighbor(machine,side));
         }
         if(machine.hasBatterySlot()) {

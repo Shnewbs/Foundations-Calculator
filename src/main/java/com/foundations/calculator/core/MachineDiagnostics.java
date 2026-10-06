@@ -38,34 +38,34 @@ public final class MachineDiagnostics {
         }
         if(kind.equals("module_workstation"))return state(m.inventory.getStackInSlot(20).isEmpty()?NEED_FLAWLESS:MODULES_READY);
         if(kind.endsWith("greenhouse")){
-            int house=m.program.getInt("HouseState");
+            int house=m.program.getIntOr("HouseState",0);
             if(house==1)return power(BUILDING,CalculatorConfig.energy(kind,CalculatorConfig.integer("greenhouse.buildEnergy",100)),energy);if(house==3)return state(DEMOLISHING);if(house!=2)return state(INCOMPLETE);
-            if(m.program.getBoolean("Paused")||level.hasNeighborSignal(m.getBlockPos()))return state(PAUSED);
+            if(m.program.getBooleanOr("Paused",false)||level.hasNeighborSignal(m.getBlockPos()))return state(PAUSED);
             return power(FARMING,CalculatorConfig.energy(kind,CalculatorConfig.integer("greenhouse.growEnergy",150)),energy);
         }
         if(kind.equals("weather_controller")){
-            if(m.program.getInt("Cooldown")>0)return state(COOLDOWN);
+            if(m.program.getIntOr("Cooldown",0)>0)return state(COOLDOWN);
             if(!level.hasNeighborSignal(m.getBlockPos()))return state(NEED_REDSTONE);
-            boolean current=switch(m.program.getInt("Mode")){case 1->level.getLevelData().isRaining();case 2->level.getLevelData().isThundering();default->!level.isDay();};
-            return current==m.program.getBoolean("Target")?state(TARGET_REACHED):power(RUNNING,CalculatorConfig.energy(kind,CalculatorConfig.integer("world.weatherEnergyPerTick",2500)),energy);
+            boolean current=switch(m.program.getIntOr("Mode",0)){case 1->level.getLevelData().isRaining();case 2->level.getLevelData().isThundering();default->!level.isDay();};
+            return current==m.program.getBooleanOr("Target",false)?state(TARGET_REACHED):power(RUNNING,CalculatorConfig.energy(kind,CalculatorConfig.integer("world.weatherEnergyPerTick",2500)),energy);
         }
         if(kind.equals("magnetic_flux"))return state(level.hasNeighborSignal(m.getBlockPos())?PAUSED:level.getCapability(Capabilities.ItemHandler.BLOCK,m.getBlockPos().below(),Direction.UP)==null?NEED_STORAGE:COLLECTING);
         if(kind.equals("gas_lantern_off"))return state(m.burnTime>0?RUNNING:NEED_FUEL);
         if(kind.equals("co2_generator")){
             var forward=m.getBlockState().getValue(MachineBlock.FACING).getOpposite();
             if(!(level.getBlockEntity(m.getBlockPos().relative(forward.getClockWise().getOpposite(),3)) instanceof MachineBlockEntity other)||!other.kind().equals("flawless_greenhouse"))return state(NEED_GREENHOUSE);
-            if(m.burnTime>0)return state(m.program.getInt("GasAdd")>0?GAS_RUNNING:GAS_CONTROLLED);
+            if(m.burnTime>0)return state(m.program.getIntOr("GasAdd",0)>0?GAS_RUNNING:GAS_CONTROLLED);
             if(m.inventory.getStackInSlot(0).getBurnTime(RecipeType.SMELTING)<=0)return state(NEED_FUEL);
             return power(GAS_RUNNING,CalculatorConfig.energy(kind,CalculatorConfig.integer("greenhouse.co2FuelEnergy",100000)),energy);
         }
         if(kind.equals("stone_assimilator")||kind.equals("algorithm_assimilator"))return state(CHECK_TREE);
         if(kind.equals("calculator_screen_block"))return state(ENERGY_DISPLAY);
         if(kind.equals("calculator_locator")){
-            if(m.program.getInt("Size")==0)return state(INCOMPLETE);
+            if(m.program.getIntOr("Size",0)==0)return state(INCOMPLETE);
             var tag=CircuitData.tag(m.inventory.getStackInSlot(0));if(!tag.hasUUID("Owner"))return state(NEED_LOCATOR);
-            return state(m.program.getInt("Stability")<CalculatorConfig.integer("generation.locatorStableThreshold",7)&&level.getPlayerByUUID(tag.getUUID("Owner"))==null?NEED_OWNER:GENERATING);
+            return state(m.program.getIntOr("Stability",0)<CalculatorConfig.integer("generation.locatorStableThreshold",7)&&level.getPlayerByUUID(tag.getUUID("Owner"))==null?NEED_OWNER:GENERATING);
         }
-        if(kind.equals("conductor_mast")&&m.inventory.getStackInSlot(0).isEmpty())return state(m.program.getInt("StrikeTicks")>0?GENERATING:WAITING_LIGHTNING);
+        if(kind.equals("conductor_mast")&&m.inventory.getStackInSlot(0).isEmpty())return state(m.program.getIntOr("StrikeTicks",0)>0?GENERATING:WAITING_LIGHTNING);
         if(kind.equals("hand_cranked_generator")||MachineProfiles.storage(kind)||kind.equals("creative_power_cube")){
             var item=com.foundations.calculator.api.FoundationsEnergy.item(m.inventory.getStackInSlot(20));
             if(energy>0&&item!=null&&item.getEnergyStored()<item.getMaxEnergyStored())return state(CHARGING);
@@ -82,7 +82,7 @@ public final class MachineDiagnostics {
             return !Content.path(in).startsWith("circuit_board_")?state(NO_RECIPE):CircuitData.analysed(in)?state(ALREADY_ANALYSED):power(RUNNING,m.upgradeEnergyCost(CalculatorConfig.energy(kind,0)),energy);
         }
         if(kind.equals("dynamic_calculator")){
-            if(!m.program.getBoolean("DynamicFormed"))return state(INCOMPLETE);
+            if(!m.program.getBooleanOr("DynamicFormed",false))return state(INCOMPLETE);
             return lanes(level,m.inventory,energy,m.owner(),m.kind());
         }
         if(kind.equals("docking_station")&&m.inventory.getStackInSlot(20).isEmpty())return state(NEED_CALCULATOR);

@@ -31,19 +31,19 @@ public class MachineBlock extends BaseEntityBlock {
     protected int getDirectSignal(BlockState state,BlockGetter level,BlockPos pos,net.minecraft.core.Direction side){return getSignal(state,level,pos,side);}
     public String kind(){return net.minecraft.core.registries.BuiltInRegistries.BLOCK.getKey(this).getPath();}
     public int height(){return kind().equals("conductor_mast")?4:kind().equals("scarecrow")?3:1;}
-    public void setPlacedBy(Level l,BlockPos p,BlockState s,net.minecraft.world.entity.LivingEntity placer,net.minecraft.world.item.ItemStack stack){super.setPlacedBy(l,p,s,placer,stack);if(!l.isClientSide&&placer instanceof Player player&&l.getBlockEntity(p) instanceof MachineBlockEntity machine){machine.program.putUUID("Owner",player.getUUID());machine.setChanged();}if(!l.isClientSide)for(int i=1;i<height();i++)l.setBlockAndUpdate(p.above(i),Content.EXTENSION.get().defaultBlockState().setValue(MachineExtensionBlock.HEIGHT,i));}
+    public void setPlacedBy(Level l,BlockPos p,BlockState s,net.minecraft.world.entity.LivingEntity placer,net.minecraft.world.item.ItemStack stack){super.setPlacedBy(l,p,s,placer,stack);if(!l.isClientSide()&&placer instanceof Player player&&l.getBlockEntity(p) instanceof MachineBlockEntity machine){machine.program.putUUID("Owner",player.getUUID());machine.setChanged();}if(!l.isClientSide())for(int i=1;i<height();i++)l.setBlockAndUpdate(p.above(i),Content.EXTENSION.get().defaultBlockState().setValue(MachineExtensionBlock.HEIGHT,i));}
     protected RenderShape getRenderShape(BlockState s){return MODELED.contains(kind())?RenderShape.ENTITYBLOCK_ANIMATED:RenderShape.MODEL;}
     public BlockEntity newBlockEntity(BlockPos p,BlockState s){return new MachineBlockEntity(p,s);}
     @Nullable public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level,BlockState s,BlockEntityType<T> type){
-        return level.isClientSide?createTickerHelper(type,Content.MACHINE_ENTITY.get(),MachineBlockEntity::clientTick):createTickerHelper(type,Content.MACHINE_ENTITY.get(),MachineBlockEntity::tick);
+        return level.isClientSide()?createTickerHelper(type,Content.MACHINE_ENTITY.get(),MachineBlockEntity::clientTick):createTickerHelper(type,Content.MACHINE_ENTITY.get(),MachineBlockEntity::tick);
     }
     protected net.minecraft.world.ItemInteractionResult useItemOn(net.minecraft.world.item.ItemStack stack,BlockState state,Level level,BlockPos pos,Player player,net.minecraft.world.InteractionHand hand,BlockHitResult hit){
-        if(stack.is(Content.item("wrench"))){var result=WrenchActions.use(new net.minecraft.world.item.context.UseOnContext(player,hand,hit));return result==InteractionResult.FAIL?net.minecraft.world.ItemInteractionResult.FAIL:net.minecraft.world.ItemInteractionResult.sidedSuccess(level.isClientSide);}
+        if(stack.is(Content.item("wrench"))){var result=WrenchActions.use(new net.minecraft.world.item.context.UseOnContext(player,hand,hit));return result==InteractionResult.FAIL?net.minecraft.world.ItemInteractionResult.FAIL:net.minecraft.world.ItemInteractionResult.sidedSuccess(level.isClientSide());}
         return super.useItemOn(stack,state,level,pos,player,hand,hit);
     }
     protected InteractionResult useWithoutItem(BlockState state,Level level,BlockPos pos,Player player,BlockHitResult hit){
         if(level.getBlockEntity(pos) instanceof MachineBlockEntity machine){
-            if(!level.isClientSide){
+            if(!level.isClientSide()){
                 if(!level.mayInteract(player,pos)||!player.mayUseItemAt(pos,hit.getDirection(),player.getMainHandItem()))return InteractionResult.FAIL;
                 if(!machine.program.hasUUID("Owner")){machine.program.putUUID("Owner",player.getUUID());machine.setChanged();}
                 if(machine.kind().equals("crank_handle")){
@@ -54,11 +54,11 @@ public class MachineBlock extends BaseEntityBlock {
                     }
                     player.displayClientMessage(net.minecraft.network.chat.Component.literal(String.format("%,d",machine.energy.stored())+" FE — sneak-use to open"),true);
                 }else if(java.util.Set.of("transmitter","scarecrow","weather_station","rain_sensor").contains(machine.kind())){
-                    String message=switch(machine.kind()){case "transmitter"->"Speeds up conductor masts within 20 blocks.";case "scarecrow"->"Grows nearby plants every "+CalculatorConfig.SCARECROW_INTERVAL.get()+" ticks.";case "rain_sensor"->level.isRaining()?"Rain detected · redstone 15":"Dry · redstone 0";default->machine.program.contains("Mast")?"Linked to mast at "+net.minecraft.core.BlockPos.of(machine.program.getLong("Mast")).toShortString():"No conductor mast within 10 blocks.";};
+                    String message=switch(machine.kind()){case "transmitter"->"Speeds up conductor masts within 20 blocks.";case "scarecrow"->"Grows nearby plants every "+CalculatorConfig.SCARECROW_INTERVAL.get()+" ticks.";case "rain_sensor"->level.isRaining()?"Rain detected · redstone 15":"Dry · redstone 0";default->machine.program.contains("Mast")?"Linked to mast at "+net.minecraft.core.BlockPos.of(machine.program.getLongOr("Mast",0L)).toShortString():"No conductor mast within 10 blocks.";};
                     player.displayClientMessage(net.minecraft.network.chat.Component.literal(message),true);
                 }else ((ServerPlayer)player).openMenu(machine,b->{b.writeBoolean(true);b.writeBlockPos(pos);});
             }
-            return InteractionResult.sidedSuccess(level.isClientSide);
+            return InteractionResult.sidedSuccess(level.isClientSide());
         }return InteractionResult.PASS;
     }
     protected void onRemove(BlockState old,Level level,BlockPos pos,BlockState state,boolean moving){

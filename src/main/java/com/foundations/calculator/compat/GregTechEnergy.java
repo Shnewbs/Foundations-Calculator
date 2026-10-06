@@ -123,7 +123,7 @@ public final class GregTechEnergy {
             public long getTransferLimit(){int tier=getTier();long voltage=8;for(int i=0;i<tier;i++)voltage=Math.min(Integer.MAX_VALUE,voltage*4);return Math.min(voltage,Integer.MAX_VALUE/ratio());}
             public boolean chargeable(){return power.canReceive();}
             public boolean canProvideChargeExternally(){return power.canExtract();}
-            public boolean isDischargeMode(){return stack.getOrDefault(DataComponents.CUSTOM_DATA,CustomData.EMPTY).copyTag().getBoolean("FoundationsEuDischarge");}
+            public boolean isDischargeMode(){return stack.getOrDefault(DataComponents.CUSTOM_DATA,CustomData.EMPTY).copyTag().getBooleanOr("FoundationsEuDischarge",false);}
             public void setDischargeMode(boolean mode){CustomData.update(DataComponents.CUSTOM_DATA,stack,tag->tag.putBoolean("FoundationsEuDischarge",mode));}
             public long charge(long amount,int tier,boolean ignoreLimit,boolean simulate){if(!chargeable()||tier<getTier())return 0;return power.receive(ignoreLimit?amount:Math.min(amount,getTransferLimit()),simulate);}
             public long discharge(long amount,int tier,boolean ignoreLimit,boolean externally,boolean simulate){if(!POLICY.output(Scope.ITEM)||tier<getTier()||externally&&!canProvideChargeExternally())return 0;return power.extract(ignoreLimit?amount:Math.min(amount,getTransferLimit()),simulate);}

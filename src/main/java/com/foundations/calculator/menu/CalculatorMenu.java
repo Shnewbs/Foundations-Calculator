@@ -61,12 +61,12 @@ public final class CalculatorMenu extends AbstractContainerMenu {
         for(int r=0;r<3;r++)for(int col=0;col<9;col++)addSlot(new Slot(inv,col+r*9+9,35+col*18,157+r*18));
         for(int col=0;col<9;col++)addSlot(new Slot(inv,col,35+col*18,215));
         if(machine==null)HeldItemLock.install(this,inv,heldSlot);
-        if(inv.player.level().isClientSide)data=new SimpleContainerData(36);
+        if(inv.player.level().isClientSide())data=new SimpleContainerData(36);
         else data=new ContainerData(){
             public int get(int i){
                 if(i==27)return machine==null?0:machine.redstoneMode();
-                long longEnergy=machine!=null&&kind.equals("calculator_screen_block")?machine.program.getLong("ScreenEnergy"):machine==null&&held.getItem() instanceof CalculatorItem c?c.energyLong(held):machine==null?0:machine.energy.stored();
-                long longCapacity=machine!=null&&kind.equals("calculator_screen_block")?machine.program.getLong("ScreenCapacity"):machine==null&&held.getItem() instanceof CalculatorItem c?c.maxEnergyLong(held):machine==null?0:machine.energy.capacity();
+                long longEnergy=machine!=null&&kind.equals("calculator_screen_block")?machine.program.getLongOr("ScreenEnergy",0L):machine==null&&held.getItem() instanceof CalculatorItem c?c.energyLong(held):machine==null?0:machine.energy.stored();
+                long longCapacity=machine!=null&&kind.equals("calculator_screen_block")?machine.program.getLongOr("ScreenCapacity",0L):machine==null&&held.getItem() instanceof CalculatorItem c?c.maxEnergyLong(held):machine==null?0:machine.energy.capacity();
                 if(i>=28&&i<32)return (int)((longEnergy>>>((i-28)*16))&65535L);
                 if(i>=32&&i<36)return (int)((longCapacity>>>((i-32)*16))&65535L);
                 if(i==24)return diagnostic().status().ordinal();
@@ -75,8 +75,8 @@ public final class CalculatorMenu extends AbstractContainerMenu {
                 int energy=(int)Math.min(Integer.MAX_VALUE,longEnergy);
                 int capacity=(int)Math.min(Integer.MAX_VALUE,longCapacity);
                 int progress=machine==null?0:machine.progress,time=machine==null?1:machine.totalTicks,points=machine==null?0:machine.nutrient;
-                if(i>=18&&machine!=null)return machine.program.getInt("Side"+(i-18));
-                if(i>=10&&machine!=null){var s=machine.program;return switch(i){case 10->s.getInt("HouseState");case 11->s.getInt("Carbon")&65535;case 12->s.getInt("Carbon")>>>16;case 13->s.getInt("Mode");case 14->s.getBoolean("Target")?1:0;case 15->s.getBoolean("Paused")?1:0;case 16->s.getBoolean("Whitelist")?1:0;default->s.getBoolean("MatchTags")?1:0;};}
+                if(i>=18&&machine!=null)return machine.program.getIntOr("Side"+(i-18),0);
+                if(i>=10&&machine!=null){var s=machine.program;return switch(i){case 10->s.getIntOr("HouseState",0);case 11->s.getIntOr("Carbon",0)&65535;case 12->s.getIntOr("Carbon",0)>>>16;case 13->s.getIntOr("Mode",0);case 14->s.getBooleanOr("Target",false)?1:0;case 15->s.getBooleanOr("Paused",false)?1:0;case 16->s.getBooleanOr("Whitelist",false)?1:0;default->s.getBooleanOr("MatchTags",false)?1:0;};}
                 return switch(i){case 0->energy&65535;case 1->energy>>>16;case 2->capacity&65535;case 3->capacity>>>16;case 4->progress&65535;case 5->progress>>>16;case 6->time&65535;case 7->time>>>16;case 8->points&65535;default->points>>>16;};
             }
             public void set(int i,int v){} public int getCount(){return 36;}
@@ -130,7 +130,7 @@ public final class CalculatorMenu extends AbstractContainerMenu {
         return moveItemStackTo(stack,0,inputs,false);
     }
     public boolean clickMenuButton(Player player,int button){
-        if(player.level().isClientSide||!stillValid(player))return false;
+        if(player.level().isClientSide()||!stillValid(player))return false;
         if(machine!=null)return machine.action(player,button);
         if(kind.equals("dynamic_module"))return dynamicCalculation(player,button);
         if(button!=0)return false;
@@ -164,7 +164,7 @@ public final class CalculatorMenu extends AbstractContainerMenu {
     }
     public void removed(Player player){
         super.removed(player);
-        if(machine==null&&!player.level().isClientSide){
+        if(machine==null&&!player.level().isClientSide()){
             for(int i=0;i<25;i++){
                 ItemStack stack=handler.extractItem(i,Integer.MAX_VALUE,false);
                 if(!stack.isEmpty()){if(!player.isAlive()||(player instanceof net.minecraft.server.level.ServerPlayer sp && sp.hasDisconnected()))player.drop(stack,false);else player.getInventory().placeItemBackInInventory(stack);}

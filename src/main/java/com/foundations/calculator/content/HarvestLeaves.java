@@ -25,12 +25,12 @@ public class HarvestLeaves extends LeavesBlock {
     }
     protected InteractionResult useWithoutItem(BlockState s,Level level,BlockPos p,Player player,BlockHitResult hit){
         int age=s.getValue(AGE);if((!fruit.equals("pear")&&!fruit.equals("diamond"))||age<CalculatorConfig.integer("plants.leafMatureAge",2))return InteractionResult.PASS;
-        if(!level.isClientSide){
+        if(!level.isClientSide()){
             String primary=fruit.equals("pear")?"pear":"weakened_diamond";
             String secondary=fruit.equals("pear")?"rotten_pear":"flawless_diamond";
             if(age<4)popResource(level,p,new ItemStack(Content.item(primary),CalculatorConfig.integer("nutrition.leafYield",1)));
             if(age>=3)popResource(level,p,new ItemStack(Content.item(secondary),CalculatorConfig.integer("nutrition.leafYield",1)));
             level.setBlock(p,s.setValue(AGE,CalculatorConfig.integer("plants.leafHarvestResetAge",0)),3);
-        }return InteractionResult.sidedSuccess(level.isClientSide);
+        }return InteractionResult.sidedSuccess(level.isClientSide());
     }
 }

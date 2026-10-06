@@ -12,7 +12,7 @@ public final class ResearchProgram {
         var recipe=RecipeIndex.forMachine(m.getLevel(),"research").stream().filter(r->r.value().matches(input,m.getLevel())&&!data.groups(owner).contains(r.value().researchGroup())).findFirst();
         if(recipe.isEmpty()){m.progress=0;return;}
         var r=recipe.get();String id=r.id().toString();
-        if(!id.equals(m.program.getString("ResearchRecipe"))){m.progress=0;m.program.putString("ResearchRecipe",id);}
+        if(!id.equals(m.program.getStringOr("ResearchRecipe",""))){m.progress=0;m.program.putString("ResearchRecipe",id);}
         m.totalTicks=CalculatorConfig.ticks(m.kind(),r.value().ticks());
         int cost=CalculatorConfig.flag("research.consumeEnergy",true)?CalculatorConfig.energy(m.kind(),RecipePolicies.energy(r,0)):0;
         if(m.energy.getEnergyStored()<cost){if(!CalculatorConfig.machineFlag(m.kind(),"retainProgressWithoutPower"))m.progress=0;return;}

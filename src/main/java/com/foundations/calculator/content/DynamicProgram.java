@@ -23,8 +23,8 @@ public final class DynamicProgram {
         }return true;
     }
     public static void tick(MachineBlockEntity m){
-        if(m.workDue(CalculatorConfig.integer("world.dynamicCheckInterval",20))||!m.program.contains("DynamicFormed")){m.program.putBoolean("DynamicFormed",formed(m));m.setActive(m.program.getBoolean("DynamicFormed"));}
-        if(!m.program.getBoolean("DynamicFormed")||m.getLevel().getGameTime()%CalculatorConfig.integer("world.dynamicInterval",1)!=0)return;
+        if(m.workDue(CalculatorConfig.integer("world.dynamicCheckInterval",20))||!m.program.contains("DynamicFormed")){m.program.putBoolean("DynamicFormed",formed(m));m.setActive(m.program.getBooleanOr("DynamicFormed",false));}
+        if(!m.program.getBooleanOr("DynamicFormed",false)||m.getLevel().getGameTime()%CalculatorConfig.integer("world.dynamicInterval",1)!=0)return;
         String[] types={"calculator","scientific","atomic"};int[] starts={0,2,4},sizes={2,2,3};
         for(int lane=0;lane<3;lane++){
             List<ItemStack> inputs=new ArrayList<>();for(int i=0;i<sizes[lane];i++)inputs.add(m.inventory.getStackInSlot(starts[lane]+i));var input=new ProcessInput(inputs);String type=types[lane];

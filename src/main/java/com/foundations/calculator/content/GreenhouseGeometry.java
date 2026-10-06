@@ -14,7 +14,7 @@ public final class GreenhouseGeometry {
     public GreenhouseGeometry(MachineBlockEntity machine) {
         origin=machine.getBlockPos().immutable();forward=machine.getBlockState().getValue(MachineBlock.FACING).getOpposite();
         tier=GreenhouseProgram.tier(machine);
-        length=Math.clamp(machine.program.getInt("HouseSize"),0,com.foundations.calculator.core.CalculatorConfig.integer("greenhouse.maxFlawlessLength",64));
+        length=Math.clamp(machine.program.getIntOr("HouseSize",0),0,com.foundations.calculator.core.CalculatorConfig.integer("greenhouse.maxFlawlessLength",64));
         blueprint=tier<3?List.copyOf(new GreenhouseBlueprint(origin,forward,tier).blocks()):List.of();
         List<BlockPos> plants=new ArrayList<>(),water=new ArrayList<>();
         if(tier==3) {
@@ -40,7 +40,7 @@ public final class GreenhouseGeometry {
     }
     public boolean matches(MachineBlockEntity machine) {
         return origin.equals(machine.getBlockPos())&&forward==machine.getBlockState().getValue(MachineBlock.FACING).getOpposite()
-            &&tier==GreenhouseProgram.tier(machine)&&length==Math.clamp(machine.program.getInt("HouseSize"),0,
+            &&tier==GreenhouseProgram.tier(machine)&&length==Math.clamp(machine.program.getIntOr("HouseSize",0),0,
                 com.foundations.calculator.core.CalculatorConfig.integer("greenhouse.maxFlawlessLength",64));
     }
 }

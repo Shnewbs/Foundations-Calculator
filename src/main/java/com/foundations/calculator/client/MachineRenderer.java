@@ -40,7 +40,7 @@ public final class MachineRenderer implements BlockEntityRenderer<MachineBlockEn
             case "crank_handle"->{long tick=m.getLevel()==null?0:m.getLevel().getGameTime();if(ClientConfig.flag(ClientConfig.ANIMATIONS)&&m.lastCrankTick!=Long.MIN_VALUE&&tick-m.lastCrankTick<18)pose.mulPose(Axis.YP.rotationDegrees((float)((tick-m.lastCrankTick+partial)*20)));mesh(kind,"crank",pose,buffers,light,overlay);}
             case "magnetic_flux"->{pose.mulPose(Axis.YP.rotationDegrees((float)(clock*2)));mesh(kind,"magnetic_flux",pose,buffers,light,overlay);}
             case "weather_station"->{
-                if(m.program.contains("Mast")){var target=net.minecraft.core.BlockPos.of(m.program.getLong("Mast"));pose.mulPose(Axis.YP.rotation((float)Math.atan2(target.getZ()-m.getBlockPos().getZ(),target.getX()-m.getBlockPos().getX())));}
+                if(m.program.contains("Mast")){var target=net.minecraft.core.BlockPos.of(m.program.getLongOr("Mast",0L));pose.mulPose(Axis.YP.rotation((float)Math.atan2(target.getZ()-m.getBlockPos().getZ(),target.getX()-m.getBlockPos().getX())));}
                 mesh(kind,"weatherstation_base",pose,buffers,light,overlay);pose.translate(0,-.9,-.84);pose.mulPose(Axis.XP.rotationDegrees(45));mesh("dish","weatherstation_dish",pose,buffers,light,overlay);
             }
             case "fabrication_chamber"->{pose.translate(.5,.375,.75);if(ClientConfig.flag(ClientConfig.ANIMATIONS)&&m.progress>0)pose.mulPose(Axis.YP.rotationDegrees((float)(Math.sin(clock*.1)*35)));mesh("arm","fabrication_arm_techne",pose,buffers,light,overlay);pose.translate(-1,0,0);mesh("arm","fabrication_arm_techne",pose,buffers,light,overlay);}
@@ -66,8 +66,8 @@ public final class MachineRenderer implements BlockEntityRenderer<MachineBlockEn
     public int getViewDistance(){return ClientConfig.SPEC.isLoaded()?ClientConfig.RENDER_DISTANCE.get():64;}
     private void display(MachineBlockEntity m,PoseStack pose,MultiBufferSource buffers,int light){
         pose.pushPose();pose.translate(.5,.7,.5);pose.mulPose(Axis.YP.rotationDegrees(-m.getBlockState().getValue(MachineBlock.FACING).toYRot()));pose.translate(0,0,.505);pose.scale(.008f,-.008f,.008f);
-        Font font=Minecraft.getInstance().font;String text=com.foundations.calculator.core.EnergyDisplay.compact(m.program.getLong("ScreenEnergy"))+" FE";font.drawInBatch(text,-font.width(text)/2f,0,0xff7ee3ce,false,pose.last().pose(),buffers,Font.DisplayMode.NORMAL,0,light);
-        String capacity="/ "+com.foundations.calculator.core.EnergyDisplay.compact(m.program.getLong("ScreenCapacity"));font.drawInBatch(capacity,-font.width(capacity)/2f,12,0xffc4d5df,false,pose.last().pose(),buffers,Font.DisplayMode.NORMAL,0,light);pose.popPose();
+        Font font=Minecraft.getInstance().font;String text=com.foundations.calculator.core.EnergyDisplay.compact(m.program.getLongOr("ScreenEnergy",0L))+" FE";font.drawInBatch(text,-font.width(text)/2f,0,0xff7ee3ce,false,pose.last().pose(),buffers,Font.DisplayMode.NORMAL,0,light);
+        String capacity="/ "+com.foundations.calculator.core.EnergyDisplay.compact(m.program.getLongOr("ScreenCapacity",0L));font.drawInBatch(capacity,-font.width(capacity)/2f,12,0xffc4d5df,false,pose.last().pose(),buffers,Font.DisplayMode.NORMAL,0,light);pose.popPose();
     }
     public boolean shouldRenderOffScreen(MachineBlockEntity m){return m.kind().equals("conductor_mast")||m.kind().equals("weather_station");}
     public AABB getRenderBoundingBox(MachineBlockEntity m){return new AABB(m.getBlockPos()).inflate(2,4,2);}

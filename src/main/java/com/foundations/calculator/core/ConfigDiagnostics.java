@@ -22,7 +22,7 @@ public final class ConfigDiagnostics {
             "Calculator machine: "+id,
             "Capabilities: inputs="+MachineDefinition.forMachine(id).inputCount()+"; outputs="+MachineDefinition.forMachine(id).outputs()+"; upgrades="+MachineDefinition.forMachine(id).upgrades(),
             "Enabled: "+CalculatorConfig.machineEnabled(id)+"; capacity: "+String.format("%,d",cap)+" FE",
-            "Transfer: "+String.format("%,d",MachineProfiles.transfer(id))+" FE/t; item charge: "+String.format("%,d",MachineProfiles.charging(id))+" FE/t",
+            "Transfer: standard FE "+String.format("%,d",MachineProfiles.transfer(id))+"; native long "+String.format("%,d",MachineProfiles.transferLong(id))+" FE/t; item charge: "+String.format("%,d",MachineProfiles.charging(id))+" FE/t",
             "Automation: "+CalculatorConfig.machineFlag(id,"itemAutomation")+"; FE input/output: "+CalculatorConfig.machineFlag(id,"energyInput")+"/"+CalculatorConfig.machineFlag(id,"energyOutput"));
     }
     @SubscribeEvent public static void commands(RegisterCommandsEvent event){

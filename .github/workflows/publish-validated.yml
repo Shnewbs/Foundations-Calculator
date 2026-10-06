@@ -41,7 +41,8 @@ jobs:
           assert result['version']==version
           assert result['native_build_and_current_source_match']
           assert result['jar_sha256']==hashlib.sha256(open(jar,'rb').read()).hexdigest()
-          assert min(result['gametests'].values())>=124
+          required=int(next(line.split('=',1)[1] for line in open('gradle.properties') if line.startswith('required_gametests=')))
+          assert min(result['gametests'].values())>=required
           PY
           if gh release view "$tag" >/dev/null 2>&1; then
             echo "Version already released; increment mod_version for the next update."

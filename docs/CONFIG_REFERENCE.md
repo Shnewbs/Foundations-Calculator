@@ -4383,7 +4383,7 @@ Generated from the same catalog loaded by the mod: **4,272 settings**. See [CONF
 |---|---|---|---|
 | `energy.machineCapacityMultiplier` | `1.0` | 0.01 … 1000000.0 | Global multiplier for long-valued machine FE capacities. Applied after each machine base capacity. |
 | `energy.itemCapacityMultiplier` | `1.0` | 0.01 … 1000000.0 | Global multiplier for long-valued Calculator/module FE capacities. |
-| `energy.transferMultiplier` | `1.0` | 0.01 … 1000000.0 | Global multiplier for FE/native transfer limits. Does not change conversion ratios. |
+| `energy.transferMultiplier` | `1.0` | 0.0 … 1000000.0 | Global multiplier for FE/native transfer limits. Does not change conversion ratios. |
 
 ## balance
 

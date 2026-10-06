@@ -10,6 +10,7 @@ import json,re,zipfile,hashlib,struct,xml.etree.ElementTree as ET
 root=Path(__file__).resolve().parents[1]
 version=re.search(r'^mod_version=(.+)$',(root/'gradle.properties').read_text(),re.M)[1]
 assert re.fullmatch(r'0\.0\.[0-9]+a(?:\.R[0-9]+)?(?:-dev\.[0-9]+)?',version),f'Unexpected release version: {version}'
+required_tests=int(re.search(r'^required_gametests=(.+)$',(root/'gradle.properties').read_text(),re.M)[1])
 evidence=root/'validation'/version
 evidence.mkdir(parents=True,exist_ok=True)
 jar=root/'build'/'libs'/f'FoundationsCalculator-{version}.jar'
@@ -62,7 +63,7 @@ for mode in ['standalone','integrations']:
     assert p.exists(),f'No fresh {mode} GameTest evidence: {p}'
     text=p.read_text(errors='replace')
     matches=re.findall(r'All (\d+) required tests passed',text)
-    assert matches and int(matches[-1])>=124,f'R2 runtime suite incomplete: {p}'
+    assert matches and int(matches[-1])>=required_tests,f'R2 runtime suite incomplete: {p}'
     for bad in ['[KubeJS Server/]: Error','Error parsing recipe schema','Parsing error loading recipe','Errors found in the scripts']:
         assert bad not in text,f'{bad} in {p}'
     if mode=='integrations':

@@ -4,7 +4,8 @@ public final class MachineProfiles {
     private MachineProfiles() {}
     public static boolean storage(String machine){return MachineDefinition.forMachine(machine).energyStorage();}
     public static boolean generator(String machine){return MachineDefinition.forMachine(machine).generator();}
-    public static int transfer(String machine){return CalculatorConfig.scaledTransfer(unscaledTransfer(machine));}
+    public static long transferLong(String machine){return CalculatorConfig.scaledTransferLong(unscaledTransfer(machine));}
+    public static int transfer(String machine){return (int)Math.min(Integer.MAX_VALUE,transferLong(machine));}
     public static int charging(String machine){
         var definition=MachineDefinition.forMachine(machine);
         int fallback=MachineDefinition.hasDedicatedChargeRate(machine)?definition.chargeRate():unscaledTransfer(machine);

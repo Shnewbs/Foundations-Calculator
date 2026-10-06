@@ -47,6 +47,8 @@ public final class Content {
     public static final Set<String> PENDING=Set.of();
     public static final Supplier<DataComponentType<net.minecraft.world.item.component.ItemContainerContents>> MODULES=COMPONENTS.register("modules",()->DataComponentType.<net.minecraft.world.item.component.ItemContainerContents>builder().persistent(net.minecraft.world.item.component.ItemContainerContents.CODEC).networkSynchronized(net.minecraft.world.item.component.ItemContainerContents.STREAM_CODEC).build());
     public static final Supplier<DataComponentType<Integer>> ENERGY=COMPONENTS.register("energy",()->DataComponentType.<Integer>builder().persistent(Codec.intRange(0,Integer.MAX_VALUE)).networkSynchronized(ByteBufCodecs.VAR_INT).build());
+    /** 0.0.2a long-valued energy. The legacy int component remains for migration/downgrade safety. */
+    public static final Supplier<DataComponentType<Long>> ENERGY_LONG=COMPONENTS.register("energy_long",()->DataComponentType.<Long>builder().persistent(Codec.LONG).networkSynchronized(ByteBufCodecs.VAR_LONG).build());
     public static final Supplier<BlockEntityType<MachineBlockEntity>> MACHINE_ENTITY=ENTITIES.register("machine",()->BlockEntityType.Builder.of(MachineBlockEntity::new,MACHINE_BLOCKS.stream().map(Supplier::get).toArray(Block[]::new)).build(null));
     public static final Supplier<MenuType<com.foundations.calculator.menu.BulkStorageMenu>> BULK_MENU=MENUS.register("bulk_storage",()->IMenuTypeExtension.create(com.foundations.calculator.menu.BulkStorageMenu::fromNetwork));
     public static final Supplier<MenuType<com.foundations.calculator.menu.SmeltingModuleMenu>> SMELTING_MENU=MENUS.register("smelting_module",()->IMenuTypeExtension.create(com.foundations.calculator.menu.SmeltingModuleMenu::fromNetwork));
@@ -67,10 +69,10 @@ public final class Content {
     public static Item item(String id){var item=ITEMS_BY_ID.get(id);if(item==null)throw new IllegalArgumentException("Unknown item "+id);return item.get();}
     public static Block block(String id){return BLOCKS_BY_ID.get(id).get();}
     public static String path(ItemStack s){return BuiltInRegistries.ITEM.getKey(s.getItem()).getPath();}
-    public static void register(IEventBus bus){BLOCKS.register(bus);ITEMS.register(bus);ENTITIES.register(bus);PROJECTILES.register(bus);MENUS.register(bus);TYPES.register(bus);SERIALIZERS.register(bus);COMPONENTS.register(bus);TABS.register(bus);bus.addListener(Content::capabilities);}
+    public static void register(IEventBus bus){BLOCKS.register(bus);ITEMS.register(bus);ENTITIES.register(bus);PROJECTILES.register(bus);MENUS.register(bus);TYPES.register(bus);SERIALIZERS.register(bus);COMPONENTS.register(bus);TABS.register(bus);bus.addListener(net.neoforged.bus.api.EventPriority.HIGHEST,Content::capabilities);}
     private static void capabilities(RegisterCapabilitiesEvent e){
-        e.registerBlockEntity(Capabilities.EnergyStorage.BLOCK,MACHINE_ENTITY.get(),MachineBlockEntity::energyPort);
+        e.registerBlockEntity(Capabilities.EnergyStorage.BLOCK,MACHINE_ENTITY.get(),(m,side)->com.foundations.calculator.core.PowerPolicy.guardFE(m.energyPort(side),com.foundations.calculator.core.PowerPolicy.Scope.BLOCK));
         e.registerBlockEntity(Capabilities.ItemHandler.BLOCK,MACHINE_ENTITY.get(),MachineBlockEntity::automation);
-        for(var entry:ITEMS_BY_ID.values())if(entry.get() instanceof CalculatorItem c&&c.capacity>0)e.registerItem(Capabilities.EnergyStorage.ITEM,(stack,ctx)->c.storage(stack),c);
+        for(var entry:ITEMS_BY_ID.values())if(entry.get() instanceof CalculatorItem c&&c.capacity>0)e.registerItem(Capabilities.EnergyStorage.ITEM,(stack,ctx)->com.foundations.calculator.core.PowerPolicy.guardFE(c.storage(stack),com.foundations.calculator.core.PowerPolicy.Scope.ITEM),c);
     }
 }

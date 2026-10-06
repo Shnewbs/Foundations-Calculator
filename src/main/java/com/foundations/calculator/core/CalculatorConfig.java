@@ -85,9 +85,13 @@ public final class CalculatorConfig {
         long base=integer("module."+id+".capacity",fallback);
         return scaled(base,decimal("energy.itemCapacityMultiplier",1),decimal("module."+id+".capacityMultiplier",1),preset("capacity"));
     }
+    /** Native long operations may exceed the standard FE API's int ceiling. */
+    public static long scaledTransferLong(int base){
+        double factor=decimal("energy.transferMultiplier",1);
+        return base<=0||factor<=0?0:scaled(base,factor,preset("transfer"));
+    }
     public static int scaledTransfer(int base){
-        long value=scaled(Math.max(0,base),decimal("energy.transferMultiplier",1),preset("transfer"));
-        return (int)Math.min(Integer.MAX_VALUE,value);
+        return (int)Math.min(Integer.MAX_VALUE,scaledTransferLong(base));
     }
     public static boolean machineFlag(String id,String property){return flag("machine."+id+"."+property,true);}
     public static int energy(String machine,int original){

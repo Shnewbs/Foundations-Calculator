@@ -26896,7 +26896,7 @@
     "key": "energy.transferMultiplier",
     "default": 1.0,
     "description": "Global multiplier for FE/native transfer limits. Does not change conversion ratios.",
-    "min": 0.01,
+    "min": 0.0,
     "max": 1000000.0
   },
   {

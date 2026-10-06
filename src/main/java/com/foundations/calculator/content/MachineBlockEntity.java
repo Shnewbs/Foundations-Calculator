@@ -144,8 +144,8 @@ public class MachineBlockEntity extends BlockEntity implements MenuProvider {
     public boolean sideInput(Direction side){int mode=side==null?0:program.getInt("Side"+side.get3DDataValue());return mode==0||mode==1;}
     public boolean sideOutput(Direction side){int mode=side==null?0:program.getInt("Side"+side.get3DDataValue());return mode==0||mode==2;}
     public com.foundations.calculator.api.LongEnergyStorage longEnergyPort(Direction side){if(!usesEnergy())return null;return new com.foundations.calculator.api.LongEnergyStorage(){
-        public long receive(long n,boolean simulate){return energySideInput(side)?energy.receive(Math.min(Math.max(0L,n),MachineProfiles.transfer(kind())),simulate):0;}
-        public long extract(long n,boolean simulate){return energySideOutput(side)?energy.extract(Math.min(Math.max(0L,n),MachineProfiles.transfer(kind())),simulate):0;}
+        public long receive(long n,boolean simulate){return energySideInput(side)?energy.receive(Math.min(Math.max(0L,n),MachineProfiles.transferLong(kind())),simulate):0;}
+        public long extract(long n,boolean simulate){return energySideOutput(side)?energy.extract(Math.min(Math.max(0L,n),MachineProfiles.transferLong(kind())),simulate):0;}
         public long stored(){return energy.stored();}public long capacity(){return energy.capacity();}
         public boolean canReceive(){return energySideInput(side);}public boolean canExtract(){return energySideOutput(side);}
     };}

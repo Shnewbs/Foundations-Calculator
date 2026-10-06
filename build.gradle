@@ -87,8 +87,8 @@ tasks.named('runGameTestServer') {
         file('build').mkdirs()
         file('build/gametest-output.log').setText(output, 'UTF-8')
         def completed = (output =~ /All (\d+) required tests passed/)
-        if (!completed.find() || completed.group(1).toInteger() < 124) {
-            throw new GradleException('Minecraft did not report all 124 or more required 0.0.2a.R2 GameTests passing. Read build/gametest-output.log.')
+        if (!completed.find() || completed.group(1).toInteger() < project.findProperty('required_gametests').toString().toInteger()) {
+            throw new GradleException('Minecraft did not report the required GameTests passing. Read build/gametest-output.log.')
         }
         if (output.contains('[KubeJS Server/]: Error') || output.contains('Error parsing recipe schema') || output.contains('Parsing error loading recipe') || output.contains('Errors found in the scripts')) {
             throw new GradleException('GameTests completed but a datapack or script failed to load. Read build/gametest-output.log.')

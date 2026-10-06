@@ -1,10 +1,10 @@
-# 0.0.3a-dev.1 — source checkpoint, not a validated release
+# 0.0.4a — native long transfer scaling
 
-- Centralized machine capability and transfer/charging defaults in immutable, reused definitions.
-- Preserved configuration override behavior and added targeted JUnit coverage.
-- Corrected energy-capacity documentation and stale guide/config descriptions.
-- Derived diagnostic and Patchouli versions from authoritative metadata.
-- Added a build/GameTest/audit-gated GitHub prerelease workflow for the current 1.21.1 platform.
-- Recorded staged 0.0.3a–0.0.5a work and the required 26.3 port.
+- Native long machine ports honor transfer multipliers above 2,147,483,647 FE per operation.
+- Standard NeoForge FE calls remain int-bounded; existing defaults and direction gates are retained.
+- A zero transfer multiplier now fully disables transfer and charging instead of leaving a one-FE floor.
+- Config diagnostics report standard FE and native long rates separately.
+- Added native regressions for large simulated/executed input and disabled faces (127-test floor).
+- Retains centralized machine defaults, Guide API runtime classpath and guarded FE registration priority.
 
-Native compilation and runtime acceptance remain blocked and pending. No 26.3 JAR or 0.0.5a release exists in this checkpoint.
+Platform: Minecraft 1.21.1. Processing costs, item charging and ordinary FE push routes remain int-bounded. No claim of universal 64-bit operation scaling or 26.3 compatibility. Manual world/client/performance acceptance remains pending.

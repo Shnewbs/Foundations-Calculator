@@ -103,7 +103,7 @@ for f in sorted((p/'src/main/resources/data/foundations_calculator/recipe').rglo
   add(key+'energyOverride',-1,-1,2147483647);add(key+'ticksOverride',-1,-1,1000000);add(key+'chanceMultiplier',1.0,0.0,100.0)
 add('energy.machineCapacityMultiplier',1.0,.01,1000000.0,'Global multiplier for long-valued machine FE capacities. Applied after each machine base capacity.')
 add('energy.itemCapacityMultiplier',1.0,.01,1000000.0,'Global multiplier for long-valued Calculator/module FE capacities.')
-add('energy.transferMultiplier',1.0,.01,1000000.0,'Global multiplier for FE/native transfer limits. Does not change conversion ratios.')
+add('energy.transferMultiplier',1.0,0.0,1000000.0,'Global multiplier for FE/native transfer limits. Does not change conversion ratios.')
 add('balance.applyPreset',False,description='Apply the selected Calculator balance preset on top of explicit server settings. Off preserves R9 behavior.')
 add('balance.preset',0,0,4,'Balance preset: 0 Custom/R9, 1 Classic, 2 Balanced, 3 Expert, 4 High Power. Only active when applyPreset=true.')
 add('api.longEnergy.enabled',True,description='Expose Foundations long-valued FE views to addons/native adapters while keeping NeoForge FE as a bounded facade.')

@@ -5,9 +5,9 @@ plugins {
 version = mod_version
 group = 'com.foundations.calculator'
 base { archivesName = 'FoundationsCalculator' }
-java { toolchain.languageVersion = JavaLanguageVersion.of(21); withSourcesJar() }
+java { toolchain.languageVersion = JavaLanguageVersion.of(25); withSourcesJar() }
 neoForge {
-    version = '21.1.250'
+    version = '26.3.0.52-beta'
     runs {
         client {
             client()

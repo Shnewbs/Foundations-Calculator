@@ -1,3 +1,3 @@
-# 0.0.4a platform status
+# Experimental 26.3 port
 
-Current implemented platform: 1.21.1. Native and integration CI must pass before publishing binary assets. Manual migration/client/performance acceptance remains pending. The 26.3 target requires Java 25 and separate API migration; no compatibility claim is made by this build.
+Java 25 and NeoForge 26.3.0.52-beta target. Compilation is being used to inventory API migration work. The optional 1.21.1 integration coordinates are not approved for runtime on this platform. No binary release or compatibility claim is authorized by this branch.

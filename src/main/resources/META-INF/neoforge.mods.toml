@@ -6,17 +6,17 @@ modId="foundations_calculator"
 version="${version}"
 displayName="Foundations Calculator"
 authors="Foundations; original Calculator and Sonar Core by Ollie Lansdell (SonarSonic)"
-description='''Foundations Calculator for Minecraft 1.21.1. Calculator, its required core systems and optional KubeJS recipe support in one mod.'''
+description='''Foundations Calculator for Minecraft 26.3. Calculator, its required core systems and optional KubeJS recipe support in one mod.'''
 [[dependencies.foundations_calculator]]
 modId="neoforge"
 type="required"
-versionRange="[21.1.250,21.2)"
+versionRange="[26.3.0.52-beta,26.4)"
 ordering="NONE"
 side="BOTH"
 [[dependencies.foundations_calculator]]
 modId="minecraft"
 type="required"
-versionRange="[1.21.1]"
+versionRange="[26.3]"
 ordering="NONE"
 side="BOTH"
 

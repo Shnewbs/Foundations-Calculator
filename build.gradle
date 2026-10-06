@@ -153,6 +153,8 @@ sourceSets.test.java.srcDir('src/testSupport/java')
 // The vetted Java-only artifact is shipped in this local Maven directory for repeatable builds.
 repositories { maven { url = uri('guide-api/repository'); content { includeGroup 'com.foundations' } } }
 dependencies {
+    // NeoForge 1.21.1 also needs Java libraries on the development game classpath.
+    additionalRuntimeClasspath 'com.foundations:foundations-guide-api:1.0.0'
     jarJar(implementation('com.foundations:foundations-guide-api')) {
         version { strictly '[1.0,2.0)'; prefer '1.0.0' }
     }

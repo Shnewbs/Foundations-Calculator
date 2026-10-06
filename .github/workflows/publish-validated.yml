@@ -1,0 +1,52 @@
+name: Publish validated Calculator update
+on:
+  workflow_run:
+    workflows: ['Validate and release Calculator']
+    types: [completed]
+permissions:
+  actions: read
+  contents: write
+jobs:
+  publish:
+    if: github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.head_branch == 'main' && github.event.workflow_run.head_repository.full_name == github.repository
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.workflow_run.head_sha }}
+      - name: Download passing build and evidence
+        env:
+          GH_TOKEN: ${{ github.token }}
+          VALIDATED_RUN: ${{ github.event.workflow_run.id }}
+        run: gh run download "$VALIDATED_RUN" --name calculator-validation --dir validated
+      - name: Publish versioned prerelease
+        env:
+          GH_TOKEN: ${{ github.token }}
+          VALIDATED_COMMIT: ${{ github.event.workflow_run.head_sha }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          version=$(sed -n 's/^mod_version=//p' gradle.properties)
+          tag="v$version"
+          jar="validated/build/libs/FoundationsCalculator-$version.jar"
+          sources="validated/build/libs/FoundationsCalculator-$version-sources.jar"
+          audit="validated/validation/$version/release_checks.json"
+          test -f "$jar"
+          test -f "$sources"
+          test -f "$audit"
+          python - "$version" "$jar" "$audit" <<'PY'
+          import hashlib,json,sys
+          version,jar,audit=sys.argv[1:]
+          result=json.load(open(audit))
+          assert result['version']==version
+          assert result['native_build_and_current_source_match']
+          assert result['jar_sha256']==hashlib.sha256(open(jar,'rb').read()).hexdigest()
+          assert min(result['gametests'].values())>=124
+          PY
+          if gh release view "$tag" >/dev/null 2>&1; then
+            echo "Version already released; increment mod_version for the next update."
+            exit 0
+          fi
+          cp CHANGELOG.md release-notes.md
+          printf '\nPlatform: Minecraft 1.21.1 / NeoForge 21.1.250. Automated build, unit tests, standalone and integration GameTests passed. Manual copied-world, client and performance acceptance remains pending. The 26.3 port is not included.\n' >> release-notes.md
+          gh release create "$tag" "$jar" "$sources" "$audit" --target "$VALIDATED_COMMIT" --prerelease --title "Foundations Calculator $version" --notes-file release-notes.md

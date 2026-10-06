@@ -2,13 +2,13 @@
 
 Requested scope: keep 1.21.1 supported, port to 26.3, prepare for 26.4, and publish every completed update through GitHub Releases.
 
-## Current checkpoint: 0.0.3a-dev.1, uncompiled
+## Current checkpoint: 0.0.3a-dev.1, compiled in GitHub Actions
 
 Implemented source changes: R2 documentation and generator normalization; dynamic diagnostic version; immutable centralized input/output/battery/upgrade/power defaults; configuration-aware rates retain their prior overrides; targeted JUnit tests; tagged prerelease workflow gated on build, standalone and integration GameTests and release audit.
 
 Checks actually completed: Python asset validation and structural progression validation. Both passed before the machine-profile refactor. Guide/config regeneration retained 109 entries, 910 recipes and 4272 settings.
 
-Blocked checks: Java 21/JDK is absent (only a Java 17 runtime is installed, no javac). Gradle download fails with Network is unreachable. No native build, JUnit run, GameTest run, runtime compatibility check or publication occurred. Historical validation files are not evidence for this checkpoint.
+Updated validation: GitHub Actions passed the native build and JUnit suite. The first standalone run passed 123/124 tests; the remaining shared Guide API load test exposed a missing development-runtime classpath declaration, now corrected without weakening the test. A rerun is required. Five profile JUnit tests also passed independently. Local arithmetic/policy assertions passed 96340 checks. The local native build is blocked by NeoForm being unable to resolve ProcessHandle.current().info().command() in the sandbox. Historical validation files are not evidence for this checkpoint.
 
 ## Milestones
 

@@ -19,7 +19,7 @@
     },
     {
       "type": "paragraph",
-      "text": "The R7 safety default requires an owner for protected machine world actions. Opaque external plant callbacks and sapling/tree growth are not invoked by default because checking one target cannot authorize every block an unknown callback might later modify."
+      "text": "By default, Calculator requires an owner for protected machine world actions. Opaque external plant callbacks and sapling/tree growth are not invoked by default because checking one target cannot authorize every block an unknown callback might later modify."
     },
     {
       "type": "callout",

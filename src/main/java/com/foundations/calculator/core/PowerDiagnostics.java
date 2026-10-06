@@ -64,7 +64,7 @@ public final class PowerDiagnostics {
     }
     public static List<String> overview() {
         List<String> lines=new ArrayList<>();
-        lines.add("Foundations Calculator 0.0.2a.R1 | effective server power configuration");
+        lines.add("Foundations Calculator " + ModList.get().getModContainerById(FoundationsCalculator.ID).orElseThrow().getModInfo().getVersion() + " | effective server power configuration");
         lines.add("External route preference: "+(CalculatorConfig.flag("power.routing.preferNative",true)?"native first":"FE first")+". GT cable output always uses packets.");
         for(var policy:PowerPolicy.ALL) {
             if(!installed(policy)) { lines.add(policy.label+": not installed"); continue; }

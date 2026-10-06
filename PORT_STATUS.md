@@ -1,5 +1,3 @@
-# 0.0.2a.R2 status — final 2a candidate
+# 0.0.3a-dev.1 status
 
-Feature scope remains frozen. R2 is the final upgrade/storage-UI correctness pass on top of R1.
-
-The remaining gate is native/local validation plus the copied-world acceptance checklist. See [R2 finalization](docs/0.0.2a.R2_FINALIZATION.md) and [R2 acceptance](docs/0.0.2a.R2_ACCEPTANCE.md).
+Development source only. Native build and runtime checks pending. 1.21.1 platform retained; 26.3 port and 26.4 preparation are requested milestones, not completed compatibility claims. See docs/BUILD_TO_0.0.5a.md.

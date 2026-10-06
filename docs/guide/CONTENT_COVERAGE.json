@@ -4,7 +4,7 @@
   "machine_entries": 45,
   "module_entries": 13,
   "item_links": 300,
-  "word_count": 13290,
+  "word_count": 13289,
   "blueprint_counts": {
     "1": {
       "LOG": 18,
@@ -19,5 +19,5 @@
       "STAIRS": 180
     }
   },
-  "source": "R7-HF1 production programs, recipes, configuration catalog and MULTIBLOCKS.md; greenhouse maps exported from production GreenhouseBlueprint using isolated coordinate fixtures, not Minecraft runtime"
+  "source": "Current production programs, recipes, configuration catalog and MULTIBLOCKS.md; greenhouse maps exported from production GreenhouseBlueprint using isolated coordinate fixtures, not Minecraft runtime"
 }

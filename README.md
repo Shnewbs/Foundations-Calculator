@@ -1,11 +1,7 @@
-# Foundations Calculator 0.0.2a.R2 — final 2a candidate
+# Foundations Calculator 0.0.3a-dev.1
 
-Minecraft 1.21.1 · NeoForge 21.1.250 · Java 21.
+Uncompiled development checkpoint toward 0.0.5a. Current platform: Minecraft 1.21.1, NeoForge 21.1.250, Java 21.
 
-`0.0.2a.R2` keeps the feature-frozen 2a systems from R1 and closes the final in-game acceptance issues found during testing: Reinforced Furnace and Analysing Chamber now actually honor Speed/Energy upgrades, machine diagnostics report the same effective upgraded FE cost, and Reinforced Chest bin icons no longer show a misleading vanilla stack count on top of the real bulk quantity.
+Machine defaults now share an immutable profile layer. Includes R2 documentation/generator fixes and a build/test-gated GitHub prerelease workflow. Build using BUILD.bat or `bash gradlew clean test build` with a Java 21 JDK.
 
-Build with `BUILD.bat`. Final validation is `VALIDATE_0_0_2a_R2.bat`; it runs clean native build/JUnit, at least 124 standalone GameTests, integration/KubeJS GameTests and the release audit, then points to `docs/0.0.2a.R2_ACCEPTANCE.md` for copied-world acceptance.
-
-The Foundations Guide API remains 1.0.0 and the gameplay network protocol remains 6.
-
-Documentation: [R2 finalization](docs/0.0.2a.R2_FINALIZATION.md), [R2 acceptance](docs/0.0.2a.R2_ACCEPTANCE.md), [2a systems](docs/0.0.2a_LONG_ENERGY_AND_SCALE.md), [Guide API](guide-api/README.md).
+See [build scope and evidence](docs/BUILD_TO_0.0.5a.md). No validated 0.0.3a, 0.0.4a, 0.0.5a or 26.3 build is included. Historical R2 validation scripts/checklists are retained as baseline references; use the version-aware workflow for this candidate.

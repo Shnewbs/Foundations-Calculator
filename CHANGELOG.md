@@ -1,10 +1,10 @@
-# 0.0.2a.R2 — final 2a upgrade/storage polish candidate
+# 0.0.3a-dev.1 — source checkpoint, not a validated release
 
-- Fixed Reinforced Furnace Speed and Energy upgrades being exposed in the GUI but ignored by its special smelting path.
-- Fixed Analysing Chamber Speed and Energy upgrades being exposed but ignored by its special analysing path.
-- Unified effective upgrade cost/time helpers so generic processors and special upgrade-capable processors use the same server-configured math.
-- Machine diagnostics now report the same upgraded FE cost the machine will actually consume.
-- Added upgrade item tooltips and empty upgrade-slot guidance for Speed, Energy, Transfer and Void behavior.
-- Reinforced Chest/Storage bulk menu icons now synchronize with item count 1 while the real bulk quantity remains the separate count below the slot, removing the confusing double-number display.
-- Added four native regression GameTests; final runtime floor is 124.
-- Retains all R1 long-energy, migration, power-adapter, preset, Field Guide, Patchouli and Guide API work.
+- Centralized machine capability and transfer/charging defaults in immutable, reused definitions.
+- Preserved configuration override behavior and added targeted JUnit coverage.
+- Corrected energy-capacity documentation and stale guide/config descriptions.
+- Derived diagnostic and Patchouli versions from authoritative metadata.
+- Added a build/GameTest/audit-gated GitHub prerelease workflow for the current 1.21.1 platform.
+- Recorded staged 0.0.3a–0.0.5a work and the required 26.3 port.
+
+Native compilation and runtime acceptance remain blocked and pending. No 26.3 JAR or 0.0.5a release exists in this checkpoint.

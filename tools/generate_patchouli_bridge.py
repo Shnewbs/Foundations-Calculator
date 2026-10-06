@@ -12,7 +12,7 @@ DATA.mkdir(parents=True); (ASSET/'categories').mkdir(parents=True); (ASSET/'entr
 patch_book={
  'name':'Calculator Field Guide',
  'landing_text':'Welcome to Foundations Calculator. Start with Getting Started: First 10 Minutes, then use the categories below as your machine and systems reference.',
- 'version':'8.1',
+ 'version':book['revision'],
  'subtitle':'Foundations Guide API + Patchouli mirror',
  'use_resource_pack':True,
  'dont_generate_book':True,

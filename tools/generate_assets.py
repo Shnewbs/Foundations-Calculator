@@ -28,7 +28,7 @@ def model(t):
 # Preserve original artwork byte-for-byte. Only resource paths and JSON syntax change.
 for ns,root in repo.items():
  for p in (root/'textures').rglob('*'):
- if p.is_file():
+  if p.is_file():
    # The original repository includes unused filenames with spaces, which the
    # modern resource loader rejects before model resolution.
    if not re.fullmatch(r'[a-z0-9_./-]+',str(p.relative_to(root/'textures')).lower()):continue

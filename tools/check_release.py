@@ -9,8 +9,8 @@ import json,re,zipfile,hashlib,struct,xml.etree.ElementTree as ET
 
 root=Path(__file__).resolve().parents[1]
 version=re.search(r'^mod_version=(.+)$',(root/'gradle.properties').read_text(),re.M)[1]
-assert version=='0.0.2a.R2',f'Unexpected release version: {version}'
-evidence=root/'validation'/'0.0.2a.R2'
+assert re.fullmatch(r'0\.0\.[0-9]+a(?:\.R[0-9]+)?(?:-dev\.[0-9]+)?',version),f'Unexpected release version: {version}'
+evidence=root/'validation'/version
 evidence.mkdir(parents=True,exist_ok=True)
 jar=root/'build'/'libs'/f'FoundationsCalculator-{version}.jar'
 assert jar.is_file(),'No native R2 JAR; run VALIDATE_0_0_2a_R2.bat first.'
@@ -44,7 +44,7 @@ catalog=json.loads((root/'tools/configuration_catalog.json').read_text())
 assert len(catalog)==4272 and len({v['key'] for v in catalog})==4272,'Server configuration key count changed unexpectedly'
 assert catalog==json.loads((root/'src/main/resources/foundations/configuration.json').read_text()),'Runtime config catalog differs from generator catalog'
 book=json.loads((root/'src/main/resources/assets/foundations_calculator/foundations_guides/field_guide/book.json').read_text())
-assert book.get('revision')=='0.0.2a.R2','Guide revision is not R1'
+assert book.get('revision')==version,'Guide revision does not match mod version'
 assert len(book.get('entries',[]))==109,'Expected 109 Foundations guide entries'
 
 unit_files=list((root/'build/test-results/test').glob('TEST-*.xml'))

@@ -1,0 +1,60 @@
+name: Validate and release Calculator
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    tags: ['v*']
+permissions:
+  contents: write
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Regenerate configuration and guide resources
+        run: |
+          python tools/generate_config.py
+          python tools/generate_config_docs.py
+          python tools/author_field_guide.py
+          python tools/validate_assets.py
+          python tools/validate_progression.py
+      - name: Native build and unit tests
+        run: bash gradlew clean test build --console=plain
+      - name: Standalone and integration GameTests
+        shell: bash
+        run: |
+          set -euo pipefail
+          version=$(sed -n 's/^mod_version=//p' gradle.properties)
+          mkdir -p "validation/$version"
+          bash gradlew runGameTestServer --console=plain
+          cp build/gametest-output.log "validation/$version/gametest-standalone.log"
+          bash gradlew runGameTestServer -PwithIntegrations -PwithGrandpower -PwithKubeJS --console=plain
+          cp build/gametest-output.log "validation/$version/gametest-integrations.log"
+          python tools/check_release.py
+      - name: Retain validation evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: calculator-validation
+          path: |
+            build/libs/
+            build/test-results/
+            build/gametest-output.log
+            validation/
+      - name: Publish passing tagged candidate
+        if: startsWith(github.ref, 'refs/tags/')
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          version=$(sed -n 's/^mod_version=//p' gradle.properties)
+          test "$GITHUB_REF_NAME" = "v$version"
+          gh release create "$GITHUB_REF_NAME" build/libs/*.jar --verify-tag --prerelease --title "Foundations Calculator $version" --notes-file CHANGELOG.md

@@ -86,7 +86,7 @@ for system in ['fe','gtceu','mekanism','modernIndustrialization','ae2','grandPow
  add(prefix+'output',True,description='Allow energy from Foundations FE storage OUT to this API. For an external battery this means charging the battery. Legacy direction switches, when present, must also be enabled.')
  if system!='fe':
   add(prefix+'inputLossPercent',0,0,99,'Percent conversion loss entering Foundations FE, after the base ratio. 0 is lossless. Fractional leftovers remain in source; fine ratios and losses may require a larger transfer quantum. Incoming GT packets round FE down.')
-  add(prefix+'outputLossPercent',0,0,99,'Percent conversion loss leaving Foundations FE. 0 is lossless; cannot be negative or 100. Outgoing GT packets round their FE cost up. Never increases round-trip energy.')
+  add(prefix+'outputLossPercent',0,0,99,'Percent conversion loss leaving Foundations FE. 0 is lossless; cannot be negative or 100. Outgoing conversion rounds the FE cost up conservatively. Never increases round-trip energy.')
 # R7 safety and tick scheduling. Protection events cannot be disabled globally.
 add('protection.requireOwner',True,description='World-changing machines require an owner UUID. An authorized player can place or use an ownerless controller. Existing saved owners are retained. False uses the named Foundations fake-player identity, never an unrestricted actor.')
 add('protection.allowLegacyPlantCallbacks',False,description='Opt-in for opaque external plant/bonemeal callbacks with no declared protection-aware behavior. Only the origin is checked for legacy callbacks; their additional blocks, entities and fluids are the integration responsibility. Prefer protection-aware PlantAdapter methods. Native crops keep their bounded path.')

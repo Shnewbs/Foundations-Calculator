@@ -115,24 +115,19 @@ public class MachineBlockEntity extends BlockEntity implements MenuProvider {
     }
     public MachineBlockEntity(BlockPos p,BlockState state){
         super(Content.MACHINE_ENTITY.get(),p,state);bulk=new BulkStorage(kind().equals("storage_chamber"),()->CalculatorConfig.integer(kind().equals("storage_chamber")?"storage.circuitChamberPerBin":kind().equals("algorithm_assimilator")?"storage.assimilatorPerBin":"storage.reinforcedChestPerBin",kind().equals("storage_chamber")?1024:kind().equals("algorithm_assimilator")?64:256),this::setChanged);
-        energy=new StoredEnergy(()->CalculatorConfig.machineCapacity(kind(),switch(kind()){
-            case "basic_greenhouse","advanced_greenhouse"->350000;case "flawless_greenhouse"->500000;case "co2_generator"->1000000;case "weather_controller"->1000000;case "atomic_multiplier"->1500000000;case "calculator_locator"->50000000;case "hand_cranked_generator"->1000;case "power_cube"->50000;case "advanced_power_cube"->100000;
-            case "creative_power_cube"->Integer.MAX_VALUE;case "analysing_chamber"->100000;case "conductor_mast"->50000000;case "starch_extractor","redstone_extractor","glowstone_extractor"->1000000;default->50000;}),this::setChanged);
+        energy=new StoredEnergy(()->CalculatorConfig.machineCapacity(kind(),MachineDefinition.forMachine(kind()).capacity()),this::setChanged);
     }
     public int redstoneMode(){return program.contains("RedstoneMode")?program.getInt("RedstoneMode"):CalculatorConfig.machine(kind(),"defaultRedstoneMode",0);}
     public java.util.UUID owner(){return program.hasUUID("Owner")?program.getUUID("Owner"):null;}
     public String kind(){return net.minecraft.core.registries.BuiltInRegistries.BLOCK.getKey(getBlockState().getBlock()).getPath();}
-    public int inputCount(){return switch(kind()){
-        case "weather_controller","calculator_screen_block","stone_assimilator"->0;case "module_workstation"->16;case "basic_greenhouse","advanced_greenhouse","flawless_greenhouse"->14;case "magnetic_flux","atomic_multiplier"->8;case "dynamic_calculator"->7;case "atomic_calculator"->3;case "docking_station"->4;case "fabrication_chamber"->14;
-        case "reinforced_chest","storage_chamber"->14;case "starch_extractor","redstone_extractor","glowstone_extractor"->2;
-        default->1;};}
+    public int inputCount(){return MachineDefinition.forMachine(kind()).inputCount();}
     public boolean bulkInventory(){return storage()||kind().equals("algorithm_assimilator");}
     private void flushResults(){if(!bulkInventory()){ProcessTransactions.flush(pending,inventory);return;}for(var iterator=pending.listIterator();iterator.hasNext();){ItemStack stack=iterator.next();for(int i=0;i<bulk.getSlots()&&!stack.isEmpty();i++)stack=bulk.insertItem(i,stack,false);if(stack.isEmpty())iterator.remove();else iterator.set(stack);}}
     public boolean storage(){return kind().equals("reinforced_chest")||kind().equals("storage_chamber");}
-    public boolean hasOutputs(){return !Set.of("module_workstation","weather_controller","magnetic_flux","calculator_plug","calculator_locator","power_cube","advanced_power_cube","creative_power_cube","hand_cranked_generator","stone_assimilator","calculator_screen_block").contains(kind());}
-    public boolean hasBatterySlot(){return usesEnergy()||Set.of("module_workstation","stone_assimilator","health_processor","hunger_processor").contains(kind());}
-    public boolean supportsUpgrades(){return Set.of("docking_station","atomic_calculator","reinforced_furnace","stone_separator","algorithm_separator","extraction_chamber","restoration_chamber","reassembly_chamber","precision_chamber","processing_chamber","analysing_chamber","fabrication_chamber").contains(kind());}
-    public boolean usesEnergy(){return !Set.of("rain_sensor","gas_lantern_off","magnetic_flux","scarecrow","stone_assimilator","algorithm_assimilator","calculator_plug","weather_station","transmitter","calculator_screen_block","crank_handle","module_workstation","storage_chamber","reinforced_chest").contains(kind());}
+    public boolean hasOutputs(){return MachineDefinition.forMachine(kind()).outputs();}
+    public boolean hasBatterySlot(){return MachineDefinition.forMachine(kind()).batterySlot();}
+    public boolean supportsUpgrades(){return MachineDefinition.forMachine(kind()).upgrades();}
+    public boolean usesEnergy(){return MachineDefinition.forMachine(kind()).usesEnergy();}
     public boolean chargesItems(){return MachineProfiles.storage(kind())||MachineProfiles.generator(kind());}
     /** Effective per-cycle FE after installed Energy Upgrades. */
     public int upgradeEnergyCost(int base){

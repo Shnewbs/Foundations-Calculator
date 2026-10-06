@@ -7475,7 +7475,7 @@
   {
     "key": "power.gtceu.outputLossPercent",
     "default": 0,
-    "description": "Percent conversion loss leaving Foundations FE. 0 is lossless; cannot be negative or 100. Outgoing GT packets round their FE cost up. Never increases round-trip energy.",
+    "description": "Percent conversion loss leaving Foundations FE. 0 is lossless; cannot be negative or 100. Outgoing conversion rounds the FE cost up conservatively. Never increases round-trip energy.",
     "min": 0,
     "max": 99
   },
@@ -7509,7 +7509,7 @@
   {
     "key": "power.mekanism.outputLossPercent",
     "default": 0,
-    "description": "Percent conversion loss leaving Foundations FE. 0 is lossless; cannot be negative or 100. Outgoing GT packets round their FE cost up. Never increases round-trip energy.",
+    "description": "Percent conversion loss leaving Foundations FE. 0 is lossless; cannot be negative or 100. Outgoing conversion rounds the FE cost up conservatively. Never increases round-trip energy.",
     "min": 0,
     "max": 99
   },
@@ -7543,7 +7543,7 @@
   {
     "key": "power.modernIndustrialization.outputLossPercent",
     "default": 0,
-    "description": "Percent conversion loss leaving Foundations FE. 0 is lossless; cannot be negative or 100. Outgoing GT packets round their FE cost up. Never increases round-trip energy.",
+    "description": "Percent conversion loss leaving Foundations FE. 0 is lossless; cannot be negative or 100. Outgoing conversion rounds the FE cost up conservatively. Never increases round-trip energy.",
     "min": 0,
     "max": 99
   },
@@ -7572,7 +7572,7 @@
   {
     "key": "power.ae2.outputLossPercent",
     "default": 0,
-    "description": "Percent conversion loss leaving Foundations FE. 0 is lossless; cannot be negative or 100. Outgoing GT packets round their FE cost up. Never increases round-trip energy.",
+    "description": "Percent conversion loss leaving Foundations FE. 0 is lossless; cannot be negative or 100. Outgoing conversion rounds the FE cost up conservatively. Never increases round-trip energy.",
     "min": 0,
     "max": 99
   },
@@ -7606,7 +7606,7 @@
   {
     "key": "power.grandPower.outputLossPercent",
     "default": 0,
-    "description": "Percent conversion loss leaving Foundations FE. 0 is lossless; cannot be negative or 100. Outgoing GT packets round their FE cost up. Never increases round-trip energy.",
+    "description": "Percent conversion loss leaving Foundations FE. 0 is lossless; cannot be negative or 100. Outgoing conversion rounds the FE cost up conservatively. Never increases round-trip energy.",
     "min": 0,
     "max": 99
   },

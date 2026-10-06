@@ -51,7 +51,7 @@
     },
     {
       "type": "paragraph",
-      "text": "The same Foundations Guide API content remains available to a future master-guide mod. R9 also publishes a resource-only Patchouli mirror under foundations_calculator:field_guide. Patchouli does not create a second Calculator book item: it is told to use the existing Foundations Calculator Field Guide item."
+      "text": "The same Foundations Guide API content remains available to a future master-guide mod. Calculator also publishes a resource-only Patchouli mirror under foundations_calculator:field_guide. Patchouli does not create a second Calculator book item: it is told to use the existing Foundations Calculator Field Guide item."
     },
     {
       "type": "link",

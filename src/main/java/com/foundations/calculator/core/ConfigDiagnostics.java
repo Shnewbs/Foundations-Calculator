@@ -17,9 +17,10 @@ public final class ConfigDiagnostics {
             .map(k->k.substring(8,k.length()-8)).distinct().sorted().toList();}
     private static int machine(net.minecraft.commands.CommandSourceStack source,String id){
         if(!machines().contains(id)){source.sendFailure(Component.literal("Unknown Calculator machine: "+id));return 0;}
-        long cap=CalculatorConfig.machineCapacity(id,CalculatorConfig.machine(id,"capacity",50000));
+        long cap=CalculatorConfig.machineCapacity(id,MachineDefinition.forMachine(id).capacity());
         return emit(source,
             "Calculator machine: "+id,
+            "Capabilities: inputs="+MachineDefinition.forMachine(id).inputCount()+"; outputs="+MachineDefinition.forMachine(id).outputs()+"; upgrades="+MachineDefinition.forMachine(id).upgrades(),
             "Enabled: "+CalculatorConfig.machineEnabled(id)+"; capacity: "+String.format("%,d",cap)+" FE",
             "Transfer: "+String.format("%,d",MachineProfiles.transfer(id))+" FE/t; item charge: "+String.format("%,d",MachineProfiles.charging(id))+" FE/t",
             "Automation: "+CalculatorConfig.machineFlag(id,"itemAutomation")+"; FE input/output: "+CalculatorConfig.machineFlag(id,"energyInput")+"/"+CalculatorConfig.machineFlag(id,"energyOutput"));

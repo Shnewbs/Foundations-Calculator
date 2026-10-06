@@ -184,7 +184,10 @@ tasks.named('test') { dependsOn checkGuideApi }
 
 // Validate the new platform boundary independently while the remaining mod APIs migrate.
 sourceSets {
-    portEnergy { java.srcDirs = ['platform/26.3/src/main/java'] }
+    portEnergy {
+        java.srcDirs = ['platform/26.3/src/main/java','src/main/java']
+        java.include 'com/foundations/calculator/platform/**', 'com/foundations/calculator/core/UuidTags.java'
+    }
     portEnergyTest {
         java.srcDirs = ['platform/26.3/src/test/java']
         compileClasspath += sourceSets.portEnergy.output

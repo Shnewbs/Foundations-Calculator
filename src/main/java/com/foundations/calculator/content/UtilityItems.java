@@ -68,7 +68,7 @@ public final class UtilityItems {
             var projectile=new ThrownMaterialEntity(level,player,kind.equals("soil"));projectile.shootFromRotation(player,player.getXRot(),player.getYRot(),0,1.5f,1);if(level.addFreshEntity(projectile)&&!player.isCreative())stack.shrink(1);level.playSound(null,player.blockPosition(),SoundEvents.SNOWBALL_THROW,SoundSource.PLAYERS,.5f,1);return true;
         }
         if(kind.equals("locator_module")){
-            var tag=CircuitData.tag(stack);tag.putUUID("Owner",player.getUUID());tag.putString("OwnerName",player.getGameProfile().getName());put(stack,tag);player.displayClientMessage(Component.literal("Locator bound to "+player.getGameProfile().getName()),true);return true;
+            var tag=CircuitData.tag(stack);com.foundations.calculator.core.UuidTags.put(tag,"Owner",player.getUUID());tag.putString("OwnerName",player.getGameProfile().getName());put(stack,tag);player.displayClientMessage(Component.literal("Locator bound to "+player.getGameProfile().getName()),true);return true;
         }
         if(kind.equals("end_diamond")){
             if(!CalculatorConfig.flag("module.end_diamond.enabled",true)||player.getCooldowns().isOnCooldown(battery.getItem()))return true;

@@ -62,8 +62,8 @@ public final class MachineDiagnostics {
         if(kind.equals("calculator_screen_block"))return state(ENERGY_DISPLAY);
         if(kind.equals("calculator_locator")){
             if(m.program.getIntOr("Size",0)==0)return state(INCOMPLETE);
-            var tag=CircuitData.tag(m.inventory.getStackInSlot(0));if(!tag.hasUUID("Owner"))return state(NEED_LOCATOR);
-            return state(m.program.getIntOr("Stability",0)<CalculatorConfig.integer("generation.locatorStableThreshold",7)&&level.getPlayerByUUID(tag.getUUID("Owner"))==null?NEED_OWNER:GENERATING);
+            var tag=CircuitData.tag(m.inventory.getStackInSlot(0));if(!com.foundations.calculator.core.UuidTags.has(tag,"Owner"))return state(NEED_LOCATOR);
+            return state(m.program.getIntOr("Stability",0)<CalculatorConfig.integer("generation.locatorStableThreshold",7)&&level.getPlayerByUUID(com.foundations.calculator.core.UuidTags.get(tag,"Owner"))==null?NEED_OWNER:GENERATING);
         }
         if(kind.equals("conductor_mast")&&m.inventory.getStackInSlot(0).isEmpty())return state(m.program.getIntOr("StrikeTicks",0)>0?GENERATING:WAITING_LIGHTNING);
         if(kind.equals("hand_cranked_generator")||MachineProfiles.storage(kind)||kind.equals("creative_power_cube")){

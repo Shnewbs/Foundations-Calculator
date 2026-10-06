@@ -6,8 +6,8 @@ import net.minecraft.network.chat.Component;
 
 public final class ResearchProgram {
     public static void tick(MachineBlockEntity m){
-        if(!m.program.hasUUID("Owner")){m.progress=0;return;}
-        var data=ResearchData.get(m.getLevel().getServer());var owner=m.program.getUUID("Owner");
+        if(!com.foundations.calculator.core.UuidTags.has(m.program,"Owner")){m.progress=0;return;}
+        var data=ResearchData.get(m.getLevel().getServer());var owner=com.foundations.calculator.core.UuidTags.get(m.program,"Owner");
         var input=new ProcessInput(List.of(m.inventory.getStackInSlot(0)));
         var recipe=RecipeIndex.forMachine(m.getLevel(),"research").stream().filter(r->r.value().matches(input,m.getLevel())&&!data.groups(owner).contains(r.value().researchGroup())).findFirst();
         if(recipe.isEmpty()){m.progress=0;return;}

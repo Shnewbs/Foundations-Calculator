@@ -118,7 +118,7 @@ public class MachineBlockEntity extends BlockEntity implements MenuProvider {
         energy=new StoredEnergy(()->CalculatorConfig.machineCapacity(kind(),MachineDefinition.forMachine(kind()).capacity()),this::setChanged);
     }
     public int redstoneMode(){return program.contains("RedstoneMode")?program.getIntOr("RedstoneMode",0):CalculatorConfig.machine(kind(),"defaultRedstoneMode",0);}
-    public java.util.UUID owner(){return program.hasUUID("Owner")?program.getUUID("Owner"):null;}
+    public java.util.UUID owner(){return com.foundations.calculator.core.UuidTags.has(program,"Owner")?com.foundations.calculator.core.UuidTags.get(program,"Owner"):null;}
     public String kind(){return net.minecraft.core.registries.BuiltInRegistries.BLOCK.getKey(getBlockState().getBlock()).getPath();}
     public int inputCount(){return MachineDefinition.forMachine(kind()).inputCount();}
     public boolean bulkInventory(){return storage()||kind().equals("algorithm_assimilator");}

@@ -31,7 +31,7 @@ public class MachineBlock extends BaseEntityBlock {
     protected int getDirectSignal(BlockState state,BlockGetter level,BlockPos pos,net.minecraft.core.Direction side){return getSignal(state,level,pos,side);}
     public String kind(){return net.minecraft.core.registries.BuiltInRegistries.BLOCK.getKey(this).getPath();}
     public int height(){return kind().equals("conductor_mast")?4:kind().equals("scarecrow")?3:1;}
-    public void setPlacedBy(Level l,BlockPos p,BlockState s,net.minecraft.world.entity.LivingEntity placer,net.minecraft.world.item.ItemStack stack){super.setPlacedBy(l,p,s,placer,stack);if(!l.isClientSide()&&placer instanceof Player player&&l.getBlockEntity(p) instanceof MachineBlockEntity machine){machine.program.putUUID("Owner",player.getUUID());machine.setChanged();}if(!l.isClientSide())for(int i=1;i<height();i++)l.setBlockAndUpdate(p.above(i),Content.EXTENSION.get().defaultBlockState().setValue(MachineExtensionBlock.HEIGHT,i));}
+    public void setPlacedBy(Level l,BlockPos p,BlockState s,net.minecraft.world.entity.LivingEntity placer,net.minecraft.world.item.ItemStack stack){super.setPlacedBy(l,p,s,placer,stack);if(!l.isClientSide()&&placer instanceof Player player&&l.getBlockEntity(p) instanceof MachineBlockEntity machine){com.foundations.calculator.core.UuidTags.put(machine.program,"Owner",player.getUUID());machine.setChanged();}if(!l.isClientSide())for(int i=1;i<height();i++)l.setBlockAndUpdate(p.above(i),Content.EXTENSION.get().defaultBlockState().setValue(MachineExtensionBlock.HEIGHT,i));}
     protected RenderShape getRenderShape(BlockState s){return MODELED.contains(kind())?RenderShape.ENTITYBLOCK_ANIMATED:RenderShape.MODEL;}
     public BlockEntity newBlockEntity(BlockPos p,BlockState s){return new MachineBlockEntity(p,s);}
     @Nullable public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level,BlockState s,BlockEntityType<T> type){
@@ -45,7 +45,7 @@ public class MachineBlock extends BaseEntityBlock {
         if(level.getBlockEntity(pos) instanceof MachineBlockEntity machine){
             if(!level.isClientSide()){
                 if(!level.mayInteract(player,pos)||!player.mayUseItemAt(pos,hit.getDirection(),player.getMainHandItem()))return InteractionResult.FAIL;
-                if(!machine.program.hasUUID("Owner")){machine.program.putUUID("Owner",player.getUUID());machine.setChanged();}
+                if(!com.foundations.calculator.core.UuidTags.has(machine.program,"Owner")){com.foundations.calculator.core.UuidTags.put(machine.program,"Owner",player.getUUID());machine.setChanged();}
                 if(machine.kind().equals("crank_handle")){
                     if(level.getBlockEntity(pos.below()) instanceof MachineBlockEntity generator&&generator.kind().equals("hand_cranked_generator")&&(machine.lastCrankTick==Long.MIN_VALUE||level.getGameTime()-machine.lastCrankTick>=CalculatorConfig.integer("generation.crankHandleCooldown",18))){generator.energy.receiveEnergy(CalculatorConfig.CRANK_ENERGY.get(),false);machine.lastCrankTick=level.getGameTime();}
                 }else if(machine.kind().equals("hand_cranked_generator") && !player.isShiftKeyDown()){

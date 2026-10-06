@@ -234,8 +234,8 @@ public final class MachinePrograms {
             s.putInt("Stability",stable);m.setChanged();
         }
         int size=s.getIntOr("Size",0),stable=s.getIntOr("Stability",0);ItemStack module=m.inventory.getStackInSlot(0);CompoundTag owner=CircuitData.tag(module);
-        var player=owner.hasUUID("Owner")?level.getPlayerByUUID(owner.getUUID("Owner")):null;
-        boolean active=Content.path(module).equals("locator_module")&&owner.hasUUID("Owner")&&size>0&&(stable>=CalculatorConfig.integer("generation.locatorStableThreshold",7)||player!=null)&&m.energy.stored()<m.energy.capacity();
+        var player=com.foundations.calculator.core.UuidTags.has(owner,"Owner")?level.getPlayerByUUID(com.foundations.calculator.core.UuidTags.get(owner,"Owner")):null;
+        boolean active=Content.path(module).equals("locator_module")&&com.foundations.calculator.core.UuidTags.has(owner,"Owner")&&size>0&&(stable>=CalculatorConfig.integer("generation.locatorStableThreshold",7)||player!=null)&&m.energy.stored()<m.energy.capacity();
         m.setActive(active);if(!active)return;
         int percent=Math.clamp(stable*100/((2*size+1)*(2*size+1)),0,100);
         int output=(int)Math.max(0,5+((int)(1000*Math.sqrt(size*1.8)-100*Math.sqrt(100-percent)))/Math.max(1,(int)(11-Math.sqrt(percent)))*size);

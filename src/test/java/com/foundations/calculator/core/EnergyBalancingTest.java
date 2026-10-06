@@ -8,6 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class EnergyBalancingTest {
     @Test void overflowingProductsRetainTheirRelativeDifference(){
         assertEquals(400_000_000L,EnergyBalancing.transfer(30_000_000_000L,50_000_000_000L,10_000_000_000L,50_000_000_000L,400_000_000L));
+        assertEquals(400_000_000L,EnergyBalancing.transfer(30_000_000_000L,50_000_000_000L,10_000_000_000L,100_000_000_000L,400_000_000L));
     }
     @Test void comparesFillFractionRatherThanRawAmount(){
         assertEquals(400,EnergyBalancing.transfer(800,1000,400,2000,1000));

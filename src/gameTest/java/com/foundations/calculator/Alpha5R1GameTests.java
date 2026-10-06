@@ -10,7 +10,7 @@ import net.neoforged.neoforge.gametest.*;
 public final class Alpha5R1GameTests {
     @GameTest(template="empty",batch="alpha5_r1") public static void oversizedCubesBalanceWithoutOverflow(GameTestHelper h){
         var source=R5GameTests.place(h);
-        var pos=new BlockPos(4,2,3);h.setBlock(pos,Content.block("power_cube"));
+        var pos=new BlockPos(4,2,3);h.setBlock(pos,Content.block("advanced_power_cube"));
         var target=(MachineBlockEntity)h.getBlockEntity(pos);
         R6GameTests.setting("energy.machineCapacityMultiplier",1000000.0,()->
             R6GameTests.setting("energy.transferMultiplier",1000000.0,()->{

@@ -7,8 +7,8 @@ public final class EnergyBalancing {
     public static long transfer(long stored,long capacity,long otherStored,long otherCapacity,long limit) {
         if(stored<=0||capacity<=0||otherCapacity<=0||limit<=0)return 0;
         otherStored=Math.max(0,otherStored);
-        if(stored==otherStored&&capacity==otherCapacity)return 0;
         long maximum=Math.min(stored,limit);
+        if(capacity==otherCapacity)return stored<=otherStored?0:Math.min(maximum,(stored-otherStored)/2);
         if(stored<=Long.MAX_VALUE/otherCapacity&&otherStored<=Long.MAX_VALUE/capacity
                 &&capacity<=Long.MAX_VALUE-otherCapacity){
             long surplus=stored*otherCapacity-otherStored*capacity;

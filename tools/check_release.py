@@ -38,7 +38,7 @@ with zipfile.ZipFile(jar) as z:
     recipes=[n for n in names if n.startswith('data/foundations_calculator/recipe/') and n.endswith('.json')]
     assert len(recipes)==910,f'Expected 910 recipes, got {len(recipes)}'
     assert 'assets/foundations_calculator/foundations_guides/field_guide/book.json' in names
-    assert 'assets/foundations_calculator/patchouli_books/field_guide/book.json' in names
+    assert 'data/foundations_calculator/patchouli_books/field_guide/book.json' in names
 
 catalog=json.loads((root/'tools/configuration_catalog.json').read_text())
 assert len(catalog)==4272 and len({v['key'] for v in catalog})==4272,'Server configuration key count changed unexpectedly'

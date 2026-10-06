@@ -181,3 +181,26 @@ def checkGuideApi = tasks.register('verifyGuideApi') {
 }
 tasks.named('compileJava') { dependsOn checkGuideApi }
 tasks.named('test') { dependsOn checkGuideApi }
+
+// Validate the new platform boundary independently while the remaining mod APIs migrate.
+sourceSets {
+    portEnergy { java.srcDirs = ['platform/26.3/src/main/java'] }
+    portEnergyTest {
+        java.srcDirs = ['platform/26.3/src/test/java']
+        compileClasspath += sourceSets.portEnergy.output
+        runtimeClasspath += sourceSets.portEnergy.output
+    }
+}
+neoForge.addModdingDependenciesTo(sourceSets.portEnergy)
+neoForge.addModdingDependenciesTo(sourceSets.portEnergyTest)
+dependencies {
+    portEnergyTestImplementation platform('org.junit:junit-bom:5.11.4')
+    portEnergyTestImplementation 'org.junit.jupiter:junit-jupiter'
+    portEnergyTestRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+tasks.register('testPortEnergy', Test) {
+    testClassesDirs = sourceSets.portEnergyTest.output.classesDirs
+    classpath = sourceSets.portEnergyTest.runtimeClasspath
+    useJUnitPlatform()
+}
+tasks.named('compileJava') { options.compilerArgs.addAll(['-Xmaxerrs','1000']) }

@@ -137,7 +137,7 @@ public final class ClientSmoke {
     private static void capture(Minecraft mc,String file){Screenshot.grab(new File("../validation"),file,mc.getMainRenderTarget(),message->System.out.println("SMOKE_SCREENSHOT "+file));}
     private static final class Gallery extends Screen {
         Gallery(){super(Component.literal("Foundations Calculator · registry gallery"));}
-        public void render(GuiGraphics g,int mx,int my,float partial){super.render(g,mx,my,partial);g.fill(0,0,width,height,0xff18242d);g.drawString(font,title,12,8,0xffa5e6ec,false);int i=0,cols=Math.max(1,(width-24)/24);for(var item:Content.ITEMS_BY_ID.values()){int x=12+(i%cols)*24,y=30+(i/cols)*24;g.renderItem(new ItemStack(item.get()),x,y);i++;}}
+        public void render(GuiGraphicsExtractor g,int mx,int my,float partial){super.render(g,mx,my,partial);g.fill(0,0,width,height,0xff18242d);g.drawString(font,title,12,8,0xffa5e6ec,false);int i=0,cols=Math.max(1,(width-24)/24);for(var item:Content.ITEMS_BY_ID.values()){int x=12+(i%cols)*24,y=30+(i/cols)*24;g.renderItem(new ItemStack(item.get()),x,y);i++;}}
         public boolean isPauseScreen(){return false;}
     }
 }

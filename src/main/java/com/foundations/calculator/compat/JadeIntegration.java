@@ -3,7 +3,7 @@ import com.foundations.calculator.content.*;
 import com.foundations.calculator.core.*;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import snownee.jade.api.*;
 import snownee.jade.api.config.IPluginConfig;
 
@@ -13,7 +13,7 @@ public final class JadeIntegration implements IWailaPlugin {
     public void registerClient(IWailaClientRegistration registration){registration.registerBlockComponent(Provider.INSTANCE,MachineBlock.class);}
     public enum Provider implements IServerDataProvider<BlockAccessor>,IBlockComponentProvider {
         INSTANCE;
-        public ResourceLocation getUid(){return Content.id("machine_status");}
+        public Identifier getUid(){return Content.id("machine_status");}
         public void appendServerData(CompoundTag data,BlockAccessor accessor){
             if(!CalculatorConfig.flag("compat.jade",true)||!(accessor.getBlockEntity() instanceof MachineBlockEntity m))return;
             var snapshot=MachineDiagnostics.machine(m);var n=new CompoundTag();n.putString("Status",snapshot.status().label);n.putInt("Required",snapshot.requiredEnergy());n.putInt("Progress",m.progress);n.putInt("Ticks",m.totalTicks);n.putInt("Points",m.nutrient);n.putString("Research",m.program.getString("LastResearch"));

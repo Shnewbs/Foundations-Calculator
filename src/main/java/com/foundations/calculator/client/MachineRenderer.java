@@ -10,7 +10,7 @@ import net.minecraft.client.gui.Font;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.renderer.*;
 import net.minecraft.client.renderer.blockentity.*;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.phys.AABB;
 

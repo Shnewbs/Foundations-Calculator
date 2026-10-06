@@ -6,13 +6,13 @@ import com.foundations.calculator.menu.CalculatorMenu;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.*;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.network.chat.Component;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 
-public record TransferPayload(int menuId,ResourceLocation recipe,int amount) implements CustomPacketPayload {
+public record TransferPayload(int menuId,Identifier recipe,int amount) implements CustomPacketPayload {
     public static final Type<TransferPayload> TYPE=new Type<>(Content.id("recipe_transfer"));
-    public static final StreamCodec<RegistryFriendlyByteBuf,TransferPayload> CODEC=StreamCodec.composite(ByteBufCodecs.VAR_INT,TransferPayload::menuId,ResourceLocation.STREAM_CODEC,TransferPayload::recipe,ByteBufCodecs.VAR_INT,TransferPayload::amount,TransferPayload::new);
+    public static final StreamCodec<RegistryFriendlyByteBuf,TransferPayload> CODEC=StreamCodec.composite(ByteBufCodecs.VAR_INT,TransferPayload::menuId,Identifier.STREAM_CODEC,TransferPayload::recipe,ByteBufCodecs.VAR_INT,TransferPayload::amount,TransferPayload::new);
     public Type<TransferPayload> type(){return TYPE;}
     public static void handle(TransferPayload payload,IPayloadContext context){
         context.enqueueWork(()->{

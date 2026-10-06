@@ -367,7 +367,7 @@ public final class Content {
             public void appendHoverText(ItemStack s,TooltipContext c,List<Component> tooltip,TooltipFlag f){super.appendHoverText(s,c,tooltip,f);if(pending)tooltip.add(Component.literal("Port pending — not functional in this alpha").withStyle(net.minecraft.ChatFormatting.RED));}
         }));
     }
-    public static ResourceLocation id(String s){return ResourceLocation.fromNamespaceAndPath(FoundationsCalculator.ID,s);}
+    public static Identifier id(String s){return Identifier.fromNamespaceAndPath(FoundationsCalculator.ID,s);}
     public static Item item(String id){var item=ITEMS_BY_ID.get(id);if(item==null)throw new IllegalArgumentException("Unknown item "+id);return item.get();}
     public static Block block(String id){return BLOCKS_BY_ID.get(id).get();}
     public static String path(ItemStack s){return BuiltInRegistries.ITEM.getKey(s.getItem()).getPath();}

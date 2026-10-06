@@ -96,7 +96,7 @@ public final class UtilityItems {
             if(player.getCooldowns().isOnCooldown(battery.getItem()))return true;
             var target=CircuitData.tag(stack);
             if(!target.contains("WarpPos")){player.displayClientMessage(Component.literal("Sneak-use a destination block to bind the module."),true);return true;}
-            var dimension=net.minecraft.resources.ResourceKey.create(net.minecraft.core.registries.Registries.DIMENSION,net.minecraft.resources.ResourceLocation.parse(target.getString("WarpDimension")));
+            var dimension=net.minecraft.resources.ResourceKey.create(net.minecraft.core.registries.Registries.DIMENSION,net.minecraft.resources.Identifier.parse(target.getString("WarpDimension")));
             var destination=level.getServer().getLevel(dimension);
             if(destination==null||!dimension.equals(level.dimension())&&!CalculatorConfig.flag("module.warp_module.crossDimension",false))return true;
             BlockPos p=BlockPos.of(target.getLong("WarpPos"));

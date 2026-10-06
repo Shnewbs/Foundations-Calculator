@@ -4,7 +4,7 @@ import java.io.File;
 import com.foundations.calculator.client.MachineRenderer;
 import com.foundations.calculator.content.*;
 import net.minecraft.client.*;
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.screens.*;
 import net.minecraft.core.*;
 import net.minecraft.network.chat.Component;
@@ -70,7 +70,7 @@ public final class ClientPowerSmoke {
     }
     private static final class Gallery extends Screen {
         Gallery(){super(Component.literal("R5 block item models"));}
-        public void render(GuiGraphics g,int x,int y,float partial){
+        public void render(GuiGraphicsExtractor g,int x,int y,float partial){
             g.fill(0,0,width,height,0xff18242d);g.drawString(font,title,20,15,0xffedf4f8,false);
             var names=new java.util.ArrayList<>(MachineBlock.MODELED);names.sort(String::compareTo);names.addAll(java.util.List.of("power_cube","advanced_power_cube","calculator_locator","fabrication_chamber","analysing_chamber","research_chamber"));
             for(int i=0;i<names.size();i++){int px=20+i%4*150,py=45+i/4*70;g.fill(px,py,px+138,py+60,0xff30424e);g.pose().pushPose();g.pose().translate(px+8,py+8,0);g.pose().scale(2,2,2);g.renderItem(new ItemStack(Content.item(names.get(i))),0,0);g.pose().popPose();g.drawString(font,names.get(i).replace('_',' '),px+4,py+48,0xffedf4f8,false);}

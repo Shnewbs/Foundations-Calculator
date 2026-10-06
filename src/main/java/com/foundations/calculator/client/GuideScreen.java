@@ -6,11 +6,11 @@ import com.foundations.guide.api.GuideData.*;
 import com.foundations.calculator.client.guide.*;
 import com.foundations.calculator.core.*;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.util.FormattedCharSequence;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -199,7 +199,7 @@ public final class GuideScreen extends Screen {
         for(var line:wrapped){document.add(new Row(lineY,12,line,INK,ItemStack.EMPTY,"text_inset",0,0,List.of(),action,"item_text"));lineY+=12;}
         documentHeight+=height+5;
     }
-    private ItemStack item(String id){ResourceLocation key=ResourceLocation.tryParse(id);return key!=null&&BuiltInRegistries.ITEM.containsKey(key)?new ItemStack(BuiltInRegistries.ITEM.get(key)):ItemStack.EMPTY;}
+    private ItemStack item(String id){Identifier key=Identifier.tryParse(id);return key!=null&&BuiltInRegistries.ITEM.containsKey(key)?new ItemStack(BuiltInRegistries.ITEM.get(key)):ItemStack.EMPTY;}
     private int number(Map<String,String> values,String key,int fallback,int max){try{return Math.clamp(Integer.parseInt(values.getOrDefault(key,"")),1,max);}catch(NumberFormatException e){return fallback;}}
 
     private void section(Block b){
@@ -238,7 +238,7 @@ public final class GuideScreen extends Screen {
                 documentHeight+=8;String legend=b.options().getOrDefault("legend","");if(!legend.isEmpty())addText(legend,MUTED,false,null,0,"caption");
             }
             case "image"->{
-                addText(b.text(),MUTED,false,null,0,"caption");ResourceLocation id=ResourceLocation.tryParse(b.target());
+                addText(b.text(),MUTED,false,null,0,"caption");Identifier id=Identifier.tryParse(b.target());
                 if(id==null||minecraft.getResourceManager().getResource(id).isEmpty()){addText("Illustration unavailable: "+b.target(),MUTED,false,null,0);break;}
                 int tw=number(b.options(),"width",128,1024),th=number(b.options(),"height",128,1024),dw=Math.min(pageWidth,tw),dh=Math.max(1,th*dw/tw);
                 if(dh>512){dw=dw*512/dh;dh=512;}
@@ -269,9 +269,9 @@ public final class GuideScreen extends Screen {
         if(catalogChanged||recipeRevision!=RecipeIndex.revision()||configRevision!=CalculatorConfig.revision()||valueRevision!=GuideValues.revision()||(minecraft.level!=null&&researchRevision!=ResearchData.revision(minecraft.level))||waiting&&age%10==0)buildDocument();
     }
 
-    @Override public void renderBackground(GuiGraphics g,int x,int y,float delta){}
+    @Override public void renderBackground(GuiGraphicsExtractor g,int x,int y,float delta){}
 
-    private void renderBookShell(GuiGraphics g,int accent){
+    private void renderBookShell(GuiGraphicsExtractor g,int accent){
         g.fill(0,0,width,height,0x8d000000);
         // soft-grey leather cover and worn edging
         g.fill(bookLeft-4,bookTop-4,bookRight+4,bookBottom+4,0xff292c2e);
@@ -302,7 +302,7 @@ public final class GuideScreen extends Screen {
         g.fill(bookRight-14,bookTop+12,bookRight-11,bookBottom-12,accent);
     }
 
-    private void renderHotspots(GuiGraphics g,int mx,int my,int accent){
+    private void renderHotspots(GuiGraphicsExtractor g,int mx,int my,int accent){
         for(Hotspot h:hotspots){
             boolean hover=h.contains(mx,my);int bg=h.selected()?0xff355f68:hover?0xffb7b0a2:0xff716f6b;int fg=h.selected()?0xfff5f0df:0xfff1e8d3;
             g.fill(h.x(),h.y(),h.x()+h.w(),h.y()+h.h(),0xff343638);
@@ -313,7 +313,7 @@ public final class GuideScreen extends Screen {
         }
     }
 
-    private void renderContents(GuiGraphics g,int mx,int my,int accent){
+    private void renderContents(GuiGraphicsExtractor g,int mx,int my,int accent){
         g.drawString(font,"CALCULATOR FIELD GUIDE",navX+8,bookTop+45,INK,false);
         ItemStack guide=item("foundations_calculator:info_calculator");if(!guide.isEmpty())g.renderItem(guide,navX+navWidth-28,bookTop+42);
         g.fill(navX+8,bookTop+61,navX+navWidth-8,bookTop+62,0xffbdb19a);
@@ -334,7 +334,7 @@ public final class GuideScreen extends Screen {
         }
     }
 
-    private void renderPage(GuiGraphics g,int mx,int my,int accent){
+    private void renderPage(GuiGraphicsExtractor g,int mx,int my,int accent){
         Book book=GuideApi.catalog().books().get(target.guide());String title=book==null?"Calculator Field Guide":book.title();
         var entry=book==null?Optional.<Entry>empty():book.entry(target.entry());String chapterTitle=entry.isEmpty()?"Contents":Optional.ofNullable(book.chapters().get(entry.get().chapter())).map(Chapter::title).orElse("Field notes");
         g.drawString(font,font.plainSubstrByWidth(title,pageWidth),pageX,bookTop+47,LINK,false);
@@ -362,7 +362,7 @@ public final class GuideScreen extends Screen {
             }
             if(!row.image().isEmpty()&&!row.image().equals("text_inset")){
                 int dw=Math.min(pageWidth,row.imageW());if(row.imageH()*dw/row.imageW()>512)dw=dw*512/(row.imageH()*dw/row.imageW());
-                g.pose().pushPose();g.pose().translate(pageX,y,0);g.pose().scale((float)dw/row.imageW(),(float)row.height()/row.imageH(),1);g.blit(ResourceLocation.parse(row.image()),0,0,0,0,row.imageW(),row.imageH(),row.imageW(),row.imageH());g.pose().popPose();
+                g.pose().pushPose();g.pose().translate(pageX,y,0);g.pose().scale((float)dw/row.imageW(),(float)row.height()/row.imageH(),1);g.blit(Identifier.parse(row.image()),0,0,0,0,row.imageW(),row.imageH(),row.imageW(),row.imageH());g.pose().popPose();
             }
             if(row.action()!=null&&mx>=pageX&&mx<pageX+pageWidth&&my>=Math.max(y,contentTop)&&my<Math.min(y+row.height(),contentBottom)&&tip.isEmpty())tip="Open";
         }
@@ -370,7 +370,7 @@ public final class GuideScreen extends Screen {
         if(maxScroll()>0){int track=contentBottom-contentTop,thumb=Math.max(18,track*track/Math.max(track,documentHeight));int sy=contentTop+(track-thumb)*scroll/Math.max(1,maxScroll());g.fill(pageX+pageWidth+4,contentTop,pageX+pageWidth+6,contentBottom,0xffc7baa2);g.fill(pageX+pageWidth+3,sy,pageX+pageWidth+7,sy+thumb,accent);}
     }
 
-    @Override public void render(GuiGraphics g,int mx,int my,float delta){
+    @Override public void render(GuiGraphicsExtractor g,int mx,int my,float delta){
         hovered=ItemStack.EMPTY;tip="";int accent=0xff000000|ClientConfig.color(ClientConfig.ACCENT,0x47acb9);
         renderBookShell(g,accent);
         if(listVisible())renderContents(g,mx,my,accent);

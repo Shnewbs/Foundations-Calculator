@@ -371,7 +371,7 @@ public final class Content {
     public static Item item(String id){var item=ITEMS_BY_ID.get(id);if(item==null)throw new IllegalArgumentException("Unknown item "+id);return item.get();}
     public static Block block(String id){return BLOCKS_BY_ID.get(id).get();}
     public static String path(ItemStack s){return BuiltInRegistries.ITEM.getKey(s.getItem()).getPath();}
-    public static void register(IEventBus bus){BLOCKS.register(bus);ITEMS.register(bus);ENTITIES.register(bus);PROJECTILES.register(bus);MENUS.register(bus);TYPES.register(bus);SERIALIZERS.register(bus);COMPONENTS.register(bus);TABS.register(bus);bus.addListener(Content::capabilities);}
+    public static void register(IEventBus bus){BLOCKS.register(bus);ITEMS.register(bus);ENTITIES.register(bus);PROJECTILES.register(bus);MENUS.register(bus);TYPES.register(bus);SERIALIZERS.register(bus);COMPONENTS.register(bus);TABS.register(bus);bus.addListener(net.neoforged.bus.api.EventPriority.HIGHEST,Content::capabilities);}
     private static void capabilities(RegisterCapabilitiesEvent e){
         e.registerBlockEntity(Capabilities.EnergyStorage.BLOCK,MACHINE_ENTITY.get(),(m,side)->com.foundations.calculator.core.PowerPolicy.guardFE(m.energyPort(side),com.foundations.calculator.core.PowerPolicy.Scope.BLOCK));
         e.registerBlockEntity(Capabilities.ItemHandler.BLOCK,MACHINE_ENTITY.get(),MachineBlockEntity::automation);

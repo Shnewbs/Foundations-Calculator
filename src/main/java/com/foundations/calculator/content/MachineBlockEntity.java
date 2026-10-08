@@ -52,15 +52,6 @@ public class MachineBlockEntity extends BlockEntity implements MenuProvider {
     private ItemStack clientDisplay=ItemStack.EMPTY;
     private int sentProgress,sentTotalTicks;
     private long sentEnergy,sentCrank;
-    private static long saturatingProduct(long a,long b){
-        if(a<=0||b<=0)return 0;
-        if(a>Long.MAX_VALUE/b)return Long.MAX_VALUE;
-        return a*b;
-    }
-    private static long saturatingSum(long a,long b){
-        a=Math.max(0L,a);b=Math.max(0L,b);
-        return a>Long.MAX_VALUE-b?Long.MAX_VALUE:a+b;
-    }
     public boolean workDue(int interval) {
         return level!=null&&StaggeredWork.due(level.getGameTime(),worldPosition.asLong(),Math.max(1,interval),
             CalculatorConfig.flag("performance.staggerWork",true));
@@ -251,6 +242,22 @@ public class MachineBlockEntity extends BlockEntity implements MenuProvider {
             if(!level.hasChunkAt(worldPosition.relative(side)))continue;
             int nativeSent=com.foundations.calculator.api.FoundationsEnergy.sendNative(this,side,(int)Math.min(energy.stored(),MachineProfiles.transfer(kind())));
             if(nativeSent>=0){energy.extractEnergy(nativeSent,false);continue;}
+            // Our own storage banks have long-valued buffers/rates; the public FE facade
+            // remains int-valued for external receivers. Preserve both FE policy gates.
+            if(MachineProfiles.storage(kind())
+                &&level.getBlockEntity(worldPosition.relative(side)) instanceof MachineBlockEntity bank
+                &&MachineProfiles.storage(bank.kind())){
+                if(!com.foundations.calculator.core.PowerPolicy.FE.input(com.foundations.calculator.core.PowerPolicy.Scope.BLOCK)
+                    ||!com.foundations.calculator.core.PowerPolicy.FE.output(com.foundations.calculator.core.PowerPolicy.Scope.BLOCK))continue;
+                var receiver=bank.longEnergyPort(side.getOpposite());
+                if(receiver==null||!receiver.canReceive())continue;
+                long amount=Math.min(energy.stored(),MachineProfiles.transferLong(kind()));
+                if(CalculatorConfig.flag("automation.balanceCubes",true)&&program.getIntOr("Side"+side.get3DDataValue(),0)==0
+                    &&bank.program.getIntOr("Side"+side.getOpposite().get3DDataValue(),0)==0)
+                    amount=EnergyBalancing.transfer(energy.stored(),energy.capacity(),bank.energy.stored(),bank.energy.capacity(),amount);
+                energy.extract(Math.clamp(receiver.receive(amount,false),0L,amount),false);
+                continue;
+            }
             EnergyPort other=com.foundations.calculator.api.FoundationsEnergy.block(level,worldPosition.relative(side),side.getOpposite());
             if(other==null||!other.canReceive())continue;
             int n=(int)Math.min(energy.stored(),MachineProfiles.transfer(kind()));
@@ -259,9 +266,7 @@ public class MachineBlockEntity extends BlockEntity implements MenuProvider {
             if(CalculatorConfig.flag("automation.balanceCubes",true)&&MachineProfiles.storage(kind())&&program.getIntOr("Side"+side.get3DDataValue(),0)==0
                 &&level.getBlockEntity(worldPosition.relative(side)) instanceof MachineBlockEntity bank
                 &&MachineProfiles.storage(bank.kind())&&bank.program.getIntOr("Side"+side.getOpposite().get3DDataValue(),0)==0){
-                long surplus=saturatingProduct(energy.stored(),bank.energy.capacity())-saturatingProduct(bank.energy.stored(),energy.capacity());
-                long capacities=saturatingSum(energy.capacity(),bank.energy.capacity());
-                n=(int)Math.min(n,Math.max(0,surplus/capacities));
+                n=(int)EnergyBalancing.transfer(energy.stored(),energy.capacity(),bank.energy.stored(),bank.energy.capacity(),n);
             }
             energy.extractEnergy(Math.clamp(other.receiveEnergy(n,false),0,n),false);
         }

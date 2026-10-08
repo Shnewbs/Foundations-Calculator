@@ -186,7 +186,7 @@ tasks.named('test') { dependsOn checkGuideApi }
 sourceSets {
     portEnergy {
         java.srcDirs = ['platform/26.3/src/main/java','src/main/java']
-        java.include 'com/foundations/calculator/platform/**', 'com/foundations/calculator/core/UuidTags.java', 'com/foundations/calculator/core/StoredEnergy.java', 'com/foundations/calculator/api/EnergyPort.java', 'com/foundations/calculator/api/LongEnergyStorage.java'
+        java.include 'com/foundations/calculator/platform/**', 'com/foundations/calculator/core/EnergyBalancing.java', 'com/foundations/calculator/core/UuidTags.java', 'com/foundations/calculator/core/StoredEnergy.java', 'com/foundations/calculator/api/EnergyPort.java', 'com/foundations/calculator/api/LongEnergyStorage.java'
     }
     portEnergyTest {
         java.srcDirs = ['platform/26.3/src/test/java']

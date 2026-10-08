@@ -1,3 +1,3 @@
-# Experimental 26.3 port
+# Experimental 26.3 port — R2 development
 
-Eight transactional energy boundary tests pass on Java 25 / NeoForge 26.3.0.52-beta. The full mod still fails compilation; no 26.3 binary is available. See docs/26.3_MIGRATION_STATUS.md for exact evidence and required migrations. Minecraft 26.4 compatibility is unverified.
+Canonical machine storage, energy capability registration and item-access energy transactions are migrated to the real NeoForge 26.3 APIs. New boundary regressions require CI validation. The full mod still has remaining API migrations; no loadable 26.3 binary is claimed. Minecraft 1.21.1 remains supported on main. 26.4 compatibility is unverified.

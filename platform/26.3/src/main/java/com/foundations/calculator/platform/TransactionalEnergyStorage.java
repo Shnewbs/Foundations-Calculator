@@ -8,7 +8,7 @@ import net.neoforged.neoforge.transfer.transaction.SnapshotJournal;
 import net.neoforged.neoforge.transfer.transaction.TransactionContext;
 
 /** 26.3 storage boundary: long amounts, reversible transfers and commit-only notifications. */
-public final class TransactionalEnergyStorage extends SnapshotJournal<Long> implements EnergyHandler {
+public class TransactionalEnergyStorage extends SnapshotJournal<Long> implements EnergyHandler {
     private long amount;
     private final LongSupplier capacity, rate;
     private final BooleanSupplier input, output;
@@ -23,6 +23,12 @@ public final class TransactionalEnergyStorage extends SnapshotJournal<Long> impl
         this.input=Objects.requireNonNull(input);
         this.output=Objects.requireNonNull(output);
         this.changed=Objects.requireNonNull(changed);
+    }
+    /** Persistence writes cannot replace an active journal's state. */
+    protected final void loadStoredAmount(long value){
+        if(net.neoforged.neoforge.transfer.transaction.Transaction.getCurrentOpenedTransaction()!=null)
+            throw new IllegalStateException("Cannot load persisted energy during a transfer transaction");
+        amount=Math.max(0,value);
     }
     @Override public long getAmountAsLong(){return amount;}
     @Override public long getCapacityAsLong(){return Math.max(0,capacity.getAsLong());}

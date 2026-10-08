@@ -2,7 +2,7 @@ package com.foundations.calculator.core;
 
 import java.util.List;
 import java.util.function.BooleanSupplier;
-import net.neoforged.neoforge.energy.IEnergyStorage;
+import com.foundations.calculator.api.EnergyPort;
 
 /** Live server policies. Only rebuilt conversion plans allocate exact-arithmetic objects. */
 public final class PowerPolicy {
@@ -55,12 +55,12 @@ public final class PowerPolicy {
         return plan;
     }
     /** Guard a direct FE capability without changing the raw storage used by native adapters. */
-    public static IEnergyStorage guardFE(IEnergyStorage storage, Scope scope) {
+    public static EnergyPort guardFE(EnergyPort storage, Scope scope) {
         return gate(storage, () -> FE.input(scope), () -> FE.output(scope));
     }
-    public static IEnergyStorage gate(IEnergyStorage storage, BooleanSupplier canReceive, BooleanSupplier canExtract) {
+    public static EnergyPort gate(EnergyPort storage, BooleanSupplier canReceive, BooleanSupplier canExtract) {
         if (storage == null) return null;
-        return new IEnergyStorage() {
+        return new EnergyPort() {
             public int receiveEnergy(int n, boolean simulate) { return n > 0 && canReceive() ? storage.receiveEnergy(n, simulate) : 0; }
             public int extractEnergy(int n, boolean simulate) { return n > 0 && canExtract() ? storage.extractEnergy(n, simulate) : 0; }
             public int getEnergyStored() { return storage.getEnergyStored(); }

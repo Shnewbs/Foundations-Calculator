@@ -19,7 +19,7 @@ import net.minecraft.world.item.*;
 import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
-import net.neoforged.neoforge.energy.IEnergyStorage;
+import com.foundations.calculator.api.EnergyPort;
 
 public class CalculatorItem extends Item {
     private final String kind;
@@ -60,7 +60,7 @@ public class CalculatorItem extends Item {
         public long stored(){return energyLong(stack);}public long capacity(){return maxEnergyLong(stack);}
         public boolean canReceive(){return capacity>0;}public boolean canExtract(){return capacity>0;}
     };}
-    public IEnergyStorage storage(ItemStack stack){return new IEnergyStorage(){
+    public EnergyPort storage(ItemStack stack){return new EnergyPort(){
         private LongEnergyStorage power(){return longStorage(stack);}
         public int receiveEnergy(int n,boolean simulate){return (int)Math.min(Integer.MAX_VALUE,power().receive(Math.max(0,n),simulate));}
         public int extractEnergy(int n,boolean simulate){return (int)Math.min(Integer.MAX_VALUE,power().extract(Math.max(0,n),simulate));}

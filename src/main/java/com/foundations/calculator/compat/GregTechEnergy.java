@@ -11,7 +11,7 @@ import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.CustomData;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
-import net.neoforged.neoforge.energy.IEnergyStorage;
+import com.foundations.calculator.api.EnergyPort;
 
 /** GregTech CEu Modern: real voltage/amperage packets for blocks, electric-item API for batteries. */
 public final class GregTechEnergy {
@@ -98,7 +98,7 @@ public final class GregTechEnergy {
             return "GregTech EU: shared per-tick output amp budget exhausted";
         return "GregTech EU: "+voltage+" EU/packet, "+cost+" FE/packet; receiver advertises input (delivery not simulated)";
     }
-    public static IEnergyStorage wrap(IElectricItem item){
+    public static EnergyPort wrap(IElectricItem item){
         if(item==null)return null;
         return LongEnergyBridge.toFE(new LongEnergyBridge.Storage(){
             private int tier(){return CalculatorConfig.integer("compat.gtceu.chargerTier",1);}
@@ -113,7 +113,7 @@ public final class GregTechEnergy {
         var power=LongEnergyBridge.fromLong(fe,GregTechEnergy::conversion,()->POLICY.input(Scope.ITEM),()->POLICY.output(Scope.ITEM));
         return electricView(stack,power);
     }
-    public static IElectricItem electric(ItemStack stack,IEnergyStorage fe){
+    public static IElectricItem electric(ItemStack stack,EnergyPort fe){
         var power=LongEnergyBridge.fromFE(fe,GregTechEnergy::conversion,()->POLICY.input(Scope.ITEM),()->POLICY.output(Scope.ITEM));
         return electricView(stack,power);
     }

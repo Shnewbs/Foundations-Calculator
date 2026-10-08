@@ -8,11 +8,11 @@ import net.neoforged.neoforge.transfer.transaction.TransactionContext;
 
 /** Live face policy over one shared storage journal: never snapshot each face separately. */
 public final class SidedEnergyHandler implements EnergyHandler {
-    private final TransactionalEnergyStorage storage;
+    private final EnergyHandler storage;
     private final BooleanSupplier input, output;
     private final LongSupplier rate;
 
-    public SidedEnergyHandler(TransactionalEnergyStorage storage, BooleanSupplier input,
+    public SidedEnergyHandler(EnergyHandler storage, BooleanSupplier input,
             BooleanSupplier output, LongSupplier rate) {
         this.storage=Objects.requireNonNull(storage);
         this.input=Objects.requireNonNull(input);

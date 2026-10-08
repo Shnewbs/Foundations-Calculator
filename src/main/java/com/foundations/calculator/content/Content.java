@@ -373,8 +373,8 @@ public final class Content {
     public static String path(ItemStack s){return BuiltInRegistries.ITEM.getKey(s.getItem()).getPath();}
     public static void register(IEventBus bus){BLOCKS.register(bus);ITEMS.register(bus);ENTITIES.register(bus);PROJECTILES.register(bus);MENUS.register(bus);TYPES.register(bus);SERIALIZERS.register(bus);COMPONENTS.register(bus);TABS.register(bus);bus.addListener(net.neoforged.bus.api.EventPriority.HIGHEST,Content::capabilities);}
     private static void capabilities(RegisterCapabilitiesEvent e){
-        e.registerBlockEntity(Capabilities.EnergyStorage.BLOCK,MACHINE_ENTITY.get(),(m,side)->com.foundations.calculator.core.PowerPolicy.guardFE(m.energyPort(side),com.foundations.calculator.core.PowerPolicy.Scope.BLOCK));
+        e.registerBlockEntity(Capabilities.Energy.BLOCK,MACHINE_ENTITY.get(),MachineBlockEntity::transactionalEnergyPort);
         e.registerBlockEntity(Capabilities.ItemHandler.BLOCK,MACHINE_ENTITY.get(),MachineBlockEntity::automation);
-        for(var entry:ITEMS_BY_ID.values())if(entry.get() instanceof CalculatorItem c&&c.capacity>0)e.registerItem(Capabilities.EnergyStorage.ITEM,(stack,ctx)->com.foundations.calculator.core.PowerPolicy.guardFE(c.storage(stack),com.foundations.calculator.core.PowerPolicy.Scope.ITEM),c);
+        for(var entry:ITEMS_BY_ID.values())if(entry.get() instanceof CalculatorItem c&&c.capacity>0)e.registerItem(Capabilities.Energy.ITEM,(stack,access)->new com.foundations.calculator.core.CalculatorItemEnergyHandler(c,access),c);
     }
 }

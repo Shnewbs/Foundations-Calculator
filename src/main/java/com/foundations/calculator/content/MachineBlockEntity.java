@@ -16,7 +16,7 @@ import net.minecraft.world.level.block.entity.*;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.items.*;
-import net.neoforged.neoforge.energy.IEnergyStorage;
+import com.foundations.calculator.api.EnergyPort;
 
 public class MachineBlockEntity extends BlockEntity implements MenuProvider {
     public static final int SIZE=25;
@@ -149,7 +149,14 @@ public class MachineBlockEntity extends BlockEntity implements MenuProvider {
         public long stored(){return energy.stored();}public long capacity(){return energy.capacity();}
         public boolean canReceive(){return energySideInput(side);}public boolean canExtract(){return energySideOutput(side);}
     };}
-    public IEnergyStorage energyPort(Direction side){var power=longEnergyPort(side);if(power==null)return null;return new IEnergyStorage(){
+    public net.neoforged.neoforge.transfer.energy.EnergyHandler transactionalEnergyPort(Direction side){
+        if(!usesEnergy())return null;
+        return new com.foundations.calculator.platform.SidedEnergyHandler(energy,
+            ()->energySideInput(side)&&com.foundations.calculator.core.PowerPolicy.FE.input(com.foundations.calculator.core.PowerPolicy.Scope.BLOCK),
+            ()->energySideOutput(side)&&com.foundations.calculator.core.PowerPolicy.FE.output(com.foundations.calculator.core.PowerPolicy.Scope.BLOCK),
+            ()->MachineProfiles.transferLong(kind()));
+    }
+    public EnergyPort energyPort(Direction side){var power=longEnergyPort(side);if(power==null)return null;return new EnergyPort(){
         public int receiveEnergy(int n,boolean simulate){return (int)Math.min(Integer.MAX_VALUE,power.receive(Math.max(0,n),simulate));}
         public int extractEnergy(int n,boolean simulate){return (int)Math.min(Integer.MAX_VALUE,power.extract(Math.max(0,n),simulate));}
         public int getEnergyStored(){return (int)Math.min(Integer.MAX_VALUE,power.stored());}public int getMaxEnergyStored(){return (int)Math.min(Integer.MAX_VALUE,power.capacity());}
@@ -230,7 +237,7 @@ public class MachineBlockEntity extends BlockEntity implements MenuProvider {
     }
     public int upgrades(String id){int n=0;for(int i=21;i<25;i++)if(Content.path(inventory.getStackInSlot(i)).equals(id))n+=inventory.getStackInSlot(i).getCount();return Math.min(CalculatorConfig.integer("upgrades.maxPerType",16),n);}
     private void chargeItem(){
-        ItemStack stack=inventory.getStackInSlot(20);IEnergyStorage other=com.foundations.calculator.api.FoundationsEnergy.item(stack);
+        ItemStack stack=inventory.getStackInSlot(20);EnergyPort other=com.foundations.calculator.api.FoundationsEnergy.item(stack);
         if(other==null)return;
         int offered=(int)Math.min(energy.stored(),MachineProfiles.charging(kind()));
         int accepted=other.receiveEnergy(offered,false);energy.extractEnergy(Math.clamp(accepted,0,offered),false);
@@ -244,7 +251,7 @@ public class MachineBlockEntity extends BlockEntity implements MenuProvider {
             if(!level.hasChunkAt(worldPosition.relative(side)))continue;
             int nativeSent=com.foundations.calculator.api.FoundationsEnergy.sendNative(this,side,(int)Math.min(energy.stored(),MachineProfiles.transfer(kind())));
             if(nativeSent>=0){energy.extractEnergy(nativeSent,false);continue;}
-            IEnergyStorage other=com.foundations.calculator.api.FoundationsEnergy.block(level,worldPosition.relative(side),side.getOpposite());
+            EnergyPort other=com.foundations.calculator.api.FoundationsEnergy.block(level,worldPosition.relative(side),side.getOpposite());
             if(other==null||!other.canReceive())continue;
             int n=(int)Math.min(energy.stored(),MachineProfiles.transfer(kind()));
             // Automatic storage ports equalize banks instead of sending the same FE

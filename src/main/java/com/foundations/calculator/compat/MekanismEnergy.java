@@ -8,7 +8,7 @@ import mekanism.api.Action;
 import mekanism.api.energy.*;
 import mekanism.common.capabilities.Capabilities;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
-import net.neoforged.neoforge.energy.IEnergyStorage;
+import com.foundations.calculator.api.EnergyPort;
 
 public final class MekanismEnergy {
     private static final PowerPolicy POLICY = PowerPolicy.MEKANISM;
@@ -29,8 +29,8 @@ public final class MekanismEnergy {
         for (var entry : Content.ITEMS_BY_ID.values()) if (entry.get() instanceof CalculatorItem item && item.capacity > 0)
             event.registerItem(Capabilities.STRICT_ENERGY.item(), (stack,ctx) -> expose(item.longStorage(stack), Scope.ITEM), item);
     }
-    public static IEnergyStorage wrap(IStrictEnergyHandler handler) { return wrap(handler, Scope.BLOCK); }
-    public static IEnergyStorage wrap(IStrictEnergyHandler handler, Scope scope) {
+    public static EnergyPort wrap(IStrictEnergyHandler handler) { return wrap(handler, Scope.BLOCK); }
+    public static EnergyPort wrap(IStrictEnergyHandler handler, Scope scope) {
         if (handler == null) return null;
         return LongEnergyBridge.toFE(new LongEnergyBridge.Storage() {
             public long receive(long n, boolean simulate) { return n - handler.insertEnergy(n, simulate ? Action.SIMULATE : Action.EXECUTE); }
@@ -64,8 +64,8 @@ public final class MekanismEnergy {
             public long extractEnergy(int i,long n,Action action) { return i == 0 ? storage.extract(n,action.simulate()) : 0; }
         };
     }
-    public static IStrictEnergyHandler expose(IEnergyStorage fe) { return expose(fe, Scope.BLOCK); }
-    public static IStrictEnergyHandler expose(IEnergyStorage fe, Scope scope) {
+    public static IStrictEnergyHandler expose(EnergyPort fe) { return expose(fe, Scope.BLOCK); }
+    public static IStrictEnergyHandler expose(EnergyPort fe, Scope scope) {
         if (fe == null) return null;
         var storage = LongEnergyBridge.fromFE(fe, MekanismEnergy::conversion,
                 () -> enabled() && POLICY.input(scope), () -> enabled() && POLICY.output(scope));

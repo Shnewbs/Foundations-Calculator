@@ -186,7 +186,7 @@ tasks.named('test') { dependsOn checkGuideApi }
 sourceSets {
     portEnergy {
         java.srcDirs = ['platform/26.3/src/main/java','src/main/java']
-        java.include 'com/foundations/calculator/platform/**', 'com/foundations/calculator/core/UuidTags.java'
+        java.include 'com/foundations/calculator/platform/**', 'com/foundations/calculator/core/UuidTags.java', 'com/foundations/calculator/core/StoredEnergy.java', 'com/foundations/calculator/api/EnergyPort.java', 'com/foundations/calculator/api/LongEnergyStorage.java'
     }
     portEnergyTest {
         java.srcDirs = ['platform/26.3/src/test/java']
@@ -207,3 +207,9 @@ tasks.register('testPortEnergy', Test) {
     useJUnitPlatform()
 }
 tasks.named('compileJava') { options.compilerArgs.addAll(['-Xmaxerrs','1000']) }
+
+sourceSets.main.compileClasspath += sourceSets.portEnergy.output
+sourceSets.main.runtimeClasspath += sourceSets.portEnergy.output
+tasks.named('compileJava') { dependsOn tasks.named('compilePortEnergyJava') }
+tasks.named('jar') { from(sourceSets.portEnergy.output) { include 'com/foundations/calculator/platform/**' } }
+tasks.named('sourcesJar') { from('platform/26.3/src/main/java') }

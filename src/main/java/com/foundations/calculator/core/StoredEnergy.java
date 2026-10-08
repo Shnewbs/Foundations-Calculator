@@ -1,54 +1,37 @@
 package com.foundations.calculator.core;
 
+import com.foundations.calculator.api.EnergyPort;
 import com.foundations.calculator.api.LongEnergyStorage;
+import com.foundations.calculator.platform.TransactionalEnergyStorage;
 import java.util.function.LongSupplier;
-import net.neoforged.neoforge.energy.IEnergyStorage;
+import net.neoforged.neoforge.transfer.transaction.Transaction;
 
-/**
- * Checked long-valued canonical FE store. IEnergyStorage methods are bounded facades because
- * NeoForge's FE capability is int-valued; native long adapters use the LongEnergyStorage side.
- */
-public final class StoredEnergy implements IEnergyStorage, LongEnergyStorage {
-    private long energy;
-    private final LongSupplier capacity;
-    private final Runnable dirty;
-
-    public StoredEnergy(long capacity, Runnable dirty) {
-        if (capacity <= 0) throw new IllegalArgumentException("capacity");
-        this.capacity = () -> capacity;
-        this.dirty = dirty;
+/** One canonical long storage journal shared by all machine faces and native adapters. */
+public final class StoredEnergy extends TransactionalEnergyStorage implements EnergyPort,LongEnergyStorage {
+    public StoredEnergy(long capacity,Runnable dirty){this(checked(capacity),dirty);}
+    private static LongSupplier checked(long capacity){
+        if(capacity<=0)throw new IllegalArgumentException("capacity");return ()->capacity;
     }
-    public StoredEnergy(LongSupplier capacity, Runnable dirty) {
-        this.capacity = capacity;
-        this.dirty = dirty;
+    public StoredEnergy(LongSupplier capacity,Runnable dirty){
+        super(0,()->Math.max(1,capacity.getAsLong()),()->Long.MAX_VALUE,()->true,()->true,dirty);
     }
-
-    /** Load persisted energy without truncating it to a newly-lowered configured capacity.
-     * Over-capacity stores cannot receive more energy and drain normally until they fall
-     * back under the current limit. This preserves the pre-existing R4/R9 contract. */
-    public void load(long value) { energy = Math.max(0L, value); }
-    public long receive(long amount, boolean simulate) {
-        long room = Math.max(0L, capacity() - energy);
-        long n = Math.max(0L, Math.min(amount, room));
-        if (!simulate && n > 0) { energy += n; dirty.run(); }
-        return n;
+    public void load(long amount){loadStoredAmount(amount);}
+    public long receive(long amount,boolean simulate){
+        try(var tx=Transaction.open(Transaction.getCurrentOpenedTransaction())){
+            long moved=insertLong(Math.max(0,amount),tx);if(!simulate)tx.commit();return moved;
+        }
     }
-    public long extract(long amount, boolean simulate) {
-        long n = Math.max(0L, Math.min(amount, energy));
-        if (!simulate && n > 0) { energy -= n; dirty.run(); }
-        return n;
+    public long extract(long amount,boolean simulate){
+        try(var tx=Transaction.open(Transaction.getCurrentOpenedTransaction())){
+            long moved=extractLong(Math.max(0,amount),tx);if(!simulate)tx.commit();return moved;
+        }
     }
-    public long stored() { return energy; }
-    public long capacity() { return Math.max(1L, capacity.getAsLong()); }
-    public boolean canExtract() { return true; }
-    public boolean canReceive() { return true; }
-
-    @Override public int receiveEnergy(int amount, boolean simulate) {
-        return (int)Math.min(Integer.MAX_VALUE, receive(Math.max(0, amount), simulate));
-    }
-    @Override public int extractEnergy(int amount, boolean simulate) {
-        return (int)Math.min(Integer.MAX_VALUE, extract(Math.max(0, amount), simulate));
-    }
-    @Override public int getEnergyStored() { return (int)Math.min(Integer.MAX_VALUE, stored()); }
-    @Override public int getMaxEnergyStored() { return (int)Math.min(Integer.MAX_VALUE, capacity()); }
+    public long stored(){return getAmountAsLong();}
+    public long capacity(){return getCapacityAsLong();}
+    public boolean canExtract(){return true;}
+    public boolean canReceive(){return true;}
+    public int receiveEnergy(int amount,boolean simulate){return (int)receive(Math.max(0,amount),simulate);}
+    public int extractEnergy(int amount,boolean simulate){return (int)extract(Math.max(0,amount),simulate);}
+    public int getEnergyStored(){return (int)Math.min(Integer.MAX_VALUE,stored());}
+    public int getMaxEnergyStored(){return (int)Math.min(Integer.MAX_VALUE,capacity());}
 }

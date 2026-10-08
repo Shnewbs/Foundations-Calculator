@@ -235,6 +235,22 @@ public class MachineBlockEntity extends BlockEntity implements MenuProvider {
             if(!level.hasChunkAt(worldPosition.relative(side)))continue;
             int nativeSent=com.foundations.calculator.api.FoundationsEnergy.sendNative(this,side,(int)Math.min(energy.stored(),MachineProfiles.transfer(kind())));
             if(nativeSent>=0){energy.extractEnergy(nativeSent,false);continue;}
+            // Our own storage banks have long-valued buffers/rates; the public FE facade
+            // remains int-valued for external receivers. Preserve both FE policy gates.
+            if(MachineProfiles.storage(kind())
+                &&level.getBlockEntity(worldPosition.relative(side)) instanceof MachineBlockEntity bank
+                &&MachineProfiles.storage(bank.kind())){
+                if(!com.foundations.calculator.core.PowerPolicy.FE.input(com.foundations.calculator.core.PowerPolicy.Scope.BLOCK)
+                    ||!com.foundations.calculator.core.PowerPolicy.FE.output(com.foundations.calculator.core.PowerPolicy.Scope.BLOCK))continue;
+                var receiver=bank.longEnergyPort(side.getOpposite());
+                if(receiver==null||!receiver.canReceive())continue;
+                long amount=Math.min(energy.stored(),MachineProfiles.transferLong(kind()));
+                if(CalculatorConfig.flag("automation.balanceCubes",true)&&program.getInt("Side"+side.get3DDataValue())==0
+                    &&bank.program.getInt("Side"+side.getOpposite().get3DDataValue())==0)
+                    amount=EnergyBalancing.transfer(energy.stored(),energy.capacity(),bank.energy.stored(),bank.energy.capacity(),amount);
+                energy.extract(Math.clamp(receiver.receive(amount,false),0L,amount),false);
+                continue;
+            }
             IEnergyStorage other=com.foundations.calculator.api.FoundationsEnergy.block(level,worldPosition.relative(side),side.getOpposite());
             if(other==null||!other.canReceive())continue;
             int n=(int)Math.min(energy.stored(),MachineProfiles.transfer(kind()));

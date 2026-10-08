@@ -96,6 +96,11 @@ if __name__ == '__main__':
         main()
     except urllib.error.HTTPError as error:
         # Never echo the authenticated request, headers, or server response body.
-        sys.exit(f'CurseForge HTTP {error.code}; inspect token/project permissions and portal status.')
+        detail = error.read(4096).decode('utf-8', errors='replace')
+        token = os.environ.get('CURSEFORGE_API_TOKEN', '')
+        if token:
+            detail = detail.replace(token, '[redacted]')
+        # Only the API's small error payload is shown; never headers or the request.
+        sys.exit(f'CurseForge HTTP {error.code}: {detail[:2000]}')
     except Exception as error:
         sys.exit(str(error))

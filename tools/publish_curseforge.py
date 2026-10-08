@@ -68,11 +68,24 @@ def main():
     req = urllib.request.Request(API + '/game/versions', headers={'X-Api-Token': token})
     with urllib.request.urlopen(req, timeout=60) as response:
         available = json.load(response)
-    names = {v['name']: v['id'] for v in available}
-    missing = set(data['gameVersionNames']) - names.keys()
-    if missing:
-        raise ValueError('CurseForge version labels unavailable: ' + ', '.join(sorted(missing)))
-    data['gameVersions'] = [names[n] for n in data.pop('gameVersionNames')]
+    req = urllib.request.Request(API + '/game/version-types', headers={'X-Api-Token': token})
+    with urllib.request.urlopen(req, timeout=60) as response:
+        types = {v['id']: v for v in json.load(response)}
+    chosen = []
+    for name in data.pop('gameVersionNames'):
+        candidates = []
+        for v in available:
+            t = types.get(v['gameVersionTypeID'], {})
+            slug = t.get('slug', '').lower()
+            expected = ('minecraft' in slug and '1.21' in slug) if name == '1.21.1' else (
+                slug == 'java' if name == 'Java 21' else slug == 'modloader' if name == 'NeoForge' else slug == 'environment')
+            if v['name'] == name and expected:
+                candidates.append(v)
+        if len(candidates) != 1:
+            raise ValueError(f'Expected one Minecraft-qualified version for {name}; found {len(candidates)}')
+        chosen.append(candidates[0]['id'])
+    data['gameVersions'] = chosen
+    print('Resolved Minecraft-qualified CurseForge version IDs:', chosen)
     boundary = 'foundations-' + uuid.uuid4().hex
     body = (f'--{boundary}\r\nContent-Disposition: form-data; name="metadata"\r\n\r\n'.encode()
             + json.dumps(data).encode() + f'\r\n--{boundary}\r\nContent-Disposition: form-data; name="file"; filename="{jar.name}"\r\nContent-Type: application/java-archive\r\n\r\n'.encode()

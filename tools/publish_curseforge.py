@@ -77,12 +77,14 @@ def main():
         for v in available:
             t = types.get(v['gameVersionTypeID'], {})
             slug = t.get('slug', '').lower()
-            expected = ('minecraft' in slug and '1.21' in slug) if name == '1.21.1' else (
+            normalized = re.sub(r'[^a-z0-9]', '', slug + t.get('name', '').lower())
+            expected = ('minecraft' in normalized and '121' in normalized) if name == '1.21.1' else (
                 slug == 'java' if name == 'Java 21' else slug == 'modloader' if name == 'NeoForge' else slug == 'environment')
             if v['name'] == name and expected:
                 candidates.append(v)
         if len(candidates) != 1:
-            raise ValueError(f'Expected one Minecraft-qualified version for {name}; found {len(candidates)}')
+            matches = [(v, types.get(v['gameVersionTypeID'], {})) for v in available if v['name'] == name]
+            raise ValueError(f'Expected one Minecraft-qualified version for {name}; found {len(candidates)}; API matches: {matches}')
         chosen.append(candidates[0]['id'])
     data['gameVersions'] = chosen
     print('Resolved Minecraft-qualified CurseForge version IDs:', chosen)

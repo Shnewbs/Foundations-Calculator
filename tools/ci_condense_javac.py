@@ -16,8 +16,11 @@ import os
 import re
 import sys
 
-DIAG = re.compile(r'^(?P<path>.+?\.java):(?P<line>\d+): (?P<level>error|warning): (?P<msg>.*)$')
+# Live javac diagnostics start in column 0. Gradle's failure summary prints the same
+# diagnostics again, indented, so an indented header is a duplicate and is ignored.
+DIAG = re.compile(r'^(?P<path>\S.*?\.java):(?P<line>\d+): (?P<level>error|warning): (?P<msg>.*)$')
 STOP = re.compile(r'^(\d+ errors?|\d+ warnings?|> Task |FAILURE:|\* What went wrong|BUILD )')
+REPORTED = re.compile(r'^(?P<n>\d+) errors?$')
 PKG_MISSING = re.compile(r'^package (?P<pkg>\S+) does not exist$')
 REL = re.compile(r'(?:^|/)((?:src|platform|tools|guide-api)/.*)$')
 
@@ -86,6 +89,12 @@ def main():
     else:
         lines = []
     diags = parse(lines)
+    reported = None
+    for raw in lines:
+        m = REPORTED.match(raw.rstrip('\n'))
+        if m:
+            reported = int(m.group('n'))
+            break
     errors = [d for d in diags if d['level'] == 'error']
     warnings = [d for d in diags if d['level'] == 'warning']
 
@@ -110,6 +119,10 @@ def main():
         out.append('No compile log was produced (the compile step did not run). See compile-tail.txt.')
     out.append('')
     out.append(f'- errors: **{len(errors)}**')
+    if reported is not None and reported != len(errors):
+        out.append(f'- WARNING: javac reported {reported} errors but {len(errors)} were parsed; check errors.txt')
+    elif reported is not None:
+        out.append(f'- javac reported {reported} errors (matches)')
     out.append(f'- warnings: {len(warnings)}')
     out.append(f'- distinct failure groups: {len(by_key)}')
     out.append(f'- files with errors: {len(by_file)}')

@@ -22,6 +22,17 @@ jobs:
         continue-on-error: true
         shell: bash
         run: bash gradlew compileJava --console=plain 2>&1 | tee compile.log
+      - name: Probe real 26.3 APIs
+        # Answers the questions in tools/api_probe_queries.txt against the real jars,
+        # because a compiler error never says what replaced a removed symbol.
+        if: always()
+        continue-on-error: true
+        shell: bash
+        env:
+          CLASSPATH_OUT: compile-classpath.txt
+        run: |
+          bash gradlew -I tools/ci_print_classpath.init.gradle printCompileClasspath --console=plain -q
+          python3 tools/ci_api_probe.py compile-classpath.txt tools/api_probe_queries.txt api-probe.txt
       - name: Publish compile diagnostics
         # Force-pushes a small report to ci/port-26.3-diagnostics so it can be read
         # with git. Run logs and artifacts are not reachable from some environments.
@@ -32,6 +43,7 @@ jobs:
           set -e
           mkdir -p diag
           python3 tools/ci_condense_javac.py compile.log diag
+          cp api-probe.txt compile-classpath.txt diag/ 2>/dev/null || true
           tail -n 150 compile.log > diag/compile-tail.txt 2>/dev/null || echo "no compile log" > diag/compile-tail.txt
           cd diag
           git init -q -b ci/port-26.3-diagnostics

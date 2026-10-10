@@ -1,0 +1,45 @@
+# Queries answered by tools/ci_api_probe.py against the real 26.3 compile classpath.
+# Results are published as api-probe.txt on the ci/port-26.3-diagnostics branch.
+# Syntax: class <regex> | api <class> [member-regex] | apis <class-regex> [member-regex]
+
+# --- Inventory / transfer (replaces net.neoforged.neoforge.items.*) ---
+class ^net\.neoforged\.neoforge\.transfer\.
+apis ^net\.neoforged\.neoforge\.transfer\.(ResourceHandler|item\.ItemResource|item\.ItemStacksResourceHandler|item\.VanillaContainerWrapper|transaction\.Transaction)$
+class ResourceHandlerSlot|ItemHandlerSlot|SlotItemHandler|ItemHandlerHelper|ItemStackHandler|ResourceHandlerUtil
+apis ^net\.neoforged\.neoforge\.capabilities\.Capabilities\$(Item|Energy)$
+
+# --- Interaction results and Item overrides ---
+apis ^net\.minecraft\.world\.InteractionResult(\$.*)?$
+api net.minecraft.world.item.Item use|useOn|interactLivingEntity|inventoryTick|Remainder|Remaining|appendHoverText|finishUsingItem|getName|isFoil
+apis ^net\.minecraft\.world\.(entity\.player\.(Player|Inventory)|item\.ItemCooldowns)$ displayClientMessage|sendSystemMessage|Overlay|placeItemBackInInventory|addCooldown|selected|Selected|getInventory|getCooldowns
+apis ^net\.minecraft\.world\.entity\.(Entity|LivingEntity)$ placeItemBackInInventory|displayClientMessage|sendSystemMessage|Overlay|getCenter|position\(
+apis ^net\.minecraft\.(world\.level\.Level|server\.level\.ServerLevel)$ ecipe|isDay|isBrightOutside|getDayTime|dayTime|isRaining|isThundering
+apis ^net\.minecraft\.world\.item\.ItemStack$ Crafting|Remainder|Burn|Unbreakable
+apis ^net\.neoforged\.neoforge\.common\.extensions\.IItemStackExtension$ Burn|Crafting|Remainder
+class FuelValues
+api net.minecraft.world.item.crafting.RecipeHolder
+api net.minecraft.resources.ResourceKey identifier|location|registry|create
+
+# --- Tools (SwordItem, PickaxeItem, AxeItem, ShovelItem, HoeItem no longer resolve) ---
+class ^net\.minecraft\.world\.item\.(Sword|Pickaxe|Axe|Shovel|Hoe|Digger|Tiered|Tool)
+class ^net\.minecraft\.world\.item\.(ToolMaterial|component\.(Tool|Unbreakable|Weapon))
+api net.minecraft.world.item.Item$Properties sword|pickaxe|axe|shovel|hoe|tool|durability|component|stacksTo|rarity|fireResistant|repairable|attributes
+class ItemAbility|ToolAction
+
+# --- GUI and rendering ---
+api net.minecraft.client.gui.GuiGraphicsExtractor (?i)text|string|blit|sprite|fill|pose|item|tooltip|scissor|outline|gradient|font
+apis ^net\.minecraft\.client\.gui\.screens\.(Screen|inventory\.AbstractContainerScreen)$ render|extract|Tooltip|keyPressed|mouseClicked|mouseScrolled|mouseDragged|mouseReleased|charTyped|imageWidth|imageHeight|leftPos|topPos|hoveredSlot
+class ^net\.minecraft\.client\.input\.
+class ^com\.mojang\.blaze3d\.platform\.InputConstants
+api com.mojang.blaze3d.platform.InputConstants KEY_|isKeyDown|MOUSE
+class MultiBufferSource|SubmitNodeCollector|BlockEntityRenderState|ItemModelResolver
+
+# --- Events, registration and mod bus ---
+apis ^net\.neoforged\.fml\.common\.EventBusSubscriber(\$.*)?$
+class ^net\.neoforged\.neoforge\.event\.level\.BlockEvent
+apis ^net\.neoforged\.neoforge\.client\.event\.EntityRenderersEvent\$RegisterRenderers$ register
+apis ^net\.neoforged\.neoforge\.event\.ModifyDefaultComponentsEvent$ modify
+apis ^net\.minecraft\.world\.level\.block\.entity\.BlockEntityType(\$Builder)?$ of|Builder|create
+api net.minecraft.core.registries.Registries CONFIGURED|FEATURE
+class ModelResourceLocation
+class ^net\.minecraft\.world\.entity\.projectile\.Throwable

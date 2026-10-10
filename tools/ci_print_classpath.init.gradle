@@ -1,0 +1,16 @@
+// Gradle init script used by CI: writes the main compile classpath, one entry per
+// line, to the file named by the CLASSPATH_OUT environment variable. The API probe
+// (tools/ci_api_probe.py) reads it. Not applied to normal builds.
+allprojects {
+    afterEvaluate { project ->
+        if (project.plugins.hasPlugin('java')) {
+            project.tasks.register('printCompileClasspath') {
+                doLast {
+                    def out = System.getenv('CLASSPATH_OUT') ?: 'compile-classpath.txt'
+                    def files = project.sourceSets.main.compileClasspath.files
+                    new File(out).text = files.collect { it.absolutePath }.join('\n') + '\n'
+                }
+            }
+        }
+    }
+}

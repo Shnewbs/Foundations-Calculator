@@ -3,7 +3,7 @@ on:
   push:
     branches: [port/26.3]
 permissions:
-  contents: read
+  contents: write
 jobs:
   compile:
     runs-on: ubuntu-latest
@@ -17,10 +17,36 @@ jobs:
       - name: Test transactional long-energy boundary
         run: bash gradlew testPortEnergy --console=plain
       - name: Compile against real 26.3 APIs
-        run: bash gradlew compileJava --console=plain
+        id: compile
+        if: always()
+        continue-on-error: true
+        shell: bash
+        run: bash gradlew compileJava --console=plain 2>&1 | tee compile.log
+      - name: Publish compile diagnostics
+        # Force-pushes a small report to ci/port-26.3-diagnostics so it can be read
+        # with git. Run logs and artifacts are not reachable from some environments.
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -e
+          mkdir -p diag
+          python3 tools/ci_condense_javac.py compile.log diag
+          tail -n 150 compile.log > diag/compile-tail.txt 2>/dev/null || echo "no compile log" > diag/compile-tail.txt
+          cd diag
+          git init -q -b ci/port-26.3-diagnostics
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -q -m "Compile diagnostics for ${GITHUB_SHA} (run ${GITHUB_RUN_ID})"
+          git remote add origin "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          git push -q --force origin HEAD:refs/heads/ci/port-26.3-diagnostics
       - name: Retain port test evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: calculator-26-port-tests
           path: build/test-results/
+      - name: Fail when the compile failed
+        if: always() && steps.compile.outcome == 'failure'
+        run: exit 1

@@ -43,3 +43,26 @@ apis ^net\.minecraft\.world\.level\.block\.entity\.BlockEntityType(\$Builder)?$ 
 api net.minecraft.core.registries.Registries CONFIGURED|FEATURE
 class ModelResourceLocation
 class ^net\.minecraft\.world\.entity\.projectile\.Throwable
+
+# --- Round 2: Content.java tool items (SwordItem/PickaxeItem/etc. are gone; items are now
+# plain Item built with Properties.sword/pickaxe/axe/hoe/shovel(ToolMaterial,...)) ---
+class ^net\.minecraft\.world\.item\.Tier$
+api net.minecraft.world.item.ToolMaterial
+api net.minecraft.world.item.component.Weapon
+api net.minecraft.world.item.component.Tool
+api net.minecraft.core.component.DataComponents UNBREAKABLE|TOOL|WEAPON
+api net.minecraft.world.item.Item hurtEnemy|mineBlock|canAttackBlock|getAttackDamageBonus|isCorrectToolForDrops|getDestroySpeed|getDefaultAttributeModifiers
+
+# --- Round 2: Content.java entity/block-entity/recipe registration ---
+api net.minecraft.world.entity.EntityType$Builder
+apis ^net\.neoforged\.neoforge\.registries\.DeferredRegister(\$.*)?$ register|BlockEntit|create
+api net.minecraft.world.item.crafting.RecipeSerializer
+api net.minecraft.world.level.block.grower.TreeGrower
+class ^net\.minecraft\.world\.level\.levelgen\.feature\.ConfiguredFeature
+api net.minecraft.world.level.block.state.BlockBehaviour$Properties isViewBlocking|noOcclusion|ofFullCopy
+
+# --- Round 2: inventory ResourceHandler rewrite (ItemStackHandler/IItemHandler replacement) ---
+api net.neoforged.neoforge.transfer.StacksResourceHandler
+api net.neoforged.neoforge.transfer.access.ItemAccess
+api net.neoforged.neoforge.transfer.item.ItemAccessItemHandler
+api net.neoforged.neoforge.transfer.ResourceHandlerUtil

@@ -133,7 +133,7 @@ public final class PowerDiagnostics {
         return List.copyOf(lines);
     }
     public static boolean showMachine(ServerPlayer player,MachineBlockEntity machine) {
-        if(player.level()!=machine.getLevel()||player.distanceToSqr(machine.getBlockPos().getCenter())>64||!allowed(player))return false;
+        if(player.level()!=machine.getLevel()||player.distanceToSqr(net.minecraft.world.phys.Vec3.atCenterOf(machine.getBlockPos()))>64||!allowed(player))return false;
         for(String line:machine(machine))player.sendSystemMessage(Component.literal(line));
         return true;
     }

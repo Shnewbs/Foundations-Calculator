@@ -31,6 +31,6 @@ public class HarvestLeaves extends LeavesBlock {
             if(age<4)popResource(level,p,new ItemStack(Content.item(primary),CalculatorConfig.integer("nutrition.leafYield",1)));
             if(age>=3)popResource(level,p,new ItemStack(Content.item(secondary),CalculatorConfig.integer("nutrition.leafYield",1)));
             level.setBlock(p,s.setValue(AGE,CalculatorConfig.integer("plants.leafHarvestResetAge",0)),3);
-        }return InteractionResult.sidedSuccess(level.isClientSide());
+        }return InteractionResult.SUCCESS;
     }
 }

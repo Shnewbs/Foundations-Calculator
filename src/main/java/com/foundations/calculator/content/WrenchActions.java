@@ -28,9 +28,9 @@ public final class WrenchActions {
             return InteractionResult.CONSUME;
         }
         if(CalculatorConfig.flag("tools.wrenchSideCycling",true)){
-            if(!level.isClientSide()){int side=c.getClickedFace().get3DDataValue();m.action(player,20+side);player.displayClientMessage(Component.literal(c.getClickedFace().getName()+": "+new String[]{"Automatic","Input","Output","Disabled"}[m.program.getIntOr("Side"+side,0)]),true);}
+            if(!level.isClientSide()){int side=c.getClickedFace().get3DDataValue();m.action(player,20+side);player.sendOverlayMessage(Component.literal(c.getClickedFace().getName()+": "+new String[]{"Automatic","Input","Output","Disabled"}[m.program.getIntOr("Side"+side,0)]));}
         }else if(!level.isClientSide())level.setBlockAndUpdate(pos,state.cycle(MachineBlock.FACING));
-        return InteractionResult.sidedSuccess(level.isClientSide());
+        return InteractionResult.SUCCESS;
     }
     private WrenchActions(){}
 }

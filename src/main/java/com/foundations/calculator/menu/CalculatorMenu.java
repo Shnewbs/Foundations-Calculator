@@ -37,7 +37,7 @@ public final class CalculatorMenu extends AbstractContainerMenu {
     public static CalculatorMenu forModuleItem(int id,Inventory inv,InteractionHand hand,String kind){return new CalculatorMenu(id,inv,null,hand,kind);}
     private CalculatorMenu(int id,Inventory inv,MachineBlockEntity machine,InteractionHand hand,String selectedKind){
         super(Content.MENU.get(),id);this.machine=machine;this.hand=hand;playerInventory=inv;
-        held=machine==null?inv.player.getItemInHand(hand):ItemStack.EMPTY;heldSlot=hand==InteractionHand.MAIN_HAND?inv.selected:40;
+        held=machine==null?inv.player.getItemInHand(hand):ItemStack.EMPTY;heldSlot=hand==InteractionHand.MAIN_HAND?inv.getSelectedSlot():40;
         handler=machine==null?new ItemStackHandler(25):machine.inventory;
         kind=machine==null?(selectedKind==null?Content.path(held):selectedKind):machine.kind();
         inputs=machine!=null?machine.inputCount():(kind.equals("dynamic_module")?7:kind.equals("flawless_calculator")?4:kind.equals("atomic_calculator")?3:2);
@@ -94,8 +94,8 @@ public final class CalculatorMenu extends AbstractContainerMenu {
     public int points(){return (data.get(8)&65535)|((data.get(9)&65535)<<16);}
     public double progress(){int progress=(data.get(4)&65535)|((data.get(5)&65535)<<16),time=(data.get(6)&65535)|((data.get(7)&65535)<<16);return time<=0?0:(double)progress/time;}
     public boolean stillValid(Player player){
-        if(machine!=null)return !machine.isRemoved()&&player.level()==machine.getLevel()&&player.distanceToSqr(machine.getBlockPos().getCenter())<=64;
-        return player.getItemInHand(hand)==held && (hand!=InteractionHand.MAIN_HAND||playerInventory.selected==heldSlot);
+        if(machine!=null)return !machine.isRemoved()&&player.level()==machine.getLevel()&&player.distanceToSqr(net.minecraft.world.phys.Vec3.atCenterOf(machine.getBlockPos()))<=64;
+        return player.getItemInHand(hand)==held && (hand!=InteractionHand.MAIN_HAND||playerInventory.getSelectedSlot()==heldSlot);
     }
     private boolean locked(int slot){return machine==null&&slot>=25&&slot<slots.size()&&slots.get(slot).container==playerInventory&&slots.get(slot).getContainerSlot()==heldSlot;}
     public void clicked(int slot,int button,ClickType type,Player player){

@@ -23,7 +23,7 @@ public final class StorageModuleMenu extends ChestMenu {
         this.inventory = inventory;
         this.hand = hand;
         this.module=module;carrier = inventory.player.getItemInHand(hand);
-        heldSlot = hand == InteractionHand.MAIN_HAND ? inventory.selected : 40;
+        heldSlot = hand == InteractionHand.MAIN_HAND ? inventory.getSelectedSlot() : 40;
         HeldItemLock.install(this, inventory, heldSlot);
         for (int i = 0; i < 54; i++) {
             Slot original = slots.get(i);
@@ -48,7 +48,7 @@ public final class StorageModuleMenu extends ChestMenu {
         return container;
     }
     public boolean stillValid(Player player) {
-        return player.getItemInHand(hand) == carrier && (hand != InteractionHand.MAIN_HAND || inventory.selected == heldSlot);
+        return player.getItemInHand(hand) == carrier && (hand != InteractionHand.MAIN_HAND || inventory.getSelectedSlot() == heldSlot);
     }
     private boolean locked(int slot) {
         return slot >= 54 && slot < slots.size() && slots.get(slot).getContainerSlot() == heldSlot;

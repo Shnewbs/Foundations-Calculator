@@ -20,7 +20,7 @@ public record TransferPayload(int menuId,Identifier recipe,int amount) implement
             var r=player.level().getRecipeManager().byKey(payload.recipe());
             if(r.isEmpty()||!(r.get().value() instanceof ProcessRecipe process))return;
             var holder=RecipePolicies.apply(new net.minecraft.world.item.crafting.RecipeHolder<>(payload.recipe(),process));
-            if(!RecipeTransfer.transfer(menu,holder,player,payload.amount()))player.displayClientMessage(Component.literal("Cannot fill recipe: check research, ingredients, and free inventory space."),true);
+            if(!RecipeTransfer.transfer(menu,holder,player,payload.amount()))player.sendOverlayMessage(Component.literal("Cannot fill recipe: check research, ingredients, and free inventory space."));
         });
     }
 }

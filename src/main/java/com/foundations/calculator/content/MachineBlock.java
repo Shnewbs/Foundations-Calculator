@@ -37,8 +37,8 @@ public class MachineBlock extends BaseEntityBlock {
     @Nullable public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level,BlockState s,BlockEntityType<T> type){
         return level.isClientSide()?createTickerHelper(type,Content.MACHINE_ENTITY.get(),MachineBlockEntity::clientTick):createTickerHelper(type,Content.MACHINE_ENTITY.get(),MachineBlockEntity::tick);
     }
-    protected net.minecraft.world.ItemInteractionResult useItemOn(net.minecraft.world.item.ItemStack stack,BlockState state,Level level,BlockPos pos,Player player,net.minecraft.world.InteractionHand hand,BlockHitResult hit){
-        if(stack.is(Content.item("wrench"))){var result=WrenchActions.use(new net.minecraft.world.item.context.UseOnContext(player,hand,hit));return result==InteractionResult.FAIL?net.minecraft.world.ItemInteractionResult.FAIL:net.minecraft.world.ItemInteractionResult.sidedSuccess(level.isClientSide());}
+    protected InteractionResult useItemOn(net.minecraft.world.item.ItemStack stack,BlockState state,Level level,BlockPos pos,Player player,net.minecraft.world.InteractionHand hand,BlockHitResult hit){
+        if(stack.is(Content.item("wrench"))){var result=WrenchActions.use(new net.minecraft.world.item.context.UseOnContext(player,hand,hit));return result==InteractionResult.FAIL?InteractionResult.FAIL:InteractionResult.SUCCESS;}
         return super.useItemOn(stack,state,level,pos,player,hand,hit);
     }
     protected InteractionResult useWithoutItem(BlockState state,Level level,BlockPos pos,Player player,BlockHitResult hit){
@@ -52,13 +52,13 @@ public class MachineBlock extends BaseEntityBlock {
                     if(machine.lastCrankTick!=level.getGameTime()){
                         machine.energy.receiveEnergy(CalculatorConfig.CRANK_ENERGY.get(),false);machine.lastCrankTick=level.getGameTime();
                     }
-                    player.displayClientMessage(net.minecraft.network.chat.Component.literal(String.format("%,d",machine.energy.stored())+" FE — sneak-use to open"),true);
+                    player.sendOverlayMessage(net.minecraft.network.chat.Component.literal(String.format("%,d",machine.energy.stored())+" FE — sneak-use to open"));
                 }else if(java.util.Set.of("transmitter","scarecrow","weather_station","rain_sensor").contains(machine.kind())){
                     String message=switch(machine.kind()){case "transmitter"->"Speeds up conductor masts within 20 blocks.";case "scarecrow"->"Grows nearby plants every "+CalculatorConfig.SCARECROW_INTERVAL.get()+" ticks.";case "rain_sensor"->level.isRaining()?"Rain detected · redstone 15":"Dry · redstone 0";default->machine.program.contains("Mast")?"Linked to mast at "+net.minecraft.core.BlockPos.of(machine.program.getLongOr("Mast",0L)).toShortString():"No conductor mast within 10 blocks.";};
-                    player.displayClientMessage(net.minecraft.network.chat.Component.literal(message),true);
+                    player.sendOverlayMessage(net.minecraft.network.chat.Component.literal(message));
                 }else ((ServerPlayer)player).openMenu(machine,b->{b.writeBoolean(true);b.writeBlockPos(pos);});
             }
-            return InteractionResult.sidedSuccess(level.isClientSide());
+            return InteractionResult.SUCCESS;
         }return InteractionResult.PASS;
     }
     protected void onRemove(BlockState old,Level level,BlockPos pos,BlockState state,boolean moving){

@@ -22,7 +22,7 @@ public final class ResearchProgram {
                 if(CalculatorConfig.flag("research.consumeSample",false))m.pending.addAll(ProcessTransactions.consume(m.inventory,r.value().allocation(input),r.value(),m.getLevel()));
                 ResearchData.syncAll(m.getLevel().getServer());
                 var player=m.getLevel().getServer().getPlayerList().getPlayer(owner);
-                if(player!=null)player.displayClientMessage(Component.literal("Research unlocked: "+r.value().researchGroup().replace('_',' ')),false);
+                if(player!=null)player.sendSystemMessage(Component.literal("Research unlocked: "+r.value().researchGroup().replace('_',' ')));
                 m.program.putString("LastResearch",r.value().researchGroup());
             }m.progress=0;
         }m.setChanged();

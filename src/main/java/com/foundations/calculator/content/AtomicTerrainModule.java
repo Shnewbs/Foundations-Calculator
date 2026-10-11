@@ -23,15 +23,15 @@ public final class AtomicTerrainModule {
         if(level.isClientSide())return InteractionResult.SUCCESS;
         var tag=CircuitData.tag(module);
         if(player.isShiftKeyDown()){
-            if(!tag.contains("TerrainSource")||tag.contains("TerrainTarget")){tag.putString("TerrainSource",BuiltInRegistries.BLOCK.getKey(state.getBlock()).toString());tag.remove("TerrainTarget");player.displayClientMessage(Component.literal("Source selected. Sneak-use the replacement material next."),true);}
-            else {tag.put("TerrainTarget",NbtUtils.writeBlockState(state));player.displayClientMessage(Component.literal("Replacement selected. Use on the source material to replace it."),true);}
+            if(!tag.contains("TerrainSource")||tag.contains("TerrainTarget")){tag.putString("TerrainSource",BuiltInRegistries.BLOCK.getKey(state.getBlock()).toString());tag.remove("TerrainTarget");player.sendOverlayMessage(Component.literal("Source selected. Sneak-use the replacement material next."));}
+            else {tag.put("TerrainTarget",NbtUtils.writeBlockState(state));player.sendOverlayMessage(Component.literal("Replacement selected. Use on the source material to replace it."));}
             UtilityItems.put(module,tag);return InteractionResult.CONSUME;
         }
         if(!tag.contains("TerrainTarget")||!tag.getStringOr("TerrainSource","").equals(BuiltInRegistries.BLOCK.getKey(state.getBlock()).toString()))return InteractionResult.PASS;
         var replacement=NbtUtils.readBlockState(level.holderLookup(Registries.BLOCK),tag.getCompoundOrEmpty("TerrainTarget"));
         if(replacement.isAir()||replacement.hasBlockEntity()||replacement.getDestroySpeed(level,pos)<0||replacement.is(state.getBlock())||!replacement.canSurvive(level,pos)||replacement.is(TagKey.create(Registries.BLOCK,Content.id("atomic_terrain_blacklist"))))return InteractionResult.FAIL;
         int slot=-1;boolean consume=!player.isCreative()&&CalculatorConfig.flag("module.atomic_terrain_module.requireReplacementItem",true);
-        if(consume){for(int i=0;i<player.getInventory().items.size();i++)if(player.getInventory().getItem(i).is(replacement.getBlock().asItem())){slot=i;break;}if(slot<0){player.displayClientMessage(Component.literal("A replacement block is required in your inventory."),true);return InteractionResult.FAIL;}}
+        if(consume){for(int i=0;i<player.getInventory().items.size();i++)if(player.getInventory().getItem(i).is(replacement.getBlock().asItem())){slot=i;break;}if(slot<0){player.sendOverlayMessage(Component.literal("A replacement block is required in your inventory."));return InteractionResult.FAIL;}}
         int cost=CalculatorConfig.integer("module.atomic_terrain_module.cost",1);
         if(!(battery.getItem() instanceof CalculatorItem power)||!player.isCreative()&&power.energy(battery)<cost)return InteractionResult.FAIL;
         if(NeoForge.EVENT_BUS.post(new BlockEvent.BreakEvent(level,pos,state,player)).isCanceled())return InteractionResult.FAIL;

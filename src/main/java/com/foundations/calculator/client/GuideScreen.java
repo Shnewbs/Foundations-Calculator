@@ -309,25 +309,25 @@ public final class GuideScreen extends Screen {
             g.fill(h.x()+1,h.y()+1,h.x()+h.w()-1,h.y()+h.h()-1,bg);
             if(h.selected())g.fill(h.x()+1,h.y()+h.h()-3,h.x()+h.w()-1,h.y()+h.h()-1,accent);
             String label=font.plainSubstrByWidth(h.label(),Math.max(1,h.w()-6));int tx=h.x()+(h.w()-font.width(label))/2,ty=h.y()+(h.h()-8)/2;
-            g.drawString(font,label,tx,ty,fg,false);if(hover&&tip.isEmpty())tip=h.tooltip();
+            g.text(font,label,tx,ty,fg,false);if(hover&&tip.isEmpty())tip=h.tooltip();
         }
     }
 
     private void renderContents(GuiGraphicsExtractor g,int mx,int my,int accent){
-        g.drawString(font,"CALCULATOR FIELD GUIDE",navX+8,bookTop+45,INK,false);
+        g.text(font,"CALCULATOR FIELD GUIDE",navX+8,bookTop+45,INK,false);
         ItemStack guide=item("foundations_calculator:info_calculator");if(!guide.isEmpty())g.renderItem(guide,navX+navWidth-28,bookTop+42);
         g.fill(navX+8,bookTop+61,navX+navWidth-8,bookTop+62,0xffbdb19a);
         String filter=bookmarksOnly?"Saved entries":chapter.isEmpty()?"All chapters":chapter;
-        g.drawString(font,font.plainSubstrByWidth(filter,navWidth-20),navX+9,navListTop-13,MUTED,false);
+        g.text(font,font.plainSubstrByWidth(filter,navWidth-20),navX+9,navListTop-13,MUTED,false);
         for(int i=0;i<listRows()&&i+listOffset<hits.size();i++){
             var hit=hits.get(i+listOffset);int y=navListTop+28*i;boolean selected=hit.target().equals(target),hover=mx>=navX+6&&mx<navX+navWidth-7&&my>=y-1&&my<y+26;
             if(selected||hover){g.fill(navX+6,y-1,navX+navWidth-7,y+25,selected?0xffd0dcda:0xffebe3d1);g.fill(navX+6,y-1,navX+9,y+25,selected?accent:0xffa59b87);}
-            g.drawString(font,font.plainSubstrByWidth(hit.title(),navWidth-24),navX+12,y+2,INK,false);
-            g.drawString(font,font.plainSubstrByWidth(allGuides?hit.bookTitle():hit.chapter(),navWidth-24),navX+12,y+14,MUTED,false);
+            g.text(font,font.plainSubstrByWidth(hit.title(),navWidth-24),navX+12,y+2,INK,false);
+            g.text(font,font.plainSubstrByWidth(allGuides?hit.bookTitle():hit.chapter(),navWidth-24),navX+12,y+14,MUTED,false);
             if(hover)tip=hit.title()+" · "+hit.chapter();
         }
         String count=(hits.isEmpty()?"0":(Math.min(listOffset+1,hits.size())+"–"+Math.min(hits.size(),listOffset+listRows())))+" / "+hits.size();
-        g.drawString(font,count,navX+9,bookBottom-39,MUTED,false);
+        g.text(font,count,navX+9,bookBottom-39,MUTED,false);
         if(hits.size()>listRows()){
             int track=bookBottom-48-navListTop,thumb=Math.max(12,track*listRows()/hits.size());int y=navListTop+(track-thumb)*listOffset/Math.max(1,hits.size()-listRows());
             g.fill(navX+navWidth-10,navListTop,navX+navWidth-8,bookBottom-48,0xffc6baa4);g.fill(navX+navWidth-11,y,navX+navWidth-7,y+thumb,accent);
@@ -337,8 +337,8 @@ public final class GuideScreen extends Screen {
     private void renderPage(GuiGraphicsExtractor g,int mx,int my,int accent){
         Book book=GuideApi.catalog().books().get(target.guide());String title=book==null?"Calculator Field Guide":book.title();
         var entry=book==null?Optional.<Entry>empty():book.entry(target.entry());String chapterTitle=entry.isEmpty()?"Contents":Optional.ofNullable(book.chapters().get(entry.get().chapter())).map(Chapter::title).orElse("Field notes");
-        g.drawString(font,font.plainSubstrByWidth(title,pageWidth),pageX,bookTop+47,LINK,false);
-        g.drawString(font,font.plainSubstrByWidth(chapterTitle,pageWidth),pageX,bookTop+61,MUTED,false);
+        g.text(font,font.plainSubstrByWidth(title,pageWidth),pageX,bookTop+47,LINK,false);
+        g.text(font,font.plainSubstrByWidth(chapterTitle,pageWidth),pageX,bookTop+61,MUTED,false);
         g.fill(pageX,bookTop+75,pageX+pageWidth,bookTop+76,0xffb7aa92);
         g.enableScissor(pageX-2,contentTop,pageX+pageWidth+2,contentBottom);
         int tableIndex=0;
@@ -353,12 +353,12 @@ public final class GuideScreen extends Screen {
             }else if(row.style().equals("heading")){
                 g.fill(pageX,y+10,pageX+Math.min(pageWidth,Math.max(28,font.width(row.text())+4)),y+11,0xffb8aa91);
             }
-            if(row.text()!=null){int inset=row.image().equals("text_inset")?28:(row.style().equals("callout")||row.style().equals("setting")?7:row.style().equals("step")||row.style().equals("list")?5:0);g.drawString(font,row.text(),pageX+inset,y,row.color(),false);}
+            if(row.text()!=null){int inset=row.image().equals("text_inset")?28:(row.style().equals("callout")||row.style().equals("setting")?7:row.style().equals("step")||row.style().equals("list")?5:0);g.text(font,row.text(),pageX+inset,y,row.color(),false);}
             if(!row.item().isEmpty()){
                 g.fill(pageX-2,y-1,pageX+23,y+22,0xffd8cfbc);g.renderItem(row.item(),pageX+2,y+2);if(mx>=pageX&&mx<pageX+24&&my>=y&&my<y+23)hovered=row.item();
             }
             if(!row.cells().isEmpty()){
-                int cell=row.imageW();for(int i=0;i<row.cells().size();i++){String c=row.cells().get(i);int x=pageX+i*cell;int color=switch(c){case "S","L"->0xff7f8e88;case "G"->0xffa2cacf;case "C"->accent;case "W"->0xff83aedd;case "P","T"->0xffb29e72;default->0xffe2d8bf;};g.fill(x,y,x+cell-1,y+cell-1,color);if(cell>=9)g.drawString(font,c,x+(cell-font.width(c))/2,y+(cell-8)/2,INK,false);}
+                int cell=row.imageW();for(int i=0;i<row.cells().size();i++){String c=row.cells().get(i);int x=pageX+i*cell;int color=switch(c){case "S","L"->0xff7f8e88;case "G"->0xffa2cacf;case "C"->accent;case "W"->0xff83aedd;case "P","T"->0xffb29e72;default->0xffe2d8bf;};g.fill(x,y,x+cell-1,y+cell-1,color);if(cell>=9)g.text(font,c,x+(cell-font.width(c))/2,y+(cell-8)/2,INK,false);}
             }
             if(!row.image().isEmpty()&&!row.image().equals("text_inset")){
                 int dw=Math.min(pageWidth,row.imageW());if(row.imageH()*dw/row.imageW()>512)dw=dw*512/(row.imageH()*dw/row.imageW());

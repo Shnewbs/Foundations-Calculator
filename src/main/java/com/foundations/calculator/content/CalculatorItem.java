@@ -68,41 +68,41 @@ public class CalculatorItem extends Item {
         public int getMaxEnergyStored(){return (int)Math.min(Integer.MAX_VALUE,power().capacity());}
         public boolean canReceive(){return power().canReceive();}public boolean canExtract(){return power().canExtract();}
     };}
-    public InteractionResultHolder<ItemStack> use(Level level,Player player,InteractionHand hand){
+    public InteractionResult use(Level level,Player player,InteractionHand hand){
         ItemStack carrier=player.getItemInHand(hand),stack=carrier;String mode=kind;
-        if(!CalculatorConfig.enabled(kind))return InteractionResultHolder.fail(carrier);
+        if(!CalculatorConfig.enabled(kind))return InteractionResult.FAIL;
         if(kind.equals("flawless_calculator")){
             if(player.isShiftKeyDown()){
                 if(!level.isClientSide()){
                     CompoundTag tag=CircuitData.tag(carrier);int selected=tag.getIntOr("SelectedModule",0);
                     for(int attempt=0;attempt<17;attempt++){selected=(selected+1)%17;tag.putInt("SelectedModule",selected);UtilityItems.put(carrier,tag);if(selected==0||!ModuleWorkstation.selected(carrier).isEmpty())break;}
-                    ItemStack module=ModuleWorkstation.selected(carrier);player.displayClientMessage(Component.literal("Module: ").append(module.isEmpty()?Component.literal("Flawless calculation"):module.getHoverName()),true);
-                }return InteractionResultHolder.sidedSuccess(carrier,level.isClientSide());
+                    ItemStack module=ModuleWorkstation.selected(carrier);player.sendOverlayMessage(Component.literal("Module: ").append(module.isEmpty()?Component.literal("Flawless calculation"):module.getHoverName()));
+                }return InteractionResult.SUCCESS;
             }
             ItemStack selected=ModuleWorkstation.selected(carrier);if(!selected.isEmpty()){stack=selected;mode=switch(Content.path(selected)){case "atomic_assembly"->"dynamic_module";case "flawless_assembly"->"flawless_calculator";default->Content.path(selected);};}
         }
-        if(!CalculatorConfig.enabled(mode))return InteractionResultHolder.fail(carrier);
-        if(level.isClientSide()){if(mode.equals("info_calculator"))com.foundations.calculator.client.GuideScreen.open();return InteractionResultHolder.success(carrier);}
-        if(mode.equals("info_calculator"))return InteractionResultHolder.consume(carrier);
+        if(!CalculatorConfig.enabled(mode))return InteractionResult.FAIL;
+        if(level.isClientSide()){if(mode.equals("info_calculator"))com.foundations.calculator.client.GuideScreen.open();return InteractionResult.SUCCESS;}
+        if(mode.equals("info_calculator"))return InteractionResult.CONSUME;
         if(List.of("calculator","scientific_calculator","atomic_calculator","flawless_calculator","dynamic_module").contains(mode)){
             String selectedMode=mode;
             ((ServerPlayer)player).openMenu(new SimpleMenuProvider((id,inv,p)->CalculatorMenu.forModuleItem(id,inv,hand,selectedMode),stack.getHoverName()),b->{b.writeBoolean(false);b.writeEnum(hand);b.writeUtf(selectedMode);});
-            return InteractionResultHolder.consume(carrier);
+            return InteractionResult.CONSUME;
         }
         if(mode.equals("crafting_calculator")){
             int cost=CalculatorConfig.integer("module.crafting_calculator.cost",1);
-            if(storage(carrier).extractEnergy(cost,true)<cost){player.displayClientMessage(Component.literal("Charge the calculator first."),true);return InteractionResultHolder.fail(carrier);}
-            storage(carrier).extractEnergy(cost,false);player.openMenu(new SimpleMenuProvider((id,inv,p)->new PortableCraftingMenu(id,inv,hand),stack.getHoverName()));return InteractionResultHolder.consume(carrier);
+            if(storage(carrier).extractEnergy(cost,true)<cost){player.sendOverlayMessage(Component.literal("Charge the calculator first."));return InteractionResult.FAIL;}
+            storage(carrier).extractEnergy(cost,false);player.openMenu(new SimpleMenuProvider((id,inv,p)->new PortableCraftingMenu(id,inv,hand),stack.getHoverName()));return InteractionResult.CONSUME;
         }
         if(mode.equals("smelting_module")){
-            ((ServerPlayer)player).openMenu(new SimpleMenuProvider((id,inv,p)->new com.foundations.calculator.menu.SmeltingModuleMenu(id,inv,hand),stack.getHoverName()),b->b.writeEnum(hand));return InteractionResultHolder.consume(carrier);
+            ((ServerPlayer)player).openMenu(new SimpleMenuProvider((id,inv,p)->new com.foundations.calculator.menu.SmeltingModuleMenu(id,inv,hand),stack.getHoverName()),b->b.writeEnum(hand));return InteractionResult.CONSUME;
         }
         if(mode.equals("storage_module")){
             ItemStack module=stack;Runnable save=module==carrier?()->{}:()->ModuleWorkstation.saveSelected(carrier,module);
-            player.openMenu(new SimpleMenuProvider((id,inv,p)->new StorageModuleMenu(id,inv,hand,module,save),stack.getHoverName()));return InteractionResultHolder.consume(carrier);
+            player.openMenu(new SimpleMenuProvider((id,inv,p)->new StorageModuleMenu(id,inv,hand,module,save),stack.getHoverName()));return InteractionResult.CONSUME;
         }
-        if(UtilityItems.use(mode,stack,carrier,level,player)){if(stack!=carrier)ModuleWorkstation.saveSelected(carrier,stack);return InteractionResultHolder.consume(carrier);}
-        return InteractionResultHolder.pass(carrier);
+        if(UtilityItems.use(mode,stack,carrier,level,player)){if(stack!=carrier)ModuleWorkstation.saveSelected(carrier,stack);return InteractionResult.CONSUME;}
+        return InteractionResult.PASS;
     }
     public InteractionResult useOn(UseOnContext c){
         ItemStack carrier=c.getItemInHand(),stack=carrier;String mode=kind;

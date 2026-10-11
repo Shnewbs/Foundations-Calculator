@@ -7,7 +7,7 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 
-@EventBusSubscriber(modid=FoundationsCalculator.ID,bus=EventBusSubscriber.Bus.MOD,value=Dist.CLIENT)
+@EventBusSubscriber(modid=FoundationsCalculator.ID,value=Dist.CLIENT)
 public final class ClientEvents{
     @SubscribeEvent public static void guideResources(net.neoforged.neoforge.client.event.RegisterClientReloadListenersEvent e){e.registerReloadListener(new com.foundations.calculator.client.guide.GuideResources());}
     @SubscribeEvent public static void guides(net.neoforged.fml.event.lifecycle.FMLClientSetupEvent e){e.enqueueWork(com.foundations.calculator.client.guide.GuideValues::register);}

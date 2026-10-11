@@ -386,7 +386,7 @@ public class MachineBlockEntity extends BlockEntity implements MenuProvider {
     }
     public void setActive(boolean active){if(level!=null&&getBlockState().getValue(MachineBlock.ACTIVE)!=active)level.setBlockAndUpdate(worldPosition,getBlockState().setValue(MachineBlock.ACTIVE,active));}
     public boolean action(Player player,int action){
-        if(level==null||level.isClientSide()||player.level()!=level||player.distanceToSqr(worldPosition.getCenter())>64||
+        if(level==null||level.isClientSide()||player.level()!=level||player.distanceToSqr(net.minecraft.world.phys.Vec3.atCenterOf(worldPosition))>64||
             !level.mayInteract(player,worldPosition))return false;
         if(action==27){
             if(player instanceof net.minecraft.server.level.ServerPlayer sp && PowerDiagnostics.showMachine(sp,this)){

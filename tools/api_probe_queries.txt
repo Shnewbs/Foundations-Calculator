@@ -66,3 +66,18 @@ api net.neoforged.neoforge.transfer.StacksResourceHandler
 api net.neoforged.neoforge.transfer.access.ItemAccess
 api net.neoforged.neoforge.transfer.item.ItemAccessItemHandler
 api net.neoforged.neoforge.transfer.ResourceHandlerUtil
+
+# --- Round 3: last Content.java gaps from reading round-2 answers ---
+# EntityType.Builder.<T>of(...) fails its bound on our own entities; need the factory
+# functional-interface shape method references are inferred against.
+api net.minecraft.world.entity.EntityType$EntityFactory
+# BlockEntityType.Builder is gone outright (round 2 only showed the instance create()
+# method); need whatever replaced construction/registration for block entity types.
+api net.minecraft.world.level.block.entity.BlockEntityType
+# ProcessRecipe.Serializer currently implements the old RecipeSerializer interface;
+# RecipeSerializer is now a final record over MapCodec+StreamCodec, so the actual
+# shape of an existing native recipe serializer (for the codec pattern to copy) helps.
+apis ^net\.minecraft\.world\.item\.crafting\.(ShapedRecipe|SimpleCookingRecipeSerializer)(\$.*)?$ CODEC|codec|SERIALIZER
+# ItemStacksResourceHandler's own slot-level accessors beyond what StacksResourceHandler
+# showed (existing code does getStackInSlot/setStackInSlot/insertItem/extractItem a lot).
+apis ^net\.neoforged\.neoforge\.transfer\.(StacksResourceHandler|item\.ItemStacksResourceHandler)$ .

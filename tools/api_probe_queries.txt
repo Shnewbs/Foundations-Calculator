@@ -81,3 +81,9 @@ apis ^net\.minecraft\.world\.item\.crafting\.(ShapedRecipe|SimpleCookingRecipeSe
 # ItemStacksResourceHandler's own slot-level accessors beyond what StacksResourceHandler
 # showed (existing code does getStackInSlot/setStackInSlot/insertItem/extractItem a lot).
 apis ^net\.neoforged\.neoforge\.transfer\.(StacksResourceHandler|item\.ItemStacksResourceHandler)$ .
+
+# --- Round 4: ThrowableItemProjectile is gone (round 1 already showed only
+# ThrowableProjectile exists); need its full api before touching
+# ThrownMaterialEntity/GrenadeEntity, since getDefaultItem()/level()/getType()/
+# damageSources()/discard() are all currently unresolved through it.
+api net.minecraft.world.entity.projectile.ThrowableProjectile

@@ -1,0 +1,150 @@
+        ^
+  /home/runner/work/Foundations-Calculator/Foundations-Calculator/src/main/java/com/foundations/calculator/compat/viewer/EmiIntegration.java:31: error: Display is not abstract and does not override abstract method getId() in EmiRecipe
+      private record Display(RecipeView view,EmiRecipeCategory getCategory) implements EmiRecipe {
+              ^
+  /home/runner/work/Foundations-Calculator/Foundations-Calculator/src/main/java/com/foundations/calculator/compat/JadeIntegration.java:14: error: Provider is not abstract and does not override abstract method getUid() in IJadeProvider
+      public enum Provider implements IServerDataProvider<BlockAccessor>,IBlockComponentProvider {
+             ^
+  /home/runner/work/Foundations-Calculator/Foundations-Calculator/src/main/java/com/foundations/calculator/network/TransferPayload.java:22: error: incompatible types: Identifier cannot be converted to ResourceKey<Recipe<?>>
+              var holder=RecipePolicies.apply(new net.minecraft.world.item.crafting.RecipeHolder<>(payload.recipe(),process));
+                                                                                                                 ^
+  /home/runner/work/Foundations-Calculator/Foundations-Calculator/src/main/java/com/foundations/calculator/client/GuideScreen.java:365: error: incompatible types: int cannot be converted to Matrix3x2f
+                  g.pose().pushPose();g.pose().translate(pageX,y,0);g.pose().scale((float)dw/row.imageW(),(float)row.height()/row.imageH(),1);g.blit(Identifier.parse(row.image()),0,0,0,0,row.imageW(),row.imageH(),row.imageW(),row.imageH());g.pose().popPose();
+                                                                 ^
+  /home/runner/work/Foundations-Calculator/Foundations-Calculator/src/main/java/com/foundations/calculator/client/GuideScreen.java:365: error: incompatible types: int cannot be converted to Matrix3x2f
+                  g.pose().pushPose();g.pose().translate(pageX,y,0);g.pose().scale((float)dw/row.imageW(),(float)row.height()/row.imageH(),1);g.blit(Identifier.parse(row.image()),0,0,0,0,row.imageW(),row.imageH(),row.imageW(),row.imageH());g.pose().popPose();
+                                                                                                                                           ^
+  /home/runner/work/Foundations-Calculator/Foundations-Calculator/src/main/java/com/foundations/calculator/client/MachineItemRenderer.java:15: error: incompatible types: BlockEntityRenderer<MachineBlockEntity,BlockEntityRenderState> cannot be converted to MachineRenderer
+              if(dispatcher.getRenderer(m) instanceof MachineRenderer renderer){
+                                       ^
+  /home/runner/work/Foundations-Calculator/Foundations-Calculator/src/main/java/com/foundations/calculator/core/ContentProperties.java:59: error: incompatible types: incompatible parameter types in lambda expression
+              event.modify(item,b->{
+                                ^
+  /home/runner/work/Foundations-Calculator/Foundations-Calculator/src/main/java/com/foundations/calculator/compat/viewer/JeiIntegration.java:31: error: incompatible types: Identifier cannot be converted to ResourceLocation
+      public void registerCategories(IRecipeCategoryRegistration r){if(!CalculatorConfig.flag("compat.jei",true))return;types.clear();for(String family:RecipeView.families()){var type=new RecipeType<>(Content.id(family),RecipeView.class);types.put(family,type);var icon=r.getJeiHelpers().getGuiHelper().createDrawableItemStack(RecipeView.icon(family));r.addRecipeCategories(new Category(type,family,icon));}}
+                                                                                                                                                                                                                   ^
+  /home/runner/work/Foundations-Calculator/Foundations-Calculator/src/main/java/com/foundations/calculator/compat/viewer/JeiIntegration.java:37: error: incompatible types: ResourceKey<Recipe<?>> cannot be converted to Identifier
+          public Identifier getRegistryName(RecipeView recipe){return recipe.holder().id();}
+                                                                                        ^
+  /home/runner/work/Foundations-Calculator/Foundations-Calculator/src/main/java/com/foundations/calculator/compat/viewer/JeiIntegration.java:48: error: incompatible types: ResourceKey<Recipe<?>> cannot be converted to Identifier
+              if(commit)PacketDistributor.sendToServer(new TransferPayload(menu.containerId,recipe.holder().id(),maximum?64:1));return null;
+                                                                                                              ^
+  /home/runner/work/Foundations-Calculator/Foundations-Calculator/src/main/java/com/foundations/calculator/compat/viewer/EmiIntegration.java:25: error: incompatible types: Identifier cannot be converted to ResourceLocation
+              var category=new EmiRecipeCategory(Content.id(family),EmiStack.of(RecipeView.icon(family))){public Component getName(){return RecipeView.title(family);}};
+                                                           ^
+  /home/runner/work/Foundations-Calculator/Foundations-Calculator/src/main/java/com/foundations/calculator/compat/viewer/EmiIntegration.java:32: error: incompatible types: ResourceKey<Recipe<?>> cannot be converted to Identifier
+          public Identifier getId(){return view.holder().id();}
+                                                           ^
+  /home/runner/work/Foundations-Calculator/Foundations-Calculator/src/main/java/com/foundations/calculator/compat/viewer/EmiIntegration.java:48: error: incompatible types: ResourceKey<Recipe<?>> cannot be converted to Identifier
+          public boolean craft(EmiRecipe recipe,EmiCraftContext<CalculatorMenu> context){if(!canCraft(recipe,context))return false;var display=(Display)recipe;PacketDistributor.sendToServer(new TransferPayload(context.getScreenHandler().containerId,display.view().holder().id(),Math.clamp(context.getAmount(),1,64)));return true;}
+                                                                                                                                                                                                                                                                                   ^
+  /home/runner/work/Foundations-Calculator/Foundations-Calculator/src/main/java/com/foundations/calculator/content/GreenhouseProgram.java:115: error: incompatible types: Optional<long[]> cannot be converted to long[]
+          long[] original=m.program.getLongArray("Fallow");Set<Long> fallow=new HashSet<>();
+                                                ^
+  /home/runner/work/Foundations-Calculator/Foundations-Calculator/src/main/java/com/foundations/calculator/content/Content.java:62: error: incompatible types: incompatible parameter types in lambda expression
+          addBlock("flawless_glass",()->new ConnectedDecorBlock(ContentProperties.block("flawless_glass",BlockBehaviour.Properties.of().strength(0.6f,6f).lightLevel(s->9).noOcclusion().isViewBlocking((s,w,p)->false))),false,false);
+                                                                                                                                                                                                        ^
+  /home/runner/work/Foundations-Calculator/Foundations-Calculator/src/main/java/com/foundations/calculator/content/Content.java:154: error: incompatible types: incompatible parameter types in lambda expression
+          addBlock("stable_glass",()->new ConnectedDecorBlock(ContentProperties.block("stable_glass",BlockBehaviour.Properties.of().strength(1.0f,12.0f).noOcclusion().isViewBlocking((s,w,p)->false))),false,false);
+                                                                                                                                                                                      ^
+  /home/runner/work/Foundations-Calculator/Foundations-Calculator/src/main/java/com/foundations/calculator/content/Content.java:155: error: incompatible types: incompatible parameter types in lambda expression
+          addBlock("clear_stable_glass",()->new ConnectedDecorBlock(ContentProperties.block("clear_stable_glass",BlockBehaviour.Properties.of().strength(1.0f,12.0f).noOcclusion().isViewBlocking((s,w,p)->false))),false,false);
+                                                                                                                                                                                                  ^
+  /home/runner/work/Foundations-Calculator/Foundations-Calculator/src/main/java/com/foundations/calculator/content/UtilityItems.java:68: error: incompatible types: ThrownMaterialEntity cannot be converted to Entity
+              var projectile=new ThrownMaterialEntity(level,player,kind.equals("soil"));projectile.shootFromRotation(player,player.getXRot(),player.getYRot(),0,1.5f,1);if(level.addFreshEntity(projectile)&&!player.isCreative())stack.shrink(1);level.playSound(null,player.blockPosition(),SoundEvents.SNOWBALL_THROW,SoundSource.PLAYERS,.5f,1);return true;
+                                                                                                                                                                                                ^
+  /home/runner/work/Foundations-Calculator/Foundations-Calculator/src/main/java/com/foundations/calculator/content/UtilityItems.java:74: error: incompatible types: Item cannot be converted to ItemStack
+              if(!CalculatorConfig.flag("module.end_diamond.enabled",true)||player.getCooldowns().isOnCooldown(battery.getItem()))return true;
+                                                                                                                              ^
+  /home/runner/work/Foundations-Calculator/Foundations-Calculator/src/main/java/com/foundations/calculator/content/UtilityItems.java:80: error: incompatible types: Item cannot be converted to ItemStack
+              int cost=CalculatorConfig.integer("module.ender_pearl.cost",1000);if(player.getCooldowns().isOnCooldown(battery.getItem()))return true;
+                                                                                                                                     ^
+  /home/runner/work/Foundations-Calculator/Foundations-Calculator/src/main/java/com/foundations/calculator/content/UtilityItems.java:86: error: incompatible types: Item cannot be converted to ItemStack
+              int cost=CalculatorConfig.integer("module.grenade.cost",10000);if(player.getCooldowns().isOnCooldown(battery.getItem()))return true;
+                                                                                                                                  ^
+  /home/runner/work/Foundations-Calculator/Foundations-Calculator/src/main/java/com/foundations/calculator/content/UtilityItems.java:89: error: incompatible types: GrenadeEntity cannot be converted to Entity
+              if(level.addFreshEntity(grenade)){player.getCooldowns().addCooldown(battery,CalculatorConfig.integer("module.grenade.cooldown",10));if(!player.isCreative()){if(installed)((CalculatorItem)battery.getItem()).storage(battery).extractEnergy(cost,false);else stack.shrink(1);}level.playSound(null,player.blockPosition(),SoundEvents.TNT_PRIMED,SoundSource.PLAYERS,1,1);}return true;
+                                      ^
+  /home/runner/work/Foundations-Calculator/Foundations-Calculator/src/main/java/com/foundations/calculator/content/UtilityItems.java:96: error: incompatible types: Item cannot be converted to ItemStack
+              if(player.getCooldowns().isOnCooldown(battery.getItem()))return true;
+                                                                   ^
+  /home/runner/work/Foundations-Calculator/Foundations-Calculator/src/main/java/com/foundations/calculator/content/UtilityItems.java:114: error: incompatible types: Item cannot be converted to ItemStack
+              int cost=CalculatorConfig.integer("module.jump_module.cost",100);if(player.getCooldowns().isOnCooldown(battery.getItem()))return true;
+                                                                                                                                    ^
+  /home/runner/work/Foundations-Calculator/Foundations-Calculator/src/main/java/com/foundations/calculator/core/ProcessRecipe.java:54: error: interface expected here
+      public static final class Serializer implements RecipeSerializer<ProcessRecipe>{
+                                                      ^
+  Note: Some messages have been simplified; recompile with -Xdiags:verbose to get full output
+  /home/runner/work/Foundations-Calculator/Foundations-Calculator/src/main/java/com/foundations/calculator/core/BulkStorage.java:11: error: cannot find symbol
+  public final class BulkStorage implements IItemHandler {
+                                            ^
+    symbol: class IItemHandler
+  /home/runner/work/Foundations-Calculator/Foundations-Calculator/src/main/java/com/foundations/calculator/client/MachineItemRenderer.java:8: error: cannot find symbol
+  public final class MachineItemRenderer extends BlockEntityWithoutLevelRenderer {
+                                                 ^
+    symbol: class BlockEntityWithoutLevelRenderer
+  /home/runner/work/Foundations-Calculator/Foundations-Calculator/src/main/java/com/foundations/calculator/content/ThrownMaterialEntity.java:9: error: cannot find symbol
+  public final class ThrownMaterialEntity extends ThrowableItemProjectile {
+                                                  ^
+    symbol: class ThrowableItemProjectile
+  /home/runner/work/Foundations-Calculator/Foundations-Calculator/src/main/java/com/foundations/calculator/content/GrenadeEntity.java:8: error: cannot find symbol
+  public final class GrenadeEntity extends ThrowableItemProjectile {
+                                           ^
+    symbol: class ThrowableItemProjectile
+  /home/runner/work/Foundations-Calculator/Foundations-Calculator/src/main/java/com/foundations/calculator/content/CalculatorTier.java:9: error: cannot find symbol
+          TagKey<Block> getIncorrectBlocksForDrops,String repair) implements Tier {
+                                                                             ^
+    symbol: class Tier
+  /home/runner/work/Foundations-Calculator/Foundations-Calculator/src/main/java/com/foundations/calculator/content/GreenhouseSeedItem.java:7: error: cannot find symbol
+  public final class GreenhouseSeedItem extends ItemNameBlockItem {
+                                                ^
+    symbol: class ItemNameBlockItem
+  /home/runner/work/Foundations-Calculator/Foundations-Calculator/src/main/java/com/foundations/calculator/content/FireSwordItem.java:5: error: cannot find symbol
+  public final class FireSwordItem extends SwordItem {
+                                           ^
+    symbol: class SwordItem
+  /home/runner/work/Foundations-Calculator/Foundations-Calculator/src/main/java/com/foundations/calculator/core/MachineDiagnostics.java:10: error: package net.neoforged.neoforge.items does not exist
+  import net.neoforged.neoforge.items.ItemStackHandler;
+                                     ^
+  /home/runner/work/Foundations-Calculator/Foundations-Calculator/src/main/java/com/foundations/calculator/core/BulkStorage.java:7: error: package net.neoforged.neoforge.items does not exist
+  import net.neoforged.neoforge.items.IItemHandler;
+                                     ^
+  /home/runner/work/Foundations-Calculator/Foundations-Calculator/src/main/java/com/foundations/calculator/core/MachineRecipeSelection.java:7: error: package net.neoforged.neoforge.items does not exist
+  import net.neoforged.neoforge.items.ItemStackHandler;
+                                     ^
+  /home/runner/work/Foundations-Calculator/Foundations-Calculator/src/main/java/com/foundations/calculator/menu/CalculatorMenu.java:12: error: package net.neoforged.neoforge.items does not exist
+  import net.neoforged.neoforge.items.*;
+                               ^
+  /home/runner/work/Foundations-Calculator/Foundations-Calculator/src/main/java/com/foundations/calculator/content/MachineBlockEntity.java:18: error: package net.neoforged.neoforge.items does not exist
+  import net.neoforged.neoforge.items.*;
+                               ^
+  /home/runner/work/Foundations-Calculator/Foundations-Calculator/src/main/java/com/foundations/calculator/client/GuideScreen.java:18: error: package org.lwjgl.glfw does not exist
+  import org.lwjgl.glfw.GLFW;
+                       ^
+  /home/runner/work/Foundations-Calculator/Foundations-Calculator/src/main/java/com/foundations/calculator/menu/BulkStorageMenu.java:9: error: package net.neoforged.neoforge.items does not exist
+  import net.neoforged.neoforge.items.*;
+                               ^
+  /home/runner/work/Foundations-Calculator/Foundations-Calculator/src/main/java/com/foundations/calculator/core/EnergyItems.java:5: error: package net.neoforged.neoforge.items does not exist
+  import net.neoforged.neoforge.items.ItemStackHandler;
+                                     ^
+  /home/runner/work/Foundations-Calculator/Foundations-Calculator/src/main/java/com/foundations/calculator/core/ProcessTransactions.java:6: error: package net.neoforged.neoforge.items does not exist
+  import net.neoforged.neoforge.items.ItemStackHandler;
+                                     ^
+  /home/runner/work/Foundations-Calculator/Foundations-Calculator/src/main/java/com/foundations/calculator/content/GreenhouseProgram.java:18: error: package net.neoforged.neoforge.items does not exist
+  import net.neoforged.neoforge.items.*;
+                               ^
+  /home/runner/work/Foundations-Calculator/Foundations-Calculator/src/main/java/com/foundations/calculator/content/MachinePrograms.java:20: error: package net.neoforged.neoforge.items does not exist
+  import net.neoforged.neoforge.items.*;
+                               ^
+  /home/runner/work/Foundations-Calculator/Foundations-Calculator/src/main/java/com/foundations/calculator/content/DynamicProgram.java:8: error: package net.neoforged.neoforge.items does not exist
+  import net.neoforged.neoforge.items.ItemStackHandler;
+                                     ^
+  469 errors
+  5 warnings
+
+* Try:
+> Check your code and dependencies to fix the compilation error(s)
+> Run with --scan to generate a Build Scan (powered by Develocity).
+
+BUILD FAILED in 11s
+4 actionable tasks: 2 executed, 2 up-to-date

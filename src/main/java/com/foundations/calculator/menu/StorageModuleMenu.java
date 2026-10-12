@@ -53,8 +53,8 @@ public final class StorageModuleMenu extends ChestMenu {
     private boolean locked(int slot) {
         return slot >= 54 && slot < slots.size() && slots.get(slot).getContainerSlot() == heldSlot;
     }
-    public void clicked(int slot, int button, ClickType type, Player player) {
-        if (!stillValid(player) || locked(slot) || type == ClickType.SWAP && button == heldSlot) return;
+    public void clicked(int slot, int button, ContainerInput type, Player player) {
+        if (!stillValid(player) || locked(slot) || type == ContainerInput.SWAP && button == heldSlot) return;
         super.clicked(slot, button, type, player);
     }
     public ItemStack quickMoveStack(Player player, int slot) {

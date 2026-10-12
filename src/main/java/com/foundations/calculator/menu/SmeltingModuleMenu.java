@@ -45,7 +45,7 @@ public final class SmeltingModuleMenu extends AbstractContainerMenu {
     private void save(){if(module!=carrier)ModuleWorkstation.saveSelected(carrier,module);}
     public boolean stillValid(Player p){return p.getItemInHand(hand)==carrier&&(hand!=InteractionHand.MAIN_HAND||inventory.getSelectedSlot()==heldSlot)&&CircuitData.tag(carrier).getIntOr("SelectedModule",0)==selectedSlot;}
     private boolean locked(int slot){return slot>=3&&slot<slots.size()&&slots.get(slot).container==inventory&&slots.get(slot).getContainerSlot()==heldSlot;}
-    public void clicked(int slot,int button,ClickType type,Player p){if(!stillValid(p)||locked(slot)||type==ClickType.SWAP&&button==heldSlot)return;super.clicked(slot,button,type,p);}
+    public void clicked(int slot,int button,ContainerInput type,Player p){if(!stillValid(p)||locked(slot)||type==ContainerInput.SWAP&&button==heldSlot)return;super.clicked(slot,button,type,p);}
     public ItemStack quickMoveStack(Player p,int index){if(!stillValid(p)||index<0||index>=slots.size()||locked(index))return ItemStack.EMPTY;Slot slot=slots.get(index);if(!slot.hasItem())return ItemStack.EMPTY;ItemStack s=slot.getItem(),copy=s.copy();if(!(index<3?moveItemStackTo(s,3,slots.size(),true):moveItemStackTo(s,0,1,false)))return ItemStack.EMPTY;if(s.isEmpty())slot.setByPlayer(ItemStack.EMPTY);else slot.setChanged();return copy;}
     public void broadcastChanges(){
         if(contents!=null&&!inventory.player.level().isClientSide()&&stillValid(inventory.player)){

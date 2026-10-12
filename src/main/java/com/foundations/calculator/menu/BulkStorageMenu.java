@@ -28,12 +28,12 @@ public final class BulkStorageMenu extends AbstractContainerMenu {
     @Override public void removed(Player player){super.removed(player);machine.stopOpen(player);}
     public int count(int slot){return (counts.get(slot*2)&65535)|((counts.get(slot*2+1)&65535)<<16);}
     public boolean stillValid(Player p){return !machine.isRemoved()&&p.level()==machine.getLevel()&&p.distanceToSqr(net.minecraft.world.phys.Vec3.atCenterOf(machine.getBlockPos()))<=64;}
-    public void clicked(int slot,int button,ClickType type,Player player){
+    public void clicked(int slot,int button,ContainerInput type,Player player){
         if(!stillValid(player))return;
         if(slot>=0&&slot<size){
             if(player.level().isClientSide())return;
-            if(type==ClickType.QUICK_MOVE){quickMoveStack(player,slot);return;}
-            if(type!=ClickType.PICKUP||(button!=0&&button!=1))return;
+            if(type==ContainerInput.QUICK_MOVE){quickMoveStack(player,slot);return;}
+            if(type!=ContainerInput.PICKUP||(button!=0&&button!=1))return;
             ItemStack carried=getCarried();
             if(carried.isEmpty()){int n=button==0?64:(machine.bulk.getStackInSlot(slot).getCount()+1)/2;setCarried(machine.bulk.extractItem(slot,n,false));}
             else{ItemStack offered=carried.copyWithCount(button==0?carried.getCount():1);ItemStack left=machine.bulk.insertItem(slot,offered,false);carried.shrink(offered.getCount()-left.getCount());setCarried(carried);}

@@ -16,7 +16,7 @@ public final class JadeIntegration implements IWailaPlugin {
         public ResourceLocation getUid(){return Content.id("machine_status");}
         public void appendServerData(CompoundTag data,BlockAccessor accessor){
             if(!CalculatorConfig.flag("compat.jade",true)||!(accessor.getBlockEntity() instanceof MachineBlockEntity m))return;
-            var snapshot=MachineDiagnostics.machine(m);var n=new CompoundTag();n.putString("Status",snapshot.status().label);n.putInt("Required",snapshot.requiredEnergy());n.putInt("Progress",m.progress);n.putInt("Ticks",m.totalTicks);n.putInt("Points",m.nutrient);n.putString("Research",m.program.getString("LastResearch"));
+            var snapshot=MachineDiagnostics.machine(m);var n=new CompoundTag();n.putString("Status",snapshot.status().label);n.putLong("Required",snapshot.requiredEnergy());n.putInt("Progress",m.progress);n.putInt("Ticks",m.totalTicks);n.putInt("Points",m.nutrient);n.putString("Research",m.program.getString("LastResearch"));
             if(m.kind().endsWith("greenhouse"))n.putInt("Carbon",m.program.getInt("Carbon"));
             if(m.bulkInventory()){long count=0;for(int i=0;i<m.bulk.getSlots();i++)count+=m.bulk.count(i);n.putLong("Stored",count);}
             data.put("Foundations",n);
@@ -24,7 +24,7 @@ public final class JadeIntegration implements IWailaPlugin {
         public void appendTooltip(ITooltip tooltip,BlockAccessor accessor,IPluginConfig config){
             if(!CalculatorConfig.flag("compat.jade",true)||!accessor.getServerData().contains("Foundations"))return;var n=accessor.getServerData().getCompound("Foundations");
             tooltip.add(Component.literal(n.getString("Status")));
-            if(n.getInt("Required")>0)tooltip.add(Component.literal(String.format("Required: %,d FE",n.getInt("Required"))));
+            if(n.getLong("Required")>0)tooltip.add(Component.literal(String.format("Required: %,d FE",n.getLong("Required"))));
             if(n.getInt("Progress")>0)tooltip.add(Component.literal("Progress: "+(int)Math.clamp(100.0*n.getInt("Progress")/Math.max(1,n.getInt("Ticks")),0,100)+"%"));
             if(n.getInt("Points")>0)tooltip.add(Component.literal("Points: "+n.getInt("Points")));
             if(n.contains("Carbon"))tooltip.add(Component.literal("CO₂: "+n.getInt("Carbon")/1000+"%"));

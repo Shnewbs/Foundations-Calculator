@@ -24,13 +24,17 @@ public final class EnergyItems {
         return energy!=null && energy.canReceive();
     }
     public static int discharge(ItemStackHandler inventory,int slot,StoredEnergy destination,int limit) {
+        return (int)Math.min(Integer.MAX_VALUE,discharge(inventory,slot,destination,(long)limit));
+    }
+    public static long discharge(ItemStackHandler inventory,int slot,StoredEnergy destination,long limit) {
         ItemStack stack=inventory.getStackInSlot(slot);
-        var battery=com.foundations.calculator.api.FoundationsEnergy.item(stack);
+        if(stack.getItem() instanceof com.foundations.calculator.content.CalculatorItem && !PowerPolicy.FE.input(PowerPolicy.Scope.ITEM))return 0;
+        var battery=com.foundations.calculator.api.FoundationsEnergy.longItem(stack);
         if(battery!=null && battery.canExtract()) {
-            int available=battery.extractEnergy(Math.max(0,limit),true);
-            int accepted=destination.receiveEnergy(available,true);
-            int extracted=battery.extractEnergy(accepted,false);
-            return destination.receiveEnergy(extracted,false);
+            long available=battery.extract(Math.max(0L,limit),true);
+            long accepted=destination.receive(available,true);
+            long extracted=battery.extract(accepted,false);
+            return destination.receive(extracted,false);
         }
         int value=fuelValue(stack);
         // A consumable is indivisible: keep it until its entire FE value fits.

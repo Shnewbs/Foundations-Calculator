@@ -7,14 +7,27 @@ It intentionally does not certify the manual copied-world/client/performance che
 from pathlib import Path
 import json,re,zipfile,hashlib,struct,xml.etree.ElementTree as ET
 
+from release_versions import candidate_type
+from release_inputs import source_fingerprint
+from beta_acceptance import acceptance_status
+
 root=Path(__file__).resolve().parents[1]
 version=re.search(r'^mod_version=(.+)$',(root/'gradle.properties').read_text(),re.M)[1]
-assert re.fullmatch(r'(?:0\.0\.[0-9]+a|0\.1[ab])(?:\.R[0-9]+)?(?:-dev\.[0-9]+)?',version),f'Unexpected release version: {version}'
+release_type=candidate_type(version)
 required_tests=int(re.search(r'^required_gametests=(.+)$',(root/'gradle.properties').read_text(),re.M)[1])
 evidence=root/'validation'/version
 evidence.mkdir(parents=True,exist_ok=True)
 jar=root/'build'/'libs'/f'FoundationsCalculator-{version}.jar'
-assert jar.is_file(),'No native R2 JAR; run VALIDATE_0_0_2a_R2.bat first.'
+assert jar.is_file(),'No native JAR; run tools/validate_release.py first.'
+receipt=json.loads((evidence/'build-receipt.json').read_text())
+assert receipt['version']==version and receipt['source_sha256']==source_fingerprint(root),'Source changed after validation'
+assert receipt['jar_sha256']==hashlib.sha256(jar.read_bytes()).hexdigest(),'Binary differs from fresh validation receipt'
+sources=jar.with_name(f'FoundationsCalculator-{version}-sources.jar')
+assert receipt['sources_sha256']==hashlib.sha256(sources.read_bytes()).hexdigest(),'Sources JAR differs from validation receipt'
+with zipfile.ZipFile(sources) as archive:
+    for source in (root/'src/main/java').rglob('*.java'):
+        rel=source.relative_to(root/'src/main/java').as_posix()
+        assert archive.read(rel)==source.read_bytes(),f'Stale source in sources JAR: {rel}'
 
 with zipfile.ZipFile(jar) as z:
     names=z.namelist(); metadata=z.read('META-INF/neoforge.mods.toml').decode('utf-8')
@@ -72,11 +85,20 @@ for mode in ['standalone','integrations']:
         assert 'Reloaded with no KubeJS errors!' in text,'KubeJS positive reload marker missing'
     counts[mode]=int(matches[-1])
 
+beta_passed,beta_pending=acceptance_status(root,evidence,receipt['source_sha256']) if release_type=='beta' else (True,[])
 report={
     'version':version,
+    'release_type':release_type,
+    'release_eligible':beta_passed,
+    'beta_acceptance':{'passed':beta_passed,'pending_gates':beta_pending},
+    'source_sha256':receipt['source_sha256'],
+    'sources_sha256':receipt['sources_sha256'],
+    'validation_started_utc':receipt['started_utc'],
+    'validation_finished_utc':receipt['finished_utc'],
     'native_build_and_current_source_match':True,
     'unit_tests':unit_count,
     'gametests':counts,
+    'required_gametests':required_tests,
     'recipes':910,
     'server_settings':len(catalog),
     'guide_entries':len(book['entries']),

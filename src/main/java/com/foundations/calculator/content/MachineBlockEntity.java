@@ -121,9 +121,10 @@ public class MachineBlockEntity extends BlockEntity implements MenuProvider {
     public boolean usesEnergy(){return MachineDefinition.forMachine(kind()).usesEnergy();}
     public boolean chargesItems(){return MachineProfiles.storage(kind())||MachineProfiles.generator(kind());}
     /** Effective per-cycle FE after installed Energy Upgrades. */
-    public int upgradeEnergyCost(int base){
+    public int upgradeEnergyCost(int base){return (int)Math.min(Integer.MAX_VALUE,upgradeEnergyCost((long)base));}
+    public long upgradeEnergyCost(long base){
         int amount=supportsUpgrades()?upgrades("energy_upgrade"):0;
-        return (int)Math.max(0,Math.max(0,base)/(1.0+amount*CalculatorConfig.decimal("upgrades.energyDiscount",.1)));
+        return EnergyOperations.discounted(base,amount,CalculatorConfig.decimal("upgrades.energyDiscount",.1));
     }
     /** Effective processing duration after installed Speed Upgrades. */
     public int upgradeProcessTicks(int base){
@@ -186,7 +187,7 @@ public class MachineBlockEntity extends BlockEntity implements MenuProvider {
             if(!pending.isEmpty()){if(CalculatorConfig.flag("upgrades.allowVoid",true)&&upgrades("void_upgrade")>0)pending.clear();else return;}
         }
         String k=kind();
-        if(MachineProfiles.storage(k))EnergyItems.discharge(inventory,0,energy,MachineProfiles.charging(k));
+        if(MachineProfiles.storage(k))EnergyItems.discharge(inventory,0,energy,MachineProfiles.chargingLong(k));
         if(k.equals("creative_power_cube"))energy.receiveEnergy(Integer.MAX_VALUE,false);
         if(chargesItems())chargeItem();else MachinePrograms.discharge(this);
         if(Set.of("calculator_locator","conductor_mast").contains(k))pushEnergy();
@@ -203,15 +204,15 @@ public class MachineBlockEntity extends BlockEntity implements MenuProvider {
         var found=recipeSelection.find(level,machine,owner(),inventory,inputCount());
         if(found.isEmpty()){if(progress>0){progress=0;activeRecipe="";setChanged();}return;}
         RecipeHolder<ProcessRecipe> holder=found.get();ProcessRecipe recipe=holder.value();
-        int cost=upgradeEnergyCost(CalculatorConfig.energy(k,RecipePolicies.energy(holder,k.equals("docking_station")?10:0)));
+        long cost=upgradeEnergyCost(CalculatorConfig.energyLong(k,RecipePolicies.energy(holder,k.equals("docking_station")?10:0)));
         totalTicks=upgradeProcessTicks(CalculatorConfig.ticks(k,recipe.ticks()));
         if(!activeRecipe.equals(holder.id().toString())){progress=0;activeRecipe=holder.id().toString();}
-        if(energy.getEnergyStored()<cost){if(!CalculatorConfig.machineFlag(k,"retainProgressWithoutPower"))progress=0;return;}
+        if(energy.stored()<cost){if(!CalculatorConfig.machineFlag(k,"retainProgressWithoutPower"))progress=0;return;}
         if(++progress>=totalTicks){
             // Revalidate against live inputs at commit, even when the selector was cached.
             int[] used=recipe.allocation(ProcessTransactions.input(inventory,inputCount()));
             if(used!=null){
-                energy.extractEnergy(cost,false);
+                energy.extract(cost,false);
                 pending.addAll(ProcessTransactions.consume(inventory,used,recipe,level));
                 ResearchData.completed(level,owner(),machine);
                 ProcessTransactions.flush(pending,inventory);
@@ -221,10 +222,12 @@ public class MachineBlockEntity extends BlockEntity implements MenuProvider {
     }
     public int upgrades(String id){int n=0;for(int i=21;i<25;i++)if(Content.path(inventory.getStackInSlot(i)).equals(id))n+=inventory.getStackInSlot(i).getCount();return Math.min(CalculatorConfig.integer("upgrades.maxPerType",16),n);}
     private void chargeItem(){
-        ItemStack stack=inventory.getStackInSlot(20);IEnergyStorage other=com.foundations.calculator.api.FoundationsEnergy.item(stack);
+        ItemStack stack=inventory.getStackInSlot(20);
+        if(stack.getItem() instanceof CalculatorItem && !PowerPolicy.FE.output(PowerPolicy.Scope.ITEM))return;
+        var other=com.foundations.calculator.api.FoundationsEnergy.longItem(stack);
         if(other==null)return;
-        int offered=(int)Math.min(energy.stored(),MachineProfiles.charging(kind()));
-        int accepted=other.receiveEnergy(offered,false);energy.extractEnergy(Math.clamp(accepted,0,offered),false);
+        long offered=Math.min(energy.stored(),MachineProfiles.chargingLong(kind()));
+        long accepted=other.receive(offered,false);energy.extract(Math.clamp(accepted,0L,offered),false);
         if(accepted>0)setChanged();
     }
     public final com.foundations.calculator.core.TransferBudget euInputBudget=new com.foundations.calculator.core.TransferBudget();
@@ -295,24 +298,24 @@ public class MachineBlockEntity extends BlockEntity implements MenuProvider {
     private void smelt(){
         ItemStack in=inventory.getStackInSlot(0);if(in.isEmpty()){progress=0;return;}
         var r=level.getRecipeManager().getRecipeFor(RecipeType.SMELTING,new SingleRecipeInput(in),level);
-        int cost=upgradeEnergyCost(CalculatorConfig.energy(kind(),500));
+        long cost=upgradeEnergyCost(CalculatorConfig.energyLong(kind(),500));
         if(r.isEmpty()){progress=0;return;}
-        if(energy.getEnergyStored()<cost){if(!CalculatorConfig.machineFlag(kind(),"retainProgressWithoutPower"))progress=0;return;}
+        if(energy.stored()<cost){if(!CalculatorConfig.machineFlag(kind(),"retainProgressWithoutPower"))progress=0;return;}
         String recipeId=r.get().id().toString();if(!activeRecipe.equals(recipeId)){activeRecipe=recipeId;progress=0;}
         totalTicks=upgradeProcessTicks(CalculatorConfig.ticks(kind(),200));
         if(++progress>=totalTicks){
             ItemStack out=r.get().value().assemble(new SingleRecipeInput(in),level.registryAccess());
             ItemStack remainder=in.getCraftingRemainingItem();inventory.extractItem(0,1,false);
-            pending.add(out);if(!remainder.isEmpty())pending.add(remainder);energy.extractEnergy(cost,false);progress=0;
+            pending.add(out);if(!remainder.isEmpty())pending.add(remainder);energy.extract(cost,false);progress=0;
             ProcessTransactions.flush(pending,inventory);
         }setChanged();
     }
     private void analyse(){
         ItemStack circuit=inventory.getStackInSlot(0);
         if(!Content.path(circuit).startsWith("circuit_board_")||CircuitData.analysed(circuit)){progress=0;return;}
-        int cost=upgradeEnergyCost(CalculatorConfig.energy(kind(),0));totalTicks=upgradeProcessTicks(CalculatorConfig.ticks(kind(),1));
-        if(energy.getEnergyStored()<cost){if(!CalculatorConfig.machineFlag(kind(),"retainProgressWithoutPower"))progress=0;return;}
-        if(++progress<totalTicks){setChanged();return;}progress=0;energy.extractEnergy(cost,false);
+        long cost=upgradeEnergyCost(CalculatorConfig.energyLong(kind(),0));totalTicks=upgradeProcessTicks(CalculatorConfig.ticks(kind(),1));
+        if(energy.stored()<cost){if(!CalculatorConfig.machineFlag(kind(),"retainProgressWithoutPower"))progress=0;return;}
+        if(++progress<totalTicks){setChanged();return;}progress=0;energy.extract(cost,false);
         circuit=inventory.extractItem(0,1,false);
         CircuitData.initialize(circuit,level.random);
         CompoundTag tag=CircuitData.tag(circuit);

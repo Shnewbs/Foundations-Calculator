@@ -115,7 +115,7 @@ public final class PowerDiagnostics {
     public static List<String> machine(MachineBlockEntity machine) {
         List<String> lines=new ArrayList<>();
         lines.add("Power | "+machine.kind()+" at "+machine.getBlockPos().toShortString());
-        lines.add("Stored "+String.format("%,d",machine.energy.stored())+" / "+String.format("%,d",machine.energy.capacity())+" FE; port limit "+MachineProfiles.transfer(machine.kind())+" FE; item limit "+MachineProfiles.charging(machine.kind())+" FE");
+        lines.add("Stored "+String.format("%,d",machine.energy.stored())+" / "+String.format("%,d",machine.energy.capacity())+" FE; port limit "+MachineProfiles.transfer(machine.kind())+" FE; item limit "+MachineProfiles.chargingLong(machine.kind())+" FE");
         var state=MachineDiagnostics.machine(machine);
         lines.add("Machine: "+state.status().label+(state.requiredEnergy()>0?"; requires "+state.requiredEnergy()+" FE":""));
         if(machine.program.contains("WorldActionBlocked"))lines.add("Last blocked world action: "+

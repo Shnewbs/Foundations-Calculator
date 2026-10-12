@@ -61,7 +61,7 @@ public final class GuideSnapshots {
             }
         }else if(key.startsWith("machine/")){
             String id=key.substring(8);rows.add("Machine: "+(CalculatorConfig.machineEnabled(id)?"Enabled":"Disabled"));
-            rows.add("Effective port limit: "+MachineProfiles.transfer(id)+" FE/t; item charging limit: "+MachineProfiles.charging(id)+" FE/t");
+            rows.add("Effective port limit: "+MachineProfiles.transfer(id)+" FE/t; item charging limit: "+MachineProfiles.chargingLong(id)+" FE/t");
             for(String suffix:List.of("capacity","itemAutomation","energyInput","energyOutput","energyOverride","energyMultiplier","ticksOverride","timeMultiplier","euInputVoltage","euOutputVoltage","euInputAmperage","euOutputAmperage","retainProgressWithoutPower"))setting(rows,"machine."+id+"."+suffix);
             setting(rows,"machines.processEnergyMultiplier");setting(rows,"machines.processTimeMultiplier");
             if(id.equals("dynamic_calculator")){setting(rows,"world.dynamicStructureRadius");setting(rows,"world.dynamicRequiresStructure");}

@@ -40,7 +40,7 @@ public final class GuideRecipes {
                 if(normal){
                     @SuppressWarnings("unchecked") var typed=(RecipeHolder<ProcessRecipe>)holder;
                     int minimum=profile.equals("docking_station")?10:Set.of("calculator","scientific_calculator","flawless_calculator","dynamic_calculator","dynamic_module").contains(profile)?1:0;
-                    int cost=CalculatorConfig.energy(profile,RecipePolicies.energy(typed,minimum));if(p.machine().equals("research")&&!CalculatorConfig.flag("research.consumeEnergy",true))cost=0;
+                    long cost=CalculatorConfig.energyLong(profile,RecipePolicies.energy(typed,minimum));if(p.machine().equals("research")&&!CalculatorConfig.flag("research.consumeEnergy",true))cost=0;
                     boolean instant=Set.of("calculator","scientific_calculator","flawless_calculator","dynamic_calculator","dynamic_module").contains(profile);
                     parts.add(new Part(ItemStack.EMPTY,"For "+profile.replace('_',' ')+": "+cost+" FE per operation"+(instant?"; immediate calculation":"; "+CalculatorConfig.ticks(profile,p.ticks())+" ticks before upgrades")+". Server-synchronized settings; installed upgrades are not assumed."));
                 }

@@ -16,7 +16,7 @@ public final class GuideValues {
  public static void refresh(){GuideRecipeProvider.clear();cache.refresh();}
  private static LiveResult read(LiveRequest request){
   session();var mc=Minecraft.getInstance();if(mc.getConnection()==null||mc.level==null)return LiveResult.unavailable("Not connected to a world");
-  return cache.request(request.key(),System.nanoTime(),q->PacketDistributor.sendToServer(new GuideQueryPayload(q.token(),q.key())));
+  return cache.request(request.key(),System.nanoTime(),q->net.neoforged.neoforge.client.network.ClientPacketDistributor.sendToServer(new GuideQueryPayload(q.token(),q.key())));
  }
  public static void receive(GuideSnapshotPayload p){session();cache.receive(p.token(),p.key(),new LiveResult(p.available()?State.READY:State.UNAVAILABLE,"Server snapshot · use Refresh to update",p.lines()));}
  private GuideValues(){}

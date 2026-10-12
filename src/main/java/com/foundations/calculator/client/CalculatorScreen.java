@@ -12,7 +12,7 @@ import net.minecraft.world.entity.player.Inventory;
 public final class CalculatorScreen extends AbstractContainerScreen<CalculatorMenu>{
     private boolean sidesOpen;
     private final java.util.Map<Integer,Button> controls=new java.util.HashMap<>();
-    public CalculatorScreen(CalculatorMenu menu,Inventory inv,Component title){super(menu,inv,title);imageWidth=232;imageHeight=238;inventoryLabelX=35;inventoryLabelY=145;titleLabelX=12;titleLabelY=22;}
+    public CalculatorScreen(CalculatorMenu menu,Inventory inv,Component title){super(menu,inv,title,232,238);inventoryLabelX=35;inventoryLabelY=145;titleLabelX=12;titleLabelY=22;}
     protected void init(){super.init();controls.clear();
         if(menu.machine==null){if(menu.kind.equals("dynamic_module")){button(0,"Basic",12,126,66);button(1,"Scientific",82,126,66);button(2,"Atomic",152,126,68);}else button(0,"Calculate",142,97,76);return;}
         if(menu.machine.usesEnergy() && CalculatorConfig.flag("power.diagnostics.enabled",true)){
@@ -42,7 +42,7 @@ public final class CalculatorScreen extends AbstractContainerScreen<CalculatorMe
         for(int side=0;side<6;side++)if(controls.containsKey(20+side))controls.get(20+side).setMessage(Component.literal(new String[]{"D","U","N","S","W","E"}[side]+new String[]{"A","←","→","×"}[Math.floorMod(menu.state(18+side),4)]));
         if(menu.kind.endsWith("greenhouse"))controls.get(10).setMessage(Component.literal(menu.state(15)==0?"Pause":"Resume"));
     }
-    protected void renderBg(GuiGraphicsExtractor g,float partial,int x,int y){
+    public void extractBackground(GuiGraphicsExtractor g,int x,int y,float partial){
         g.fill(leftPos-1,topPos-1,leftPos+imageWidth+1,topPos+imageHeight+1,ClientConfig.color(ClientConfig.ACCENT,0x47acb9));
         g.fill(leftPos,topPos,leftPos+imageWidth,topPos+imageHeight,ClientConfig.color(ClientConfig.BACKGROUND,0x18242d));
         g.fill(leftPos+4,topPos+4,leftPos+imageWidth-4,topPos+17,ClientConfig.color(ClientConfig.PANEL,0x30424e));
@@ -75,7 +75,7 @@ public final class CalculatorScreen extends AbstractContainerScreen<CalculatorMe
         return menu.status().label;
     }
     private int statusColor(){return switch(menu.status()){case NEED_POWER,NO_RECIPE,OUTPUT_BLOCKED,INCOMPLETE,NEED_FUEL,NEED_INPUT,NEED_FEED,NEED_REDSTONE->0xffffc66b;default->ClientConfig.color(ClientConfig.MUTED,0xa9bbc8);};}
-    protected void renderLabels(GuiGraphicsExtractor g,int x,int y){
+    protected void extractLabels(GuiGraphicsExtractor g,int x,int y){
         g.text(font,title,titleLabelX,titleLabelY,ClientConfig.color(ClientConfig.TEXT,0xedf4f8),false);
         if(menu.kind.endsWith("greenhouse")){
             String text=statusText()+" · CO₂ "+(((menu.state(11)&65535)|((menu.state(12)&65535)<<16))/1000)+"%";
@@ -83,17 +83,17 @@ public final class CalculatorScreen extends AbstractContainerScreen<CalculatorMe
         }
         g.text(font,playerInventoryTitle,inventoryLabelX,inventoryLabelY,ClientConfig.color(ClientConfig.MUTED,0xb4c6cf),false);
     }
-    public void render(GuiGraphicsExtractor g,int x,int y,float partial){
-        super.render(g,x,y,partial);renderTooltip(g,x,y);
+    public void extractRenderState(GuiGraphicsExtractor g,int x,int y,float partial){
+        super.extractRenderState(g,x,y,partial);extractTooltip(g,x,y);
         if(!sidesOpen&&x>=leftPos+12&&x<=leftPos+220&&y>=topPos+statusY()&&y<=topPos+statusY()+10){
             String detail=menu.status().label+(menu.requiredEnergy()>0?String.format(" — requires %,d FE",menu.requiredEnergy()):"");
-            if(!isOverControl(x,y))g.renderTooltip(font,font.split(Component.literal(detail),210),x,y);
+            if(!isOverControl(x,y))g.setTooltipForNextFrame(font,font.split(Component.literal(detail),210),x,y);
         }
-        if(controls.containsKey(27)&&controls.get(27).isMouseOver(x,y))g.renderTooltip(font,font.split(Component.literal("Server power report in chat: sides, limits and blocked transfers. Closes this screen."),210),x,y);
-        if(controls.containsKey(26)&&controls.get(26).isMouseOver(x,y))g.renderTooltip(font,Component.literal(new String[]{"Redstone: always active","Redstone: signal required","Redstone: signal disables","Redstone: paused"}[Math.floorMod(menu.state(27),4)]),x,y);
-        if(sidesOpen&&x>=leftPos+12&&x<leftPos+186&&y>=topPos+126&&y<topPos+142)g.renderTooltip(font,font.split(Component.literal("A: automatic machine role; ←: input; →: output; ×: disabled"),210),x,y);
+        if(controls.containsKey(27)&&controls.get(27).isMouseOver(x,y))g.setTooltipForNextFrame(font,font.split(Component.literal("Server power report in chat: sides, limits and blocked transfers. Closes this screen."),210),x,y);
+        if(controls.containsKey(26)&&controls.get(26).isMouseOver(x,y))g.setTooltipForNextFrame(font,Component.literal(new String[]{"Redstone: always active","Redstone: signal required","Redstone: signal disables","Redstone: paused"}[Math.floorMod(menu.state(27),4)]),x,y);
+        if(sidesOpen&&x>=leftPos+12&&x<leftPos+186&&y>=topPos+126&&y<topPos+142)g.setTooltipForNextFrame(font,font.split(Component.literal("A: automatic machine role; ←: input; →: output; ×: disabled"),210),x,y);
         if(ClientConfig.flag(ClientConfig.SLOT_HINTS)&&hoveredSlot!=null&&hoveredSlot.getItem().isEmpty()&&hoveredSlot.index<25){
-            String help=slotHint(hoveredSlot.index);if(!help.isEmpty())g.renderTooltip(font,font.split(Component.literal(help),210),x,y);
+            String help=slotHint(hoveredSlot.index);if(!help.isEmpty())g.setTooltipForNextFrame(font,font.split(Component.literal(help),210),x,y);
         }
     }
     private boolean isOverControl(int x,int y){for(Button b:controls.values())if(b.visible&&b.isMouseOver(x,y))return true;return false;}

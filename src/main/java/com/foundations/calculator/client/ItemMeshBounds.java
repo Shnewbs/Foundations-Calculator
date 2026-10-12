@@ -13,5 +13,6 @@ final class ItemMeshBounds implements VertexConsumer {
     public VertexConsumer setUv1(int u,int v){return this;}
     public VertexConsumer setUv2(int u,int v){return this;}
     public VertexConsumer setNormal(float x,float y,float z){return this;}
+    public VertexConsumer setLineWidth(float width){return this;}
     AABB bounds(){return Double.isFinite(minX)?new AABB(minX,minY,minZ,maxX,maxY,maxZ):new AABB(0,0,0,1,1,1);}
 }

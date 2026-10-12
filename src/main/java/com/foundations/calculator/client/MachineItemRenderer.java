@@ -19,7 +19,7 @@ public final class MachineItemRenderer extends BlockEntityWithoutLevelRenderer {
                 float scale=(float)(1/Math.max(1,Math.max(bounds.getXsize(),Math.max(bounds.getYsize(),bounds.getZsize()))));
                 pose.translate(.5,.5,.5);pose.scale(scale,scale,scale);pose.translate(-center.x,-center.y,-center.z);
             }
-            dispatcher.renderItem(m,pose,buffers,light,overlay);pose.popPose();
+            dispatcher.item(m,pose,buffers,light,overlay);pose.popPose();
         }else super.renderByItem(stack,context,pose,buffers,light,overlay);
     }
 }

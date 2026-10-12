@@ -269,7 +269,7 @@ public final class GuideScreen extends Screen {
         if(catalogChanged||recipeRevision!=RecipeIndex.revision()||configRevision!=CalculatorConfig.revision()||valueRevision!=GuideValues.revision()||(minecraft.level!=null&&researchRevision!=ResearchData.revision(minecraft.level))||waiting&&age%10==0)buildDocument();
     }
 
-    @Override public void renderBackground(GuiGraphicsExtractor g,int x,int y,float delta){}
+    @Override public void extractBackground(GuiGraphicsExtractor g,int x,int y,float delta){}
 
     private void renderBookShell(GuiGraphicsExtractor g,int accent){
         g.fill(0,0,width,height,0x8d000000);
@@ -315,7 +315,7 @@ public final class GuideScreen extends Screen {
 
     private void renderContents(GuiGraphicsExtractor g,int mx,int my,int accent){
         g.text(font,"CALCULATOR FIELD GUIDE",navX+8,bookTop+45,INK,false);
-        ItemStack guide=item("foundations_calculator:info_calculator");if(!guide.isEmpty())g.renderItem(guide,navX+navWidth-28,bookTop+42);
+        ItemStack guide=item("foundations_calculator:info_calculator");if(!guide.isEmpty())g.item(guide,navX+navWidth-28,bookTop+42);
         g.fill(navX+8,bookTop+61,navX+navWidth-8,bookTop+62,0xffbdb19a);
         String filter=bookmarksOnly?"Saved entries":chapter.isEmpty()?"All chapters":chapter;
         g.text(font,font.plainSubstrByWidth(filter,navWidth-20),navX+9,navListTop-13,MUTED,false);
@@ -355,14 +355,14 @@ public final class GuideScreen extends Screen {
             }
             if(row.text()!=null){int inset=row.image().equals("text_inset")?28:(row.style().equals("callout")||row.style().equals("setting")?7:row.style().equals("step")||row.style().equals("list")?5:0);g.text(font,row.text(),pageX+inset,y,row.color(),false);}
             if(!row.item().isEmpty()){
-                g.fill(pageX-2,y-1,pageX+23,y+22,0xffd8cfbc);g.renderItem(row.item(),pageX+2,y+2);if(mx>=pageX&&mx<pageX+24&&my>=y&&my<y+23)hovered=row.item();
+                g.fill(pageX-2,y-1,pageX+23,y+22,0xffd8cfbc);g.item(row.item(),pageX+2,y+2);if(mx>=pageX&&mx<pageX+24&&my>=y&&my<y+23)hovered=row.item();
             }
             if(!row.cells().isEmpty()){
                 int cell=row.imageW();for(int i=0;i<row.cells().size();i++){String c=row.cells().get(i);int x=pageX+i*cell;int color=switch(c){case "S","L"->0xff7f8e88;case "G"->0xffa2cacf;case "C"->accent;case "W"->0xff83aedd;case "P","T"->0xffb29e72;default->0xffe2d8bf;};g.fill(x,y,x+cell-1,y+cell-1,color);if(cell>=9)g.text(font,c,x+(cell-font.width(c))/2,y+(cell-8)/2,INK,false);}
             }
             if(!row.image().isEmpty()&&!row.image().equals("text_inset")){
                 int dw=Math.min(pageWidth,row.imageW());if(row.imageH()*dw/row.imageW()>512)dw=dw*512/(row.imageH()*dw/row.imageW());
-                g.pose().pushPose();g.pose().translate(pageX,y,0);g.pose().scale((float)dw/row.imageW(),(float)row.height()/row.imageH(),1);g.blit(Identifier.parse(row.image()),0,0,0,0,row.imageW(),row.imageH(),row.imageW(),row.imageH());g.pose().popPose();
+                g.pose().pushMatrix();g.pose().translate(pageX,y);g.pose().scale((float)dw/row.imageW(),(float)row.height()/row.imageH());g.blit(net.minecraft.client.renderer.RenderPipelines.GUI_TEXTURED,Identifier.parse(row.image()),0,0,0,0,row.imageW(),row.imageH(),row.imageW(),row.imageH());g.pose().popMatrix();
             }
             if(row.action()!=null&&mx>=pageX&&mx<pageX+pageWidth&&my>=Math.max(y,contentTop)&&my<Math.min(y+row.height(),contentBottom)&&tip.isEmpty())tip="Open";
         }
@@ -370,16 +370,16 @@ public final class GuideScreen extends Screen {
         if(maxScroll()>0){int track=contentBottom-contentTop,thumb=Math.max(18,track*track/Math.max(track,documentHeight));int sy=contentTop+(track-thumb)*scroll/Math.max(1,maxScroll());g.fill(pageX+pageWidth+4,contentTop,pageX+pageWidth+6,contentBottom,0xffc7baa2);g.fill(pageX+pageWidth+3,sy,pageX+pageWidth+7,sy+thumb,accent);}
     }
 
-    @Override public void render(GuiGraphicsExtractor g,int mx,int my,float delta){
+    @Override public void extractRenderState(GuiGraphicsExtractor g,int mx,int my,float delta){
         hovered=ItemStack.EMPTY;tip="";int accent=0xff000000|ClientConfig.color(ClientConfig.ACCENT,0x47acb9);
         renderBookShell(g,accent);
         if(listVisible())renderContents(g,mx,my,accent);
         if(pageVisible())renderPage(g,mx,my,accent);
         renderHotspots(g,mx,my,accent);
-        super.render(g,mx,my,delta); // only the search EditBox renders here; book content stays crisp.
-        if(!message.isEmpty())g.renderTooltip(font,Component.literal(message),Math.min(mx,width-20),Math.min(my,height-20));
-        else if(!hovered.isEmpty())g.renderTooltip(font,hovered,mx,my);
-        else if(!tip.isEmpty())g.renderTooltip(font,Component.literal(tip),mx,my);
+        super.extractRenderState(g,mx,my,delta); // only the search EditBox renders here; book content stays crisp.
+        if(!message.isEmpty())g.setTooltipForNextFrame(font,Component.literal(message),Math.min(mx,width-20),Math.min(my,height-20));
+        else if(!hovered.isEmpty())g.setTooltipForNextFrame(font,hovered,mx,my);
+        else if(!tip.isEmpty())g.setTooltipForNextFrame(font,Component.literal(tip),mx,my);
     }
 
     private void action(Action a){
@@ -390,8 +390,8 @@ public final class GuideScreen extends Screen {
         }
     }
 
-    @Override public boolean mouseClicked(double x,double y,int button){
-        message="";if(super.mouseClicked(x,y,button))return true;if(button!=0)return false;
+    @Override public boolean mouseClicked(net.minecraft.client.input.MouseButtonEvent event,boolean doubleClick){double x=event.x(),y=event.y();int button=event.button();
+        message="";if(super.mouseClicked(event,doubleClick))return true;if(button!=0)return false;
         for(Hotspot h:hotspots)if(h.contains(x,y)){h.action().run();return true;}
         if(pageVisible()&&maxScroll()>0&&x>=pageX+pageWidth&&x<=pageX+pageWidth+10&&y>=contentTop&&y<contentBottom){dragging=true;drag(y);return true;}
         if(listVisible()&&x>=navX+4&&x<navX+navWidth&&y>=navListTop&&y<navListTop+listRows()*28){int i=listOffset+(int)(y-navListTop)/28;if(i<hits.size()){navigate(hits.get(i).target(),true);return true;}}
@@ -399,18 +399,18 @@ public final class GuideScreen extends Screen {
         return false;
     }
     private void drag(double y){scroll=(int)Math.clamp((y-contentTop)/(double)Math.max(1,contentBottom-contentTop)*maxScroll(),0,maxScroll());}
-    @Override public boolean mouseDragged(double x,double y,int button,double dx,double dy){if(dragging){drag(y);return true;}return super.mouseDragged(x,y,button,dx,dy);}
-    @Override public boolean mouseReleased(double x,double y,int button){dragging=false;return super.mouseReleased(x,y,button);}
+    @Override public boolean mouseDragged(net.minecraft.client.input.MouseButtonEvent event,double dx,double dy){double x=event.x(),y=event.y();int button=event.button();if(dragging){drag(y);return true;}return super.mouseDragged(event,dx,dy);}
+    @Override public boolean mouseReleased(net.minecraft.client.input.MouseButtonEvent event){dragging=false;return super.mouseReleased(event);}
     @Override public boolean mouseScrolled(double x,double y,double dx,double dy){if(listVisible()&&(narrow()||x<spineX)){listOffset=Math.clamp(listOffset-(int)(dy*3),0,Math.max(0,hits.size()-listRows()));return true;}scroll=Math.clamp(scroll-(int)(dy*28),0,maxScroll());return true;}
 
-    @Override public boolean keyPressed(int key,int scan,int mods){
-        if(hasControlDown()&&key==GLFW.GLFW_KEY_F){if(narrow()&&!contents){contents=true;reinitWidgets();}setFocused(search);search.setFocused(true);return true;}
-        if(search!=null&&search.isFocused()){if(key==GLFW.GLFW_KEY_ENTER&&!hits.isEmpty()){navigate(hits.getFirst().target(),true);return true;}return super.keyPressed(key,scan,mods);}
-        if(hasAltDown()&&key==GLFW.GLFW_KEY_LEFT){navigation.back().ifPresent(t->navigate(t,false));return true;}
-        if(hasAltDown()&&key==GLFW.GLFW_KEY_RIGHT){navigation.forward().ifPresent(t->navigate(t,false));return true;}
+    @Override public boolean keyPressed(net.minecraft.client.input.KeyEvent event){int key=event.key(),scan=event.scancode(),mods=event.modifiers();
+        if(event.hasControlDown()&&key==GLFW.GLFW_KEY_F){if(narrow()&&!contents){contents=true;reinitWidgets();}setFocused(search);search.setFocused(true);return true;}
+        if(search!=null&&search.isFocused()){if(key==GLFW.GLFW_KEY_ENTER&&!hits.isEmpty()){navigate(hits.getFirst().target(),true);return true;}return super.keyPressed(event);}
+        if(event.hasAltDown()&&key==GLFW.GLFW_KEY_LEFT){navigation.back().ifPresent(t->navigate(t,false));return true;}
+        if(event.hasAltDown()&&key==GLFW.GLFW_KEY_RIGHT){navigation.forward().ifPresent(t->navigate(t,false));return true;}
         int step=key==GLFW.GLFW_KEY_PAGE_DOWN?contentBottom-contentTop-12:key==GLFW.GLFW_KEY_PAGE_UP?-(contentBottom-contentTop-12):key==GLFW.GLFW_KEY_DOWN?24:key==GLFW.GLFW_KEY_UP?-24:0;
         if(step!=0){scroll=Math.clamp(scroll+step,0,maxScroll());return true;}if(key==GLFW.GLFW_KEY_HOME){scroll=0;return true;}if(key==GLFW.GLFW_KEY_END){scroll=maxScroll();return true;}
-        return super.keyPressed(key,scan,mods);
+        return super.keyPressed(event);
     }
 
     @Override public void onClose(){GuidePreferences.save();GuideRecipeProvider.clear();super.onClose();}

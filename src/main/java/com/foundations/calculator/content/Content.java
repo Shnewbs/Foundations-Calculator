@@ -32,10 +32,10 @@ public final class Content {
     public static final DeferredRegister.Items ITEMS=DeferredRegister.createItems(FoundationsCalculator.ID);
     public static final DeferredRegister<BlockEntityType<?>> ENTITIES=DeferredRegister.create(Registries.BLOCK_ENTITY_TYPE,FoundationsCalculator.ID);
     public static final DeferredRegister<net.minecraft.world.entity.EntityType<?>> PROJECTILES=DeferredRegister.create(Registries.ENTITY_TYPE,FoundationsCalculator.ID);
-    public static final Supplier<net.minecraft.world.entity.EntityType<ThrownMaterialEntity>> SOIL_PROJECTILE=PROJECTILES.register("thrown_soil",()->net.minecraft.world.entity.EntityType.Builder.<ThrownMaterialEntity>of(ThrownMaterialEntity::new,net.minecraft.world.entity.MobCategory.MISC).sized(.25f,.25f).clientTrackingRange(4).updateInterval(10).build("foundations_calculator:thrown_soil"));
-    public static final Supplier<net.minecraft.world.entity.EntityType<ThrownMaterialEntity>> STONE_PROJECTILE=PROJECTILES.register("thrown_stone",()->net.minecraft.world.entity.EntityType.Builder.<ThrownMaterialEntity>of(ThrownMaterialEntity::new,net.minecraft.world.entity.MobCategory.MISC).sized(.25f,.25f).clientTrackingRange(4).updateInterval(10).build("foundations_calculator:thrown_stone"));
-    public static final Supplier<net.minecraft.world.entity.EntityType<GrenadeEntity>> GRENADE=PROJECTILES.register("grenade",()->net.minecraft.world.entity.EntityType.Builder.<GrenadeEntity>of(GrenadeEntity::new,net.minecraft.world.entity.MobCategory.MISC).sized(.25f,.25f).clientTrackingRange(4).updateInterval(10).build("foundations_calculator:grenade"));
-    public static final Supplier<net.minecraft.world.entity.EntityType<GrenadeEntity>> BABY_GRENADE=PROJECTILES.register("baby_grenade",()->net.minecraft.world.entity.EntityType.Builder.<GrenadeEntity>of(GrenadeEntity::new,net.minecraft.world.entity.MobCategory.MISC).sized(.25f,.25f).clientTrackingRange(4).updateInterval(10).build("foundations_calculator:baby_grenade"));
+    public static final Supplier<net.minecraft.world.entity.EntityType<ThrownMaterialEntity>> SOIL_PROJECTILE=PROJECTILES.register("thrown_soil",()->net.minecraft.world.entity.EntityType.Builder.<ThrownMaterialEntity>of(ThrownMaterialEntity::new,net.minecraft.world.entity.MobCategory.MISC).sized(.25f,.25f).clientTrackingRange(4).updateInterval(10).build(ResourceKey.create(Registries.ENTITY_TYPE,id("thrown_soil"))));
+    public static final Supplier<net.minecraft.world.entity.EntityType<ThrownMaterialEntity>> STONE_PROJECTILE=PROJECTILES.register("thrown_stone",()->net.minecraft.world.entity.EntityType.Builder.<ThrownMaterialEntity>of(ThrownMaterialEntity::new,net.minecraft.world.entity.MobCategory.MISC).sized(.25f,.25f).clientTrackingRange(4).updateInterval(10).build(ResourceKey.create(Registries.ENTITY_TYPE,id("thrown_stone"))));
+    public static final Supplier<net.minecraft.world.entity.EntityType<GrenadeEntity>> GRENADE=PROJECTILES.register("grenade",()->net.minecraft.world.entity.EntityType.Builder.<GrenadeEntity>of(GrenadeEntity::new,net.minecraft.world.entity.MobCategory.MISC).sized(.25f,.25f).clientTrackingRange(4).updateInterval(10).build(ResourceKey.create(Registries.ENTITY_TYPE,id("grenade"))));
+    public static final Supplier<net.minecraft.world.entity.EntityType<GrenadeEntity>> BABY_GRENADE=PROJECTILES.register("baby_grenade",()->net.minecraft.world.entity.EntityType.Builder.<GrenadeEntity>of(GrenadeEntity::new,net.minecraft.world.entity.MobCategory.MISC).sized(.25f,.25f).clientTrackingRange(4).updateInterval(10).build(ResourceKey.create(Registries.ENTITY_TYPE,id("baby_grenade"))));
     public static final DeferredRegister<MenuType<?>> MENUS=DeferredRegister.create(Registries.MENU,FoundationsCalculator.ID);
     public static final DeferredRegister<RecipeType<?>> TYPES=DeferredRegister.create(Registries.RECIPE_TYPE,FoundationsCalculator.ID);
     public static final DeferredRegister<RecipeSerializer<?>> SERIALIZERS=DeferredRegister.create(Registries.RECIPE_SERIALIZER,FoundationsCalculator.ID);
@@ -49,7 +49,7 @@ public final class Content {
     public static final Supplier<DataComponentType<Integer>> ENERGY=COMPONENTS.register("energy",()->DataComponentType.<Integer>builder().persistent(Codec.intRange(0,Integer.MAX_VALUE)).networkSynchronized(ByteBufCodecs.VAR_INT).build());
     /** 0.0.2a long-valued energy. The legacy int component remains for migration/downgrade safety. */
     public static final Supplier<DataComponentType<Long>> ENERGY_LONG=COMPONENTS.register("energy_long",()->DataComponentType.<Long>builder().persistent(Codec.LONG).networkSynchronized(ByteBufCodecs.VAR_LONG).build());
-    public static final Supplier<BlockEntityType<MachineBlockEntity>> MACHINE_ENTITY=ENTITIES.register("machine",()->BlockEntityType.Builder.of(MachineBlockEntity::new,MACHINE_BLOCKS.stream().map(Supplier::get).toArray(Block[]::new)).build(null));
+    public static final Supplier<BlockEntityType<MachineBlockEntity>> MACHINE_ENTITY=ENTITIES.register("machine",()->new BlockEntityType<>(MachineBlockEntity::new,MACHINE_BLOCKS.stream().map(Supplier::get).toArray(Block[]::new)));
     public static final Supplier<MenuType<com.foundations.calculator.menu.BulkStorageMenu>> BULK_MENU=MENUS.register("bulk_storage",()->IMenuTypeExtension.create(com.foundations.calculator.menu.BulkStorageMenu::fromNetwork));
     public static final Supplier<MenuType<com.foundations.calculator.menu.SmeltingModuleMenu>> SMELTING_MENU=MENUS.register("smelting_module",()->IMenuTypeExtension.create(com.foundations.calculator.menu.SmeltingModuleMenu::fromNetwork));
     public static final Supplier<MenuType<CalculatorMenu>> MENU=MENUS.register("calculator",()->IMenuTypeExtension.create(CalculatorMenu::fromNetwork));
@@ -367,14 +367,14 @@ public final class Content {
             public void appendHoverText(ItemStack s,TooltipContext c,List<Component> tooltip,TooltipFlag f){super.appendHoverText(s,c,tooltip,f);if(pending)tooltip.add(Component.literal("Port pending — not functional in this alpha").withStyle(net.minecraft.ChatFormatting.RED));}
         }));
     }
-    public static ResourceLocation id(String s){return ResourceLocation.fromNamespaceAndPath(FoundationsCalculator.ID,s);}
+    public static Identifier id(String s){return Identifier.fromNamespaceAndPath(FoundationsCalculator.ID,s);}
     public static Item item(String id){var item=ITEMS_BY_ID.get(id);if(item==null)throw new IllegalArgumentException("Unknown item "+id);return item.get();}
     public static Block block(String id){return BLOCKS_BY_ID.get(id).get();}
     public static String path(ItemStack s){return BuiltInRegistries.ITEM.getKey(s.getItem()).getPath();}
     public static void register(IEventBus bus){BLOCKS.register(bus);ITEMS.register(bus);ENTITIES.register(bus);PROJECTILES.register(bus);MENUS.register(bus);TYPES.register(bus);SERIALIZERS.register(bus);COMPONENTS.register(bus);TABS.register(bus);bus.addListener(net.neoforged.bus.api.EventPriority.HIGHEST,Content::capabilities);}
     private static void capabilities(RegisterCapabilitiesEvent e){
-        e.registerBlockEntity(Capabilities.EnergyStorage.BLOCK,MACHINE_ENTITY.get(),(m,side)->com.foundations.calculator.core.PowerPolicy.guardFE(m.energyPort(side),com.foundations.calculator.core.PowerPolicy.Scope.BLOCK));
+        e.registerBlockEntity(Capabilities.Energy.BLOCK,MACHINE_ENTITY.get(),MachineBlockEntity::transactionalEnergyPort);
         e.registerBlockEntity(Capabilities.ItemHandler.BLOCK,MACHINE_ENTITY.get(),MachineBlockEntity::automation);
-        for(var entry:ITEMS_BY_ID.values())if(entry.get() instanceof CalculatorItem c&&c.capacity>0)e.registerItem(Capabilities.EnergyStorage.ITEM,(stack,ctx)->com.foundations.calculator.core.PowerPolicy.guardFE(c.storage(stack),com.foundations.calculator.core.PowerPolicy.Scope.ITEM),c);
+        for(var entry:ITEMS_BY_ID.values())if(entry.get() instanceof CalculatorItem c&&c.capacity>0)e.registerItem(Capabilities.Energy.ITEM,(stack,access)->new com.foundations.calculator.core.CalculatorItemEnergyHandler(c,access),c);
     }
 }

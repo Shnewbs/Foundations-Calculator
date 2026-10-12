@@ -8,7 +8,7 @@ import com.foundations.calculator.network.TransferPayload;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.neoforged.neoforge.network.PacketDistributor;
 import dev.emi.emi.api.*;
 import dev.emi.emi.api.recipe.*;
@@ -29,7 +29,7 @@ public final class EmiIntegration implements EmiPlugin {
         registry.addRecipeHandler(Content.MENU.get(),new Handler());
     }
     private record Display(RecipeView view,EmiRecipeCategory getCategory) implements EmiRecipe {
-        public ResourceLocation getId(){return view.holder().id();}
+        public Identifier getId(){return view.holder().id();}
         public List<EmiIngredient> getInputs(){return view.recipe().inputs().stream().map(i->EmiIngredient.of(RecipeView.inputs(i).stream().map(s->EmiStack.of(s.copyWithCount(1))).toList(),i.count())).toList();}
         public List<EmiStack> getOutputs(){List<EmiStack> outputs=new ArrayList<>();for(var result:view.recipe().outputs())for(var s:RecipeView.outputs(result))outputs.add(EmiStack.of(s).setChance((float)(result.chance()/(result.randomCircuit().isEmpty()?1:14))));return outputs;}
         public int getDisplayWidth(){return 228;}public int getDisplayHeight(){return 102;}

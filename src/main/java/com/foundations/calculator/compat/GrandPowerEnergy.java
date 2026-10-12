@@ -7,7 +7,7 @@ import com.foundations.calculator.core.*;
 import com.foundations.calculator.core.PowerPolicy.Scope;
 import dev.technici4n.grandpower.api.ILongEnergyStorage;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
-import net.neoforged.neoforge.energy.IEnergyStorage;
+import com.foundations.calculator.api.EnergyPort;
 
 public final class GrandPowerEnergy {
     private static final PowerPolicy POLICY = PowerPolicy.GRANDPOWER;
@@ -25,10 +25,10 @@ public final class GrandPowerEnergy {
             event.registerItem(ILongEnergyStorage.ITEM, (stack,ctx) -> expose(item.longStorage(stack), GrandPowerEnergy::conversion,
                     () -> POLICY.input(Scope.ITEM), () -> POLICY.output(Scope.ITEM)), item);
     }
-    public static IEnergyStorage wrap(ILongEnergyStorage energy, Supplier<EnergyRatio> ratio, BooleanSupplier enabled) {
+    public static EnergyPort wrap(ILongEnergyStorage energy, Supplier<EnergyRatio> ratio, BooleanSupplier enabled) {
         return energy == null ? null : LongEnergyBridge.toFE(storage(energy), ratio, enabled);
     }
-    public static IEnergyStorage wrap(ILongEnergyStorage energy, Supplier<EnergyConversion> conversion,
+    public static EnergyPort wrap(ILongEnergyStorage energy, Supplier<EnergyConversion> conversion,
                                       BooleanSupplier input, BooleanSupplier output) {
         return energy == null ? null : LongEnergyBridge.toFE(storage(energy), conversion, input, output);
     }
@@ -44,10 +44,10 @@ public final class GrandPowerEnergy {
                                            BooleanSupplier input, BooleanSupplier output) {
         return energy == null ? null : expose(LongEnergyBridge.fromLong(energy, conversion, input, output));
     }
-    public static ILongEnergyStorage expose(IEnergyStorage energy, Supplier<EnergyRatio> ratio, BooleanSupplier enabled) {
+    public static ILongEnergyStorage expose(EnergyPort energy, Supplier<EnergyRatio> ratio, BooleanSupplier enabled) {
         return energy == null ? null : expose(LongEnergyBridge.fromFE(energy, ratio, enabled));
     }
-    public static ILongEnergyStorage expose(IEnergyStorage energy, Supplier<EnergyConversion> conversion,
+    public static ILongEnergyStorage expose(EnergyPort energy, Supplier<EnergyConversion> conversion,
                                            BooleanSupplier input, BooleanSupplier output) {
         return energy == null ? null : expose(LongEnergyBridge.fromFE(energy, conversion, input, output));
     }

@@ -6,13 +6,13 @@ import net.minecraft.network.chat.Component;
 
 public final class ResearchProgram {
     public static void tick(MachineBlockEntity m){
-        if(!m.program.hasUUID("Owner")){m.progress=0;return;}
-        var data=ResearchData.get(m.getLevel().getServer());var owner=m.program.getUUID("Owner");
+        if(!com.foundations.calculator.core.UuidTags.has(m.program,"Owner")){m.progress=0;return;}
+        var data=ResearchData.get(m.getLevel().getServer());var owner=com.foundations.calculator.core.UuidTags.get(m.program,"Owner");
         var input=new ProcessInput(List.of(m.inventory.getStackInSlot(0)));
         var recipe=RecipeIndex.forMachine(m.getLevel(),"research").stream().filter(r->r.value().matches(input,m.getLevel())&&!data.groups(owner).contains(r.value().researchGroup())).findFirst();
         if(recipe.isEmpty()){m.progress=0;return;}
         var r=recipe.get();String id=r.id().toString();
-        if(!id.equals(m.program.getString("ResearchRecipe"))){m.progress=0;m.program.putString("ResearchRecipe",id);}
+        if(!id.equals(m.program.getStringOr("ResearchRecipe",""))){m.progress=0;m.program.putString("ResearchRecipe",id);}
         m.totalTicks=CalculatorConfig.ticks(m.kind(),r.value().ticks());
         int cost=CalculatorConfig.flag("research.consumeEnergy",true)?CalculatorConfig.energy(m.kind(),RecipePolicies.energy(r,0)):0;
         if(m.energy.getEnergyStored()<cost){if(!CalculatorConfig.machineFlag(m.kind(),"retainProgressWithoutPower"))m.progress=0;return;}
@@ -22,7 +22,7 @@ public final class ResearchProgram {
                 if(CalculatorConfig.flag("research.consumeSample",false))m.pending.addAll(ProcessTransactions.consume(m.inventory,r.value().allocation(input),r.value(),m.getLevel()));
                 ResearchData.syncAll(m.getLevel().getServer());
                 var player=m.getLevel().getServer().getPlayerList().getPlayer(owner);
-                if(player!=null)player.displayClientMessage(Component.literal("Research unlocked: "+r.value().researchGroup().replace('_',' ')),false);
+                if(player!=null)player.sendSystemMessage(Component.literal("Research unlocked: "+r.value().researchGroup().replace('_',' ')));
                 m.program.putString("LastResearch",r.value().researchGroup());
             }m.progress=0;
         }m.setChanged();

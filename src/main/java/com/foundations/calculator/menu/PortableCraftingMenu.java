@@ -15,11 +15,11 @@ public final class PortableCraftingMenu extends CraftingMenu {
         this.inventory = inventory;
         this.hand = hand;
         held = inventory.player.getItemInHand(hand);
-        heldSlot = hand == InteractionHand.MAIN_HAND ? inventory.selected : 40;
+        heldSlot = hand == InteractionHand.MAIN_HAND ? inventory.getSelectedSlot() : 40;
         HeldItemLock.install(this, inventory, heldSlot);
     }
     public boolean stillValid(Player player) {
-        return player.getItemInHand(hand) == held && (hand != InteractionHand.MAIN_HAND || inventory.selected == heldSlot);
+        return player.getItemInHand(hand) == held && (hand != InteractionHand.MAIN_HAND || inventory.getSelectedSlot() == heldSlot);
     }
     public void clicked(int slot, int button, ClickType type, Player player) {
         if (!stillValid(player) || type == ClickType.SWAP && button == heldSlot) return;

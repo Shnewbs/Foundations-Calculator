@@ -24,8 +24,8 @@ public final class MachineWorldActions {
     private static final UUID OWNERLESS = UUID.fromString("7ef9d63d-9c75-468a-b0ed-a8b3b6134c33");
     public static boolean reject(MachineBlockEntity machine,BlockPos pos,Action action,String reason) {
         String text=action.name().toLowerCase(java.util.Locale.ROOT)+": "+reason;
-        if(!text.equals(machine.program.getString("WorldActionBlocked"))||
-            machine.program.getLong("WorldActionPos")!=pos.asLong()) {
+        if(!text.equals(machine.program.getStringOr("WorldActionBlocked",""))||
+            machine.program.getLongOr("WorldActionPos",0L)!=pos.asLong()) {
             machine.program.putString("WorldActionBlocked",text);machine.program.putLong("WorldActionPos",pos.asLong());
             machine.setChanged();
         }
@@ -73,7 +73,7 @@ public final class MachineWorldActions {
                 !loaded(level,machine.getBlockPos())||!loaded(level,pos)||!level.getBlockState(pos).equals(expected)||level.getBlockEntity(pos)!=null)
                 return reject(machine,pos,action,"target changed during permission event");
             // A success elsewhere must not hide the last blocked target; it clears on a successful retry there.
-            if(machine.program.contains("WorldActionPos")&&machine.program.getLong("WorldActionPos")==pos.asLong()) {
+            if(machine.program.contains("WorldActionPos")&&machine.program.getLongOr("WorldActionPos",0L)==pos.asLong()) {
                 machine.program.remove("WorldActionBlocked");machine.program.remove("WorldActionPos");machine.setChanged();
             }
             return true;

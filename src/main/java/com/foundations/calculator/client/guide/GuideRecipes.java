@@ -4,7 +4,7 @@ import com.foundations.calculator.content.Content;
 import com.foundations.calculator.core.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.*;
 
@@ -62,9 +62,9 @@ public final class GuideRecipes {
         var level=Minecraft.getInstance().level;if(level==null)return List.of();var out=new ArrayList<RecipeHolder<?>>();
         if(query.startsWith("machine:")){out.addAll(RecipeIndex.allForMachine(level,query.substring(8)));return List.copyOf(out);}
         if(query.startsWith("id:")){
-            ResourceLocation id=ResourceLocation.tryParse(query.substring(3));if(id!=null)level.getRecipeManager().byKey(id).filter(r->RecipePolicies.enabled(r,level)).ifPresent(r->out.add(apply(r)));return List.copyOf(out);
+            Identifier id=Identifier.tryParse(query.substring(3));if(id!=null)level.getRecipeManager().byKey(id).filter(r->RecipePolicies.enabled(r,level)).ifPresent(r->out.add(apply(r)));return List.copyOf(out);
         }
-        boolean uses=query.startsWith("uses:");String raw=query.startsWith("item:")||uses?query.substring(5):"";ResourceLocation id=ResourceLocation.tryParse(raw);
+        boolean uses=query.startsWith("uses:");String raw=query.startsWith("item:")||uses?query.substring(5):"";Identifier id=Identifier.tryParse(raw);
         if(id==null||!BuiltInRegistries.ITEM.containsKey(id))return List.of();var item=BuiltInRegistries.ITEM.get(id);ItemStack stack=new ItemStack(item);
         for(var holder:level.getRecipeManager().getRecipes()){
             if(out.size()>=2048)break;

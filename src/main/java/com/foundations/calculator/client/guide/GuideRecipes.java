@@ -65,7 +65,7 @@ public final class GuideRecipes {
             Identifier id=Identifier.tryParse(query.substring(3));if(id!=null)level.getRecipeManager().byKey(id).filter(r->RecipePolicies.enabled(r,level)).ifPresent(r->out.add(apply(r)));return List.copyOf(out);
         }
         boolean uses=query.startsWith("uses:");String raw=query.startsWith("item:")||uses?query.substring(5):"";Identifier id=Identifier.tryParse(raw);
-        if(id==null||!BuiltInRegistries.ITEM.containsKey(id))return List.of();var item=BuiltInRegistries.ITEM.get(id);ItemStack stack=new ItemStack(item);
+        if(id==null||!BuiltInRegistries.ITEM.containsKey(id))return List.of();var item=BuiltInRegistries.ITEM.getValue(id);ItemStack stack=new ItemStack(item);
         for(var holder:level.getRecipeManager().getRecipes()){
             if(out.size()>=2048)break;
             if(!RecipePolicies.enabled(holder,level))continue;

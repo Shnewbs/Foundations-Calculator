@@ -25,11 +25,18 @@ jobs:
           set -o pipefail
           chmod +x gradlew
           ./gradlew testPortEnergy compileJava --console=plain 2>&1 | tee port-compile.log
+      - name: Capture native API signatures for the remaining migration
+        if: always()
+        shell: bash
+        run: |
+          set -o pipefail
+          ./gradlew capturePortApi --console=plain 2>&1 | tee port-api.log
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: calculator-26.1.2-compile-evidence
           path: |
             port-compile.log
+            port-api.log
             build/test-results/testPortEnergy/
             build/reports/tests/testPortEnergy/

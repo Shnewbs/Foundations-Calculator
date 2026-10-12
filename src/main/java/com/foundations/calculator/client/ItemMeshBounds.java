@@ -8,6 +8,7 @@ final class ItemMeshBounds implements VertexConsumer {
     private double minX=Double.POSITIVE_INFINITY,minY=minX,minZ=minX;
     private double maxX=Double.NEGATIVE_INFINITY,maxY=maxX,maxZ=maxX;
     public VertexConsumer addVertex(float x,float y,float z){minX=Math.min(minX,x);minY=Math.min(minY,y);minZ=Math.min(minZ,z);maxX=Math.max(maxX,x);maxY=Math.max(maxY,y);maxZ=Math.max(maxZ,z);return this;}
+    public VertexConsumer setColor(int argb){return this;}
     public VertexConsumer setColor(int r,int g,int b,int a){return this;}
     public VertexConsumer setUv(float u,float v){return this;}
     public VertexConsumer setUv1(int u,int v){return this;}

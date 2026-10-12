@@ -213,3 +213,37 @@ sourceSets.main.runtimeClasspath += sourceSets.portEnergy.output
 tasks.named('compileJava') { dependsOn tasks.named('compilePortEnergyJava') }
 tasks.named('jar') { from(sourceSets.portEnergy.output) { include 'com/foundations/calculator/platform/**' } }
 tasks.named('sourcesJar') { from('platform/26.1.2/src/main/java') }
+
+// Capture signatures from the exact native compile classpath while the port is incomplete.
+tasks.register('capturePortApi', Exec) {
+    dependsOn tasks.named('createMinecraftArtifacts')
+    doFirst {
+        def compiler = tasks.named('compileJava', JavaCompile).get().javaCompiler.get()
+        commandLine compiler.metadata.installationPath.file('bin/javap').asFile.absolutePath,
+            '-classpath', sourceSets.main.compileClasspath.asPath,
+            'net.minecraft.commands.Commands',
+            'net.minecraft.commands.CommandSourceStack',
+            'net.minecraft.server.permissions.Permissions',
+            'net.minecraft.server.permissions.PermissionSet',
+            'net.minecraft.client.renderer.item.properties.conditional.ConditionalItemModelProperty',
+            'net.minecraft.client.renderer.OrderedSubmitNodeCollector',
+            'net.minecraft.client.renderer.special.SpecialModelRenderer',
+            'net.minecraft.client.renderer.special.SpecialModelRenderer$BakingContext',
+            'net.minecraft.world.level.block.entity.BlockEntity',
+            'net.minecraft.world.level.saveddata.SavedDataType',
+            'net.minecraft.world.entity.projectile.throwableitemprojectile.ThrownEnderpearl',
+            'net.minecraft.world.item.crafting.Recipe',
+            'net.minecraft.core.component.DataComponentMap$Builder',
+            'net.minecraft.world.level.block.FireBlock',
+            'net.minecraft.core.component.DataComponents',
+            'mezz.jei.api.gui.builder.IRecipeSlotBuilder',
+            'com.mojang.blaze3d.vertex.VertexConsumer',
+            'net.minecraft.client.renderer.blockentity.BlockEntityRenderer',
+            'net.minecraft.client.model.geom.ModelPart',
+            'net.minecraft.client.renderer.item.ItemModelResolver',
+            'net.minecraft.client.renderer.rendertype.RenderTypes',
+            'net.minecraft.world.clock.ServerClockManager',
+            'net.minecraft.world.clock.WorldClocks',
+            'net.minecraft.world.level.saveddata.WeatherData'
+    }
+}

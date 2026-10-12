@@ -14,11 +14,11 @@ public final class ResearchProgram {
         var r=recipe.get();String id=r.id().toString();
         if(!id.equals(m.program.getStringOr("ResearchRecipe",""))){m.progress=0;m.program.putString("ResearchRecipe",id);}
         m.totalTicks=CalculatorConfig.ticks(m.kind(),r.value().ticks());
-        int cost=CalculatorConfig.flag("research.consumeEnergy",true)?CalculatorConfig.energy(m.kind(),RecipePolicies.energy(r,0)):0;
-        if(m.energy.getEnergyStored()<cost){if(!CalculatorConfig.machineFlag(m.kind(),"retainProgressWithoutPower"))m.progress=0;return;}
+        long cost=CalculatorConfig.flag("research.consumeEnergy",true)?CalculatorConfig.energyLong(m.kind(),RecipePolicies.energy(r,0)):0;
+        if(m.energy.stored()<cost){if(!CalculatorConfig.machineFlag(m.kind(),"retainProgressWithoutPower"))m.progress=0;return;}
         if(++m.progress>=m.totalTicks){
             if(data.unlock(owner,r.value().researchGroup())){
-                m.energy.extractEnergy(cost,false);
+                m.energy.extract(cost,false);
                 if(CalculatorConfig.flag("research.consumeSample",false))m.pending.addAll(ProcessTransactions.consume(m.inventory,r.value().allocation(input),r.value(),m.getLevel()));
                 ResearchData.syncAll(m.getLevel().getServer());
                 var player=m.getLevel().getServer().getPlayerList().getPlayer(owner);

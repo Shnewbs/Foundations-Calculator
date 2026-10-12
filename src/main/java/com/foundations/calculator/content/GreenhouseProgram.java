@@ -59,7 +59,7 @@ public final class GreenhouseProgram {
         m.totalTicks=CalculatorConfig.ticks(m.kind(),CalculatorConfig.integer("greenhouse."+(tier==1?"basic":tier==2?"advanced":"flawless")+"GrowthBand"+band,intervals[tier-1][band]));
         if(++m.progress>=m.totalTicks){
             m.progress=0;for(int i=0;i<(tier==3?Math.max(1,geometry(m).length):1)&&!area.isEmpty();i++){
-                BlockPos p=area.get(l.getRandom().nextInt(area.size()));if(m.energy.getEnergyStored()>=CalculatorConfig.energy(m.kind(),CalculatorConfig.integer("greenhouse.growEnergy",150))&&l.hasChunkAt(p)&&MachinePrograms.grow(m,p)){m.energy.extractEnergy(CalculatorConfig.energy(m.kind(),CalculatorConfig.integer("greenhouse.growEnergy",150)),false);m.program.putInt("Grown",m.program.getIntOr("Grown",0)+1);}
+                BlockPos p=area.get(l.getRandom().nextInt(area.size()));if(m.energy.stored()>=CalculatorConfig.energyLong(m.kind(),CalculatorConfig.integer("greenhouse.growEnergy",150))&&l.hasChunkAt(p)&&MachinePrograms.grow(m,p)){m.energy.extract(CalculatorConfig.energyLong(m.kind(),CalculatorConfig.integer("greenhouse.growEnergy",150)),false);m.program.putInt("Grown",m.program.getIntOr("Grown",0)+1);}
             }
         }m.setChanged();
     }
@@ -89,8 +89,8 @@ public final class GreenhouseProgram {
             }
             if(match)continue;
             m.program.putLong("MissingPos",pos.asLong());
-            int cost=CalculatorConfig.energy(m.kind(),CalculatorConfig.integer("greenhouse.buildEnergy",100));
-            if(!current.canBeReplaced()||level.getBlockEntity(pos)!=null||m.energy.getEnergyStored()<cost)return;
+            long cost=CalculatorConfig.energyLong(m.kind(),CalculatorConfig.integer("greenhouse.buildEnergy",100));
+            if(!current.canBeReplaced()||level.getBlockEntity(pos)!=null||m.energy.stored()<cost)return;
             int slot=part.type().ordinal();ItemStack resource=m.inventory.getStackInSlot(slot);
             if(!(resource.getItem() instanceof BlockItem item)||!matches(item.getBlock().defaultBlockState(),part.type()))return;
             BlockState placed=item.getBlock().defaultBlockState();
@@ -100,8 +100,8 @@ public final class GreenhouseProgram {
             }
             ItemStack expectedResource=resource.copy();
             if(MachineWorldActions.replace(m,pos,current,placed,resource,MachineWorldActions.Action.BUILD,
-                ()->m.energy.getEnergyStored()>=cost&&ItemStack.matches(expectedResource,m.inventory.getStackInSlot(slot)))){
-                m.inventory.extractItem(slot,1,false);m.energy.extractEnergy(cost,false);m.setChanged();
+                ()->m.energy.stored()>=cost&&ItemStack.matches(expectedResource,m.inventory.getStackInSlot(slot)))){
+                m.inventory.extractItem(slot,1,false);m.energy.extract(cost,false);m.setChanged();
             }
             return;
         }
@@ -115,24 +115,24 @@ public final class GreenhouseProgram {
         long[] original=m.program.getLongArray("Fallow");Set<Long> fallow=new HashSet<>();
         boolean replant=CalculatorConfig.flag("greenhouse.replant",true);
         if(!replant)for(long position:original)if(geometry(m).plantCoordinates.contains(position))fallow.add(position);
-        int harvestCost=CalculatorConfig.energy(m.kind(),CalculatorConfig.integer("greenhouse.harvestEnergy",150));
-        int plantCost=CalculatorConfig.energy(m.kind(),CalculatorConfig.integer("greenhouse.plantEnergy",50));
+        long harvestCost=CalculatorConfig.energyLong(m.kind(),CalculatorConfig.integer("greenhouse.harvestEnergy",150));
+        long plantCost=CalculatorConfig.energyLong(m.kind(),CalculatorConfig.integer("greenhouse.plantEnergy",50));
         for(BlockPos pos:area){
             if(!MachineWorldActions.loaded(level,pos)||!MachineWorldActions.loaded(level,pos.below()))continue;
-            if(FoundationsPlants.canHarvest(level,pos)&&m.energy.getEnergyStored()>=harvestCost){
+            if(FoundationsPlants.canHarvest(level,pos)&&m.energy.stored()>=harvestCost){
                 var result=FoundationsPlants.harvest(m,level,pos);
                 if(result.harvested()){
                     if(!replant)fallow.add(pos.asLong());
-                    m.energy.extractEnergy(harvestCost,false);
+                    m.energy.extract(harvestCost,false);
                     for(ItemStack drop:result.drops())storeCrop(m,drop);
                     m.program.putInt("Harvested",(int)Math.min(Integer.MAX_VALUE,(long)m.program.getIntOr("Harvested",0)+1));m.setChanged();
                 }
             }
-            if(CalculatorConfig.flag("greenhouse.autoPlant",true)&&level.isEmptyBlock(pos)&&!fallow.contains(pos.asLong())&&m.energy.getEnergyStored()>=plantCost){
+            if(CalculatorConfig.flag("greenhouse.autoPlant",true)&&level.isEmptyBlock(pos)&&!fallow.contains(pos.asLong())&&m.energy.stored()>=plantCost){
                 for(int slot=tier(m)==3?0:4;slot<14;slot++){
                     ItemStack seed=m.inventory.getStackInSlot(slot);
                     if(FoundationsPlants.plant(m,seed,level,pos,tier(m))){
-                        m.inventory.extractItem(slot,1,false);m.energy.extractEnergy(plantCost,false);break;
+                        m.inventory.extractItem(slot,1,false);m.energy.extract(plantCost,false);break;
                     }
                 }
             }
@@ -162,20 +162,20 @@ public final class GreenhouseProgram {
     }
     private static void farmland(MachineBlockEntity m,List<BlockPos> area){
         ServerLevel level=(ServerLevel)m.getLevel();
-        int soilCost=CalculatorConfig.energy(m.kind(),CalculatorConfig.integer("greenhouse.farmlandEnergy",50));
-        int waterCost=CalculatorConfig.energy(m.kind(),CalculatorConfig.integer("greenhouse.waterEnergy",1000));
+        long soilCost=CalculatorConfig.energyLong(m.kind(),CalculatorConfig.integer("greenhouse.farmlandEnergy",50));
+        long waterCost=CalculatorConfig.energyLong(m.kind(),CalculatorConfig.integer("greenhouse.waterEnergy",1000));
         if(CalculatorConfig.flag("greenhouse.autoFarmland",true))for(BlockPos crop:area){
             BlockPos pos=crop.below();if(!MachineWorldActions.loaded(level,pos))continue;
             BlockState current=level.getBlockState(pos);
             if((current.is(Blocks.DIRT)||current.is(Blocks.GRASS_BLOCK))&&MachineWorldActions.replace(m,pos,current,
                 Blocks.FARMLAND.defaultBlockState().setValue(FarmBlock.MOISTURE,7),new ItemStack(Items.IRON_HOE),MachineWorldActions.Action.FARMLAND,
-                ()->m.energy.getEnergyStored()>=soilCost))m.energy.extractEnergy(soilCost,false);
+                ()->m.energy.stored()>=soilCost))m.energy.extract(soilCost,false);
         }
         if(CalculatorConfig.flag("greenhouse.autoWater",true))for(BlockPos pos:geometry(m).water){
             if(!MachineWorldActions.loaded(level,pos))continue;BlockState current=level.getBlockState(pos);
             if((current.is(Blocks.DIRT)||current.is(Blocks.GRASS_BLOCK)||current.is(Blocks.FARMLAND))&&MachineWorldActions.replace(m,pos,current,
                 Blocks.WATER.defaultBlockState(),new ItemStack(Items.WATER_BUCKET),MachineWorldActions.Action.WATER,
-                ()->m.energy.getEnergyStored()>=waterCost))m.energy.extractEnergy(waterCost,false);
+                ()->m.energy.stored()>=waterCost))m.energy.extract(waterCost,false);
         }
     }
     private static void storeCrop(MachineBlockEntity m,ItemStack stack){
@@ -206,10 +206,10 @@ public final class GreenhouseProgram {
         Level l=m.getLevel();BlockPos p=m.getBlockPos().relative(forward(m).getClockWise().getOpposite(),3);
         if(!l.hasChunkAt(p)||!(l.getBlockEntity(p) instanceof MachineBlockEntity house)||!house.kind().equals("flawless_greenhouse")){m.program.putInt("GasAdd",0);m.setActive(false);return;}
         if(m.burnTime==0){ItemStack fuel=m.inventory.getStackInSlot(0);int burn=fuel.getBurnTime(RecipeType.SMELTING);
-            if(burn>0&&m.energy.getEnergyStored()>=CalculatorConfig.energy(m.kind(),CalculatorConfig.integer("greenhouse.co2FuelEnergy",100000))){
+            if(burn>0&&m.energy.stored()>=CalculatorConfig.energyLong(m.kind(),CalculatorConfig.integer("greenhouse.co2FuelEnergy",100000))){
                 m.program.putBoolean("Controlled",fuel.is(Content.item("controlled_fuel")));m.program.putInt("FuelGas",burn/100);
                 ItemStack rem=fuel.getCraftingRemainingItem();m.inventory.extractItem(0,1,false);if(!rem.isEmpty())m.pending.add(rem);
-                m.burnTime=CalculatorConfig.integer("greenhouse.co2FuelTicks",10000);m.energy.extractEnergy(CalculatorConfig.energy(m.kind(),CalculatorConfig.integer("greenhouse.co2FuelEnergy",100000)),false);
+                m.burnTime=CalculatorConfig.integer("greenhouse.co2FuelTicks",10000);m.energy.extract(CalculatorConfig.energyLong(m.kind(),CalculatorConfig.integer("greenhouse.co2FuelEnergy",100000)),false);
             }
         }
         boolean controlled=m.program.getBooleanOr("Controlled",false),running=!controlled||house.program.getIntOr("Carbon",0)<=CalculatorConfig.integer("greenhouse.controlledMinimumCarbon",92000)||m.program.getBooleanOr("GasRunning",false)&&house.program.getIntOr("Carbon",0)<CalculatorConfig.integer("greenhouse.controlledMaximumCarbon",100000);

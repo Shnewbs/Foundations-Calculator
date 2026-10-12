@@ -61,7 +61,7 @@ public final class CalculatorMenu extends AbstractContainerMenu {
         for(int r=0;r<3;r++)for(int col=0;col<9;col++)addSlot(new Slot(inv,col+r*9+9,35+col*18,157+r*18));
         for(int col=0;col<9;col++)addSlot(new Slot(inv,col,35+col*18,215));
         if(machine==null)HeldItemLock.install(this,inv,heldSlot);
-        if(inv.player.level().isClientSide())data=new SimpleContainerData(36);
+        if(inv.player.level().isClientSide())data=new SimpleContainerData(40);
         else data=new ContainerData(){
             public int get(int i){
                 if(i==27)return machine==null?0:machine.redstoneMode();
@@ -70,8 +70,9 @@ public final class CalculatorMenu extends AbstractContainerMenu {
                 if(i>=28&&i<32)return (int)((longEnergy>>>((i-28)*16))&65535L);
                 if(i>=32&&i<36)return (int)((longCapacity>>>((i-32)*16))&65535L);
                 if(i==24)return diagnostic().status().ordinal();
-                if(i==25)return diagnostic().requiredEnergy()&65535;
-                if(i==26)return diagnostic().requiredEnergy()>>>16;
+                if(i>=36&&i<40)return (int)((diagnostic().requiredEnergy()>>>((i-36)*16))&65535L);
+                if(i==25)return (int)Math.min(Integer.MAX_VALUE,diagnostic().requiredEnergy())&65535;
+                if(i==26)return (int)Math.min(Integer.MAX_VALUE,diagnostic().requiredEnergy())>>>16;
                 int energy=(int)Math.min(Integer.MAX_VALUE,longEnergy);
                 int capacity=(int)Math.min(Integer.MAX_VALUE,longCapacity);
                 int progress=machine==null?0:machine.progress,time=machine==null?1:machine.totalTicks,points=machine==null?0:machine.nutrient;
@@ -79,12 +80,12 @@ public final class CalculatorMenu extends AbstractContainerMenu {
                 if(i>=10&&machine!=null){var s=machine.program;return switch(i){case 10->s.getIntOr("HouseState",0);case 11->s.getIntOr("Carbon",0)&65535;case 12->s.getIntOr("Carbon",0)>>>16;case 13->s.getIntOr("Mode",0);case 14->s.getBooleanOr("Target",false)?1:0;case 15->s.getBooleanOr("Paused",false)?1:0;case 16->s.getBooleanOr("Whitelist",false)?1:0;default->s.getBooleanOr("MatchTags",false)?1:0;};}
                 return switch(i){case 0->energy&65535;case 1->energy>>>16;case 2->capacity&65535;case 3->capacity>>>16;case 4->progress&65535;case 5->progress>>>16;case 6->time&65535;case 7->time>>>16;case 8->points&65535;default->points>>>16;};
             }
-            public void set(int i,int v){} public int getCount(){return 36;}
+            public void set(int i,int v){} public int getCount(){return 40;}
         };
         addDataSlots(data);
     }
     public MachineStatus status(){return MachineStatus.decode(data.get(24));}
-    public int requiredEnergy(){return (data.get(25)&65535)|((data.get(26)&65535)<<16);}
+    public long requiredEnergy(){return longWords(36);}
     public int state(int index){return data.get(index);}
     private long longWords(int start){long value=0;for(int i=0;i<4;i++)value|=((long)data.get(start+i)&65535L)<<(i*16);return value;}
     public long energyLong(){return longWords(28);}
@@ -141,14 +142,14 @@ public final class CalculatorMenu extends AbstractContainerMenu {
             .filter(r->r.value().machine().equals(recipeKind)&&r.value().matches(input,level))
             .sorted(Comparator.comparing(r->r.id().toString())).findFirst();
         if(match.isEmpty())return false;
-        int cost=CalculatorConfig.energy(kind,RecipePolicies.energy(match.get(),1));
-        if(item.energy(held)<cost)return false;
+        long cost=CalculatorConfig.energyLong(kind,RecipePolicies.energy(match.get(),1));
+        if(item.energyLong(held)<cost)return false;
         ProcessRecipe recipe=match.get().value();int[] used=recipe.allocation(input);if(used==null)return false;
         ItemStackHandler copy=new ItemStackHandler(25);
         for(int i=0;i<25;i++)copy.setStackInSlot(i,handler.getStackInSlot(i).copy());
         List<ItemStack> results=ProcessTransactions.consume(copy,used,recipe,level);
         ProcessTransactions.flush(results,copy);if(!results.isEmpty())return false;
-        item.storage(held).extractEnergy(cost,false);
+        item.longStorage(held).extract(cost,false);
         for(int i=0;i<25;i++)handler.setStackInSlot(i,copy.getStackInSlot(i));
         ResearchData.completed(level,player.getUUID(),recipeKind);
         broadcastChanges();return true;
@@ -158,9 +159,9 @@ public final class CalculatorMenu extends AbstractContainerMenu {
         int start=lane==2?4:lane*2,count=lane==2?3:2;String family=new String[]{"calculator","scientific","atomic"}[lane];
         ItemStackHandler temp=new ItemStackHandler(25);for(int i=0;i<count;i++)temp.setStackInSlot(i,handler.getStackInSlot(start+i).copy());for(int i=14;i<20;i++)temp.setStackInSlot(i,handler.getStackInSlot(i).copy());
         var input=ProcessTransactions.input(temp,count);var found=RecipeIndex.forMachine(player.level(),family,player.getUUID()).stream().filter(r->r.value().matches(input,player.level())).findFirst();if(found.isEmpty())return false;
-        var recipe=found.get().value();int cost=CalculatorConfig.energy(kind,RecipePolicies.energy(found.get(),1));if(item.energy(held)<cost)return false;
+        var recipe=found.get().value();long cost=CalculatorConfig.energyLong(kind,RecipePolicies.energy(found.get(),1));if(item.energyLong(held)<cost)return false;
         var results=ProcessTransactions.consume(temp,recipe.allocation(input),recipe,player.level());ProcessTransactions.flush(results,temp);if(!results.isEmpty())return false;
-        item.storage(held).extractEnergy(cost,false);for(int i=0;i<count;i++)handler.setStackInSlot(start+i,temp.getStackInSlot(i));for(int i=14;i<20;i++)handler.setStackInSlot(i,temp.getStackInSlot(i));ResearchData.completed(player.level(),player.getUUID(),family);broadcastChanges();return true;
+        item.longStorage(held).extract(cost,false);for(int i=0;i<count;i++)handler.setStackInSlot(start+i,temp.getStackInSlot(i));for(int i=14;i<20;i++)handler.setStackInSlot(i,temp.getStackInSlot(i));ResearchData.completed(player.level(),player.getUUID(),family);broadcastChanges();return true;
     }
     public void removed(Player player){
         super.removed(player);

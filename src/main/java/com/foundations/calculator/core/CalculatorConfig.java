@@ -95,9 +95,11 @@ public final class CalculatorConfig {
     }
     public static boolean machineFlag(String id,String property){return flag("machine."+id+"."+property,true);}
     public static int energy(String machine,int original){
+        return (int)Math.min(Integer.MAX_VALUE,energyLong(machine,original));
+    }
+    public static long energyLong(String machine,int original){
         int override=machine(machine,"energyOverride",-1);
-        double cost=(override>=0?override:original)*decimal("machines.processEnergyMultiplier",1)*decimal("machine."+machine+".energyMultiplier",1)*preset("energy");
-        return (int)Math.clamp(cost,0,Integer.MAX_VALUE);
+        return EnergyOperations.scale(override>=0?override:original,decimal("machines.processEnergyMultiplier",1),decimal("machine."+machine+".energyMultiplier",1),preset("energy"));
     }
     public static int ticks(String machine,int original){
         int override=machine(machine,"ticksOverride",-1);

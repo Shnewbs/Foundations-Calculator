@@ -26,6 +26,7 @@ public final class ContentProperties {
     private static JsonObject entry(String group,String id){JsonObject values=DATA.getAsJsonObject(group);return values.has(id)?values.getAsJsonObject(id):new JsonObject();}
     private static double number(JsonObject o,String key,double fallback,double min,double max){if(!o.has(key))return fallback;double n=o.get(key).getAsDouble();if(!Double.isFinite(n)||n<min||n>max)throw new IllegalArgumentException("Content property "+key+" outside ["+min+", "+max+"]");return n;}
     public static BlockBehaviour.Properties block(String id,BlockBehaviour.Properties p){
+        p.setId(net.minecraft.resources.ResourceKey.create(net.minecraft.core.registries.Registries.BLOCK,com.foundations.calculator.content.Content.id(id)));
         JsonObject o=entry("blocks",id);
         if(o.has("hardness"))p.destroyTime((float)number(o,"hardness",1,-1,1000000));
         if(o.has("blastResistance"))p.explosionResistance((float)number(o,"blastResistance",6,0,3600000));
@@ -37,6 +38,7 @@ public final class ContentProperties {
         return p;
     }
     public static Item.Properties item(String id,Item.Properties p){
+        p.setId(net.minecraft.resources.ResourceKey.create(net.minecraft.core.registries.Registries.ITEM,com.foundations.calculator.content.Content.id(id)));
         JsonObject o=entry("items",id);
         if(o.has("stackSize"))p.stacksTo((int)number(o,"stackSize",64,1,99));
         if(o.has("durability"))p.durability((int)number(o,"durability",1,1,Integer.MAX_VALUE));
@@ -57,6 +59,23 @@ public final class ContentProperties {
             var o=entry("items",id);var item=supplier.get();
             if(o.has("stackSize")&&o.get("stackSize").getAsInt()>1&&(o.has("durability")||item.components().has(net.minecraft.core.component.DataComponents.MAX_DAMAGE)))throw new IllegalArgumentException(id+": durable items must have stackSize 1");
             event.modify(item,b->{
+                String material = id.replaceFirst("_(pickaxe|sword|axe|shovel|hoe)$", "");
+                if (!material.equals(id) && DATA.getAsJsonObject("materials").has(material)) {
+                    var repair = net.minecraft.resources.Identifier.parse(materialString(material,"repairItem",switch(material){
+                        case "reinforced" -> "foundations_calculator:reinforced_stone_block";
+                        case "redstone" -> "foundations_calculator:redstone_ingot";
+                        case "enriched_gold" -> "foundations_calculator:enriched_gold_ingot";
+                        case "reinforced_iron" -> "foundations_calculator:reinforced_iron_ingot";
+                        case "weakened_diamond" -> "foundations_calculator:weakened_diamond";
+                        case "flawless_diamond" -> "foundations_calculator:flawless_diamond";
+                        case "fire_diamond" -> "foundations_calculator:fire_diamond";
+                        case "electric" -> "foundations_calculator:electric_diamond";
+                        default -> "foundations_calculator:end_diamond";
+                    }));
+                    if (repair.getNamespace().equals("minecraft") && !materialString(material,"repairItem","").contains(":")) repair = com.foundations.calculator.content.Content.id(repair.getPath());
+                    if (!net.minecraft.core.registries.BuiltInRegistries.ITEM.containsKey(repair)) throw new IllegalArgumentException("Unknown repair item: " + repair);
+                    b.set(net.minecraft.core.component.DataComponents.REPAIRABLE,new net.minecraft.world.item.enchantment.Repairable(net.minecraft.core.HolderSet.direct(net.minecraft.core.registries.BuiltInRegistries.ITEM.getValue(repair).builtInRegistryHolder())));
+                }
                 if(o.has("durability")){b.set(net.minecraft.core.component.DataComponents.MAX_DAMAGE,(int)number(o,"durability",1,1,Integer.MAX_VALUE));b.set(net.minecraft.core.component.DataComponents.DAMAGE,0);b.set(net.minecraft.core.component.DataComponents.MAX_STACK_SIZE,1);}
                 else if(o.has("stackSize"))b.set(net.minecraft.core.component.DataComponents.MAX_STACK_SIZE,(int)number(o,"stackSize",64,1,99));
                 if(o.has("unbreakable")){if(o.get("unbreakable").getAsBoolean())b.set(net.minecraft.core.component.DataComponents.UNBREAKABLE,net.minecraft.util.Unit.INSTANCE);else b.remove(net.minecraft.core.component.DataComponents.UNBREAKABLE);}

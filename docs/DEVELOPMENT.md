@@ -43,6 +43,8 @@ Edit `tools/registry_declarations.json` and `tools/templates/Content.java.templa
 
 ## Verification
 
+For a fresh release candidate, use `python tools/validate_release.py`. It records exact source, binary and sources-JAR fingerprints; runs clean native build/JUnit and both GameTest modes; and audits their fresh evidence. This works locally while GitHub Actions are suspended. `--gradle-command` can select an installed Gradle launcher. The ordinary Gradle commands below remain useful for targeted development, but they do not replace a release receipt. Beta publication also requires the recorded gates in `docs/0.1.0beta_ACCEPTANCE.md`.
+
 ```sh
 ./gradlew clean build
 ./gradlew runGameTestServer

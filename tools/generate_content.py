@@ -13,3 +13,7 @@ source=(root/'tools/templates/Content.java.template').read_text().replace('@REGI
 (root/'src/main/java/com/foundations/calculator/content/Content.java').write_text(source)
 (root/'tools/pending_content.json').write_text('[]\n')
 print(len(rows),'content entries regenerated')
+
+# Keep the generated catalog on this branch's actual 26.x tool API.
+import runpy
+runpy.run_path(str(Path(__file__).resolve().parent / "migrate_tool_materials.py"))

@@ -1,5 +1,5 @@
-# 0.0.5a.R1 platform status
+# 26.1.2-0.1.0beta-port.1 — beta source synchronization checkpoint
 
-Implemented platform: Minecraft 1.21.1 / NeoForge 21.1.250. The revision adds overflow-safe high-capacity bank balancing. Native and integration CI must pass before its binary release.
+The cumulative 1.21.1 0.1.0beta candidate's long native operation costs, item rates, upgraded diagnostics and protocol 7 are synchronized into this platform branch while preserving its existing 26.x API migration. The arithmetic regression suite is shared. The native GameTest source floor is 142; platform fixture migration and native verification remain outstanding.
 
-The separate port/26.3 branch is migrating Java 25, transactional energy/inventory APIs, persistent data, recipes and client rendering. No working 26.3 binary exists. The 0.1a/0.1b milestones remain open until their required gates pass.
+This is source parity, not a playable release. The full platform still requires compiler/API fixes, matching optional integrations, startup, saved-world and gameplay acceptance. See docs/0.1.0beta_ACCEPTANCE.md and the platform migration status. No binary or CurseForge upload is claimed.

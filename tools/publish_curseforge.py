@@ -16,14 +16,7 @@ PROJECT_ID = 1734096
 API = 'https://minecraft.curseforge.com/api'
 
 
-def candidate_type(version):
-    if re.fullmatch(r'0\.0\.\d+a(?:\.R\d+)?(?:-dev\.\d+)?|0\.1a(?:\.R\d+)?', version):
-        return 'alpha'
-    if re.fullmatch(r'0\.1b(?:\.R\d+)?|\d+\.\d+\.\d+-(?:beta|rc)(?:[.-]\d+)?', version):
-        return 'beta'
-    if re.fullmatch(r'\d+\.\d+\.\d+', version):
-        return 'release'
-    raise ValueError('Unknown candidate naming; declare a supported version before publishing')
+from release_versions import candidate_type
 
 
 def metadata(jar, audit, changelog, version):
@@ -31,8 +24,10 @@ def metadata(jar, audit, changelog, version):
     digest = hashlib.sha256(jar.read_bytes()).hexdigest()
     if evidence.get('version') != version or evidence.get('jar_sha256') != digest or not evidence.get('native_build_and_current_source_match'):
         raise ValueError('Release binary does not match its passing audit')
-    if not evidence.get('gametests') or min(evidence['gametests'].values()) <= 0:
+    if set(evidence.get('gametests', {})) != {'standalone', 'integrations'} or min(evidence['gametests'].values()) < evidence.get('required_gametests', 134):
         raise ValueError('Missing runtime validation evidence')
+    if candidate_type(version)=='beta' and not evidence.get('release_eligible',False):
+        raise ValueError('Beta acceptance gates remain pending; this audited build is a development candidate')
     with zipfile.ZipFile(jar) as archive:
         mod = tomllib.loads(archive.read('META-INF/neoforge.mods.toml').decode())
     calculator = next(m for m in mod['mods'] if m['modId'] == 'foundations_calculator')

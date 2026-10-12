@@ -112,7 +112,7 @@ public final class GreenhouseProgram {
     /** One fallow decode/filter/encode per tending pass, instead of per crop position. */
     private static void tend(MachineBlockEntity m,List<BlockPos> area){
         ServerLevel level=(ServerLevel)m.getLevel();
-        long[] original=m.program.getLongArray("Fallow");Set<Long> fallow=new HashSet<>();
+        long[] original=m.program.getLongArray("Fallow").orElse(new long[0]);Set<Long> fallow=new HashSet<>();
         boolean replant=CalculatorConfig.flag("greenhouse.replant",true);
         if(!replant)for(long position:original)if(geometry(m).plantCoordinates.contains(position))fallow.add(position);
         long harvestCost=CalculatorConfig.energyLong(m.kind(),CalculatorConfig.integer("greenhouse.harvestEnergy",150));
@@ -205,10 +205,10 @@ public final class GreenhouseProgram {
     public static void carbonGenerator(MachineBlockEntity m){
         Level l=m.getLevel();BlockPos p=m.getBlockPos().relative(forward(m).getClockWise().getOpposite(),3);
         if(!l.hasChunkAt(p)||!(l.getBlockEntity(p) instanceof MachineBlockEntity house)||!house.kind().equals("flawless_greenhouse")){m.program.putInt("GasAdd",0);m.setActive(false);return;}
-        if(m.burnTime==0){ItemStack fuel=m.inventory.getStackInSlot(0);int burn=fuel.getBurnTime(RecipeType.SMELTING);
+        if(m.burnTime==0){ItemStack fuel=m.inventory.getStackInSlot(0);int burn=fuel.getBurnTime(RecipeType.SMELTING,m.getLevel().fuelValues());
             if(burn>0&&m.energy.stored()>=CalculatorConfig.energyLong(m.kind(),CalculatorConfig.integer("greenhouse.co2FuelEnergy",100000))){
                 m.program.putBoolean("Controlled",fuel.is(Content.item("controlled_fuel")));m.program.putInt("FuelGas",burn/100);
-                ItemStack rem=fuel.getCraftingRemainingItem();m.inventory.extractItem(0,1,false);if(!rem.isEmpty())m.pending.add(rem);
+                ItemStack rem=com.foundations.calculator.core.PlatformItems.remainder(fuel);m.inventory.extractItem(0,1,false);if(!rem.isEmpty())m.pending.add(rem);
                 m.burnTime=CalculatorConfig.integer("greenhouse.co2FuelTicks",10000);m.energy.extract(CalculatorConfig.energyLong(m.kind(),CalculatorConfig.integer("greenhouse.co2FuelEnergy",100000)),false);
             }
         }

@@ -23,7 +23,7 @@ public class MachineBlock extends BaseEntityBlock {
     public MachineBlock(Properties p) { super(p);registerDefaultState(stateDefinition.any().setValue(FACING,net.minecraft.core.Direction.NORTH).setValue(ACTIVE,false)); }
     protected MapCodec<? extends BaseEntityBlock> codec(){return CODEC;}
     protected void createBlockStateDefinition(StateDefinition.Builder<Block,BlockState> b){b.add(FACING,ACTIVE);}
-    public BlockState getStateForPlacement(BlockPlaceContext c){for(int i=1;i<height();i++)if(!c.getLevel().getBlockState(c.getClickedPos().above(i)).canBeReplaced()||c.getClickedPos().getY()+i>=c.getLevel().getMaxBuildHeight())return null;return defaultBlockState().setValue(FACING,c.getHorizontalDirection().getOpposite());}
+    public BlockState getStateForPlacement(BlockPlaceContext c){for(int i=1;i<height();i++)if(!c.getLevel().getBlockState(c.getClickedPos().above(i)).canBeReplaced()||c.getClickedPos().getY()+i>=c.getLevel().getMaxY())return null;return defaultBlockState().setValue(FACING,c.getHorizontalDirection().getOpposite());}
     protected BlockState rotate(BlockState s,Rotation r){return s.setValue(FACING,r.rotate(s.getValue(FACING)));}
     protected BlockState mirror(BlockState s,Mirror m){return s.rotate(m.getRotation(s.getValue(FACING)));}
     protected boolean isSignalSource(BlockState state){return true;}

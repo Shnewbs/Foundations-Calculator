@@ -282,7 +282,7 @@ public class MachineBlockEntity extends BlockEntity implements MenuProvider {
                 ProcessRecipe recipe=r.value();
                 if(recipe.machine().equals(machine)&&recipe.matches(input,level)&&recipe.value()<=CalculatorConfig.integer("generation.extractorNutrientCapacity",5000)-nutrient){
                     int count=recipe.allocation(input)[0];
-                    for(int i=0;i<count;i++)if(feed.hasCraftingRemainingItem())pending.add(feed.getCraftingRemainingItem());
+                    for(int i=0;i<count;i++)if(!com.foundations.calculator.core.PlatformItems.remainder(feed).isEmpty())pending.add(com.foundations.calculator.core.PlatformItems.remainder(feed));
                     inventory.extractItem(1,count,false);nutrient+=recipe.value();
                     for(var result:recipe.outputs()){ItemStack out=result.roll(level.getRandom());if(!out.isEmpty())pending.add(out);}
                     setChanged();break;
@@ -291,9 +291,9 @@ public class MachineBlockEntity extends BlockEntity implements MenuProvider {
         }
         if(energy.stored()>=energy.capacity())return;
         if(burnTime==0&&nutrient>=CalculatorConfig.integer("generation.extractorNutrientCost",400)){
-            ItemStack fuel=inventory.getStackInSlot(0);int burn=fuel.getBurnTime(RecipeType.SMELTING);
+            ItemStack fuel=inventory.getStackInSlot(0);int burn=fuel.getBurnTime(RecipeType.SMELTING,level.fuelValues());
             if(burn>0){
-                ItemStack rem=fuel.getCraftingRemainingItem();inventory.extractItem(0,1,false);
+                ItemStack rem=com.foundations.calculator.core.PlatformItems.remainder(fuel);inventory.extractItem(0,1,false);
                 if(!rem.isEmpty())pending.add(rem);burnTime=burn;nutrient-=CalculatorConfig.integer("generation.extractorNutrientCost",400);
             }
         }
@@ -304,7 +304,7 @@ public class MachineBlockEntity extends BlockEntity implements MenuProvider {
     }
     private void smelt(){
         ItemStack in=inventory.getStackInSlot(0);if(in.isEmpty()){progress=0;return;}
-        var r=level.getRecipeManager().getRecipeFor(RecipeType.SMELTING,new SingleRecipeInput(in),level);
+        var r=level.getServer().getRecipeManager().getRecipeFor(RecipeType.SMELTING,new SingleRecipeInput(in),level);
         long cost=upgradeEnergyCost(CalculatorConfig.energyLong(kind(),500));
         if(r.isEmpty()){progress=0;return;}
         if(energy.stored()<cost){if(!CalculatorConfig.machineFlag(kind(),"retainProgressWithoutPower"))progress=0;return;}
@@ -312,7 +312,7 @@ public class MachineBlockEntity extends BlockEntity implements MenuProvider {
         totalTicks=upgradeProcessTicks(CalculatorConfig.ticks(kind(),200));
         if(++progress>=totalTicks){
             ItemStack out=r.get().value().assemble(new SingleRecipeInput(in),level.registryAccess());
-            ItemStack remainder=in.getCraftingRemainingItem();inventory.extractItem(0,1,false);
+            ItemStack remainder=com.foundations.calculator.core.PlatformItems.remainder(in);inventory.extractItem(0,1,false);
             pending.add(out);if(!remainder.isEmpty())pending.add(remainder);energy.extract(cost,false);progress=0;
             ProcessTransactions.flush(pending,inventory);
         }setChanged();
@@ -353,10 +353,10 @@ public class MachineBlockEntity extends BlockEntity implements MenuProvider {
             int value=recipe.isPresent()?recipe.get().value().value():0;
             int count=recipe.isPresent()?recipe.get().value().allocation(input)[0]:1;
             if(recipe.isEmpty()&&type.equals("hunger")){
-                var food=in.getFoodProperties(null);if(food!=null)value=food.nutrition();
+                var food=in.get(net.minecraft.core.component.DataComponents.FOOD);if(food!=null)value=food.nutrition();
             }
             if(value>0&&value<=Integer.MAX_VALUE-nutrient){
-                for(int i=0;i<count;i++)if(in.hasCraftingRemainingItem())pending.add(in.getCraftingRemainingItem());
+                for(int i=0;i<count;i++)if(!com.foundations.calculator.core.PlatformItems.remainder(in).isEmpty())pending.add(com.foundations.calculator.core.PlatformItems.remainder(in));
                 inventory.extractItem(0,count,false);nutrient+=value;
                 if(recipe.isPresent())for(var result:recipe.get().value().outputs()){ItemStack out=result.roll(level.getRandom());if(!out.isEmpty())pending.add(out);}
                 setChanged();
@@ -373,19 +373,19 @@ public class MachineBlockEntity extends BlockEntity implements MenuProvider {
         for(ItemStack s:pending)Containers.dropItemStack(level,worldPosition.getX()+.5,worldPosition.getY()+.5,worldPosition.getZ()+.5,s);
         pending.clear();
     }
-    protected void saveAdditional(CompoundTag tag,HolderLookup.Provider lookup){
-        super.saveAdditional(tag,lookup);tag.put("Program",program.copy());if(bulkInventory())tag.put("Bulk",bulk.save(lookup));tag.put("Inventory",inventory.serializeNBT(lookup));tag.putLong("Energy",energy.stored());
-        tag.putInt("Progress",progress);tag.putInt("BurnTime",burnTime);tag.putInt("Nutrient",nutrient);tag.putString("Recipe",activeRecipe);
-        ListTag list=new ListTag();for(ItemStack s:pending)if(!s.isEmpty())list.add(s.save(lookup));tag.put("Pending",list);
+    @Override protected void saveAdditional(net.minecraft.world.level.storage.ValueOutput output){
+        super.saveAdditional(output);output.store("Program",CompoundTag.CODEC,program.copy());
+        if(bulkInventory())bulk.serialize(output.child("Bulk"));inventory.serialize(output.child("Inventory"));output.putLong("Energy",energy.stored());
+        output.putInt("Progress",progress);output.putInt("BurnTime",burnTime);output.putInt("Nutrient",nutrient);output.putString("Recipe",activeRecipe);
+        var list=output.list("Pending",ItemStack.CODEC);for(ItemStack stack:pending)if(!stack.isEmpty())list.add(stack);
     }
-    protected void loadAdditional(CompoundTag tag,HolderLookup.Provider lookup){
-        super.loadAdditional(tag,lookup);program=tag.getCompoundOrEmpty("Program").copy();
-        chestOpeners.clear();program.remove("LidOpen");program.remove("Checked");program.remove("DynamicFormed");
-        greenhouseGeometry=null;recipeSelection.clear();clientProgram.clear();
-        inventory.deserializeNBT(lookup,tag.getCompoundOrEmpty("Inventory"));energy.load(tag.getLongOr("Energy",0L));
-        if(bulkInventory()){bulk.load(tag.getCompoundOrEmpty("Bulk"),lookup);if(!tag.contains("Bulk"))for(int i=0;i<SIZE;i++){ItemStack left=inventory.getStackInSlot(i);for(int n=0;n<bulk.getSlots()&&!left.isEmpty();n++)left=bulk.insertItem(n,left,false);inventory.setStackInSlot(i,left);}}
-        progress=Math.max(0,tag.getIntOr("Progress",0));burnTime=Math.max(0,tag.getIntOr("BurnTime",0));nutrient=Math.max(0,tag.getIntOr("Nutrient",0));activeRecipe=tag.getStringOr("Recipe","");
-        pending.clear();for(Tag t:tag.getListOrEmpty("Pending"))ItemStack.parse(lookup,t).ifPresent(pending::add);
+    @Override protected void loadAdditional(net.minecraft.world.level.storage.ValueInput input){
+        super.loadAdditional(input);program=input.read("Program",CompoundTag.CODEC).orElseGet(CompoundTag::new).copy();
+        chestOpeners.clear();program.remove("LidOpen");program.remove("Checked");program.remove("DynamicFormed");greenhouseGeometry=null;recipeSelection.clear();clientProgram.clear();
+        inventory.deserialize(input.childOrEmpty("Inventory"));energy.load(input.getLongOr("Energy",0L));
+        if(bulkInventory()){bulk.deserialize(input.childOrEmpty("Bulk"));if(input.child("Bulk").isEmpty())for(int i=0;i<SIZE;i++){ItemStack left=inventory.getStackInSlot(i);for(int n=0;n<bulk.getSlots()&&!left.isEmpty();n++)left=bulk.insertItem(n,left,false);inventory.setStackInSlot(i,left);}}
+        progress=Math.max(0,input.getIntOr("Progress",0));burnTime=Math.max(0,input.getIntOr("BurnTime",0));nutrient=Math.max(0,input.getIntOr("Nutrient",0));activeRecipe=input.getStringOr("Recipe","");
+        pending.clear();input.listOrEmpty("Pending",ItemStack.CODEC).forEach(pending::add);
     }
     public void setActive(boolean active){if(level!=null&&getBlockState().getValue(MachineBlock.ACTIVE)!=active)level.setBlockAndUpdate(worldPosition,getBlockState().setValue(MachineBlock.ACTIVE,active));}
     public boolean action(Player player,int action){
@@ -413,8 +413,8 @@ public class MachineBlockEntity extends BlockEntity implements MenuProvider {
     }
     public void onDataPacket(net.minecraft.network.Connection connection,net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket packet,HolderLookup.Provider lookup){handleUpdateTag(packet.getTag(),lookup);}
     public net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket getUpdatePacket(){return net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket.create(this);}
-    public CompoundTag getUpdateTag(HolderLookup.Provider lookup){CompoundTag tag=new CompoundTag();tag.put("Program",program.copy());tag.putInt("Progress",progress);tag.putInt("TotalTicks",totalTicks);tag.putLong("Energy",energy.stored());tag.putLong("LastCrank",lastCrankTick);if(!inventory.getStackInSlot(0).isEmpty())tag.put("Display",inventory.getStackInSlot(0).save(lookup));return tag;}
-    public void handleUpdateTag(CompoundTag tag,HolderLookup.Provider lookup){program=tag.getCompoundOrEmpty("Program");progress=tag.getIntOr("Progress",0);totalTicks=tag.getIntOr("TotalTicks",0);energy.load(tag.getLongOr("Energy",0L));lastCrankTick=tag.getLongOr("LastCrank",0L);inventory.setStackInSlot(0,tag.contains("Display")?ItemStack.parse(lookup,tag.get("Display")).orElse(ItemStack.EMPTY):ItemStack.EMPTY);}
+    public CompoundTag getUpdateTag(HolderLookup.Provider lookup){CompoundTag tag=new CompoundTag();tag.put("Program",program.copy());tag.putInt("Progress",progress);tag.putInt("TotalTicks",totalTicks);tag.putLong("Energy",energy.stored());tag.putLong("LastCrank",lastCrankTick);if(!inventory.getStackInSlot(0).isEmpty())tag.put("Display",PlatformItems.save(inventory.getStackInSlot(0),lookup));return tag;}
+    public void handleUpdateTag(CompoundTag tag,HolderLookup.Provider lookup){program=tag.getCompoundOrEmpty("Program");progress=tag.getIntOr("Progress",0);totalTicks=tag.getIntOr("TotalTicks",0);energy.load(tag.getLongOr("Energy",0L));lastCrankTick=tag.getLongOr("LastCrank",0L);inventory.setStackInSlot(0,tag.contains("Display")?PlatformItems.load(tag.get("Display"),lookup).orElse(ItemStack.EMPTY):ItemStack.EMPTY);}
     public Component getDisplayName(){return getBlockState().getBlock().getName();}
     public AbstractContainerMenu createMenu(int id,Inventory inv,Player p){return bulkInventory()?new com.foundations.calculator.menu.BulkStorageMenu(id,inv,this):CalculatorMenu.forMachine(id,inv,this);}
 }

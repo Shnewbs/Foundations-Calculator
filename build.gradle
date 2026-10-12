@@ -5,9 +5,9 @@ plugins {
 version = mod_version
 group = 'com.foundations.calculator'
 base { archivesName = 'FoundationsCalculator' }
-java { toolchain.languageVersion = JavaLanguageVersion.of(21); withSourcesJar() }
+java { toolchain.languageVersion = JavaLanguageVersion.of(25); withSourcesJar() }
 neoForge {
-    version = '21.1.250'
+    version = '26.1.2.114'
     runs {
         client {
             client()
@@ -33,7 +33,7 @@ dependencies {
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 tasks.named('test', Test) { useJUnitPlatform() }
-tasks.withType(JavaCompile).configureEach { options.encoding = 'UTF-8' }
+tasks.withType(JavaCompile).configureEach { options.encoding = 'UTF-8'; options.compilerArgs += ['-Xmaxerrs', '2000'] }
 processResources {
     inputs.property 'version', project.version
     exclude 'META-INF/neoforge.mods.toml'

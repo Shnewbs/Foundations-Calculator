@@ -7,9 +7,12 @@ public final class MachineProfiles {
     public static long transferLong(String machine){return CalculatorConfig.scaledTransferLong(unscaledTransfer(machine));}
     public static int transfer(String machine){return (int)Math.min(Integer.MAX_VALUE,transferLong(machine));}
     public static int charging(String machine){
+        return (int)Math.min(Integer.MAX_VALUE,chargingLong(machine));
+    }
+    public static long chargingLong(String machine){
         var definition=MachineDefinition.forMachine(machine);
         int fallback=MachineDefinition.hasDedicatedChargeRate(machine)?definition.chargeRate():unscaledTransfer(machine);
-        return CalculatorConfig.scaledTransfer(CalculatorConfig.machine(machine,"chargeRate",fallback));
+        return CalculatorConfig.scaledTransferLong(CalculatorConfig.machine(machine,"chargeRate",fallback));
     }
     private static int unscaledTransfer(String machine){
         int override=CalculatorConfig.TRANSFER_RATE.get();

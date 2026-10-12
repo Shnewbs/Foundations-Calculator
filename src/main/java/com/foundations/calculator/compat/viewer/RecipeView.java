@@ -20,7 +20,7 @@ public record RecipeView(RecipeHolder<ProcessRecipe> holder) {
     public String cost(){
         String family=recipe().machine();if(family.startsWith("analysis_"))return String.format("Reward: %,d FE",recipe().energy());
         boolean portable=Set.of("calculator","scientific","flawless").contains(family);
-        int energy=family.equals("research")&&!CalculatorConfig.flag("research.consumeEnergy",true)?0:CalculatorConfig.energy(machine(family),RecipePolicies.energy(holder,portable?1:0));
+        long energy=family.equals("research")&&!CalculatorConfig.flag("research.consumeEnergy",true)?0:CalculatorConfig.energyLong(machine(family),RecipePolicies.energy(holder,portable?1:0));
         return String.format("%,d FE · %s",energy,portable?"instant":CalculatorConfig.ticks(machine(family),recipe().ticks())+" ticks");
     }
     public String detail(){if(recipe().research())return "Research: "+recipe().researchGroup().replace('_',' ');if(recipe().machine().equals("research"))return "Unlock: "+recipe().researchGroup().replace('_',' ');if(recipe().machine().startsWith("analysis_"))return "Analyser reward roll: "+recipe().value();return recipe().value()>0?"Value: "+recipe().value():"";}

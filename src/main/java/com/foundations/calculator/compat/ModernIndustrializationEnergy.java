@@ -29,14 +29,14 @@ public final class ModernIndustrializationEnergy {
             event.registerItem(EnergyApi.ITEM, (stack,ctx) -> GrandPowerEnergy.expose(item.longStorage(stack), ModernIndustrializationEnergy::conversion,
                     () -> POLICY.input(Scope.ITEM), () -> POLICY.output(Scope.ITEM)), item);
     }
-    public static MEnergyPort expose(com.foundations.calculator.api.LongEnergyStorage energy) {
+    public static MIEnergyStorage expose(com.foundations.calculator.api.LongEnergyStorage energy) {
         if (energy == null) return null;
         var power = GrandPowerEnergy.expose(energy, ModernIndustrializationEnergy::conversion,
                 () -> POLICY.input(Scope.BLOCK), () -> POLICY.output(Scope.BLOCK));
         return mi(power);
     }
-    private static MEnergyPort mi(dev.technici4n.grandpower.api.ILongEnergyStorage power) {
-        return new MEnergyPort() {
+    private static MIEnergyStorage mi(dev.technici4n.grandpower.api.ILongEnergyStorage power) {
+        return new MIEnergyStorage() {
             public boolean canConnect(CableTier tier) { return power.canReceive() || power.canExtract(); }
             public long receive(long n,boolean simulate) { return power.receive(n,simulate); }
             public long extract(long n,boolean simulate) { return power.extract(n,simulate); }
@@ -44,7 +44,7 @@ public final class ModernIndustrializationEnergy {
             public boolean canReceive() { return power.canReceive(); } public boolean canExtract() { return power.canExtract(); }
         };
     }
-    public static MEnergyPort expose(EnergyPort energy) {
+    public static MIEnergyStorage expose(EnergyPort energy) {
         if (energy == null) return null;
         var power = GrandPowerEnergy.expose(energy, ModernIndustrializationEnergy::conversion,
                 () -> POLICY.input(Scope.BLOCK), () -> POLICY.output(Scope.BLOCK));

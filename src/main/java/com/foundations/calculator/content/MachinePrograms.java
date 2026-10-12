@@ -48,7 +48,7 @@ public final class MachinePrograms {
     }
     public static void discharge(MachineBlockEntity m) {
         if(!m.usesEnergy() || MachineProfiles.storage(m.kind()) || MachineProfiles.generator(m.kind())) return;
-        if(EnergyItems.discharge(m.inventory,20,m.energy,MachineProfiles.transfer(m.kind()))>0) m.setChanged();
+        if(EnergyItems.discharge(m.inventory,20,m.energy,MachineProfiles.transferLong(m.kind()))>0) m.setChanged();
     }
     public static void export(MachineBlockEntity m) {
         if(!CalculatorConfig.machineFlag(m.kind(),"itemAutomation")||m.upgrades("transfer_upgrade")==0)return;
@@ -74,8 +74,8 @@ public final class MachinePrograms {
         boolean current=switch(mode){case 1->level.getLevelData().isRaining();case 2->level.getLevelData().isThundering();default->!level.isDay();};
         if(!level.hasNeighborSignal(m.getBlockPos())||current==target){m.progress=0;m.setActive(false);return;}
         m.totalTicks=CalculatorConfig.ticks(m.kind(),CalculatorConfig.integer("world.weatherDuration",100));
-        if(m.energy.getEnergyStored()<CalculatorConfig.energy(m.kind(),CalculatorConfig.integer("world.weatherEnergyPerTick",2500))){if(!CalculatorConfig.machineFlag(m.kind(),"retainProgressWithoutPower"))m.progress=0;return;}
-        m.energy.extractEnergy(CalculatorConfig.energy(m.kind(),CalculatorConfig.integer("world.weatherEnergyPerTick",2500)),false);m.setActive(true);
+        if(m.energy.stored()<CalculatorConfig.energyLong(m.kind(),CalculatorConfig.integer("world.weatherEnergyPerTick",2500))){if(!CalculatorConfig.machineFlag(m.kind(),"retainProgressWithoutPower"))m.progress=0;return;}
+        m.energy.extract(CalculatorConfig.energyLong(m.kind(),CalculatorConfig.integer("world.weatherEnergyPerTick",2500)),false);m.setActive(true);
         if(++m.progress>=m.totalTicks){
             if(mode==0){long now=level.getDayTime();long desired=Math.floorDiv(now,24000)*24000+(target?CalculatorConfig.integer("world.weatherHoldTicks",12000):0);if(desired<=now)desired+=24000;level.setDayTime(desired);}
             else if(mode==1)level.setWeatherParameters(target?0:CalculatorConfig.integer("world.weatherHoldTicks",12000),target?CalculatorConfig.integer("world.weatherHoldTicks",12000):0,target,target&&level.isThundering());
@@ -207,13 +207,13 @@ public final class MachinePrograms {
         ItemStack input=m.inventory.getStackInSlot(0);
         if(input.isEmpty()||input.getMaxStackSize()<CalculatorConfig.integer("world.atomicMultiplierCopies",4)||input.is(TagKey.create(Registries.ITEM,Content.id("atomic_multiplier_blacklist")))){m.progress=0;return;}
         for(int i=1;i<=7;i++)if(!Content.path(m.inventory.getStackInSlot(i)).startsWith("circuit_board_")){m.progress=0;return;}
-        int cost=CalculatorConfig.energy(m.kind(),CalculatorConfig.MULTIPLIER_ENERGY.get());m.totalTicks=CalculatorConfig.ticks(m.kind(),CalculatorConfig.integer("world.atomicMultiplierTicks",1000));
-        if(m.energy.getEnergyStored()<cost){if(!CalculatorConfig.machineFlag(m.kind(),"retainProgressWithoutPower"))m.progress=0;return;}
+        long cost=CalculatorConfig.energyLong(m.kind(),CalculatorConfig.MULTIPLIER_ENERGY.get());m.totalTicks=CalculatorConfig.ticks(m.kind(),CalculatorConfig.integer("world.atomicMultiplierTicks",1000));
+        if(m.energy.stored()<cost){if(!CalculatorConfig.machineFlag(m.kind(),"retainProgressWithoutPower"))m.progress=0;return;}
         String fingerprint=BuiltInRegistries.ITEM.getKey(input.getItem()).toString();
         if(!fingerprint.equals(m.program.getStringOr("MultiplierInput",""))){m.progress=0;m.program.putString("MultiplierInput",fingerprint);}
         if(++m.progress>=m.totalTicks){
             ItemStack result=input.copyWithCount(CalculatorConfig.integer("world.atomicMultiplierCopies",4));for(int i=0;i<=7;i++)m.inventory.extractItem(i,1,false);
-            m.energy.extractEnergy(cost,false);m.pending.add(result);m.progress=0;
+            m.energy.extract(cost,false);m.pending.add(result);m.progress=0;
         }m.setChanged();
     }
     private static boolean stable(Level l,BlockPos p){return l.hasChunkAt(p)&&BuiltInRegistries.BLOCK.getKey(l.getBlockState(p).getBlock()).getNamespace().equals("foundations_calculator")&&BuiltInRegistries.BLOCK.getKey(l.getBlockState(p).getBlock()).getPath().startsWith("stable_stone");}

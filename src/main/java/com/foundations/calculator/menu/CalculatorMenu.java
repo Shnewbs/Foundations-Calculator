@@ -98,8 +98,8 @@ public final class CalculatorMenu extends AbstractContainerMenu {
         return player.getItemInHand(hand)==held && (hand!=InteractionHand.MAIN_HAND||playerInventory.getSelectedSlot()==heldSlot);
     }
     private boolean locked(int slot){return machine==null&&slot>=25&&slot<slots.size()&&slots.get(slot).container==playerInventory&&slots.get(slot).getContainerSlot()==heldSlot;}
-    public void clicked(int slot,int button,ClickType type,Player player){
-        if(locked(slot)||machine==null&&type==ClickType.SWAP&&button==heldSlot)return;
+    public void clicked(int slot,int button,ContainerInput type,Player player){
+        if(locked(slot)||machine==null&&type==ContainerInput.SWAP&&button==heldSlot)return;
         super.clicked(slot,button,type,player);
     }
     public ItemStack quickMoveStack(Player player,int index){

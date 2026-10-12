@@ -21,8 +21,8 @@ public final class PortableCraftingMenu extends CraftingMenu {
     public boolean stillValid(Player player) {
         return player.getItemInHand(hand) == held && (hand != InteractionHand.MAIN_HAND || inventory.getSelectedSlot() == heldSlot);
     }
-    public void clicked(int slot, int button, ClickType type, Player player) {
-        if (!stillValid(player) || type == ClickType.SWAP && button == heldSlot) return;
+    public void clicked(int slot, int button, ContainerInput type, Player player) {
+        if (!stillValid(player) || type == ContainerInput.SWAP && button == heldSlot) return;
         super.clicked(slot, button, type, player);
     }
     public ItemStack quickMoveStack(Player player, int slot) {

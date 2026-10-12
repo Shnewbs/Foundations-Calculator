@@ -29,7 +29,7 @@ public final class PowerDiagnostics {
         if (!CalculatorConfig.flag("power.diagnostics.enabled",true)) {
             player.sendSystemMessage(Component.literal("Power diagnostics are disabled by the server.")); return false;
         }
-        long now=player.serverLevel().getGameTime(); Long last=LAST_REPORT.get(player);
+        long now=player.level().getGameTime(); Long last=LAST_REPORT.get(player);
         if (last!=null && now>=last && now-last<CalculatorConfig.integer("power.diagnostics.cooldownTicks",20)) return false;
         LAST_REPORT.put(player,now); return true;
     }

@@ -55,7 +55,7 @@ public final class MachineDiagnostics {
             var forward=m.getBlockState().getValue(MachineBlock.FACING).getOpposite();
             if(!(level.getBlockEntity(m.getBlockPos().relative(forward.getClockWise().getOpposite(),3)) instanceof MachineBlockEntity other)||!other.kind().equals("flawless_greenhouse"))return state(NEED_GREENHOUSE);
             if(m.burnTime>0)return state(m.program.getIntOr("GasAdd",0)>0?GAS_RUNNING:GAS_CONTROLLED);
-            if(m.inventory.getStackInSlot(0).getBurnTime(RecipeType.SMELTING)<=0)return state(NEED_FUEL);
+            if(m.inventory.getStackInSlot(0).getBurnTime(RecipeType.SMELTING,level.fuelValues())<=0)return state(NEED_FUEL);
             return power(GAS_RUNNING,CalculatorConfig.energyLong(kind,CalculatorConfig.integer("greenhouse.co2FuelEnergy",100000)),energy);
         }
         if(kind.equals("stone_assimilator")||kind.equals("algorithm_assimilator"))return state(CHECK_TREE);
@@ -91,7 +91,7 @@ public final class MachineDiagnostics {
             if(java.util.stream.IntStream.range(0,8).anyMatch(i->m.inventory.getStackInSlot(i).isEmpty()))return state(NEED_INPUT);
             return power(RUNNING,CalculatorConfig.energyLong(kind,CalculatorConfig.MULTIPLIER_ENERGY.get()),energy);
         }
-        if(kind.equals("reinforced_furnace"))return level.getRecipeManager().getRecipeFor(RecipeType.SMELTING,new SingleRecipeInput(m.inventory.getStackInSlot(0)),level).isEmpty()?state(NO_RECIPE):power(RUNNING,m.upgradeEnergyCost(CalculatorConfig.energyLong(kind,500)),energy);
+        if(kind.equals("reinforced_furnace"))return level.getServer().getRecipeManager().getRecipeFor(RecipeType.SMELTING,new SingleRecipeInput(m.inventory.getStackInSlot(0)),level).isEmpty()?state(NO_RECIPE):power(RUNNING,m.upgradeEnergyCost(CalculatorConfig.energyLong(kind,500)),energy);
         var recipe=RecipeIndex.forMachine(level,family(m),m.owner()).stream().filter(r->r.value().matches(input,level)).findFirst();
         return recipe.isEmpty()?state(NO_RECIPE):power(RUNNING,cost(recipe.get(),m),energy);
     }

@@ -14,7 +14,7 @@ public final class ProcessTransactions {
         List<ItemStack> produced=new ArrayList<>();
         for(int i=0;i<used.length;i++){
             ItemStack current=inv.getStackInSlot(i);
-            ItemStack remainder=current.getCraftingRemainingItem();
+            ItemStack remainder=com.foundations.calculator.core.PlatformItems.remainder(current);
             if(!remainder.isEmpty())for(int n=0;n<used[i];n++)produced.add(remainder.copy());
             inv.extractItem(i,used[i],false);
         }

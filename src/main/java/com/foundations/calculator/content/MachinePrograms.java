@@ -89,8 +89,8 @@ public final class MachinePrograms {
         m.program.putLong("ScreenEnergy",energy==null?0:Math.max(0L,energy.stored()));m.program.putLong("ScreenCapacity",energy==null?0:Math.max(0L,energy.capacity()));m.setChanged();
     }
     private static void lantern(MachineBlockEntity m) {
-        if(m.burnTime==0){ItemStack fuel=m.inventory.getStackInSlot(0);int duration=fuel.getBurnTime(RecipeType.SMELTING);
-            if(duration>0){ItemStack rem=fuel.getCraftingRemainingItem();m.inventory.extractItem(0,1,false);if(!rem.isEmpty())m.pending.add(rem);m.burnTime=(int)Math.min(Integer.MAX_VALUE,(long)CalculatorConfig.integer("greenhouse.lanternBurnMultiplier",10)*duration);}}
+        if(m.burnTime==0){ItemStack fuel=m.inventory.getStackInSlot(0);int duration=fuel.getBurnTime(RecipeType.SMELTING,m.getLevel().fuelValues());
+            if(duration>0){ItemStack rem=com.foundations.calculator.core.PlatformItems.remainder(fuel);m.inventory.extractItem(0,1,false);if(!rem.isEmpty())m.pending.add(rem);m.burnTime=(int)Math.min(Integer.MAX_VALUE,(long)CalculatorConfig.integer("greenhouse.lanternBurnMultiplier",10)*duration);}}
         boolean burning=m.burnTime>0;
         if(burning){m.burnTime--;m.setChanged();}m.setActive(burning);
     }
@@ -247,7 +247,7 @@ public final class MachinePrograms {
             else if(stable<4&&luck==2)player.igniteForSeconds(20);
             else if(stable<4&&(luck==3||luck==4))level.explode(null,player.getX(),player.getY(),player.getZ(),(float)((luck==3?8:6)*CalculatorConfig.decimal("world.locatorExplosionMultiplier",1)),true,CalculatorConfig.flag("world.locatorBlockDamage",true)?Level.ExplosionInteraction.BLOCK:Level.ExplosionInteraction.NONE);
             else if(luck>=5&&luck<=14){
-                var effect=switch(luck){case 5->MobEffects.CONFUSION;case 6->MobEffects.BLINDNESS;case 10->MobEffects.JUMP;case 11->MobEffects.WATER_BREATHING;case 12->MobEffects.MOVEMENT_SLOWDOWN;case 13->MobEffects.DAMAGE_BOOST;case 14->MobEffects.WITHER;default->null;};
+                var effect=switch(luck){case 5->MobEffects.NAUSEA;case 6->MobEffects.BLINDNESS;case 10->MobEffects.JUMP_BOOST;case 11->MobEffects.WATER_BREATHING;case 12->MobEffects.SLOWNESS;case 13->MobEffects.STRENGTH;case 14->MobEffects.WITHER;default->null;};
                 if(effect!=null)player.addEffect(new MobEffectInstance(effect,CalculatorConfig.integer("generation.locatorEffectDuration",1000),1));
                 else if(luck<=9)player.getInventory().placeItemBackInInventory(new ItemStack(Content.item(luck==7?"grenade":luck==8?"scientific_calculator":"calculator")));
             }else if(luck==15)player.getInventory().placeItemBackInInventory(new ItemStack(Items.MILK_BUCKET));

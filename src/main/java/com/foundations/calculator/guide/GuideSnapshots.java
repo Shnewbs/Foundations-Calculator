@@ -76,7 +76,7 @@ public final class GuideSnapshots {
     }
     private static List<String> bounded(List<String> rows){var out=new ArrayList<String>();int total=0;for(String line:rows){if(out.size()>=96)break;String s=line.substring(0,Math.min(512,line.length()));if(total+s.length()>24576)break;out.add(s);total+=s.length();}return List.copyOf(out);}
     public static void reply(ServerPlayer player,GuideQueryPayload query){
-        long now=player.serverLevel().getGameTime();Long previous=last.get(player);
+        long now=player.level().getGameTime();Long previous=last.get(player);
         if(previous!=null&&now>=previous&&now-previous<20)return; // global per-player throttle, including known keys
         last.put(player,now);
         if(!permitted(query.key()))return; // unknown keys also spend this player's request budget

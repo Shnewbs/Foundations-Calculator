@@ -19,7 +19,7 @@ public final class ProcessTransactions {
             inv.extractItem(i,used[i],false);
         }
         for(ProcessRecipe.Result output:recipe.outputs()){
-            ItemStack stack=output.roll(level.random);if(!stack.isEmpty())produced.add(stack);
+            ItemStack stack=output.roll(level.getRandom());if(!stack.isEmpty())produced.add(stack);
         }
         return produced;
     }

@@ -5,7 +5,7 @@ import com.foundations.calculator.core.*;
 import com.foundations.calculator.core.PowerPolicy.Scope;
 import appeng.api.implementations.items.IAEItemPowerStorage;
 import appeng.api.config.Actionable;
-import net.neoforged.neoforge.energy.IEnergyStorage;
+import com.foundations.calculator.api.EnergyPort;
 
 /** AE2's item API supports fractional AE. There is deliberately no native AE2 grid port. */
 public final class AE2Energy {
@@ -18,9 +18,9 @@ public final class AE2Energy {
     private static int ceil(double amount) {
         return !Double.isFinite(amount) || amount <= 0 ? 0 : (int)Math.min(Integer.MAX_VALUE,Math.ceil(amount));
     }
-    public static IEnergyStorage wrap(net.minecraft.world.item.ItemStack stack) {
+    public static EnergyPort wrap(net.minecraft.world.item.ItemStack stack) {
         if (!(stack.getItem() instanceof IAEItemPowerStorage item)) return null;
-        return new IEnergyStorage() {
+        return new EnergyPort() {
             private double rate(EnergyRatio ratio) { return ratio.feUnits() / (double)ratio.nativeUnits(); }
             public int receiveEnergy(int maximum,boolean simulate) {
                 if (!canReceive() || maximum <= 0) return 0;

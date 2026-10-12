@@ -15,7 +15,7 @@ public final class NutritionData {
         return id.equals(type + "_module") ? CalculatorConfig.integer("nutrition."+type+"Capacity",1000) : 0;
     }
     public static int get(ItemStack stack, String type) {
-        return Math.clamp(CircuitData.tag(stack).getInt(type), 0, capacity(stack, type));
+        return Math.clamp(CircuitData.tag(stack).getIntOr(type,0), 0, capacity(stack, type));
     }
     public static int add(ItemStack stack, String type, int amount) {
         int old = get(stack, type);
@@ -29,7 +29,7 @@ public final class NutritionData {
         stack.set(DataComponents.CUSTOM_DATA, CustomData.of(tag));
     }
     public static void restore(Player player, ItemStack stack, int limit) {
-        if (player.level().isClientSide || !player.isAlive()) return;
+        if (player.level().isClientSide() || !player.isAlive()) return;
         int hunger = Math.min(limit, Math.min(20 - player.getFoodData().getFoodLevel(), get(stack, "hunger")));
         if (hunger > 0) {
             player.getFoodData().eat(hunger,(float)CalculatorConfig.decimal("nutrition.foodSaturation",0.2));

@@ -2,7 +2,7 @@ package com.foundations.calculator.client;
 
 import com.foundations.calculator.menu.CalculatorMenu;
 import com.foundations.calculator.core.*;
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import com.foundations.calculator.core.ClientConfig;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
@@ -42,30 +42,30 @@ public final class CalculatorScreen extends AbstractContainerScreen<CalculatorMe
         for(int side=0;side<6;side++)if(controls.containsKey(20+side))controls.get(20+side).setMessage(Component.literal(new String[]{"D","U","N","S","W","E"}[side]+new String[]{"A","←","→","×"}[Math.floorMod(menu.state(18+side),4)]));
         if(menu.kind.endsWith("greenhouse"))controls.get(10).setMessage(Component.literal(menu.state(15)==0?"Pause":"Resume"));
     }
-    protected void renderBg(GuiGraphics g,float partial,int x,int y){
+    protected void renderBg(GuiGraphicsExtractor g,float partial,int x,int y){
         g.fill(leftPos-1,topPos-1,leftPos+imageWidth+1,topPos+imageHeight+1,ClientConfig.color(ClientConfig.ACCENT,0x47acb9));
         g.fill(leftPos,topPos,leftPos+imageWidth,topPos+imageHeight,ClientConfig.color(ClientConfig.BACKGROUND,0x18242d));
         g.fill(leftPos+4,topPos+4,leftPos+imageWidth-4,topPos+17,ClientConfig.color(ClientConfig.PANEL,0x30424e));
-        g.drawString(font,"FOUNDATIONS CALCULATOR",leftPos+12,topPos+7,ClientConfig.color(ClientConfig.TEXT,0xa5e6ec),false);
+        g.text(font,"FOUNDATIONS CALCULATOR",leftPos+12,topPos+7,ClientConfig.color(ClientConfig.TEXT,0xa5e6ec),false);
         for(var slot:menu.slots)if(slot.isActive()){
             int sx=leftPos+slot.x,sy=topPos+slot.y;g.fill(sx-1,sy-1,sx+17,sy+17,0xff728896);g.fill(sx,sy,sx+16,sy+16,ClientConfig.color(ClientConfig.SLOT,0x101820));
         }
         String inputLabel=menu.kind.equals("module_workstation")?"Modules":MachineProfiles.storage(menu.kind)?"Discharge":"Inputs";
-        if(menu.inputs>0)g.drawString(font,inputLabel,leftPos+16,topPos+34,ClientConfig.color(ClientConfig.MUTED,0xa9bbc8),false);
-        if(menu.machine==null||menu.machine.hasOutputs())g.drawString(font,"Outputs",leftPos+160,topPos+34,ClientConfig.color(ClientConfig.MUTED,0xa9bbc8),false);
+        if(menu.inputs>0)g.text(font,inputLabel,leftPos+16,topPos+34,ClientConfig.color(ClientConfig.MUTED,0xa9bbc8),false);
+        if(menu.machine==null||menu.machine.hasOutputs())g.text(font,"Outputs",leftPos+160,topPos+34,ClientConfig.color(ClientConfig.MUTED,0xa9bbc8),false);
         if(menu.machine!=null&&menu.machine.hasBatterySlot()&&!menu.kind.endsWith("greenhouse")){
             String label=menu.kind.equals("module_workstation")||menu.kind.equals("docking_station")?"Calculator":menu.kind.endsWith("_processor")||menu.kind.equals("stone_assimilator")?"Module":menu.machine.chargesItems()?"Charge":"Power";
-            g.drawString(font,label,leftPos+12,topPos+87,ClientConfig.color(ClientConfig.MUTED,0xa9bbc8),false);
-            if(menu.machine.supportsUpgrades())g.drawString(font,"Upgrades",leftPos+88,topPos+87,ClientConfig.color(ClientConfig.MUTED,0xa9bbc8),false);
+            g.text(font,label,leftPos+12,topPos+87,ClientConfig.color(ClientConfig.MUTED,0xa9bbc8),false);
+            if(menu.machine.supportsUpgrades())g.text(font,"Upgrades",leftPos+88,topPos+87,ClientConfig.color(ClientConfig.MUTED,0xa9bbc8),false);
         }
         g.fill(leftPos+16,topPos+82,leftPos+214,topPos+84,ClientConfig.color(ClientConfig.SLOT,0x101820));
         g.fill(leftPos+16,topPos+82,leftPos+16+(int)(198*Math.min(1,menu.progress())),topPos+84,ClientConfig.color(ClientConfig.PROGRESS,0x45cbd3));
-        if(menu.machine==null||menu.machine.usesEnergy()||menu.kind.endsWith("_processor"))g.drawString(font,menu.kind.endsWith("_processor")?String.format("Stored: %,d points",menu.points()):EnergyDisplay.formatPreferred(menu.energyLong(),menu.capacityLong()),leftPos+16,topPos+116,ClientConfig.color(ClientConfig.TEXT,0x7ee3ce),false);
+        if(menu.machine==null||menu.machine.usesEnergy()||menu.kind.endsWith("_processor"))g.text(font,menu.kind.endsWith("_processor")?String.format("Stored: %,d points",menu.points()):EnergyDisplay.formatPreferred(menu.energyLong(),menu.capacityLong()),leftPos+16,topPos+116,ClientConfig.color(ClientConfig.TEXT,0x7ee3ce),false);
         if(!menu.kind.endsWith("greenhouse")&&!sidesOpen){
             int statusY=statusY();
             String status=statusText();
             int maxWidth=controls.containsKey(100)?168:208;
-            g.drawString(font,font.plainSubstrByWidth(status,maxWidth),leftPos+12,topPos+statusY,statusColor(),false);
+            g.text(font,font.plainSubstrByWidth(status,maxWidth),leftPos+12,topPos+statusY,statusColor(),false);
         }
     }
     private int statusY(){return menu.kind.endsWith("greenhouse")?85:menu.kind.equals("weather_controller")?64:menu.kind.equals("dynamic_module")||menu.kind.equals("magnetic_flux")?88:130;}
@@ -75,15 +75,15 @@ public final class CalculatorScreen extends AbstractContainerScreen<CalculatorMe
         return menu.status().label;
     }
     private int statusColor(){return switch(menu.status()){case NEED_POWER,NO_RECIPE,OUTPUT_BLOCKED,INCOMPLETE,NEED_FUEL,NEED_INPUT,NEED_FEED,NEED_REDSTONE->0xffffc66b;default->ClientConfig.color(ClientConfig.MUTED,0xa9bbc8);};}
-    protected void renderLabels(GuiGraphics g,int x,int y){
-        g.drawString(font,title,titleLabelX,titleLabelY,ClientConfig.color(ClientConfig.TEXT,0xedf4f8),false);
+    protected void renderLabels(GuiGraphicsExtractor g,int x,int y){
+        g.text(font,title,titleLabelX,titleLabelY,ClientConfig.color(ClientConfig.TEXT,0xedf4f8),false);
         if(menu.kind.endsWith("greenhouse")){
             String text=statusText()+" · CO₂ "+(((menu.state(11)&65535)|((menu.state(12)&65535)<<16))/1000)+"%";
-            g.drawString(font,font.plainSubstrByWidth(text,208),12,85,statusColor(),false);
+            g.text(font,font.plainSubstrByWidth(text,208),12,85,statusColor(),false);
         }
-        g.drawString(font,playerInventoryTitle,inventoryLabelX,inventoryLabelY,ClientConfig.color(ClientConfig.MUTED,0xb4c6cf),false);
+        g.text(font,playerInventoryTitle,inventoryLabelX,inventoryLabelY,ClientConfig.color(ClientConfig.MUTED,0xb4c6cf),false);
     }
-    public void render(GuiGraphics g,int x,int y,float partial){
+    public void render(GuiGraphicsExtractor g,int x,int y,float partial){
         super.render(g,x,y,partial);renderTooltip(g,x,y);
         if(!sidesOpen&&x>=leftPos+12&&x<=leftPos+220&&y>=topPos+statusY()&&y<=topPos+statusY()+10){
             String detail=menu.status().label+(menu.requiredEnergy()>0?String.format(" — requires %,d FE",menu.requiredEnergy()):"");

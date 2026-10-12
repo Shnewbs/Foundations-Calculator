@@ -15,7 +15,7 @@ public final class EnergyIntegrationAssertions {
         for(int i=0;i<100;i++){int n=bridge.receiveEnergy(1,false);h.assertTrue(Math.abs(stored[0]-n*ratio)<1e-8,"Fractional conversion must defer a sub-quantum transfer");bridge.extractEnergy(n,false);}
     }
     public static void ae2(GameTestHelper h){
-        var item=net.minecraft.core.registries.BuiltInRegistries.ITEM.get(net.minecraft.resources.ResourceLocation.parse("ae2:charged_staff"));var stack=new net.minecraft.world.item.ItemStack(item);var bridge=AE2Energy.wrap(stack);
+        var item=net.minecraft.core.registries.BuiltInRegistries.ITEM.get(net.minecraft.resources.Identifier.parse("ae2:charged_staff"));var stack=new net.minecraft.world.item.ItemStack(item);var bridge=AE2Energy.wrap(stack);
         h.assertTrue(bridge!=null&&bridge.canReceive(),"AE2 powered item API is usable");var nativePower=(appeng.api.implementations.items.IAEItemPowerStorage)item;
         double before=nativePower.getAECurrentPower(stack);int simulated=bridge.receiveEnergy(100,true);h.assertTrue(nativePower.getAECurrentPower(stack)==before,"AE2 simulation cannot charge the item");int charged=bridge.receiveEnergy(100,false);double ratio=com.foundations.calculator.core.CalculatorConfig.decimal("compat.aeEnergyToFE",2);
         h.assertTrue(charged==simulated&&Math.abs(nativePower.getAECurrentPower(stack)-before-charged/ratio)<1e-8,"AE2 injection returns unaccepted energy; bridge must report accepted FE correctly");

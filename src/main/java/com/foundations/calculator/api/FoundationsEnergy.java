@@ -12,16 +12,16 @@ import net.minecraft.core.*;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.neoforged.neoforge.capabilities.Capabilities;
-import net.neoforged.neoforge.energy.IEnergyStorage;
+import com.foundations.calculator.api.EnergyPort;
 
 /** Explicit routing. A selected native port refusing energy does NOT fall through to FE. */
 public final class FoundationsEnergy {
-    @FunctionalInterface public interface BlockAdapter { IEnergyStorage find(Level level,BlockPos pos,Direction face); }
+    @FunctionalInterface public interface BlockAdapter { EnergyPort find(Level level,BlockPos pos,Direction face); }
     @FunctionalInterface public interface BlockSender { int send(MachineBlockEntity source,Direction face,int maximum); }
     @FunctionalInterface public interface LongBlockAdapter { LongEnergyStorage find(Level level,BlockPos pos,Direction face); }
-    public record Route(String id, IEnergyStorage storage) {}
+    public record Route(String id, EnergyPort storage) {}
     public record LongRoute(String id, LongEnergyStorage storage) {}
-    private record ItemAdapter(String id,Function<ItemStack,IEnergyStorage> factory) {}
+    private record ItemAdapter(String id,Function<ItemStack,EnergyPort> factory) {}
     private record NamedBlockAdapter(String id,BlockAdapter factory) {}
     private record LongItemAdapter(String id,Function<ItemStack,LongEnergyStorage> factory) {}
     private record NamedLongBlockAdapter(String id,LongBlockAdapter factory) {}
@@ -31,9 +31,9 @@ public final class FoundationsEnergy {
     private static final List<LongItemAdapter> LONG_ITEMS = new CopyOnWriteArrayList<>();
     private static final List<NamedLongBlockAdapter> LONG_BLOCKS = new CopyOnWriteArrayList<>();
     public static void registerSender(BlockSender sender) { SENDERS.add(Objects.requireNonNull(sender)); }
-    public static void registerItem(Function<ItemStack,IEnergyStorage> adapter) { registerItem("external",adapter); }
+    public static void registerItem(Function<ItemStack,EnergyPort> adapter) { registerItem("external",adapter); }
     public static void registerBlock(BlockAdapter adapter) { registerBlock("external",adapter); }
-    public static void registerItem(String id,Function<ItemStack,IEnergyStorage> adapter) {
+    public static void registerItem(String id,Function<ItemStack,EnergyPort> adapter) {
         ITEMS.add(new ItemAdapter(Objects.requireNonNull(id),Objects.requireNonNull(adapter)));
     }
     public static void registerBlock(String id,BlockAdapter adapter) {
@@ -50,34 +50,34 @@ public final class FoundationsEnergy {
         for (var sender:SENDERS) { int n=sender.send(source,face,maximum); if(n>=0)return Math.clamp(n,0,Math.max(0,maximum)); }
         return -1;
     }
-    private static IEnergyStorage externalFE(IEnergyStorage fe,Scope scope) {
+    private static EnergyPort externalFE(EnergyPort fe,Scope scope) {
         return PowerPolicy.gate(fe,()->PowerPolicy.FE.output(scope),()->PowerPolicy.FE.input(scope));
     }
-    private static IEnergyStorage selected(String[] label,String id,IEnergyStorage storage) {
+    private static EnergyPort selected(String[] label,String id,EnergyPort storage) {
         if(label!=null)label[0]=id;return storage;
     }
-    private static IEnergyStorage resolveItem(ItemStack stack,String[] label) {
+    private static EnergyPort resolveItem(ItemStack stack,String[] label) {
         if (stack.isEmpty()) return selected(label,"none",null);
         boolean own = stack.getItem() instanceof CalculatorItem;
         boolean nativeFirst = !own && CalculatorConfig.flag("power.routing.preferNative",true);
         if (nativeFirst) for (var adapter:ITEMS) {
             var result=adapter.factory.apply(stack); if(result!=null)return selected(label,adapter.id,result);
         }
-        var fe=stack.getCapability(Capabilities.EnergyStorage.ITEM);
+        var fe=com.foundations.calculator.platform.EnergyFacades.bounded(net.neoforged.neoforge.transfer.access.ItemAccess.forStack(stack).getCapability(Capabilities.Energy.ITEM));
         if(fe!=null)return selected(label,"fe",externalFE(fe,Scope.ITEM));
         if (!nativeFirst && !own) for(var adapter:ITEMS) {
             var result=adapter.factory.apply(stack); if(result!=null)return selected(label,adapter.id,result);
         }
         return selected(label,"none",null);
     }
-    private static IEnergyStorage resolveBlock(Level level,BlockPos pos,Direction face,String[] label) {
+    private static EnergyPort resolveBlock(Level level,BlockPos pos,Direction face,String[] label) {
         if(!level.hasChunkAt(pos))return selected(label,"unloaded",null);
         boolean own=level.getBlockEntity(pos) instanceof MachineBlockEntity;
         boolean nativeFirst=!own&&CalculatorConfig.flag("power.routing.preferNative",true);
         if(nativeFirst)for(var adapter:BLOCKS) {
             var result=adapter.factory.find(level,pos,face); if(result!=null)return selected(label,adapter.id,result);
         }
-        var fe=level.getCapability(Capabilities.EnergyStorage.BLOCK,pos,face);
+        var fe=com.foundations.calculator.platform.EnergyFacades.bounded(level.getCapability(Capabilities.Energy.BLOCK,pos,face));
         if(fe!=null)return selected(label,"fe",externalFE(fe,Scope.BLOCK));
         if(!nativeFirst&&!own)for(var adapter:BLOCKS) {
             var result=adapter.factory.find(level,pos,face); if(result!=null)return selected(label,adapter.id,result);
@@ -90,8 +90,8 @@ public final class FoundationsEnergy {
     public static Route blockRoute(Level level,BlockPos pos,Direction face) {
         String[] label={"none"};var storage=resolveBlock(level,pos,face,label);return new Route(label[0],storage);
     }
-    public static IEnergyStorage item(ItemStack stack) { return resolveItem(stack,null); }
-    public static IEnergyStorage block(Level level,BlockPos pos,Direction face) { return resolveBlock(level,pos,face,null); }
+    public static EnergyPort item(ItemStack stack) { return resolveItem(stack,null); }
+    public static EnergyPort block(Level level,BlockPos pos,Direction face) { return resolveBlock(level,pos,face,null); }
 
     private static LongEnergyStorage guardedLong(LongEnergyStorage storage,Scope scope){
         if(storage==null)return null;
@@ -103,7 +103,7 @@ public final class FoundationsEnergy {
             public boolean canExtract(){return PowerPolicy.FE.output(scope)&&storage.canExtract();}
         };
     }
-    private static LongEnergyStorage longFE(IEnergyStorage fe) {
+    private static LongEnergyStorage longFE(EnergyPort fe) {
         if(fe==null)return null;
         return new LongEnergyStorage(){
             public long receive(long amount,boolean simulate){return fe.receiveEnergy((int)Math.min(Integer.MAX_VALUE,Math.max(0L,amount)),simulate);}

@@ -5,25 +5,25 @@ import java.util.function.Supplier;
 import com.foundations.calculator.core.EnergyConversion;
 import com.foundations.calculator.core.EnergyRatio;
 import com.foundations.calculator.api.LongEnergyStorage;
-import net.neoforged.neoforge.energy.IEnergyStorage;
+import com.foundations.calculator.api.EnergyPort;
 
 /** Exact, overflow-safe bridges. A positive return is always in the caller's own unit. */
 public final class LongEnergyBridge {
     public interface Storage extends LongEnergyStorage {}
     /** Backward-compatible API for third-party callers and existing lossless tests. */
-    public static IEnergyStorage toFE(Storage nativeStorage, Supplier<EnergyRatio> ratio, BooleanSupplier enabled) {
+    public static EnergyPort toFE(Storage nativeStorage, Supplier<EnergyRatio> ratio, BooleanSupplier enabled) {
         return toFE(nativeStorage, () -> lossless(ratio.get()), enabled, enabled);
     }
-    public static Storage fromFE(IEnergyStorage fe, Supplier<EnergyRatio> ratio, BooleanSupplier enabled) {
+    public static Storage fromFE(EnergyPort fe, Supplier<EnergyRatio> ratio, BooleanSupplier enabled) {
         return fromFE(fe, () -> lossless(ratio.get()), enabled, enabled);
     }
     private static EnergyConversion lossless(EnergyRatio ratio) {
         return ratio == null ? null : EnergyConversion.of(ratio, 0, 0);
     }
     /** Wrap an external native store: receive is FE -> native (output policy), extract is native -> FE. */
-    public static IEnergyStorage toFE(Storage nativeStorage, Supplier<EnergyConversion> conversion,
+    public static EnergyPort toFE(Storage nativeStorage, Supplier<EnergyConversion> conversion,
                                      BooleanSupplier input, BooleanSupplier output) {
-        return new IEnergyStorage() {
+        return new EnergyPort() {
             public int receiveEnergy(int maximum, boolean simulate) {
                 if (!canReceive() || maximum <= 0) return 0;
                 var plan = conversion.get(); if (plan == null) return 0;
@@ -49,7 +49,7 @@ public final class LongEnergyBridge {
         };
     }
     /** Expose a Foundations FE store to a native caller: receive uses input; extract uses output. */
-    public static Storage fromFE(IEnergyStorage fe, Supplier<EnergyConversion> conversion,
+    public static Storage fromFE(EnergyPort fe, Supplier<EnergyConversion> conversion,
                                   BooleanSupplier input, BooleanSupplier output) {
         return new Storage() {
             public long receive(long maximum, boolean simulate) {

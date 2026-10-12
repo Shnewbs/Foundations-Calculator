@@ -40,7 +40,7 @@ public final class RecipeTransfer {
         }return left.isEmpty();
     }
     public static boolean transfer(CalculatorMenu menu,RecipeHolder<ProcessRecipe> holder,Player player,int amount){
-        if(player.level().isClientSide||!ResearchData.allowed(player.level(),menu.machine==null?player.getUUID():menu.machine.owner(),holder.value())||!RecipePolicies.enabled(holder,player.level())||!CalculatorConfig.machineEnabled(menu.kind))return false;
+        if(player.level().isClientSide()||!ResearchData.allowed(player.level(),menu.machine==null?player.getUUID():menu.machine.owner(),holder.value())||!RecipePolicies.enabled(holder,player.level())||!CalculatorConfig.machineEnabled(menu.kind))return false;
         List<ItemStack> plan=null;for(int n=Math.clamp(amount,1,64);n>0&&plan==null;n--)plan=plan(menu,holder.value(),player,n);if(plan==null)return false;
         int[] range=range(menu,holder.value().machine());
         for(int i=range[0];i<range[0]+range[1];i++)menu.slots.get(i).set(plan.get(i));

@@ -7,7 +7,7 @@ import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.ModelEvent;
-@EventBusSubscriber(modid=FoundationsCalculator.ID,bus=EventBusSubscriber.Bus.MOD,value=Dist.CLIENT)
+@EventBusSubscriber(modid=FoundationsCalculator.ID,value=Dist.CLIENT)
 public final class ToolModels {
     private static boolean tool(String id){return id.matches(".+_(sword|pickaxe|axe|shovel|hoe)");}
     @SubscribeEvent public static void additional(ModelEvent.RegisterAdditional e){for(String id:Content.ITEMS_BY_ID.keySet())if(tool(id))e.register(ModelResourceLocation.standalone(Content.id("flat_tools/"+id)));}

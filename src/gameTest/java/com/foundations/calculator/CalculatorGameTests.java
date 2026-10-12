@@ -117,12 +117,12 @@ public final class CalculatorGameTests {
     }
     @GameTest(template="empty") public static void kubeJsRecipeIfInstalled(GameTestHelper h){
         if(net.neoforged.fml.ModList.get().isLoaded("kubejs")){
-            var recipe=h.getLevel().getRecipeManager().byKey(net.minecraft.resources.ResourceLocation.parse("foundations_calculator:kubejs_smoke"));
+            var recipe=h.getLevel().getRecipeManager().byKey(net.minecraft.resources.Identifier.parse("foundations_calculator:kubejs_smoke"));
             h.assertTrue(recipe.isPresent(),"KubeJS runtime must register the smoke recipe");
             h.assertTrue(((ProcessRecipe)recipe.orElseThrow().value()).outputs().getFirst().stack().is(Items.DIAMOND),"Native builder creates a recipe");
-            var edited=h.getLevel().getRecipeManager().byKey(net.minecraft.resources.ResourceLocation.parse("foundations_calculator:kubejs_edit_smoke"));
+            var edited=h.getLevel().getRecipeManager().byKey(net.minecraft.resources.Identifier.parse("foundations_calculator:kubejs_edit_smoke"));
             var r=(ProcessRecipe)edited.orElseThrow().value();
-            h.assertTrue(h.getLevel().getRecipeManager().byKey(net.minecraft.resources.ResourceLocation.parse("foundations_calculator:kubejs_remove_smoke")).isEmpty(),"KubeJS removal applies");
+            h.assertTrue(h.getLevel().getRecipeManager().byKey(net.minecraft.resources.Identifier.parse("foundations_calculator:kubejs_remove_smoke")).isEmpty(),"KubeJS removal applies");
             h.assertTrue(((ProcessRecipe)recipe.orElseThrow().value()).energy()==17,"Builder preserves custom FE cost");
             h.assertTrue(r.inputs().get(1).test(new ItemStack(Items.STRUCTURE_VOID)),"Nested input replacement applies");
             h.assertTrue(r.machine().equals("calculator")&&r.outputs().getFirst().stack().is(Items.EMERALD),"KubeJS output replacement must reach RecipeManager");

@@ -1,0 +1,1086 @@
+# API probe
+
+classpath entries: 95; classes indexed: 59799
+
+## class ^net\.neoforged\.neoforge\.transfer\.
+net.neoforged.neoforge.transfer.CombinedResourceHandler
+net.neoforged.neoforge.transfer.DelegatingResourceHandler
+net.neoforged.neoforge.transfer.EmptyResourceHandler
+net.neoforged.neoforge.transfer.IndexModifier
+net.neoforged.neoforge.transfer.InfiniteResourceHandler
+net.neoforged.neoforge.transfer.ItemAccessResourceHandler
+net.neoforged.neoforge.transfer.RangedResourceHandler
+net.neoforged.neoforge.transfer.ResourceHandler
+net.neoforged.neoforge.transfer.ResourceHandlerUtil
+net.neoforged.neoforge.transfer.ResourceStacksResourceHandler
+net.neoforged.neoforge.transfer.StacksResourceHandler
+net.neoforged.neoforge.transfer.StacksResourceHandler$StackJournal
+net.neoforged.neoforge.transfer.TransferPreconditions
+net.neoforged.neoforge.transfer.VoidingResourceHandler
+net.neoforged.neoforge.transfer.access.HandlerItemAccess
+net.neoforged.neoforge.transfer.access.InfiniteMaterialsItemAccess
+net.neoforged.neoforge.transfer.access.ItemAccess
+net.neoforged.neoforge.transfer.access.ItemAccess$1
+net.neoforged.neoforge.transfer.access.OneByOneItemAccess
+net.neoforged.neoforge.transfer.access.PlayerItemAccess
+net.neoforged.neoforge.transfer.access.StackItemAccess
+net.neoforged.neoforge.transfer.access.StackItemAccess$1
+net.neoforged.neoforge.transfer.access.package-info
+net.neoforged.neoforge.transfer.energy.DelegatingEnergyHandler
+net.neoforged.neoforge.transfer.energy.EmptyEnergyHandler
+net.neoforged.neoforge.transfer.energy.EnergyHandler
+net.neoforged.neoforge.transfer.energy.EnergyHandlerUtil
+net.neoforged.neoforge.transfer.energy.InfiniteEnergyHandler
+net.neoforged.neoforge.transfer.energy.ItemAccessEnergyHandler
+net.neoforged.neoforge.transfer.energy.LimitingEnergyHandler
+net.neoforged.neoforge.transfer.energy.SimpleEnergyHandler
+net.neoforged.neoforge.transfer.energy.SimpleEnergyHandler$EnergyJournal
+net.neoforged.neoforge.transfer.energy.VoidingEnergyHandler
+net.neoforged.neoforge.transfer.energy.package-info
+net.neoforged.neoforge.transfer.fluid.BucketResourceHandler
+net.neoforged.neoforge.transfer.fluid.CauldronWrapper
+net.neoforged.neoforge.transfer.fluid.CauldronWrapper$WrapperLocation
+net.neoforged.neoforge.transfer.fluid.DispenseFluidContainer
+net.neoforged.neoforge.transfer.fluid.FluidResource
+net.neoforged.neoforge.transfer.fluid.FluidStacksResourceHandler
+net.neoforged.neoforge.transfer.fluid.FluidUtil
+net.neoforged.neoforge.transfer.fluid.ItemAccessFluidHandler
+net.neoforged.neoforge.transfer.fluid.package-info
+net.neoforged.neoforge.transfer.item.BundleItemHandler
+net.neoforged.neoforge.transfer.item.CarriedSlotWrapper
+net.neoforged.neoforge.transfer.item.ComposterWrapper
+net.neoforged.neoforge.transfer.item.ComposterWrapper$Bottom
+net.neoforged.neoforge.transfer.item.ComposterWrapper$Top
+net.neoforged.neoforge.transfer.item.ComposterWrapper$WrapperLocation
+net.neoforged.neoforge.transfer.item.ContainerOrHandler
+net.neoforged.neoforge.transfer.item.ItemAccessItemHandler
+net.neoforged.neoforge.transfer.item.ItemResource
+net.neoforged.neoforge.transfer.item.ItemStackResourceHandler
+net.neoforged.neoforge.transfer.item.ItemStacksResourceHandler
+net.neoforged.neoforge.transfer.item.ItemUtil
+net.neoforged.neoforge.transfer.item.LivingEntityEquipmentWrapper
+net.neoforged.neoforge.transfer.item.LivingEntityEquipmentWrapper$1
+net.neoforged.neoforge.transfer.item.LivingEntityEquipmentWrapper$EquipmentTypeWrapper
+net.neoforged.neoforge.transfer.item.LivingEntityEquipmentWrapper$SlotWrapper
+net.neoforged.neoforge.transfer.item.PlayerInventoryWrapper
+net.neoforged.neoforge.transfer.item.PlayerInventoryWrapper$1
+net.neoforged.neoforge.transfer.item.PlayerInventoryWrapper$ArmorSlotWrapper
+net.neoforged.neoforge.transfer.item.PlayerInventoryWrapper$DroppedItems
+net.neoforged.neoforge.transfer.item.PlayerInventoryWrapper$DroppedItems$DropInfo
+net.neoforged.neoforge.transfer.item.ResourceHandlerSlot
+net.neoforged.neoforge.transfer.item.TransactionalRandom
+net.neoforged.neoforge.transfer.item.VanillaContainerWrapper
+net.neoforged.neoforge.transfer.item.VanillaContainerWrapper$SlotWrapper
+net.neoforged.neoforge.transfer.item.VanillaInventoryCodeHooks
+net.neoforged.neoforge.transfer.item.WorldlyContainerWrapper
+net.neoforged.neoforge.transfer.item.package-info
+net.neoforged.neoforge.transfer.package-info
+net.neoforged.neoforge.transfer.resource.DataComponentHolderResource
+net.neoforged.neoforge.transfer.resource.RegisteredResource
+net.neoforged.neoforge.transfer.resource.Resource
+net.neoforged.neoforge.transfer.resource.ResourceStack
+net.neoforged.neoforge.transfer.resource.package-info
+net.neoforged.neoforge.transfer.transaction.RootCommitJournal
+net.neoforged.neoforge.transfer.transaction.SnapshotJournal
+net.neoforged.neoforge.transfer.transaction.Transaction
+net.neoforged.neoforge.transfer.transaction.Transaction$Lifecycle
+net.neoforged.neoforge.transfer.transaction.TransactionContext
+net.neoforged.neoforge.transfer.transaction.TransactionManager
+net.neoforged.neoforge.transfer.transaction.package-info
+
+## apis ^net\.neoforged\.neoforge\.transfer\.(ResourceHandler|item\.ItemResource|item\.ItemStacksResourceHandler|item\.VanillaContainerWrapper|transaction\.Transaction)$
+### net.neoforged.neoforge.transfer.ResourceHandler
+Compiled from "ResourceHandler.java"
+public interface net.neoforged.neoforge.transfer.ResourceHandler<T extends net.neoforged.neoforge.transfer.resource.Resource> {
+  public abstract int size();
+  public abstract T getResource(int);
+  public abstract long getAmountAsLong(int);
+  public default int getAmountAsInt(int);
+  public abstract long getCapacityAsLong(int, T);
+  public default int getCapacityAsInt(int, T);
+  public abstract boolean isValid(int, T);
+  public abstract int insert(int, T, int, net.neoforged.neoforge.transfer.transaction.TransactionContext);
+  public default int insert(T, int, net.neoforged.neoforge.transfer.transaction.TransactionContext);
+  public abstract int extract(int, T, int, net.neoforged.neoforge.transfer.transaction.TransactionContext);
+  public default int extract(T, int, net.neoforged.neoforge.transfer.transaction.TransactionContext);
+  public static <T extends net.neoforged.neoforge.transfer.resource.Resource> java.lang.Class<net.neoforged.neoforge.transfer.ResourceHandler<T>> asClass();
+}
+### net.neoforged.neoforge.transfer.item.ItemResource
+Compiled from "ItemResource.java"
+public final class net.neoforged.neoforge.transfer.item.ItemResource implements net.neoforged.neoforge.transfer.resource.DataComponentHolderResource<net.minecraft.world.item.Item> {
+  public static final net.neoforged.neoforge.transfer.item.ItemResource EMPTY;
+  public static final com.mojang.serialization.Codec<net.neoforged.neoforge.transfer.item.ItemResource> CODEC;
+  public static final com.mojang.serialization.Codec<net.neoforged.neoforge.transfer.item.ItemResource> OPTIONAL_CODEC;
+  public static final net.minecraft.network.codec.StreamCodec<net.minecraft.network.RegistryFriendlyByteBuf, net.neoforged.neoforge.transfer.item.ItemResource> STREAM_CODEC;
+  public static net.neoforged.neoforge.transfer.item.ItemResource of(net.minecraft.world.item.ItemStack);
+  public static net.neoforged.neoforge.transfer.item.ItemResource of(net.minecraft.world.item.ItemStackTemplate);
+  public static net.neoforged.neoforge.transfer.item.ItemResource of(net.minecraft.world.level.ItemLike);
+  public static net.neoforged.neoforge.transfer.item.ItemResource of(net.minecraft.world.level.ItemLike, net.minecraft.core.component.DataComponentPatch);
+  public static net.neoforged.neoforge.transfer.item.ItemResource of(net.minecraft.core.Holder<net.minecraft.world.item.Item>);
+  public static net.neoforged.neoforge.transfer.item.ItemResource of(net.minecraft.core.Holder<net.minecraft.world.item.Item>, net.minecraft.core.component.DataComponentPatch);
+  public net.minecraft.world.item.Item value();
+  public net.minecraft.world.item.Item getItem();
+  public net.minecraft.core.Holder<net.minecraft.world.item.Item> typeHolder();
+  public boolean isEmpty();
+  public boolean matches(net.minecraft.world.item.ItemStack);
+  public boolean matches(net.minecraft.world.item.ItemStackTemplate);
+  public boolean is(net.minecraft.world.level.ItemLike);
+  public boolean test(java.util.function.Predicate<net.minecraft.world.item.ItemStack>);
+  public boolean isComponentsPatchEmpty();
+  public net.neoforged.neoforge.transfer.item.ItemResource withMergedPatch(net.minecraft.core.component.DataComponentPatch);
+  public <D> net.neoforged.neoforge.transfer.item.ItemResource with(net.minecraft.core.component.DataComponentType<D>, D);
+  public <D> net.neoforged.neoforge.transfer.item.ItemResource with(java.util.function.Supplier<? extends net.minecraft.core.component.DataComponentType<D>>, D);
+  public net.neoforged.neoforge.transfer.item.ItemResource without(net.minecraft.core.component.DataComponentType<?>);
+  public net.neoforged.neoforge.transfer.item.ItemResource without(java.util.function.Supplier<? extends net.minecraft.core.component.DataComponentType<?>>);
+  public net.minecraft.core.component.DataComponentMap getComponents();
+  public net.minecraft.core.component.DataComponentPatch getComponentsPatch();
+  public net.minecraft.world.item.ItemStack toStack(int);
+  public net.minecraft.world.item.ItemStack toStack();
+  public int getMaxStackSize();
+  public net.minecraft.network.chat.Component getHoverName();
+  public boolean equals(java.lang.Object);
+  public int hashCode();
+  public java.lang.String toString();
+  public net.neoforged.neoforge.transfer.resource.DataComponentHolderResource without(java.util.function.Supplier);
+  public net.neoforged.neoforge.transfer.resource.DataComponentHolderResource with(java.util.function.Supplier, java.lang.Object);
+  public net.neoforged.neoforge.transfer.resource.DataComponentHolderResource without(net.minecraft.core.component.DataComponentType);
+  public net.neoforged.neoforge.transfer.resource.DataComponentHolderResource with(net.minecraft.core.component.DataComponentType, java.lang.Object);
+  public net.neoforged.neoforge.transfer.resource.DataComponentHolderResource withMergedPatch(net.minecraft.core.component.DataComponentPatch);
+  public java.lang.Object value();
+}
+### net.neoforged.neoforge.transfer.item.ItemStacksResourceHandler
+Compiled from "ItemStacksResourceHandler.java"
+public class net.neoforged.neoforge.transfer.item.ItemStacksResourceHandler extends net.neoforged.neoforge.transfer.StacksResourceHandler<net.minecraft.world.item.ItemStack, net.neoforged.neoforge.transfer.item.ItemResource> {
+  public net.neoforged.neoforge.transfer.item.ItemStacksResourceHandler(int);
+  public net.neoforged.neoforge.transfer.item.ItemStacksResourceHandler(net.minecraft.core.NonNullList<net.minecraft.world.item.ItemStack>);
+  public net.neoforged.neoforge.transfer.item.ItemResource getResourceFrom(net.minecraft.world.item.ItemStack);
+  public int getAmountFrom(net.minecraft.world.item.ItemStack);
+  public boolean matches(net.minecraft.world.item.ItemStack, net.neoforged.neoforge.transfer.item.ItemResource);
+  public boolean matches(java.lang.Object, net.neoforged.neoforge.transfer.resource.Resource);
+  public int getAmountFrom(java.lang.Object);
+  public net.neoforged.neoforge.transfer.resource.Resource getResourceFrom(java.lang.Object);
+}
+### net.neoforged.neoforge.transfer.item.VanillaContainerWrapper
+Compiled from "VanillaContainerWrapper.java"
+public class net.neoforged.neoforge.transfer.item.VanillaContainerWrapper implements net.neoforged.neoforge.transfer.ResourceHandler<net.neoforged.neoforge.transfer.item.ItemResource> {
+  public static net.neoforged.neoforge.transfer.ResourceHandler<net.neoforged.neoforge.transfer.item.ItemResource> of(net.minecraft.world.Container);
+  public int size();
+  public int insert(int, net.neoforged.neoforge.transfer.item.ItemResource, int, net.neoforged.neoforge.transfer.transaction.TransactionContext);
+  public int extract(int, net.neoforged.neoforge.transfer.item.ItemResource, int, net.neoforged.neoforge.transfer.transaction.TransactionContext);
+  public net.neoforged.neoforge.transfer.item.ItemResource getResource(int);
+  public long getAmountAsLong(int);
+  public long getCapacityAsLong(int, net.neoforged.neoforge.transfer.item.ItemResource);
+  public boolean isValid(int, net.neoforged.neoforge.transfer.item.ItemResource);
+  public java.lang.String toString();
+  public int extract(int, net.neoforged.neoforge.transfer.resource.Resource, int, net.neoforged.neoforge.transfer.transaction.TransactionContext);
+  public int insert(int, net.neoforged.neoforge.transfer.resource.Resource, int, net.neoforged.neoforge.transfer.transaction.TransactionContext);
+  public boolean isValid(int, net.neoforged.neoforge.transfer.resource.Resource);
+  public long getCapacityAsLong(int, net.neoforged.neoforge.transfer.resource.Resource);
+  public net.neoforged.neoforge.transfer.resource.Resource getResource(int);
+}
+### net.neoforged.neoforge.transfer.transaction.Transaction
+Compiled from "Transaction.java"
+public final class net.neoforged.neoforge.transfer.transaction.Transaction implements java.lang.AutoCloseable,net.neoforged.neoforge.transfer.transaction.TransactionContext {
+  public static net.neoforged.neoforge.transfer.transaction.Transaction openRoot();
+  public static net.neoforged.neoforge.transfer.transaction.Transaction open(net.neoforged.neoforge.transfer.transaction.TransactionContext);
+  public static net.neoforged.neoforge.transfer.transaction.Transaction$Lifecycle getLifecycle();
+  public static net.neoforged.neoforge.transfer.transaction.TransactionContext getCurrentOpenedTransaction();
+  public void commit();
+  public void close();
+  public int depth();
+  public java.lang.String toString();
+}
+
+## class ResourceHandlerSlot|ItemHandlerSlot|SlotItemHandler|ItemHandlerHelper|ItemStackHandler|ResourceHandlerUtil
+aztech.modern_industrialization.thirdparty.fabrictransfer.api.bridge.SlotItemHandler
+com.gregtechceu.gtceu.api.cover.filter.SimpleItemFilter$FilterItemStackHandler
+com.gregtechceu.gtceu.api.machine.trait.notifiable.NotifiableItemStackHandler
+com.gregtechceu.gtceu.api.machine.trait.notifiable.NotifiableItemStackHandler$KJSCallWrapper
+com.gregtechceu.gtceu.api.transfer.item.CustomItemStackHandler
+com.gregtechceu.gtceu.integration.ae2.machine.MEOutputBusPartMachine$ItemStackHandlerDelegate
+com.gregtechceu.gtceu.integration.ae2.machine.MEPatternBufferPartMachine$SlotItemHandler
+com.gregtechceu.gtceu.integration.ae2.slot.ExportOnlyAEItemList$ItemStackHandlerDelegate
+com.gregtechceu.gtceu.utils.OverlayedItemHandler$OverlayedItemHandlerSlot
+net.neoforged.neoforge.transfer.ResourceHandlerUtil
+net.neoforged.neoforge.transfer.item.ResourceHandlerSlot
+
+## apis ^net\.neoforged\.neoforge\.capabilities\.Capabilities\$(Item|Energy)$
+### net.neoforged.neoforge.capabilities.Capabilities$Energy
+Compiled from "Capabilities.java"
+public final class net.neoforged.neoforge.capabilities.Capabilities$Energy {
+  public static final net.neoforged.neoforge.capabilities.BlockCapability<net.neoforged.neoforge.transfer.energy.EnergyHandler, net.minecraft.core.Direction> BLOCK;
+  public static final net.neoforged.neoforge.capabilities.EntityCapability<net.neoforged.neoforge.transfer.energy.EnergyHandler, net.minecraft.core.Direction> ENTITY;
+  public static final net.neoforged.neoforge.capabilities.ItemCapability<net.neoforged.neoforge.transfer.energy.EnergyHandler, net.neoforged.neoforge.transfer.access.ItemAccess> ITEM;
+}
+### net.neoforged.neoforge.capabilities.Capabilities$Item
+Compiled from "Capabilities.java"
+public final class net.neoforged.neoforge.capabilities.Capabilities$Item {
+  public static final net.neoforged.neoforge.capabilities.BlockCapability<net.neoforged.neoforge.transfer.ResourceHandler<net.neoforged.neoforge.transfer.item.ItemResource>, net.minecraft.core.Direction> BLOCK;
+  public static final net.neoforged.neoforge.capabilities.EntityCapability<net.neoforged.neoforge.transfer.ResourceHandler<net.neoforged.neoforge.transfer.item.ItemResource>, java.lang.Void> ENTITY;
+  public static final net.neoforged.neoforge.capabilities.EntityCapability<net.neoforged.neoforge.transfer.ResourceHandler<net.neoforged.neoforge.transfer.item.ItemResource>, net.minecraft.core.Direction> ENTITY_AUTOMATION;
+  public static final net.neoforged.neoforge.capabilities.ItemCapability<net.neoforged.neoforge.transfer.ResourceHandler<net.neoforged.neoforge.transfer.item.ItemResource>, net.neoforged.neoforge.transfer.access.ItemAccess> ITEM;
+}
+
+## apis ^net\.minecraft\.world\.InteractionResult(\$.*)?$
+### net.minecraft.world.InteractionResult
+Compiled from "InteractionResult.java"
+public interface net.minecraft.world.InteractionResult {
+  public static final net.minecraft.world.InteractionResult$Success SUCCESS;
+  public static final net.minecraft.world.InteractionResult$Success SUCCESS_SERVER;
+  public static final net.minecraft.world.InteractionResult$Success CONSUME;
+  public static final net.minecraft.world.InteractionResult$Fail FAIL;
+  public static final net.minecraft.world.InteractionResult$Pass PASS;
+  public static final net.minecraft.world.InteractionResult$TryEmptyHandInteraction TRY_WITH_EMPTY_HAND;
+  public default boolean consumesAction();
+}
+### net.minecraft.world.InteractionResult$Fail
+Compiled from "InteractionResult.java"
+public final class net.minecraft.world.InteractionResult$Fail extends java.lang.Record implements net.minecraft.world.InteractionResult {
+  public net.minecraft.world.InteractionResult$Fail();
+  public final java.lang.String toString();
+  public final int hashCode();
+  public final boolean equals(java.lang.Object);
+}
+### net.minecraft.world.InteractionResult$ItemContext
+Compiled from "InteractionResult.java"
+public final class net.minecraft.world.InteractionResult$ItemContext extends java.lang.Record {
+  public static final net.minecraft.world.InteractionResult$ItemContext NONE;
+  public static final net.minecraft.world.InteractionResult$ItemContext DEFAULT;
+  public net.minecraft.world.InteractionResult$ItemContext(boolean, net.minecraft.world.item.ItemStack);
+  public final java.lang.String toString();
+  public final int hashCode();
+  public final boolean equals(java.lang.Object);
+  public boolean wasItemInteraction();
+  public net.minecraft.world.item.ItemStack heldItemTransformedTo();
+}
+### net.minecraft.world.InteractionResult$Pass
+Compiled from "InteractionResult.java"
+public final class net.minecraft.world.InteractionResult$Pass extends java.lang.Record implements net.minecraft.world.InteractionResult {
+  public net.minecraft.world.InteractionResult$Pass();
+  public final java.lang.String toString();
+  public final int hashCode();
+  public final boolean equals(java.lang.Object);
+}
+### net.minecraft.world.InteractionResult$Success
+Compiled from "InteractionResult.java"
+public final class net.minecraft.world.InteractionResult$Success extends java.lang.Record implements net.minecraft.world.InteractionResult {
+  public net.minecraft.world.InteractionResult$Success(net.minecraft.world.InteractionResult$SwingSource, net.minecraft.world.InteractionResult$ItemContext);
+  public boolean shouldSwing();
+  public boolean consumesAction();
+  public net.minecraft.world.InteractionResult$Success heldItemTransformedTo(net.minecraft.world.item.ItemStack);
+  public net.minecraft.world.InteractionResult$Success withoutItem();
+  public boolean wasItemInteraction();
+  public net.minecraft.world.item.ItemStack heldItemTransformedTo();
+  public final java.lang.String toString();
+  public final int hashCode();
+  public final boolean equals(java.lang.Object);
+  public net.minecraft.world.InteractionResult$SwingSource swingSource();
+  public net.minecraft.world.InteractionResult$ItemContext itemContext();
+}
+### net.minecraft.world.InteractionResult$SwingSource
+Compiled from "InteractionResult.java"
+public final class net.minecraft.world.InteractionResult$SwingSource extends java.lang.Enum<net.minecraft.world.InteractionResult$SwingSource> {
+  public static final net.minecraft.world.InteractionResult$SwingSource NONE;
+  public static final net.minecraft.world.InteractionResult$SwingSource PREDICTED;
+  public static final net.minecraft.world.InteractionResult$SwingSource SERVER_ONLY;
+  public static net.minecraft.world.InteractionResult$SwingSource[] values();
+  public static net.minecraft.world.InteractionResult$SwingSource valueOf(java.lang.String);
+}
+### net.minecraft.world.InteractionResult$TryEmptyHandInteraction
+Compiled from "InteractionResult.java"
+public final class net.minecraft.world.InteractionResult$TryEmptyHandInteraction extends java.lang.Record implements net.minecraft.world.InteractionResult {
+  public net.minecraft.world.InteractionResult$TryEmptyHandInteraction();
+  public final java.lang.String toString();
+  public final int hashCode();
+  public final boolean equals(java.lang.Object);
+}
+
+## api net.minecraft.world.item.Item use|useOn|interactLivingEntity|inventoryTick|Remainder|Remaining|appendHoverText|finishUsingItem|getName|isFoil
+Compiled from "Item.java"
+public class net.minecraft.world.item.Item implements net.minecraft.world.level.ItemLike,net.minecraft.world.flag.FeatureElement,net.neoforged.neoforge.common.extensions.IItemExtension {
+  public net.minecraft.world.InteractionResult useOn(net.minecraft.world.item.context.UseOnContext);
+  public net.minecraft.world.InteractionResult use(net.minecraft.world.level.Level, net.minecraft.world.entity.player.Player, net.minecraft.world.InteractionHand);
+  public net.minecraft.world.item.ItemStack finishUsingItem(net.minecraft.world.item.ItemStack, net.minecraft.world.level.Level, net.minecraft.world.entity.LivingEntity);
+  public net.minecraft.world.InteractionResult interactLivingEntity(net.minecraft.world.item.ItemStack, net.minecraft.world.entity.player.Player, net.minecraft.world.entity.LivingEntity, net.minecraft.world.InteractionHand);
+  public final net.minecraft.world.item.ItemStackTemplate getCraftingRemainder();
+  public void inventoryTick(net.minecraft.world.item.ItemStack, net.minecraft.server.level.ServerLevel, net.minecraft.world.entity.Entity, net.minecraft.world.entity.EquipmentSlot);
+  public void appendHoverText(net.minecraft.world.item.ItemStack, net.minecraft.world.item.Item$TooltipContext, net.minecraft.world.item.component.TooltipDisplay, java.util.function.Consumer<net.minecraft.network.chat.Component>, net.minecraft.world.item.TooltipFlag);
+  public net.minecraft.network.chat.Component getName(net.minecraft.world.item.ItemStack);
+  public boolean isFoil(net.minecraft.world.item.ItemStack);
+  public boolean useOnRelease(net.minecraft.world.item.ItemStack);
+
+## apis ^net\.minecraft\.world\.(entity\.player\.(Player|Inventory)|item\.ItemCooldowns)$ displayClientMessage|sendSystemMessage|Overlay|placeItemBackInInventory|addCooldown|selected|Selected|getInventory|getCooldowns
+### net.minecraft.world.entity.player.Inventory
+Compiled from "Inventory.java"
+public class net.minecraft.world.entity.player.Inventory implements net.minecraft.world.Container,net.minecraft.world.Nameable {
+  public int getSelectedSlot();
+  public void setSelectedSlot(int);
+  public net.minecraft.world.item.ItemStack getSelectedItem();
+  public net.minecraft.world.item.ItemStack setSelectedItem(net.minecraft.world.item.ItemStack);
+  public void placeItemBackInInventory(net.minecraft.world.item.ItemStack, net.minecraft.util.Prediction);
+  public void placeItemBackInInventory(net.minecraft.world.item.ItemStack, boolean, net.minecraft.util.Prediction);
+  public net.minecraft.world.item.ItemStack removeFromSelected(boolean);
+### net.minecraft.world.entity.player.Player
+Compiled from "Player.java"
+public abstract class net.minecraft.world.entity.player.Player extends net.minecraft.world.entity.Avatar implements net.minecraft.world.entity.ContainerUser,net.neoforged.neoforge.common.extensions.IPlayerExtension {
+  public net.minecraft.world.entity.player.Inventory getInventory();
+  public void sendSystemMessage(net.minecraft.network.chat.Component);
+  public void sendOverlayMessage(net.minecraft.network.chat.Component);
+  public net.minecraft.world.item.ItemCooldowns getCooldowns();
+### net.minecraft.world.item.ItemCooldowns
+Compiled from "ItemCooldowns.java"
+public class net.minecraft.world.item.ItemCooldowns {
+  public void addCooldown(net.minecraft.world.item.ItemStack, int);
+  public void addCooldown(net.minecraft.resources.Identifier, int);
+
+## apis ^net\.minecraft\.world\.entity\.(Entity|LivingEntity)$ placeItemBackInInventory|displayClientMessage|sendSystemMessage|Overlay|getCenter|position\(
+### net.minecraft.world.entity.Entity
+Compiled from "Entity.java"
+public abstract class net.minecraft.world.entity.Entity extends net.neoforged.neoforge.attachment.AttachmentHolder implements net.minecraft.world.Nameable, net.minecraft.world.level.entity.EntityAccess, net.minecraft.world.scores.ScoreHolder, net.minecraft.network.syncher.SyncedDataHolder, net.minecraft.core.component.DataComponentGetter, net.minecraft.world.entity.ItemOwner, net.minecraft.world.entity.SlotProvider, net.minecraft.util.debug.DebugValueSource, net.minecraft.core.TypedInstance<net.minecraft.world.entity.EntityType<?>>, net.neoforged.neoforge.common.extensions.IEntityExtension {
+  public net.minecraft.world.phys.Vec3 position();
+### net.minecraft.world.entity.LivingEntity
+Compiled from "LivingEntity.java"
+public abstract class net.minecraft.world.entity.LivingEntity extends net.minecraft.world.entity.Entity implements net.minecraft.world.entity.Attackable,net.minecraft.world.waypoints.WaypointTransmitter,net.neoforged.neoforge.common.extensions.ILivingEntityExtension {
+
+## apis ^net\.minecraft\.(world\.level\.Level|server\.level\.ServerLevel)$ ecipe|isDay|isBrightOutside|getDayTime|dayTime|isRaining|isThundering
+### net.minecraft.server.level.ServerLevel
+Compiled from "ServerLevel.java"
+public class net.minecraft.server.level.ServerLevel extends net.minecraft.world.level.Level implements net.minecraft.world.level.WorldGenLevel,net.minecraft.server.level.ServerEntityGetter {
+  public net.minecraft.world.item.crafting.RecipeManager recipeAccess();
+  public net.minecraft.world.item.crafting.RecipeAccess recipeAccess();
+### net.minecraft.world.level.Level
+Compiled from "Level.java"
+public abstract class net.minecraft.world.level.Level extends net.neoforged.neoforge.attachment.AttachmentHolder implements net.minecraft.world.level.LevelAccessor,java.lang.AutoCloseable,net.neoforged.neoforge.common.extensions.ILevelExtension {
+  public boolean isBrightOutside();
+  public boolean isThundering();
+  public boolean isRaining();
+  public boolean isRainingAt(net.minecraft.core.BlockPos);
+  public abstract net.minecraft.world.item.crafting.RecipeAccess recipeAccess();
+
+## apis ^net\.minecraft\.world\.item\.ItemStack$ Crafting|Remainder|Burn|Unbreakable
+### net.minecraft.world.item.ItemStack
+Compiled from "ItemStack.java"
+public final class net.minecraft.world.item.ItemStack implements net.minecraft.core.component.DataComponentHolder,net.minecraft.world.item.ItemInstance,net.neoforged.neoforge.common.extensions.IItemStackExtension,net.neoforged.neoforge.common.MutableDataComponentHolder {
+
+## apis ^net\.neoforged\.neoforge\.common\.extensions\.IItemStackExtension$ Burn|Crafting|Remainder
+### net.neoforged.neoforge.common.extensions.IItemStackExtension
+Compiled from "IItemStackExtension.java"
+public interface net.neoforged.neoforge.common.extensions.IItemStackExtension extends net.neoforged.neoforge.common.extensions.ItemInstanceExtension {
+
+## class FuelValues
+(no matches)
+
+## api net.minecraft.world.item.crafting.RecipeHolder
+Compiled from "RecipeHolder.java"
+public final class net.minecraft.world.item.crafting.RecipeHolder<T extends net.minecraft.world.item.crafting.Recipe<?>> extends java.lang.Record {
+  public static final net.minecraft.network.codec.StreamCodec<net.minecraft.network.RegistryFriendlyByteBuf, net.minecraft.world.item.crafting.RecipeHolder<?>> STREAM_CODEC;
+  public net.minecraft.world.item.crafting.RecipeHolder(net.minecraft.resources.ResourceKey<net.minecraft.world.item.crafting.Recipe<?>>, T);
+  public boolean equals(java.lang.Object);
+  public int hashCode();
+  public java.lang.String toString();
+  public net.minecraft.resources.ResourceKey<net.minecraft.world.item.crafting.Recipe<?>> id();
+  public T value();
+}
+
+## api net.minecraft.resources.ResourceKey identifier|location|registry|create
+Compiled from "ResourceKey.java"
+public class net.minecraft.resources.ResourceKey<T> implements java.lang.Comparable<net.minecraft.resources.ResourceKey<?>> {
+  public static <T> net.minecraft.resources.ResourceKey<T> create(net.minecraft.resources.ResourceKey<? extends net.minecraft.core.Registry<T>>, net.minecraft.resources.Identifier);
+  public static <T> net.minecraft.resources.ResourceKey<net.minecraft.core.Registry<T>> createRegistryKey(net.minecraft.resources.Identifier);
+  public net.minecraft.resources.Identifier identifier();
+  public net.minecraft.resources.Identifier registry();
+  public net.minecraft.resources.ResourceKey<net.minecraft.core.Registry<T>> registryKey();
+
+## class ^net\.minecraft\.world\.item\.(Sword|Pickaxe|Axe|Shovel|Hoe|Digger|Tiered|Tool)
+net.minecraft.world.item.ToolMaterial
+net.minecraft.world.item.TooltipFlag
+net.minecraft.world.item.TooltipFlag$Default
+
+## class ^net\.minecraft\.world\.item\.(ToolMaterial|component\.(Tool|Unbreakable|Weapon))
+net.minecraft.world.item.ToolMaterial
+net.minecraft.world.item.component.Tool
+net.minecraft.world.item.component.Tool$Rule
+net.minecraft.world.item.component.TooltipDisplay
+net.minecraft.world.item.component.TooltipProvider
+net.minecraft.world.item.component.TooltipProvider$Getter
+net.minecraft.world.item.component.Weapon
+
+## api net.minecraft.world.item.Item$Properties sword|pickaxe|axe|shovel|hoe|tool|durability|component|stacksTo|rarity|fireResistant|repairable|attributes
+Compiled from "Item.java"
+public class net.minecraft.world.item.Item$Properties implements net.neoforged.neoforge.common.extensions.IItemPropertiesExtensions {
+  public net.minecraft.world.item.Item$Properties food(net.minecraft.world.food.FoodProperties, net.minecraft.world.item.component.Consumable);
+  public net.minecraft.world.item.Item$Properties stacksTo(int);
+  public net.minecraft.world.item.Item$Properties durability(int);
+  public net.minecraft.world.item.Item$Properties rarity(net.minecraft.world.item.Rarity);
+  public net.minecraft.world.item.Item$Properties fireResistant();
+  public net.minecraft.world.item.Item$Properties repairable(net.minecraft.world.item.Item);
+  public net.minecraft.world.item.Item$Properties repairable(net.minecraft.tags.TagKey<net.minecraft.world.item.Item>);
+  public net.minecraft.world.item.Item$Properties tool(net.minecraft.world.item.ToolMaterial, net.minecraft.tags.TagKey<net.minecraft.world.level.block.Block>, float, float, float);
+  public net.minecraft.world.item.Item$Properties pickaxe(net.minecraft.world.item.ToolMaterial, float, float);
+  public net.minecraft.world.item.Item$Properties axe(net.minecraft.world.item.ToolMaterial, float, float);
+  public net.minecraft.world.item.Item$Properties hoe(net.minecraft.world.item.ToolMaterial, float, float);
+  public net.minecraft.world.item.Item$Properties shovel(net.minecraft.world.item.ToolMaterial, float, float);
+  public net.minecraft.world.item.Item$Properties sword(net.minecraft.world.item.ToolMaterial, float, float);
+  public <T> net.minecraft.world.item.Item$Properties component(net.minecraft.core.component.DataComponentType<T>, T);
+  public <T> net.minecraft.world.item.Item$Properties delayedComponent(net.minecraft.core.component.DataComponentType<T>, net.minecraft.core.component.DataComponentInitializers$SingleComponentInitializer<T>);
+  public <T> net.minecraft.world.item.Item$Properties delayedHolderComponent(net.minecraft.core.component.DataComponentType<net.minecraft.core.Holder<T>>, net.minecraft.resources.ResourceKey<T>);
+  public net.minecraft.world.item.Item$Properties attributes(net.minecraft.world.item.component.ItemAttributeModifiers);
+
+## class ItemAbility|ToolAction
+com.blamejared.crafttweaker.natives.item.ExpandToolAction
+net.neoforged.neoforge.common.ItemAbility
+net.neoforged.neoforge.common.advancements.critereon.ItemAbilityPredicate
+
+## api net.minecraft.client.gui.GuiGraphicsExtractor (?i)text|string|blit|sprite|fill|pose|item|tooltip|scissor|outline|gradient|font
+Compiled from "GuiGraphicsExtractor.java"
+public class net.minecraft.client.gui.GuiGraphicsExtractor implements net.neoforged.neoforge.client.extensions.GuiGraphicsExtractorExtension {
+  public org.joml.Matrix3x2fStack pose();
+  public void enableScissor(int, int, int, int);
+  public void disableScissor();
+  public boolean containsPointInScissor(int, int);
+  public void fill(int, int, int, int, int);
+  public void fill(com.mojang.renderpearl.api.pipeline.RenderPipeline, int, int, int, int, int);
+  public void fillGradient(int, int, int, int, int, int);
+  public void fill(com.mojang.renderpearl.api.pipeline.RenderPipeline, net.minecraft.client.gui.render.TextureSetup, int, int, int, int);
+  public void outline(int, int, int, int, int);
+  public void textHighlight(int, int, int, int, boolean);
+  public void text(net.minecraft.client.gui.Font, java.lang.String, int, int, int);
+  public void text(net.minecraft.client.gui.Font, java.lang.String, int, int, int, boolean);
+  public void text(net.minecraft.client.gui.Font, net.minecraft.util.FormattedCharSequence, int, int, int);
+  public void text(net.minecraft.client.gui.Font, net.minecraft.util.FormattedCharSequence, int, int, int, boolean);
+  public void text(net.minecraft.client.gui.Font, net.minecraft.network.chat.Component, int, int, int);
+  public void text(net.minecraft.client.gui.Font, net.minecraft.network.chat.Component, int, int, int, boolean);
+  public void centeredText(net.minecraft.client.gui.Font, java.lang.String, int, int, int);
+  public void centeredText(net.minecraft.client.gui.Font, net.minecraft.network.chat.Component, int, int, int);
+  public void centeredText(net.minecraft.client.gui.Font, net.minecraft.util.FormattedCharSequence, int, int, int);
+  public int textWithWordWrap(net.minecraft.client.gui.Font, net.minecraft.network.chat.FormattedText, int, int, int, int);
+  public int textWithWordWrap(net.minecraft.client.gui.Font, net.minecraft.network.chat.FormattedText, int, int, int, int, boolean);
+  public void textWithBackdrop(net.minecraft.client.gui.Font, net.minecraft.network.chat.Component, int, int, int, int);
+  public void blit(com.mojang.renderpearl.api.pipeline.RenderPipeline, net.minecraft.resources.Identifier, int, int, float, float, int, int, int, int, int);
+  public void blit(com.mojang.renderpearl.api.pipeline.RenderPipeline, net.minecraft.resources.Identifier, int, int, float, float, int, int, int, int);
+  public void blit(com.mojang.renderpearl.api.pipeline.RenderPipeline, net.minecraft.resources.Identifier, int, int, float, float, int, int, int, int, int, int);
+  public void blit(com.mojang.renderpearl.api.pipeline.RenderPipeline, net.minecraft.resources.Identifier, int, int, float, float, int, int, int, int, int, int, int);
+  public void blit(net.minecraft.resources.Identifier, int, int, int, int, float, float, float, float);
+  public void blit(com.mojang.renderpearl.api.textures.GpuTextureView, com.mojang.renderpearl.api.textures.GpuSampler, int, int, int, int, float, float, float, float);
+  public void blitSprite(com.mojang.renderpearl.api.pipeline.RenderPipeline, net.minecraft.resources.Identifier, int, int, int, int);
+  public void blitSprite(com.mojang.renderpearl.api.pipeline.RenderPipeline, net.minecraft.resources.Identifier, int, int, int, int, float);
+  public void blitSprite(com.mojang.renderpearl.api.pipeline.RenderPipeline, net.minecraft.resources.Identifier, int, int, int, int, int);
+  public void blitSprite(com.mojang.renderpearl.api.pipeline.RenderPipeline, net.minecraft.resources.Identifier, int, int, int, int, int, int, int, int);
+  public void blitSprite(com.mojang.renderpearl.api.pipeline.RenderPipeline, net.minecraft.resources.Identifier, int, int, int, int, int, int, int, int, int);
+  public void blitSprite(com.mojang.renderpearl.api.pipeline.RenderPipeline, net.minecraft.client.renderer.texture.TextureAtlasSprite, int, int, int, int);
+  public void blitSprite(com.mojang.renderpearl.api.pipeline.RenderPipeline, net.minecraft.client.renderer.texture.TextureAtlasSprite, int, int, int, int, int);
+  public void item(net.minecraft.world.item.ItemStack, int, int);
+  public void item(net.minecraft.world.item.ItemStack, int, int, int);
+  public void item(net.minecraft.world.entity.LivingEntity, net.minecraft.world.item.ItemStack, int, int, int);
+  public void fakeItem(net.minecraft.world.item.ItemStack, int, int);
+  public void fakeItem(net.minecraft.world.item.ItemStack, int, int, int);
+  public void itemDecorations(net.minecraft.client.gui.Font, net.minecraft.world.item.ItemStack, int, int);
+  public void itemDecorations(net.minecraft.client.gui.Font, net.minecraft.world.item.ItemStack, int, int, java.lang.String);
+  public void bannerPattern(net.minecraft.client.model.object.banner.BannerFlagModel, net.minecraft.world.item.DyeColor, net.minecraft.world.level.block.entity.BannerPatternLayers, int, int, int, int);
+  public void setTooltipForNextFrame(net.minecraft.network.chat.Component, int, int);
+  public void setTooltipForNextFrame(java.util.List<net.minecraft.util.FormattedCharSequence>, int, int);
+  public void setTooltipForNextFrame(net.minecraft.client.gui.Font, net.minecraft.world.item.ItemStack, int, int);
+  public void setTooltipForNextFrame(net.minecraft.client.gui.Font, java.util.List<net.minecraft.network.chat.Component>, java.util.Optional<net.minecraft.world.inventory.tooltip.TooltipComponent>, net.minecraft.world.item.ItemStack, int, int);
+  public void setTooltipForNextFrame(net.minecraft.client.gui.Font, java.util.List<net.minecraft.network.chat.Component>, java.util.Optional<net.minecraft.world.inventory.tooltip.TooltipComponent>, net.minecraft.world.item.ItemStack, int, int, net.minecraft.resources.Identifier);
+  public void setTooltipForNextFrame(net.minecraft.client.gui.Font, java.util.List<net.minecraft.network.chat.Component>, java.util.Optional<net.minecraft.world.inventory.tooltip.TooltipComponent>, net.minecraft.world.item.ItemStack, int, int, net.minecraft.resources.Identifier, boolean);
+  public void setTooltipForNextFrame(net.minecraft.client.gui.Font, java.util.List<net.minecraft.network.chat.Component>, java.util.Optional<net.minecraft.world.inventory.tooltip.TooltipComponent>, int, int);
+  public void setTooltipForNextFrame(net.minecraft.client.gui.Font, java.util.List<net.minecraft.network.chat.Component>, java.util.Optional<net.minecraft.world.inventory.tooltip.TooltipComponent>, int, int, net.minecraft.resources.Identifier);
+  public void setTooltipForNextFrame(net.minecraft.client.gui.Font, java.util.List<net.minecraft.network.chat.Component>, java.util.Optional<net.minecraft.world.inventory.tooltip.TooltipComponent>, int, int, net.minecraft.resources.Identifier, boolean);
+  public void setTooltipForNextFrame(net.minecraft.client.gui.Font, java.util.List<net.minecraft.util.FormattedCharSequence>, java.util.Optional<net.minecraft.world.inventory.tooltip.TooltipComponent>, net.minecraft.client.gui.screens.inventory.tooltip.ClientTooltipPositioner, int, int, boolean, net.minecraft.resources.Identifier);
+  public void setTooltipForNextFrame(net.minecraft.client.gui.Font, net.minecraft.network.chat.Component, int, int);
+  public void setTooltipForNextFrame(net.minecraft.client.gui.Font, net.minecraft.network.chat.Component, int, int, net.minecraft.resources.Identifier);
+  public void setComponentTooltipForNextFrame(net.minecraft.client.gui.Font, java.util.List<net.minecraft.network.chat.Component>, int, int);
+  public void setComponentTooltipForNextFrame(net.minecraft.client.gui.Font, java.util.List<net.minecraft.network.chat.Component>, int, int, net.minecraft.resources.Identifier);
+  public void setComponentTooltipForNextFrame(net.minecraft.client.gui.Font, java.util.List<? extends net.minecraft.network.chat.FormattedText>, int, int, net.minecraft.world.item.ItemStack);
+  public void setComponentTooltipForNextFrame(net.minecraft.client.gui.Font, java.util.List<? extends net.minecraft.network.chat.FormattedText>, int, int, net.minecraft.world.item.ItemStack, net.minecraft.resources.Identifier);
+  public void setComponentTooltipFromElementsForNextFrame(net.minecraft.client.gui.Font, java.util.List<com.mojang.datafixers.util.Either<net.minecraft.network.chat.FormattedText, net.minecraft.world.inventory.tooltip.TooltipComponent>>, int, int, net.minecraft.world.item.ItemStack);
+  public void setComponentTooltipFromElementsForNextFrame(net.minecraft.client.gui.Font, java.util.List<com.mojang.datafixers.util.Either<net.minecraft.network.chat.FormattedText, net.minecraft.world.inventory.tooltip.TooltipComponent>>, int, int, net.minecraft.world.item.ItemStack, net.minecraft.resources.Identifier);
+  public void setTooltipForNextFrame(net.minecraft.client.gui.Font, java.util.List<? extends net.minecraft.util.FormattedCharSequence>, int, int);
+  public void setTooltipForNextFrame(net.minecraft.client.gui.Font, java.util.List<? extends net.minecraft.util.FormattedCharSequence>, int, int, net.minecraft.resources.Identifier);
+  public void setTooltipForNextFrame(net.minecraft.client.gui.Font, java.util.List<net.minecraft.util.FormattedCharSequence>, net.minecraft.client.gui.screens.inventory.tooltip.ClientTooltipPositioner, int, int, boolean);
+  public void tooltip(net.minecraft.client.gui.Font, java.util.List<net.minecraft.client.gui.screens.inventory.tooltip.ClientTooltipComponent>, int, int, net.minecraft.client.gui.screens.inventory.tooltip.ClientTooltipPositioner, net.minecraft.resources.Identifier, boolean);
+  public void tooltip(net.minecraft.client.gui.Font, java.util.List<net.minecraft.client.gui.screens.inventory.tooltip.ClientTooltipComponent>, int, int, net.minecraft.client.gui.screens.inventory.tooltip.ClientTooltipPositioner, net.minecraft.resources.Identifier, boolean, net.minecraft.world.item.ItemStack);
+  public void componentHoverEffect(net.minecraft.client.gui.Font, net.minecraft.network.chat.Style, int, int);
+  public net.minecraft.client.gui.navigation.ScreenRectangle peekScissorStack();
+  public net.minecraft.client.renderer.texture.TextureAtlasSprite getSprite(net.minecraft.client.resources.model.sprite.SpriteId);
+  public net.minecraft.client.gui.ActiveTextCollector textRendererForWidget(net.minecraft.client.gui.components.AbstractWidget, net.minecraft.client.gui.GuiGraphicsExtractor$HoveredTextEffects);
+  public net.minecraft.client.gui.ActiveTextCollector textRenderer();
+  public net.minecraft.client.gui.ActiveTextCollector textRenderer(net.minecraft.client.gui.GuiGraphicsExtractor$HoveredTextEffects);
+  public net.minecraft.client.gui.ActiveTextCollector textRenderer(net.minecraft.client.gui.GuiGraphicsExtractor$HoveredTextEffects, java.util.function.Consumer<net.minecraft.network.chat.Style>);
+
+## apis ^net\.minecraft\.client\.gui\.screens\.(Screen|inventory\.AbstractContainerScreen)$ render|extract|Tooltip|keyPressed|mouseClicked|mouseScrolled|mouseDragged|mouseReleased|charTyped|imageWidth|imageHeight|leftPos|topPos|hoveredSlot
+### net.minecraft.client.gui.screens.Screen
+Compiled from "Screen.java"
+public abstract class net.minecraft.client.gui.screens.Screen extends net.minecraft.client.gui.components.events.AbstractContainerEventHandler implements net.minecraft.client.gui.components.Renderable {
+  public final java.util.List<net.minecraft.client.gui.components.Renderable> renderables;
+  public final void extractRenderStateWithTooltipAndSubtitles(net.minecraft.client.gui.GuiGraphicsExtractor, int, int, float);
+  public void extractRenderState(net.minecraft.client.gui.GuiGraphicsExtractor, int, int, float);
+  public boolean keyPressed(net.minecraft.client.input.KeyEvent);
+  public static java.util.List<net.minecraft.network.chat.Component> getTooltipFromItem(net.minecraft.client.Minecraft, net.minecraft.world.item.ItemStack);
+  public void extractBackground(net.minecraft.client.gui.GuiGraphicsExtractor, int, int, float);
+  public static void extractMenuBackgroundTexture(net.minecraft.client.gui.GuiGraphicsExtractor, net.minecraft.resources.Identifier, int, int, float, float, int, int);
+  public void extractTransparentBackground(net.minecraft.client.gui.GuiGraphicsExtractor);
+### net.minecraft.client.gui.screens.inventory.AbstractContainerScreen
+Compiled from "AbstractContainerScreen.java"
+public abstract class net.minecraft.client.gui.screens.inventory.AbstractContainerScreen<T extends net.minecraft.world.inventory.AbstractContainerMenu> extends net.minecraft.client.gui.screens.Screen implements net.minecraft.client.gui.screens.inventory.MenuAccess<T> {
+  public void extractRenderState(net.minecraft.client.gui.GuiGraphicsExtractor, int, int, float);
+  public void extractContents(net.minecraft.client.gui.GuiGraphicsExtractor, int, int, float);
+  public void extractCarriedItem(net.minecraft.client.gui.GuiGraphicsExtractor, int, int);
+  public boolean mouseScrolled(double, double, double, double);
+  public boolean mouseClicked(net.minecraft.client.input.MouseButtonEvent, boolean);
+  public boolean mouseDragged(net.minecraft.client.input.MouseButtonEvent, double, double);
+  public boolean mouseReleased(net.minecraft.client.input.MouseButtonEvent);
+  public boolean keyPressed(net.minecraft.client.input.KeyEvent);
+
+## class ^net\.minecraft\.client\.input\.
+net.minecraft.client.input.CharacterEvent
+net.minecraft.client.input.InputQuirks
+net.minecraft.client.input.InputQuirks$1
+net.minecraft.client.input.InputWithModifiers
+net.minecraft.client.input.InputWithModifiers$Modifiers
+net.minecraft.client.input.KeyEvent
+net.minecraft.client.input.KeyEvent$Action
+net.minecraft.client.input.MouseButtonEvent
+net.minecraft.client.input.MouseButtonInfo
+net.minecraft.client.input.MouseButtonInfo$Action
+net.minecraft.client.input.MouseButtonInfo$MouseButton
+net.minecraft.client.input.PreeditEvent
+net.minecraft.client.input.package-info
+
+## class ^com\.mojang\.blaze3d\.platform\.InputConstants
+com.mojang.blaze3d.platform.InputConstants
+com.mojang.blaze3d.platform.InputConstants$Key
+com.mojang.blaze3d.platform.InputConstants$Type
+com.mojang.blaze3d.platform.InputConstants$Value
+
+## api com.mojang.blaze3d.platform.InputConstants KEY_|isKeyDown|MOUSE
+Compiled from "InputConstants.java"
+public class com.mojang.blaze3d.platform.InputConstants {
+  public static final int KEY_0;
+  public static final int KEY_1;
+  public static final int KEY_2;
+  public static final int KEY_3;
+  public static final int KEY_4;
+  public static final int KEY_5;
+  public static final int KEY_6;
+  public static final int KEY_7;
+  public static final int KEY_8;
+  public static final int KEY_9;
+  public static final int KEY_A;
+  public static final int KEY_B;
+  public static final int KEY_C;
+  public static final int KEY_D;
+  public static final int KEY_E;
+  public static final int KEY_F;
+  public static final int KEY_G;
+  public static final int KEY_H;
+  public static final int KEY_I;
+  public static final int KEY_J;
+  public static final int KEY_K;
+  public static final int KEY_L;
+  public static final int KEY_M;
+  public static final int KEY_N;
+  public static final int KEY_O;
+  public static final int KEY_P;
+  public static final int KEY_Q;
+  public static final int KEY_R;
+  public static final int KEY_S;
+  public static final int KEY_T;
+  public static final int KEY_U;
+  public static final int KEY_V;
+  public static final int KEY_W;
+  public static final int KEY_X;
+  public static final int KEY_Y;
+  public static final int KEY_Z;
+  public static final int KEY_F1;
+  public static final int KEY_F2;
+  public static final int KEY_F3;
+  public static final int KEY_F4;
+  public static final int KEY_F5;
+  public static final int KEY_F6;
+  public static final int KEY_F7;
+  public static final int KEY_F8;
+  public static final int KEY_F9;
+  public static final int KEY_F10;
+  public static final int KEY_F11;
+  public static final int KEY_F12;
+  public static final int KEY_F13;
+  public static final int KEY_F14;
+  public static final int KEY_F15;
+  public static final int KEY_F16;
+  public static final int KEY_F17;
+  public static final int KEY_F18;
+  public static final int KEY_F19;
+  public static final int KEY_F20;
+  public static final int KEY_F21;
+  public static final int KEY_F22;
+  public static final int KEY_F23;
+  public static final int KEY_F24;
+  public static final int KEY_NUMLOCK;
+  public static final int KEY_NUMPAD0;
+  public static final int KEY_NUMPAD1;
+  public static final int KEY_NUMPAD2;
+  public static final int KEY_NUMPAD3;
+  public static final int KEY_NUMPAD4;
+  public static final int KEY_NUMPAD5;
+  public static final int KEY_NUMPAD6;
+  public static final int KEY_NUMPAD7;
+  public static final int KEY_NUMPAD8;
+  public static final int KEY_NUMPAD9;
+  public static final int KEY_NUMPADCOMMA;
+  public static final int KEY_NUMPADENTER;
+  public static final int KEY_NUMPADEQUALS;
+  public static final int KEY_DOWN;
+  public static final int KEY_LEFT;
+  public static final int KEY_RIGHT;
+  public static final int KEY_UP;
+  public static final int KEY_ADD;
+  public static final int KEY_APOSTROPHE;
+  public static final int KEY_BACKSLASH;
+  public static final int KEY_COMMA;
+  public static final int KEY_EQUALS;
+  public static final int KEY_GRAVE;
+  public static final int KEY_LBRACKET;
+  public static final int KEY_MINUS;
+  public static final int KEY_MULTIPLY;
+  public static final int KEY_PERIOD;
+  public static final int KEY_RBRACKET;
+  public static final int KEY_SEMICOLON;
+  public static final int KEY_SLASH;
+  public static final int KEY_SPACE;
+  public static final int KEY_TAB;
+  public static final int KEY_LALT;
+  public static final int KEY_LCONTROL;
+  public static final int KEY_LSHIFT;
+  public static final int KEY_LGUI;
+  public static final int KEY_RALT;
+  public static final int KEY_RCONTROL;
+  public static final int KEY_RSHIFT;
+  public static final int KEY_RGUI;
+  public static final int KEY_RETURN;
+  public static final int KEY_ESCAPE;
+  public static final int KEY_BACKSPACE;
+  public static final int KEY_DELETE;
+  public static final int KEY_END;
+  public static final int KEY_HOME;
+  public static final int KEY_INSERT;
+  public static final int KEY_PAGEDOWN;
+  public static final int KEY_PAGEUP;
+  public static final int KEY_CAPSLOCK;
+  public static final int KEY_PAUSE;
+  public static final int KEY_SCROLLLOCK;
+  public static final int KEY_PRINTSCREEN;
+  public static final int MOUSE_BUTTON_LEFT;
+  public static final int MOUSE_BUTTON_MIDDLE;
+  public static final int MOUSE_BUTTON_RIGHT;
+  public static final int MOUSE_BUTTON_4;
+  public static final int MOUSE_BUTTON_5;
+  public static final int MOUSE_BUTTON_6;
+  public static final int MOUSE_BUTTON_7;
+  public static final int MOUSE_BUTTON_8;
+  public static boolean isKeyDown(int);
+
+## class MultiBufferSource|SubmitNodeCollector|BlockEntityRenderState|ItemModelResolver
+net.minecraft.client.renderer.OrderedSubmitNodeCollector
+net.minecraft.client.renderer.SubmitNodeCollector
+net.minecraft.client.renderer.SubmitNodeCollector$CustomGeometryRenderer
+net.minecraft.client.renderer.blockentity.state.BlockEntityRenderState
+net.minecraft.client.renderer.item.ItemModelResolver
+net.neoforged.neoforge.client.extensions.OrderedSubmitNodeCollectorExtension
+
+## apis ^net\.neoforged\.fml\.common\.EventBusSubscriber(\$.*)?$
+### net.neoforged.fml.common.EventBusSubscriber
+Compiled from "EventBusSubscriber.java"
+public interface net.neoforged.fml.common.EventBusSubscriber extends java.lang.annotation.Annotation {
+  public abstract net.neoforged.api.distmarker.Dist[] value();
+  public abstract java.lang.String modid();
+}
+
+## class ^net\.neoforged\.neoforge\.event\.level\.BlockEvent
+net.neoforged.neoforge.event.level.BlockEvent
+net.neoforged.neoforge.event.level.BlockEvent$BlockToolModificationEvent
+net.neoforged.neoforge.event.level.BlockEvent$EntityMultiPlaceEvent
+net.neoforged.neoforge.event.level.BlockEvent$EntityPlaceEvent
+net.neoforged.neoforge.event.level.BlockEvent$FarmlandTrampleEvent
+net.neoforged.neoforge.event.level.BlockEvent$FluidPlaceBlockEvent
+net.neoforged.neoforge.event.level.BlockEvent$NeighborNotifyEvent
+net.neoforged.neoforge.event.level.BlockEvent$PortalSpawnEvent
+
+## apis ^net\.neoforged\.neoforge\.client\.event\.EntityRenderersEvent\$RegisterRenderers$ register
+### net.neoforged.neoforge.client.event.EntityRenderersEvent$RegisterRenderers
+Compiled from "EntityRenderersEvent.java"
+public class net.neoforged.neoforge.client.event.EntityRenderersEvent$RegisterRenderers extends net.neoforged.neoforge.client.event.EntityRenderersEvent {
+  public <T extends net.minecraft.world.entity.Entity> void registerEntityRenderer(net.minecraft.world.entity.EntityType<? extends T>, net.minecraft.client.renderer.entity.EntityRendererProvider<T>);
+  public <T extends net.minecraft.world.level.block.entity.BlockEntity, S extends net.minecraft.client.renderer.blockentity.state.BlockEntityRenderState> void registerBlockEntityRenderer(net.minecraft.world.level.block.entity.BlockEntityType<? extends T>, net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider<T, S>);
+
+## apis ^net\.neoforged\.neoforge\.event\.ModifyDefaultComponentsEvent$ modify
+### net.neoforged.neoforge.event.ModifyDefaultComponentsEvent
+Compiled from "ModifyDefaultComponentsEvent.java"
+public final class net.neoforged.neoforge.event.ModifyDefaultComponentsEvent extends net.neoforged.bus.api.Event implements net.neoforged.fml.event.IModBusEvent {
+  public void modify(net.minecraft.world.level.ItemLike, net.neoforged.neoforge.event.ModifyDefaultComponentsEvent$Initializer);
+  public void modifyMatching(net.neoforged.neoforge.event.ModifyDefaultComponentsEvent$ItemWithComponentsPredicate, net.neoforged.neoforge.event.ModifyDefaultComponentsEvent$Initializer);
+
+## apis ^net\.minecraft\.world\.level\.block\.entity\.BlockEntityType(\$Builder)?$ of|Builder|create
+### net.minecraft.world.level.block.entity.BlockEntityType
+Compiled from "BlockEntityType.java"
+public class net.minecraft.world.level.block.entity.BlockEntityType<T extends net.minecraft.world.level.block.entity.BlockEntity> {
+  public T create(net.minecraft.core.BlockPos, net.minecraft.world.level.block.state.BlockState);
+
+## api net.minecraft.core.registries.Registries CONFIGURED|FEATURE
+Compiled from "Registries.java"
+public class net.minecraft.core.registries.Registries {
+  public static final net.minecraft.resources.ResourceKey<net.minecraft.core.Registry<net.minecraft.world.level.levelgen.feature.featuresize.FeatureSizeType<?>>> FEATURE_SIZE_TYPE;
+  public static final net.minecraft.resources.ResourceKey<net.minecraft.core.Registry<com.mojang.serialization.MapCodec<? extends net.minecraft.world.level.levelgen.feature.Feature>>> FEATURE_TYPE;
+  public static final net.minecraft.resources.ResourceKey<net.minecraft.core.Registry<net.minecraft.world.level.levelgen.feature.Feature>> FEATURE;
+  public static final net.minecraft.resources.ResourceKey<net.minecraft.core.Registry<net.minecraft.world.level.levelgen.placement.PlacedFeature>> PLACED_FEATURE;
+
+## class ModelResourceLocation
+(no matches)
+
+## class ^net\.minecraft\.world\.entity\.projectile\.Throwable
+net.minecraft.world.entity.projectile.ThrowableProjectile
+
+## class ^net\.minecraft\.world\.item\.Tier$
+(no matches)
+
+## api net.minecraft.world.item.ToolMaterial
+Compiled from "ToolMaterial.java"
+public final class net.minecraft.world.item.ToolMaterial extends java.lang.Record {
+  public static final net.minecraft.world.item.ToolMaterial WOOD;
+  public static final net.minecraft.world.item.ToolMaterial STONE;
+  public static final net.minecraft.world.item.ToolMaterial COPPER;
+  public static final net.minecraft.world.item.ToolMaterial IRON;
+  public static final net.minecraft.world.item.ToolMaterial DIAMOND;
+  public static final net.minecraft.world.item.ToolMaterial GOLD;
+  public static final net.minecraft.world.item.ToolMaterial NETHERITE;
+  public net.minecraft.world.item.ToolMaterial(net.minecraft.tags.TagKey<net.minecraft.world.level.block.Block>, int, float, float, int, net.minecraft.tags.TagKey<net.minecraft.world.item.Item>);
+  public net.minecraft.world.item.Item$Properties applyToolProperties(net.minecraft.world.item.Item$Properties, net.minecraft.tags.TagKey<net.minecraft.world.level.block.Block>, float, float, float);
+  public net.minecraft.world.item.Item$Properties applySwordProperties(net.minecraft.world.item.Item$Properties, float, float);
+  public final java.lang.String toString();
+  public final int hashCode();
+  public final boolean equals(java.lang.Object);
+  public net.minecraft.tags.TagKey<net.minecraft.world.level.block.Block> incorrectBlocksForDrops();
+  public int durability();
+  public float speed();
+  public float attackDamageBonus();
+  public int enchantmentValue();
+  public net.minecraft.tags.TagKey<net.minecraft.world.item.Item> repairItems();
+}
+
+## api net.minecraft.world.item.component.Weapon
+Compiled from "Weapon.java"
+public final class net.minecraft.world.item.component.Weapon extends java.lang.Record {
+  public static final float AXE_DISABLES_BLOCKING_FOR_SECONDS;
+  public static final com.mojang.serialization.Codec<net.minecraft.world.item.component.Weapon> CODEC;
+  public static final net.minecraft.network.codec.StreamCodec<net.minecraft.network.RegistryFriendlyByteBuf, net.minecraft.world.item.component.Weapon> STREAM_CODEC;
+  public net.minecraft.world.item.component.Weapon(int);
+  public net.minecraft.world.item.component.Weapon(int, float);
+  public final java.lang.String toString();
+  public final int hashCode();
+  public final boolean equals(java.lang.Object);
+  public int itemDamagePerAttack();
+  public float disableBlockingForSeconds();
+}
+
+## api net.minecraft.world.item.component.Tool
+Compiled from "Tool.java"
+public final class net.minecraft.world.item.component.Tool extends java.lang.Record {
+  public static final com.mojang.serialization.Codec<net.minecraft.world.item.component.Tool> CODEC;
+  public static final net.minecraft.network.codec.StreamCodec<net.minecraft.network.RegistryFriendlyByteBuf, net.minecraft.world.item.component.Tool> STREAM_CODEC;
+  public net.minecraft.world.item.component.Tool(java.util.List<net.minecraft.world.item.component.Tool$Rule>, float, int, boolean);
+  public float getMiningSpeed(net.minecraft.world.level.block.state.BlockState);
+  public boolean isCorrectForDrops(net.minecraft.world.level.block.state.BlockState);
+  public final java.lang.String toString();
+  public final int hashCode();
+  public final boolean equals(java.lang.Object);
+  public java.util.List<net.minecraft.world.item.component.Tool$Rule> rules();
+  public float defaultMiningSpeed();
+  public int damagePerBlock();
+  public boolean canDestroyBlocksInCreative();
+}
+
+## api net.minecraft.core.component.DataComponents UNBREAKABLE|TOOL|WEAPON
+Compiled from "DataComponents.java"
+public class net.minecraft.core.component.DataComponents {
+  public static final net.minecraft.core.component.DataComponentType<net.minecraft.util.Unit> UNBREAKABLE;
+  public static final net.minecraft.core.component.DataComponentType<net.minecraft.world.item.component.TooltipDisplay> TOOLTIP_DISPLAY;
+  public static final net.minecraft.core.component.DataComponentType<net.minecraft.world.item.component.Tool> TOOL;
+  public static final net.minecraft.core.component.DataComponentType<net.minecraft.world.item.component.Weapon> WEAPON;
+  public static final net.minecraft.core.component.DataComponentType<net.minecraft.resources.Identifier> TOOLTIP_STYLE;
+  public static final net.minecraft.core.component.DataComponentType<net.minecraft.world.item.component.PiercingWeapon> PIERCING_WEAPON;
+  public static final net.minecraft.core.component.DataComponentType<net.minecraft.world.item.component.KineticWeapon> KINETIC_WEAPON;
+
+## api net.minecraft.world.item.Item hurtEnemy|mineBlock|canAttackBlock|getAttackDamageBonus|isCorrectToolForDrops|getDestroySpeed|getDefaultAttributeModifiers
+Compiled from "Item.java"
+public class net.minecraft.world.item.Item implements net.minecraft.world.level.ItemLike,net.minecraft.world.flag.FeatureElement,net.neoforged.neoforge.common.extensions.IItemExtension {
+  public float getDestroySpeed(net.minecraft.world.item.ItemStack, net.minecraft.world.level.block.state.BlockState);
+  public float getAttackDamageBonus(net.minecraft.world.entity.Entity, float, net.minecraft.world.damagesource.DamageSource);
+  public void hurtEnemy(net.minecraft.world.item.ItemStack, net.minecraft.world.entity.LivingEntity, net.minecraft.world.entity.LivingEntity);
+  public boolean mineBlock(net.minecraft.world.item.ItemStack, net.minecraft.world.level.Level, net.minecraft.world.level.block.state.BlockState, net.minecraft.core.BlockPos, net.minecraft.world.entity.LivingEntity);
+  public boolean isCorrectToolForDrops(net.minecraft.world.item.ItemStack, net.minecraft.world.level.block.state.BlockState);
+
+## api net.minecraft.world.entity.EntityType$Builder
+Compiled from "EntityType.java"
+public class net.minecraft.world.entity.EntityType$Builder<T extends net.minecraft.world.entity.Entity> {
+  public static <T extends net.minecraft.world.entity.Entity> net.minecraft.world.entity.EntityType$Builder<T> of(net.minecraft.world.entity.EntityType$EntityFactory<T>, net.minecraft.world.entity.MobCategory);
+  public static <T extends net.minecraft.world.entity.Entity> net.minecraft.world.entity.EntityType$Builder<T> createNothing(net.minecraft.world.entity.MobCategory);
+  public net.minecraft.world.entity.EntityType$Builder<T> sized(float, float);
+  public net.minecraft.world.entity.EntityType$Builder<T> spawnDimensionsScale(float);
+  public net.minecraft.world.entity.EntityType$Builder<T> eyeHeight(float);
+  public net.minecraft.world.entity.EntityType$Builder<T> passengerAttachments(float...);
+  public net.minecraft.world.entity.EntityType$Builder<T> passengerAttachments(net.minecraft.world.phys.Vec3...);
+  public net.minecraft.world.entity.EntityType$Builder<T> vehicleAttachment(net.minecraft.world.phys.Vec3);
+  public net.minecraft.world.entity.EntityType$Builder<T> ridingOffset(float);
+  public net.minecraft.world.entity.EntityType$Builder<T> nameTagOffset(float);
+  public net.minecraft.world.entity.EntityType$Builder<T> attach(net.minecraft.world.entity.EntityAttachment, float, float, float);
+  public net.minecraft.world.entity.EntityType$Builder<T> attach(net.minecraft.world.entity.EntityAttachment, net.minecraft.world.phys.Vec3);
+  public net.minecraft.world.entity.EntityType$Builder<T> noSummon();
+  public net.minecraft.world.entity.EntityType$Builder<T> noSave();
+  public net.minecraft.world.entity.EntityType$Builder<T> fireImmune();
+  public net.minecraft.world.entity.EntityType$Builder<T> immuneTo(net.minecraft.tags.TagKey<net.minecraft.world.level.block.Block>);
+  public net.minecraft.world.entity.EntityType$Builder<T> canSpawnFarFromPlayer();
+  public net.minecraft.world.entity.EntityType$Builder<T> clientTrackingRange(int);
+  public net.minecraft.world.entity.EntityType$Builder<T> updateInterval(int);
+  public net.minecraft.world.entity.EntityType$Builder<T> noUpdateInterval();
+  public net.minecraft.world.entity.EntityType$Builder<T> requiredFeatures(net.minecraft.world.flag.FeatureFlag...);
+  public net.minecraft.world.entity.EntityType$Builder<T> noLootTable();
+  public net.minecraft.world.entity.EntityType$Builder<T> notInPeaceful();
+  public net.minecraft.world.entity.EntityType$Builder<T> dontTrackDeltas();
+  public net.minecraft.world.entity.EntityType$Builder<T> setUpdateInterval(int);
+  public net.minecraft.world.entity.EntityType$Builder<T> setTrackingRange(int);
+  public net.minecraft.world.entity.EntityType$Builder<T> setShouldReceiveVelocityUpdates(boolean);
+  public net.minecraft.world.entity.EntityType$Builder<T> setOnlyOpCanSetNbt(boolean);
+  public net.minecraft.world.entity.EntityType<T> build(net.minecraft.resources.ResourceKey<net.minecraft.world.entity.EntityType<?>>);
+}
+
+## apis ^net\.neoforged\.neoforge\.registries\.DeferredRegister(\$.*)?$ register|BlockEntit|create
+### net.neoforged.neoforge.registries.DeferredRegister
+Compiled from "DeferredRegister.java"
+public class net.neoforged.neoforge.registries.DeferredRegister<T> {
+  public static <T> net.neoforged.neoforge.registries.DeferredRegister<T> create(net.minecraft.core.Registry<T>, java.lang.String);
+  public static <T> net.neoforged.neoforge.registries.DeferredRegister<T> create(net.minecraft.resources.ResourceKey<? extends net.minecraft.core.Registry<T>>, java.lang.String);
+  public static <B> net.neoforged.neoforge.registries.DeferredRegister<B> create(net.minecraft.resources.Identifier, java.lang.String);
+  public static net.neoforged.neoforge.registries.DeferredRegister$Items createItems(java.lang.String);
+  public static net.neoforged.neoforge.registries.DeferredRegister$Blocks createBlocks(java.lang.String);
+  public static net.neoforged.neoforge.registries.DeferredRegister$DataComponents createDataComponents(net.minecraft.resources.ResourceKey<net.minecraft.core.Registry<net.minecraft.core.component.DataComponentType<?>>>, java.lang.String);
+  public static net.neoforged.neoforge.registries.DeferredRegister$Entities createEntities(java.lang.String);
+  public <I extends T> net.neoforged.neoforge.registries.DeferredHolder<T, I> register(java.lang.String, java.util.function.Supplier<? extends I>);
+  public <I extends T> net.neoforged.neoforge.registries.DeferredHolder<T, I> register(java.lang.String, java.util.function.Function<net.minecraft.resources.Identifier, ? extends I>);
+  public net.minecraft.tags.TagKey<T> createTagKey(java.lang.String);
+  public net.minecraft.tags.TagKey<T> createTagKey(net.minecraft.resources.Identifier);
+  public void register(net.neoforged.bus.api.IEventBus);
+### net.neoforged.neoforge.registries.DeferredRegister$Blocks
+Compiled from "DeferredRegister.java"
+public class net.neoforged.neoforge.registries.DeferredRegister$Blocks extends net.neoforged.neoforge.registries.DeferredRegister<net.minecraft.world.level.block.Block> {
+  public <B extends net.minecraft.world.level.block.Block> net.neoforged.neoforge.registries.DeferredBlock<B> register(java.lang.String, java.util.function.Function<net.minecraft.resources.Identifier, ? extends B>);
+  public <B extends net.minecraft.world.level.block.Block> net.neoforged.neoforge.registries.DeferredBlock<B> register(java.lang.String, java.util.function.Supplier<? extends B>);
+  public <B extends net.minecraft.world.level.block.Block> net.neoforged.neoforge.registries.DeferredBlock<B> registerBlock(java.lang.String, java.util.function.Function<net.minecraft.world.level.block.state.BlockBehaviour$Properties, ? extends B>, java.util.function.Supplier<net.minecraft.world.level.block.state.BlockBehaviour$Properties>);
+  public <B extends net.minecraft.world.level.block.Block> net.neoforged.neoforge.registries.DeferredBlock<B> registerBlock(java.lang.String, java.util.function.Function<net.minecraft.world.level.block.state.BlockBehaviour$Properties, ? extends B>, java.util.function.UnaryOperator<net.minecraft.world.level.block.state.BlockBehaviour$Properties>);
+  public <B extends net.minecraft.world.level.block.Block> net.neoforged.neoforge.registries.DeferredBlock<B> registerBlock(java.lang.String, java.util.function.Function<net.minecraft.world.level.block.state.BlockBehaviour$Properties, ? extends B>);
+  public net.neoforged.neoforge.registries.DeferredBlock<net.minecraft.world.level.block.Block> registerSimpleBlock(java.lang.String, java.util.function.Supplier<net.minecraft.world.level.block.state.BlockBehaviour$Properties>);
+  public net.neoforged.neoforge.registries.DeferredBlock<net.minecraft.world.level.block.Block> registerSimpleBlock(java.lang.String, java.util.function.UnaryOperator<net.minecraft.world.level.block.state.BlockBehaviour$Properties>);
+  public net.neoforged.neoforge.registries.DeferredBlock<net.minecraft.world.level.block.Block> registerSimpleBlock(java.lang.String);
+  public net.neoforged.neoforge.registries.DeferredHolder register(java.lang.String, java.util.function.Function);
+  public net.neoforged.neoforge.registries.DeferredHolder register(java.lang.String, java.util.function.Supplier);
+### net.neoforged.neoforge.registries.DeferredRegister$DataComponents
+Compiled from "DeferredRegister.java"
+public class net.neoforged.neoforge.registries.DeferredRegister$DataComponents extends net.neoforged.neoforge.registries.DeferredRegister<net.minecraft.core.component.DataComponentType<?>> {
+  public <D> net.neoforged.neoforge.registries.DeferredHolder<net.minecraft.core.component.DataComponentType<?>, net.minecraft.core.component.DataComponentType<D>> registerComponentType(java.lang.String, java.util.function.UnaryOperator<net.minecraft.core.component.DataComponentType$Builder<D>>);
+### net.neoforged.neoforge.registries.DeferredRegister$Entities
+Compiled from "DeferredRegister.java"
+public class net.neoforged.neoforge.registries.DeferredRegister$Entities extends net.neoforged.neoforge.registries.DeferredRegister<net.minecraft.world.entity.EntityType<?>> {
+  public <E extends net.minecraft.world.entity.Entity> net.neoforged.neoforge.registries.DeferredHolder<net.minecraft.world.entity.EntityType<?>, net.minecraft.world.entity.EntityType<E>> registerEntityType(java.lang.String, net.minecraft.world.entity.EntityType$EntityFactory<E>, net.minecraft.world.entity.MobCategory);
+  public <E extends net.minecraft.world.entity.Entity> net.neoforged.neoforge.registries.DeferredHolder<net.minecraft.world.entity.EntityType<?>, net.minecraft.world.entity.EntityType<E>> registerEntityType(java.lang.String, net.minecraft.world.entity.EntityType$EntityFactory<E>, net.minecraft.world.entity.MobCategory, java.util.function.UnaryOperator<net.minecraft.world.entity.EntityType$Builder<E>>);
+### net.neoforged.neoforge.registries.DeferredRegister$Items
+Compiled from "DeferredRegister.java"
+public class net.neoforged.neoforge.registries.DeferredRegister$Items extends net.neoforged.neoforge.registries.DeferredRegister<net.minecraft.world.item.Item> {
+  public <I extends net.minecraft.world.item.Item> net.neoforged.neoforge.registries.DeferredItem<I> register(java.lang.String, java.util.function.Function<net.minecraft.resources.Identifier, ? extends I>);
+  public <I extends net.minecraft.world.item.Item> net.neoforged.neoforge.registries.DeferredItem<I> register(java.lang.String, java.util.function.Supplier<? extends I>);
+  public net.neoforged.neoforge.registries.DeferredItem<net.minecraft.world.item.BlockItem> registerSimpleBlockItem(java.lang.String, java.util.function.Supplier<? extends net.minecraft.world.level.block.Block>, java.util.function.Supplier<net.minecraft.world.item.Item$Properties>);
+  public net.neoforged.neoforge.registries.DeferredItem<net.minecraft.world.item.BlockItem> registerSimpleBlockItem(java.lang.String, java.util.function.Supplier<? extends net.minecraft.world.level.block.Block>, java.util.function.UnaryOperator<net.minecraft.world.item.Item$Properties>);
+  public net.neoforged.neoforge.registries.DeferredItem<net.minecraft.world.item.BlockItem> registerSimpleBlockItem(java.lang.String, java.util.function.Supplier<? extends net.minecraft.world.level.block.Block>);
+  public net.neoforged.neoforge.registries.DeferredItem<net.minecraft.world.item.BlockItem> registerSimpleBlockItem(net.minecraft.core.Holder<net.minecraft.world.level.block.Block>, java.util.function.Supplier<net.minecraft.world.item.Item$Properties>);
+  public net.neoforged.neoforge.registries.DeferredItem<net.minecraft.world.item.BlockItem> registerSimpleBlockItem(net.minecraft.core.Holder<net.minecraft.world.level.block.Block>, java.util.function.UnaryOperator<net.minecraft.world.item.Item$Properties>);
+  public net.neoforged.neoforge.registries.DeferredItem<net.minecraft.world.item.BlockItem> registerSimpleBlockItem(net.minecraft.core.Holder<net.minecraft.world.level.block.Block>);
+  public <I extends net.minecraft.world.item.Item> net.neoforged.neoforge.registries.DeferredItem<I> registerItem(java.lang.String, java.util.function.Function<net.minecraft.world.item.Item$Properties, ? extends I>, java.util.function.Supplier<net.minecraft.world.item.Item$Properties>);
+  public <I extends net.minecraft.world.item.Item> net.neoforged.neoforge.registries.DeferredItem<I> registerItem(java.lang.String, java.util.function.Function<net.minecraft.world.item.Item$Properties, ? extends I>, java.util.function.UnaryOperator<net.minecraft.world.item.Item$Properties>);
+  public <I extends net.minecraft.world.item.Item> net.neoforged.neoforge.registries.DeferredItem<I> registerItem(java.lang.String, java.util.function.Function<net.minecraft.world.item.Item$Properties, ? extends I>);
+  public net.neoforged.neoforge.registries.DeferredItem<net.minecraft.world.item.Item> registerSimpleItem(java.lang.String, java.util.function.Supplier<net.minecraft.world.item.Item$Properties>);
+  public net.neoforged.neoforge.registries.DeferredItem<net.minecraft.world.item.Item> registerSimpleItem(java.lang.String, java.util.function.UnaryOperator<net.minecraft.world.item.Item$Properties>);
+  public net.neoforged.neoforge.registries.DeferredItem<net.minecraft.world.item.Item> registerSimpleItem(java.lang.String);
+  public net.neoforged.neoforge.registries.DeferredHolder register(java.lang.String, java.util.function.Function);
+  public net.neoforged.neoforge.registries.DeferredHolder register(java.lang.String, java.util.function.Supplier);
+### net.neoforged.neoforge.registries.DeferredRegister$RegistryHolder
+Compiled from "DeferredRegister.java"
+class net.neoforged.neoforge.registries.DeferredRegister$RegistryHolder<V> implements java.util.function.Supplier<net.minecraft.core.Registry<V>> {
+
+## api net.minecraft.world.item.crafting.RecipeSerializer
+Compiled from "RecipeSerializer.java"
+public final class net.minecraft.world.item.crafting.RecipeSerializer<T extends net.minecraft.world.item.crafting.Recipe<?>> extends java.lang.Record {
+  public net.minecraft.world.item.crafting.RecipeSerializer(com.mojang.serialization.MapCodec<T>, net.minecraft.network.codec.StreamCodec<net.minecraft.network.RegistryFriendlyByteBuf, T>);
+  public final java.lang.String toString();
+  public final int hashCode();
+  public final boolean equals(java.lang.Object);
+  public com.mojang.serialization.MapCodec<T> codec();
+  public net.minecraft.network.codec.StreamCodec<net.minecraft.network.RegistryFriendlyByteBuf, T> streamCodec();
+}
+
+## api net.minecraft.world.level.block.grower.TreeGrower
+Compiled from "TreeGrower.java"
+public final class net.minecraft.world.level.block.grower.TreeGrower {
+  public static final com.mojang.serialization.Codec<net.minecraft.world.level.block.grower.TreeGrower> CODEC;
+  public static final net.minecraft.world.level.block.grower.TreeGrower OAK;
+  public static final net.minecraft.world.level.block.grower.TreeGrower SPRUCE;
+  public static final net.minecraft.world.level.block.grower.TreeGrower MANGROVE;
+  public static final net.minecraft.world.level.block.grower.TreeGrower AZALEA;
+  public static final net.minecraft.world.level.block.grower.TreeGrower BIRCH;
+  public static final net.minecraft.world.level.block.grower.TreeGrower JUNGLE;
+  public static final net.minecraft.world.level.block.grower.TreeGrower ACACIA;
+  public static final net.minecraft.world.level.block.grower.TreeGrower CHERRY;
+  public static final net.minecraft.world.level.block.grower.TreeGrower DARK_OAK;
+  public static final net.minecraft.world.level.block.grower.TreeGrower PALE_OAK;
+  public static final net.minecraft.world.level.block.grower.TreeGrower POPLAR;
+  public net.minecraft.world.level.block.grower.TreeGrower(java.lang.String, net.minecraft.util.random.WeightedList<net.minecraft.resources.ResourceKey<net.minecraft.world.level.levelgen.feature.Feature>>, net.minecraft.util.random.WeightedList<net.minecraft.resources.ResourceKey<net.minecraft.world.level.levelgen.feature.Feature>>, net.minecraft.util.random.WeightedList<net.minecraft.resources.ResourceKey<net.minecraft.world.level.levelgen.feature.Feature>>, net.minecraft.resources.ResourceKey<net.minecraft.world.level.levelgen.feature.Feature>);
+  public boolean growTree(net.minecraft.server.level.ServerLevel, net.minecraft.world.level.chunk.ChunkGenerator, net.minecraft.core.BlockPos, net.minecraft.world.level.block.state.BlockState, net.minecraft.util.RandomSource);
+  public java.util.OptionalInt getMinimumHeight(net.minecraft.server.level.ServerLevel);
+  public boolean canGrow(net.minecraft.server.level.ServerLevel, net.minecraft.core.BlockPos, net.minecraft.world.level.block.state.BlockState);
+}
+
+## class ^net\.minecraft\.world\.level\.levelgen\.feature\.ConfiguredFeature
+(no matches)
+
+## api net.minecraft.world.level.block.state.BlockBehaviour$Properties isViewBlocking|noOcclusion|ofFullCopy
+Compiled from "BlockBehaviour.java"
+public class net.minecraft.world.level.block.state.BlockBehaviour$Properties {
+  public static net.minecraft.world.level.block.state.BlockBehaviour$Properties ofFullCopy(net.minecraft.world.level.block.state.BlockBehaviour);
+  public net.minecraft.world.level.block.state.BlockBehaviour$Properties noOcclusion();
+  public net.minecraft.world.level.block.state.BlockBehaviour$Properties isViewBlocking(net.minecraft.world.level.block.state.BlockBehaviour$StateArgumentPredicate<net.minecraft.world.phys.AABB>);
+
+## api net.neoforged.neoforge.transfer.StacksResourceHandler
+Compiled from "StacksResourceHandler.java"
+public abstract class net.neoforged.neoforge.transfer.StacksResourceHandler<S, T extends net.neoforged.neoforge.transfer.resource.Resource> implements net.neoforged.neoforge.transfer.ResourceHandler<T>, net.neoforged.neoforge.common.util.ValueIOSerializable {
+  public static final java.lang.String VALUE_IO_KEY;
+  public void serialize(net.minecraft.world.level.storage.ValueOutput);
+  public void deserialize(net.minecraft.world.level.storage.ValueInput);
+  public void set(int, T, int);
+  public boolean isValid(int, T);
+  public net.minecraft.core.NonNullList<S> copyToList();
+  public int size();
+  public T getResource(int);
+  public long getAmountAsLong(int);
+  public long getCapacityAsLong(int, T);
+  public int insert(int, T, int, net.neoforged.neoforge.transfer.transaction.TransactionContext);
+  public int extract(int, T, int, net.neoforged.neoforge.transfer.transaction.TransactionContext);
+}
+
+## api net.neoforged.neoforge.transfer.access.ItemAccess
+Compiled from "ItemAccess.java"
+public interface net.neoforged.neoforge.transfer.access.ItemAccess {
+  public static net.neoforged.neoforge.transfer.access.ItemAccess forPlayerInteraction(net.minecraft.world.entity.player.Player, net.minecraft.world.InteractionHand);
+  public static net.neoforged.neoforge.transfer.access.ItemAccess forInfiniteMaterials(net.minecraft.world.entity.player.Player, net.minecraft.world.item.ItemStack);
+  public static net.neoforged.neoforge.transfer.access.ItemAccess forPlayerCursor(net.minecraft.world.entity.player.Player, net.minecraft.world.inventory.AbstractContainerMenu);
+  public static net.neoforged.neoforge.transfer.access.ItemAccess forPlayerSlot(net.minecraft.world.entity.player.Player, int);
+  public static net.neoforged.neoforge.transfer.access.ItemAccess forHandlerIndex(net.neoforged.neoforge.transfer.ResourceHandler<net.neoforged.neoforge.transfer.item.ItemResource>, int);
+  public static net.neoforged.neoforge.transfer.access.ItemAccess forHandlerIndexStrict(net.neoforged.neoforge.transfer.ResourceHandler<net.neoforged.neoforge.transfer.item.ItemResource>, int);
+  public static net.neoforged.neoforge.transfer.access.ItemAccess forStack(net.minecraft.world.item.ItemStack);
+  public default net.neoforged.neoforge.transfer.access.ItemAccess oneByOne();
+  public default <T> T getCapability(net.neoforged.neoforge.capabilities.ItemCapability<T, net.neoforged.neoforge.transfer.access.ItemAccess>);
+  public abstract net.neoforged.neoforge.transfer.item.ItemResource getResource();
+  public abstract int getAmount();
+  public abstract int insert(net.neoforged.neoforge.transfer.item.ItemResource, int, net.neoforged.neoforge.transfer.transaction.TransactionContext);
+  public abstract int extract(net.neoforged.neoforge.transfer.item.ItemResource, int, net.neoforged.neoforge.transfer.transaction.TransactionContext);
+  public default int exchange(net.neoforged.neoforge.transfer.item.ItemResource, int, net.neoforged.neoforge.transfer.transaction.TransactionContext);
+}
+
+## api net.neoforged.neoforge.transfer.item.ItemAccessItemHandler
+Compiled from "ItemAccessItemHandler.java"
+public class net.neoforged.neoforge.transfer.item.ItemAccessItemHandler extends net.neoforged.neoforge.transfer.ItemAccessResourceHandler<net.neoforged.neoforge.transfer.item.ItemResource> {
+  public net.neoforged.neoforge.transfer.item.ItemAccessItemHandler(net.neoforged.neoforge.transfer.access.ItemAccess, net.minecraft.core.component.DataComponentType<net.minecraft.world.item.component.ItemContainerContents>, int);
+  public boolean isValid(int, net.neoforged.neoforge.transfer.item.ItemResource);
+  public boolean isValid(int, net.neoforged.neoforge.transfer.resource.Resource);
+}
+
+## api net.neoforged.neoforge.transfer.ResourceHandlerUtil
+Compiled from "ResourceHandlerUtil.java"
+public final class net.neoforged.neoforge.transfer.ResourceHandlerUtil {
+  public static boolean isEmpty(net.neoforged.neoforge.transfer.resource.Resource, int);
+  public static boolean isEmpty(net.neoforged.neoforge.transfer.ResourceHandler<? extends net.neoforged.neoforge.transfer.resource.Resource>);
+  public static <T extends net.neoforged.neoforge.transfer.resource.Resource> boolean isFull(net.neoforged.neoforge.transfer.ResourceHandler<T>);
+  public static <T extends net.neoforged.neoforge.transfer.resource.Resource> boolean isValid(net.neoforged.neoforge.transfer.ResourceHandler<T>, T);
+  public static <T extends net.neoforged.neoforge.transfer.resource.Resource> int getRedstoneSignalFromResourceHandler(net.neoforged.neoforge.transfer.ResourceHandler<T>);
+  public static <T extends net.neoforged.neoforge.transfer.resource.Resource> int insertStacking(net.neoforged.neoforge.transfer.ResourceHandler<T>, T, int, net.neoforged.neoforge.transfer.transaction.TransactionContext);
+  public static <T extends net.neoforged.neoforge.transfer.resource.Resource> net.neoforged.neoforge.transfer.resource.ResourceStack<T> extractFirst(net.neoforged.neoforge.transfer.ResourceHandler<T>, java.util.function.Predicate<T>, int, net.neoforged.neoforge.transfer.transaction.TransactionContext);
+  public static <T extends net.neoforged.neoforge.transfer.resource.Resource> int move(net.neoforged.neoforge.transfer.ResourceHandler<T>, net.neoforged.neoforge.transfer.ResourceHandler<T>, java.util.function.Predicate<T>, int, net.neoforged.neoforge.transfer.transaction.TransactionContext);
+  public static <T extends net.neoforged.neoforge.transfer.resource.Resource> int moveStacking(net.neoforged.neoforge.transfer.ResourceHandler<T>, net.neoforged.neoforge.transfer.ResourceHandler<T>, java.util.function.Predicate<T>, int, net.neoforged.neoforge.transfer.transaction.TransactionContext);
+  public static <T extends net.neoforged.neoforge.transfer.resource.Resource> net.neoforged.neoforge.transfer.resource.ResourceStack<T> moveFirst(net.neoforged.neoforge.transfer.ResourceHandler<T>, net.neoforged.neoforge.transfer.ResourceHandler<T>, java.util.function.Predicate<T>, int, net.neoforged.neoforge.transfer.transaction.TransactionContext);
+  public static <T extends net.neoforged.neoforge.transfer.resource.Resource> net.neoforged.neoforge.transfer.resource.ResourceStack<T> moveFirstStacking(net.neoforged.neoforge.transfer.ResourceHandler<T>, net.neoforged.neoforge.transfer.ResourceHandler<T>, java.util.function.Predicate<T>, int, net.neoforged.neoforge.transfer.transaction.TransactionContext);
+  public static <T extends net.neoforged.neoforge.transfer.resource.Resource> boolean contains(net.neoforged.neoforge.transfer.ResourceHandler<T>, T);
+  public static <T extends net.neoforged.neoforge.transfer.resource.Resource> int indexOf(net.neoforged.neoforge.transfer.ResourceHandler<T>, T);
+  public static <T extends net.neoforged.neoforge.transfer.resource.Resource> T findExtractableResource(net.neoforged.neoforge.transfer.ResourceHandler<T>, java.util.function.Predicate<T>, net.neoforged.neoforge.transfer.transaction.TransactionContext);
+}
+
+## api net.minecraft.world.entity.EntityType$EntityFactory
+Compiled from "EntityType.java"
+public interface net.minecraft.world.entity.EntityType$EntityFactory<T extends net.minecraft.world.entity.Entity> {
+  public abstract T create(net.minecraft.world.entity.EntityType<T>, net.minecraft.world.level.Level);
+}
+
+## api net.minecraft.world.level.block.entity.BlockEntityType
+Compiled from "BlockEntityType.java"
+public class net.minecraft.world.level.block.entity.BlockEntityType<T extends net.minecraft.world.level.block.entity.BlockEntity> {
+  public net.minecraft.world.level.block.entity.BlockEntityType(net.minecraft.world.level.block.entity.BlockEntityType$BlockEntitySupplier<? extends T>, java.util.Set<net.minecraft.world.level.block.Block>);
+  public net.minecraft.world.level.block.entity.BlockEntityType(net.minecraft.world.level.block.entity.BlockEntityType$BlockEntitySupplier<? extends T>, java.util.Set<net.minecraft.world.level.block.Block>, boolean);
+  public net.minecraft.world.level.block.entity.BlockEntityType(net.minecraft.world.level.block.entity.BlockEntityType$BlockEntitySupplier<? extends T>, net.minecraft.world.level.block.Block...);
+  public net.minecraft.world.level.block.entity.BlockEntityType(net.minecraft.world.level.block.entity.BlockEntityType$BlockEntitySupplier<? extends T>, boolean, net.minecraft.world.level.block.Block...);
+  public T create(net.minecraft.core.BlockPos, net.minecraft.world.level.block.state.BlockState);
+  public java.util.Set<net.minecraft.world.level.block.Block> getValidBlocks();
+  public boolean isValid(net.minecraft.world.level.block.state.BlockState);
+  public net.minecraft.core.Holder$Reference<net.minecraft.world.level.block.entity.BlockEntityType<?>> builtInRegistryHolder();
+  public T getBlockEntity(net.minecraft.world.level.BlockGetter, net.minecraft.core.BlockPos);
+  public boolean onlyOpCanSetNbt();
+}
+
+## apis ^net\.minecraft\.world\.item\.crafting\.(ShapedRecipe|SimpleCookingRecipeSerializer)(\$.*)?$ CODEC|codec|SERIALIZER
+### net.minecraft.world.item.crafting.ShapedRecipe
+Compiled from "ShapedRecipe.java"
+public class net.minecraft.world.item.crafting.ShapedRecipe extends net.minecraft.world.item.crafting.NormalCraftingRecipe {
+  public static final com.mojang.serialization.MapCodec<net.minecraft.world.item.crafting.ShapedRecipe> MAP_CODEC;
+  public static final net.minecraft.network.codec.StreamCodec<net.minecraft.network.RegistryFriendlyByteBuf, net.minecraft.world.item.crafting.ShapedRecipe> STREAM_CODEC;
+  public static final net.minecraft.world.item.crafting.RecipeSerializer<net.minecraft.world.item.crafting.ShapedRecipe> SERIALIZER;
+
+## apis ^net\.neoforged\.neoforge\.transfer\.(StacksResourceHandler|item\.ItemStacksResourceHandler)$ .
+### net.neoforged.neoforge.transfer.StacksResourceHandler
+Compiled from "StacksResourceHandler.java"
+public abstract class net.neoforged.neoforge.transfer.StacksResourceHandler<S, T extends net.neoforged.neoforge.transfer.resource.Resource> implements net.neoforged.neoforge.transfer.ResourceHandler<T>, net.neoforged.neoforge.common.util.ValueIOSerializable {
+  public static final java.lang.String VALUE_IO_KEY;
+  public void serialize(net.minecraft.world.level.storage.ValueOutput);
+  public void deserialize(net.minecraft.world.level.storage.ValueInput);
+  public void set(int, T, int);
+  public boolean isValid(int, T);
+  public net.minecraft.core.NonNullList<S> copyToList();
+  public int size();
+  public T getResource(int);
+  public long getAmountAsLong(int);
+  public long getCapacityAsLong(int, T);
+  public int insert(int, T, int, net.neoforged.neoforge.transfer.transaction.TransactionContext);
+  public int extract(int, T, int, net.neoforged.neoforge.transfer.transaction.TransactionContext);
+### net.neoforged.neoforge.transfer.item.ItemStacksResourceHandler
+Compiled from "ItemStacksResourceHandler.java"
+public class net.neoforged.neoforge.transfer.item.ItemStacksResourceHandler extends net.neoforged.neoforge.transfer.StacksResourceHandler<net.minecraft.world.item.ItemStack, net.neoforged.neoforge.transfer.item.ItemResource> {
+  public net.neoforged.neoforge.transfer.item.ItemStacksResourceHandler(int);
+  public net.neoforged.neoforge.transfer.item.ItemStacksResourceHandler(net.minecraft.core.NonNullList<net.minecraft.world.item.ItemStack>);
+  public net.neoforged.neoforge.transfer.item.ItemResource getResourceFrom(net.minecraft.world.item.ItemStack);
+  public int getAmountFrom(net.minecraft.world.item.ItemStack);
+  public boolean matches(net.minecraft.world.item.ItemStack, net.neoforged.neoforge.transfer.item.ItemResource);
+  public boolean matches(java.lang.Object, net.neoforged.neoforge.transfer.resource.Resource);
+  public int getAmountFrom(java.lang.Object);
+  public net.neoforged.neoforge.transfer.resource.Resource getResourceFrom(java.lang.Object);
+
+## api net.minecraft.world.entity.projectile.ThrowableProjectile
+Compiled from "ThrowableProjectile.java"
+public abstract class net.minecraft.world.entity.projectile.ThrowableProjectile extends net.minecraft.world.entity.projectile.Projectile {
+  public boolean shouldRenderAtSqrDistance(double);
+  public boolean canUsePortal(boolean);
+  public void tick();
+}
+

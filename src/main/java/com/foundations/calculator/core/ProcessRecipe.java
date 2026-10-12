@@ -45,15 +45,15 @@ public record ProcessRecipe(String machine, List<CountedIngredient> inputs, List
         return IngredientAllocation.allocate(available,required,(i,s)->inputs.get(i).test(input.getItem(s)));
     }
     public boolean matches(ProcessInput input,Level level){return input.stacks().stream().allMatch(RecipePolicies::itemEnabled)&&allocation(input)!=null;}
-    public ItemStack assemble(ProcessInput input,HolderLookup.Provider lookup){return getResultItem(lookup).copy();}
+    public ItemStack assemble(ProcessInput input){return outputs.isEmpty()?ItemStack.EMPTY:outputs.getFirst().stack().copy();}
     public boolean canCraftInDimensions(int width,int height){return width*height>=inputs.size();}
     public ItemStack getResultItem(HolderLookup.Provider lookup){return outputs.isEmpty()?ItemStack.EMPTY:outputs.getFirst().stack();}
-    public RecipeSerializer<?> getSerializer(){return Content.PROCESS_SERIALIZER.get();}
-    public RecipeType<?> getType(){return Content.PROCESS_TYPE.get();}
+    public RecipeSerializer<ProcessRecipe> getSerializer(){return Content.PROCESS_SERIALIZER.get();}
+    public RecipeType<ProcessRecipe> getType(){return Content.PROCESS_TYPE.get();}
     public boolean isSpecial(){return true;}
-    public static final class Serializer implements RecipeSerializer<ProcessRecipe>{
-        private static final StreamCodec<RegistryFriendlyByteBuf,ProcessRecipe> STREAM=ByteBufCodecs.fromCodecWithRegistries(CODEC.codec());
-        public MapCodec<ProcessRecipe> codec(){return CODEC;}
-        public StreamCodec<RegistryFriendlyByteBuf,ProcessRecipe> streamCodec(){return STREAM;}
-    }
+    public boolean showNotification(){return false;}
+    public String group(){return "";}
+    public PlacementInfo placementInfo(){return PlacementInfo.NOT_PLACEABLE;}
+    public RecipeBookCategory recipeBookCategory(){return RecipeBookCategories.CRAFTING_MISC;}
+    public static final StreamCodec<RegistryFriendlyByteBuf,ProcessRecipe> STREAM=ByteBufCodecs.fromCodecWithRegistries(CODEC.codec());
 }

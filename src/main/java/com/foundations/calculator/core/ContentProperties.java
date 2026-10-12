@@ -59,7 +59,7 @@ public final class ContentProperties {
             event.modify(item,b->{
                 if(o.has("durability")){b.set(net.minecraft.core.component.DataComponents.MAX_DAMAGE,(int)number(o,"durability",1,1,Integer.MAX_VALUE));b.set(net.minecraft.core.component.DataComponents.DAMAGE,0);b.set(net.minecraft.core.component.DataComponents.MAX_STACK_SIZE,1);}
                 else if(o.has("stackSize"))b.set(net.minecraft.core.component.DataComponents.MAX_STACK_SIZE,(int)number(o,"stackSize",64,1,99));
-                if(o.has("unbreakable")){if(o.get("unbreakable").getAsBoolean())b.set(net.minecraft.core.component.DataComponents.UNBREAKABLE,new net.minecraft.world.item.component.Unbreakable(true));else b.remove(net.minecraft.core.component.DataComponents.UNBREAKABLE);}
+                if(o.has("unbreakable")){if(o.get("unbreakable").getAsBoolean())b.set(net.minecraft.core.component.DataComponents.UNBREAKABLE,net.minecraft.util.Unit.INSTANCE);else b.remove(net.minecraft.core.component.DataComponents.UNBREAKABLE);}
                 if(o.has("fireResistant")){if(o.get("fireResistant").getAsBoolean())b.set(net.minecraft.core.component.DataComponents.FIRE_RESISTANT,net.minecraft.util.Unit.INSTANCE);else b.remove(net.minecraft.core.component.DataComponents.FIRE_RESISTANT);}
                 if(o.has("rarity"))b.set(net.minecraft.core.component.DataComponents.RARITY,net.minecraft.world.item.Rarity.valueOf(o.get("rarity").getAsString().toUpperCase(java.util.Locale.ROOT)));
             });

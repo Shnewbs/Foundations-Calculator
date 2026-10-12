@@ -13,6 +13,8 @@ public final class FoundationsCalculator {
     public static final String ID = "foundations_calculator";
     public FoundationsCalculator(IEventBus bus, ModContainer container) {
         Content.register(bus);
+        bus.register(com.foundations.calculator.compat.OptionalIntegrations.class);
+        bus.register(com.foundations.calculator.network.Networking.class);
         bus.addListener(CalculatorConfig::configLoaded);
         bus.addListener(CalculatorConfig::configReloaded);
         bus.addListener(CalculatorConfig::configUnloaded);

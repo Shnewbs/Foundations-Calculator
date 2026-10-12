@@ -1,7 +1,9 @@
 # 0.1.0beta development candidate
 
-The 1.21.1 source now supports long-valued native operation costs, exact upgrade discounts, portable calculations and native item charging/discharging. Menu/Jade/guide diagnostics show full long costs; matching client/server protocol 7 is required. The cumulative 0.0.5a.R2 release remains the last published binary.
+Minecraft 1.21.1 native binary/source JARs build successfully. All 31 JUnit tests and 142 standalone GameTests pass; the integration run excluding GTCEu also passes 142 tests and a KubeJS reload. The combined integration JVM was killed with exit 137, so the complete release audit is not passed. Client walkthrough has partial machine/circuit passes and 19 screenshots; its final completion marker is absent. See docs/0.1.0beta_VALIDATION.md for the evidence and limits.
 
-Current source has eight new arithmetic JUnit tests and eight native gameplay regressions (142 GameTest floor). Local native compilation/runtime validation is underway. Arithmetic tests pass; that result alone does not establish a loadable mod.
+Long native operation costs, upgrade discounts, portable calculations, item rates and full menu/Jade/guide diagnostics are implemented. Use matching client/server protocol 7.
 
-The separate 26.1.2 and 26.3 branches remain full API migrations. All supported platform, client, real-world migration, multiplayer and performance gates are tracked in `docs/0.1.0beta_ACCEPTANCE.md` and `docs/0.1_MILESTONES.md`. No 26.4 compatibility is verified.
+The existing 26.1.2 and 26.3 version branches contain the synchronized beta features and modern tool migration. Their isolated platform suites each pass 31 tests, but full mod compilation still has 193 and 322 errors respectively. No playable 26.x binary exists.
+
+The last published binary remains 0.0.5a.R2. Full 0.1.0beta acceptance and publication remain pending.

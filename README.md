@@ -6,4 +6,6 @@ This candidate adds long-valued processing costs, portable calculations and nati
 
 Build with `BUILD.bat` or `bash gradlew clean test build`. Validate with `python tools/validate_release.py`; the command regenerates maintained configuration/guide resources, builds binary/source JARs, runs JUnit plus standalone and integration GameTests, and audits the exact source and artifacts. Local validation works independently of GitHub Actions.
 
+Native candidate verification: **31 JUnit tests, 142 standalone GameTests and 142 integration GameTests excluding GTCEu pass**. The combined integration JVM was killed with exit 137. See [validation evidence](docs/0.1.0beta_VALIDATION.md).
+
 The last published release is **0.0.5a.R2**. The 0.1.0beta release gates are tracked in [the beta checklist](docs/0.1.0beta_ACCEPTANCE.md). A version string alone does not certify those gates. Separate 26.1.2 and 26.3 branches remain under migration; 26.4 compatibility is unverified.

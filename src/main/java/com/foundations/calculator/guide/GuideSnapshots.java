@@ -55,7 +55,7 @@ public final class GuideSnapshots {
         else if(GROUPS.containsKey(key)){
             for(String setting:GROUPS.get(key))setting(rows,setting);
             if(key.equals("research")){
-                var data=ResearchData.get(player.server);rows.add("Your unlocked groups: "+data.groups(player.getUUID()).size());
+                var data=ResearchData.get(player.level().getServer());rows.add("Your unlocked groups: "+data.groups(player.getUUID()).size());
                 var mastery=data.mastery(player.getUUID());for(String family:ResearchData.FAMILIES)rows.add(family+": "+mastery.getOrDefault(family,0L)+" / "+ResearchData.target(family));
                 rows.add("Full sample list and unlock status: Research button. Reading does not grant unlocks.");
             }

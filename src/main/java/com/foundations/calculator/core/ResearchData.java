@@ -24,7 +24,7 @@ public final class ResearchData extends SavedData {
         var data=get(level.getServer());var counts=data.mastery.computeIfAbsent(owner(player),id->new HashMap<>());long old=counts.getOrDefault(family,0L);counts.put(family,old==Long.MAX_VALUE?old:old+1);data.setDirty();
         if(level.getGameTime()%20==0||old+1==target(family))syncAll(level.getServer());
     }
-    public static void sync(net.minecraft.server.level.ServerPlayer player){net.neoforged.neoforge.network.PacketDistributor.sendToPlayer(player,new com.foundations.calculator.network.ResearchSyncPayload(get(player.server).groups(player.getUUID()).stream().sorted().limit(4096).toList(),get(player.server).mastery(player.getUUID())));}
+    public static void sync(net.minecraft.server.level.ServerPlayer player){net.neoforged.neoforge.network.PacketDistributor.sendToPlayer(player,new com.foundations.calculator.network.ResearchSyncPayload(get(player.level().getServer()).groups(player.getUUID()).stream().sorted().limit(4096).toList(),get(player.level().getServer()).mastery(player.getUUID())));}
     public static void syncAll(MinecraftServer server){server.getPlayerList().getPlayers().forEach(ResearchData::sync);}
     private static final UUID SHARED=new UUID(0,0);
     private final Map<UUID,Set<String>> unlocked=new HashMap<>();

@@ -1,0 +1,32 @@
+{
+  "display": {
+    "icon": {
+      "id": "foundations_calculator:processing_chamber"
+    },
+    "title": {
+      "translate": "advancements.foundations_calculator.processing.title"
+    },
+    "description": {
+      "translate": "advancements.foundations_calculator.processing.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": false,
+    "hidden": false
+  },
+  "criteria": {
+    "obtain": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "foundations_calculator:processing_chamber"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "parent": "foundations_calculator:root"
+}

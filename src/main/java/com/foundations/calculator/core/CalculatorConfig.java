@@ -103,6 +103,10 @@ public final class CalculatorConfig {
         int override=machine(machine,"ticksOverride",-1);
         return (int)Math.clamp((override>0?override:original)*decimal("machines.processTimeMultiplier",1)*decimal("machine."+machine+".timeMultiplier",1)*preset("time"),1,Integer.MAX_VALUE);
     }
+    /** Read the synchronized configured value; derived machine totals are reported separately. */
+    public static Optional<Object> configuredValue(String key){
+        return VALUES.containsKey(key)?Optional.ofNullable(get(key,DEFAULTS.get(key))):Optional.empty();
+    }
     public static Set<String> keys(){return Collections.unmodifiableSet(VALUES.keySet());}
     /** Primarily useful to management integrations; validation still belongs to the config spec. */
     public static Optional<ModConfigSpec.ConfigValue<?>> value(String key){return Optional.ofNullable(VALUES.get(key));}

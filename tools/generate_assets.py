@@ -135,6 +135,8 @@ for e in entries:
   else:states={'':{'model':defaultmodel}}
  if states:write(A/'blockstates'/f'{id}.json',{'variants':states})
  if not id.startswith('crop_'):write(A/'models/item'/f'{id}.json',{'parent':defaultmodel})
+lang_overrides=R/'tools/asset_overrides/lang/en_us.json'
+if lang_overrides.exists():lang.update(load(lang_overrides))
 write(A/'lang/en_us.json',lang)
 (R/'tools/asset_migration_report.json').write_text(json.dumps({'fallback_visuals':missing},indent=2))
 print('Asset fallback list:',missing)

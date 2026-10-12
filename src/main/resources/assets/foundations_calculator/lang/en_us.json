@@ -302,5 +302,15 @@
   "block.foundations_calculator.research_chamber": "Research Chamber",
   "item.foundations_calculator.smelting_module": "Smelting Module",
   "item.foundations_calculator.atomic_terrain_module": "Atomic Terrain Module",
-  "config.jade.plugin_foundations_calculator.machine_status": "Foundations machine status"
+  "config.jade.plugin_foundations_calculator.machine_status": "Foundations machine status",
+  "advancements.foundations_calculator.root.title": "First Calculation",
+  "advancements.foundations_calculator.root.description": "Obtain a Calculator. Open the Field Guide to begin.",
+  "advancements.foundations_calculator.scientific.title": "Scientific Progress",
+  "advancements.foundations_calculator.scientific.description": "Obtain a Scientific Calculator to expand your recipe options.",
+  "advancements.foundations_calculator.atomic.title": "Atomic Precision",
+  "advancements.foundations_calculator.atomic.description": "Obtain an Atomic Calculator for advanced calculations.",
+  "advancements.foundations_calculator.processing.title": "Powering Production",
+  "advancements.foundations_calculator.processing.description": "Obtain a Processing Chamber and connect a power source.",
+  "advancements.foundations_calculator.research.title": "Knowledge Is Power",
+  "advancements.foundations_calculator.research.description": "Obtain a Research Chamber and study your samples."
 }

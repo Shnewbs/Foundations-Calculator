@@ -32,7 +32,13 @@ public final class R2GameTests {
     }
     @GameTest(template="large",batch="r2_final") public static void analysingChamberHonorsSpeedAndEnergyUpgrades(GameTestHelper h){
         R6GameTests.setting("machine.analysing_chamber.energyOverride",100,()->R6GameTests.setting("machine.analysing_chamber.ticksOverride",20,()->{
-            var m=place(h,"analysing_chamber");m.inventory.setStackInSlot(0,new ItemStack(Content.item("circuit_board_1")));
+            var m=place(h,"analysing_chamber");
+            var circuit=new ItemStack(Content.item("circuit_board_1"));
+            var rolls=new net.minecraft.nbt.CompoundTag();rolls.putInt("Stable",1);rolls.putInt("Energy",-1);
+            for(int i=1;i<=6;i++)rolls.putInt("Item"+i,-1);
+            // Isolate the upgrade cost from legitimate random analysis rewards.
+            circuit.set(net.minecraft.core.component.DataComponents.CUSTOM_DATA,net.minecraft.world.item.component.CustomData.of(rolls));
+            m.inventory.setStackInSlot(0,circuit);
             m.inventory.setStackInSlot(21,new ItemStack(Content.item("speed_upgrade"),4));
             m.inventory.setStackInSlot(22,new ItemStack(Content.item("energy_upgrade"),4));
             int cost=m.upgradeEnergyCost(100);h.assertTrue(cost==71&&m.upgradeProcessTicks(20)==10,"Analyser uses shared upgrade math");

@@ -43,6 +43,23 @@ public final class ConfigDiagnostics {
         config.then(Commands.literal("machine").then(Commands.argument("id",StringArgumentType.word())
             .suggests((ctx,b)->{machines().forEach(b::suggest);return b.buildFuture();})
             .executes(ctx->machine(ctx.getSource(),StringArgumentType.getString(ctx,"id")))));
+        config.then(Commands.literal("get").then(Commands.argument("key",StringArgumentType.greedyString())
+            .suggests((ctx,b)->{CalculatorConfig.keys().stream().filter(k->k.startsWith(b.getRemaining())).limit(50).forEach(b::suggest);return b.buildFuture();})
+            .executes(ctx->{
+                String key=StringArgumentType.getString(ctx,"key");
+                var value=CalculatorConfig.configuredValue(key);
+                if(value.isEmpty()){ctx.getSource().sendFailure(Component.literal("Unknown Calculator setting: "+key));return 0;}
+                return emit(ctx.getSource(),key+" = "+value.get(),"Configured value. Use /foundations config machine <id> for derived machine totals.");
+            })));
+        config.then(Commands.literal("find").then(Commands.argument("text",StringArgumentType.greedyString())
+            .executes(ctx->{
+                String text=StringArgumentType.getString(ctx,"text").toLowerCase(Locale.ROOT);
+                var matches=CalculatorConfig.keys().stream().filter(k->k.toLowerCase(Locale.ROOT).contains(text)).sorted().toList();
+                if(matches.isEmpty())return emit(ctx.getSource(),"No Calculator settings match: "+text);
+                emit(ctx.getSource(),"Matching settings: "+matches.size()+" (showing up to 20). Use /foundations config get <key>.");
+                for(String key:matches.stream().limit(20).toList())emit(ctx.getSource(),key);
+                return 1;
+            })));
         event.getDispatcher().register(Commands.literal("foundations").then(config));
     }
     private ConfigDiagnostics(){}

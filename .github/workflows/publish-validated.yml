@@ -28,6 +28,11 @@ jobs:
           set -euo pipefail
           version=$(sed -n 's/^mod_version=//p' gradle.properties)
           tag="v$version"
+          current=$(gh api "repos/$GITHUB_REPOSITORY/git/ref/heads/main" --jq '.object.sha')
+          if test "$current" != "$VALIDATED_COMMIT"; then
+            echo "A newer main commit exists; its validation run will publish this update."
+            exit 0
+          fi
           jar="validated/build/libs/FoundationsCalculator-$version.jar"
           sources="validated/build/libs/FoundationsCalculator-$version-sources.jar"
           audit="validated/validation/$version/release_checks.json"

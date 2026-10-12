@@ -1,0 +1,32 @@
+{
+  "display": {
+    "icon": {
+      "id": "foundations_calculator:atomic_calculator"
+    },
+    "title": {
+      "translate": "advancements.foundations_calculator.atomic.title"
+    },
+    "description": {
+      "translate": "advancements.foundations_calculator.atomic.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": false,
+    "hidden": false
+  },
+  "criteria": {
+    "obtain": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "foundations_calculator:atomic_calculator"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "parent": "foundations_calculator:scientific"
+}

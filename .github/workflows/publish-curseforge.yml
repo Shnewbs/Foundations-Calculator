@@ -3,6 +3,8 @@ on:
   push:
     branches: [main]
     paths: ['.github/workflows/publish-curseforge.yml', 'tools/publish_curseforge.py']
+  release:
+    types: [published]
   workflow_run:
     workflows: ['Publish validated Calculator update']
     types: [completed]
@@ -20,7 +22,7 @@ concurrency:
   cancel-in-progress: false
 jobs:
   upload:
-    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch' || (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.head_branch == 'main' && github.event.workflow_run.head_repository.full_name == github.repository)
+    if: github.event_name == 'push' || github.event_name == 'release' || github.event_name == 'workflow_dispatch' || (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.head_branch == 'main' && github.event.workflow_run.head_repository.full_name == github.repository)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -33,13 +35,21 @@ jobs:
         id: release
         env:
           GH_TOKEN: ${{ github.token }}
-          REQUESTED_TAG: ${{ inputs.tag }}
+          REQUESTED_TAG: ${{ inputs.tag || github.event.release.tag_name }}
         shell: bash
         run: |
           set -euo pipefail
           tag="${REQUESTED_TAG:-v$(sed -n 's/^mod_version=//p' gradle.properties)}"
           [[ "$tag" =~ ^v[0-9A-Za-z.-]+$ ]]
-          gh release view "$tag" --json tagName,assets,body > release.json
+          echo 'upload=false' >> "$GITHUB_OUTPUT"
+          if ! gh release view "$tag" --json tagName,assets,body > release.json; then
+            if test -n "$REQUESTED_TAG"; then
+              echo "::error::Requested audited GitHub release $tag does not exist."
+              exit 1
+            fi
+            echo "No published release for $tag; its candidate validation or acceptance is still pending."
+            exit 0
+          fi
           echo "tag=$tag" >> "$GITHUB_OUTPUT"
           echo "version=${tag#v}" >> "$GITHUB_OUTPUT"
           if jq -e '.assets[] | select(.name == "curseforge-upload.json")' release.json >/dev/null; then

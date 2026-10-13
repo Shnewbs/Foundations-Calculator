@@ -22,7 +22,7 @@ neoForge {
                 programArguments.addAll('--width','1280','--height','960')
             }
         }
-        server { server(); programArgument '--nogui' }
+        server { server(); programArgument '--nogui'; if(project.hasProperty('portSmoke')) systemProperty 'foundations.portSmoke','true' }
         gameTestServer { type = 'gameTestServer'; systemProperty 'neoforge.enabledGameTestNamespaces', 'foundations_calculator' }
     }
     mods { foundations_calculator { sourceSet(sourceSets.main) } }
@@ -229,3 +229,12 @@ sourceSets.main.java.exclude 'com/foundations/calculator/compat/CraftTweakerInte
     'com/foundations/calculator/compat/GrandPowerEnergy.java',
     'com/foundations/calculator/compat/ModernIndustrializationEnergy.java',
     'com/foundations/calculator/compat/viewer/EmiIntegration.java'
+
+// Small native-world regressions are isolated from legacy GameTests and released JARs.
+sourceSets {
+    portSmoke {
+        compileClasspath += sourceSets.main.output + sourceSets.main.compileClasspath
+        runtimeClasspath += sourceSets.main.output + sourceSets.main.runtimeClasspath
+    }
+}
+if(project.hasProperty('portSmoke')) neoForge.mods.foundations_calculator.sourceSet(sourceSets.portSmoke)

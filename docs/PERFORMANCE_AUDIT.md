@@ -46,7 +46,26 @@ allocation cases and numerical boundaries. Added real-world regressions for
 first-match equivalence, lane offset/cache invalidation and immutable research
 snapshots: two additional 1.21.1 GameTests and ten additional native port checks.
 The native test floors are now 144 GameTests and 56 port assertions respectively.
-Fresh CI outcomes must be checked before treating these as runtime passes.
+Fresh CI evidence is recorded in `performance/native-validation.json`:
+
+| Target | Native verification | Evidence |
+| --- | --- | --- |
+| 1.21.1 | 33 unit tests; 144 standalone and 144 full-integration GameTests; distributable binary/source JARs | [Native audit](https://github.com/Shnewbs/Foundations-Calculator/actions/runs/38408010160) |
+| 1.21.1 client | Actual client exited successfully, all four smoke markers passed, and all 21 required screenshots were present | [Real-client walkthrough](https://github.com/Shnewbs/Foundations-Calculator/actions/runs/38408010593) |
+| 26.1.2 | 43 unit tests; 56 real-world assertions standalone and with matching integrations; 909 required recipes; binary/source JARs | [Native audit](https://github.com/Shnewbs/Foundations-Calculator/actions/runs/38407536817) |
+| 26.3 | 43 unit tests; 56 real-world assertions standalone and with matching integrations; 909 required recipes and four tree features; binary/source JARs | [Native audit](https://github.com/Shnewbs/Foundations-Calculator/actions/runs/38407540953) |
+
+Unit test XML and native startup reports were inspected in the uploaded artifacts.
+There were no skipped/failed/error unit tests or recipe resource errors. Local
+isolated policy checks, Java syntax checks and six Python tests also passed.
+The shared allocator, benchmark and display suffix changes are byte-identical
+across targets; native inventory/energy APIs retain their own implementations.
+
+The CurseForge check [ran successfully](https://github.com/Shnewbs/Foundations-Calculator/actions/runs/38408036276)
+but **did not upload**: the beta has no published, accepted GitHub release yet.
+The native audit still reports `release_eligible: false`; this work does not
+replace live-world upgrade, multiplayer/protection, performance soak or remaining
+port client acceptance.
 
 ## Existing protections retained
 

@@ -11,3 +11,11 @@ Native port runtime evidence: Actions 38333014353 (26.1.2) and 38333018796 (26.3
 Use matching client/server builds: gameplay protocol 7 on 1.21.1 and 8 on the 26.x ports. The Guide API remains 1.0.0. The 26.x integrations pinned and exercised are JEI, Jade, AE2 and GuideMe; unavailable legacy scripting/technology integrations remain excluded on those targets.
 
 GitHub Actions are working. The CurseForge workflow uses the repository's CURSEFORGE_API_TOKEN secret for eligible audited releases and retains upload receipts. Successful upload-workflow runs that skip an unreleased candidate are not uploads.
+
+## Performance audit — 2026-10-13
+
+Nine source-level improvements are applied across the three maintained targets.
+Fresh native suites and the 1.21.1 real-client walkthrough pass; allocator
+allocation falls 77.3% in the isolated mixed workload. Full-world performance
+and beta publication acceptance remain pending. See [the performance audit](docs/PERFORMANCE_AUDIT.md)
+for exact CI evidence, scope and the prioritized remaining opportunities.

@@ -61,6 +61,7 @@ run.mkdir(exist_ok=True)
 code, server_log, ready = launch(['runServer'], evidence / 'world-creation.log', 300, True)
 if code != 0 or not ready or not (run / 'FoundationsSmoke/level.dat').is_file():
     raise SystemExit('The native smoke world failed to start and save.')
+(run / 'options.txt').write_text('onboardAccessibility:false\ntutorialStep:none\nrenderDistance:6\nsimulationDistance:5\nmaxFps:60\n')
 destination = run / 'saves/FoundationsSmoke'
 destination.parent.mkdir(exist_ok=True)
 shutil.copytree(run / 'FoundationsSmoke', destination, dirs_exist_ok=True)

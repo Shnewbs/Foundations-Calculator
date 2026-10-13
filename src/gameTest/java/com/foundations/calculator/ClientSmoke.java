@@ -27,13 +27,18 @@ import net.neoforged.neoforge.client.event.ClientTickEvent;
 /** Opt-in real OpenGL client regression walkthrough. Never included in a release JAR. */
 @EventBusSubscriber(modid=FoundationsCalculator.ID,value=Dist.CLIENT)
 public final class ClientSmoke {
-    private static boolean started;private static int ticks,smeltWait;private static BlockPos origin;
+    private static boolean started,armed;private static int waitingTicks;private static int ticks,smeltWait;private static BlockPos origin;
     private static final List<String> DISPLAY=List.of("conductor_mast","weather_station","transmitter","scarecrow","crank_handle","extraction_chamber","processing_chamber","precision_chamber","docking_station","magnetic_flux","atomic_multiplier","flawless_greenhouse");
     @SubscribeEvent public static void tick(ClientTickEvent.Post event){
         if(Boolean.getBoolean("foundations.powerSmoke")||!Boolean.getBoolean("foundations.clientSmoke")||Boolean.getBoolean("foundations.viewerSmoke"))return;Minecraft mc=Minecraft.getInstance();
+        if(!armed){armed=true;System.out.println("FOUNDATIONS_CLIENT_SMOKE_ARMED");}
+        if(mc.level==null&&++waitingTicks%100==0)System.out.println("FOUNDATIONS_CLIENT_WAITING_SCREEN "+(mc.screen==null?"none":mc.screen.getClass().getSimpleName())+" started="+started);
+        // Fresh hosted profiles display this first-run screen before the title menu.
+        if(!started&&mc.screen!=null&&mc.screen.getClass().getSimpleName().equals("AccessibilityOnboardingScreen")){mc.setScreen(new TitleScreen());return;}
         if(!started&&mc.screen instanceof TitleScreen){started=true;mc.createWorldOpenFlows().openWorld("FoundationsSmoke",()->{throw new IllegalStateException("Smoke world refused to load");});return;}
         if(mc.level==null||mc.player==null)return;
         ticks++;
+        if(ticks%200==0)System.out.println("FOUNDATIONS_CLIENT_SMOKE_PROGRESS ticks="+ticks+" screen="+(mc.screen==null?"none":mc.screen.getClass().getSimpleName()));
         if(ticks==20){mc.getSingleplayerServer().execute(()->{
             ServerPlayer player=mc.getSingleplayerServer().getPlayerList().getPlayers().getFirst();var level=player.serverLevel();origin=new BlockPos(0,64,0);
             player.setGameMode(GameType.CREATIVE);level.setDayTime(6000);level.setWeatherParameters(12000,0,false,false);

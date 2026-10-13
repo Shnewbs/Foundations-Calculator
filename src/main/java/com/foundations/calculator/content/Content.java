@@ -28,7 +28,7 @@ import net.neoforged.neoforge.registries.*;
 
 public final class Content {
     public static final DeferredRegister.Blocks BLOCKS=DeferredRegister.createBlocks(FoundationsCalculator.ID);
-    public static final Supplier<Block> EXTENSION=BLOCKS.register("machine_extension",()->new MachineExtensionBlock(BlockBehaviour.Properties.of().strength(1,12).noOcclusion().noLootTable()));
+    public static final Supplier<Block> EXTENSION=BLOCKS.register("machine_extension",()->new MachineExtensionBlock(BlockBehaviour.Properties.of().setId(ResourceKey.create(Registries.BLOCK,id("machine_extension"))).strength(1,12).noOcclusion().noLootTable()));
     public static final DeferredRegister.Items ITEMS=DeferredRegister.createItems(FoundationsCalculator.ID);
     public static final DeferredRegister<BlockEntityType<?>> ENTITIES=DeferredRegister.create(Registries.BLOCK_ENTITY_TYPE,FoundationsCalculator.ID);
     public static final DeferredRegister<net.minecraft.world.entity.EntityType<?>> PROJECTILES=DeferredRegister.create(Registries.ENTITY_TYPE,FoundationsCalculator.ID);

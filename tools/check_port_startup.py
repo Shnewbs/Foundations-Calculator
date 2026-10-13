@@ -7,6 +7,7 @@ import re
 import selectors
 import signal
 import subprocess
+import sys
 import time
 
 run = Path('run')
@@ -14,7 +15,12 @@ run.mkdir(exist_ok=True)
 (run / 'eula.txt').write_text('eula=true\n')
 (run / 'server.properties').write_text('online-mode=false\nlevel-name=port-smoke\nview-distance=2\nsimulation-distance=2\n')
 Path('build').mkdir(exist_ok=True)
-process = subprocess.Popen(['bash', 'gradlew', 'runServer', '--console=plain'],
+integrations = '--with-integrations' in sys.argv
+suffix = '-integrations' if integrations else ''
+arguments = ['bash', 'gradlew', 'runServer', '--console=plain']
+if integrations:
+    arguments.append('-PwithIntegrations')
+process = subprocess.Popen(arguments,
                            stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
                            start_new_session=True)
 selector = selectors.DefaultSelector()
@@ -47,7 +53,7 @@ finally:
         process.wait()
     selector.close()
     log = output.decode(errors='replace')
-    Path('build/port-startup.log').write_text(log)
+    Path(f'build/port-startup{suffix}.log').write_text(log)
     errors = [line for line in log.splitlines() if re.search(
         r"Couldn't parse data file|Parsing error loading recipe|Error parsing recipe|Failed to parse recipe|Error loading recipe|Failed to load datapacks|Failed to start the minecraft server|Mod loading error|Failed to load registries", line, re.I)]
     counts = [int(x) for x in re.findall(r'Loaded (\d+) recipes', log)]
@@ -56,9 +62,9 @@ finally:
     expected = len(recipe_files)
     conditional = sum(bool(json.loads(path.read_text()).get('neoforge:conditions')) for path in recipe_files)
     required = expected - conditional
-    report = {'server_started': started, 'exit_code': process.returncode,
+    report = {'integrations_enabled': integrations, 'server_started': started, 'exit_code': process.returncode,
               'loaded_recipes': max(counts, default=0), 'calculator_recipes': max(native_counts, default=0), 'authored_calculator_recipes': expected, 'required_calculator_recipes': required, 'conditional_calculator_recipes': conditional, 'resource_errors': errors,
               'passed': started and process.returncode == 0 and not errors and required <= max(native_counts, default=0) <= expected}
-    Path('build/port-startup.json').write_text(json.dumps(report, indent=2) + '\n')
+    Path(f'build/port-startup{suffix}.json').write_text(json.dumps(report, indent=2) + '\n')
 if not report['passed']:
     raise SystemExit('Native server startup or recipe loading failed; see build/port-startup.log')

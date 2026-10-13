@@ -35,3 +35,14 @@ for cls,method in [('AxeItem','axe'),('ShovelItem','shovel'),('HoeItem','hoe')]:
     pattern=r'new '+cls+r'\(CalculatorTier\.of\("([^\"]+)"\),([^,]+),([^,]+),ContentProperties\.item\("([^\"]+)",new Item\.Properties\(\)\)\)'
     s=re.sub(pattern,lambda m:f'new Item(ContentProperties.item("{m[4]}",new Item.Properties().{method}(CalculatorTier.of("{m[1]}"),{m[2]},{m[3]})))',s)
 p.write_text(s)
+
+# Preserve additional native properties, including end-forged unbreakability.
+p=root/'src/main/java/com/foundations/calculator/content/Content.java'
+s=p.read_text()
+for cls,method in [('AxeItem','axe'),('ShovelItem','shovel'),('HoeItem','hoe')]:
+    pattern=r'new '+cls+r'\(CalculatorTier.of\("([^\"]+)"\),([^,]+),([^,]+),ContentProperties.item\("([^\"]+)",new Item.Properties\(\)'
+    s=re.sub(pattern,lambda m:f'new Item(ContentProperties.item("{m[4]}",new Item.Properties().{method}(CalculatorTier.of("{m[1]}"),{m[2]},{m[3]})',s)
+s=s.replace('.isViewBlocking((s,w,p)->false)', '.isViewBlocking((s,w,p,box)->false)')
+pattern=r'new TreeGrower\("foundations_calculator:([^\"]+)",Optional.empty\(\),Optional.of\(ResourceKey.create\(Registries.CONFIGURED_FEATURE,id\("([^\"]+)"\)\)\),Optional.empty\(\)\)'
+s=re.sub(pattern,lambda m:f'new TreeGrower("foundations_calculator:{m[1]}",net.minecraft.util.random.WeightedList.of(ResourceKey.create(Registries.FEATURE,id("{m[2]}"))),net.minecraft.util.random.WeightedList.of(),net.minecraft.util.random.WeightedList.of(),ResourceKey.create(Registries.FEATURE,id("{m[2]}")))',s)
+p.write_text(s)

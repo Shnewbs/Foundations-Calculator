@@ -287,3 +287,8 @@ tasks.register('captureFuelImplementation', Exec) {
             'net.minecraft.world.level.block.grower.TreeGrower'
     }
 }
+
+tasks.register('captureNativeData', Exec) {
+    dependsOn tasks.named('createMinecraftArtifacts')
+    doFirst { commandLine 'python3', 'tools/capture_native_data.py', sourceSets.main.runtimeClasspath.asPath }
+}

@@ -1,0 +1,10 @@
+{
+  "model": {
+    "type": "minecraft:special",
+    "base": "foundations_calculator:item/docking_station",
+    "model": {
+      "type": "foundations_calculator:machine",
+      "kind": "docking_station"
+    }
+  }
+}

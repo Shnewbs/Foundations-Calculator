@@ -1,0 +1,10 @@
+{
+  "model": {
+    "type": "minecraft:special",
+    "base": "foundations_calculator:item/weather_station",
+    "model": {
+      "type": "foundations_calculator:machine",
+      "kind": "weather_station"
+    }
+  }
+}

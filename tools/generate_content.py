@@ -17,3 +17,7 @@ print(len(rows),'content entries regenerated')
 # Keep the generated catalog on this branch's actual 26.x tool API.
 import runpy
 runpy.run_path(str(Path(__file__).resolve().parent / "migrate_tool_materials.py"))
+
+# Native item descriptors and preserved special/flat tool presentation.
+import runpy
+runpy.run_path(str(Path(__file__).resolve().with_name("migrate_item_definitions.py")),run_name="__main__")

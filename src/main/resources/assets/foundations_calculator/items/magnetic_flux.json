@@ -1,0 +1,10 @@
+{
+  "model": {
+    "type": "minecraft:special",
+    "base": "foundations_calculator:item/magnetic_flux",
+    "model": {
+      "type": "foundations_calculator:machine",
+      "kind": "magnetic_flux"
+    }
+  }
+}

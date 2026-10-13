@@ -207,6 +207,7 @@ tasks.register('capturePortApi', Exec) {
             'com.mojang.blaze3d.vertex.VertexConsumer',
             'net.minecraft.client.renderer.blockentity.BlockEntityRenderer',
             'net.minecraft.client.model.geom.ModelPart',
+            'net.minecraft.client.model.Model',
             'net.minecraft.client.renderer.item.ItemModelResolver',
             'net.minecraft.client.renderer.rendertype.RenderTypes',
             'net.minecraft.world.clock.ServerClockManager',

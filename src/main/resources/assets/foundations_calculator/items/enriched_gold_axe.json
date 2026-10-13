@@ -1,0 +1,14 @@
+{
+  "model": {
+    "type": "minecraft:condition",
+    "property": "foundations_calculator:tool_models",
+    "on_true": {
+      "type": "minecraft:model",
+      "model": "foundations_calculator:item/enriched_gold_axe"
+    },
+    "on_false": {
+      "type": "minecraft:model",
+      "model": "foundations_calculator:flat_tools/enriched_gold_axe"
+    }
+  }
+}

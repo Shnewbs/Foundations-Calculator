@@ -28,7 +28,7 @@ public final class GuideRecipes {
             parts.add(new Part(ItemStack.EMPTY,"Process: "+p.machine().replace('_',' ')));
             int slot=1;
             for(var in:p.inputs()){
-                ItemStack[] accepted=in.ingredient().getItems();var stack=accepted.length==0?ItemStack.EMPTY:accepted[0].copy();if(!stack.isEmpty())stack.setCount(in.count());
+                ItemStack[] accepted=in.ingredient().items().map(ItemStack::new).toArray(ItemStack[]::new);var stack=accepted.length==0?ItemStack.EMPTY:accepted[0].copy();if(!stack.isEmpty())stack.setCount(in.count());
                 String state=in.circuitState()==2?" · analysed AND stable":in.circuitState()==1?" · analysed":"";
                 parts.add(new Part(stack,"Input "+slot+++": "+in.count()+" × "+(stack.isEmpty()?"unresolved ingredient/tag":stack.getHoverName().getString())+state+(accepted.length>1?" ("+accepted.length+" accepted variants)":"")));
             }
@@ -49,7 +49,7 @@ public final class GuideRecipes {
         }else{
             var displays=recipe.display();var context=net.minecraft.world.item.crafting.display.SlotDisplayContext.fromLevel(mc.level);int slot=0;
             if(!displays.isEmpty()&&displays.getFirst() instanceof net.minecraft.world.item.crafting.display.ShapedCraftingRecipeDisplay shaped){
-                for(var display:shaped.ingredients()){int index=slot++;var choices=display.resolveForStacks(context);if(choices.isEmpty())continue;var stack=choices.getFirst().copy();parts.add(new Part(stack,"Grid row "+(index/shaped.width()+1)+", column "+(index%shaped.width()+1)+": "+stack.getHoverName().getString()+(choices.size()>1?" ("+choices.size()+" accepted variants)":"")));}
+                for(var display:shaped.ingredients()){int inputIndex=slot++;var choices=display.resolveForStacks(context);if(choices.isEmpty())continue;var stack=choices.getFirst().copy();parts.add(new Part(stack,"Grid row "+(inputIndex/shaped.width()+1)+", column "+(inputIndex%shaped.width()+1)+": "+stack.getHoverName().getString()+(choices.size()>1?" ("+choices.size()+" accepted variants)":"")));}
             }else{
                 for(var ingredient:recipe.placementInfo().ingredients()){var choices=ingredient.items().map(ItemStack::new).toList();var stack=choices.isEmpty()?ItemStack.EMPTY:choices.getFirst().copy();parts.add(new Part(stack,"Ingredient "+(++slot)+": "+(stack.isEmpty()?"unresolved ingredient":stack.getHoverName().getString())+(choices.size()>1?" ("+choices.size()+" accepted variants)":"")));}
             }

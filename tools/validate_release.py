@@ -28,6 +28,7 @@ def main():
         (evidence / name).unlink(missing_ok=True)
     wrapper = ['cmd', '/c', 'gradlew.bat'] if os.name == 'nt' else ['bash', 'gradlew']
     gradle = shlex.split(args.gradle_command, posix=os.name != 'nt') if args.gradle_command else wrapper
+    subprocess.run([sys.executable, '-m', 'unittest', 'discover', '-s', 'tools/tests'], check=True)
     started = datetime.datetime.now(datetime.timezone.utc).isoformat()
     for script in ['generate_config.py', 'generate_config_docs.py', 'author_field_guide.py', 'validate_assets.py', 'validate_progression.py']:
         subprocess.run([sys.executable, 'tools/' + script], check=True)

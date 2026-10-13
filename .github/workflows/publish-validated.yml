@@ -19,44 +19,28 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           VALIDATED_RUN: ${{ github.event.workflow_run.id }}
         run: gh run download "$VALIDATED_RUN" --name calculator-validation --dir validated
-      - name: Publish versioned prerelease
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Publish versioned alpha or beta and upload to CurseForge
         env:
           GH_TOKEN: ${{ github.token }}
+          CURSEFORGE_API_TOKEN: ${{ secrets.CURSEFORGE_API_TOKEN }}
           VALIDATED_COMMIT: ${{ github.event.workflow_run.head_sha }}
         shell: bash
         run: |
           set -euo pipefail
           version=$(sed -n 's/^mod_version=//p' gradle.properties)
-          tag="v$version"
           current=$(gh api "repos/$GITHUB_REPOSITORY/git/ref/heads/main" --jq '.object.sha')
           if test "$current" != "$VALIDATED_COMMIT"; then
-            echo "A newer main commit exists; its validation run will publish this update."
+            echo "A newer main commit exists; waiting for its validation."
             exit 0
           fi
-          jar="validated/build/libs/FoundationsCalculator-$version.jar"
-          sources="validated/build/libs/FoundationsCalculator-$version-sources.jar"
-          audit="validated/validation/$version/release_checks.json"
-          test -f "$jar"
-          test -f "$sources"
-          test -f "$audit"
-          python - "$version" "$jar" "$audit" <<'PY'
-          import hashlib,json,sys
-          version,jar,audit=sys.argv[1:]
-          result=json.load(open(audit))
-          assert result['version']==version
-          assert result['native_build_and_current_source_match']
-          assert result['jar_sha256']==hashlib.sha256(open(jar,'rb').read()).hexdigest()
-          required=int(next(line.split('=',1)[1] for line in open('gradle.properties') if line.startswith('required_gametests=')))
-          assert min(result['gametests'].values())>=required
-          PY
-          if jq -e '.release_eligible == false' "$audit" >/dev/null; then
-            echo "Candidate build retained; beta acceptance gates remain pending."
-            exit 0
-          fi
-          if gh release view "$tag" >/dev/null 2>&1; then
-            echo "Version already released; increment mod_version for the next update."
-            exit 0
-          fi
-          cp CHANGELOG.md release-notes.md
-          printf '\nPlatform: Minecraft 1.21.1 / NeoForge 21.1.250. Automated build, unit tests, standalone and integration GameTests passed. Manual copied-world, client and performance acceptance remains pending. The 26.3 port is not included.\n' >> release-notes.md
-          gh release create "$tag" "$jar" "$sources" "$audit" --target "$VALIDATED_COMMIT" --prerelease --title "Foundations Calculator $version" --notes-file release-notes.md
+          python tools/publish_prerelease.py --directory validated/build/libs --audit "validated/validation/$version/release_checks.json" --version "$version"
+      - name: Retain CurseForge receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: calculator-curseforge-receipt
+          path: build/curseforge-upload.json
+          if-no-files-found: ignore

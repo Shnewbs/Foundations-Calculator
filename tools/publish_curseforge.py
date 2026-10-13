@@ -24,8 +24,18 @@ def metadata(jar, audit, changelog, version):
     digest = hashlib.sha256(jar.read_bytes()).hexdigest()
     if evidence.get('version') != version or evidence.get('jar_sha256') != digest or not evidence.get('native_build_and_current_source_match'):
         raise ValueError('Release binary does not match its passing audit')
-    if set(evidence.get('gametests', {})) != {'standalone', 'integrations'} or min(evidence['gametests'].values()) < evidence.get('required_gametests', 134):
-        raise ValueError('Missing runtime validation evidence')
+    target=evidence.get('minecraft_version','1.21.1')
+    if target=='1.21.1':
+        if set(evidence.get('gametests', {})) != {'standalone', 'integrations'} or min(evidence['gametests'].values()) < evidence.get('required_gametests', 144):
+            raise ValueError('Missing runtime validation evidence')
+    else:
+        reports=evidence.get('native_reports',[])
+        if target not in {'26.1.2','26.3'} or len(reports)!=2 or {r.get('integrations_enabled') for r in reports}!={False,True}:
+            raise ValueError('Missing matching native platform evidence')
+        if evidence.get('unit_tests',0)<43 or any(not r.get('passed') or r.get('native_regression_assertions',0)<56 for r in reports):
+            raise ValueError('Native platform validation incomplete')
+    if candidate_type(version)=='release' and not evidence.get('stable_release_approved',False):
+        raise ValueError('Stable publication requires explicit approval; automated builds stay prereleases')
     if candidate_type(version)=='beta' and not evidence.get('release_eligible',False):
         raise ValueError('Beta acceptance gates remain pending; this audited build is a development candidate')
     with zipfile.ZipFile(jar) as archive:
@@ -34,12 +44,13 @@ def metadata(jar, audit, changelog, version):
     if calculator['version'] != version:
         raise ValueError('JAR version differs from release tag')
     mc = next(d for d in mod['dependencies']['foundations_calculator'] if d['modId'] == 'minecraft')['versionRange']
-    if mc != '[1.21.1]':
-        raise ValueError('New platform needs its own verified release metadata and Java/version mapping')
+    if mc != f'[{target}]':
+        raise ValueError('JAR Minecraft target differs from the audited platform')
+    java='Java 21' if target=='1.21.1' else 'Java 25'
     return {
         'changelog': changelog.read_text(), 'changelogType': 'markdown',
-        'displayName': f'Foundations Calculator — 1.21.1 — {version}',
-        'gameVersionNames': ['1.21.1', 'NeoForge', 'Java 21', 'Client', 'Server'],
+        'displayName': f'Foundations Calculator — {target} — {version}',
+        'gameVersionNames': [target, 'NeoForge', java, 'Client', 'Server'],
         'releaseType': candidate_type(version), 'isMarkedForManualRelease': False,
     }, digest
 
@@ -73,8 +84,8 @@ def main():
             t = types.get(v['gameVersionTypeID'], {})
             slug = t.get('slug', '').lower()
             normalized = re.sub(r'[^a-z0-9]', '', slug + t.get('name', '').lower())
-            expected = ('minecraft' in normalized and '121' in normalized) if name == '1.21.1' else (
-                slug == 'java' if name == 'Java 21' else slug == 'modloader' if name == 'NeoForge' else slug == 'environment')
+            expected = ('minecraft' in normalized) if name in {'1.21.1','26.1.2','26.3'} else (
+                slug == 'java' if name in {'Java 21','Java 25'} else slug == 'modloader' if name == 'NeoForge' else slug == 'environment')
             if v['name'] == name and expected:
                 candidates.append(v)
         if len(candidates) != 1:
@@ -96,7 +107,7 @@ def main():
     if not isinstance(file_id, int) or file_id <= 0:
         raise ValueError('Upload response did not contain a file ID')
     receipt = {'project_id': PROJECT_ID, 'file_id': file_id, 'version': args.version,
-               'jar_sha256': digest, 'release_type': data['releaseType']}
+               'jar_sha256': digest, 'release_type': data['releaseType'], 'game_version_ids':chosen}
     (p / 'curseforge-upload.json').write_text(json.dumps(receipt, indent=2) + '\n')
     print(f'CurseForge accepted file {file_id} as {data["releaseType"]}; moderation may still be pending.')
 

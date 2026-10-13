@@ -31,10 +31,10 @@ public final class AtomicTerrainModule {
         var replacement=NbtUtils.readBlockState(level.holderLookup(Registries.BLOCK),tag.getCompoundOrEmpty("TerrainTarget"));
         if(replacement.isAir()||replacement.hasBlockEntity()||replacement.getDestroySpeed(level,pos)<0||replacement.is(state.getBlock())||!replacement.canSurvive(level,pos)||replacement.is(TagKey.create(Registries.BLOCK,Content.id("atomic_terrain_blacklist"))))return InteractionResult.FAIL;
         int slot=-1;boolean consume=!player.isCreative()&&CalculatorConfig.flag("module.atomic_terrain_module.requireReplacementItem",true);
-        if(consume){for(int i=0;i<player.getInventory().items.size();i++)if(player.getInventory().getItem(i).is(replacement.getBlock().asItem())){slot=i;break;}if(slot<0){player.sendOverlayMessage(Component.literal("A replacement block is required in your inventory."));return InteractionResult.FAIL;}}
+        if(consume){for(int i=0;i<player.getInventory().getNonEquipmentItems().size();i++)if(player.getInventory().getItem(i).is(replacement.getBlock().asItem())){slot=i;break;}if(slot<0){player.sendOverlayMessage(Component.literal("A replacement block is required in your inventory."));return InteractionResult.FAIL;}}
         int cost=CalculatorConfig.integer("module.atomic_terrain_module.cost",1);
         if(!(battery.getItem() instanceof CalculatorItem power)||!player.isCreative()&&power.energy(battery)<cost)return InteractionResult.FAIL;
-        if(NeoForge.EVENT_BUS.post(new BlockEvent.BreakEvent(level,pos,state,player)).isCanceled())return InteractionResult.FAIL;
+        if(NeoForge.EVENT_BUS.post(new net.neoforged.neoforge.event.level.block.BreakBlockEvent(level,pos,state,player)).isCanceled())return InteractionResult.FAIL;
         var snapshot=BlockSnapshot.create(level.dimension(),level,pos);
         if(!level.setBlock(pos,replacement,2))return InteractionResult.FAIL;
         if(NeoForge.EVENT_BUS.post(new BlockEvent.EntityPlaceEvent(snapshot,level.getBlockState(pos.below()),player)).isCanceled()){

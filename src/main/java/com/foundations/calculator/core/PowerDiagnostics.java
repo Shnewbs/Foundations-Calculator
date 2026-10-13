@@ -39,16 +39,16 @@ public final class PowerDiagnostics {
         }
         return !(source.getEntity() instanceof ServerPlayer player) || allowed(player);
     }
-    public static boolean installed(PowerPolicy policy) { return policy.modId.isEmpty() || ModList.get().isLoaded(policy.modId); }
+    public static boolean installed(PowerPolicy policy) { return policy.modId.isEmpty() || policy==PowerPolicy.AE2 && ModList.get().isLoaded(policy.modId); }
     /** Guarded calls keep optional API classes out of the standalone runtime loading path. */
     public static EnergyConversion conversion(String id) {
         return switch(id) {
             case "fe" -> PowerPolicy.FE.conversion(1,true);
-            case "gtceu" -> installed(PowerPolicy.GREGTECH)?GregTechEnergy.conversion():null;
-            case "mekanism" -> installed(PowerPolicy.MEKANISM)?MekanismEnergy.conversion():null;
-            case "modernIndustrialization" -> installed(PowerPolicy.MI)?ModernIndustrializationEnergy.conversion():null;
+            case "gtceu" -> null;
+            case "mekanism" -> null;
+            case "modernIndustrialization" -> null;
             case "ae2" -> installed(PowerPolicy.AE2)?AE2Energy.conversion():null;
-            case "grandPower" -> installed(PowerPolicy.GRANDPOWER)?GrandPowerEnergy.conversion():null;
+            case "grandPower" -> null;
             default -> null;
         };
     }
@@ -67,23 +67,17 @@ public final class PowerDiagnostics {
         lines.add("Foundations Calculator " + ModList.get().getModContainerById(FoundationsCalculator.ID).orElseThrow().getModInfo().getVersion() + " | effective server power configuration");
         lines.add("External route preference: "+(CalculatorConfig.flag("power.routing.preferNative",true)?"native first":"FE first")+". GT cable output always uses packets.");
         for(var policy:PowerPolicy.ALL) {
-            if(!installed(policy)) { lines.add(policy.label+": not installed"); continue; }
+            if(!installed(policy)) { lines.add(policy.label+": "+(policy!=PowerPolicy.FE&&policy!=PowerPolicy.AE2?"not supported on this target yet":"not installed")); continue; }
             var plan=conversion(policy.id);
             String rate=plan==null?"INVALID / UNREPRESENTABLE RATE - transfers blocked":plan.base().nativeUnits()+" "+unit(policy.id)+" = "+plan.base().feUnits()+" FE ("+source(policy)+")";
             lines.add(policy.label+": "+rate);
             lines.add("  "+(policy==PowerPolicy.AE2?"no native grid port":"block in/out "+policy.input(Scope.BLOCK)+"/"+policy.output(Scope.BLOCK))+
                     "; item in/out "+policy.input(Scope.ITEM)+"/"+policy.output(Scope.ITEM)+"; losses in/out "+policy.inputLoss()+"%/"+policy.outputLoss()+"%");
-            boolean mismatch=switch(policy.id){
-                case "gtceu" -> GregTechEnergy.ratio()!=GregTechEnergy.inheritedRatio()||GregTechEnergy.upstreamRatiosDiffer();
-                case "mekanism" -> Double.compare(MekanismEnergy.effectiveRatio(),MekanismEnergy.inheritedRatio())!=0;
-                case "modernIndustrialization" -> Double.compare(ModernIndustrializationEnergy.effectiveRatio(),ModernIndustrializationEnergy.inheritedRatio())!=0;
-                default -> false;
-            };
+            boolean mismatch=false;
             if(mismatch)lines.add("  WARNING: ratio differs from the other mod's FE conversion. Align both configs or avoid mixed-converter loops; Calculator cannot enforce another mod's exchange rate.");
             if(plan!=null && (policy.inputLoss()!=0||policy.outputLoss()!=0)) {
                 lines.add("  Input quantum: "+plan.input().nativeUnits()+" "+unit(policy.id)+" -> "+plan.input().feUnits()+" FE; output quantum: "+plan.output().feUnits()+" FE -> "+plan.output().nativeUnits()+" "+unit(policy.id)+" (GT packets/AE items have their own rounding).");
             }
-            if(policy==PowerPolicy.MEKANISM && !MekanismEnergy.enabled())lines.add("  Mekanism bridge is disabled locally or by Mekanism's FE-conversion setting.");
         }
         lines.add("Directions are relative to Foundations storage. Another mod may still use its own FE conversion.");
         lines.add("Use /foundations power inspect while looking at a machine; /foundations power item for a held battery.");
@@ -97,9 +91,6 @@ public final class PowerDiagnostics {
             return machine.energy.stored()>=machine.energy.capacity()?"input buffer full":"input open; incoming neighbor chooses its API";
         }
         int offered=(int)Math.min(machine.energy.stored(),MachineProfiles.transfer(machine.kind()));
-        if(installed(PowerPolicy.GREGTECH)) {
-            String gt=GregTechEnergy.targetStatus(machine,side,offered); if(gt!=null)return gt;
-        }
         var route=FoundationsEnergy.blockRoute(level,pos,side.getOpposite()); var target=route.storage();
         if(target==null)return "no compatible neighbor port";
         String prefix="outbound "+route.id()+": ";
@@ -120,7 +111,6 @@ public final class PowerDiagnostics {
         lines.add("Machine: "+state.status().label+(state.requiredEnergy()>0?"; requires "+state.requiredEnergy()+" FE":""));
         if(machine.program.contains("WorldActionBlocked"))lines.add("Last blocked world action: "+
             machine.program.getStringOr("WorldActionBlocked","")+" at "+BlockPos.of(machine.program.getLongOr("WorldActionPos",0L)).toShortString());
-        if(installed(PowerPolicy.GREGTECH))lines.add("GT limits: input "+GregTechEnergy.setting(machine,"inputVoltage",Integer.MAX_VALUE)+" EU, "+GregTechEnergy.setting(machine,"inputAmperage",4)+" A/t; output "+GregTechEnergy.setting(machine,"outputVoltage",32)+" EU, "+GregTechEnergy.setting(machine,"outputAmperage",1)+" A/t (shared by faces)");
         for(var side:Direction.values()) {
             String mode=new String[]{"auto","input","output","disabled"}[Math.floorMod(machine.program.getIntOr("Side"+side.get3DDataValue(),0),4)];
             lines.add(side.getName()+" ["+mode+"]: "+neighbor(machine,side));
@@ -156,7 +146,7 @@ public final class PowerDiagnostics {
             BlockHitResult hit=player.level().clip(new ClipContext(start,end,ClipContext.Block.OUTLINE,ClipContext.Fluid.NONE,player));
             if(hit.getType()!=HitResult.Type.BLOCK) { source.sendFailure(Component.literal("Look at a nearby Calculator machine.")); return 0; }
             return inspect(source,hit.getBlockPos());
-        }).then(Commands.argument("pos",BlockPosArgument.blockPos()).requires(s->s.hasPermission(2))
+        }).then(Commands.argument("pos",BlockPosArgument.blockPos()).requires(s->s.permissions().hasPermission(net.minecraft.server.permissions.Permissions.COMMANDS_GAMEMASTER))
                 .executes(ctx->inspect(ctx.getSource(),BlockPosArgument.getBlockPos(ctx,"pos")))));
         power.then(Commands.literal("item").executes(ctx->{
             var source=ctx.getSource();var player=source.getPlayerOrException();if(!allowed(source))return 0;

@@ -22,8 +22,7 @@ public final class SmeltingModuleMenu extends AbstractContainerMenu {
     public SmeltingModuleMenu(int id,Inventory inv,InteractionHand hand){
         super(Content.SMELTING_MENU.get(),id);this.inventory=inv;this.hand=hand;carrier=inv.player.getItemInHand(hand);heldSlot=hand==InteractionHand.MAIN_HAND?inv.getSelectedSlot():40;
         selectedSlot=CircuitData.tag(carrier).getIntOr("SelectedModule",0);module=Content.path(carrier).equals("smelting_module")?carrier:ModuleWorkstation.selected(carrier);
-        contents=new SimpleContainer(SmeltingModule.contents(module).toArray(ItemStack[]::new));
-        contents.addListener(c->{if(refreshing||inv.player.level().isClientSide())return;var list=net.minecraft.core.NonNullList.withSize(3,ItemStack.EMPTY);for(int i=0;i<3;i++)list.set(i,c.getItem(i));module.set(DataComponents.CONTAINER,ItemContainerContents.fromItems(list));save();});
+        contents=new SimpleContainer(SmeltingModule.contents(module).toArray(ItemStack[]::new)){@Override public void setChanged(){super.setChanged();if(refreshing||inv.player.level().isClientSide())return;var list=net.minecraft.core.NonNullList.withSize(3,ItemStack.EMPTY);for(int i=0;i<3;i++)list.set(i,getItem(i));module.set(DataComponents.CONTAINER,ItemContainerContents.fromItems(list));save();}};
         addSlot(new Slot(contents,0,30,36){public boolean mayPlace(ItemStack s){return s!=carrier&&s.getItem().canFitInsideContainerItems();}});
         addSlot(new Slot(contents,1,84,55){public boolean mayPlace(ItemStack s){return false;}});
         addSlot(new Slot(contents,2,138,36){public boolean mayPlace(ItemStack s){return false;}});

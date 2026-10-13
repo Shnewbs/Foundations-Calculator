@@ -32,7 +32,7 @@ public class MachineBlock extends BaseEntityBlock {
     public String kind(){return net.minecraft.core.registries.BuiltInRegistries.BLOCK.getKey(this).getPath();}
     public int height(){return kind().equals("conductor_mast")?4:kind().equals("scarecrow")?3:1;}
     public void setPlacedBy(Level l,BlockPos p,BlockState s,net.minecraft.world.entity.LivingEntity placer,net.minecraft.world.item.ItemStack stack){super.setPlacedBy(l,p,s,placer,stack);if(!l.isClientSide()&&placer instanceof Player player&&l.getBlockEntity(p) instanceof MachineBlockEntity machine){com.foundations.calculator.core.UuidTags.put(machine.program,"Owner",player.getUUID());machine.setChanged();}if(!l.isClientSide())for(int i=1;i<height();i++)l.setBlockAndUpdate(p.above(i),Content.EXTENSION.get().defaultBlockState().setValue(MachineExtensionBlock.HEIGHT,i));}
-    protected RenderShape getRenderShape(BlockState s){return MODELED.contains(kind())?RenderShape.ENTITYBLOCK_ANIMATED:RenderShape.MODEL;}
+    protected RenderShape getRenderShape(BlockState s){return MODELED.contains(kind())?RenderShape.INVISIBLE:RenderShape.MODEL;}
     public BlockEntity newBlockEntity(BlockPos p,BlockState s){return new MachineBlockEntity(p,s);}
     @Nullable public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level,BlockState s,BlockEntityType<T> type){
         return level.isClientSide()?createTickerHelper(type,Content.MACHINE_ENTITY.get(),MachineBlockEntity::clientTick):createTickerHelper(type,Content.MACHINE_ENTITY.get(),MachineBlockEntity::tick);
@@ -61,8 +61,7 @@ public class MachineBlock extends BaseEntityBlock {
             return InteractionResult.SUCCESS;
         }return InteractionResult.PASS;
     }
-    protected void onRemove(BlockState old,Level level,BlockPos pos,BlockState state,boolean moving){
-        if(!old.is(state.getBlock())){if(level.getBlockEntity(pos) instanceof MachineBlockEntity m)m.dropContents();for(int i=1;i<height();i++){var extension=level.getBlockState(pos.above(i));if(extension.is(Content.EXTENSION.get())&&extension.getValue(MachineExtensionBlock.HEIGHT)==i)level.removeBlock(pos.above(i),false);}}
-        super.onRemove(old,level,pos,state,moving);
+    @Override protected void affectNeighborsAfterRemoval(BlockState old,net.minecraft.server.level.ServerLevel level,BlockPos pos,boolean moving){
+        for(int i=1;i<height();i++){var extension=level.getBlockState(pos.above(i));if(extension.is(Content.EXTENSION.get())&&extension.getValue(MachineExtensionBlock.HEIGHT)==i)level.removeBlock(pos.above(i),false);}super.affectNeighborsAfterRemoval(old,level,pos,moving);
     }
 }

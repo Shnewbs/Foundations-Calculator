@@ -199,7 +199,7 @@ public final class GuideScreen extends Screen {
         for(var line:wrapped){document.add(new Row(lineY,12,line,INK,ItemStack.EMPTY,"text_inset",0,0,List.of(),action,"item_text"));lineY+=12;}
         documentHeight+=height+5;
     }
-    private ItemStack item(String id){Identifier key=Identifier.tryParse(id);return key!=null&&BuiltInRegistries.ITEM.containsKey(key)?new ItemStack(BuiltInRegistries.ITEM.get(key)):ItemStack.EMPTY;}
+    private ItemStack item(String id){Identifier key=Identifier.tryParse(id);return key!=null&&BuiltInRegistries.ITEM.containsKey(key)?new ItemStack(BuiltInRegistries.ITEM.getValue(key)):ItemStack.EMPTY;}
     private int number(Map<String,String> values,String key,int fallback,int max){try{return Math.clamp(Integer.parseInt(values.getOrDefault(key,"")),1,max);}catch(NumberFormatException e){return fallback;}}
 
     private void section(Block b){

@@ -1,0 +1,85 @@
+{
+  "26.1.2": {
+    "jei": [
+      {
+        "id": "6ozmEU5g",
+        "version": "29.47.0.109",
+        "games": [
+          "26.1",
+          "26.1.1",
+          "26.1.2"
+        ]
+      }
+    ],
+    "jade": [
+      {
+        "id": "5jKeKXwB",
+        "version": "26.1.11+neoforge",
+        "games": [
+          "26.1",
+          "26.1.1",
+          "26.1.2"
+        ]
+      }
+    ],
+    "ae2": [
+      {
+        "id": "nVSxZcom",
+        "version": "26.1.13-beta",
+        "games": [
+          "26.1.2"
+        ]
+      }
+    ],
+    "guideme": [
+      {
+        "id": "JnplCcod",
+        "version": "26.1.15-beta",
+        "games": [
+          "26.1.2"
+        ]
+      }
+    ]
+  },
+  "26.3": {
+    "jei": [
+      {
+        "id": "3B1tTT57",
+        "version": "31.12.0.65",
+        "games": [
+          "26.3"
+        ]
+      }
+    ],
+    "jade": [
+      {
+        "id": "dVB8U7Td",
+        "version": "26.3.5+neoforge",
+        "games": [
+          "26.3"
+        ]
+      }
+    ],
+    "ae2": [
+      {
+        "id": "PDPQ4WfW",
+        "version": "26.3.1-alpha",
+        "games": [
+          "26.3"
+        ]
+      }
+    ],
+    "guideme": [
+      {
+        "id": "69ocM6po",
+        "version": "26.3.3-alpha",
+        "games": [
+          "26.3",
+          "26.4-snapshot-1",
+          "26.4-snapshot-2",
+          "26.4-snapshot-3"
+        ]
+      }
+    ]
+  }
+}

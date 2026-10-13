@@ -14,7 +14,7 @@ public final class MachineExtensionBlock extends Block {
     protected void createBlockStateDefinition(StateDefinition.Builder<Block,BlockState> b){b.add(HEIGHT);}
     protected RenderShape getRenderShape(BlockState s){return RenderShape.INVISIBLE;}
     protected VoxelShape getShape(BlockState s,BlockGetter l,BlockPos p,CollisionContext c){return box(4,0,4,12,16,12);}
-    protected BlockState updateShape(BlockState s,Direction d,BlockState n,LevelAccessor l,BlockPos p,BlockPos np){BlockState base=l.getBlockState(p.below(s.getValue(HEIGHT)));return base.getBlock() instanceof MachineBlock?s:Blocks.AIR.defaultBlockState();}
-    protected void onRemove(BlockState s,Level l,BlockPos p,BlockState next,boolean moving){if(!s.is(next.getBlock())){BlockPos root=p.below(s.getValue(HEIGHT));if(l.getBlockState(root).getBlock() instanceof MachineBlock)l.destroyBlock(root,true);}super.onRemove(s,l,p,next,moving);}
+    @Override protected BlockState updateShape(BlockState s,LevelReader l,net.minecraft.world.level.ScheduledTickAccess ticks,BlockPos p,Direction d,BlockPos np,BlockState n,net.minecraft.util.RandomSource random){BlockState base=l.getBlockState(p.below(s.getValue(HEIGHT)));return base.getBlock() instanceof MachineBlock?s:Blocks.AIR.defaultBlockState();}
+    @Override protected void affectNeighborsAfterRemoval(BlockState s,net.minecraft.server.level.ServerLevel l,BlockPos p,boolean moving){BlockPos root=p.below(s.getValue(HEIGHT));if(l.getBlockState(root).getBlock() instanceof MachineBlock)l.destroyBlock(root,true);super.affectNeighborsAfterRemoval(s,l,p,moving);}
     protected InteractionResult useWithoutItem(BlockState s,Level l,BlockPos p,Player player,BlockHitResult hit){BlockPos root=p.below(s.getValue(HEIGHT));return l.getBlockState(root).useWithoutItem(l,player,new BlockHitResult(hit.getLocation(),hit.getDirection(),root,hit.isInside()));}
 }

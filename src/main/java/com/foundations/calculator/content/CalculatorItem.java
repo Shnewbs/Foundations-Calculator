@@ -139,20 +139,20 @@ public class CalculatorItem extends Item {
     public boolean isBarVisible(ItemStack stack){return capacity>0;}
     public int getBarWidth(ItemStack stack){long cap=maxEnergyLong(stack);return cap<=0?0:(int)Math.min(13,13.0*energyLong(stack)/Math.max(1L,cap));}
     public int getBarColor(ItemStack stack){return 0x48cbdc;}
-    public void appendHoverText(ItemStack stack,TooltipContext context,List<Component> tooltip,TooltipFlag flag){
-        super.appendHoverText(stack,context,tooltip,flag);
-        if(com.foundations.calculator.core.ClientConfig.flag(com.foundations.calculator.core.ClientConfig.ENERGY_TOOLTIPS)&&capacity>0)tooltip.add(Component.literal(com.foundations.calculator.core.EnergyDisplay.formatFE(energyLong(stack),maxEnergyLong(stack))));
-        for(String type:List.of("health","hunger"))if(NutritionData.capacity(stack,type)>0)tooltip.add(Component.literal(type+": "+NutritionData.get(stack,type)));
-        if(kind.equals("flawless_calculator")){ItemStack module=ModuleWorkstation.selected(stack);tooltip.add(Component.literal("Module: ").append(module.isEmpty()?Component.literal("Flawless calculation"):module.getHoverName()));tooltip.add(Component.literal("Sneak-use to select an installed module."));}
-        if(kind.equals("locator_module")&&com.foundations.calculator.core.UuidTags.has(CircuitData.tag(stack),"Owner"))tooltip.add(Component.literal("Owner: "+CircuitData.tag(stack).getStringOr("OwnerName","")));
-        if(com.foundations.calculator.core.ClientConfig.flag(com.foundations.calculator.core.ClientConfig.INSTRUCTIONS)&&kind.contains("terrain_module"))tooltip.add(Component.literal("Sneak-use a block to select material; use to transform ("+CalculatorConfig.integer("module."+kind+".cost",1)+" FE)."));
-        if(com.foundations.calculator.core.ClientConfig.flag(com.foundations.calculator.core.ClientConfig.INSTRUCTIONS)&&kind.equals("warp_module"))tooltip.add(Component.literal("Sneak-use stable stone to bind; use to warp ("+CalculatorConfig.integer("module.warp_module.cost",1000)+" FE)."));
-        if(kind.startsWith("circuit_board_"))tooltip.add(Component.literal(CircuitData.analysed(stack)?(CircuitData.stable(stack)?"Stable · analysed":"Analysed"):"Not analysed"));
-        if(kind.equals("speed_upgrade"))tooltip.add(Component.literal(String.format("Machine processing: +%.0f%% speed factor per upgrade",CalculatorConfig.decimal("upgrades.speedBonus",.25)*100)).withStyle(net.minecraft.ChatFormatting.AQUA));
-        if(kind.equals("energy_upgrade"))tooltip.add(Component.literal(String.format("Machine processing: +%.0f%% efficiency factor per upgrade",CalculatorConfig.decimal("upgrades.energyDiscount",.1)*100)).withStyle(net.minecraft.ChatFormatting.AQUA));
-        if(kind.equals("transfer_upgrade"))tooltip.add(Component.literal("Exports up to "+CalculatorConfig.integer("upgrades.itemsPerTransfer",4)+" items/tick per upgrade (max "+CalculatorConfig.integer("upgrades.maxTransfer",64)+")").withStyle(net.minecraft.ChatFormatting.AQUA));
-        if(kind.equals("void_upgrade"))tooltip.add(Component.literal(CalculatorConfig.flag("upgrades.allowVoid",true)?"Discards output that remains blocked after normal insertion.":"Disabled by server configuration.").withStyle(net.minecraft.ChatFormatting.AQUA));
-        if(Content.PENDING.contains(kind))tooltip.add(Component.literal("Port pending — not functional in this alpha").withStyle(net.minecraft.ChatFormatting.RED));
+    public void appendHoverText(ItemStack stack,TooltipContext context,net.minecraft.world.item.component.TooltipDisplay display,java.util.function.Consumer<Component> tooltip,TooltipFlag flag){
+        super.appendHoverText(stack,context,display,tooltip,flag);
+        if(com.foundations.calculator.core.ClientConfig.flag(com.foundations.calculator.core.ClientConfig.ENERGY_TOOLTIPS)&&capacity>0)tooltip.accept(Component.literal(com.foundations.calculator.core.EnergyDisplay.formatFE(energyLong(stack),maxEnergyLong(stack))));
+        for(String type:List.of("health","hunger"))if(NutritionData.capacity(stack,type)>0)tooltip.accept(Component.literal(type+": "+NutritionData.get(stack,type)));
+        if(kind.equals("flawless_calculator")){ItemStack module=ModuleWorkstation.selected(stack);tooltip.accept(Component.literal("Module: ").append(module.isEmpty()?Component.literal("Flawless calculation"):module.getHoverName()));tooltip.accept(Component.literal("Sneak-use to select an installed module."));}
+        if(kind.equals("locator_module")&&com.foundations.calculator.core.UuidTags.has(CircuitData.tag(stack),"Owner"))tooltip.accept(Component.literal("Owner: "+CircuitData.tag(stack).getStringOr("OwnerName","")));
+        if(com.foundations.calculator.core.ClientConfig.flag(com.foundations.calculator.core.ClientConfig.INSTRUCTIONS)&&kind.contains("terrain_module"))tooltip.accept(Component.literal("Sneak-use a block to select material; use to transform ("+CalculatorConfig.integer("module."+kind+".cost",1)+" FE)."));
+        if(com.foundations.calculator.core.ClientConfig.flag(com.foundations.calculator.core.ClientConfig.INSTRUCTIONS)&&kind.equals("warp_module"))tooltip.accept(Component.literal("Sneak-use stable stone to bind; use to warp ("+CalculatorConfig.integer("module.warp_module.cost",1000)+" FE)."));
+        if(kind.startsWith("circuit_board_"))tooltip.accept(Component.literal(CircuitData.analysed(stack)?(CircuitData.stable(stack)?"Stable · analysed":"Analysed"):"Not analysed"));
+        if(kind.equals("speed_upgrade"))tooltip.accept(Component.literal(String.format("Machine processing: +%.0f%% speed factor per upgrade",CalculatorConfig.decimal("upgrades.speedBonus",.25)*100)).withStyle(net.minecraft.ChatFormatting.AQUA));
+        if(kind.equals("energy_upgrade"))tooltip.accept(Component.literal(String.format("Machine processing: +%.0f%% efficiency factor per upgrade",CalculatorConfig.decimal("upgrades.energyDiscount",.1)*100)).withStyle(net.minecraft.ChatFormatting.AQUA));
+        if(kind.equals("transfer_upgrade"))tooltip.accept(Component.literal("Exports up to "+CalculatorConfig.integer("upgrades.itemsPerTransfer",4)+" items/tick per upgrade (max "+CalculatorConfig.integer("upgrades.maxTransfer",64)+")").withStyle(net.minecraft.ChatFormatting.AQUA));
+        if(kind.equals("void_upgrade"))tooltip.accept(Component.literal(CalculatorConfig.flag("upgrades.allowVoid",true)?"Discards output that remains blocked after normal insertion.":"Disabled by server configuration.").withStyle(net.minecraft.ChatFormatting.AQUA));
+        if(Content.PENDING.contains(kind))tooltip.accept(Component.literal("Port pending — not functional in this alpha").withStyle(net.minecraft.ChatFormatting.RED));
     }
     public boolean isFoil(ItemStack stack){return kind.startsWith("circuit_board_")&&CircuitData.stable(stack)||super.isFoil(stack);}
 }

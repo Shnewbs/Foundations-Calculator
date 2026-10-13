@@ -46,10 +46,10 @@ public final class MachineDiagnostics {
         if(kind.equals("weather_controller")){
             if(m.program.getIntOr("Cooldown",0)>0)return state(COOLDOWN);
             if(!level.hasNeighborSignal(m.getBlockPos()))return state(NEED_REDSTONE);
-            boolean current=switch(m.program.getIntOr("Mode",0)){case 1->level.getLevelData().isRaining();case 2->level.getLevelData().isThundering();default->!level.isDay();};
+            boolean current=switch(m.program.getIntOr("Mode",0)){case 1->level.isRaining();case 2->level.isThundering();default->!level.isBrightOutside();};
             return current==m.program.getBooleanOr("Target",false)?state(TARGET_REACHED):power(RUNNING,CalculatorConfig.energyLong(kind,CalculatorConfig.integer("world.weatherEnergyPerTick",2500)),energy);
         }
-        if(kind.equals("magnetic_flux"))return state(level.hasNeighborSignal(m.getBlockPos())?PAUSED:level.getCapability(Capabilities.ItemHandler.BLOCK,m.getBlockPos().below(),Direction.UP)==null?NEED_STORAGE:COLLECTING);
+        if(kind.equals("magnetic_flux"))return state(level.hasNeighborSignal(m.getBlockPos())?PAUSED:level.getCapability(Capabilities.Item.BLOCK,m.getBlockPos().below(),Direction.UP)==null?NEED_STORAGE:COLLECTING);
         if(kind.equals("gas_lantern_off"))return state(m.burnTime>0?RUNNING:NEED_FUEL);
         if(kind.equals("co2_generator")){
             var forward=m.getBlockState().getValue(MachineBlock.FACING).getOpposite();

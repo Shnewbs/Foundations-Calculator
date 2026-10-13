@@ -21,7 +21,7 @@ public final class ResearchScreen extends Screen {
         for(int i=0;i<rows&&page*rows+i<recipes.size();i++){
             var recipe=recipes.get(page*rows+i).value();int top=86+i*30;boolean known=ResearchData.clientGroups.contains(recipe.researchGroup());
             g.text(font,(known?"✓ ":"○ ")+recipe.researchGroup().replace('_',' '),20,top+4,known?0xff7ee3ce:0xffc4d5df,false);
-            var samples=recipe.inputs().getFirst().ingredient().getItems();if(samples.length>0){var stack=samples[(int)(System.currentTimeMillis()/1000%samples.length)];g.item(stack,width-52,top);if(x>=width-52&&x<width-34&&y>=top&&y<top+18)g.setTooltipForNextFrame(font,stack,x,y);}
+            var samples=recipe.inputs().getFirst().ingredient().items().map(ItemStack::new).toArray(ItemStack[]::new);if(samples.length>0){var stack=samples[(int)(System.currentTimeMillis()/1000%samples.length)];g.item(stack,width-52,top);if(x>=width-52&&x<width-34&&y>=top&&y<top+18)g.setTooltipForNextFrame(font,stack,x,y);}
         }
     }
     public void onClose(){minecraft.setScreen(parent);}public boolean isPauseScreen(){return false;}

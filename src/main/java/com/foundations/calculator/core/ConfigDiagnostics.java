@@ -26,7 +26,7 @@ public final class ConfigDiagnostics {
             "Automation: "+CalculatorConfig.machineFlag(id,"itemAutomation")+"; FE input/output: "+CalculatorConfig.machineFlag(id,"energyInput")+"/"+CalculatorConfig.machineFlag(id,"energyOutput"));
     }
     @SubscribeEvent public static void commands(RegisterCommandsEvent event){
-        var config=Commands.literal("config").requires(s->s.hasPermission(2));
+        var config=Commands.literal("config").requires(s->s.permissions().hasPermission(net.minecraft.server.permissions.Permissions.COMMANDS_GAMEMASTER));
         config.executes(ctx->emit(ctx.getSource(),
             "Foundations Calculator config: "+CalculatorConfig.keys().size()+" server keys",
             "Balance preset: "+CalculatorConfig.presetName()+" (applyPreset="+CalculatorConfig.flag("balance.applyPreset",false)+")",

@@ -49,7 +49,7 @@ public final class GreenhouseProgram {
                 }gas=(int)Math.min(Integer.MAX_VALUE,(long)lanterns*CalculatorConfig.integer("greenhouse.lanternCarbon",50));
             }
             int effective=tier==2?plants/5:plants;
-            m.program.putInt("Carbon",(int)Math.clamp(m.program.getIntOr("Carbon",0)+(l.isDay()?(long)gas-effective*(long)CalculatorConfig.integer("greenhouse.dayCarbonUse",8):(long)gas+effective*(long)CalculatorConfig.integer("greenhouse.nightCarbonGain",2)),0,100000));
+            m.program.putInt("Carbon",(int)Math.clamp(m.program.getIntOr("Carbon",0)+(l.isBrightOutside()?(long)gas-effective*(long)CalculatorConfig.integer("greenhouse.dayCarbonUse",8):(long)gas+effective*(long)CalculatorConfig.integer("greenhouse.nightCarbonGain",2)),0,100000));
             farmland(m,area);m.setChanged();
         }
         int plantInterval=tier==1?CalculatorConfig.integer("greenhouse.basicPlantInterval",60):tier==2?CalculatorConfig.integer("greenhouse.advancedPlantInterval",10):CalculatorConfig.integer("greenhouse.flawlessPlantInterval",2);
@@ -168,7 +168,7 @@ public final class GreenhouseProgram {
             BlockPos pos=crop.below();if(!MachineWorldActions.loaded(level,pos))continue;
             BlockState current=level.getBlockState(pos);
             if((current.is(Blocks.DIRT)||current.is(Blocks.GRASS_BLOCK))&&MachineWorldActions.replace(m,pos,current,
-                Blocks.FARMLAND.defaultBlockState().setValue(FarmBlock.MOISTURE,7),new ItemStack(Items.IRON_HOE),MachineWorldActions.Action.FARMLAND,
+                Blocks.FARMLAND.defaultBlockState().setValue(FarmlandBlock.MOISTURE,7),new ItemStack(Items.IRON_HOE),MachineWorldActions.Action.FARMLAND,
                 ()->m.energy.stored()>=soilCost))m.energy.extract(soilCost,false);
         }
         if(CalculatorConfig.flag("greenhouse.autoWater",true))for(BlockPos pos:geometry(m).water){
@@ -183,7 +183,7 @@ public final class GreenhouseProgram {
         if(!stack.isEmpty()){
             Direction outputFace=forward(m).getOpposite();BlockPos front=m.getBlockPos().relative(outputFace);
             if(m.itemOutput(outputFace)&&m.getLevel().hasChunkAt(front)){
-                var dest=m.getLevel().getCapability(Capabilities.ItemHandler.BLOCK,front,forward(m));
+                var dest=com.foundations.calculator.core.MachineItemHandler.neighbor(m.getLevel(),front,forward(m));
                 if(dest!=null)stack=ItemHandlerHelper.insertItemStacked(dest,stack,false);
             }
             if(!stack.isEmpty())m.pending.add(stack);
@@ -193,7 +193,7 @@ public final class GreenhouseProgram {
         Direction inputFace=forward(m).getOpposite();
         if(!m.itemInput(inputFace))return;
         BlockPos front=m.getBlockPos().relative(inputFace);if(!m.getLevel().hasChunkAt(front))return;
-        IItemHandler source=m.getLevel().getCapability(Capabilities.ItemHandler.BLOCK,front,forward(m));if(source==null)return;
+        IItemHandler source=com.foundations.calculator.core.MachineItemHandler.neighbor(m.getLevel(),front,forward(m));if(source==null)return;
         for(int slot=0;slot<source.getSlots();slot++){
             ItemStack seed=source.extractItem(slot,32,true);if(!FoundationsPlants.accepts(seed,tier(m)))continue;
             for(int dest=tier(m)==3?0:4;dest<14;dest++){

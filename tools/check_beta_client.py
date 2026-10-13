@@ -70,8 +70,10 @@ markers = ['FOUNDATIONS_CLIENT_MACHINE_INTERACTIONS_PASSED',
            'FOUNDATIONS_CLIENT_CIRCUIT_PROCESSING_PASSED',
            'FOUNDATIONS_CLIENT_R4_FEATURES_PASSED', 'FOUNDATIONS_CLIENT_SMOKE_PASSED']
 screenshots = sorted(str(path) for path in Path('validation/screenshots').glob('*.png'))
-report = {'client_exit_code': code, 'markers': {marker: marker in client_log for marker in markers},
-          'screenshots': screenshots, 'passed': code == 0 and all(marker in client_log for marker in markers) and len(screenshots) >= 22}
+required_names = set(re.findall(r'capture\(mc,"([^"]+\.png)"\)', Path('src/gameTest/java/com/foundations/calculator/ClientSmoke.java').read_text())) - {'15-emi-process-recipes.png','16-jei-process-recipes.png','24-jade-machine-hud.png'}
+missing = sorted(required_names - {Path(path).name for path in screenshots})
+report = {'missing_screenshots': missing, 'client_exit_code': code, 'markers': {marker: marker in client_log for marker in markers},
+          'screenshots': screenshots, 'passed': code == 0 and all(marker in client_log for marker in markers) and not missing}
 (evidence / 'client-checks.json').write_text(json.dumps(report, indent=2) + '\n')
 if not report['passed']:
     raise SystemExit('The real client walkthrough did not complete; inspect validation/beta-client/client.log.')

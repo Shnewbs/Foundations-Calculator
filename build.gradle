@@ -177,11 +177,9 @@ tasks.register('testPortEnergy', Test) {
 }
 tasks.named('compileJava') { options.compilerArgs.addAll(['-Xmaxerrs','1000']) }
 
-sourceSets.main.compileClasspath += sourceSets.portEnergy.output
-sourceSets.main.runtimeClasspath += sourceSets.portEnergy.output
-tasks.named('compileJava') { dependsOn tasks.named('compilePortEnergyJava') }
-tasks.named('jar') { from(sourceSets.portEnergy.output) { include 'com/foundations/calculator/platform/**' } }
-tasks.named('sourcesJar') { from('platform/26.3/src/main/java') }
+// Compile native platform classes into the mod itself, under the game class loader.
+// The isolated portEnergy source set remains exclusively for platform unit tests.
+sourceSets.main.java.srcDir('platform/26.3/src/main/java')
 
 // Capture signatures from the exact native compile classpath while the port is incomplete.
 tasks.register('capturePortApi', Exec) {

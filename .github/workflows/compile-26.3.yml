@@ -4,7 +4,7 @@ on:
     branches: ['port/26.3']
   workflow_dispatch:
 permissions:
-  contents: read
+  contents: write
 concurrency:
   group: calculator-26.3-compile
   cancel-in-progress: true
@@ -23,12 +23,22 @@ jobs:
         shell: bash
         run: |
           set -o pipefail
+          python3 -m unittest discover -s tools/tests
+          python3 tools/audit_port_release.py --begin
           chmod +x gradlew
           ./gradlew testPortEnergy compileJava jar sourcesJar --console=plain 2>&1 | tee port-compile.log
       - name: Native dedicated server and recipe loading
         run: python3 tools/check_port_startup.py
       - name: Matching native integrations and saved-world restart
         run: python3 tools/check_port_startup.py --with-integrations
+      - name: Audit native alpha binary and source evidence
+        run: python3 tools/audit_port_release.py
+      - name: Publish audited alpha to GitHub and CurseForge
+        env:
+          GH_TOKEN: ${{ github.token }}
+          CURSEFORGE_API_TOKEN: ${{ secrets.CURSEFORGE_API_TOKEN }}
+          VALIDATED_COMMIT: ${{ github.sha }}
+        run: python3 tools/publish_prerelease.py --directory build/libs --audit build/release_checks.json --version "$(sed -n 's/^mod_version=//p' gradle.properties)"
       - name: Capture native API signatures for the remaining migration
         if: always()
         shell: bash
@@ -43,6 +53,8 @@ jobs:
             port-compile.log
             port-api.log
             build/libs/
+            build/release_checks.json
+            build/curseforge-upload.json
             build/port-startup*
             run/logs/
             run/crash-reports/

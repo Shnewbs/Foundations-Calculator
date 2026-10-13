@@ -52,6 +52,12 @@ public final class MachinePrograms {
     }
     public static void export(MachineBlockEntity m) {
         if(!CalculatorConfig.machineFlag(m.kind(),"itemAutomation")||m.upgrades("transfer_upgrade")==0)return;
+        // Bulk machines expose a different backing store; preserve their existing export path.
+        if(!m.bulkInventory()){
+            boolean output=false;
+            for(int slot=14;slot<20;slot++)if(!m.inventory.getStackInSlot(slot).isEmpty()){output=true;break;}
+            if(!output)return;
+        }
         int remaining=(int)Math.min(CalculatorConfig.integer("upgrades.maxTransfer",64),(long)m.upgrades("transfer_upgrade")*CalculatorConfig.integer("upgrades.itemsPerTransfer",4));
         for(Direction side:Direction.values()){
             if(remaining<=0)break;
@@ -130,6 +136,11 @@ public final class MachinePrograms {
     private static void magnet(MachineBlockEntity m) {
         Level level=m.getLevel();if(level.hasNeighborSignal(m.getBlockPos()))return;
         boolean whitelist=m.program.getBooleanOr("Whitelist",false),tags=m.program.getBooleanOr("MatchTags",false);
+        if(whitelist){
+            boolean hasFilter=false;
+            for(int slot=0;slot<8;slot++)if(!m.inventory.getStackInSlot(slot).isEmpty()){hasFilter=true;break;}
+            if(!hasFilter)return;
+        }
         Vec3 target=Vec3.atBottomCenterOf(m.getBlockPos()).add(0,.2,0);
         for(ItemEntity entity:level.getEntitiesOfClass(ItemEntity.class,new AABB(m.getBlockPos()).inflate(CalculatorConfig.integer("world.magnetRadius",10)))){
             ItemStack stack=entity.getItem();boolean matched=false;

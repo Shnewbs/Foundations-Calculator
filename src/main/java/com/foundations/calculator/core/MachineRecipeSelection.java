@@ -11,22 +11,26 @@ public final class MachineRecipeSelection {
     private List<ItemStack> inputs = List.of();
     private String family;
     private UUID owner;
+    private int start;
     private long recipes = Long.MIN_VALUE, research = Long.MIN_VALUE, config = Long.MIN_VALUE;
     private Optional<RecipeHolder<ProcessRecipe>> selected = Optional.empty();
     public Optional<RecipeHolder<ProcessRecipe>> find(Level level,String family,UUID owner,BasicInventory inventory,int count) {
+        return find(level,family,owner,inventory,0,count);
+    }
+    public Optional<RecipeHolder<ProcessRecipe>> find(Level level,String family,UUID owner,BasicInventory inventory,int start,int count) {
         long r = RecipeIndex.revision(), u = ResearchData.revision(level), c = CalculatorConfig.revision();
         boolean same = Objects.equals(this.family,family) && Objects.equals(this.owner,owner)
-            && recipes == r && research == u && config == c && inputs.size() == count;
+            && recipes == r && research == u && config == c && inputs.size() == count && this.start == start;
         if (same) for (int slot=0;slot<count;slot++) {
-            if (!ItemStack.matches(inputs.get(slot),inventory.getStackInSlot(slot))) { same=false; break; }
+            if (!ItemStack.matches(inputs.get(slot),inventory.getStackInSlot(start+slot))) { same=false; break; }
         }
         if (same && CalculatorConfig.flag("performance.cacheMachineRecipes",true)) return selected;
-        var input = ProcessTransactions.input(inventory,count);
-        selected = input.isEmpty() ? Optional.empty() : RecipeIndex.forMachine(level,family,owner).stream()
-            .filter(holder -> holder.value().matches(input,level)).findFirst();
+        List<ItemStack> live = new ArrayList<>(count);
+        for(int slot=0;slot<count;slot++)live.add(inventory.getStackInSlot(start+slot));
+        selected = RecipeIndex.firstMatch(level,family,owner,new ProcessInput(live));
         List<ItemStack> copy = new ArrayList<>(count);
-        for (int slot=0;slot<count;slot++) copy.add(inventory.getStackInSlot(slot).copy());
-        inputs=List.copyOf(copy);this.family=family;this.owner=owner;recipes=r;research=u;config=c;
+        for (int slot=0;slot<count;slot++) copy.add(inventory.getStackInSlot(start+slot).copy());
+        inputs=List.copyOf(copy);this.start=start;this.family=family;this.owner=owner;recipes=r;research=u;config=c;
         return selected;
     }
     public void clear() { inputs=List.of();family=null;owner=null;selected=Optional.empty();recipes=Long.MIN_VALUE; }

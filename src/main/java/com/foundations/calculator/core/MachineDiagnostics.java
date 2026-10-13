@@ -92,7 +92,7 @@ public final class MachineDiagnostics {
             return power(RUNNING,CalculatorConfig.energyLong(kind,CalculatorConfig.MULTIPLIER_ENERGY.get()),energy);
         }
         if(kind.equals("reinforced_furnace"))return level.getServer().getRecipeManager().getRecipeFor(RecipeType.SMELTING,new SingleRecipeInput(m.inventory.getStackInSlot(0)),level).isEmpty()?state(NO_RECIPE):power(RUNNING,m.upgradeEnergyCost(CalculatorConfig.energyLong(kind,500)),energy);
-        var recipe=RecipeIndex.forMachine(level,family(m),m.owner()).stream().filter(r->r.value().matches(input,level)).findFirst();
+        var recipe=RecipeIndex.firstMatch(level,family(m),m.owner(),input);
         return recipe.isEmpty()?state(NO_RECIPE):power(RUNNING,cost(recipe.get(),m),energy);
     }
     public static Snapshot portable(Level level,BasicInventory slots,int inputs,String kind,ItemStack calculator){
@@ -102,7 +102,7 @@ public final class MachineDiagnostics {
         long energy=calculator.getItem() instanceof CalculatorItem c?c.energyLong(calculator):0;
         if(kind.equals("dynamic_module"))return lanes(level,slots,energy,owner,kind);
         var input=ProcessTransactions.input(slots,inputs);if(input.isEmpty())return state(NEED_INPUT);
-        var match=RecipeIndex.forMachine(level,family(kind),owner).stream().filter(r->r.value().matches(input,level)).findFirst();
+        var match=RecipeIndex.firstMatch(level,family(kind),owner,input);
         return match.isEmpty()?state(NO_RECIPE):power(READY,CalculatorConfig.energyLong(kind,RecipePolicies.energy(match.get(),1)),energy);
     }
     private static Snapshot lanes(Level level,BasicInventory slots,long energy,java.util.UUID owner,String kind){
@@ -110,7 +110,7 @@ public final class MachineDiagnostics {
         for(int lane=0;lane<3;lane++){
             int start=lane*2,count=lane==2?3:2;var stacks=new ArrayList<ItemStack>();for(int i=0;i<count;i++)stacks.add(slots.getStackInSlot(start+i));
             var input=new ProcessInput(stacks);hasInput|=!input.isEmpty();
-            var match=RecipeIndex.forMachine(level,new String[]{"calculator","scientific","atomic"}[lane],owner).stream().filter(r->r.value().matches(input,level)).findFirst();
+            var match=RecipeIndex.firstMatch(level,new String[]{"calculator","scientific","atomic"}[lane],owner,input);
             if(match.isPresent())return power(READY,CalculatorConfig.energyLong(kind,RecipePolicies.energy(match.get(),1)),energy);
         }
         return state(hasInput?NO_RECIPE:NEED_INPUT);

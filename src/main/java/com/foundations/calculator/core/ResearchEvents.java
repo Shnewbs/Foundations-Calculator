@@ -18,6 +18,12 @@ public final class ResearchEvents {
         for(boolean grant:new boolean[]{true,false})research.then(Commands.literal(grant?"grant":"revoke").requires(source->source.permissions().hasPermission(net.minecraft.server.permissions.Permissions.COMMANDS_GAMEMASTER)).then(Commands.argument("player",EntityArgument.player()).then(Commands.argument("group",StringArgumentType.word()).suggests((ctx,builder)->{ctx.getSource().getServer().getRecipeManager().recipeMap().byType(Content.PROCESS_TYPE.get()).stream().map(r->r.value().researchGroup()).filter(s->!s.isEmpty()).distinct().sorted().forEach(builder::suggest);return builder.buildFuture();}).executes(ctx->{var p=EntityArgument.getPlayer(ctx,"player");String group=StringArgumentType.getString(ctx,"group");var data=ResearchData.get(p.level().getServer());boolean changed=grant?data.unlock(p.getUUID(),group):data.revoke(p.getUUID(),group);ResearchData.syncAll(p.level().getServer());ctx.getSource().sendSuccess(()->Component.literal((grant?"Granted ":"Revoked ")+group+" for "+p.getName().getString()),true);return changed?1:0;}))));
         e.getDispatcher().register(root.then(research));
     }
-    @SubscribeEvent public static void tick(net.neoforged.neoforge.event.tick.ServerTickEvent.Post e){if(e.getServer().getTickCount()%100==0)ResearchData.syncAll(e.getServer());}
+    @SubscribeEvent public static void tick(net.neoforged.neoforge.event.tick.ServerTickEvent.Post e){
+        int tick=e.getServer().getTickCount();
+        if(tick%100==0)ResearchData.syncAll(e.getServer());
+        else if(tick%20==0)ResearchData.flushPending(e.getServer());
+    }
+    @SubscribeEvent public static void stop(net.neoforged.neoforge.event.server.ServerStoppedEvent e){ResearchData.clearSyncSessions();}
+
     private ResearchEvents(){}
 }

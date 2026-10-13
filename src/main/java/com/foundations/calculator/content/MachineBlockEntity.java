@@ -20,6 +20,8 @@ import com.foundations.calculator.api.EnergyPort;
 
 public class MachineBlockEntity extends BlockEntity implements MenuProvider {
     public static final int SIZE=25;
+    private static final Set<String> EARLY_ENERGY_PUSHERS=Set.of("calculator_locator","conductor_mast");
+    private static final Set<String> ENERGY_PUSHERS=Set.of("power_cube","advanced_power_cube","creative_power_cube","hand_cranked_generator","analysing_chamber");
     public final StoredEnergy energy;
     public final BulkStorage bulk;
     public final BasicInventory inventory=new BasicInventory(SIZE){
@@ -47,6 +49,11 @@ public class MachineBlockEntity extends BlockEntity implements MenuProvider {
     public long lastCrankTick=Long.MIN_VALUE;
     GreenhouseGeometry greenhouseGeometry;
     private final MachineRecipeSelection recipeSelection=new MachineRecipeSelection();
+    private MachineRecipeSelection[] dynamicSelections;
+    MachineRecipeSelection dynamicSelection(int lane) {
+        if(dynamicSelections==null)dynamicSelections=new MachineRecipeSelection[]{new MachineRecipeSelection(),new MachineRecipeSelection(),new MachineRecipeSelection()};
+        return dynamicSelections[lane];
+    }
     private final Set<UUID> chestOpeners=new HashSet<>();
     private final ChangeStamp<CompoundTag> clientProgram=new ChangeStamp<>();
     private ItemStack clientDisplay=ItemStack.EMPTY;
@@ -102,6 +109,7 @@ public class MachineBlockEntity extends BlockEntity implements MenuProvider {
     }
     @Override public void setRemoved() {
         chestOpeners.clear();greenhouseGeometry=null;recipeSelection.clear();clientProgram.clear();clientDisplay=ItemStack.EMPTY;
+        if(dynamicSelections!=null)for(var selection:dynamicSelections)selection.clear();
         super.setRemoved();
     }
     public MachineBlockEntity(BlockPos p,BlockState state){
@@ -186,8 +194,11 @@ public class MachineBlockEntity extends BlockEntity implements MenuProvider {
         if(kind().equals("reinforced_chest"))recheckOpeners();
         if(storage()||!CalculatorConfig.machineEnabled(kind()))return;
         int redstone=redstoneMode();
-        boolean powered=level.hasNeighborSignal(worldPosition);
-        if(redstone==3||redstone==1&&!powered||redstone==2&&powered)return;
+        if(redstone==3)return;
+        if(redstone==1||redstone==2){
+            boolean powered=level.hasNeighborSignal(worldPosition);
+            if(redstone==1&&!powered||redstone==2&&powered)return;
+        }
         MachinePrograms.export(this);
         if(!pending.isEmpty()){
             flushResults();setChanged();
@@ -197,11 +208,11 @@ public class MachineBlockEntity extends BlockEntity implements MenuProvider {
         if(MachineProfiles.storage(k))EnergyItems.discharge(inventory,0,energy,MachineProfiles.chargingLong(k));
         if(k.equals("creative_power_cube"))energy.receiveEnergy(Integer.MAX_VALUE,false);
         if(chargesItems())chargeItem();else MachinePrograms.discharge(this);
-        if(Set.of("calculator_locator","conductor_mast").contains(k))pushEnergy();
+        if(EARLY_ENERGY_PUSHERS.contains(k))pushEnergy();
         if(MachinePrograms.tick(this))return;
         if(k.equals("dynamic_calculator")){DynamicProgram.tick(this);return;}
         if(k.endsWith("extractor")){generate();pushEnergy();return;}
-        if(Set.of("power_cube","advanced_power_cube","creative_power_cube","hand_cranked_generator","analysing_chamber").contains(k))pushEnergy();
+        if(ENERGY_PUSHERS.contains(k))pushEnergy();
         if(k.equals("analysing_chamber")){analyse();return;}
         if(k.equals("health_processor")||k.equals("hunger_processor")){processNutrition();return;}
         if(k.equals("reinforced_furnace")){smelt();return;}
@@ -241,6 +252,7 @@ public class MachineBlockEntity extends BlockEntity implements MenuProvider {
     public final com.foundations.calculator.core.TransferBudget euOutputBudget=new com.foundations.calculator.core.TransferBudget();
     private void pushEnergy(){
         for(Direction side:Direction.values()){
+            if(energy.stored()<=0)break;
             if(!energySideOutput(side))continue;
             if(!level.hasChunkAt(worldPosition.relative(side)))continue;
             int nativeSent=com.foundations.calculator.api.FoundationsEnergy.sendNative(this,side,(int)Math.min(energy.stored(),MachineProfiles.transfer(kind())));

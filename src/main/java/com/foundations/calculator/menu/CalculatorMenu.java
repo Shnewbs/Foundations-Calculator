@@ -138,9 +138,7 @@ public final class CalculatorMenu extends AbstractContainerMenu {
         if(!(held.getItem() instanceof CalculatorItem item))return false;
         String recipeKind=switch(kind){case "calculator"->"calculator";case "scientific_calculator"->"scientific";case "flawless_calculator"->"flawless";case "atomic_calculator"->"atomic";default->"none";};
         Level level=player.level();ProcessInput input=ProcessTransactions.input(handler,inputs);
-        var match=RecipeIndex.forMachine(level,recipeKind,player.getUUID()).stream()
-            .filter(r->r.value().machine().equals(recipeKind)&&r.value().matches(input,level))
-            .sorted(Comparator.comparing(r->r.id().toString())).findFirst();
+        var match=RecipeIndex.firstMatch(level,recipeKind,player.getUUID(),input);
         if(match.isEmpty())return false;
         long cost=CalculatorConfig.energyLong(kind,RecipePolicies.energy(match.get(),1));
         if(item.energyLong(held)<cost)return false;
@@ -158,7 +156,7 @@ public final class CalculatorMenu extends AbstractContainerMenu {
         if(lane<0||lane>2||!(held.getItem() instanceof CalculatorItem item))return false;
         int start=lane==2?4:lane*2,count=lane==2?3:2;String family=new String[]{"calculator","scientific","atomic"}[lane];
         ItemStackHandler temp=new ItemStackHandler(25);for(int i=0;i<count;i++)temp.setStackInSlot(i,handler.getStackInSlot(start+i).copy());for(int i=14;i<20;i++)temp.setStackInSlot(i,handler.getStackInSlot(i).copy());
-        var input=ProcessTransactions.input(temp,count);var found=RecipeIndex.forMachine(player.level(),family,player.getUUID()).stream().filter(r->r.value().matches(input,player.level())).findFirst();if(found.isEmpty())return false;
+        var input=ProcessTransactions.input(temp,count);var found=RecipeIndex.firstMatch(player.level(),family,player.getUUID(),input);if(found.isEmpty())return false;
         var recipe=found.get().value();long cost=CalculatorConfig.energyLong(kind,RecipePolicies.energy(found.get(),1));if(item.energyLong(held)<cost)return false;
         var results=ProcessTransactions.consume(temp,recipe.allocation(input),recipe,player.level());ProcessTransactions.flush(results,temp);if(!results.isEmpty())return false;
         item.longStorage(held).extract(cost,false);for(int i=0;i<count;i++)handler.setStackInSlot(start+i,temp.getStackInSlot(i));for(int i=14;i<20;i++)handler.setStackInSlot(i,temp.getStackInSlot(i));ResearchData.completed(player.level(),player.getUUID(),family);broadcastChanges();return true;

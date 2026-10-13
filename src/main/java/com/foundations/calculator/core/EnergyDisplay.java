@@ -8,6 +8,8 @@ import java.util.Locale;
 public final class EnergyDisplay {
     private static final DecimalFormat DECIMAL = new DecimalFormat("0.##", DecimalFormatSymbols.getInstance(Locale.ROOT));
 
+    private static final String[] SUFFIX={"","k","M","G","T","P","E"};
+
     public record Value(double stored,double capacity,String unit) {}
 
     public static Value preferred(long stored,long capacity) {
@@ -32,7 +34,7 @@ public final class EnergyDisplay {
         return new Value(s,c,unit);
     }
     public static String compact(long value) {
-        double n=Math.max(0,value);String[] suffix={"","k","M","G","T","P","E"};int i=0;
+        double n=Math.max(0,value);String[] suffix=SUFFIX;int i=0;
         while(n>=1000&&i<suffix.length-1){n/=1000;i++;}
         return (i==0?String.format(Locale.ROOT,"%,d",value):DECIMAL.format(n)+suffix[i]);
     }

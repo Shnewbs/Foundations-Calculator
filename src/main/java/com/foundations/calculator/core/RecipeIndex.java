@@ -24,6 +24,19 @@ public final class RecipeIndex {
     public static List<RecipeHolder<ProcessRecipe>> forMachine(Level level,String machine,UUID player) {
         return allForMachine(level,machine).stream().filter(r -> ResearchData.allowed(level,player,r.value())).toList();
     }
+    /** First permitted match in the same deterministic order, without building a filtered family. */
+    public static Optional<RecipeHolder<ProcessRecipe>> firstMatch(Level level,String machine,UUID player,ProcessInput input) {
+        return firstMatch(level,machine,player,input,recipe -> true);
+    }
+    public static Optional<RecipeHolder<ProcessRecipe>> firstMatch(Level level,String machine,UUID player,ProcessInput input,
+            java.util.function.Predicate<ProcessRecipe> eligible) {
+        if(input.isEmpty())return Optional.empty();
+        for(var holder:allForMachine(level,machine)) {
+            var recipe=holder.value();
+            if(eligible.test(recipe)&&ResearchData.allowed(level,player,recipe)&&recipe.matches(input,level))return Optional.of(holder);
+        }
+        return Optional.empty();
+    }
     private static Index index(Level level) {
         return CACHE.computeIfAbsent(level.getRecipeManager(),manager -> {
             List<RecipeHolder<ProcessRecipe>> all = manager.getAllRecipesFor(Content.PROCESS_TYPE.get()).stream()

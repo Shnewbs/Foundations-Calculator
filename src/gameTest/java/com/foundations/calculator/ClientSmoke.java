@@ -27,6 +27,7 @@ import net.neoforged.neoforge.client.event.ClientTickEvent;
 /** Opt-in real OpenGL client regression walkthrough. Never included in a release JAR. */
 @EventBusSubscriber(modid=FoundationsCalculator.ID,value=Dist.CLIENT)
 public final class ClientSmoke {
+    private static final Deque<String> captures=new ArrayDeque<>();
     private static boolean started,armed;private static int waitingTicks;private static int ticks,smeltWait;private static BlockPos origin;
     private static final List<String> DISPLAY=List.of("conductor_mast","weather_station","transmitter","scarecrow","crank_handle","extraction_chamber","processing_chamber","precision_chamber","docking_station","magnetic_flux","atomic_multiplier","flawless_greenhouse");
     @SubscribeEvent public static void tick(ClientTickEvent.Post event){
@@ -120,7 +121,8 @@ public final class ClientSmoke {
         if(ticks==2240){mc.setScreen(null);open(mc,"reinforced_chest",4);}
         if(ticks==2280){var chest=(MachineBlockEntity)mc.level.getBlockEntity(origin.offset(10,0,4));require(chest.lid>.9f,"Reinforced chest lid must open while its menu is in use");capture(mc,"19-animated-chest-menu.png");}
         if(ticks==2320){mc.player.closeContainer();mc.gameMode.useItem(mc.player,InteractionHand.MAIN_HAND);}
-        if(ticks==2880){require(mc.player.containerMenu instanceof com.foundations.calculator.menu.SmeltingModuleMenu,"Portable menu must reopen");var menu=(com.foundations.calculator.menu.SmeltingModuleMenu)mc.player.containerMenu;if(!(menu.slots.get(2).getItem().is(Items.GOLD_INGOT)&&menu.energy()==0)&&smeltWait++<400){ticks--;return;}require(menu.slots.get(2).getItem().is(Items.GOLD_INGOT)&&menu.energy()==0,"Portable smelting must finish after accounting for paused configuration screens: progress="+menu.progress()+", FE="+menu.energy()+", output="+menu.slots.get(2).getItem());capture(mc,"20-portable-smelting-output.png");click(mc,2,ClickType.QUICK_MOVE);}
+        if(ticks==2880){require(mc.player.containerMenu instanceof com.foundations.calculator.menu.SmeltingModuleMenu,"Portable menu must reopen");var menu=(com.foundations.calculator.menu.SmeltingModuleMenu)mc.player.containerMenu;if(!(menu.slots.get(2).getItem().is(Items.GOLD_INGOT)&&menu.energy()==0)&&smeltWait++<400){ticks--;return;}require(menu.slots.get(2).getItem().is(Items.GOLD_INGOT)&&menu.energy()==0,"Portable smelting must finish after accounting for paused configuration screens: progress="+menu.progress()+", FE="+menu.energy()+", output="+menu.slots.get(2).getItem());capture(mc,"20-portable-smelting-output.png");}
+        if(ticks==2882)click(mc,2,ClickType.QUICK_MOVE);
         if(ticks==2920){mc.player.closeContainer();mc.getSingleplayerServer().execute(()->{var player=mc.getSingleplayerServer().getPlayerList().getPlayers().getFirst();require(player.getInventory().countItem(Items.GOLD_INGOT)==1&&player.getInventory().countItem(Items.RAW_GOLD)==0,"Portable output must reach the server inventory exactly once");com.mojang.logging.LogUtils.getLogger().info("FOUNDATIONS_CLIENT_R4_FEATURES_PASSED");});com.foundations.calculator.core.ClientConfig.TOOL_MODELS.set(false);com.foundations.calculator.core.ClientConfig.THEME.set(com.foundations.calculator.core.ClientConfig.Theme.CLASSIC);mc.reloadResourcePacks().thenRun(()->mc.execute(()->mc.setScreen(new Gallery())));}
         if(ticks==3040)capture(mc,"21-flat-tool-models.png");
         if(ticks==3080){mc.setScreen(null);mc.gameMode.useItem(mc.player,InteractionHand.MAIN_HAND);}
@@ -139,7 +141,14 @@ public final class ClientSmoke {
         if(id.equals("reinforced_chest"))for(int i=0;i<4;i++)m.bulk.insertItem(0,new ItemStack(Items.DIAMOND,64),false);
         player.teleportTo(m.getBlockPos().getX()-1,m.getBlockPos().getY(),m.getBlockPos().getZ());player.openMenu(m,buf->{buf.writeBoolean(true);buf.writeBlockPos(m.getBlockPos());});
     });}
-    private static void capture(Minecraft mc,String file){Screenshot.grab(new File("../validation"),file,mc.getMainRenderTarget(),message->System.out.println("SMOKE_SCREENSHOT "+file));}
+    private static void capture(Minecraft mc,String file){captures.addLast(file);}
+    @SubscribeEvent public static void rendered(net.neoforged.neoforge.client.event.RenderFrameEvent.Post event){
+        Minecraft mc=Minecraft.getInstance();
+        while(!captures.isEmpty()){
+            String file=captures.removeFirst();
+            Screenshot.grab(new File("../validation"),file,mc.getMainRenderTarget(),message->System.out.println("SMOKE_SCREENSHOT "+file));
+        }
+    }
     private static final class Gallery extends Screen {
         Gallery(){super(Component.literal("Foundations Calculator · registry gallery"));}
         public void render(GuiGraphics g,int mx,int my,float partial){super.render(g,mx,my,partial);g.fill(0,0,width,height,0xff18242d);g.drawString(font,title,12,8,0xffa5e6ec,false);int i=0,cols=Math.max(1,(width-24)/24);for(var item:Content.ITEMS_BY_ID.values()){int x=12+(i%cols)*24,y=30+(i/cols)*24;g.renderItem(new ItemStack(item.get()),x,y);i++;}}

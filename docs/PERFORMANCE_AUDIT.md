@@ -96,3 +96,19 @@ adapter routing. Unsupported 26.x integrations are not included in performance
 or compatibility claims. The beta's world-upgrade, multiplayer/protection,
 full-world performance and remaining client acceptance gates are not closed by
 this audit. CurseForge publication must continue to reflect that release status.
+
+## Alpha R1 follow-up
+
+The user explicitly requested publication of all three targets as alpha/beta
+prereleases, without assuming stable status. This batch is classified alpha.
+Native port auditing now binds the compiled Java 25 classes and source JARs to a
+pre-build source fingerprint and both native startup/integration reports before
+publication. GitHub receives a prerelease, and CurseForge receives alpha metadata
+for the exact audited target and binary. Stable publication is never inferred.
+
+Nutrition-network work now uses the existing per-position staggered cadence.
+Disabling `performance.staggerWork` restores the old globally aligned tick phase.
+The scan hoists block and config lookups once per traversal and reuses its private
+direction table. Loaded-chunk checks, maturity and protection events stay live.
+Unit tests verify unchanged cadence, the opt-out, and a spread of scheduled scans
+for 1,000 positions; this is scheduling evidence, not a measured TPS claim.

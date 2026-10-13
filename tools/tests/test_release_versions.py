@@ -9,7 +9,7 @@ class ReleaseVersionsTest(unittest.TestCase):
         for name in ['0.1.0beta', '0.1.0beta.R2', '0.1.0-beta.1', '0.1b']:
             self.assertEqual(candidate_type(name), 'beta')
     def test_alphas_stay_alpha(self):
-        for name in ['0.0.5a.R2', '0.0.3a-dev.1', '0.1a']:
+        for name in ['0.0.5a.R2', '0.0.3a-dev.1', '0.1a','0.1.0alpha.R1','26.1.2-0.1.0alpha.R1','26.3-0.1.0alpha.R1']:
             self.assertEqual(candidate_type(name), 'alpha')
     def test_final_release(self):
         self.assertEqual(candidate_type('0.1.0'), 'release')

@@ -3,6 +3,9 @@ import re
 
 
 def candidate_type(version):
+    version=re.sub(r'^(?:26\.1\.2|26\.3)-(?=\d+\.\d+\.\d+(?:alpha|beta))','',version)
+    if re.fullmatch(r'\d+\.\d+\.\d+alpha(?:\.R\d+)?|\d+\.\d+\.\d+-alpha(?:[.-]\d+)?',version):
+        return 'alpha'
     if re.fullmatch(r'0\.0\.\d+a(?:\.R\d+)?(?:-dev\.\d+)?|0\.1a(?:\.R\d+)?', version):
         return 'alpha'
     if re.fullmatch(r'0\.1b(?:\.R\d+)?|\d+\.\d+\.\d+beta(?:\.R\d+)?|\d+\.\d+\.\d+-(?:beta|rc)(?:[.-]\d+)?', version):

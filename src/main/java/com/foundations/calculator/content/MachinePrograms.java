@@ -21,6 +21,7 @@ import net.neoforged.neoforge.items.*;
 
 /** Server-only world interactions. All durable state belongs to the owning block entity. */
 public final class MachinePrograms {
+    private static final Direction[] DIRECTIONS=Direction.values();
     private MachinePrograms() {}
     public static boolean tick(MachineBlockEntity m) {
         switch (m.kind()) {
@@ -59,7 +60,7 @@ public final class MachinePrograms {
             if(!output)return;
         }
         int remaining=(int)Math.min(CalculatorConfig.integer("upgrades.maxTransfer",64),(long)m.upgrades("transfer_upgrade")*CalculatorConfig.integer("upgrades.itemsPerTransfer",4));
-        for(Direction side:Direction.values()){
+        for(Direction side:DIRECTIONS){
             if(remaining<=0)break;
             if(!m.itemOutput(side))continue;
             BlockPos target=m.getBlockPos().relative(side);if(!m.getLevel().hasChunkAt(target))continue;
@@ -200,17 +201,22 @@ public final class MachinePrograms {
         level.setBlockAndUpdate(pos,s.setValue(HarvestLeaves.AGE,CalculatorConfig.integer("plants.leafHarvestResetAge",0)));return drops;
     }
     public static void nutritionNetwork(MachineBlockEntity m,String type){
-        if(m.getLevel().getGameTime()%CalculatorConfig.integer("nutrition.networkInterval",20)!=0||m.nutrient==Integer.MAX_VALUE)return;
-        String pipe=type.equals("health")?"tanzanite_piping":"amethyst_piping";
-        String leaves=type.equals("health")?"tanzanite_leaves":"amethyst_leaves";
+        if(!m.workDue(CalculatorConfig.integer("nutrition.networkInterval",20))||m.nutrient==Integer.MAX_VALUE)return;
+        var pipe=Content.block(type.equals("health")?"tanzanite_piping":"amethyst_piping");
+        var log=Content.block(type.equals("health")?"tanzanite_log":"amethyst_log");
+        var leaves=Content.block(type.equals("health")?"tanzanite_leaves":"amethyst_leaves");
+        int budget=CalculatorConfig.integer("nutrition.networkMaxVisited",512);
+        int matureAge=CalculatorConfig.integer("plants.leafMatureAge",2);
+        int resetAge=CalculatorConfig.integer("plants.leafHarvestResetAge",0);
+        int yield=CalculatorConfig.integer("nutrition.leafYield",1);
         Set<BlockPos> visited=new HashSet<>();Deque<BlockPos> queue=new ArrayDeque<>();queue.add(m.getBlockPos());visited.add(m.getBlockPos());
-        while(!queue.isEmpty()&&visited.size()<CalculatorConfig.integer("nutrition.networkMaxVisited",512)){BlockPos p=queue.removeFirst();for(Direction d:Direction.values()){
+        while(!queue.isEmpty()&&visited.size()<budget){BlockPos p=queue.removeFirst();for(Direction d:DIRECTIONS){
             BlockPos n=p.relative(d);if(!visited.add(n)||!m.getLevel().hasChunkAt(n))continue;BlockState state=m.getLevel().getBlockState(n);
-            if(state.is(Content.block(pipe))||state.is(Content.block(type.equals("health")?"tanzanite_log":"amethyst_log"))||state.is(Content.block(leaves)))queue.add(n);
-            if(state.is(Content.block(leaves))&&state.getValue(HarvestLeaves.AGE)>=CalculatorConfig.integer("plants.leafMatureAge",2)){
+            if(state.is(pipe)||state.is(log)||state.is(leaves))queue.add(n);
+            if(state.is(leaves)&&state.getValue(HarvestLeaves.AGE)>=matureAge){
                 if(!MachineWorldActions.replace(m,n,state,state.setValue(HarvestLeaves.AGE,
-                    CalculatorConfig.integer("plants.leafHarvestResetAge",0)),ItemStack.EMPTY,MachineWorldActions.Action.LEAF_HARVEST))continue;
-                m.nutrient=(int)Math.min(Integer.MAX_VALUE,(long)m.nutrient+CalculatorConfig.integer("nutrition.leafYield",1));m.setChanged();return;
+                    resetAge),ItemStack.EMPTY,MachineWorldActions.Action.LEAF_HARVEST))continue;
+                m.nutrient=(int)Math.min(Integer.MAX_VALUE,(long)m.nutrient+yield);m.setChanged();return;
             }
         }}
     }

@@ -3,11 +3,14 @@
   "machine": "research",
   "ingredients": [
     {
-      "ingredient": [
-        "#c:ores/iron",
-        "#c:ingots/iron",
-        "#c:storage_blocks/iron"
-      ]
+      "ingredient": {
+        "neoforge:ingredient_type": "neoforge:compound",
+        "children": [
+          "#c:ores/iron",
+          "#c:ingots/iron",
+          "#c:storage_blocks/iron"
+        ]
+      }
     }
   ],
   "results": [],

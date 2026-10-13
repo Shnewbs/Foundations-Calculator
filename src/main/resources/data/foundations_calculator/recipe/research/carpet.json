@@ -3,9 +3,7 @@
   "machine": "research",
   "ingredients": [
     {
-      "ingredient": [
-        "#minecraft:wool_carpets"
-      ]
+      "ingredient": "#minecraft:wool_carpets"
     }
   ],
   "results": [],

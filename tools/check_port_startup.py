@@ -49,7 +49,7 @@ finally:
     log = output.decode(errors='replace')
     Path('build/port-startup.log').write_text(log)
     errors = [line for line in log.splitlines() if re.search(
-        r'Couldn't parse data file|Parsing error loading recipe|Error parsing recipe|Failed to parse recipe|Error loading recipe|Failed to load datapacks|Failed to start the minecraft server|Mod loading error|Failed to load registries', line, re.I)]
+        r"Couldn't parse data file|Parsing error loading recipe|Error parsing recipe|Failed to parse recipe|Error loading recipe|Failed to load datapacks|Failed to start the minecraft server|Mod loading error|Failed to load registries", line, re.I)]
     counts = [int(x) for x in re.findall(r'Loaded (\d+) recipes', log)]
     report = {'server_started': started, 'exit_code': process.returncode,
               'loaded_recipes': max(counts, default=0), 'resource_errors': errors,

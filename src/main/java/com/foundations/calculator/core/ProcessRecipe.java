@@ -11,20 +11,23 @@ import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ItemStackTemplate;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
 
 public record ProcessRecipe(String machine, List<CountedIngredient> inputs, List<Result> outputs, int energy, int ticks, int value, boolean research,String researchGroup) implements Recipe<ProcessInput> {
     public ProcessRecipe(String machine,List<CountedIngredient> inputs,List<Result> outputs,int energy,int ticks,int value,boolean research){this(machine,inputs,outputs,energy,ticks,value,research,"");}
-    public record Result(ItemStack stack, double chance, String randomCircuit) {
+    public record Result(ItemStackTemplate template, double chance, String randomCircuit) {
+        public Result(ItemStack stack,double chance,String randomCircuit){this(ItemStackTemplate.fromNonEmptyStack(stack),chance,randomCircuit);}
+        public ItemStack stack(){return template.create();}
         public static final Codec<Result> CODEC=RecordCodecBuilder.create(i->i.group(
-            ItemStack.CODEC.fieldOf("stack").forGetter(Result::stack),
+            ItemStackTemplate.CODEC.fieldOf("stack").forGetter(Result::template),
             Codec.doubleRange(0,1).optionalFieldOf("chance",1.0).forGetter(Result::chance),
             Codec.STRING.validate(s->Set.of("","circuit_board","circuit_dirty","circuit_damaged").contains(s)?com.mojang.serialization.DataResult.success(s):com.mojang.serialization.DataResult.error(()->"Unknown random circuit family: "+s)).optionalFieldOf("random_circuit", "").forGetter(Result::randomCircuit)
         ).apply(i,Result::new));
         public ItemStack roll(RandomSource random) {
             if(random.nextDouble()>=chance)return ItemStack.EMPTY;
-            ItemStack s=randomCircuit.isEmpty()?stack.copy():new ItemStack(Content.item(randomCircuit+"_"+random.nextInt(14)),stack.getCount());
+            ItemStack s=randomCircuit.isEmpty()?stack():new ItemStack(Content.item(randomCircuit+"_"+random.nextInt(14)),template.count());
             if(Content.path(s).startsWith("circuit_board_"))CircuitData.initialize(s,random);
             return s;
         }

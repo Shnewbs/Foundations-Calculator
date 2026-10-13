@@ -3,9 +3,7 @@
   "machine": "research",
   "ingredients": [
     {
-      "ingredient": [
-        "minecraft:gravel"
-      ]
+      "ingredient": "minecraft:gravel"
     }
   ],
   "results": [],

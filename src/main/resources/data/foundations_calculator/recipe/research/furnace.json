@@ -3,9 +3,7 @@
   "machine": "research",
   "ingredients": [
     {
-      "ingredient": [
-        "minecraft:furnace"
-      ]
+      "ingredient": "minecraft:furnace"
     }
   ],
   "results": [],

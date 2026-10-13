@@ -3,9 +3,7 @@
   "machine": "research",
   "ingredients": [
     {
-      "ingredient": [
-        "#c:cobblestones"
-      ]
+      "ingredient": "#c:cobblestones"
     }
   ],
   "results": [],

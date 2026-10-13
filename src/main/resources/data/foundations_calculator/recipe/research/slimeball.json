@@ -3,9 +3,7 @@
   "machine": "research",
   "ingredients": [
     {
-      "ingredient": [
-        "#c:slime_balls"
-      ]
+      "ingredient": "#c:slime_balls"
     }
   ],
   "results": [],

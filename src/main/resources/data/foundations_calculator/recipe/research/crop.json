@@ -3,12 +3,15 @@
   "machine": "research",
   "ingredients": [
     {
-      "ingredient": [
-        "minecraft:wheat",
-        "minecraft:potato",
-        "minecraft:carrot",
-        "#c:crops"
-      ]
+      "ingredient": {
+        "neoforge:ingredient_type": "neoforge:compound",
+        "children": [
+          "minecraft:wheat",
+          "minecraft:potato",
+          "minecraft:carrot",
+          "#c:crops"
+        ]
+      }
     }
   ],
   "results": [],

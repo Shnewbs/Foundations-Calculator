@@ -3,9 +3,7 @@
   "machine": "research",
   "ingredients": [
     {
-      "ingredient": [
-        "#minecraft:leaves"
-      ]
+      "ingredient": "#minecraft:leaves"
     }
   ],
   "results": [],

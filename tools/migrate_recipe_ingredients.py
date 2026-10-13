@@ -10,7 +10,12 @@ def ingredient(value):
     if isinstance(value, dict) and set(value) == {'tag'}:
         return '#' + value['tag']
     if isinstance(value, list):
-        return [ingredient(entry) for entry in value]
+        children = [ingredient(entry) for entry in value]
+        if len(children) == 1:
+            return children[0]
+        if any(isinstance(entry, str) and entry.startswith('#') for entry in children):
+            return {'neoforge:ingredient_type': 'neoforge:compound', 'children': children}
+        return children
     return value
 
 changed = 0

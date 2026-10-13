@@ -3,9 +3,7 @@
   "machine": "research",
   "ingredients": [
     {
-      "ingredient": [
-        "#c:glass_panes"
-      ]
+      "ingredient": "#c:glass_panes"
     }
   ],
   "results": [],

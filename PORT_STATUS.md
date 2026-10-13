@@ -19,3 +19,9 @@ Fresh native suites and the 1.21.1 real-client walkthrough pass; allocator
 allocation falls 77.3% in the isolated mixed workload. Full-world performance
 and beta publication acceptance remain pending. See [the performance audit](docs/PERFORMANCE_AUDIT.md)
 for exact CI evidence, scope and the prioritized remaining opportunities.
+
+## Published alpha R1 — 2026-10-13
+
+All three targets are now GitHub prereleases and CurseForge alpha uploads.
+Native checks pass on each target; full beta/stable acceptance is still pending.
+See [alpha R1 release receipts and performance changes](docs/releases/0.1.0alpha.R1.md).

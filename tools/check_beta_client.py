@@ -57,11 +57,11 @@ evidence.mkdir(parents=True, exist_ok=True)
 run = Path('run')
 run.mkdir(exist_ok=True)
 (run / 'eula.txt').write_text('eula=true\n')
-(run / 'server.properties').write_text('online-mode=false\nlevel-name=FoundationsSmoke\nview-distance=2\nsimulation-distance=2\n')
+(run / 'server.properties').write_text('online-mode=false\nlevel-name=FoundationsSmoke\nlevel-type=minecraft:flat\ngenerator-settings={"layers":[{"block":"minecraft:bedrock","height":1},{"block":"minecraft:dirt","height":2},{"block":"minecraft:grass_block","height":1}],"biome":"minecraft:plains","features":false,"lakes":false,"structure_overrides":[]}\nview-distance=2\nsimulation-distance=2\n')
 code, server_log, ready = launch(['runServer'], evidence / 'world-creation.log', 300, True)
 if code != 0 or not ready or not (run / 'FoundationsSmoke/level.dat').is_file():
     raise SystemExit('The native smoke world failed to start and save.')
-(run / 'options.txt').write_text('onboardAccessibility:false\ntutorialStep:none\nrenderDistance:6\nsimulationDistance:5\nmaxFps:60\n')
+(run / 'options.txt').write_text('onboardAccessibility:false\nguiScale:2\ntutorialStep:none\nrenderDistance:6\nsimulationDistance:5\nmaxFps:60\n')
 destination = run / 'saves/FoundationsSmoke'
 destination.parent.mkdir(exist_ok=True)
 shutil.copytree(run / 'FoundationsSmoke', destination, dirs_exist_ok=True)

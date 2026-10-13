@@ -123,7 +123,7 @@ public final class CalculatorMenu extends AbstractContainerMenu {
         }
         if(kind.endsWith("extractor")){
             if(MachineDiagnostics.recipeIngredient(playerInventory.player.level(),kind,stack))return moveItemStackTo(stack,1,2,false);
-            if(stack.getBurnTime(net.minecraft.world.item.crafting.RecipeType.SMELTING,playerInventory.player.level().fuelValues())>0)return moveItemStackTo(stack,0,1,false);
+            if(PlatformFuel.isFuel(stack))return moveItemStackTo(stack,0,1,false);
         }
         if(machine.hasBatterySlot()&&(NutritionData.capacity(stack,"health")>0||NutritionData.capacity(stack,"hunger")>0))return moveItemStackTo(stack,20,21,false);
         if(MachineDiagnostics.recipeIngredient(playerInventory.player.level(),MachineDiagnostics.family(machine),stack))return moveItemStackTo(stack,0,inputs,false);

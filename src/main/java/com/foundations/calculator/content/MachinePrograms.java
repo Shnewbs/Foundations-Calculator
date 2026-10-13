@@ -89,7 +89,7 @@ public final class MachinePrograms {
         m.program.putLong("ScreenEnergy",energy==null?0:Math.max(0L,energy.stored()));m.program.putLong("ScreenCapacity",energy==null?0:Math.max(0L,energy.capacity()));m.setChanged();
     }
     private static void lantern(MachineBlockEntity m) {
-        if(m.burnTime==0){ItemStack fuel=m.inventory.getStackInSlot(0);int duration=fuel.getBurnTime(RecipeType.SMELTING,m.getLevel().fuelValues());
+        if(m.burnTime==0){ItemStack fuel=m.inventory.getStackInSlot(0);int duration=PlatformFuel.burnTime(m,fuel);
             if(duration>0){ItemStack rem=com.foundations.calculator.core.PlatformItems.remainder(fuel);m.inventory.extractItem(0,1,false);if(!rem.isEmpty())m.pending.add(rem);m.burnTime=(int)Math.min(Integer.MAX_VALUE,(long)CalculatorConfig.integer("greenhouse.lanternBurnMultiplier",10)*duration);}}
         boolean burning=m.burnTime>0;
         if(burning){m.burnTime--;m.setChanged();}m.setActive(burning);

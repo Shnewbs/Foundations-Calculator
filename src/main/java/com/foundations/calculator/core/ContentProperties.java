@@ -59,6 +59,8 @@ public final class ContentProperties {
             var o=entry("items",id);var item=supplier.get();
             if(o.has("stackSize")&&o.get("stackSize").getAsInt()>1&&(o.has("durability")||item.components().has(net.minecraft.core.component.DataComponents.MAX_DAMAGE)))throw new IllegalArgumentException(id+": durable items must have stackSize 1");
             event.modify(item,(b,lookup,modifiedItem)->{
+                int fuel=burnTime(id);
+                if(fuel>=0)b.set(net.minecraft.core.component.DataComponents.COOKING_FUEL,fuel==0?null:new net.minecraft.world.item.component.CookingFuel(new net.minecraft.world.level.storage.loot.providers.number.ints.ResolvableInt.Constant(fuel),new net.minecraft.world.level.storage.loot.providers.number.floats.ResolvableFloat.Constant(1f)));
                 String material = id.replaceFirst("_(pickaxe|sword|axe|shovel|hoe)$", "");
                 if (!material.equals(id) && DATA.getAsJsonObject("materials").has(material)) {
                     var repair = net.minecraft.resources.Identifier.parse(materialString(material,"repairItem",switch(material){

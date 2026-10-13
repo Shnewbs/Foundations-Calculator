@@ -21,7 +21,6 @@ public final class ContentRules {
     @SubscribeEvent public static void mine(PlayerInteractEvent.LeftClickBlock e){if(!RecipePolicies.itemEnabled(e.getItemStack()))e.setCanceled(true);}
     @SubscribeEvent public static void attack(AttackEntityEvent e){if(!RecipePolicies.itemEnabled(e.getEntity().getMainHandItem()))e.setCanceled(true);}
     @SubscribeEvent public static void placed(BlockEvent.EntityPlaceEvent e){var id=BuiltInRegistries.BLOCK.getKey(e.getPlacedBlock().getBlock());if(id.getNamespace().equals(FoundationsCalculator.ID)&&!CalculatorConfig.enabled(id.getPath()))e.setCanceled(true);}
-    @SubscribeEvent public static void fuel(net.neoforged.neoforge.event.furnace.FurnaceFuelBurnTimeEvent e){var id=BuiltInRegistries.ITEM.getKey(e.getItemStack().getItem());if(id.getNamespace().equals(FoundationsCalculator.ID)){int override=ContentProperties.burnTime(id.getPath());if(override>=0)e.setBurnTime(override);}}
     @SubscribeEvent public static void harvest(net.neoforged.neoforge.event.entity.player.PlayerEvent.HarvestCheck e){var id=BuiltInRegistries.BLOCK.getKey(e.getTargetBlock().getBlock());if(id.getNamespace().equals(FoundationsCalculator.ID)&&ContentProperties.freelyHarvestable(id.getPath()))e.setCanHarvest(true);}
     private ContentRules(){}
 }

@@ -405,10 +405,10 @@ public final class GuideScreen extends Screen {
 
     @Override public boolean keyPressed(net.minecraft.client.input.KeyEvent event){int key=event.key(),mods=event.modifiers();
         if(event.hasControlDown()&&key==InputConstants.KEY_F){if(narrow()&&!contents){contents=true;reinitWidgets();}setFocused(search);search.setFocused(true);return true;}
-        if(search!=null&&search.isFocused()){if(key==InputConstants.KEY_ENTER&&!hits.isEmpty()){navigate(hits.getFirst().target(),true);return true;}return super.keyPressed(event);}
+        if(search!=null&&search.isFocused()){if(key==InputConstants.KEY_RETURN&&!hits.isEmpty()){navigate(hits.getFirst().target(),true);return true;}return super.keyPressed(event);}
         if(event.hasAltDown()&&key==InputConstants.KEY_LEFT){navigation.back().ifPresent(t->navigate(t,false));return true;}
         if(event.hasAltDown()&&key==InputConstants.KEY_RIGHT){navigation.forward().ifPresent(t->navigate(t,false));return true;}
-        int step=key==InputConstants.KEY_PAGE_DOWN?contentBottom-contentTop-12:key==InputConstants.KEY_PAGE_UP?-(contentBottom-contentTop-12):key==InputConstants.KEY_DOWN?24:key==InputConstants.KEY_UP?-24:0;
+        int step=key==InputConstants.KEY_PAGEDOWN?contentBottom-contentTop-12:key==InputConstants.KEY_PAGEUP?-(contentBottom-contentTop-12):key==InputConstants.KEY_DOWN?24:key==InputConstants.KEY_UP?-24:0;
         if(step!=0){scroll=Math.clamp(scroll+step,0,maxScroll());return true;}if(key==InputConstants.KEY_HOME){scroll=0;return true;}if(key==InputConstants.KEY_END){scroll=maxScroll();return true;}
         return super.keyPressed(event);
     }

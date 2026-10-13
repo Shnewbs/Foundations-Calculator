@@ -105,6 +105,44 @@ public final class NativePortSmoke {
         var savedChest=chest.saveWithFullMetadata(level.registryAccess());
         var copiedChest=(MachineBlockEntity)BlockEntity.loadStatic(bulkPos,chest.getBlockState(),savedChest,level.registryAccess());
         check(copiedChest!=null&&copiedChest.bulk.count(0)==192,"Bulk counts survive actual ValueIO save and reload");
+        var powerPos=pos.offset(8,0,0);
+        var power=place(level,powerPos,"power_cube");
+        var powerInput=level.getCapability(Capabilities.Energy.BLOCK,powerPos,Direction.UP);
+        var powerOther=level.getCapability(Capabilities.Energy.BLOCK,powerPos,Direction.DOWN);
+        check(powerInput!=null&&powerOther!=null,"Real native energy capabilities exist on both faces");
+        int accepted;
+        try(var transaction=Transaction.openRoot()){
+            accepted=powerInput.insert(73,transaction);
+            check(accepted>0&&accepted<=73,"Native energy input obeys its transfer budget");
+        }
+        check(power.energy.stored()==0&&powerOther.getAmountAsLong()==0,"Aborted energy input restores the shared machine balance");
+        try(var transaction=Transaction.openRoot()){
+            check(powerInput.insert(73,transaction)==accepted,"Committed native energy input reports its actual amount");
+            transaction.commit();
+        }
+        check(power.energy.stored()==accepted&&powerOther.getAmountAsLong()==accepted,"Both energy faces expose one canonical balance");
+        int extracted=Math.min(19,accepted);
+        try(var transaction=Transaction.openRoot()){
+            check(powerOther.extract(19,transaction)==extracted,"Native energy output extracts the permitted amount");
+        }
+        check(power.energy.stored()==accepted,"Aborted energy output restores the machine balance");
+        try(var transaction=Transaction.openRoot()){
+            check(powerOther.extract(19,transaction)==extracted,"Committed native energy output succeeds");
+            transaction.commit();
+        }
+        check(power.energy.stored()==accepted-extracted,"Committed energy output subtracts once");
+        power.program.putInt("Side"+Direction.UP.get3DDataValue(),2);
+        try(var transaction=Transaction.openRoot()){
+            check(powerInput.insert(1,transaction)==0,"Cached energy input follows a live output-only side gate");
+            transaction.commit();
+        }
+        power.program.putInt("Side"+Direction.DOWN.get3DDataValue(),1);
+        try(var transaction=Transaction.openRoot()){
+            check(powerOther.extract(1,transaction)==0,"Cached energy output follows a live input-only side gate");
+            transaction.commit();
+        }
+        var copiedPower=(MachineBlockEntity)BlockEntity.loadStatic(powerPos,power.getBlockState(),power.saveWithFullMetadata(level.registryAccess()),level.registryAccess());
+        check(copiedPower!=null&&copiedPower.energy.stored()==accepted-extracted,"The native energy capability balance survives actual world serialization");
         var longEnergy=new StoredEnergy(Long.MAX_VALUE,()->{});
         long exact=9_007_199_254_740_993L;
         longEnergy.load(exact);

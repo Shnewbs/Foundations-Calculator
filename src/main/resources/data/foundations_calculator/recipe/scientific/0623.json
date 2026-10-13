@@ -3,15 +3,11 @@
   "machine": "scientific",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "foundations_calculator:enriched_coal"
-      },
+      "ingredient": "foundations_calculator:enriched_coal",
       "count": 1
     },
     {
-      "ingredient": {
-        "item": "minecraft:lava_bucket"
-      },
+      "ingredient": "minecraft:lava_bucket",
       "count": 1
     }
   ],

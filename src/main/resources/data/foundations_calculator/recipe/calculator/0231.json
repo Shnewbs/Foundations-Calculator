@@ -3,15 +3,11 @@
   "machine": "calculator",
   "ingredients": [
     {
-      "ingredient": {
-        "tag": "c:crops/carrot"
-      },
+      "ingredient": "#c:crops/carrot",
       "count": 1
     },
     {
-      "ingredient": {
-        "tag": "c:crops/potato"
-      },
+      "ingredient": "#c:crops/potato",
       "count": 1
     }
   ],

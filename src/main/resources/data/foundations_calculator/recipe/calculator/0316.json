@@ -3,15 +3,11 @@
   "machine": "calculator",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "minecraft:acacia_sapling"
-      },
+      "ingredient": "minecraft:acacia_sapling",
       "count": 1
     },
     {
-      "ingredient": {
-        "item": "minecraft:acacia_sapling"
-      },
+      "ingredient": "minecraft:acacia_sapling",
       "count": 1
     }
   ],

@@ -3,9 +3,7 @@
   "machine": "redstone_extractor",
   "ingredients": [
     {
-      "ingredient": {
-        "tag": "foundations_calculator:ingots/redstone"
-      },
+      "ingredient": "#foundations_calculator:ingots/redstone",
       "count": 1
     }
   ],

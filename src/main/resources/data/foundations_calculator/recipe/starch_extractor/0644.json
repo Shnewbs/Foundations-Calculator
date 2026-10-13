@@ -3,9 +3,7 @@
   "machine": "starch_extractor",
   "ingredients": [
     {
-      "ingredient": {
-        "tag": "foundations_calculator:leaves"
-      },
+      "ingredient": "#foundations_calculator:leaves",
       "count": 1
     }
   ],

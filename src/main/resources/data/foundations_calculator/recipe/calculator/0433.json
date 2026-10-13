@@ -3,15 +3,11 @@
   "machine": "calculator",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "minecraft:lime_dye"
-      },
+      "ingredient": "minecraft:lime_dye",
       "count": 1
     },
     {
-      "ingredient": {
-        "item": "minecraft:lime_dye"
-      },
+      "ingredient": "minecraft:lime_dye",
       "count": 1
     }
   ],

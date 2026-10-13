@@ -3,15 +3,11 @@
   "machine": "calculator",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "minecraft:spruce_leaves"
-      },
+      "ingredient": "minecraft:spruce_leaves",
       "count": 1
     },
     {
-      "ingredient": {
-        "item": "minecraft:jungle_leaves"
-      },
+      "ingredient": "minecraft:jungle_leaves",
       "count": 1
     }
   ],

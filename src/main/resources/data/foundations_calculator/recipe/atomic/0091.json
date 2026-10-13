@@ -3,21 +3,15 @@
   "machine": "atomic",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "foundations_calculator:reinforced_iron_block"
-      },
+      "ingredient": "foundations_calculator:reinforced_iron_block",
       "count": 1
     },
     {
-      "ingredient": {
-        "item": "foundations_calculator:reinforced_chest"
-      },
+      "ingredient": "foundations_calculator:reinforced_chest",
       "count": 1
     },
     {
-      "ingredient": {
-        "item": "foundations_calculator:reinforced_iron_block"
-      },
+      "ingredient": "foundations_calculator:reinforced_iron_block",
       "count": 1
     }
   ],

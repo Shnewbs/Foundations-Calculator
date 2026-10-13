@@ -7,12 +7,8 @@
     "SSS"
   ],
   "key": {
-    "D": {
-      "item": "minecraft:gray_dye"
-    },
-    "S": {
-      "item": "foundations_calculator:stable_stone_normal"
-    }
+    "D": "minecraft:gray_dye",
+    "S": "foundations_calculator:stable_stone_normal"
   },
   "result": {
     "id": "foundations_calculator:stable_stone_light_grey",

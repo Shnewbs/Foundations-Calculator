@@ -7,9 +7,7 @@
     "AAA"
   ],
   "key": {
-    "A": {
-      "item": "foundations_calculator:amethyst_planks"
-    }
+    "A": "foundations_calculator:amethyst_planks"
   },
   "result": {
     "id": "foundations_calculator:amethyst_stairs",

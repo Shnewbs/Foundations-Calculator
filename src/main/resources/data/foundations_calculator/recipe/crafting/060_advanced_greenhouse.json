@@ -7,15 +7,9 @@
     "BCB"
   ],
   "key": {
-    "A": {
-      "item": "foundations_calculator:basic_greenhouse"
-    },
-    "B": {
-      "item": "foundations_calculator:weakened_diamond"
-    },
-    "C": {
-      "item": "foundations_calculator:large_tanzanite"
-    }
+    "A": "foundations_calculator:basic_greenhouse",
+    "B": "foundations_calculator:weakened_diamond",
+    "C": "foundations_calculator:large_tanzanite"
   },
   "result": {
     "id": "foundations_calculator:advanced_greenhouse",

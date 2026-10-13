@@ -3,15 +3,11 @@
   "machine": "scientific",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "foundations_calculator:calculator"
-      },
+      "ingredient": "foundations_calculator:calculator",
       "count": 1
     },
     {
-      "ingredient": {
-        "item": "foundations_calculator:redstone_ingot"
-      },
+      "ingredient": "foundations_calculator:redstone_ingot",
       "count": 1
     }
   ],

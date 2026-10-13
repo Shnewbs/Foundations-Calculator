@@ -3,15 +3,11 @@
   "machine": "calculator",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "minecraft:magenta_dye"
-      },
+      "ingredient": "minecraft:magenta_dye",
       "count": 1
     },
     {
-      "ingredient": {
-        "item": "minecraft:magenta_dye"
-      },
+      "ingredient": "minecraft:magenta_dye",
       "count": 1
     }
   ],

@@ -3,15 +3,11 @@
   "machine": "calculator",
   "ingredients": [
     {
-      "ingredient": {
-        "tag": "c:gems/emerald"
-      },
+      "ingredient": "#c:gems/emerald",
       "count": 1
     },
     {
-      "ingredient": {
-        "tag": "c:stones"
-      },
+      "ingredient": "#c:stones",
       "count": 1
     }
   ],

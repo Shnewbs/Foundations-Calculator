@@ -3,21 +3,15 @@
   "machine": "atomic",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "foundations_calculator:tanzanite_log"
-      },
+      "ingredient": "foundations_calculator:tanzanite_log",
       "count": 1
     },
     {
-      "ingredient": {
-        "item": "foundations_calculator:atomic_binder"
-      },
+      "ingredient": "foundations_calculator:atomic_binder",
       "count": 1
     },
     {
-      "ingredient": {
-        "item": "foundations_calculator:tanzanite_leaves"
-      },
+      "ingredient": "foundations_calculator:tanzanite_leaves",
       "count": 1
     }
   ],

@@ -3,15 +3,11 @@
   "machine": "calculator",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "minecraft:white_tulip"
-      },
+      "ingredient": "minecraft:white_tulip",
       "count": 1
     },
     {
-      "ingredient": {
-        "item": "minecraft:white_tulip"
-      },
+      "ingredient": "minecraft:white_tulip",
       "count": 1
     }
   ],

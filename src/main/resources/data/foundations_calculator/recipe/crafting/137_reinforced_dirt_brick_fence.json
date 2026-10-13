@@ -6,12 +6,8 @@
     "ASA"
   ],
   "key": {
-    "A": {
-      "item": "foundations_calculator:reinforced_dirt_brick"
-    },
-    "S": {
-      "tag": "c:rods/wooden"
-    }
+    "A": "foundations_calculator:reinforced_dirt_brick",
+    "S": "#c:rods/wooden"
   },
   "result": {
     "id": "foundations_calculator:reinforced_dirt_brick_fence",

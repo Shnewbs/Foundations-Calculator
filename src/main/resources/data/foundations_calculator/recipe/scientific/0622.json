@@ -3,15 +3,11 @@
   "machine": "scientific",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "foundations_calculator:baby_grenade"
-      },
+      "ingredient": "foundations_calculator:baby_grenade",
       "count": 1
     },
     {
-      "ingredient": {
-        "item": "foundations_calculator:baby_grenade"
-      },
+      "ingredient": "foundations_calculator:baby_grenade",
       "count": 1
     }
   ],

@@ -3,15 +3,11 @@
   "machine": "calculator",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "minecraft:white_carpet"
-      },
+      "ingredient": "minecraft:white_carpet",
       "count": 1
     },
     {
-      "ingredient": {
-        "item": "minecraft:white_carpet"
-      },
+      "ingredient": "minecraft:white_carpet",
       "count": 1
     }
   ],

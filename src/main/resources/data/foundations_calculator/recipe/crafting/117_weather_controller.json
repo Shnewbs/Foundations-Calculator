@@ -6,15 +6,9 @@
     "RRR"
   ],
   "key": {
-    "S": {
-      "item": "minecraft:nether_star"
-    },
-    "D": {
-      "item": "foundations_calculator:electric_diamond"
-    },
-    "R": {
-      "item": "foundations_calculator:rain_sensor"
-    }
+    "S": "minecraft:nether_star",
+    "D": "foundations_calculator:electric_diamond",
+    "R": "foundations_calculator:rain_sensor"
   },
   "result": {
     "id": "foundations_calculator:weather_controller",

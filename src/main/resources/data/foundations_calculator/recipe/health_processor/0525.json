@@ -3,9 +3,7 @@
   "machine": "health_processor",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "minecraft:bone"
-      },
+      "ingredient": "minecraft:bone",
       "count": 1
     }
   ],

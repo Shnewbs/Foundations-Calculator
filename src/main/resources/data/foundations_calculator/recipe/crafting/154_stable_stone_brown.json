@@ -7,12 +7,8 @@
     "SSS"
   ],
   "key": {
-    "D": {
-      "item": "minecraft:cocoa_beans"
-    },
-    "S": {
-      "item": "foundations_calculator:stable_stone_normal"
-    }
+    "D": "minecraft:cocoa_beans",
+    "S": "foundations_calculator:stable_stone_normal"
   },
   "result": {
     "id": "foundations_calculator:stable_stone_brown",

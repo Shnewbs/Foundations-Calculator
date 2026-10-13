@@ -3,9 +3,7 @@
   "machine": "extraction_chamber",
   "ingredients": [
     {
-      "ingredient": {
-        "tag": "c:cobblestones"
-      },
+      "ingredient": "#c:cobblestones",
       "count": 1
     }
   ],

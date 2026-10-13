@@ -3,21 +3,15 @@
   "machine": "atomic",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "foundations_calculator:energy_module"
-      },
+      "ingredient": "foundations_calculator:energy_module",
       "count": 1
     },
     {
-      "ingredient": {
-        "item": "foundations_calculator:fire_diamond"
-      },
+      "ingredient": "foundations_calculator:fire_diamond",
       "count": 1
     },
     {
-      "ingredient": {
-        "item": "foundations_calculator:energy_module"
-      },
+      "ingredient": "foundations_calculator:energy_module",
       "count": 1
     }
   ],

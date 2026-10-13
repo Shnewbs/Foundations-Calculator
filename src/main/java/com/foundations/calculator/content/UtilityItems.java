@@ -47,7 +47,7 @@ public final class UtilityItems {
         }
         if(kind.equals("sickle")){
             if(!(state.getBlock() instanceof HarvestLeaves))return InteractionResult.PASS;
-            if(!level.isClientSide())for(ItemStack drop:MachinePrograms.harvestLeaves(level,pos))player.getInventory().placeItemBackInInventory(drop);
+            if(!level.isClientSide())for(ItemStack drop:MachinePrograms.harvestLeaves(level,pos))player.getInventory().placeItemBackInInventory(drop,net.minecraft.util.Prediction.SERVER_ONLY);
             return InteractionResult.SUCCESS;
         }
         if(kind.equals("obsidian_key")&&(state.is(Blocks.OBSIDIAN)||state.is(Content.block("purified_obsidian")))){
@@ -112,7 +112,7 @@ public final class UtilityItems {
         }
         if(kind.equals("jump_module")){
             int cost=CalculatorConfig.integer("module.jump_module.cost",100);if(player.getCooldowns().isOnCooldown(battery))return true;
-            if(battery.getItem() instanceof CalculatorItem item&&item.storage(battery).extractEnergy(cost,true)==cost){item.storage(battery).extractEnergy(cost,false);player.push(0,CalculatorConfig.decimal("module.jump_module.velocity",1),0);player.getCooldowns().addCooldown(battery,CalculatorConfig.integer("module.jump_module.cooldown",0));player.hurtMarked=true;player.fallDistance=0;}return true;
+            if(battery.getItem() instanceof CalculatorItem item&&item.storage(battery).extractEnergy(cost,true)==cost){item.storage(battery).extractEnergy(cost,false);player.push(0,CalculatorConfig.decimal("module.jump_module.velocity",1),0);player.getCooldowns().addCooldown(battery,CalculatorConfig.integer("module.jump_module.cooldown",0));player.syncVelocity=true;player.fallDistance=0;}return true;
         }return false;
     }
     private static boolean stable(Level l,BlockPos p){var id=net.minecraft.core.registries.BuiltInRegistries.BLOCK.getKey(l.getBlockState(p).getBlock());return id.getNamespace().equals("foundations_calculator")&&id.getPath().startsWith("stable_stone");}

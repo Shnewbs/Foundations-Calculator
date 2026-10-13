@@ -3,9 +3,7 @@
   "machine": "starch_extractor",
   "ingredients": [
     {
-      "ingredient": {
-        "tag": "minecraft:leaves"
-      },
+      "ingredient": "#minecraft:leaves",
       "count": 1
     }
   ],

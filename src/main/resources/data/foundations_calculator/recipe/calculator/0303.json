@@ -3,15 +3,11 @@
   "machine": "calculator",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "minecraft:oak_planks"
-      },
+      "ingredient": "minecraft:oak_planks",
       "count": 1
     },
     {
-      "ingredient": {
-        "item": "minecraft:jungle_planks"
-      },
+      "ingredient": "minecraft:jungle_planks",
       "count": 1
     }
   ],

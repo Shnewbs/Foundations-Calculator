@@ -3,9 +3,7 @@
   "machine": "calculator",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "minecraft:birch_leaves"
-      },
+      "ingredient": "minecraft:birch_leaves",
       "count": 2
     }
   ],

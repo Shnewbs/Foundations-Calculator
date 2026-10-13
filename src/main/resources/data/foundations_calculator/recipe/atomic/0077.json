@@ -3,21 +3,15 @@
   "machine": "atomic",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "minecraft:blaze_rod"
-      },
+      "ingredient": "minecraft:blaze_rod",
       "count": 1
     },
     {
-      "ingredient": {
-        "item": "foundations_calculator:flawless_diamond"
-      },
+      "ingredient": "foundations_calculator:flawless_diamond",
       "count": 1
     },
     {
-      "ingredient": {
-        "item": "minecraft:blaze_rod"
-      },
+      "ingredient": "minecraft:blaze_rod",
       "count": 1
     }
   ],

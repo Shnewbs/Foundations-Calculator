@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "foundations_calculator:tanzanite_log"
-    }
+    "foundations_calculator:tanzanite_log"
   ],
   "result": {
     "id": "foundations_calculator:tanzanite_planks",

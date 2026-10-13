@@ -3,15 +3,11 @@
   "machine": "calculator",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "minecraft:lime_stained_glass"
-      },
+      "ingredient": "minecraft:lime_stained_glass",
       "count": 1
     },
     {
-      "ingredient": {
-        "item": "minecraft:lime_stained_glass"
-      },
+      "ingredient": "minecraft:lime_stained_glass",
       "count": 1
     }
   ],

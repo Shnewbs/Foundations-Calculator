@@ -7,9 +7,7 @@
     "AAA"
   ],
   "key": {
-    "A": {
-      "item": "foundations_calculator:pear_planks"
-    }
+    "A": "foundations_calculator:pear_planks"
   },
   "result": {
     "id": "foundations_calculator:pear_stairs",

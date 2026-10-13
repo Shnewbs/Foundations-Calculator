@@ -3,21 +3,15 @@
   "machine": "atomic",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "foundations_calculator:reinforced_iron_ingot"
-      },
+      "ingredient": "foundations_calculator:reinforced_iron_ingot",
       "count": 1
     },
     {
-      "ingredient": {
-        "item": "minecraft:chest"
-      },
+      "ingredient": "minecraft:chest",
       "count": 1
     },
     {
-      "ingredient": {
-        "item": "foundations_calculator:reinforced_iron_ingot"
-      },
+      "ingredient": "foundations_calculator:reinforced_iron_ingot",
       "count": 1
     }
   ],

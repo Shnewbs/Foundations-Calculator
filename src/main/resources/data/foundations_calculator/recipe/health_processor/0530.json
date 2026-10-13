@@ -3,9 +3,7 @@
   "machine": "health_processor",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "minecraft:ink_sac"
-      },
+      "ingredient": "minecraft:ink_sac",
       "count": 1
     }
   ],

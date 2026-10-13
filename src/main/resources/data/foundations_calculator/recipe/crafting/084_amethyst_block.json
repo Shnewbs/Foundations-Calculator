@@ -7,9 +7,7 @@
     "AAA"
   ],
   "key": {
-    "A": {
-      "item": "foundations_calculator:large_amethyst"
-    }
+    "A": "foundations_calculator:large_amethyst"
   },
   "result": {
     "id": "foundations_calculator:amethyst_block",

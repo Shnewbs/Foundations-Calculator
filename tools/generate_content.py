@@ -21,3 +21,6 @@ runpy.run_path(str(Path(__file__).resolve().parent / "migrate_tool_materials.py"
 # Native item descriptors and preserved special/flat tool presentation.
 import runpy
 runpy.run_path(str(Path(__file__).resolve().with_name("migrate_item_definitions.py")),run_name="__main__")
+
+# Native ingredient codecs use item and tag strings.
+runpy.run_path(str(Path(__file__).resolve().with_name("migrate_recipe_ingredients.py")),run_name="__main__")

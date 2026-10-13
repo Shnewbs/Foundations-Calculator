@@ -17,11 +17,9 @@ import javax.annotation.Nullable;
 
 public class MachineBlock extends BaseEntityBlock {
     public static final java.util.Set<String> MODELED=java.util.Set.of("reinforced_chest","extraction_chamber","precision_chamber","reassembly_chamber","restoration_chamber","processing_chamber","conductor_mast","transmitter","scarecrow","docking_station","crank_handle","weather_station","magnetic_flux");
-    public static final MapCodec<MachineBlock> CODEC = simpleCodec(MachineBlock::new);
     public static final BooleanProperty ACTIVE=BlockStateProperties.POWERED;
     public static final EnumProperty<net.minecraft.core.Direction> FACING=BlockStateProperties.HORIZONTAL_FACING;
     public MachineBlock(Properties p) { super(p);registerDefaultState(stateDefinition.any().setValue(FACING,net.minecraft.core.Direction.NORTH).setValue(ACTIVE,false)); }
-    protected MapCodec<? extends BaseEntityBlock> codec(){return CODEC;}
     protected void createBlockStateDefinition(StateDefinition.Builder<Block,BlockState> b){b.add(FACING,ACTIVE);}
     public BlockState getStateForPlacement(BlockPlaceContext c){for(int i=1;i<height();i++)if(!c.getLevel().getBlockState(c.getClickedPos().above(i)).canBeReplaced()||c.getClickedPos().getY()+i>=c.getLevel().getMaxY())return null;return defaultBlockState().setValue(FACING,c.getHorizontalDirection().getOpposite());}
     protected BlockState rotate(BlockState s,Rotation r){return s.setValue(FACING,r.rotate(s.getValue(FACING)));}

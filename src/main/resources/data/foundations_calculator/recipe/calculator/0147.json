@@ -3,9 +3,7 @@
   "machine": "calculator",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "foundations_calculator:soil"
-      },
+      "ingredient": "foundations_calculator:soil",
       "count": 2
     }
   ],

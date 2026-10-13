@@ -3,15 +3,11 @@
   "machine": "calculator",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "minecraft:fern"
-      },
+      "ingredient": "minecraft:fern",
       "count": 1
     },
     {
-      "ingredient": {
-        "item": "minecraft:fern"
-      },
+      "ingredient": "minecraft:fern",
       "count": 1
     }
   ],

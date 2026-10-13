@@ -3,11 +3,7 @@
   "machine": "research",
   "ingredients": [
     {
-      "ingredient": [
-        {
-          "tag": "minecraft:saplings"
-        }
-      ]
+      "ingredient": "#minecraft:saplings"
     }
   ],
   "results": [],

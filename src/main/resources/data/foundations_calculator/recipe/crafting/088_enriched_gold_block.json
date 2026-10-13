@@ -7,9 +7,7 @@
     "AAA"
   ],
   "key": {
-    "A": {
-      "item": "foundations_calculator:enriched_gold_ingot"
-    }
+    "A": "foundations_calculator:enriched_gold_ingot"
   },
   "result": {
     "id": "foundations_calculator:enriched_gold_block",

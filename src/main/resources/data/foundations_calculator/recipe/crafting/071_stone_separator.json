@@ -7,15 +7,9 @@
     "AAA"
   ],
   "key": {
-    "B": {
-      "item": "foundations_calculator:power_cube"
-    },
-    "A": {
-      "tag": "foundations_calculator:reinforced_stone"
-    },
-    "C": {
-      "item": "foundations_calculator:reinforced_iron_ingot"
-    }
+    "B": "foundations_calculator:power_cube",
+    "A": "#foundations_calculator:reinforced_stone",
+    "C": "foundations_calculator:reinforced_iron_ingot"
   },
   "result": {
     "id": "foundations_calculator:stone_separator",

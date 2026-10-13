@@ -3,11 +3,7 @@
   "machine": "research",
   "ingredients": [
     {
-      "ingredient": [
-        {
-          "tag": "c:dyes"
-        }
-      ]
+      "ingredient": "#c:dyes"
     }
   ],
   "results": [],

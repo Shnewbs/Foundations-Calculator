@@ -3,9 +3,7 @@
   "machine": "algorithm_separator",
   "ingredients": [
     {
-      "ingredient": {
-        "tag": "c:gems/diamond"
-      },
+      "ingredient": "#c:gems/diamond",
       "count": 1
     }
   ],

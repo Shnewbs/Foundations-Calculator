@@ -3,9 +3,7 @@
   "machine": "precision_chamber",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "foundations_calculator:reinforced_stone_block"
-      },
+      "ingredient": "foundations_calculator:reinforced_stone_block",
       "count": 1
     }
   ],

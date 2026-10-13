@@ -3,9 +3,7 @@
   "machine": "processing_chamber",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "foundations_calculator:circuit_damaged_13"
-      },
+      "ingredient": "foundations_calculator:circuit_damaged_13",
       "count": 1
     }
   ],

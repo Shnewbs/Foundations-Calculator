@@ -3,15 +3,11 @@
   "machine": "calculator",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "foundations_calculator:reinforced_shovel"
-      },
+      "ingredient": "foundations_calculator:reinforced_shovel",
       "count": 1
     },
     {
-      "ingredient": {
-        "item": "foundations_calculator:reinforced_axe"
-      },
+      "ingredient": "foundations_calculator:reinforced_axe",
       "count": 1
     }
   ],

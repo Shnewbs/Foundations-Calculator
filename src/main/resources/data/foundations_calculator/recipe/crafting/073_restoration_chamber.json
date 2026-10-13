@@ -7,15 +7,9 @@
     "ABA"
   ],
   "key": {
-    "A": {
-      "item": "foundations_calculator:redstone_ingot"
-    },
-    "B": {
-      "item": "foundations_calculator:weakened_diamond"
-    },
-    "C": {
-      "item": "foundations_calculator:extraction_chamber"
-    }
+    "A": "foundations_calculator:redstone_ingot",
+    "B": "foundations_calculator:weakened_diamond",
+    "C": "foundations_calculator:extraction_chamber"
   },
   "result": {
     "id": "foundations_calculator:restoration_chamber",

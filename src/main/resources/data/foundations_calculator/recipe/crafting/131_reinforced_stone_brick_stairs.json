@@ -7,9 +7,7 @@
     "AAA"
   ],
   "key": {
-    "A": {
-      "item": "foundations_calculator:reinforced_stone_brick"
-    }
+    "A": "foundations_calculator:reinforced_stone_brick"
   },
   "result": {
     "id": "foundations_calculator:reinforced_stone_brick_stairs",

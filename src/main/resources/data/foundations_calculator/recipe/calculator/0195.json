@@ -3,15 +3,11 @@
   "machine": "calculator",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "minecraft:snowball"
-      },
+      "ingredient": "minecraft:snowball",
       "count": 1
     },
     {
-      "ingredient": {
-        "item": "minecraft:blaze_powder"
-      },
+      "ingredient": "minecraft:blaze_powder",
       "count": 1
     }
   ],

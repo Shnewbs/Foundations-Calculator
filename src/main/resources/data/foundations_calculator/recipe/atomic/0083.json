@@ -3,21 +3,15 @@
   "machine": "atomic",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "foundations_calculator:health_processor"
-      },
+      "ingredient": "foundations_calculator:health_processor",
       "count": 1
     },
     {
-      "ingredient": {
-        "item": "foundations_calculator:energy_module"
-      },
+      "ingredient": "foundations_calculator:energy_module",
       "count": 1
     },
     {
-      "ingredient": {
-        "item": "foundations_calculator:hunger_processor"
-      },
+      "ingredient": "foundations_calculator:hunger_processor",
       "count": 1
     }
   ],

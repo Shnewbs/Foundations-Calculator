@@ -3,9 +3,7 @@
   "machine": "starch_extractor",
   "ingredients": [
     {
-      "ingredient": {
-        "tag": "c:crops/carrot"
-      },
+      "ingredient": "#c:crops/carrot",
       "count": 1
     }
   ],

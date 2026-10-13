@@ -7,9 +7,7 @@
     "AAA"
   ],
   "key": {
-    "A": {
-      "item": "foundations_calculator:flawless_diamond"
-    }
+    "A": "foundations_calculator:flawless_diamond"
   },
   "result": {
     "id": "foundations_calculator:flawless_diamond_block",

@@ -3,11 +3,7 @@
   "machine": "research",
   "ingredients": [
     {
-      "ingredient": [
-        {
-          "tag": "minecraft:logs"
-        }
-      ]
+      "ingredient": "#minecraft:logs"
     }
   ],
   "results": [],

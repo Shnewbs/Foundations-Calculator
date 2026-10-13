@@ -4,12 +4,8 @@
   "ingredients": [
     {
       "ingredient": [
-        {
-          "item": "minecraft:end_stone"
-        },
-        {
-          "item": "minecraft:ender_pearl"
-        }
+        "minecraft:end_stone",
+        "minecraft:ender_pearl"
       ]
     }
   ],

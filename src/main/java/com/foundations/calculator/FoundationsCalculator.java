@@ -19,7 +19,7 @@ public final class FoundationsCalculator {
         bus.addListener(CalculatorConfig::configReloaded);
         bus.addListener(CalculatorConfig::configUnloaded);
         bus.addListener(com.foundations.calculator.core.ContentProperties::applyComponents);
-        container.registerConfig(ModConfig.Type.SERVER, CalculatorConfig.SPEC);
+        container.registerConfig(ModConfig.Type.SYNCED, CalculatorConfig.SPEC);
         container.registerConfig(ModConfig.Type.CLIENT,com.foundations.calculator.core.ClientConfig.SPEC);
     }
 }

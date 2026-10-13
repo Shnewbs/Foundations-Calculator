@@ -7,15 +7,9 @@
     "ABA"
   ],
   "key": {
-    "A": {
-      "item": "foundations_calculator:reinforced_iron_block"
-    },
-    "B": {
-      "tag": "foundations_calculator:reinforced_stone"
-    },
-    "C": {
-      "item": "minecraft:chest"
-    }
+    "A": "foundations_calculator:reinforced_iron_block",
+    "B": "#foundations_calculator:reinforced_stone",
+    "C": "minecraft:chest"
   },
   "result": {
     "id": "foundations_calculator:reinforced_chest",

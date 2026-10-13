@@ -3,9 +3,7 @@
   "machine": "calculator",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "foundations_calculator:small_stone"
-      },
+      "ingredient": "foundations_calculator:small_stone",
       "count": 2
     }
   ],

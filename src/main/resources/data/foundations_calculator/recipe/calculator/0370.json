@@ -3,15 +3,11 @@
   "machine": "calculator",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "minecraft:blue_orchid"
-      },
+      "ingredient": "minecraft:blue_orchid",
       "count": 1
     },
     {
-      "ingredient": {
-        "item": "minecraft:blue_orchid"
-      },
+      "ingredient": "minecraft:blue_orchid",
       "count": 1
     }
   ],

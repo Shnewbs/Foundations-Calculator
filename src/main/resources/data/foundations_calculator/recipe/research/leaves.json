@@ -3,11 +3,7 @@
   "machine": "research",
   "ingredients": [
     {
-      "ingredient": [
-        {
-          "tag": "minecraft:leaves"
-        }
-      ]
+      "ingredient": "#minecraft:leaves"
     }
   ],
   "results": [],

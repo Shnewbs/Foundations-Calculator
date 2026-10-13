@@ -3,15 +3,11 @@
   "machine": "calculator",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "minecraft:lapis_lazuli"
-      },
+      "ingredient": "minecraft:lapis_lazuli",
       "count": 1
     },
     {
-      "ingredient": {
-        "item": "minecraft:lapis_lazuli"
-      },
+      "ingredient": "minecraft:lapis_lazuli",
       "count": 1
     }
   ],

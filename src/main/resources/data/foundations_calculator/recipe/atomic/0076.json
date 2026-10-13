@@ -3,21 +3,15 @@
   "machine": "atomic",
   "ingredients": [
     {
-      "ingredient": {
-        "tag": "c:gems/diamond"
-      },
+      "ingredient": "#c:gems/diamond",
       "count": 1
     },
     {
-      "ingredient": {
-        "item": "minecraft:blaze_rod"
-      },
+      "ingredient": "minecraft:blaze_rod",
       "count": 1
     },
     {
-      "ingredient": {
-        "tag": "c:gems/diamond"
-      },
+      "ingredient": "#c:gems/diamond",
       "count": 1
     }
   ],

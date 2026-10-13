@@ -3,15 +3,11 @@
   "machine": "scientific",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "foundations_calculator:large_amethyst"
-      },
+      "ingredient": "foundations_calculator:large_amethyst",
       "count": 1
     },
     {
-      "ingredient": {
-        "tag": "minecraft:saplings"
-      },
+      "ingredient": "#minecraft:saplings",
       "count": 1
     }
   ],

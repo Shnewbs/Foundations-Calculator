@@ -3,9 +3,7 @@
   "machine": "starch_extractor",
   "ingredients": [
     {
-      "ingredient": {
-        "tag": "minecraft:saplings"
-      },
+      "ingredient": "#minecraft:saplings",
       "count": 1
     }
   ],

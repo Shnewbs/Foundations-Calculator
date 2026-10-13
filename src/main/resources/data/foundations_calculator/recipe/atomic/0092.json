@@ -3,21 +3,15 @@
   "machine": "atomic",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "foundations_calculator:reassembly_chamber"
-      },
+      "ingredient": "foundations_calculator:reassembly_chamber",
       "count": 1
     },
     {
-      "ingredient": {
-        "item": "foundations_calculator:flawless_diamond"
-      },
+      "ingredient": "foundations_calculator:flawless_diamond",
       "count": 1
     },
     {
-      "ingredient": {
-        "item": "foundations_calculator:restoration_chamber"
-      },
+      "ingredient": "foundations_calculator:restoration_chamber",
       "count": 1
     }
   ],

@@ -3,9 +3,7 @@
   "machine": "fabrication_chamber",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "foundations_calculator:circuit_board_0"
-      },
+      "ingredient": "foundations_calculator:circuit_board_0",
       "count": 1,
       "circuit_state": 1
     }

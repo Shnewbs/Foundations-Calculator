@@ -3,9 +3,7 @@
   "machine": "health_processor",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "minecraft:white_wool"
-      },
+      "ingredient": "minecraft:white_wool",
       "count": 1
     }
   ],

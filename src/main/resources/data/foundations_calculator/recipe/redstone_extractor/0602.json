@@ -3,9 +3,7 @@
   "machine": "redstone_extractor",
   "ingredients": [
     {
-      "ingredient": {
-        "tag": "c:storage_blocks/redstone"
-      },
+      "ingredient": "#c:storage_blocks/redstone",
       "count": 1
     }
   ],

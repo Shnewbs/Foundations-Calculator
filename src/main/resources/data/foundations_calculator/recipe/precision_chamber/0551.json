@@ -3,9 +3,7 @@
   "machine": "precision_chamber",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "minecraft:gravel"
-      },
+      "ingredient": "minecraft:gravel",
       "count": 1
     }
   ],

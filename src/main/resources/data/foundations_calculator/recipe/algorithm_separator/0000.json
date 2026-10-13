@@ -3,9 +3,7 @@
   "machine": "algorithm_separator",
   "ingredients": [
     {
-      "ingredient": {
-        "tag": "c:storage_blocks/lapis"
-      },
+      "ingredient": "#c:storage_blocks/lapis",
       "count": 1
     }
   ],

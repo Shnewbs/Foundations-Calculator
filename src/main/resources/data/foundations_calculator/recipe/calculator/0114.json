@@ -3,15 +3,11 @@
   "machine": "calculator",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "foundations_calculator:reinforced_stone_brick"
-      },
+      "ingredient": "foundations_calculator:reinforced_stone_brick",
       "count": 1
     },
     {
-      "ingredient": {
-        "item": "foundations_calculator:reinforced_stone_brick"
-      },
+      "ingredient": "foundations_calculator:reinforced_stone_brick",
       "count": 1
     }
   ],

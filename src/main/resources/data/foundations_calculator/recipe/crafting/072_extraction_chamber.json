@@ -7,15 +7,9 @@
     "ABA"
   ],
   "key": {
-    "A": {
-      "tag": "foundations_calculator:reinforced_stone"
-    },
-    "B": {
-      "item": "foundations_calculator:weakened_diamond"
-    },
-    "C": {
-      "item": "foundations_calculator:power_cube"
-    }
+    "A": "#foundations_calculator:reinforced_stone",
+    "B": "foundations_calculator:weakened_diamond",
+    "C": "foundations_calculator:power_cube"
   },
   "result": {
     "id": "foundations_calculator:extraction_chamber",

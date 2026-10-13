@@ -6,12 +6,8 @@
     "ASA"
   ],
   "key": {
-    "A": {
-      "item": "foundations_calculator:reinforced_stone_block"
-    },
-    "S": {
-      "tag": "c:rods/wooden"
-    }
+    "A": "foundations_calculator:reinforced_stone_block",
+    "S": "#c:rods/wooden"
   },
   "result": {
     "id": "foundations_calculator:reinforced_stone_fence",

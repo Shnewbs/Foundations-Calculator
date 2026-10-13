@@ -3,15 +3,11 @@
   "machine": "calculator",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "foundations_calculator:reinforced_iron_ingot"
-      },
+      "ingredient": "foundations_calculator:reinforced_iron_ingot",
       "count": 1
     },
     {
-      "ingredient": {
-        "tag": "minecraft:logs"
-      },
+      "ingredient": "#minecraft:logs",
       "count": 1
     }
   ],

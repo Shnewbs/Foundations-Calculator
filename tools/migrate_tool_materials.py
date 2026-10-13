@@ -27,3 +27,11 @@ for mat,item in repairs.items():
     p=root/f'src/main/resources/data/foundations_calculator/tags/item/repair/{mat}.json'
     p.parent.mkdir(parents=True,exist_ok=True)
     p.write_text(json.dumps({'replace':False,'values':['foundations_calculator:'+item]},indent=2)+'\n')
+
+# 26.3 puts axe/shovel/hoe behavior in native item properties too.
+p=root/'src/main/java/com/foundations/calculator/content/Content.java'
+s=p.read_text()
+for cls,method in [('AxeItem','axe'),('ShovelItem','shovel'),('HoeItem','hoe')]:
+    pattern=r'new '+cls+r'\(CalculatorTier\.of\("([^\"]+)"\),([^,]+),([^,]+),ContentProperties\.item\("([^\"]+)",new Item\.Properties\(\)\)\)'
+    s=re.sub(pattern,lambda m:f'new Item(ContentProperties.item("{m[4]}",new Item.Properties().{method}(CalculatorTier.of("{m[1]}"),{m[2]},{m[3]})))',s)
+p.write_text(s)

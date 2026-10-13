@@ -3,15 +3,11 @@
   "machine": "calculator",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "minecraft:coal"
-      },
+      "ingredient": "minecraft:coal",
       "count": 1
     },
     {
-      "ingredient": {
-        "tag": "c:dusts/redstone"
-      },
+      "ingredient": "#c:dusts/redstone",
       "count": 1
     }
   ],

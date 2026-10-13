@@ -3,15 +3,11 @@
   "machine": "calculator",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "minecraft:rotten_flesh"
-      },
+      "ingredient": "minecraft:rotten_flesh",
       "count": 1
     },
     {
-      "ingredient": {
-        "tag": "c:slime_balls"
-      },
+      "ingredient": "#c:slime_balls",
       "count": 1
     }
   ],

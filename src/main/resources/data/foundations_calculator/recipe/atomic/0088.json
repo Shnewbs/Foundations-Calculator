@@ -3,21 +3,15 @@
   "machine": "atomic",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "foundations_calculator:circuit_board_9"
-      },
+      "ingredient": "foundations_calculator:circuit_board_9",
       "count": 1
     },
     {
-      "ingredient": {
-        "item": "foundations_calculator:redstone_extractor"
-      },
+      "ingredient": "foundations_calculator:redstone_extractor",
       "count": 1
     },
     {
-      "ingredient": {
-        "item": "foundations_calculator:large_tanzanite"
-      },
+      "ingredient": "foundations_calculator:large_tanzanite",
       "count": 1
     }
   ],

@@ -3,15 +3,11 @@
   "machine": "calculator",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "foundations_calculator:coal_dust"
-      },
+      "ingredient": "foundations_calculator:coal_dust",
       "count": 1
     },
     {
-      "ingredient": {
-        "item": "foundations_calculator:coal_dust"
-      },
+      "ingredient": "foundations_calculator:coal_dust",
       "count": 1
     }
   ],

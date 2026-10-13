@@ -3,15 +3,11 @@
   "machine": "calculator",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "minecraft:short_grass"
-      },
+      "ingredient": "minecraft:short_grass",
       "count": 1
     },
     {
-      "ingredient": {
-        "item": "minecraft:short_grass"
-      },
+      "ingredient": "minecraft:short_grass",
       "count": 1
     }
   ],

@@ -3,15 +3,11 @@
   "machine": "calculator",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "minecraft:furnace"
-      },
+      "ingredient": "minecraft:furnace",
       "count": 1
     },
     {
-      "ingredient": {
-        "item": "minecraft:furnace"
-      },
+      "ingredient": "minecraft:furnace",
       "count": 1
     }
   ],

@@ -15,7 +15,7 @@ import net.minecraft.util.FormattedCharSequence;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.ChatFormatting;
-import org.lwjgl.glfw.GLFW;
+import com.mojang.blaze3d.platform.InputConstants;
 
 /**
  * Foundations book-style reader. R9 deliberately separates the guide content contract from
@@ -70,7 +70,7 @@ public final class GuideScreen extends Screen {
         open(current);
     }
     public static void open(Target target){
-        Runnable fallback=()->Minecraft.getInstance().setScreen(new GuideScreen(target));
+        Runnable fallback=()->Minecraft.getInstance().gui.setScreen(new GuideScreen(target));
         if(ClientConfig.flag(ClientConfig.GUIDE_REDIRECT))GuideApi.open(target,fallback);else fallback.run();
     }
 
@@ -118,7 +118,7 @@ public final class GuideScreen extends Screen {
     private void buildHotspots(){
         int topY=bookTop+15;
         addHotspot(bookRight-54,topY,34,18,"Close",false,this::onClose,"Close the Field Guide");
-        addHotspot(bookRight-127,topY,68,18,"Research",false,()->minecraft.setScreen(new ResearchScreen(this)),"Open research and mastery");
+        addHotspot(bookRight-127,topY,68,18,"Research",false,()->minecraft.gui.setScreen(new ResearchScreen(this)),"Open research and mastery");
         if(narrow())addHotspot(bookLeft+20,topY,72,18,contents?"Read":"Contents",true,()->{contents=!contents;reinitWidgets();},contents?"Return to the page":"Open contents");
         if(listVisible()){
             int y=bookTop+96;
@@ -403,13 +403,13 @@ public final class GuideScreen extends Screen {
     @Override public boolean mouseReleased(net.minecraft.client.input.MouseButtonEvent event){dragging=false;return super.mouseReleased(event);}
     @Override public boolean mouseScrolled(double x,double y,double dx,double dy){if(listVisible()&&(narrow()||x<spineX)){listOffset=Math.clamp(listOffset-(int)(dy*3),0,Math.max(0,hits.size()-listRows()));return true;}scroll=Math.clamp(scroll-(int)(dy*28),0,maxScroll());return true;}
 
-    @Override public boolean keyPressed(net.minecraft.client.input.KeyEvent event){int key=event.key(),scan=event.scancode(),mods=event.modifiers();
-        if(event.hasControlDown()&&key==GLFW.GLFW_KEY_F){if(narrow()&&!contents){contents=true;reinitWidgets();}setFocused(search);search.setFocused(true);return true;}
-        if(search!=null&&search.isFocused()){if(key==GLFW.GLFW_KEY_ENTER&&!hits.isEmpty()){navigate(hits.getFirst().target(),true);return true;}return super.keyPressed(event);}
-        if(event.hasAltDown()&&key==GLFW.GLFW_KEY_LEFT){navigation.back().ifPresent(t->navigate(t,false));return true;}
-        if(event.hasAltDown()&&key==GLFW.GLFW_KEY_RIGHT){navigation.forward().ifPresent(t->navigate(t,false));return true;}
-        int step=key==GLFW.GLFW_KEY_PAGE_DOWN?contentBottom-contentTop-12:key==GLFW.GLFW_KEY_PAGE_UP?-(contentBottom-contentTop-12):key==GLFW.GLFW_KEY_DOWN?24:key==GLFW.GLFW_KEY_UP?-24:0;
-        if(step!=0){scroll=Math.clamp(scroll+step,0,maxScroll());return true;}if(key==GLFW.GLFW_KEY_HOME){scroll=0;return true;}if(key==GLFW.GLFW_KEY_END){scroll=maxScroll();return true;}
+    @Override public boolean keyPressed(net.minecraft.client.input.KeyEvent event){int key=event.key(),mods=event.modifiers();
+        if(event.hasControlDown()&&key==InputConstants.KEY_F){if(narrow()&&!contents){contents=true;reinitWidgets();}setFocused(search);search.setFocused(true);return true;}
+        if(search!=null&&search.isFocused()){if(key==InputConstants.KEY_ENTER&&!hits.isEmpty()){navigate(hits.getFirst().target(),true);return true;}return super.keyPressed(event);}
+        if(event.hasAltDown()&&key==InputConstants.KEY_LEFT){navigation.back().ifPresent(t->navigate(t,false));return true;}
+        if(event.hasAltDown()&&key==InputConstants.KEY_RIGHT){navigation.forward().ifPresent(t->navigate(t,false));return true;}
+        int step=key==InputConstants.KEY_PAGE_DOWN?contentBottom-contentTop-12:key==InputConstants.KEY_PAGE_UP?-(contentBottom-contentTop-12):key==InputConstants.KEY_DOWN?24:key==InputConstants.KEY_UP?-24:0;
+        if(step!=0){scroll=Math.clamp(scroll+step,0,maxScroll());return true;}if(key==InputConstants.KEY_HOME){scroll=0;return true;}if(key==InputConstants.KEY_END){scroll=maxScroll();return true;}
         return super.keyPressed(event);
     }
 

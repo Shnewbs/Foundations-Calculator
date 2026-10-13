@@ -3,15 +3,11 @@
   "machine": "calculator",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "minecraft:red_terracotta"
-      },
+      "ingredient": "minecraft:red_terracotta",
       "count": 1
     },
     {
-      "ingredient": {
-        "item": "minecraft:red_terracotta"
-      },
+      "ingredient": "minecraft:red_terracotta",
       "count": 1
     }
   ],

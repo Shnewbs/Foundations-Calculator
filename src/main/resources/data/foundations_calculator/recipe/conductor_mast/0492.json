@@ -3,9 +3,7 @@
   "machine": "conductor_mast",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "foundations_calculator:calculator"
-      },
+      "ingredient": "foundations_calculator:calculator",
       "count": 1
     }
   ],

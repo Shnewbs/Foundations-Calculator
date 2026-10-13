@@ -7,18 +7,10 @@
     "DDD"
   ],
   "key": {
-    "A": {
-      "item": "foundations_calculator:calculator_plug"
-    },
-    "B": {
-      "item": "minecraft:beacon"
-    },
-    "C": {
-      "item": "foundations_calculator:atomic_assembly"
-    },
-    "D": {
-      "tag": "foundations_calculator:stable_stone"
-    }
+    "A": "foundations_calculator:calculator_plug",
+    "B": "minecraft:beacon",
+    "C": "foundations_calculator:atomic_assembly",
+    "D": "#foundations_calculator:stable_stone"
   },
   "result": {
     "id": "foundations_calculator:calculator_locator",

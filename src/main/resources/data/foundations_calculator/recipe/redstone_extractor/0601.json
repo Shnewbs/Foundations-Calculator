@@ -3,9 +3,7 @@
   "machine": "redstone_extractor",
   "ingredients": [
     {
-      "ingredient": {
-        "tag": "c:dusts/redstone"
-      },
+      "ingredient": "#c:dusts/redstone",
       "count": 1
     }
   ],

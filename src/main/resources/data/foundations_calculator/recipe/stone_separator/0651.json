@@ -3,9 +3,7 @@
   "machine": "stone_separator",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "minecraft:spruce_log"
-      },
+      "ingredient": "minecraft:spruce_log",
       "count": 1
     }
   ],

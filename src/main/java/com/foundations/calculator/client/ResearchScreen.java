@@ -24,5 +24,5 @@ public final class ResearchScreen extends Screen {
             var samples=recipe.inputs().getFirst().ingredient().items().map(ItemStack::new).toArray(ItemStack[]::new);if(samples.length>0){var stack=samples[(int)(System.currentTimeMillis()/1000%samples.length)];g.item(stack,width-52,top);if(x>=width-52&&x<width-34&&y>=top&&y<top+18)g.setTooltipForNextFrame(font,stack,x,y);}
         }
     }
-    public void onClose(){minecraft.setScreen(parent);}public boolean isPauseScreen(){return false;}
+    public void onClose(){minecraft.gui.setScreen(parent);}public boolean isPauseScreen(){return false;}
 }

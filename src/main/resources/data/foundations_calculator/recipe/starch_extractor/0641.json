@@ -3,9 +3,7 @@
   "machine": "starch_extractor",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "minecraft:melon_seeds"
-      },
+      "ingredient": "minecraft:melon_seeds",
       "count": 1
     }
   ],

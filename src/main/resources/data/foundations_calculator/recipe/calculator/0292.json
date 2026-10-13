@@ -3,15 +3,11 @@
   "machine": "calculator",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "minecraft:birch_planks"
-      },
+      "ingredient": "minecraft:birch_planks",
       "count": 1
     },
     {
-      "ingredient": {
-        "item": "minecraft:birch_planks"
-      },
+      "ingredient": "minecraft:birch_planks",
       "count": 1
     }
   ],

@@ -4,12 +4,8 @@
   "ingredients": [
     {
       "ingredient": [
-        {
-          "item": "foundations_calculator:reinforced_stone_block"
-        },
-        {
-          "item": "foundations_calculator:reinforced_dirt_block"
-        }
+        "foundations_calculator:reinforced_stone_block",
+        "foundations_calculator:reinforced_dirt_block"
       ]
     }
   ],

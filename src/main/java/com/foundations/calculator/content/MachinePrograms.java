@@ -105,7 +105,7 @@ public final class MachinePrograms {
     public static boolean grow(MachineBlockEntity machine,BlockPos pos) {
         if(!(machine.getLevel() instanceof ServerLevel level)||!MachineWorldActions.loaded(level,pos))return false;
         BlockState state=level.getBlockState(pos);
-        if(!(state.getBlock() instanceof BonemealableBlock plant)||!plant.isValidBonemealTarget(level,pos,state))return false;
+        if(!(state.getBlock() instanceof BonemealableBlock plant)||!plant.isValidBonemealTarget(level,pos,state,BonemealSource.INTERACTION))return false;
         String namespace=BuiltInRegistries.BLOCK.getKey(state.getBlock()).getNamespace();
         boolean bounded=state.getBlock() instanceof CropBlock&&(namespace.equals("minecraft")||namespace.equals("foundations_calculator"));
         if(!bounded){
@@ -114,8 +114,8 @@ public final class MachinePrograms {
             if(!MachineWorldActions.legacyAllowed(machine,pos,MachineWorldActions.Action.GROW))return false;
         }
         if(!MachineWorldActions.permits(machine,pos,state,null,new ItemStack(Items.BONE_MEAL),MachineWorldActions.Action.GROW))return false;
-        if(!plant.isBonemealSuccess(level,level.getRandom(),pos,state))return false;
-        plant.performBonemeal(level,level.getRandom(),pos,state);
+        if(!plant.isBonemealSuccess(level,level.getRandom(),pos,state,BonemealSource.INTERACTION))return false;
+        plant.performBonemeal(level,level.getRandom(),pos,state,BonemealSource.INTERACTION);
         // Native crops are single-block. Opaque opted-in callbacks retain their declared bonemeal success behavior.
         boolean changed=!state.equals(level.getBlockState(pos))||!bounded;
         if(changed)level.levelEvent(1505,pos,0);return changed;
@@ -123,8 +123,8 @@ public final class MachinePrograms {
     /** Raw addon helper. Machine callers must use the owner-aware overload above. */
     public static boolean grow(ServerLevel level,BlockPos pos){
         BlockState state=level.getBlockState(pos);
-        if(state.getBlock() instanceof BonemealableBlock b&&b.isValidBonemealTarget(level,pos,state)&&b.isBonemealSuccess(level,level.getRandom(),pos,state)){
-            b.performBonemeal(level,level.getRandom(),pos,state);level.levelEvent(1505,pos,0);return true;
+        if(state.getBlock() instanceof BonemealableBlock b&&b.isValidBonemealTarget(level,pos,state,BonemealSource.INTERACTION)&&b.isBonemealSuccess(level,level.getRandom(),pos,state,BonemealSource.INTERACTION)){
+            b.performBonemeal(level,level.getRandom(),pos,state,BonemealSource.INTERACTION);level.levelEvent(1505,pos,0);return true;
         }return false;
     }
     private static void magnet(MachineBlockEntity m) {
@@ -139,7 +139,7 @@ public final class MachinePrograms {
             if(entity.position().distanceToSqr(target)<2.25){
                 BlockPos below=m.getBlockPos().below();ItemInventory dest=com.foundations.calculator.core.MachineItemHandler.neighbor(level,below,Direction.UP);
                 if(dest!=null){ItemStack remaining=ItemInventories.insertItemStacked(dest,stack.copy(),false);if(remaining.isEmpty())entity.discard();else entity.setItem(remaining);}
-            }else{entity.setDeltaMovement(target.subtract(entity.position()).normalize().scale(CalculatorConfig.decimal("world.magnetSpeed",0.15)));entity.hurtMarked=true;}
+            }else{entity.setDeltaMovement(target.subtract(entity.position()).normalize().scale(CalculatorConfig.decimal("world.magnetSpeed",0.15)));entity.syncVelocity=true;}
         }
     }
     private static void assimilator(MachineBlockEntity m) {
@@ -249,8 +249,8 @@ public final class MachinePrograms {
             else if(luck>=5&&luck<=14){
                 var effect=switch(luck){case 5->MobEffects.NAUSEA;case 6->MobEffects.BLINDNESS;case 10->MobEffects.JUMP_BOOST;case 11->MobEffects.WATER_BREATHING;case 12->MobEffects.SLOWNESS;case 13->MobEffects.STRENGTH;case 14->MobEffects.WITHER;default->null;};
                 if(effect!=null)player.addEffect(new MobEffectInstance(effect,CalculatorConfig.integer("generation.locatorEffectDuration",1000),1));
-                else if(luck<=9)player.getInventory().placeItemBackInInventory(new ItemStack(Content.item(luck==7?"grenade":luck==8?"scientific_calculator":"calculator")));
-            }else if(luck==15)player.getInventory().placeItemBackInInventory(new ItemStack(Items.MILK_BUCKET));
+                else if(luck<=9)player.getInventory().placeItemBackInInventory(new ItemStack(Content.item(luck==7?"grenade":luck==8?"scientific_calculator":"calculator")),net.minecraft.util.Prediction.SERVER_ONLY);
+            }else if(luck==15)player.getInventory().placeItemBackInInventory(new ItemStack(Items.MILK_BUCKET),net.minecraft.util.Prediction.SERVER_ONLY);
         }
         m.setChanged();
     }
@@ -275,7 +275,7 @@ public final class MachinePrograms {
             s.putInt("StrikePower",(int)Math.clamp((CalculatorConfig.integer("generation.mastBaseGeneration",25)+(double)stations*CalculatorConfig.integer("generation.weatherStationBonus",5))*Math.max(1,transmitters/4)*CalculatorConfig.decimal("generation.mastMultiplier",4),0,Integer.MAX_VALUE));
         }
         if(wait>0){wait--;s.putInt("StrikeWait",wait);if(wait==0){
-            s.putInt("StrikeTicks",CalculatorConfig.integer("generation.mastBurstTicks",200));var bolt=EntityType.LIGHTNING_BOLT.create(m.getLevel(),net.minecraft.world.entity.EntitySpawnReason.TRIGGERED);if(bolt!=null&&CalculatorConfig.flag("world.mastLightningVisual",true)){bolt.setPos(Vec3.atBottomCenterOf(m.getBlockPos().above(4)));bolt.setVisualOnly(true);m.getLevel().addFreshEntity(bolt);}
+            s.putInt("StrikeTicks",CalculatorConfig.integer("generation.mastBurstTicks",200));var bolt=net.minecraft.world.entity.EntityTypes.LIGHTNING_BOLT.create(m.getLevel(),net.minecraft.world.entity.EntitySpawnReason.TRIGGERED);if(bolt!=null&&CalculatorConfig.flag("world.mastLightningVisual",true)){bolt.setPos(Vec3.atBottomCenterOf(m.getBlockPos().above(4)));bolt.setVisualOnly(true);m.getLevel().addFreshEntity(bolt);}
         }}
         int ticks=s.getIntOr("StrikeTicks",0);if(ticks>0){m.energy.receiveEnergy(s.getIntOr("StrikePower",0),false);s.putInt("StrikeTicks",ticks-1);}m.setActive(ticks>0);m.setChanged();
     }

@@ -3,9 +3,7 @@
   "machine": "health_processor",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "minecraft:golden_apple"
-      },
+      "ingredient": "minecraft:golden_apple",
       "count": 1
     }
   ],

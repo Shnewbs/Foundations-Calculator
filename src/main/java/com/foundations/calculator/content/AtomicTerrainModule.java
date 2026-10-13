@@ -42,7 +42,7 @@ public final class AtomicTerrainModule {
         }
         if(consume)player.getInventory().removeItem(slot,1);
         if(!player.isCreative())power.storage(battery).extractEnergy(cost,false);
-        if(CalculatorConfig.flag("module.atomic_terrain_module.dropOriginal",true)&&!player.isCreative())for(ItemStack drop:Block.getDrops(state,(ServerLevel)level,pos,null,player,player.getMainHandItem()))player.getInventory().placeItemBackInInventory(drop);
+        if(CalculatorConfig.flag("module.atomic_terrain_module.dropOriginal",true)&&!player.isCreative())for(ItemStack drop:Block.getDrops(state,(ServerLevel)level,pos,null,player,player.getMainHandItem()))player.getInventory().placeItemBackInInventory(drop,net.minecraft.util.Prediction.SERVER_ONLY);
         level.updateNeighborsAt(pos,replacement.getBlock());level.sendBlockUpdated(pos,state,replacement,3);return InteractionResult.CONSUME;
     }
     private AtomicTerrainModule(){}

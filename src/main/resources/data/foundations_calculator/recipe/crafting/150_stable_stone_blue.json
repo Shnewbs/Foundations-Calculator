@@ -7,12 +7,8 @@
     "SSS"
   ],
   "key": {
-    "D": {
-      "item": "minecraft:lapis_lazuli"
-    },
-    "S": {
-      "item": "foundations_calculator:stable_stone_normal"
-    }
+    "D": "minecraft:lapis_lazuli",
+    "S": "foundations_calculator:stable_stone_normal"
   },
   "result": {
     "id": "foundations_calculator:stable_stone_blue",

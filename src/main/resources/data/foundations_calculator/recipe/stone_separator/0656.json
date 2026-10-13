@@ -3,9 +3,7 @@
   "machine": "stone_separator",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "foundations_calculator:amethyst_leaves"
-      },
+      "ingredient": "foundations_calculator:amethyst_leaves",
       "count": 1
     }
   ],

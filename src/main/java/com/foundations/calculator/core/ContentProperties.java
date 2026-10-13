@@ -58,7 +58,7 @@ public final class ContentProperties {
         com.foundations.calculator.content.Content.ITEMS_BY_ID.forEach((id,supplier)->{
             var o=entry("items",id);var item=supplier.get();
             if(o.has("stackSize")&&o.get("stackSize").getAsInt()>1&&(o.has("durability")||item.components().has(net.minecraft.core.component.DataComponents.MAX_DAMAGE)))throw new IllegalArgumentException(id+": durable items must have stackSize 1");
-            event.modify(item,b->{
+            event.modify(item,(b,lookup,modifiedItem)->{
                 String material = id.replaceFirst("_(pickaxe|sword|axe|shovel|hoe)$", "");
                 if (!material.equals(id) && DATA.getAsJsonObject("materials").has(material)) {
                     var repair = net.minecraft.resources.Identifier.parse(materialString(material,"repairItem",switch(material){

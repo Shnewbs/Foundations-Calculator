@@ -3,15 +3,11 @@
   "machine": "calculator",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "minecraft:pumpkin_seeds"
-      },
+      "ingredient": "minecraft:pumpkin_seeds",
       "count": 1
     },
     {
-      "ingredient": {
-        "item": "minecraft:dirt"
-      },
+      "ingredient": "minecraft:dirt",
       "count": 1
     }
   ],

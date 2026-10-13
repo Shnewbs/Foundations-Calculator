@@ -3,9 +3,7 @@
   "machine": "stone_separator",
   "ingredients": [
     {
-      "ingredient": {
-        "tag": "c:gems/lapis"
-      },
+      "ingredient": "#c:gems/lapis",
       "count": 1
     }
   ],

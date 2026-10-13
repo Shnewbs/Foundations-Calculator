@@ -3,11 +3,7 @@
   "machine": "research",
   "ingredients": [
     {
-      "ingredient": [
-        {
-          "item": "minecraft:cactus"
-        }
-      ]
+      "ingredient": "minecraft:cactus"
     }
   ],
   "results": [],

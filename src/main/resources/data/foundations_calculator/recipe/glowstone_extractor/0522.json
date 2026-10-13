@@ -3,9 +3,7 @@
   "machine": "glowstone_extractor",
   "ingredients": [
     {
-      "ingredient": {
-        "tag": "c:storage_blocks/glowstone"
-      },
+      "ingredient": "#c:storage_blocks/glowstone",
       "count": 1
     }
   ],

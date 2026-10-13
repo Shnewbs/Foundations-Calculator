@@ -3,9 +3,7 @@
   "machine": "reassembly_chamber",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "foundations_calculator:circuit_damaged_2"
-      },
+      "ingredient": "foundations_calculator:circuit_damaged_2",
       "count": 1
     }
   ],

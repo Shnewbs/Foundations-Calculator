@@ -3,15 +3,11 @@
   "machine": "calculator",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "minecraft:piston"
-      },
+      "ingredient": "minecraft:piston",
       "count": 1
     },
     {
-      "ingredient": {
-        "item": "foundations_calculator:rotten_pear"
-      },
+      "ingredient": "foundations_calculator:rotten_pear",
       "count": 1
     }
   ],

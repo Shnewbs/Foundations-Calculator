@@ -3,9 +3,7 @@
   "machine": "precision_chamber",
   "ingredients": [
     {
-      "ingredient": {
-        "tag": "c:dusts/redstone"
-      },
+      "ingredient": "#c:dusts/redstone",
       "count": 1
     }
   ],

@@ -7,15 +7,9 @@
     "AAA"
   ],
   "key": {
-    "A": {
-      "tag": "c:rods/wooden"
-    },
-    "B": {
-      "item": "foundations_calculator:power_cube"
-    },
-    "C": {
-      "tag": "minecraft:planks"
-    }
+    "A": "#c:rods/wooden",
+    "B": "foundations_calculator:power_cube",
+    "C": "#minecraft:planks"
   },
   "result": {
     "id": "foundations_calculator:hand_cranked_generator",

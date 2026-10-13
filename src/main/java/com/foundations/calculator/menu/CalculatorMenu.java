@@ -168,7 +168,7 @@ public final class CalculatorMenu extends AbstractContainerMenu {
         if(machine==null&&!player.level().isClientSide()){
             for(int i=0;i<25;i++){
                 ItemStack stack=handler.extractItem(i,Integer.MAX_VALUE,false);
-                if(!stack.isEmpty()){if(!player.isAlive()||(player instanceof net.minecraft.server.level.ServerPlayer sp && sp.hasDisconnected()))player.drop(stack,false);else player.getInventory().placeItemBackInInventory(stack);}
+                if(!stack.isEmpty()){if(!player.isAlive()||(player instanceof net.minecraft.server.level.ServerPlayer sp && sp.hasDisconnected()))player.drop(stack,false,net.minecraft.util.Prediction.SERVER_ONLY);else player.getInventory().placeItemBackInInventory(stack,net.minecraft.util.Prediction.SERVER_ONLY);}
             }
         }
     }

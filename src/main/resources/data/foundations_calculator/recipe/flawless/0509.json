@@ -3,27 +3,19 @@
   "machine": "flawless",
   "ingredients": [
     {
-      "ingredient": {
-        "tag": "c:ingots/gold"
-      },
+      "ingredient": "#c:ingots/gold",
       "count": 1
     },
     {
-      "ingredient": {
-        "tag": "c:ingots/gold"
-      },
+      "ingredient": "#c:ingots/gold",
       "count": 1
     },
     {
-      "ingredient": {
-        "tag": "c:ingots/gold"
-      },
+      "ingredient": "#c:ingots/gold",
       "count": 1
     },
     {
-      "ingredient": {
-        "tag": "c:ingots/gold"
-      },
+      "ingredient": "#c:ingots/gold",
       "count": 1
     }
   ],

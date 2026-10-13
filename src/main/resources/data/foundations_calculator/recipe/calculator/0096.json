@@ -3,15 +3,11 @@
   "machine": "calculator",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "foundations_calculator:grenade_casing"
-      },
+      "ingredient": "foundations_calculator:grenade_casing",
       "count": 1
     },
     {
-      "ingredient": {
-        "item": "minecraft:tnt"
-      },
+      "ingredient": "minecraft:tnt",
       "count": 1
     }
   ],

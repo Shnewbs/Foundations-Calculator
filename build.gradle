@@ -186,6 +186,19 @@ tasks.register('capturePortApi', Exec) {
         commandLine compiler.metadata.installationPath.file('bin/javap').asFile.absolutePath,
             '-classpath', sourceSets.main.compileClasspath.asPath,
             'net.minecraft.commands.Commands',
+            'net.minecraft.world.level.block.entity.BaseContainerBlockEntity',
+            'net.minecraft.world.level.block.state.BlockBehaviour$Properties',
+            'net.minecraft.util.context.ContextKeySet',
+            'net.minecraft.world.level.storage.loot.LootContext',
+            'net.minecraft.world.level.storage.loot.LootParams',
+            'net.minecraft.world.level.storage.loot.parameters.LootContextParams',
+            'net.minecraft.world.level.storage.loot.parameters.LootContextParamSets',
+            'net.minecraft.world.level.storage.loot.providers.number.ints.ResolvableInt$Constant',
+            'net.minecraft.world.level.storage.loot.providers.number.floats.ResolvableFloat$Constant',
+            'net.minecraft.world.level.block.state.BlockBehaviour$Properties',
+            'net.minecraft.util.random.WeightedList',
+            'net.minecraft.world.item.crafting.RecipeManager',
+            'net.minecraft.world.item.ItemStackTemplate',
             'net.minecraft.world.level.block.entity.AbstractFurnaceBlockEntity',
             'net.minecraft.world.item.ItemInstance',
             'net.minecraft.world.level.storage.loot.providers.number.ints.ResolvableInt',
@@ -264,6 +277,8 @@ tasks.register('captureFuelImplementation', Exec) {
         def compiler = tasks.named('compileJava', JavaCompile).get().javaCompiler.get()
         commandLine compiler.metadata.installationPath.file('bin/javap').asFile.absolutePath,
             '-c', '-p', '-classpath', sourceSets.main.compileClasspath.asPath,
-            'net.minecraft.world.level.block.entity.AbstractFurnaceBlockEntity'
+            'net.minecraft.world.level.block.entity.AbstractFurnaceBlockEntity',
+            'net.minecraft.world.level.block.entity.BaseContainerBlockEntity',
+            'net.minecraft.world.level.block.grower.TreeGrower'
     }
 }

@@ -53,7 +53,7 @@ public final class MachineRenderer implements BlockEntityRenderer<MachineBlockEn
     private void mesh(String name,String texture,PoseStack pose,MeshSink sink,int light,int overlay){sink.draw(meshes.get(name),pose,texture,light,overlay);}
     private void geometry(State state,PoseStack pose,MeshSink sink,int light,int overlay){
         String kind=state.kind;if(!MODELED.contains(kind)&&!kind.equals("fabrication_chamber")&&!kind.equals("analysing_chamber"))return;
-        pose.pushPose();pose.translate(.5,1.5,.5);pose.mulPose(Axis.YP.rotationDegrees(-state.facing.toYRot()));pose.mulPose(Axis.XP.rotationDegrees(180));
+        pose.pushPose();pose.translate(.5,1.5,.5);pose.rotate(Axis.YP.rotationDegrees(-state.facing.toYRot()));pose.rotate(Axis.XP.rotationDegrees(180));
         if(kind.endsWith("chamber")&&!kind.equals("fabrication_chamber")&&!kind.equals("analysing_chamber")){
             String texture=kind.equals("reassembly_chamber")||kind.equals("restoration_chamber")?"machine_frame_black":"machine_frame";mesh("chamber",texture,pose,sink,light,overlay);
             pose.pushPose();if(ClientConfig.flag(ClientConfig.ANIMATIONS)&&state.progress>0)pose.translate(0,0,Math.sin(state.clock*.15)*.15);mesh(kind.equals("precision_chamber")||kind.equals("extraction_chamber")?"split":"processing",texture,pose,sink,light,overlay);pose.popPose();
@@ -62,24 +62,24 @@ public final class MachineRenderer implements BlockEntityRenderer<MachineBlockEn
             case "transmitter"->mesh(kind,"transmitter",pose,sink,light,overlay);
             case "scarecrow"->mesh(kind,"scarecrow",pose,sink,light,overlay);
             case "docking_station"->mesh(kind,"dockingstation",pose,sink,light,overlay);
-            case "crank_handle"->{if(ClientConfig.flag(ClientConfig.ANIMATIONS)&&state.lastCrank!=Long.MIN_VALUE&&state.tick-state.lastCrank<18)pose.mulPose(Axis.YP.rotationDegrees((state.tick-state.lastCrank+state.partial)*20));mesh(kind,"crank",pose,sink,light,overlay);}
-            case "magnetic_flux"->{pose.mulPose(Axis.YP.rotationDegrees((float)(state.clock*2)));mesh(kind,"magnetic_flux",pose,sink,light,overlay);}
-            case "weather_station"->{if(state.mast!=null)pose.mulPose(Axis.YP.rotation((float)Math.atan2(state.mast.getZ()-state.blockPos.getZ(),state.mast.getX()-state.blockPos.getX())));mesh(kind,"weatherstation_base",pose,sink,light,overlay);pose.translate(0,-.9,-.84);pose.mulPose(Axis.XP.rotationDegrees(45));mesh("dish","weatherstation_dish",pose,sink,light,overlay);}
-            case "fabrication_chamber"->{pose.translate(.5,.375,.75);if(ClientConfig.flag(ClientConfig.ANIMATIONS)&&state.progress>0)pose.mulPose(Axis.YP.rotationDegrees((float)(Math.sin(state.clock*.1)*35)));mesh("arm","fabrication_arm_techne",pose,sink,light,overlay);pose.translate(-1,0,0);mesh("arm","fabrication_arm_techne",pose,sink,light,overlay);}
+            case "crank_handle"->{if(ClientConfig.flag(ClientConfig.ANIMATIONS)&&state.lastCrank!=Long.MIN_VALUE&&state.tick-state.lastCrank<18)pose.rotate(Axis.YP.rotationDegrees((state.tick-state.lastCrank+state.partial)*20));mesh(kind,"crank",pose,sink,light,overlay);}
+            case "magnetic_flux"->{pose.rotate(Axis.YP.rotationDegrees((float)(state.clock*2)));mesh(kind,"magnetic_flux",pose,sink,light,overlay);}
+            case "weather_station"->{if(state.mast!=null)pose.rotate(Axis.YP.rotation((float)Math.atan2(state.mast.getZ()-state.blockPos.getZ(),state.mast.getX()-state.blockPos.getX())));mesh(kind,"weatherstation_base",pose,sink,light,overlay);pose.translate(0,-.9,-.84);pose.rotate(Axis.XP.rotationDegrees(45));mesh("dish","weatherstation_dish",pose,sink,light,overlay);}
+            case "fabrication_chamber"->{pose.translate(.5,.375,.75);if(ClientConfig.flag(ClientConfig.ANIMATIONS)&&state.progress>0)pose.rotate(Axis.YP.rotationDegrees((float)(Math.sin(state.clock*.1)*35)));mesh("arm","fabrication_arm_techne",pose,sink,light,overlay);pose.translate(-1,0,0);mesh("arm","fabrication_arm_techne",pose,sink,light,overlay);}
         }
         pose.popPose();
     }
-    private void chestPose(State state,PoseStack pose){pose.translate(.5,.5,.5);pose.mulPose(Axis.YP.rotationDegrees(-state.facing.toYRot()));pose.translate(-.5,-.5,-.5);}
+    private void chestPose(State state,PoseStack pose){pose.translate(.5,.5,.5);pose.rotate(Axis.YP.rotationDegrees(-state.facing.toYRot()));pose.translate(-.5,-.5,-.5);}
     @Override public void submit(State state,PoseStack pose,SubmitNodeCollector collector,CameraRenderState camera){submitGeometry(state,pose,collector,state.lightCoords,0);}
     public void submitGeometry(State state,PoseStack pose,SubmitNodeCollector collector,int light,int overlay){
-        if(state.kind.equals("reinforced_chest")){pose.pushPose();chestPose(state,pose);collector.submitModel(chest,state,pose,RenderTypes.entityCutout(Content.id("textures/legacy_calculator/model/reinforced_chest.png")),light,overlay,-1,state.breakProgress);pose.popPose();return;}
+        if(state.kind.equals("reinforced_chest")){pose.pushPose();chestPose(state,pose);collector.submitModel(chest,state,pose,RenderTypes.entityCutout(Content.id("textures/legacy_calculator/model/reinforced_chest.png")),light,overlay,-1);if(state.breakProgress!=null)collector.submitCrumblingOverlay(chest,state,pose,RenderTypes.entityCutout(Content.id("textures/legacy_calculator/model/reinforced_chest.png")),light,overlay,-1,state.breakProgress);pose.popPose();return;}
         if(state.kind.equals("calculator_screen_block")){display(state,pose,collector,light);return;}
-        geometry(state,pose,(part,p,texture,l,o)->collector.submitModelPart(part,p,RenderTypes.entityCutout(Content.id("textures/legacy_calculator/model/"+texture+".png")),l,o,null,-1,state.breakProgress),light,overlay);
-        if(!state.input.isEmpty()){pose.pushPose();pose.translate(.5,.4,.5);pose.scale(.4f,.4f,.4f);pose.mulPose(Axis.YP.rotationDegrees((float)(state.clock*2)));state.input.submit(pose,collector,light,overlay,0);pose.popPose();}
+        geometry(state,pose,(part,p,texture,l,o)->{var type=RenderTypes.entityCutout(Content.id("textures/legacy_calculator/model/"+texture+".png"));collector.submitModelPart(part,p,type,l,o,null,-1);if(state.breakProgress!=null)collector.submitCrumblingOverlay(part,p,type,l,o,-1,state.breakProgress);},light,overlay);
+        if(!state.input.isEmpty()){pose.pushPose();pose.translate(.5,.4,.5);pose.scale(.4f,.4f,.4f);pose.rotate(Axis.YP.rotationDegrees((float)(state.clock*2)));state.input.submit(pose,collector,light,overlay,0);pose.popPose();}
     }
     public AABB itemBounds(String kind){return itemBounds.computeIfAbsent(kind,key->{State state=new State();state.kind=key;state.blockPos=BlockPos.ZERO;var bounds=new ItemMeshBounds();var pose=new PoseStack();if(key.equals("reinforced_chest")){chestPose(state,pose);chest.setupAnim(state);chest.parts.render(pose,bounds,15728880,0);}else geometry(state,pose,(part,p,texture,l,o)->part.render(p,bounds,l,o),15728880,0);return bounds.bounds();});}
     private void display(State state,PoseStack pose,SubmitNodeCollector collector,int light){
-        pose.pushPose();pose.translate(.5,.7,.5);pose.mulPose(Axis.YP.rotationDegrees(-state.facing.toYRot()));pose.translate(0,0,.505);pose.scale(.008f,-.008f,.008f);Font font=Minecraft.getInstance().font;
+        pose.pushPose();pose.translate(.5,.7,.5);pose.rotate(Axis.YP.rotationDegrees(-state.facing.toYRot()));pose.translate(0,0,.505);pose.scale(.008f,-.008f,.008f);Font font=Minecraft.getInstance().font;
         String text=EnergyDisplay.compact(state.screenEnergy)+" FE",capacity="/ "+EnergyDisplay.compact(state.screenCapacity);
         collector.submitText(pose,-font.width(text)/2f,0,net.minecraft.network.chat.Component.literal(text).getVisualOrderText(),false,Font.DisplayMode.NORMAL,light,0xff7ee3ce,0,0);
         collector.submitText(pose,-font.width(capacity)/2f,12,net.minecraft.network.chat.Component.literal(capacity).getVisualOrderText(),false,Font.DisplayMode.NORMAL,light,0xffc4d5df,0,0);pose.popPose();

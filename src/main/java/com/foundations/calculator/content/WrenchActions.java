@@ -23,7 +23,7 @@ public final class WrenchActions {
                 ItemStack packed=new ItemStack(state.getBlock());
                 packed.set(DataComponents.BLOCK_ENTITY_DATA,net.minecraft.world.item.component.TypedEntityData.of(m.getType(),m.saveWithFullMetadata(level.registryAccess())));
                 m.suppressDrops=true;
-                if(level.removeBlock(pos,false))player.getInventory().placeItemBackInInventory(packed);else m.suppressDrops=false;
+                if(level.removeBlock(pos,false))player.getInventory().placeItemBackInInventory(packed,net.minecraft.util.Prediction.SERVER_ONLY);else m.suppressDrops=false;
             }else level.destroyBlock(pos,true,player);
             return InteractionResult.CONSUME;
         }

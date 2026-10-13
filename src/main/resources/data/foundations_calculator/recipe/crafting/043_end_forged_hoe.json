@@ -7,12 +7,8 @@
     " S"
   ],
   "key": {
-    "R": {
-      "item": "foundations_calculator:end_diamond"
-    },
-    "S": {
-      "tag": "c:rods/wooden"
-    }
+    "R": "foundations_calculator:end_diamond",
+    "S": "#c:rods/wooden"
   },
   "result": {
     "id": "foundations_calculator:end_forged_hoe",

@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "foundations_calculator:clear_stable_glass"
-    }
+    "foundations_calculator:clear_stable_glass"
   ],
   "result": {
     "id": "foundations_calculator:stable_glass",

@@ -7,15 +7,9 @@
     "ABA"
   ],
   "key": {
-    "A": {
-      "item": "foundations_calculator:large_amethyst"
-    },
-    "B": {
-      "item": "foundations_calculator:redstone_ingot"
-    },
-    "C": {
-      "item": "foundations_calculator:advanced_assembly"
-    }
+    "A": "foundations_calculator:large_amethyst",
+    "B": "foundations_calculator:redstone_ingot",
+    "C": "foundations_calculator:advanced_assembly"
   },
   "result": {
     "id": "foundations_calculator:hunger_processor",

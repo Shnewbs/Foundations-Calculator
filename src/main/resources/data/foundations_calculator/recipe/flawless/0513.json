@@ -3,27 +3,19 @@
   "machine": "flawless",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "minecraft:obsidian"
-      },
+      "ingredient": "minecraft:obsidian",
       "count": 1
     },
     {
-      "ingredient": {
-        "item": "minecraft:obsidian"
-      },
+      "ingredient": "minecraft:obsidian",
       "count": 1
     },
     {
-      "ingredient": {
-        "item": "minecraft:obsidian"
-      },
+      "ingredient": "minecraft:obsidian",
       "count": 1
     },
     {
-      "ingredient": {
-        "item": "minecraft:obsidian"
-      },
+      "ingredient": "minecraft:obsidian",
       "count": 1
     }
   ],

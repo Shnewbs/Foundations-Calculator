@@ -3,15 +3,11 @@
   "machine": "calculator",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "minecraft:chest"
-      },
+      "ingredient": "minecraft:chest",
       "count": 1
     },
     {
-      "ingredient": {
-        "item": "minecraft:nether_star"
-      },
+      "ingredient": "minecraft:nether_star",
       "count": 1
     }
   ],

@@ -7,9 +7,7 @@
     "AAA"
   ],
   "key": {
-    "A": {
-      "item": "foundations_calculator:tanzanite_planks"
-    }
+    "A": "foundations_calculator:tanzanite_planks"
   },
   "result": {
     "id": "foundations_calculator:tanzanite_stairs",

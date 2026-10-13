@@ -3,15 +3,11 @@
   "machine": "calculator",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "minecraft:oak_log"
-      },
+      "ingredient": "minecraft:oak_log",
       "count": 1
     },
     {
-      "ingredient": {
-        "item": "minecraft:oak_leaves"
-      },
+      "ingredient": "minecraft:oak_leaves",
       "count": 1
     }
   ],

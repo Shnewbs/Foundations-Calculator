@@ -3,14 +3,13 @@
   "machine": "research",
   "ingredients": [
     {
-      "ingredient": [
-        {
-          "tag": "minecraft:planks"
-        },
-        {
-          "tag": "minecraft:wooden_stairs"
-        }
-      ]
+      "ingredient": {
+        "neoforge:ingredient_type": "neoforge:compound",
+        "children": [
+          "#minecraft:planks",
+          "#minecraft:wooden_stairs"
+        ]
+      }
     }
   ],
   "results": [],

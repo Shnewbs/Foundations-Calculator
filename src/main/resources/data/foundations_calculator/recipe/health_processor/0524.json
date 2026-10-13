@@ -3,9 +3,7 @@
   "machine": "health_processor",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "minecraft:blaze_rod"
-      },
+      "ingredient": "minecraft:blaze_rod",
       "count": 1
     }
   ],

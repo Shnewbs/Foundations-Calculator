@@ -3,11 +3,7 @@
   "machine": "research",
   "ingredients": [
     {
-      "ingredient": [
-        {
-          "tag": "c:sandstone/blocks"
-        }
-      ]
+      "ingredient": "#c:sandstone/blocks"
     }
   ],
   "results": [],

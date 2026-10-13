@@ -7,9 +7,7 @@
     "AAA"
   ],
   "key": {
-    "A": {
-      "item": "foundations_calculator:reinforced_dirt_block"
-    }
+    "A": "foundations_calculator:reinforced_dirt_block"
   },
   "result": {
     "id": "foundations_calculator:reinforced_dirt_stairs",

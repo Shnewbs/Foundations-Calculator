@@ -3,9 +3,7 @@
   "machine": "stone_separator",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "minecraft:jungle_log"
-      },
+      "ingredient": "minecraft:jungle_log",
       "count": 1
     }
   ],

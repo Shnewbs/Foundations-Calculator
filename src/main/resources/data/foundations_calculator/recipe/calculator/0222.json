@@ -3,15 +3,11 @@
   "machine": "calculator",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "minecraft:clay_ball"
-      },
+      "ingredient": "minecraft:clay_ball",
       "count": 1
     },
     {
-      "ingredient": {
-        "item": "minecraft:rotten_flesh"
-      },
+      "ingredient": "minecraft:rotten_flesh",
       "count": 1
     }
   ],

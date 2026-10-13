@@ -3,15 +3,11 @@
   "machine": "calculator",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "minecraft:lime_wool"
-      },
+      "ingredient": "minecraft:lime_wool",
       "count": 1
     },
     {
-      "ingredient": {
-        "item": "minecraft:lime_wool"
-      },
+      "ingredient": "minecraft:lime_wool",
       "count": 1
     }
   ],

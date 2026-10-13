@@ -3,9 +3,7 @@
   "machine": "starch_extractor",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "foundations_calculator:broccoli"
-      },
+      "ingredient": "foundations_calculator:broccoli",
       "count": 1
     }
   ],

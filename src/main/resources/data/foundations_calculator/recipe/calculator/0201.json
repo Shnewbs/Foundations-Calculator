@@ -3,15 +3,11 @@
   "machine": "calculator",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "minecraft:iron_block"
-      },
+      "ingredient": "minecraft:iron_block",
       "count": 1
     },
     {
-      "ingredient": {
-        "item": "minecraft:iron_block"
-      },
+      "ingredient": "minecraft:iron_block",
       "count": 1
     }
   ],

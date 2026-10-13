@@ -3,11 +3,7 @@
   "machine": "research",
   "ingredients": [
     {
-      "ingredient": [
-        {
-          "item": "minecraft:grass_block"
-        }
-      ]
+      "ingredient": "minecraft:grass_block"
     }
   ],
   "results": [],

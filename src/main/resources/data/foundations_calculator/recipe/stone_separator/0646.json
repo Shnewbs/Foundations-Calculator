@@ -3,9 +3,7 @@
   "machine": "stone_separator",
   "ingredients": [
     {
-      "ingredient": {
-        "tag": "c:ores/gold"
-      },
+      "ingredient": "#c:ores/gold",
       "count": 1
     }
   ],

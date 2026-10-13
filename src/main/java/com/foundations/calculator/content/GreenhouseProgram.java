@@ -205,7 +205,7 @@ public final class GreenhouseProgram {
     public static void carbonGenerator(MachineBlockEntity m){
         Level l=m.getLevel();BlockPos p=m.getBlockPos().relative(forward(m).getClockWise().getOpposite(),3);
         if(!l.hasChunkAt(p)||!(l.getBlockEntity(p) instanceof MachineBlockEntity house)||!house.kind().equals("flawless_greenhouse")){m.program.putInt("GasAdd",0);m.setActive(false);return;}
-        if(m.burnTime==0){ItemStack fuel=m.inventory.getStackInSlot(0);int burn=fuel.getBurnTime(RecipeType.SMELTING,m.getLevel().fuelValues());
+        if(m.burnTime==0){ItemStack fuel=m.inventory.getStackInSlot(0);int burn=PlatformFuel.burnTime(m,fuel);
             if(burn>0&&m.energy.stored()>=CalculatorConfig.energyLong(m.kind(),CalculatorConfig.integer("greenhouse.co2FuelEnergy",100000))){
                 m.program.putBoolean("Controlled",fuel.is(Content.item("controlled_fuel")));m.program.putInt("FuelGas",burn/100);
                 ItemStack rem=com.foundations.calculator.core.PlatformItems.remainder(fuel);m.inventory.extractItem(0,1,false);if(!rem.isEmpty())m.pending.add(rem);

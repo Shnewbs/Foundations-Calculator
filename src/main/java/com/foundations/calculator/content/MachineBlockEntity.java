@@ -291,7 +291,7 @@ public class MachineBlockEntity extends BlockEntity implements MenuProvider {
         }
         if(energy.stored()>=energy.capacity())return;
         if(burnTime==0&&nutrient>=CalculatorConfig.integer("generation.extractorNutrientCost",400)){
-            ItemStack fuel=inventory.getStackInSlot(0);int burn=fuel.getBurnTime(RecipeType.SMELTING,level.fuelValues());
+            ItemStack fuel=inventory.getStackInSlot(0);int burn=PlatformFuel.burnTime(this,fuel);
             if(burn>0){
                 ItemStack rem=com.foundations.calculator.core.PlatformItems.remainder(fuel);inventory.extractItem(0,1,false);
                 if(!rem.isEmpty())pending.add(rem);burnTime=burn;nutrient-=CalculatorConfig.integer("generation.extractorNutrientCost",400);

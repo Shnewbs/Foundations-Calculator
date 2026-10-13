@@ -55,7 +55,7 @@ public final class MachineDiagnostics {
             var forward=m.getBlockState().getValue(MachineBlock.FACING).getOpposite();
             if(!(level.getBlockEntity(m.getBlockPos().relative(forward.getClockWise().getOpposite(),3)) instanceof MachineBlockEntity other)||!other.kind().equals("flawless_greenhouse"))return state(NEED_GREENHOUSE);
             if(m.burnTime>0)return state(m.program.getIntOr("GasAdd",0)>0?GAS_RUNNING:GAS_CONTROLLED);
-            if(m.inventory.getStackInSlot(0).getBurnTime(RecipeType.SMELTING,level.fuelValues())<=0)return state(NEED_FUEL);
+            if(PlatformFuel.burnTime(m,m.inventory.getStackInSlot(0))<=0)return state(NEED_FUEL);
             return power(GAS_RUNNING,CalculatorConfig.energyLong(kind,CalculatorConfig.integer("greenhouse.co2FuelEnergy",100000)),energy);
         }
         if(kind.equals("stone_assimilator")||kind.equals("algorithm_assimilator"))return state(CHECK_TREE);

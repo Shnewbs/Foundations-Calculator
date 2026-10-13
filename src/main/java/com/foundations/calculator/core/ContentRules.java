@@ -13,7 +13,7 @@ import net.minecraft.server.MinecraftServer;
 
 @EventBusSubscriber(modid=FoundationsCalculator.ID)
 public final class ContentRules {
-    private static void filter(MinecraftServer server){var manager=server.getRecipeManager();var level=server.overworld();var recipes=manager.getRecipes().stream().filter(r->RecipePolicies.enabled(r,level)).toList();if(recipes.size()!=manager.getRecipes().size())manager.replaceRecipes(recipes);}
+    private static void filter(MinecraftServer server){var manager=server.getRecipeManager();var level=server.overworld();var recipes=manager.getRecipes().stream().filter(r->RecipePolicies.enabled(r,level)).toList();if(recipes.size()!=manager.getRecipes().size()){manager.apply(net.minecraft.world.item.crafting.RecipeMap.create(recipes),server.getResourceManager(),net.minecraft.util.profiling.Profiler.get());manager.finalizeRecipeLoading(level.enabledFeatures());};}
     @SubscribeEvent public static void reload(OnDatapackSyncEvent e){filter(e.getPlayerList().getServer());}
     @SubscribeEvent public static void started(ServerStartedEvent e){filter(e.getServer());}
     @SubscribeEvent public static void use(PlayerInteractEvent.RightClickItem e){if(!RecipePolicies.itemEnabled(e.getItemStack()))e.setCanceled(true);}

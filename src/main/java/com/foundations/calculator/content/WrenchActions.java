@@ -17,11 +17,11 @@ public final class WrenchActions {
         if(!(level.getBlockEntity(pos) instanceof MachineBlockEntity m))return InteractionResult.PASS;
         if(player.isShiftKeyDown()&&CalculatorConfig.flag("tools.wrenchDismantle",true)){
             if(level.isClientSide())return InteractionResult.SUCCESS;
-            if(NeoForge.EVENT_BUS.post(new BlockEvent.BreakEvent(level,pos,state,player)).isCanceled())return InteractionResult.FAIL;
+            if(NeoForge.EVENT_BUS.post(new net.neoforged.neoforge.event.level.block.BreakBlockEvent(level,pos,state,player)).isCanceled())return InteractionResult.FAIL;
             if(CalculatorConfig.flag("tools.wrenchPreserveMachine",true)){
                 if(m.kind().equals("module_workstation"))ModuleWorkstation.flush(m);
                 ItemStack packed=new ItemStack(state.getBlock());
-                packed.set(DataComponents.BLOCK_ENTITY_DATA,CustomData.of(m.saveWithFullMetadata(level.registryAccess())));
+                packed.set(DataComponents.BLOCK_ENTITY_DATA,net.minecraft.world.item.component.TypedEntityData.of(m.getType(),m.saveWithFullMetadata(level.registryAccess())));
                 m.suppressDrops=true;
                 if(level.removeBlock(pos,false))player.getInventory().placeItemBackInInventory(packed);else m.suppressDrops=false;
             }else level.destroyBlock(pos,true,player);

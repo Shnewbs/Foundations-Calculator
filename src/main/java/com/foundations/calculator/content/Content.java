@@ -364,7 +364,7 @@ public final class Content {
     private static void addBlock(String id,Supplier<Block> factory,boolean machine,boolean pending){
         var b=BLOCKS.register(id,factory);BLOCKS_BY_ID.put(id,b);if(machine)MACHINE_BLOCKS.add(b);
         if(!id.startsWith("crop_"))ITEMS_BY_ID.put(id,ITEMS.register(id,()->new BlockItem(b.get(),ContentProperties.item(id,new Item.Properties())){
-            public void appendHoverText(ItemStack s,TooltipContext c,List<Component> tooltip,TooltipFlag f){super.appendHoverText(s,c,tooltip,f);if(pending)tooltip.add(Component.literal("Port pending — not functional in this alpha").withStyle(net.minecraft.ChatFormatting.RED));}
+            public void appendHoverText(ItemStack s,TooltipContext c,net.minecraft.world.item.component.TooltipDisplay display,java.util.function.Consumer<Component> tooltip,TooltipFlag f){super.appendHoverText(s,c,display,tooltip,f);if(pending)tooltip.accept(Component.literal("Port pending — not functional in this alpha").withStyle(net.minecraft.ChatFormatting.RED));}
         }));
     }
     public static Identifier id(String s){return Identifier.fromNamespaceAndPath(FoundationsCalculator.ID,s);}
@@ -374,7 +374,7 @@ public final class Content {
     public static void register(IEventBus bus){BLOCKS.register(bus);ITEMS.register(bus);ENTITIES.register(bus);PROJECTILES.register(bus);MENUS.register(bus);TYPES.register(bus);SERIALIZERS.register(bus);COMPONENTS.register(bus);TABS.register(bus);bus.addListener(net.neoforged.bus.api.EventPriority.HIGHEST,Content::capabilities);}
     private static void capabilities(RegisterCapabilitiesEvent e){
         e.registerBlockEntity(Capabilities.Energy.BLOCK,MACHINE_ENTITY.get(),MachineBlockEntity::transactionalEnergyPort);
-        e.registerBlockEntity(Capabilities.ItemHandler.BLOCK,MACHINE_ENTITY.get(),MachineBlockEntity::automation);
+        e.registerBlockEntity(Capabilities.Item.BLOCK,MACHINE_ENTITY.get(),com.foundations.calculator.core.MachineItemHandler::new);
         for(var entry:ITEMS_BY_ID.values())if(entry.get() instanceof CalculatorItem c&&c.capacity>0)e.registerItem(Capabilities.Energy.ITEM,(stack,access)->new com.foundations.calculator.core.CalculatorItemEnergyHandler(c,access),c);
     }
 }

@@ -57,7 +57,7 @@ public final class MachinePrograms {
             if(remaining<=0)break;
             if(!m.itemOutput(side))continue;
             BlockPos target=m.getBlockPos().relative(side);if(!m.getLevel().hasChunkAt(target))continue;
-            IItemHandler other=m.getLevel().getCapability(Capabilities.ItemHandler.BLOCK,target,side.getOpposite());
+            IItemHandler other=com.foundations.calculator.core.MachineItemHandler.neighbor(m.getLevel(),target,side.getOpposite());
             if(other==null)continue;
             IItemHandler source=m.automation(side);
             for(int i=14;i<20&&remaining>0;i++){
@@ -71,15 +71,15 @@ public final class MachinePrograms {
         ServerLevel level=(ServerLevel)m.getLevel();CompoundTag s=m.program;
         if(s.getIntOr("Cooldown",0)>0){s.putInt("Cooldown",s.getIntOr("Cooldown",0)-1);m.setChanged();return;}
         int mode=s.getIntOr("Mode",0);boolean target=s.getBooleanOr("Target",false);
-        boolean current=switch(mode){case 1->level.getLevelData().isRaining();case 2->level.getLevelData().isThundering();default->!level.isDay();};
+        boolean current=switch(mode){case 1->level.isRaining();case 2->level.isThundering();default->!level.isBrightOutside();};
         if(!level.hasNeighborSignal(m.getBlockPos())||current==target){m.progress=0;m.setActive(false);return;}
         m.totalTicks=CalculatorConfig.ticks(m.kind(),CalculatorConfig.integer("world.weatherDuration",100));
         if(m.energy.stored()<CalculatorConfig.energyLong(m.kind(),CalculatorConfig.integer("world.weatherEnergyPerTick",2500))){if(!CalculatorConfig.machineFlag(m.kind(),"retainProgressWithoutPower"))m.progress=0;return;}
         m.energy.extract(CalculatorConfig.energyLong(m.kind(),CalculatorConfig.integer("world.weatherEnergyPerTick",2500)),false);m.setActive(true);
         if(++m.progress>=m.totalTicks){
-            if(mode==0){long now=level.getDayTime();long desired=Math.floorDiv(now,24000)*24000+(target?CalculatorConfig.integer("world.weatherHoldTicks",12000):0);if(desired<=now)desired+=24000;level.setDayTime(desired);}
-            else if(mode==1)level.setWeatherParameters(target?0:CalculatorConfig.integer("world.weatherHoldTicks",12000),target?CalculatorConfig.integer("world.weatherHoldTicks",12000):0,target,target&&level.isThundering());
-            else level.setWeatherParameters(target?0:CalculatorConfig.integer("world.weatherHoldTicks",12000),target?CalculatorConfig.integer("world.weatherHoldTicks",12000):0,target,target);
+            if(mode==0){long now=level.getDefaultClockTime();long desired=Math.floorDiv(now,24000)*24000+(target?CalculatorConfig.integer("world.weatherHoldTicks",12000):0);if(desired<=now)desired+=24000;PlatformWorld.setDayTime(level,desired);}
+            else if(mode==1)PlatformWorld.setWeather(level,target?0:CalculatorConfig.integer("world.weatherHoldTicks",12000),target?CalculatorConfig.integer("world.weatherHoldTicks",12000):0,target,target&&level.isThundering());
+            else PlatformWorld.setWeather(level,target?0:CalculatorConfig.integer("world.weatherHoldTicks",12000),target?CalculatorConfig.integer("world.weatherHoldTicks",12000):0,target,target);
             m.progress=0;s.putInt("Cooldown",CalculatorConfig.integer("world.weatherCooldown",30));m.setActive(false);
         }m.setChanged();
     }
@@ -134,12 +134,12 @@ public final class MachinePrograms {
         for(ItemEntity entity:level.getEntitiesOfClass(ItemEntity.class,new AABB(m.getBlockPos()).inflate(CalculatorConfig.integer("world.magnetRadius",10)))){
             ItemStack stack=entity.getItem();boolean matched=false;
             for(int i=0;i<8;i++){ItemStack filter=m.inventory.getStackInSlot(i);if(filter.isEmpty())continue;
-                if(tags?filter.is(stack.getItem())||filter.getTags().anyMatch(stack::is):ItemStack.isSameItemSameComponents(filter,stack)){matched=true;break;}}
+                if(tags?filter.is(stack.getItem())||filter.typeHolder().tags().anyMatch(stack::is):ItemStack.isSameItemSameComponents(filter,stack)){matched=true;break;}}
             if(matched!=whitelist)continue;
             if(entity.position().distanceToSqr(target)<2.25){
-                BlockPos below=m.getBlockPos().below();IItemHandler dest=level.getCapability(Capabilities.ItemHandler.BLOCK,below,Direction.UP);
+                BlockPos below=m.getBlockPos().below();IItemHandler dest=com.foundations.calculator.core.MachineItemHandler.neighbor(level,below,Direction.UP);
                 if(dest!=null){ItemStack remaining=ItemHandlerHelper.insertItemStacked(dest,stack.copy(),false);if(remaining.isEmpty())entity.discard();else entity.setItem(remaining);}
-            }else{entity.setDeltaMovement(target.subtract(entity.position()).normalize().scale(CalculatorConfig.decimal("world.magnetSpeed",0.15)));entity.hasImpulse=true;}
+            }else{entity.setDeltaMovement(target.subtract(entity.position()).normalize().scale(CalculatorConfig.decimal("world.magnetSpeed",0.15)));entity.hurtMarked=true;}
         }
     }
     private static void assimilator(MachineBlockEntity m) {
@@ -240,7 +240,7 @@ public final class MachinePrograms {
         int percent=Math.clamp(stable*100/((2*size+1)*(2*size+1)),0,100);
         int output=(int)Math.max(0,5+((int)(1000*Math.sqrt(size*1.8)-100*Math.sqrt(100-percent)))/Math.max(1,(int)(11-Math.sqrt(percent)))*size);
         output=(int)Math.min(Integer.MAX_VALUE,output*CalculatorConfig.decimal("generation.locatorMultiplier",2.0));m.energy.receiveEnergy(output,false);s.putInt("Generation",output);
-        if(stable<CalculatorConfig.integer("generation.locatorTimeThreshold",5)&&CalculatorConfig.LOCATOR_TIME.get())((ServerLevel)level).setDayTime(level.getDayTime()+CalculatorConfig.integer("generation.locatorTimeAdvance",100));
+        if(stable<CalculatorConfig.integer("generation.locatorTimeThreshold",5)&&CalculatorConfig.LOCATOR_TIME.get())PlatformWorld.setDayTime((ServerLevel)level,level.getDefaultClockTime()+CalculatorConfig.integer("generation.locatorTimeAdvance",100));
         if(player!=null&&stable<CalculatorConfig.integer("generation.locatorStableThreshold",7)&&level.getGameTime()%CalculatorConfig.integer("generation.locatorEffectInterval",50)==0&&CalculatorConfig.LOCATOR_EFFECTS.get()){
             int luck=1+level.getRandom().nextInt(Math.max(1,40*(stable+1)-1));
             if(stable==0||stable<2&&luck==1)level.explode(null,player.getX(),player.getY(),player.getZ(),(float)(4*CalculatorConfig.decimal("world.locatorExplosionMultiplier",1)),true,CalculatorConfig.flag("world.locatorBlockDamage",true)?Level.ExplosionInteraction.BLOCK:Level.ExplosionInteraction.NONE);
@@ -275,7 +275,7 @@ public final class MachinePrograms {
             s.putInt("StrikePower",(int)Math.clamp((CalculatorConfig.integer("generation.mastBaseGeneration",25)+(double)stations*CalculatorConfig.integer("generation.weatherStationBonus",5))*Math.max(1,transmitters/4)*CalculatorConfig.decimal("generation.mastMultiplier",4),0,Integer.MAX_VALUE));
         }
         if(wait>0){wait--;s.putInt("StrikeWait",wait);if(wait==0){
-            s.putInt("StrikeTicks",CalculatorConfig.integer("generation.mastBurstTicks",200));var bolt=EntityType.LIGHTNING_BOLT.create(m.getLevel());if(bolt!=null&&CalculatorConfig.flag("world.mastLightningVisual",true)){bolt.moveTo(Vec3.atBottomCenterOf(m.getBlockPos().above(4)));bolt.setVisualOnly(true);m.getLevel().addFreshEntity(bolt);}
+            s.putInt("StrikeTicks",CalculatorConfig.integer("generation.mastBurstTicks",200));var bolt=EntityType.LIGHTNING_BOLT.create(m.getLevel(),net.minecraft.world.entity.EntitySpawnReason.TRIGGERED);if(bolt!=null&&CalculatorConfig.flag("world.mastLightningVisual",true)){bolt.setPos(Vec3.atBottomCenterOf(m.getBlockPos().above(4)));bolt.setVisualOnly(true);m.getLevel().addFreshEntity(bolt);}
         }}
         int ticks=s.getIntOr("StrikeTicks",0);if(ticks>0){m.energy.receiveEnergy(s.getIntOr("StrikePower",0),false);s.putInt("StrikeTicks",ticks-1);}m.setActive(ticks>0);m.setChanged();
     }

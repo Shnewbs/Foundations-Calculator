@@ -39,12 +39,9 @@ public final class StorageModuleMenu extends ChestMenu {
     private static SimpleContainer contents(ItemStack module,Runnable save) {
         NonNullList<ItemStack> items = NonNullList.withSize(54, ItemStack.EMPTY);
         module.getOrDefault(DataComponents.CONTAINER, ItemContainerContents.EMPTY).copyInto(items);
-        SimpleContainer container = new SimpleContainer(items.toArray(ItemStack[]::new));
-        container.addListener(c -> {
-            NonNullList<ItemStack> saved = NonNullList.withSize(54, ItemStack.EMPTY);
-            for (int i = 0; i < 54; i++) saved.set(i, c.getItem(i));
-            module.set(DataComponents.CONTAINER, ItemContainerContents.fromItems(saved));save.run();
-        });
+        SimpleContainer container = new SimpleContainer(items.toArray(ItemStack[]::new)) {
+            @Override public void setChanged(){super.setChanged();NonNullList<ItemStack> saved=NonNullList.withSize(54,ItemStack.EMPTY);for(int i=0;i<54;i++)saved.set(i,getItem(i));module.set(DataComponents.CONTAINER,ItemContainerContents.fromItems(saved));save.run();}
+        };
         return container;
     }
     public boolean stillValid(Player player) {

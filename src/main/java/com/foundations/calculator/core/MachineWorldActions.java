@@ -58,7 +58,7 @@ public final class MachineWorldActions {
                 return reject(machine,pos,action,"owner interaction denied");
             if(NeoForge.EVENT_BUS.post(new MachineWorldActionEvent(machine,pos,action,expected,replacement)).isCanceled())
                 return reject(machine,pos,action,"machine action event cancelled");
-            if(!expected.isAir()&&NeoForge.EVENT_BUS.post(new BlockEvent.BreakEvent(level,pos,expected,actor)).isCanceled())
+            if(!expected.isAir()&&NeoForge.EVENT_BUS.post(new net.neoforged.neoforge.event.level.block.BreakBlockEvent(level,pos,expected,actor)).isCanceled())
                 return reject(machine,pos,action,"break/change event cancelled");
             if(replacement!=null&&!replacement.isAir()) {
                 var snapshot=BlockSnapshot.create(level.dimension(),level,pos);

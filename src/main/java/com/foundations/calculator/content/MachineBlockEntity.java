@@ -311,7 +311,7 @@ public class MachineBlockEntity extends BlockEntity implements MenuProvider {
         String recipeId=r.get().id().toString();if(!activeRecipe.equals(recipeId)){activeRecipe=recipeId;progress=0;}
         totalTicks=upgradeProcessTicks(CalculatorConfig.ticks(kind(),200));
         if(++progress>=totalTicks){
-            ItemStack out=r.get().value().assemble(new SingleRecipeInput(in),level.registryAccess());
+            ItemStack out=r.get().value().assemble(new SingleRecipeInput(in));
             ItemStack remainder=com.foundations.calculator.core.PlatformItems.remainder(in);inventory.extractItem(0,1,false);
             pending.add(out);if(!remainder.isEmpty())pending.add(remainder);energy.extract(cost,false);progress=0;
             ProcessTransactions.flush(pending,inventory);
@@ -364,6 +364,12 @@ public class MachineBlockEntity extends BlockEntity implements MenuProvider {
         }
         int n=NutritionData.add(module,type,Math.min(CalculatorConfig.integer("nutrition.machineTransfer",4),nutrient));
         if(n>0){nutrient-=n;setChanged();}
+    }
+    @Override public void preRemoveSideEffects(BlockPos pos,BlockState state){dropContents();super.preRemoveSideEffects(pos,state);}
+    public void restoreAutomationInventory(ItemStack[] items,CompoundTag bulkTag,CompoundTag data,java.util.List<ItemStack> queued){
+        boolean previous=updatingModules;updatingModules=true;
+        try{for(int i=0;i<items.length;i++)inventory.setStackInSlot(i,items[i].copy());bulk.load(bulkTag,level.registryAccess());program=data.copy();pending.clear();queued.forEach(stack->pending.add(stack.copy()));}
+        finally{updatingModules=previous;}setChanged();
     }
     public void dropContents(){
         if(level==null||level.isClientSide()||suppressDrops)return;

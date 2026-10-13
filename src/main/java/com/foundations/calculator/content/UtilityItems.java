@@ -55,7 +55,7 @@ public final class UtilityItems {
             return InteractionResult.SUCCESS;
         }
         if(kind.equals("warp_module")&&player.isShiftKeyDown()&&(!CalculatorConfig.flag("module.warp_module.requireStableBlock",true)||stable(level,pos))){
-            if(!level.isClientSide()){var tag=CircuitData.tag(stack);tag.putLong("WarpPos",pos.asLong());tag.putString("WarpDimension",level.dimension().location().toString());put(stack,tag);player.sendOverlayMessage(Component.literal("Warp destination bound."));}
+            if(!level.isClientSide()){var tag=CircuitData.tag(stack);tag.putLong("WarpPos",pos.asLong());tag.putString("WarpDimension",level.dimension().identifier().toString());put(stack,tag);player.sendOverlayMessage(Component.literal("Warp destination bound."));}
             return InteractionResult.SUCCESS;
         }
         String nutrient=state.is(Content.block("amethyst_leaves"))?"hunger":state.is(Content.block("tanzanite_leaves"))?"health":"";
@@ -68,22 +68,22 @@ public final class UtilityItems {
             var projectile=new ThrownMaterialEntity(level,player,kind.equals("soil"));projectile.shootFromRotation(player,player.getXRot(),player.getYRot(),0,1.5f,1);if(level.addFreshEntity(projectile)&&!player.isCreative())stack.shrink(1);level.playSound(null,player.blockPosition(),SoundEvents.SNOWBALL_THROW,SoundSource.PLAYERS,.5f,1);return true;
         }
         if(kind.equals("locator_module")){
-            var tag=CircuitData.tag(stack);com.foundations.calculator.core.UuidTags.put(tag,"Owner",player.getUUID());tag.putString("OwnerName",player.getGameProfile().getName());put(stack,tag);player.sendOverlayMessage(Component.literal("Locator bound to "+player.getGameProfile().getName()));return true;
+            var tag=CircuitData.tag(stack);com.foundations.calculator.core.UuidTags.put(tag,"Owner",player.getUUID());tag.putString("OwnerName",player.getGameProfile().name());put(stack,tag);player.sendOverlayMessage(Component.literal("Locator bound to "+player.getGameProfile().name()));return true;
         }
         if(kind.equals("end_diamond")){
-            if(!CalculatorConfig.flag("module.end_diamond.enabled",true)||player.getCooldowns().isOnCooldown(battery.getItem()))return true;
-            var pearl=new net.minecraft.world.entity.projectile.ThrownEnderpearl(level,player);pearl.shootFromRotation(player,player.getXRot(),player.getYRot(),0,(float)CalculatorConfig.decimal("module.end_diamond.velocity",1.5),1);
+            if(!CalculatorConfig.flag("module.end_diamond.enabled",true)||player.getCooldowns().isOnCooldown(battery))return true;
+            var pearl=new net.minecraft.world.entity.projectile.throwableitemprojectile.ThrownEnderpearl(level,player,stack);pearl.shootFromRotation(player,player.getXRot(),player.getYRot(),0,(float)CalculatorConfig.decimal("module.end_diamond.velocity",1.5),1);
             if(level.addFreshEntity(pearl)){player.getCooldowns().addCooldown(battery,CalculatorConfig.integer("module.end_diamond.cooldown",10));level.playSound(null,player.blockPosition(),SoundEvents.ENDER_PEARL_THROW,SoundSource.PLAYERS,.5f,1);}
             return true;
         }
         if(kind.equals("ender_pearl")&&stack!=battery){
-            int cost=CalculatorConfig.integer("module.ender_pearl.cost",1000);if(player.getCooldowns().isOnCooldown(battery.getItem()))return true;
+            int cost=CalculatorConfig.integer("module.ender_pearl.cost",1000);if(player.getCooldowns().isOnCooldown(battery))return true;
             if(!(battery.getItem() instanceof CalculatorItem item)||!player.isCreative()&&item.energy(battery)<cost)return true;
-            var pearl=new net.minecraft.world.entity.projectile.ThrownEnderpearl(level,player);pearl.shootFromRotation(player,player.getXRot(),player.getYRot(),0,(float)CalculatorConfig.decimal("module.ender_pearl.velocity",1.5),1);if(level.addFreshEntity(pearl)&&!player.isCreative()){item.storage(battery).extractEnergy(cost,false);player.getCooldowns().addCooldown(battery,CalculatorConfig.integer("module.ender_pearl.cooldown",10));}return true;
+            var pearl=new net.minecraft.world.entity.projectile.throwableitemprojectile.ThrownEnderpearl(level,player,stack);pearl.shootFromRotation(player,player.getXRot(),player.getYRot(),0,(float)CalculatorConfig.decimal("module.ender_pearl.velocity",1.5),1);if(level.addFreshEntity(pearl)&&!player.isCreative()){item.storage(battery).extractEnergy(cost,false);player.getCooldowns().addCooldown(battery,CalculatorConfig.integer("module.ender_pearl.cooldown",10));}return true;
         }
         if(kind.equals("grenade")||kind.equals("baby_grenade")){
             if(!CalculatorConfig.GRENADES.get())return true;
-            int cost=CalculatorConfig.integer("module.grenade.cost",10000);if(player.getCooldowns().isOnCooldown(battery.getItem()))return true;
+            int cost=CalculatorConfig.integer("module.grenade.cost",10000);if(player.getCooldowns().isOnCooldown(battery))return true;
             boolean installed=stack!=battery;if(installed&&!player.isCreative()&&(!(battery.getItem() instanceof CalculatorItem item)||item.energy(battery)<cost))return true;
             GrenadeEntity grenade=new GrenadeEntity(level,player,kind.equals("baby_grenade"));grenade.shootFromRotation(player,player.getXRot(),player.getYRot(),0,(float)CalculatorConfig.decimal("module.grenade.velocity",1.5),1);
             if(level.addFreshEntity(grenade)){player.getCooldowns().addCooldown(battery,CalculatorConfig.integer("module.grenade.cooldown",10));if(!player.isCreative()){if(installed)((CalculatorItem)battery.getItem()).storage(battery).extractEnergy(cost,false);else stack.shrink(1);}level.playSound(null,player.blockPosition(),SoundEvents.TNT_PRIMED,SoundSource.PLAYERS,1,1);}return true;
@@ -93,7 +93,7 @@ public final class UtilityItems {
         }
         if(kind.equals("energy_module")){player.sendOverlayMessage(Component.literal(((CalculatorItem)stack.getItem()).energy(stack)+" FE stored"));return true;}
         if(kind.equals("warp_module")){
-            if(player.getCooldowns().isOnCooldown(battery.getItem()))return true;
+            if(player.getCooldowns().isOnCooldown(battery))return true;
             var target=CircuitData.tag(stack);
             if(!target.contains("WarpPos")){player.sendOverlayMessage(Component.literal("Sneak-use a destination block to bind the module."));return true;}
             var dimension=net.minecraft.resources.ResourceKey.create(net.minecraft.core.registries.Registries.DIMENSION,net.minecraft.resources.Identifier.parse(target.getStringOr("WarpDimension","")));
@@ -106,12 +106,12 @@ public final class UtilityItems {
             int cost=CalculatorConfig.integer("module.warp_module.cost",1000);
             if(!(battery.getItem() instanceof CalculatorItem item)||item.storage(battery).extractEnergy(cost,true)!=cost)return true;
             if(player instanceof net.minecraft.server.level.ServerPlayer serverPlayer){
-                player.stopRiding();serverPlayer.teleportTo(destination,p.getX()+.5,p.getY()+1,p.getZ()+.5,player.getYRot(),player.getXRot());
+                player.stopRiding();serverPlayer.teleportTo(destination,p.getX()+.5,p.getY()+1,p.getZ()+.5,java.util.Set.of(),player.getYRot(),player.getXRot(),false);
                 item.storage(battery).extractEnergy(cost,false);player.fallDistance=0;player.getCooldowns().addCooldown(battery,CalculatorConfig.integer("module.warp_module.cooldown",0));
             }return true;
         }
         if(kind.equals("jump_module")){
-            int cost=CalculatorConfig.integer("module.jump_module.cost",100);if(player.getCooldowns().isOnCooldown(battery.getItem()))return true;
+            int cost=CalculatorConfig.integer("module.jump_module.cost",100);if(player.getCooldowns().isOnCooldown(battery))return true;
             if(battery.getItem() instanceof CalculatorItem item&&item.storage(battery).extractEnergy(cost,true)==cost){item.storage(battery).extractEnergy(cost,false);player.push(0,CalculatorConfig.decimal("module.jump_module.velocity",1),0);player.getCooldowns().addCooldown(battery,CalculatorConfig.integer("module.jump_module.cooldown",0));player.hurtMarked=true;player.fallDistance=0;}return true;
         }return false;
     }

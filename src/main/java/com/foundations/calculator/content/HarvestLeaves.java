@@ -13,10 +13,10 @@ import net.minecraft.world.level.block.state.*;
 import net.minecraft.world.level.block.state.properties.*;
 import net.minecraft.world.phys.BlockHitResult;
 
-public class HarvestLeaves extends LeavesBlock {
+public class HarvestLeaves extends TintedParticleLeavesBlock {
     public static final IntegerProperty AGE=BlockStateProperties.AGE_4;
     private final String fruit;
-    public HarvestLeaves(String fruit,Properties p){super(p);this.fruit=fruit;registerDefaultState(defaultBlockState().setValue(AGE,0));}
+    public HarvestLeaves(String fruit,Properties p){super(0.01f,p);this.fruit=fruit;registerDefaultState(defaultBlockState().setValue(AGE,0));}
     protected void createBlockStateDefinition(StateDefinition.Builder<Block,BlockState>b){super.createBlockStateDefinition(b);b.add(AGE);}
     protected boolean isRandomlyTicking(BlockState s){return true;}
     protected void randomTick(BlockState s,ServerLevel level,BlockPos p,RandomSource random){

@@ -18,7 +18,7 @@ public final class SmeltingModule {
         var items=contents(module);var input=items.get(0);var recipe=level.getServer().getRecipeManager().getRecipeFor(RecipeType.SMELTING,new SingleRecipeInput(input),level);
         if(recipe.isEmpty()||!RecipePolicies.enabled(recipe.get(),level)){tag.putInt("SmeltProgress",0);UtilityItems.put(module,tag);return;}
         String id=recipe.get().id().toString();if(!tag.getStringOr("SmeltRecipe","").equals(id)){tag.putString("SmeltRecipe",id);tag.putInt("SmeltProgress",0);}
-        ItemStack output=recipe.get().value().assemble(new SingleRecipeInput(input),level.registryAccess()),remainder=com.foundations.calculator.core.PlatformItems.remainder(input);
+        ItemStack output=recipe.get().value().assemble(new SingleRecipeInput(input)),remainder=com.foundations.calculator.core.PlatformItems.remainder(input);
         int cost=CalculatorConfig.integer("module.smelting_module.cost",1000);
         if(!fits(items.get(2),output)||!fits(items.get(1),remainder)||power.energy(battery)<cost){UtilityItems.put(module,tag);return;}
         int progress=tag.getIntOr("SmeltProgress",0)+1;

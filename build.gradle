@@ -38,6 +38,7 @@ tasks.withType(JavaCompile).configureEach { options.encoding = 'UTF-8'; options.
 processResources {
     inputs.property 'version', project.version
     exclude 'META-INF/neoforge.mods.toml'
+    exclude 'data/foundations_calculator/worldgen/configured_feature/**'
     inputs.file('src/main/resources/META-INF/neoforge.mods.toml')
     doLast {
         def metadata = file("$destinationDir/META-INF/neoforge.mods.toml")

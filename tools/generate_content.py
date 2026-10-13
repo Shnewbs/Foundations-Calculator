@@ -24,3 +24,6 @@ runpy.run_path(str(Path(__file__).resolve().with_name("migrate_item_definitions.
 
 # Native ingredient codecs use item and tag strings.
 runpy.run_path(str(Path(__file__).resolve().with_name("migrate_recipe_ingredients.py")),run_name="__main__")
+
+# The feature registry replaces configured-feature wrappers on 26.3.
+runpy.run_path(str(Path(__file__).resolve().with_name("migrate_worldgen.py")),run_name="__main__")

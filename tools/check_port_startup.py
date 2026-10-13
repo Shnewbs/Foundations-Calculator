@@ -57,14 +57,15 @@ finally:
     errors = [line for line in log.splitlines() if re.search(
         r"Couldn't parse data file|Parsing error loading recipe|Error parsing recipe|Failed to parse recipe|Error loading recipe|Failed to load datapacks|Failed to start the minecraft server|Mod loading error|Failed to load registries", line, re.I)]
     counts = [int(x) for x in re.findall(r'Loaded (\d+) recipes', log)]
+    tree_counts = [int(x) for x in re.findall(r'Calculator native tree features: (\d+)', log)]
     native_counts = [int(x) for x in re.findall(r'Calculator native recipe inventory: (\d+)', log)]
     recipe_files = list(Path('src/main/resources/data/foundations_calculator/recipe').rglob('*.json'))
     expected = len(recipe_files)
     conditional = sum(bool(json.loads(path.read_text()).get('neoforge:conditions')) for path in recipe_files)
     required = expected - conditional
-    report = {'integrations_enabled': integrations, 'server_started': started, 'exit_code': process.returncode,
+    report = {'native_tree_features': max(tree_counts, default=0), 'integrations_enabled': integrations, 'server_started': started, 'exit_code': process.returncode,
               'loaded_recipes': max(counts, default=0), 'calculator_recipes': max(native_counts, default=0), 'authored_calculator_recipes': expected, 'required_calculator_recipes': required, 'conditional_calculator_recipes': conditional, 'resource_errors': errors,
-              'passed': started and process.returncode == 0 and not errors and required <= max(native_counts, default=0) <= expected}
+              'passed': started and process.returncode == 0 and not errors and required <= max(native_counts, default=0) <= expected and max(tree_counts, default=0) == 4}
     Path(f'build/port-startup{suffix}.json').write_text(json.dumps(report, indent=2) + '\n')
 if not report['passed']:
     raise SystemExit('Native server startup or recipe loading failed; see build/port-startup.log')

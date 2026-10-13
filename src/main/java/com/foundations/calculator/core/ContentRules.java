@@ -19,6 +19,8 @@ public final class ContentRules {
         filter(e.getServer());
         long count=e.getServer().getRecipeManager().getRecipes().stream().filter(recipe->recipe.id().identifier().getNamespace().equals(FoundationsCalculator.ID)).count();
         org.slf4j.LoggerFactory.getLogger("FoundationsCalculator").info("Calculator native recipe inventory: {}",count);
+        long trees=e.getServer().registryAccess().lookupOrThrow(net.minecraft.core.registries.Registries.FEATURE).listElements().filter(holder->holder.key().identifier().getNamespace().equals(FoundationsCalculator.ID)).count();
+        org.slf4j.LoggerFactory.getLogger("FoundationsCalculator").info("Calculator native tree features: {}",trees);
     }
     @SubscribeEvent public static void use(PlayerInteractEvent.RightClickItem e){if(!RecipePolicies.itemEnabled(e.getItemStack()))e.setCanceled(true);}
     @SubscribeEvent public static void block(PlayerInteractEvent.RightClickBlock e){if(!RecipePolicies.itemEnabled(e.getItemStack()))e.setCanceled(true);}

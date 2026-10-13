@@ -22,7 +22,7 @@ neoForge {
                 programArguments.addAll('--width','1280','--height','960')
             }
         }
-        server { server(); programArgument '--nogui' }
+        server { server(); programArgument '--nogui'; if(project.hasProperty('portSmoke')) systemProperty 'foundations.portSmoke','true' }
         gameTestServer { type = 'gameTestServer'; systemProperty 'neoforge.enabledGameTestNamespaces', 'foundations_calculator' }
     }
     mods { foundations_calculator { sourceSet(sourceSets.main) } }
@@ -293,3 +293,12 @@ tasks.register('captureNativeData', Exec) {
     dependsOn tasks.named('createMinecraftArtifacts')
     doFirst { commandLine 'python3', 'tools/capture_native_data.py', sourceSets.main.runtimeClasspath.asPath }
 }
+
+// Small native-world regressions are isolated from legacy GameTests and released JARs.
+sourceSets {
+    portSmoke {
+        compileClasspath += sourceSets.main.output + sourceSets.main.compileClasspath
+        runtimeClasspath += sourceSets.main.output + sourceSets.main.runtimeClasspath
+    }
+}
+if(project.hasProperty('portSmoke')) neoForge.mods.foundations_calculator.sourceSet(sourceSets.portSmoke)

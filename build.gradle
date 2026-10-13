@@ -54,7 +54,11 @@ sourceSets {
         runtimeClasspath += sourceSets.main.output + sourceSets.main.runtimeClasspath
     }
 }
-neoForge.mods.foundations_calculator.sourceSet(sourceSets.gameTest)
+// Retain old fixtures for migration; normal native runs use production code.
+if (project.hasProperty('withGameTests') || gradle.startParameter.taskNames.any { it.contains('GameTest') }) {
+    neoForge.mods.foundations_calculator.sourceSet(sourceSets.gameTest)
+}
+tasks.named('runServer') { standardInput = System.in }
 // The development server can return exit code zero after an early loading crash.
 // Require Minecraft's positive completion report as well as the process exit code.
 tasks.named('runGameTestServer') {

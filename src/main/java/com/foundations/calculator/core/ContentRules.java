@@ -15,7 +15,11 @@ import net.minecraft.server.MinecraftServer;
 public final class ContentRules {
     private static void filter(MinecraftServer server){var manager=server.getRecipeManager();var level=server.overworld();var recipes=manager.getRecipes().stream().filter(r->RecipePolicies.enabled(r,level)).toList();if(recipes.size()!=manager.getRecipes().size()){manager.recipes=net.minecraft.world.item.crafting.RecipeMap.createClient(recipes);manager.learnableRecipes=manager.getLearnableRecipes().stream().filter(r->RecipePolicies.enabled(r,level)).toList();manager.finalizeRecipeLoading(level.enabledFeatures());};}
     @SubscribeEvent public static void reload(OnDatapackSyncEvent e){filter(e.getPlayerList().getServer());}
-    @SubscribeEvent public static void started(ServerStartedEvent e){filter(e.getServer());}
+    @SubscribeEvent public static void started(ServerStartedEvent e){
+        filter(e.getServer());
+        long count=e.getServer().getRecipeManager().getRecipes().stream().filter(recipe->recipe.id().identifier().getNamespace().equals(FoundationsCalculator.ID)).count();
+        org.slf4j.LoggerFactory.getLogger("FoundationsCalculator").info("Calculator native recipe inventory: {}",count);
+    }
     @SubscribeEvent public static void use(PlayerInteractEvent.RightClickItem e){if(!RecipePolicies.itemEnabled(e.getItemStack()))e.setCanceled(true);}
     @SubscribeEvent public static void block(PlayerInteractEvent.RightClickBlock e){if(!RecipePolicies.itemEnabled(e.getItemStack()))e.setCanceled(true);}
     @SubscribeEvent public static void mine(PlayerInteractEvent.LeftClickBlock e){if(!RecipePolicies.itemEnabled(e.getItemStack()))e.setCanceled(true);}

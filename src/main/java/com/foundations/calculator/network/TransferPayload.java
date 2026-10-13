@@ -17,9 +17,9 @@ public record TransferPayload(int menuId,Identifier recipe,int amount) implement
     public static void handle(TransferPayload payload,IPayloadContext context){
         context.enqueueWork(()->{
             var player=context.player();if(!(player.containerMenu instanceof CalculatorMenu menu)||menu.containerId!=payload.menuId()||!menu.stillValid(player))return;
-            var r=player.level().getRecipeManager().byKey(payload.recipe());
+            var r=player.level().getServer().getRecipeManager().byKey(net.minecraft.resources.ResourceKey.create(net.minecraft.core.registries.Registries.RECIPE,payload.recipe()));
             if(r.isEmpty()||!(r.get().value() instanceof ProcessRecipe process))return;
-            var holder=RecipePolicies.apply(new net.minecraft.world.item.crafting.RecipeHolder<>(payload.recipe(),process));
+            var holder=RecipePolicies.apply(new net.minecraft.world.item.crafting.RecipeHolder<>(net.minecraft.resources.ResourceKey.create(net.minecraft.core.registries.Registries.RECIPE,payload.recipe()),process));
             if(!RecipeTransfer.transfer(menu,holder,player,payload.amount()))player.sendOverlayMessage(Component.literal("Cannot fill recipe: check research, ingredients, and free inventory space."));
         });
     }

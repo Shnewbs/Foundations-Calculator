@@ -140,7 +140,7 @@ public final class CalculatorMenu extends AbstractContainerMenu {
         Level level=player.level();ProcessInput input=ProcessTransactions.input(handler,inputs);
         var match=RecipeIndex.forMachine(level,recipeKind,player.getUUID()).stream()
             .filter(r->r.value().machine().equals(recipeKind)&&r.value().matches(input,level))
-            .sorted(Comparator.comparing(r->r.id().toString())).findFirst();
+            .sorted(Comparator.comparing(r->r.id().identifier().toString())).findFirst();
         if(match.isEmpty())return false;
         long cost=CalculatorConfig.energyLong(kind,RecipePolicies.energy(match.get(),1));
         if(item.energyLong(held)<cost)return false;

@@ -45,6 +45,6 @@ public final class EmiIntegration implements EmiPlugin {
         public EmiPlayerInventory getInventory(AbstractContainerScreen<CalculatorMenu> screen){return new EmiPlayerInventory(screen.getMenu().slots.stream().filter(slot->slot.mayPickup(Minecraft.getInstance().player)&&(slot.container==Minecraft.getInstance().player.getInventory()||slot.index<screen.getMenu().inputs)).map(slot->EmiStack.of(slot.getItem())).toList());}
         public boolean supportsRecipe(EmiRecipe recipe){return recipe instanceof Display;}
         public boolean canCraft(EmiRecipe recipe,EmiCraftContext<CalculatorMenu> context){return recipe instanceof Display display&&RecipeTransfer.plan(context.getScreenHandler(),display.view().recipe(),Minecraft.getInstance().player,1)!=null;}
-        public boolean craft(EmiRecipe recipe,EmiCraftContext<CalculatorMenu> context){if(!canCraft(recipe,context))return false;var display=(Display)recipe;PacketDistributor.sendToServer(new TransferPayload(context.getScreenHandler().containerId,display.view().holder().id(),Math.clamp(context.getAmount(),1,64)));return true;}
+        public boolean craft(EmiRecipe recipe,EmiCraftContext<CalculatorMenu> context){if(!canCraft(recipe,context))return false;var display=(Display)recipe;net.neoforged.neoforge.client.network.ClientPacketDistributor.sendToServer(new TransferPayload(context.getScreenHandler().containerId,display.view().holder().id(),Math.clamp(context.getAmount(),1,64)));return true;}
     }
 }

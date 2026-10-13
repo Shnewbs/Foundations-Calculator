@@ -213,7 +213,7 @@ public class MachineBlockEntity extends BlockEntity implements MenuProvider {
         RecipeHolder<ProcessRecipe> holder=found.get();ProcessRecipe recipe=holder.value();
         long cost=upgradeEnergyCost(CalculatorConfig.energyLong(k,RecipePolicies.energy(holder,k.equals("docking_station")?10:0)));
         totalTicks=upgradeProcessTicks(CalculatorConfig.ticks(k,recipe.ticks()));
-        if(!activeRecipe.equals(holder.id().toString())){progress=0;activeRecipe=holder.id().toString();}
+        if(!activeRecipe.equals(holder.id().identifier().toString())){progress=0;activeRecipe=holder.id().identifier().toString();}
         if(energy.stored()<cost){if(!CalculatorConfig.machineFlag(k,"retainProgressWithoutPower"))progress=0;return;}
         if(++progress>=totalTicks){
             // Revalidate against live inputs at commit, even when the selector was cached.
@@ -308,7 +308,7 @@ public class MachineBlockEntity extends BlockEntity implements MenuProvider {
         long cost=upgradeEnergyCost(CalculatorConfig.energyLong(kind(),500));
         if(r.isEmpty()){progress=0;return;}
         if(energy.stored()<cost){if(!CalculatorConfig.machineFlag(kind(),"retainProgressWithoutPower"))progress=0;return;}
-        String recipeId=r.get().id().toString();if(!activeRecipe.equals(recipeId)){activeRecipe=recipeId;progress=0;}
+        String recipeId=r.get().id().identifier().toString();if(!activeRecipe.equals(recipeId)){activeRecipe=recipeId;progress=0;}
         totalTicks=upgradeProcessTicks(CalculatorConfig.ticks(kind(),200));
         if(++progress>=totalTicks){
             ItemStack out=r.get().value().assemble(new SingleRecipeInput(in));

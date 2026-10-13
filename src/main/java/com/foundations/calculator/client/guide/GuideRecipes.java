@@ -17,7 +17,7 @@ public final class GuideRecipes {
     public void clear(){cache.clear();manager=null;}
     public View view(String query,int page,String profile){
         var mc=Minecraft.getInstance();if(mc.level==null)return new View(0,0,List.of(new Part(ItemStack.EMPTY,"Recipe data unavailable: not in a world.")));
-        var current=mc.level.getRecipeManager();
+        var current=NativeRecipes.map(mc.level);
         if(manager!=current||revision!=RecipeIndex.revision()||config!=CalculatorConfig.revision()){clear();manager=current;revision=RecipeIndex.revision();config=CalculatorConfig.revision();}
         if(cache.size()>=128&&!cache.containsKey(query))cache.clear();
         var recipes=cache.computeIfAbsent(query,q->find(q));
@@ -47,14 +47,14 @@ public final class GuideRecipes {
             }
             if(p.research())parts.add(new Part(ItemStack.EMPTY,(ResearchData.allowed(mc.level,mc.player==null?null:mc.player.getUUID(),p)?"Unlocked / no research restriction":"Research required")+": "+(p.researchGroup().isBlank()?"general":p.researchGroup())+". Use Research for sample requirements."));
         }else{
-            int slot=0;int rowWidth=recipe instanceof ShapedRecipe shaped?shaped.getWidth():0;
-            for(var ingredient:recipe.getIngredients()){
-                int currentSlot=slot++;if(ingredient.isEmpty())continue;var choices=ingredient.getItems();var stack=choices.length==0?ItemStack.EMPTY:choices[0].copy();
-                String where=rowWidth>0?"Grid row "+(currentSlot/rowWidth+1)+", column "+(currentSlot%rowWidth+1):"Ingredient "+slot;
-                parts.add(new Part(stack,where+": "+(stack.isEmpty()?"unresolved ingredient":stack.getHoverName().getString())+(choices.length>1?" ("+choices.length+" accepted variants)":"")));
+            var displays=recipe.display();var context=net.minecraft.world.item.crafting.display.SlotDisplayContext.fromLevel(mc.level);int slot=0;
+            if(!displays.isEmpty()&&displays.getFirst() instanceof net.minecraft.world.item.crafting.display.ShapedCraftingRecipeDisplay shaped){
+                for(var display:shaped.ingredients()){int index=slot++;var choices=display.resolveForStacks(context);if(choices.isEmpty())continue;var stack=choices.getFirst().copy();parts.add(new Part(stack,"Grid row "+(index/shaped.width()+1)+", column "+(index%shaped.width()+1)+": "+stack.getHoverName().getString()+(choices.size()>1?" ("+choices.size()+" accepted variants)":"")));}
+            }else{
+                for(var ingredient:recipe.placementInfo().ingredients()){var choices=ingredient.items().map(ItemStack::new).toList();var stack=choices.isEmpty()?ItemStack.EMPTY:choices.getFirst().copy();parts.add(new Part(stack,"Ingredient "+(++slot)+": "+(stack.isEmpty()?"unresolved ingredient":stack.getHoverName().getString())+(choices.size()>1?" ("+choices.size()+" accepted variants)":"")));}
             }
-            ItemStack result=recipe.getResultItem(mc.level.registryAccess());parts.add(new Part(result.copy(),"Result: "+result.getCount()+" × "+result.getHoverName().getString()));
-            parts.add(new Part(ItemStack.EMPTY,rowWidth>0?"Shaped crafting. Coordinates are relative to this recipe's top-left corner.":"Recipe type: "+BuiltInRegistries.RECIPE_TYPE.getKey(recipe.getType())+". Use a matching crafting station."));
+            ItemStack result=NativeRecipes.result(recipe,mc.level);parts.add(new Part(result.copy(),"Result: "+result.getCount()+" × "+result.getHoverName().getString()));
+            parts.add(new Part(ItemStack.EMPTY,"Recipe type: "+BuiltInRegistries.RECIPE_TYPE.getKey(recipe.getType())+". Use a matching crafting station."));
         }
         return new View(recipes.size(),index,List.copyOf(parts));
     }
@@ -62,19 +62,19 @@ public final class GuideRecipes {
         var level=Minecraft.getInstance().level;if(level==null)return List.of();var out=new ArrayList<RecipeHolder<?>>();
         if(query.startsWith("machine:")){out.addAll(RecipeIndex.allForMachine(level,query.substring(8)));return List.copyOf(out);}
         if(query.startsWith("id:")){
-            Identifier id=Identifier.tryParse(query.substring(3));if(id!=null)level.getRecipeManager().byKey(id).filter(r->RecipePolicies.enabled(r,level)).ifPresent(r->out.add(apply(r)));return List.copyOf(out);
+            Identifier id=Identifier.tryParse(query.substring(3));if(id!=null)Optional.ofNullable(NativeRecipes.map(level).byKey(net.minecraft.resources.ResourceKey.create(net.minecraft.core.registries.Registries.RECIPE,id))).filter(r->RecipePolicies.enabled(r,level)).ifPresent(r->out.add(apply(r)));return List.copyOf(out);
         }
         boolean uses=query.startsWith("uses:");String raw=query.startsWith("item:")||uses?query.substring(5):"";Identifier id=Identifier.tryParse(raw);
         if(id==null||!BuiltInRegistries.ITEM.containsKey(id))return List.of();var item=BuiltInRegistries.ITEM.getValue(id);ItemStack stack=new ItemStack(item);
-        for(var holder:level.getRecipeManager().getRecipes()){
+        for(var holder:NativeRecipes.map(level).values()){
             if(out.size()>=2048)break;
             if(!RecipePolicies.enabled(holder,level))continue;
             var recipe=holder.value();boolean matches;
             if(recipe instanceof ProcessRecipe p)matches=uses?p.inputs().stream().anyMatch(i->i.ingredient().test(stack)):p.outputs().stream().anyMatch(r->r.stack().is(item));
-            else matches=uses?recipe.getIngredients().stream().anyMatch(i->i.test(stack)):recipe.getResultItem(level.registryAccess()).is(item);
+            else matches=uses?recipe.placementInfo().ingredients().stream().anyMatch(i->i.test(stack)):NativeRecipes.result(recipe,level).is(item);
             if(matches)out.add(apply(holder));
         }
-        out.sort(Comparator.comparing(r->r.id().toString()));return List.copyOf(out);
+        out.sort(Comparator.comparing(r->r.id().identifier().toString()));return List.copyOf(out);
     }
     private RecipeHolder<?> apply(RecipeHolder<?> r){if(r.value() instanceof ProcessRecipe p)return RecipePolicies.apply(new RecipeHolder<>(r.id(),p));return r;}
 }

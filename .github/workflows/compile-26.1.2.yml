@@ -19,12 +19,12 @@ jobs:
           distribution: temurin
           java-version: '25'
       - uses: gradle/actions/setup-gradle@v4
-      - name: Native platform tests and full compile
+      - name: Native platform tests and distributable JARs
         shell: bash
         run: |
           set -o pipefail
           chmod +x gradlew
-          ./gradlew testPortEnergy compileJava --console=plain 2>&1 | tee port-compile.log
+          ./gradlew testPortEnergy compileJava jar sourcesJar --console=plain 2>&1 | tee port-compile.log
       - name: Capture native API signatures for the remaining migration
         if: always()
         shell: bash
@@ -38,5 +38,6 @@ jobs:
           path: |
             port-compile.log
             port-api.log
+            build/libs/
             build/test-results/testPortEnergy/
             build/reports/tests/testPortEnergy/

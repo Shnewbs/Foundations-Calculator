@@ -9,7 +9,8 @@ public final class ResearchProgram {
         if(!com.foundations.calculator.core.UuidTags.has(m.program,"Owner")){m.progress=0;return;}
         var data=ResearchData.get(m.getLevel().getServer());var owner=com.foundations.calculator.core.UuidTags.get(m.program,"Owner");
         var input=new ProcessInput(List.of(m.inventory.getStackInSlot(0)));
-        var recipe=RecipeIndex.forMachine(m.getLevel(),"research").stream().filter(r->r.value().matches(input,m.getLevel())&&!data.groups(owner).contains(r.value().researchGroup())).findFirst();
+        var known=data.groups(owner);
+        var recipe=RecipeIndex.firstMatch(m.getLevel(),"research",null,input,r->!known.contains(r.researchGroup()));
         if(recipe.isEmpty()){m.progress=0;return;}
         var r=recipe.get();String id=r.id().identifier().toString();
         if(!id.equals(m.program.getStringOr("ResearchRecipe",""))){m.progress=0;m.program.putString("ResearchRecipe",id);}

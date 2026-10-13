@@ -1,6 +1,8 @@
 package com.foundations.calculator;
 
 import com.foundations.calculator.content.Content;
+import com.foundations.calculator.core.*;
+import java.util.List;
 import com.foundations.calculator.content.CalculatorSapling;
 import com.foundations.calculator.content.MachineBlockEntity;
 import com.foundations.calculator.core.StoredEnergy;
@@ -36,12 +38,42 @@ public final class NativePortSmoke {
         check(level.getBlockEntity(pos) instanceof MachineBlockEntity,"Registered machine block creates its native block entity");
         return (MachineBlockEntity)level.getBlockEntity(pos);
     }
+    private static void performance(net.minecraft.server.level.ServerLevel level,com.foundations.calculator.content.MachineBlockEntity m){
+        m.inventory.setStackInSlot(0,new ItemStack(Items.DIRT,2));
+        var input=new ProcessInput(List.of(m.inventory.getStackInSlot(0)));
+        var expected=RecipeIndex.forMachine(level,"extraction_chamber",null).stream().filter(r->r.value().matches(input,level)).findFirst();
+        check(expected.isPresent()&&expected.equals(RecipeIndex.firstMatch(level,"extraction_chamber",null,input)),"First match preserves sorted selection");
+        check(RecipeIndex.firstMatch(level,"extraction_chamber",null,input,r->false).isEmpty(),"Eligibility remains live");
+        var selection=new MachineRecipeSelection();
+        var first=selection.find(level,"extraction_chamber",null,m.inventory,0,1);
+        check(first.isPresent()&&first==selection.find(level,"extraction_chamber",null,m.inventory,0,1),"Unchanged lane reuses its selection");
+        check(selection.find(level,"extraction_chamber",null,m.inventory,2,1).isEmpty(),"Another lane cannot reuse a match from slot zero");
+        m.inventory.setStackInSlot(2,new ItemStack(Items.DIRT,2));
+        var lane=selection.find(level,"extraction_chamber",null,m.inventory,2,1);
+        check(lane.isPresent(),"Changing lane contents restores matching");
+        RecipeIndex.clear();
+        check(lane!=selection.find(level,"extraction_chamber",null,m.inventory,2,1),"Reload invalidates a lane cache");
+
+        var id=UUID.randomUUID();var data=ResearchData.get(level.getServer());
+        var before=data.snapshot(id);
+        ResearchData.completed(level,id,"calculator");
+        var after=data.snapshot(id);
+        check(before.mastery().getOrDefault("calculator",0L)==0,"Previous sent snapshot stays unchanged");
+        check(after.mastery().getOrDefault("calculator",0L)==1&&!before.equals(after),"Mastery change produces a different packet");
+        check(after.equals(data.snapshot(id)),"Unchanged state compares equal for packet suppression");
+        var group="performance_"+UUID.randomUUID();
+        try{data.unlock(id,group);var unlocked=data.snapshot(id);check(unlocked.groups().contains(group)&&!after.equals(unlocked),"Unlock changes packet contents");}
+        finally{data.revoke(id,group);}
+    }
     @SubscribeEvent public static void started(ServerStartedEvent event){
         if(!Boolean.getBoolean("foundations.portSmoke"))return;
         assertions=0;
         var level=event.getServer().overworld();
         var pos=new BlockPos(128,96,128);
         var machine=place(level,pos,"processing_chamber");
+        performance(level,machine);
+        machine.inventory.setStackInSlot(0,ItemStack.EMPTY);
+        machine.inventory.setStackInSlot(2,ItemStack.EMPTY);
         var resource=ItemResource.of(new ItemStack(Items.DIAMOND));
         var input=level.getCapability(Capabilities.Item.BLOCK,pos,Direction.UP);
         check(input!=null,"Real registered native item capability exists");

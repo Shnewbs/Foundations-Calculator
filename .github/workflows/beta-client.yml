@@ -6,6 +6,7 @@ on:
       - '.github/workflows/beta-client.yml'
       - 'tools/check_beta_client.py'
       - 'src/gameTest/java/com/foundations/calculator/ClientSmoke.java'
+      - 'src/main/java/com/foundations/calculator/client/GuideScreen.java'
   workflow_dispatch:
 permissions:
   contents: read

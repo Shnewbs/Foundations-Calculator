@@ -86,10 +86,10 @@ public final class GuideScreen extends Screen {
             // Match the compact Foundations Field Guide footprint used by PL4 instead of
             // occupying most of the desktop. The pages remain independently scrollable,
             // so reducing the shell does not discard guide content.
-            bookWidth=Math.min(width-48,640);
+            bookWidth=Math.min(width-68,640);
             bookHeight=Math.min(height-36,360);
         }
-        bookLeft=(width-bookWidth)/2;bookTop=(height-bookHeight)/2;bookRight=bookLeft+bookWidth;bookBottom=bookTop+bookHeight;
+        bookLeft=(width-bookWidth-(narrow()?0:34))/2;bookTop=(height-bookHeight)/2;bookRight=bookLeft+bookWidth;bookBottom=bookTop+bookHeight;
         if(narrow()){
             spineX=bookLeft+18;
             navX=pageX=bookLeft+28;

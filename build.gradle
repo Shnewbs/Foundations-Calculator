@@ -256,3 +256,14 @@ sourceSets.main.java.exclude 'com/foundations/calculator/compat/CraftTweakerInte
     'com/foundations/calculator/compat/GrandPowerEnergy.java',
     'com/foundations/calculator/compat/ModernIndustrializationEnergy.java',
     'com/foundations/calculator/compat/viewer/EmiIntegration.java'
+
+// Inspect the native fuel evaluation so machines use the same datapack context as furnaces.
+tasks.register('captureFuelImplementation', Exec) {
+    dependsOn tasks.named('createMinecraftArtifacts')
+    doFirst {
+        def compiler = tasks.named('compileJava', JavaCompile).get().javaCompiler.get()
+        commandLine compiler.metadata.installationPath.file('bin/javap').asFile.absolutePath,
+            '-c', '-p', '-classpath', sourceSets.main.compileClasspath.asPath,
+            'net.minecraft.world.level.block.entity.AbstractFurnaceBlockEntity'
+    }
+}

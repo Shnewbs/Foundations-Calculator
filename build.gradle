@@ -181,3 +181,6 @@ def checkGuideApi = tasks.register('verifyGuideApi') {
 }
 tasks.named('compileJava') { dependsOn checkGuideApi }
 tasks.named('test') { dependsOn checkGuideApi }
+
+// Hosted client validation saves its native smoke world before opening it.
+tasks.named("runServer") { standardInput = System.in }

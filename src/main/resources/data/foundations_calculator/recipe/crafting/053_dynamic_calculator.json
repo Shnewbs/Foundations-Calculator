@@ -7,21 +7,11 @@
     "RDR"
   ],
   "key": {
-    "D": {
-      "tag": "c:gems/diamond"
-    },
-    "S": {
-      "item": "foundations_calculator:advanced_assembly"
-    },
-    "A": {
-      "item": "foundations_calculator:atomic_calculator"
-    },
-    "M": {
-      "item": "foundations_calculator:atomic_module"
-    },
-    "R": {
-      "tag": "foundations_calculator:reinforced_stone"
-    }
+    "D": "#c:gems/diamond",
+    "S": "foundations_calculator:advanced_assembly",
+    "A": "foundations_calculator:atomic_calculator",
+    "M": "foundations_calculator:atomic_module",
+    "R": "#foundations_calculator:reinforced_stone"
   },
   "result": {
     "id": "foundations_calculator:dynamic_calculator",

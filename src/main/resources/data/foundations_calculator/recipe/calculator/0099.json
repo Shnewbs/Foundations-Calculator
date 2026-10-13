@@ -3,15 +3,11 @@
   "machine": "calculator",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "foundations_calculator:reinforced_sword"
-      },
+      "ingredient": "foundations_calculator:reinforced_sword",
       "count": 1
     },
     {
-      "ingredient": {
-        "item": "foundations_calculator:reinforced_pickaxe"
-      },
+      "ingredient": "foundations_calculator:reinforced_pickaxe",
       "count": 1
     }
   ],

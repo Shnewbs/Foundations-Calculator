@@ -4,9 +4,7 @@
   "ingredients": [
     {
       "ingredient": [
-        {
-          "tag": "c:glass_blocks"
-        }
+        "#c:glass_blocks"
       ]
     }
   ],

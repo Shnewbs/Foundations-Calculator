@@ -3,9 +3,7 @@
   "machine": "restoration_chamber",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "foundations_calculator:circuit_dirty_2"
-      },
+      "ingredient": "foundations_calculator:circuit_dirty_2",
       "count": 1
     }
   ],

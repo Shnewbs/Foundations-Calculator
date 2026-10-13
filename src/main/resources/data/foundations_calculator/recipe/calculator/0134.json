@@ -3,15 +3,11 @@
   "machine": "calculator",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "minecraft:crafting_table"
-      },
+      "ingredient": "minecraft:crafting_table",
       "count": 1
     },
     {
-      "ingredient": {
-        "tag": "c:cobblestones"
-      },
+      "ingredient": "#c:cobblestones",
       "count": 1
     }
   ],

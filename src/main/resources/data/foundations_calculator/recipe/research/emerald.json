@@ -4,15 +4,9 @@
   "ingredients": [
     {
       "ingredient": [
-        {
-          "tag": "c:ores/emerald"
-        },
-        {
-          "tag": "c:gems/emerald"
-        },
-        {
-          "tag": "c:storage_blocks/emerald"
-        }
+        "#c:ores/emerald",
+        "#c:gems/emerald",
+        "#c:storage_blocks/emerald"
       ]
     }
   ],

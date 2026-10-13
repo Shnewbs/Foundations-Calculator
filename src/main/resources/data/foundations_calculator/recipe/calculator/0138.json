@@ -3,15 +3,11 @@
   "machine": "calculator",
   "ingredients": [
     {
-      "ingredient": {
-        "tag": "c:stones"
-      },
+      "ingredient": "#c:stones",
       "count": 1
     },
     {
-      "ingredient": {
-        "tag": "minecraft:leaves"
-      },
+      "ingredient": "#minecraft:leaves",
       "count": 1
     }
   ],

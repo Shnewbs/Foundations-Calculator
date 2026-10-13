@@ -3,15 +3,11 @@
   "machine": "calculator",
   "ingredients": [
     {
-      "ingredient": {
-        "tag": "c:cobblestones"
-      },
+      "ingredient": "#c:cobblestones",
       "count": 1
     },
     {
-      "ingredient": {
-        "item": "minecraft:dirt"
-      },
+      "ingredient": "minecraft:dirt",
       "count": 1
     }
   ],

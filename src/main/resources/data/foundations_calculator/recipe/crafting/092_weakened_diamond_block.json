@@ -7,9 +7,7 @@
     "AAA"
   ],
   "key": {
-    "A": {
-      "item": "foundations_calculator:weakened_diamond"
-    }
+    "A": "foundations_calculator:weakened_diamond"
   },
   "result": {
     "id": "foundations_calculator:weakened_diamond_block",

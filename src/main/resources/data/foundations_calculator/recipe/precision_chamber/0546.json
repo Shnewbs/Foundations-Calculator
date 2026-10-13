@@ -3,9 +3,7 @@
   "machine": "precision_chamber",
   "ingredients": [
     {
-      "ingredient": {
-        "tag": "c:sands"
-      },
+      "ingredient": "#c:sands",
       "count": 1
     }
   ],

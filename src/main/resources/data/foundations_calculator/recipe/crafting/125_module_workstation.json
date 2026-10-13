@@ -7,15 +7,9 @@
     "GCG"
   ],
   "key": {
-    "C": {
-      "item": "foundations_calculator:atomic_binder"
-    },
-    "G": {
-      "tag": "foundations_calculator:reinforced_stone"
-    },
-    "A": {
-      "item": "foundations_calculator:atomic_module"
-    }
+    "C": "foundations_calculator:atomic_binder",
+    "G": "#foundations_calculator:reinforced_stone",
+    "A": "foundations_calculator:atomic_module"
   },
   "result": {
     "id": "foundations_calculator:module_workstation",

@@ -4,15 +4,9 @@
   "ingredients": [
     {
       "ingredient": [
-        {
-          "tag": "c:ores/iron"
-        },
-        {
-          "tag": "c:ingots/iron"
-        },
-        {
-          "tag": "c:storage_blocks/iron"
-        }
+        "#c:ores/iron",
+        "#c:ingots/iron",
+        "#c:storage_blocks/iron"
       ]
     }
   ],

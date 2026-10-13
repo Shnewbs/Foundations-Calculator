@@ -3,15 +3,11 @@
   "machine": "scientific",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "foundations_calculator:enriched_coal"
-      },
+      "ingredient": "foundations_calculator:enriched_coal",
       "count": 1
     },
     {
-      "ingredient": {
-        "item": "foundations_calculator:enriched_gold_ingot"
-      },
+      "ingredient": "foundations_calculator:enriched_gold_ingot",
       "count": 1
     }
   ],

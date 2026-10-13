@@ -3,9 +3,7 @@
   "machine": "precision_chamber",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "minecraft:obsidian"
-      },
+      "ingredient": "minecraft:obsidian",
       "count": 1
     }
   ],

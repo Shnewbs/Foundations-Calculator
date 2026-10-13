@@ -3,15 +3,11 @@
   "machine": "scientific",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "foundations_calculator:power_cube"
-      },
+      "ingredient": "foundations_calculator:power_cube",
       "count": 1
     },
     {
-      "ingredient": {
-        "item": "foundations_calculator:purified_coal"
-      },
+      "ingredient": "foundations_calculator:purified_coal",
       "count": 1
     }
   ],

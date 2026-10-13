@@ -7,15 +7,9 @@
     "GCG"
   ],
   "key": {
-    "C": {
-      "item": "foundations_calculator:calculator_assembly"
-    },
-    "G": {
-      "item": "foundations_calculator:enriched_gold_ingot"
-    },
-    "I": {
-      "item": "foundations_calculator:reinforced_iron_ingot"
-    }
+    "C": "foundations_calculator:calculator_assembly",
+    "G": "foundations_calculator:enriched_gold_ingot",
+    "I": "foundations_calculator:reinforced_iron_ingot"
   },
   "result": {
     "id": "foundations_calculator:advanced_assembly",

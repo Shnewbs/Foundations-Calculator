@@ -3,15 +3,11 @@
   "machine": "calculator",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "minecraft:poppy"
-      },
+      "ingredient": "minecraft:poppy",
       "count": 1
     },
     {
-      "ingredient": {
-        "item": "minecraft:poppy"
-      },
+      "ingredient": "minecraft:poppy",
       "count": 1
     }
   ],

@@ -3,15 +3,11 @@
   "machine": "calculator",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "minecraft:pumpkin"
-      },
+      "ingredient": "minecraft:pumpkin",
       "count": 1
     },
     {
-      "ingredient": {
-        "item": "minecraft:hay_block"
-      },
+      "ingredient": "minecraft:hay_block",
       "count": 1
     }
   ],

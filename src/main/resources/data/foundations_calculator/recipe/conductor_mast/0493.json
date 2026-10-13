@@ -3,9 +3,7 @@
   "machine": "conductor_mast",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "foundations_calculator:fire_diamond_block"
-      },
+      "ingredient": "foundations_calculator:fire_diamond_block",
       "count": 1
     }
   ],

@@ -3,9 +3,7 @@
   "machine": "harvest",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "foundations_calculator:diamond_leaves"
-      },
+      "ingredient": "foundations_calculator:diamond_leaves",
       "count": 1
     }
   ],

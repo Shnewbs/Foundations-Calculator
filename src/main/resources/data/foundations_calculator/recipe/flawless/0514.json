@@ -3,27 +3,19 @@
   "machine": "flawless",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "foundations_calculator:broccoli"
-      },
+      "ingredient": "foundations_calculator:broccoli",
       "count": 1
     },
     {
-      "ingredient": {
-        "item": "foundations_calculator:broccoli"
-      },
+      "ingredient": "foundations_calculator:broccoli",
       "count": 1
     },
     {
-      "ingredient": {
-        "item": "foundations_calculator:broccoli"
-      },
+      "ingredient": "foundations_calculator:broccoli",
       "count": 1
     },
     {
-      "ingredient": {
-        "item": "foundations_calculator:broccoli"
-      },
+      "ingredient": "foundations_calculator:broccoli",
       "count": 1
     }
   ],

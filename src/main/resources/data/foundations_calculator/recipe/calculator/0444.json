@@ -3,15 +3,11 @@
   "machine": "calculator",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "minecraft:blue_wool"
-      },
+      "ingredient": "minecraft:blue_wool",
       "count": 1
     },
     {
-      "ingredient": {
-        "item": "minecraft:blue_wool"
-      },
+      "ingredient": "minecraft:blue_wool",
       "count": 1
     }
   ],

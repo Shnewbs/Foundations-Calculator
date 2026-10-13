@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "foundations_calculator:pear_log"
-    }
+    "foundations_calculator:pear_log"
   ],
   "result": {
     "id": "foundations_calculator:pear_planks",

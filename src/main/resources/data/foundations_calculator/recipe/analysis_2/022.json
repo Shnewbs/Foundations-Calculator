@@ -3,9 +3,7 @@
   "machine": "analysis_2",
   "ingredients": [
     {
-      "ingredient": {
-        "tag": "foundations_calculator:circuit_boards"
-      }
+      "ingredient": "#foundations_calculator:circuit_boards"
     }
   ],
   "results": [

@@ -7,18 +7,10 @@
     "BCB"
   ],
   "key": {
-    "A": {
-      "item": "foundations_calculator:stone_separator"
-    },
-    "B": {
-      "item": "foundations_calculator:reinforced_iron_block"
-    },
-    "C": {
-      "item": "foundations_calculator:power_cube"
-    },
-    "D": {
-      "tag": "c:gems/diamond"
-    }
+    "A": "foundations_calculator:stone_separator",
+    "B": "foundations_calculator:reinforced_iron_block",
+    "C": "foundations_calculator:power_cube",
+    "D": "#c:gems/diamond"
   },
   "result": {
     "id": "foundations_calculator:algorithm_separator",

@@ -6,9 +6,7 @@
     "RRR"
   ],
   "key": {
-    "R": {
-      "tag": "foundations_calculator:reinforced_stone"
-    }
+    "R": "#foundations_calculator:reinforced_stone"
   },
   "result": {
     "id": "foundations_calculator:grenade_casing",

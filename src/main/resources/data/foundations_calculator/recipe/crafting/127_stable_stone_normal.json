@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "foundations_calculator:reinforced_stone_brick"
-    },
-    {
-      "item": "foundations_calculator:reinforced_stone_brick"
-    }
+    "foundations_calculator:reinforced_stone_brick",
+    "foundations_calculator:reinforced_stone_brick"
   ],
   "result": {
     "id": "foundations_calculator:stable_stone_normal",

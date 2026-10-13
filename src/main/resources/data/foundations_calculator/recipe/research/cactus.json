@@ -4,9 +4,7 @@
   "ingredients": [
     {
       "ingredient": [
-        {
-          "item": "minecraft:cactus"
-        }
+        "minecraft:cactus"
       ]
     }
   ],

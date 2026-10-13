@@ -7,15 +7,9 @@
     "GCG"
   ],
   "key": {
-    "C": {
-      "item": "foundations_calculator:calculator_assembly"
-    },
-    "G": {
-      "item": "foundations_calculator:advanced_assembly"
-    },
-    "A": {
-      "item": "foundations_calculator:atomic_assembly"
-    }
+    "C": "foundations_calculator:calculator_assembly",
+    "G": "foundations_calculator:advanced_assembly",
+    "A": "foundations_calculator:atomic_assembly"
   },
   "result": {
     "id": "foundations_calculator:flawless_assembly",

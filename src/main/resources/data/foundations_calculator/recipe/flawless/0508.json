@@ -3,27 +3,19 @@
   "machine": "flawless",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "foundations_calculator:pear_sapling"
-      },
+      "ingredient": "foundations_calculator:pear_sapling",
       "count": 1
     },
     {
-      "ingredient": {
-        "item": "foundations_calculator:end_diamond"
-      },
+      "ingredient": "foundations_calculator:end_diamond",
       "count": 1
     },
     {
-      "ingredient": {
-        "item": "foundations_calculator:end_diamond"
-      },
+      "ingredient": "foundations_calculator:end_diamond",
       "count": 1
     },
     {
-      "ingredient": {
-        "item": "minecraft:end_stone"
-      },
+      "ingredient": "minecraft:end_stone",
       "count": 1
     }
   ],

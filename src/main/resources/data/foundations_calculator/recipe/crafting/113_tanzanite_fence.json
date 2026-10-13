@@ -6,12 +6,8 @@
     "ASA"
   ],
   "key": {
-    "A": {
-      "item": "foundations_calculator:tanzanite_planks"
-    },
-    "S": {
-      "tag": "c:rods/wooden"
-    }
+    "A": "foundations_calculator:tanzanite_planks",
+    "S": "#c:rods/wooden"
   },
   "result": {
     "id": "foundations_calculator:tanzanite_fence",

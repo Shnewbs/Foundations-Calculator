@@ -3,15 +3,11 @@
   "machine": "calculator",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "foundations_calculator:enriched_coal"
-      },
+      "ingredient": "foundations_calculator:enriched_coal",
       "count": 1
     },
     {
-      "ingredient": {
-        "item": "minecraft:wheat_seeds"
-      },
+      "ingredient": "minecraft:wheat_seeds",
       "count": 1
     }
   ],

@@ -3,21 +3,15 @@
   "machine": "atomic",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "foundations_calculator:redstone_ingot"
-      },
+      "ingredient": "foundations_calculator:redstone_ingot",
       "count": 1
     },
     {
-      "ingredient": {
-        "item": "foundations_calculator:starch_extractor"
-      },
+      "ingredient": "foundations_calculator:starch_extractor",
       "count": 1
     },
     {
-      "ingredient": {
-        "item": "foundations_calculator:redstone_ingot"
-      },
+      "ingredient": "foundations_calculator:redstone_ingot",
       "count": 1
     }
   ],

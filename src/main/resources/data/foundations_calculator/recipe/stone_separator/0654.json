@@ -3,9 +3,7 @@
   "machine": "stone_separator",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "minecraft:acacia_log"
-      },
+      "ingredient": "minecraft:acacia_log",
       "count": 1
     }
   ],

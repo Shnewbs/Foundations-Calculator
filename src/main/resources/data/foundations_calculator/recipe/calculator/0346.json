@@ -3,15 +3,11 @@
   "machine": "calculator",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "minecraft:birch_leaves"
-      },
+      "ingredient": "minecraft:birch_leaves",
       "count": 1
     },
     {
-      "ingredient": {
-        "item": "minecraft:spruce_leaves"
-      },
+      "ingredient": "minecraft:spruce_leaves",
       "count": 1
     }
   ],

@@ -3,9 +3,7 @@
   "machine": "starch_extractor",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "foundations_calculator:fiddledew_fruit"
-      },
+      "ingredient": "foundations_calculator:fiddledew_fruit",
       "count": 1
     }
   ],

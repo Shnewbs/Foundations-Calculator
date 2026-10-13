@@ -3,9 +3,7 @@
   "machine": "health_processor",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "minecraft:ender_pearl"
-      },
+      "ingredient": "minecraft:ender_pearl",
       "count": 1
     }
   ],

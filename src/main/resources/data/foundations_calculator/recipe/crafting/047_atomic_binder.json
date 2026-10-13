@@ -7,12 +7,8 @@
     " A "
   ],
   "key": {
-    "A": {
-      "tag": "foundations_calculator:reinforced_stone"
-    },
-    "D": {
-      "item": "foundations_calculator:enriched_gold"
-    }
+    "A": "#foundations_calculator:reinforced_stone",
+    "D": "foundations_calculator:enriched_gold"
   },
   "result": {
     "id": "foundations_calculator:atomic_binder",

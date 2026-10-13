@@ -3,9 +3,7 @@
   "machine": "starch_extractor",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "minecraft:sugar_cane"
-      },
+      "ingredient": "minecraft:sugar_cane",
       "count": 1
     }
   ],

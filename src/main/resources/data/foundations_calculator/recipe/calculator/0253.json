@@ -3,15 +3,11 @@
   "machine": "calculator",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "minecraft:acacia_log"
-      },
+      "ingredient": "minecraft:acacia_log",
       "count": 1
     },
     {
-      "ingredient": {
-        "item": "minecraft:spruce_log"
-      },
+      "ingredient": "minecraft:spruce_log",
       "count": 1
     }
   ],

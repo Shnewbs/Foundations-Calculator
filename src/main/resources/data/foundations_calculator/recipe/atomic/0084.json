@@ -3,21 +3,15 @@
   "machine": "atomic",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "foundations_calculator:circuit_board_4"
-      },
+      "ingredient": "foundations_calculator:circuit_board_4",
       "count": 1
     },
     {
-      "ingredient": {
-        "item": "foundations_calculator:atomic_binder"
-      },
+      "ingredient": "foundations_calculator:atomic_binder",
       "count": 1
     },
     {
-      "ingredient": {
-        "tag": "foundations_calculator:dusts/enriched_gold"
-      },
+      "ingredient": "#foundations_calculator:dusts/enriched_gold",
       "count": 1
     }
   ],

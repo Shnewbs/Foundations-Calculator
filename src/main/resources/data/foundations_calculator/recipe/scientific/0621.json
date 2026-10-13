@@ -3,15 +3,11 @@
   "machine": "scientific",
   "ingredients": [
     {
-      "ingredient": {
-        "tag": "c:gems/diamond"
-      },
+      "ingredient": "#c:gems/diamond",
       "count": 1
     },
     {
-      "ingredient": {
-        "item": "foundations_calculator:reinforced_iron_ingot"
-      },
+      "ingredient": "foundations_calculator:reinforced_iron_ingot",
       "count": 1
     }
   ],

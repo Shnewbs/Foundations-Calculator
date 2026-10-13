@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "foundations_calculator:enriched_gold_block"
-    }
+    "foundations_calculator:enriched_gold_block"
   ],
   "result": {
     "id": "foundations_calculator:enriched_gold_ingot",

@@ -3,9 +3,7 @@
   "machine": "starch_extractor",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "foundations_calculator:prunae_seeds"
-      },
+      "ingredient": "foundations_calculator:prunae_seeds",
       "count": 1
     }
   ],

@@ -7,9 +7,7 @@
     "A  "
   ],
   "key": {
-    "A": {
-      "tag": "c:rods/wooden"
-    }
+    "A": "#c:rods/wooden"
   },
   "result": {
     "id": "foundations_calculator:crank_handle",

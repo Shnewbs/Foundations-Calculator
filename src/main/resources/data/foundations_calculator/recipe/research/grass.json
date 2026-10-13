@@ -4,9 +4,7 @@
   "ingredients": [
     {
       "ingredient": [
-        {
-          "item": "minecraft:grass_block"
-        }
+        "minecraft:grass_block"
       ]
     }
   ],

@@ -7,12 +7,8 @@
     "AAA"
   ],
   "key": {
-    "A": {
-      "tag": "foundations_calculator:reinforced_stone"
-    },
-    "B": {
-      "item": "foundations_calculator:power_cube"
-    }
+    "A": "#foundations_calculator:reinforced_stone",
+    "B": "foundations_calculator:power_cube"
   },
   "result": {
     "id": "foundations_calculator:reinforced_furnace",

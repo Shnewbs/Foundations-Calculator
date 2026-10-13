@@ -3,15 +3,11 @@
   "machine": "calculator",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "minecraft:dirt"
-      },
+      "ingredient": "minecraft:dirt",
       "count": 1
     },
     {
-      "ingredient": {
-        "item": "foundations_calculator:small_stone"
-      },
+      "ingredient": "foundations_calculator:small_stone",
       "count": 1
     }
   ],

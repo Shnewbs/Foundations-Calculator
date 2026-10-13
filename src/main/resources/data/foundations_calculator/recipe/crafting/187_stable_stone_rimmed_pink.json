@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "foundations_calculator:stable_stone_pink"
-    }
+    "foundations_calculator:stable_stone_pink"
   ],
   "result": {
     "id": "foundations_calculator:stable_stone_rimmed_pink",

@@ -3,15 +3,11 @@
   "machine": "calculator",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "minecraft:peony"
-      },
+      "ingredient": "minecraft:peony",
       "count": 1
     },
     {
-      "ingredient": {
-        "item": "minecraft:peony"
-      },
+      "ingredient": "minecraft:peony",
       "count": 1
     }
   ],

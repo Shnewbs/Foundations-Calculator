@@ -7,9 +7,7 @@
     "AAA"
   ],
   "key": {
-    "A": {
-      "item": "foundations_calculator:end_diamond"
-    }
+    "A": "foundations_calculator:end_diamond"
   },
   "result": {
     "id": "foundations_calculator:end_diamond_block",

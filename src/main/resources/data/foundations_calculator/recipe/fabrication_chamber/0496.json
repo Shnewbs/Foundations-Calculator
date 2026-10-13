@@ -3,100 +3,72 @@
   "machine": "fabrication_chamber",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "foundations_calculator:circuit_board_0"
-      },
+      "ingredient": "foundations_calculator:circuit_board_0",
       "count": 1,
       "circuit_state": 2
     },
     {
-      "ingredient": {
-        "item": "foundations_calculator:circuit_board_1"
-      },
+      "ingredient": "foundations_calculator:circuit_board_1",
       "count": 1,
       "circuit_state": 2
     },
     {
-      "ingredient": {
-        "item": "foundations_calculator:circuit_board_2"
-      },
+      "ingredient": "foundations_calculator:circuit_board_2",
       "count": 1,
       "circuit_state": 2
     },
     {
-      "ingredient": {
-        "item": "foundations_calculator:circuit_board_3"
-      },
+      "ingredient": "foundations_calculator:circuit_board_3",
       "count": 1,
       "circuit_state": 2
     },
     {
-      "ingredient": {
-        "item": "foundations_calculator:circuit_board_4"
-      },
+      "ingredient": "foundations_calculator:circuit_board_4",
       "count": 1,
       "circuit_state": 2
     },
     {
-      "ingredient": {
-        "item": "foundations_calculator:circuit_board_5"
-      },
+      "ingredient": "foundations_calculator:circuit_board_5",
       "count": 1,
       "circuit_state": 2
     },
     {
-      "ingredient": {
-        "item": "foundations_calculator:circuit_board_6"
-      },
+      "ingredient": "foundations_calculator:circuit_board_6",
       "count": 1,
       "circuit_state": 2
     },
     {
-      "ingredient": {
-        "item": "foundations_calculator:circuit_board_7"
-      },
+      "ingredient": "foundations_calculator:circuit_board_7",
       "count": 1,
       "circuit_state": 2
     },
     {
-      "ingredient": {
-        "item": "foundations_calculator:circuit_board_8"
-      },
+      "ingredient": "foundations_calculator:circuit_board_8",
       "count": 1,
       "circuit_state": 2
     },
     {
-      "ingredient": {
-        "item": "foundations_calculator:circuit_board_9"
-      },
+      "ingredient": "foundations_calculator:circuit_board_9",
       "count": 1,
       "circuit_state": 2
     },
     {
-      "ingredient": {
-        "item": "foundations_calculator:circuit_board_10"
-      },
+      "ingredient": "foundations_calculator:circuit_board_10",
       "count": 1,
       "circuit_state": 2
     },
     {
-      "ingredient": {
-        "item": "foundations_calculator:circuit_board_11"
-      },
+      "ingredient": "foundations_calculator:circuit_board_11",
       "count": 1,
       "circuit_state": 2
     },
     {
-      "ingredient": {
-        "item": "foundations_calculator:circuit_board_12"
-      },
+      "ingredient": "foundations_calculator:circuit_board_12",
       "count": 1,
       "circuit_state": 2
     },
     {
-      "ingredient": {
-        "item": "foundations_calculator:circuit_board_13"
-      },
+      "ingredient": "foundations_calculator:circuit_board_13",
       "count": 1,
       "circuit_state": 2
     }

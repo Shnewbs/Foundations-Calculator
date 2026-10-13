@@ -7,18 +7,10 @@
     "IRI"
   ],
   "key": {
-    "I": {
-      "item": "foundations_calculator:reinforced_iron_ingot"
-    },
-    "R": {
-      "item": "minecraft:redstone"
-    },
-    "C": {
-      "item": "foundations_calculator:calculator_assembly"
-    },
-    "F": {
-      "item": "foundations_calculator:reinforced_furnace"
-    }
+    "I": "foundations_calculator:reinforced_iron_ingot",
+    "R": "minecraft:redstone",
+    "C": "foundations_calculator:calculator_assembly",
+    "F": "foundations_calculator:reinforced_furnace"
   },
   "result": {
     "id": "foundations_calculator:smelting_module"

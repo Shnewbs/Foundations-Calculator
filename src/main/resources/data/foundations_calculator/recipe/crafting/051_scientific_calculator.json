@@ -7,18 +7,10 @@
     "CAC"
   ],
   "key": {
-    "B": {
-      "tag": "foundations_calculator:reinforced_stone"
-    },
-    "A": {
-      "item": "foundations_calculator:calculator_assembly"
-    },
-    "S": {
-      "item": "foundations_calculator:calculator_screen"
-    },
-    "C": {
-      "item": "foundations_calculator:enriched_gold_ingot"
-    }
+    "B": "#foundations_calculator:reinforced_stone",
+    "A": "foundations_calculator:calculator_assembly",
+    "S": "foundations_calculator:calculator_screen",
+    "C": "foundations_calculator:enriched_gold_ingot"
   },
   "result": {
     "id": "foundations_calculator:scientific_calculator",

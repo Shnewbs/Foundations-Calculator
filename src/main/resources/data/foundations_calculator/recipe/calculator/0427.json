@@ -3,15 +3,11 @@
   "machine": "calculator",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "minecraft:pink_dye"
-      },
+      "ingredient": "minecraft:pink_dye",
       "count": 1
     },
     {
-      "ingredient": {
-        "item": "minecraft:pink_dye"
-      },
+      "ingredient": "minecraft:pink_dye",
       "count": 1
     }
   ],

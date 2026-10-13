@@ -3,15 +3,11 @@
   "machine": "calculator",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "minecraft:pink_wool"
-      },
+      "ingredient": "minecraft:pink_wool",
       "count": 1
     },
     {
-      "ingredient": {
-        "item": "minecraft:pink_wool"
-      },
+      "ingredient": "minecraft:pink_wool",
       "count": 1
     }
   ],

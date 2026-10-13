@@ -3,9 +3,7 @@
   "machine": "health_processor",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "minecraft:gunpowder"
-      },
+      "ingredient": "minecraft:gunpowder",
       "count": 1
     }
   ],

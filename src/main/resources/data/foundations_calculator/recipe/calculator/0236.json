@@ -3,15 +3,11 @@
   "machine": "calculator",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "minecraft:enchanting_table"
-      },
+      "ingredient": "minecraft:enchanting_table",
       "count": 1
     },
     {
-      "ingredient": {
-        "item": "minecraft:ender_eye"
-      },
+      "ingredient": "minecraft:ender_eye",
       "count": 1
     }
   ],

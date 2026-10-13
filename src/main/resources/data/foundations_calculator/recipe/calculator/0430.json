@@ -3,15 +3,11 @@
   "machine": "calculator",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "minecraft:cyan_stained_glass_pane"
-      },
+      "ingredient": "minecraft:cyan_stained_glass_pane",
       "count": 1
     },
     {
-      "ingredient": {
-        "item": "minecraft:cyan_stained_glass_pane"
-      },
+      "ingredient": "minecraft:cyan_stained_glass_pane",
       "count": 1
     }
   ],

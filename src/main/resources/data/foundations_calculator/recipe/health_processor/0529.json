@@ -3,9 +3,7 @@
   "machine": "health_processor",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "minecraft:egg"
-      },
+      "ingredient": "minecraft:egg",
       "count": 1
     }
   ],

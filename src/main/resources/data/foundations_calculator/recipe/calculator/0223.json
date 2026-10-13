@@ -3,15 +3,11 @@
   "machine": "calculator",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "foundations_calculator:pear"
-      },
+      "ingredient": "foundations_calculator:pear",
       "count": 1
     },
     {
-      "ingredient": {
-        "item": "minecraft:clay_ball"
-      },
+      "ingredient": "minecraft:clay_ball",
       "count": 1
     }
   ],

@@ -3,9 +3,7 @@
   "machine": "algorithm_separator",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "foundations_calculator:tanzanite_leaves"
-      },
+      "ingredient": "foundations_calculator:tanzanite_leaves",
       "count": 1
     }
   ],

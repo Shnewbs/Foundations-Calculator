@@ -3,15 +3,11 @@
   "machine": "calculator",
   "ingredients": [
     {
-      "ingredient": {
-        "tag": "c:glass_blocks"
-      },
+      "ingredient": "#c:glass_blocks",
       "count": 1
     },
     {
-      "ingredient": {
-        "tag": "c:glass_blocks"
-      },
+      "ingredient": "#c:glass_blocks",
       "count": 1
     }
   ],

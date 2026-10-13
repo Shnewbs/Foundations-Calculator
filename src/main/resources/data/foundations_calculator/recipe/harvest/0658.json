@@ -3,9 +3,7 @@
   "machine": "harvest",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "foundations_calculator:pear_leaves"
-      },
+      "ingredient": "foundations_calculator:pear_leaves",
       "count": 1
     }
   ],

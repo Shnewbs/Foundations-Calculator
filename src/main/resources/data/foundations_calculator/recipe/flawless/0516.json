@@ -3,27 +3,19 @@
   "machine": "flawless",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "foundations_calculator:flawless_diamond"
-      },
+      "ingredient": "foundations_calculator:flawless_diamond",
       "count": 1
     },
     {
-      "ingredient": {
-        "tag": "c:glass_blocks"
-      },
+      "ingredient": "#c:glass_blocks",
       "count": 1
     },
     {
-      "ingredient": {
-        "tag": "c:glass_blocks"
-      },
+      "ingredient": "#c:glass_blocks",
       "count": 1
     },
     {
-      "ingredient": {
-        "item": "foundations_calculator:flawless_diamond"
-      },
+      "ingredient": "foundations_calculator:flawless_diamond",
       "count": 1
     }
   ],

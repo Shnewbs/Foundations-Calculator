@@ -3,15 +3,11 @@
   "machine": "calculator",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "minecraft:bone_meal"
-      },
+      "ingredient": "minecraft:bone_meal",
       "count": 1
     },
     {
-      "ingredient": {
-        "item": "minecraft:bone_meal"
-      },
+      "ingredient": "minecraft:bone_meal",
       "count": 1
     }
   ],

@@ -3,15 +3,11 @@
   "machine": "calculator",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "minecraft:dark_oak_leaves"
-      },
+      "ingredient": "minecraft:dark_oak_leaves",
       "count": 1
     },
     {
-      "ingredient": {
-        "item": "minecraft:dark_oak_leaves"
-      },
+      "ingredient": "minecraft:dark_oak_leaves",
       "count": 1
     }
   ],

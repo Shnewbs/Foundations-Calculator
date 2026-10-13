@@ -4,9 +4,7 @@
   "ingredients": [
     {
       "ingredient": [
-        {
-          "tag": "c:slime_balls"
-        }
+        "#c:slime_balls"
       ]
     }
   ],

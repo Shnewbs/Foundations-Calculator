@@ -3,15 +3,11 @@
   "machine": "calculator",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "minecraft:oxeye_daisy"
-      },
+      "ingredient": "minecraft:oxeye_daisy",
       "count": 1
     },
     {
-      "ingredient": {
-        "tag": "minecraft:saplings"
-      },
+      "ingredient": "#minecraft:saplings",
       "count": 1
     }
   ],

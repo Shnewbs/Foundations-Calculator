@@ -3,21 +3,15 @@
   "machine": "atomic",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "minecraft:end_stone"
-      },
+      "ingredient": "minecraft:end_stone",
       "count": 1
     },
     {
-      "ingredient": {
-        "item": "foundations_calculator:electric_diamond"
-      },
+      "ingredient": "foundations_calculator:electric_diamond",
       "count": 1
     },
     {
-      "ingredient": {
-        "item": "minecraft:obsidian"
-      },
+      "ingredient": "minecraft:obsidian",
       "count": 1
     }
   ],

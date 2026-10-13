@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "foundations_calculator:flawless_diamond_block"
-    }
+    "foundations_calculator:flawless_diamond_block"
   ],
   "result": {
     "id": "foundations_calculator:flawless_diamond",

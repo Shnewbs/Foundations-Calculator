@@ -3,27 +3,19 @@
   "machine": "flawless",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "foundations_calculator:gas_lantern_off"
-      },
+      "ingredient": "foundations_calculator:gas_lantern_off",
       "count": 1
     },
     {
-      "ingredient": {
-        "item": "foundations_calculator:circuit_board_8"
-      },
+      "ingredient": "foundations_calculator:circuit_board_8",
       "count": 1
     },
     {
-      "ingredient": {
-        "item": "foundations_calculator:circuit_board_8"
-      },
+      "ingredient": "foundations_calculator:circuit_board_8",
       "count": 1
     },
     {
-      "ingredient": {
-        "item": "foundations_calculator:gas_lantern_off"
-      },
+      "ingredient": "foundations_calculator:gas_lantern_off",
       "count": 1
     }
   ],

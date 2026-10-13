@@ -4,9 +4,7 @@
   "ingredients": [
     {
       "ingredient": [
-        {
-          "tag": "c:sandstone/blocks"
-        }
+        "#c:sandstone/blocks"
       ]
     }
   ],

@@ -7,12 +7,8 @@
     " S "
   ],
   "key": {
-    "R": {
-      "item": "foundations_calculator:weakened_diamond"
-    },
-    "S": {
-      "tag": "c:rods/wooden"
-    }
+    "R": "foundations_calculator:weakened_diamond",
+    "S": "#c:rods/wooden"
   },
   "result": {
     "id": "foundations_calculator:weakened_diamond_pickaxe",

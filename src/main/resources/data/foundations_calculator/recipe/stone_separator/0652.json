@@ -3,9 +3,7 @@
   "machine": "stone_separator",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "minecraft:birch_log"
-      },
+      "ingredient": "minecraft:birch_log",
       "count": 1
     }
   ],

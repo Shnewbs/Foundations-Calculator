@@ -3,9 +3,7 @@
   "machine": "precision_chamber",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "minecraft:stone_bricks"
-      },
+      "ingredient": "minecraft:stone_bricks",
       "count": 1
     }
   ],

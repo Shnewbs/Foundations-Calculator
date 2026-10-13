@@ -3,15 +3,11 @@
   "machine": "calculator",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "minecraft:nether_brick"
-      },
+      "ingredient": "minecraft:nether_brick",
       "count": 1
     },
     {
-      "ingredient": {
-        "item": "minecraft:nether_brick"
-      },
+      "ingredient": "minecraft:nether_brick",
       "count": 1
     }
   ],

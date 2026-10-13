@@ -7,12 +7,8 @@
     " S"
   ],
   "key": {
-    "R": {
-      "item": "foundations_calculator:enriched_gold_ingot"
-    },
-    "S": {
-      "tag": "c:rods/wooden"
-    }
+    "R": "foundations_calculator:enriched_gold_ingot",
+    "S": "#c:rods/wooden"
   },
   "result": {
     "id": "foundations_calculator:enriched_gold_hoe",

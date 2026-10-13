@@ -3,27 +3,19 @@
   "machine": "flawless",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "foundations_calculator:energy_module"
-      },
+      "ingredient": "foundations_calculator:energy_module",
       "count": 1
     },
     {
-      "ingredient": {
-        "item": "foundations_calculator:calculator"
-      },
+      "ingredient": "foundations_calculator:calculator",
       "count": 1
     },
     {
-      "ingredient": {
-        "item": "foundations_calculator:calculator"
-      },
+      "ingredient": "foundations_calculator:calculator",
       "count": 1
     },
     {
-      "ingredient": {
-        "item": "foundations_calculator:energy_module"
-      },
+      "ingredient": "foundations_calculator:energy_module",
       "count": 1
     }
   ],

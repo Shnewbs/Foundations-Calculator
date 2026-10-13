@@ -3,15 +3,11 @@
   "machine": "calculator",
   "ingredients": [
     {
-      "ingredient": {
-        "tag": "c:sands"
-      },
+      "ingredient": "#c:sands",
       "count": 1
     },
     {
-      "ingredient": {
-        "item": "minecraft:ghast_tear"
-      },
+      "ingredient": "minecraft:ghast_tear",
       "count": 1
     }
   ],

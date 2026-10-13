@@ -3,15 +3,11 @@
   "machine": "calculator",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "minecraft:white_stained_glass"
-      },
+      "ingredient": "minecraft:white_stained_glass",
       "count": 1
     },
     {
-      "ingredient": {
-        "item": "minecraft:white_stained_glass"
-      },
+      "ingredient": "minecraft:white_stained_glass",
       "count": 1
     }
   ],

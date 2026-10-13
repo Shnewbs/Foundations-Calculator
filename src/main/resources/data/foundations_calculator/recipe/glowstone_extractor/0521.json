@@ -3,9 +3,7 @@
   "machine": "glowstone_extractor",
   "ingredients": [
     {
-      "ingredient": {
-        "tag": "c:dusts/glowstone"
-      },
+      "ingredient": "#c:dusts/glowstone",
       "count": 1
     }
   ],

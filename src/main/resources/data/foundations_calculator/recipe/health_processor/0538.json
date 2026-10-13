@@ -3,9 +3,7 @@
   "machine": "health_processor",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "minecraft:slime_ball"
-      },
+      "ingredient": "minecraft:slime_ball",
       "count": 1
     }
   ],

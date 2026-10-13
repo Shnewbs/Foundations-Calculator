@@ -3,9 +3,7 @@
   "machine": "extraction_chamber",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "minecraft:dirt"
-      },
+      "ingredient": "minecraft:dirt",
       "count": 1
     }
   ],

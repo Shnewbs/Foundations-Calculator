@@ -3,15 +3,11 @@
   "machine": "calculator",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "minecraft:skeleton_skull"
-      },
+      "ingredient": "minecraft:skeleton_skull",
       "count": 1
     },
     {
-      "ingredient": {
-        "tag": "c:ingots/iron"
-      },
+      "ingredient": "#c:ingots/iron",
       "count": 1
     }
   ],

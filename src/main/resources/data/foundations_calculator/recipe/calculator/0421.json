@@ -3,15 +3,11 @@
   "machine": "calculator",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "minecraft:gray_dye"
-      },
+      "ingredient": "minecraft:gray_dye",
       "count": 1
     },
     {
-      "ingredient": {
-        "item": "minecraft:gray_dye"
-      },
+      "ingredient": "minecraft:gray_dye",
       "count": 1
     }
   ],

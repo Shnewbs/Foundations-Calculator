@@ -4,18 +4,10 @@
   "ingredients": [
     {
       "ingredient": [
-        {
-          "item": "minecraft:wheat"
-        },
-        {
-          "item": "minecraft:potato"
-        },
-        {
-          "item": "minecraft:carrot"
-        },
-        {
-          "tag": "c:crops"
-        }
+        "minecraft:wheat",
+        "minecraft:potato",
+        "minecraft:carrot",
+        "#c:crops"
       ]
     }
   ],

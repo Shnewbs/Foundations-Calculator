@@ -3,21 +3,15 @@
   "machine": "atomic",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "foundations_calculator:amethyst_sapling"
-      },
+      "ingredient": "foundations_calculator:amethyst_sapling",
       "count": 1
     },
     {
-      "ingredient": {
-        "item": "minecraft:end_stone"
-      },
+      "ingredient": "minecraft:end_stone",
       "count": 1
     },
     {
-      "ingredient": {
-        "item": "foundations_calculator:tanzanite_sapling"
-      },
+      "ingredient": "foundations_calculator:tanzanite_sapling",
       "count": 1
     }
   ],

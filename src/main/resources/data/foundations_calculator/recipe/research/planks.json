@@ -4,12 +4,8 @@
   "ingredients": [
     {
       "ingredient": [
-        {
-          "tag": "minecraft:planks"
-        },
-        {
-          "tag": "minecraft:wooden_stairs"
-        }
+        "#minecraft:planks",
+        "#minecraft:wooden_stairs"
       ]
     }
   ],

@@ -7,15 +7,9 @@
     "BAB"
   ],
   "key": {
-    "E": {
-      "tag": "c:gems/emerald"
-    },
-    "A": {
-      "item": "foundations_calculator:atomic_module"
-    },
-    "B": {
-      "item": "foundations_calculator:advanced_assembly"
-    }
+    "E": "#c:gems/emerald",
+    "A": "foundations_calculator:atomic_module",
+    "B": "foundations_calculator:advanced_assembly"
   },
   "result": {
     "id": "foundations_calculator:atomic_assembly",

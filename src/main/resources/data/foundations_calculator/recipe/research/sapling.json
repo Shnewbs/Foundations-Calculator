@@ -4,9 +4,7 @@
   "ingredients": [
     {
       "ingredient": [
-        {
-          "tag": "minecraft:saplings"
-        }
+        "#minecraft:saplings"
       ]
     }
   ],

@@ -3,9 +3,7 @@
   "machine": "processing_chamber",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "foundations_calculator:circuit_dirty_5"
-      },
+      "ingredient": "foundations_calculator:circuit_dirty_5",
       "count": 1
     }
   ],

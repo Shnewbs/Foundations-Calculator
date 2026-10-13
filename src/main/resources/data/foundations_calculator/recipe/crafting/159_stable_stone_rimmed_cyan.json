@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "foundations_calculator:stable_stone_cyan"
-    }
+    "foundations_calculator:stable_stone_cyan"
   ],
   "result": {
     "id": "foundations_calculator:stable_stone_rimmed_cyan",

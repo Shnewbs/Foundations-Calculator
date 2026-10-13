@@ -4,15 +4,9 @@
   "ingredients": [
     {
       "ingredient": [
-        {
-          "item": "minecraft:clay_ball"
-        },
-        {
-          "item": "minecraft:clay"
-        },
-        {
-          "item": "minecraft:terracotta"
-        }
+        "minecraft:clay_ball",
+        "minecraft:clay",
+        "minecraft:terracotta"
       ]
     }
   ],

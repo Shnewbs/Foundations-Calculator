@@ -3,15 +3,11 @@
   "machine": "calculator",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "minecraft:daylight_detector"
-      },
+      "ingredient": "minecraft:daylight_detector",
       "count": 1
     },
     {
-      "ingredient": {
-        "item": "minecraft:bucket"
-      },
+      "ingredient": "minecraft:bucket",
       "count": 1
     }
   ],

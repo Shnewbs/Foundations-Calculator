@@ -6,15 +6,9 @@
     "ABA"
   ],
   "key": {
-    "A": {
-      "item": "foundations_calculator:reinforced_iron_block"
-    },
-    "B": {
-      "item": "foundations_calculator:storage_chamber"
-    },
-    "C": {
-      "item": "foundations_calculator:reinforced_iron_ingot"
-    }
+    "A": "foundations_calculator:reinforced_iron_block",
+    "B": "foundations_calculator:storage_chamber",
+    "C": "foundations_calculator:reinforced_iron_ingot"
   },
   "result": {
     "id": "foundations_calculator:fabrication_chamber",

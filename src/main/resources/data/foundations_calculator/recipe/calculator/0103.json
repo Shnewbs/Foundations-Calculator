@@ -3,15 +3,11 @@
   "machine": "calculator",
   "ingredients": [
     {
-      "ingredient": {
-        "tag": "c:ingots/iron"
-      },
+      "ingredient": "#c:ingots/iron",
       "count": 1
     },
     {
-      "ingredient": {
-        "item": "foundations_calculator:reinforced_stone_block"
-      },
+      "ingredient": "foundations_calculator:reinforced_stone_block",
       "count": 1
     }
   ],

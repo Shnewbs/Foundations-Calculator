@@ -3,9 +3,7 @@
   "machine": "health_processor",
   "ingredients": [
     {
-      "ingredient": {
-        "item": "minecraft:spider_eye"
-      },
+      "ingredient": "minecraft:spider_eye",
       "count": 1
     }
   ],

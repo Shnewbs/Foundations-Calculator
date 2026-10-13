@@ -190,6 +190,8 @@ tasks.register('capturePortApi', Exec) {
         commandLine compiler.metadata.installationPath.file('bin/javap').asFile.absolutePath,
             '-classpath', sourceSets.main.compileClasspath.asPath,
             'net.minecraft.commands.Commands',
+            'net.minecraft.world.item.ItemStackTemplate',
+            'net.minecraft.world.item.crafting.Ingredient',
             'net.minecraft.commands.CommandSourceStack',
             'net.minecraft.server.permissions.Permissions',
             'net.minecraft.server.permissions.PermissionSet',

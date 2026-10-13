@@ -17,7 +17,7 @@ import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.*;
 import net.neoforged.neoforge.capabilities.Capabilities;
-import net.neoforged.neoforge.items.*;
+import com.foundations.calculator.core.*;
 
 /** Server-only world interactions. All durable state belongs to the owning block entity. */
 public final class MachinePrograms {
@@ -57,12 +57,12 @@ public final class MachinePrograms {
             if(remaining<=0)break;
             if(!m.itemOutput(side))continue;
             BlockPos target=m.getBlockPos().relative(side);if(!m.getLevel().hasChunkAt(target))continue;
-            IItemHandler other=com.foundations.calculator.core.MachineItemHandler.neighbor(m.getLevel(),target,side.getOpposite());
+            ItemInventory other=com.foundations.calculator.core.MachineItemHandler.neighbor(m.getLevel(),target,side.getOpposite());
             if(other==null)continue;
-            IItemHandler source=m.automation(side);
+            ItemInventory source=m.automation(side);
             for(int i=14;i<20&&remaining>0;i++){
                 ItemStack offered=source.extractItem(i,remaining,true);if(offered.isEmpty())continue;
-                ItemStack left=ItemHandlerHelper.insertItemStacked(other,offered,false);
+                ItemStack left=ItemInventories.insertItemStacked(other,offered,false);
                 int moved=offered.getCount()-left.getCount();source.extractItem(i,moved,false);remaining-=moved;
             }
         }
@@ -137,8 +137,8 @@ public final class MachinePrograms {
                 if(tags?filter.is(stack.getItem())||filter.typeHolder().tags().anyMatch(stack::is):ItemStack.isSameItemSameComponents(filter,stack)){matched=true;break;}}
             if(matched!=whitelist)continue;
             if(entity.position().distanceToSqr(target)<2.25){
-                BlockPos below=m.getBlockPos().below();IItemHandler dest=com.foundations.calculator.core.MachineItemHandler.neighbor(level,below,Direction.UP);
-                if(dest!=null){ItemStack remaining=ItemHandlerHelper.insertItemStacked(dest,stack.copy(),false);if(remaining.isEmpty())entity.discard();else entity.setItem(remaining);}
+                BlockPos below=m.getBlockPos().below();ItemInventory dest=com.foundations.calculator.core.MachineItemHandler.neighbor(level,below,Direction.UP);
+                if(dest!=null){ItemStack remaining=ItemInventories.insertItemStacked(dest,stack.copy(),false);if(remaining.isEmpty())entity.discard();else entity.setItem(remaining);}
             }else{entity.setDeltaMovement(target.subtract(entity.position()).normalize().scale(CalculatorConfig.decimal("world.magnetSpeed",0.15)));entity.hurtMarked=true;}
         }
     }

@@ -6,16 +6,16 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.neoforged.neoforge.capabilities.Capabilities;
-import net.neoforged.neoforge.items.IItemHandler;
+import com.foundations.calculator.core.ItemInventory;
 import net.neoforged.neoforge.transfer.ResourceHandler;
 import net.neoforged.neoforge.transfer.item.ItemResource;
 import net.neoforged.neoforge.transfer.transaction.*;
 /** Native transactions retain sided rules, bulk counts and module state on abort. */
 public final class MachineItemHandler extends SnapshotJournal<MachineItemHandler.State> implements ResourceHandler<ItemResource> {
     record State(ItemStack[] inventory,CompoundTag bulk,CompoundTag program,List<ItemStack> pending) {}
-    private final MachineBlockEntity machine;private final IItemHandler slots;
+    private final MachineBlockEntity machine;private final ItemInventory slots;
     public MachineItemHandler(MachineBlockEntity machine,Direction face){this.machine=machine;slots=machine.automation(face);}
-    public static IItemHandler neighbor(Level level,BlockPos pos,Direction face){var handler=level.getCapability(Capabilities.Item.BLOCK,pos,face);return handler==null?null:IItemHandler.of(handler);}
+    public static ItemInventory neighbor(Level level,BlockPos pos,Direction face){var handler=level.getCapability(Capabilities.Item.BLOCK,pos,face);return handler==null?null:ItemInventories.nativeView(handler);}
     @Override protected State createSnapshot(){ItemStack[] inventory=new ItemStack[machine.inventory.getSlots()];for(int i=0;i<inventory.length;i++)inventory[i]=machine.inventory.getStackInSlot(i).copy();return new State(inventory,machine.bulk.save(machine.getLevel().registryAccess()),machine.program.copy(),machine.pending.stream().map(ItemStack::copy).toList());}
     @Override protected void revertToSnapshot(State state){machine.restoreAutomationInventory(state.inventory,state.bulk,state.program,state.pending);}
     public int size(){return slots.getSlots();}

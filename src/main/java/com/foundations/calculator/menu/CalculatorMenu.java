@@ -9,10 +9,10 @@ import net.minecraft.world.entity.player.*;
 import net.minecraft.world.inventory.*;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.neoforged.neoforge.items.*;
+import com.foundations.calculator.core.*;
 
 public final class CalculatorMenu extends AbstractContainerMenu {
-    public final ItemStackHandler handler;
+    public final BasicInventory handler;
     public final MachineBlockEntity machine;
     public final int inputs;
     public final String kind;
@@ -38,7 +38,7 @@ public final class CalculatorMenu extends AbstractContainerMenu {
     private CalculatorMenu(int id,Inventory inv,MachineBlockEntity machine,InteractionHand hand,String selectedKind){
         super(Content.MENU.get(),id);this.machine=machine;this.hand=hand;playerInventory=inv;
         held=machine==null?inv.player.getItemInHand(hand):ItemStack.EMPTY;heldSlot=hand==InteractionHand.MAIN_HAND?inv.getSelectedSlot():40;
-        handler=machine==null?new ItemStackHandler(25):machine.inventory;
+        handler=machine==null?new BasicInventory(25):machine.inventory;
         kind=machine==null?(selectedKind==null?Content.path(held):selectedKind):machine.kind();
         inputs=machine!=null?machine.inputCount():(kind.equals("dynamic_module")?7:kind.equals("flawless_calculator")?4:kind.equals("atomic_calculator")?3:2);
         for(int i=0;i<25;i++){
@@ -49,7 +49,7 @@ public final class CalculatorMenu extends AbstractContainerMenu {
             else if(i<20){x=160+(i-14)%3*18;y=45+(i-14)/3*18;}
             else if(i==20){x=16;y=99;}
             else{x=88+(i-21)*18;y=99;}
-            addSlot(new SlotItemHandler(handler,i,x,y){
+            addSlot(new InventorySlot(handler,i,x,y){
                 public boolean isActive(){return kind.equals("module_workstation")?slot<16||slot==20:slot<14?slot<inputs:slot<20?(machine==null||machine.hasOutputs()):slot==20?machine!=null&&machine.hasBatterySlot():machine!=null&&machine.supportsUpgrades();}
                 public void setChanged(){super.setChanged();diagnosticTick=Long.MIN_VALUE;if(machine!=null){machine.setChanged();if(kind.equals("module_workstation"))ModuleWorkstation.changed(machine,slot);}}
                 public boolean mayPickup(Player player){return isActive()&&super.mayPickup(player);}
@@ -140,12 +140,12 @@ public final class CalculatorMenu extends AbstractContainerMenu {
         Level level=player.level();ProcessInput input=ProcessTransactions.input(handler,inputs);
         var match=RecipeIndex.forMachine(level,recipeKind,player.getUUID()).stream()
             .filter(r->r.value().machine().equals(recipeKind)&&r.value().matches(input,level))
-            .sorted(Comparator.comparing(r->r.id().toString())).findFirst();
+            .sorted(Comparator.comparing(r->r.id().identifier().toString())).findFirst();
         if(match.isEmpty())return false;
         long cost=CalculatorConfig.energyLong(kind,RecipePolicies.energy(match.get(),1));
         if(item.energyLong(held)<cost)return false;
         ProcessRecipe recipe=match.get().value();int[] used=recipe.allocation(input);if(used==null)return false;
-        ItemStackHandler copy=new ItemStackHandler(25);
+        BasicInventory copy=new BasicInventory(25);
         for(int i=0;i<25;i++)copy.setStackInSlot(i,handler.getStackInSlot(i).copy());
         List<ItemStack> results=ProcessTransactions.consume(copy,used,recipe,level);
         ProcessTransactions.flush(results,copy);if(!results.isEmpty())return false;
@@ -157,7 +157,7 @@ public final class CalculatorMenu extends AbstractContainerMenu {
     private boolean dynamicCalculation(Player player,int lane){
         if(lane<0||lane>2||!(held.getItem() instanceof CalculatorItem item))return false;
         int start=lane==2?4:lane*2,count=lane==2?3:2;String family=new String[]{"calculator","scientific","atomic"}[lane];
-        ItemStackHandler temp=new ItemStackHandler(25);for(int i=0;i<count;i++)temp.setStackInSlot(i,handler.getStackInSlot(start+i).copy());for(int i=14;i<20;i++)temp.setStackInSlot(i,handler.getStackInSlot(i).copy());
+        BasicInventory temp=new BasicInventory(25);for(int i=0;i<count;i++)temp.setStackInSlot(i,handler.getStackInSlot(start+i).copy());for(int i=14;i<20;i++)temp.setStackInSlot(i,handler.getStackInSlot(i).copy());
         var input=ProcessTransactions.input(temp,count);var found=RecipeIndex.forMachine(player.level(),family,player.getUUID()).stream().filter(r->r.value().matches(input,player.level())).findFirst();if(found.isEmpty())return false;
         var recipe=found.get().value();long cost=CalculatorConfig.energyLong(kind,RecipePolicies.energy(found.get(),1));if(item.energyLong(held)<cost)return false;
         var results=ProcessTransactions.consume(temp,recipe.allocation(input),recipe,player.level());ProcessTransactions.flush(results,temp);if(!results.isEmpty())return false;

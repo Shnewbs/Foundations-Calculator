@@ -15,7 +15,7 @@ import net.neoforged.neoforge.event.server.ServerStoppedEvent;
 public final class RecipeIndex {
     private record Index(Map<String,List<RecipeHolder<ProcessRecipe>>> families,
                          List<RecipeHolder<ProcessRecipe>> all) {}
-    private static final Map<RecipeManager,Index> CACHE = new WeakHashMap<>();
+    private static final Map<RecipeMap,Index> CACHE = new WeakHashMap<>();
     private static volatile long revision;
     public static long revision() { return revision; }
     public static List<RecipeHolder<ProcessRecipe>> forMachine(Level level,String machine) {
@@ -25,10 +25,10 @@ public final class RecipeIndex {
         return allForMachine(level,machine).stream().filter(r -> ResearchData.allowed(level,player,r.value())).toList();
     }
     private static Index index(Level level) {
-        return CACHE.computeIfAbsent(level.getRecipeManager(),manager -> {
-            List<RecipeHolder<ProcessRecipe>> all = manager.getAllRecipesFor(Content.PROCESS_TYPE.get()).stream()
+        return CACHE.computeIfAbsent(NativeRecipes.map(level),manager -> {
+            List<RecipeHolder<ProcessRecipe>> all = manager.byType(Content.PROCESS_TYPE.get()).stream()
                 .filter(r -> RecipePolicies.enabled(r,level)).map(RecipePolicies::apply)
-                .sorted(Comparator.comparing(r -> r.id().toString())).toList();
+                .sorted(Comparator.comparing(r -> r.id().identifier().toString())).toList();
             Map<String,List<RecipeHolder<ProcessRecipe>>> families = new HashMap<>();
             for (var recipe : all) families.computeIfAbsent(recipe.value().machine(), k -> new ArrayList<>()).add(recipe);
             families.replaceAll((key,recipes) -> List.copyOf(recipes));

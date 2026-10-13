@@ -20,23 +20,3 @@ versionRange="[26.3]"
 ordering="NONE"
 side="BOTH"
 
-[[dependencies.foundations_calculator]]
-modId="gtceu"
-type="optional"
-versionRange="[8.0.0-SNAPSHOT,)"
-ordering="NONE"
-side="BOTH"
-
-[[dependencies.foundations_calculator]]
-modId="modern_industrialization"
-type="optional"
-versionRange="[2.5.8,)"
-ordering="NONE"
-side="BOTH"
-
-[[dependencies.foundations_calculator]]
-modId="grandpower"
-type="optional"
-versionRange="[3.0.0,)"
-ordering="NONE"
-side="BOTH"

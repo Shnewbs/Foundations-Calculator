@@ -1,0 +1,6 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "foundations_calculator:item/atomic_calculator"
+  }
+}

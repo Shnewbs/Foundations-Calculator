@@ -7,7 +7,7 @@ import net.minecraft.world.item.*;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
 import net.neoforged.neoforge.capabilities.Capabilities;
-import net.neoforged.neoforge.items.ItemStackHandler;
+import com.foundations.calculator.core.BasicInventory;
 import static com.foundations.calculator.core.MachineStatus.*;
 
 /** Server-computed operating feedback. No client decides whether a recipe can run. */
@@ -95,17 +95,17 @@ public final class MachineDiagnostics {
         var recipe=RecipeIndex.forMachine(level,family(m),m.owner()).stream().filter(r->r.value().matches(input,level)).findFirst();
         return recipe.isEmpty()?state(NO_RECIPE):power(RUNNING,cost(recipe.get(),m),energy);
     }
-    public static Snapshot portable(Level level,ItemStackHandler slots,int inputs,String kind,ItemStack calculator){
+    public static Snapshot portable(Level level,BasicInventory slots,int inputs,String kind,ItemStack calculator){
         return portable(level,slots,inputs,kind,calculator,null);
     }
-    public static Snapshot portable(Level level,ItemStackHandler slots,int inputs,String kind,ItemStack calculator,java.util.UUID owner){
+    public static Snapshot portable(Level level,BasicInventory slots,int inputs,String kind,ItemStack calculator,java.util.UUID owner){
         long energy=calculator.getItem() instanceof CalculatorItem c?c.energyLong(calculator):0;
         if(kind.equals("dynamic_module"))return lanes(level,slots,energy,owner,kind);
         var input=ProcessTransactions.input(slots,inputs);if(input.isEmpty())return state(NEED_INPUT);
         var match=RecipeIndex.forMachine(level,family(kind),owner).stream().filter(r->r.value().matches(input,level)).findFirst();
         return match.isEmpty()?state(NO_RECIPE):power(READY,CalculatorConfig.energyLong(kind,RecipePolicies.energy(match.get(),1)),energy);
     }
-    private static Snapshot lanes(Level level,ItemStackHandler slots,long energy,java.util.UUID owner,String kind){
+    private static Snapshot lanes(Level level,BasicInventory slots,long energy,java.util.UUID owner,String kind){
         boolean hasInput=false;
         for(int lane=0;lane<3;lane++){
             int start=lane*2,count=lane==2?3:2;var stacks=new ArrayList<ItemStack>();for(int i=0;i<count;i++)stacks.add(slots.getStackInSlot(start+i));

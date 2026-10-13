@@ -6,14 +6,14 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.*;
 import net.minecraft.world.inventory.*;
 import net.minecraft.world.item.ItemStack;
-import net.neoforged.neoforge.items.*;
+import com.foundations.calculator.core.*;
 
 public final class BulkStorageMenu extends AbstractContainerMenu {
     public final MachineBlockEntity machine;public final int size;private final ContainerData counts;
     public static BulkStorageMenu fromNetwork(int id,Inventory inv,FriendlyByteBuf buf){buf.readBoolean();return new BulkStorageMenu(id,inv,(MachineBlockEntity)inv.player.level().getBlockEntity(buf.readBlockPos()));}
     public BulkStorageMenu(int id,Inventory inv,MachineBlockEntity m){
         super(Content.BULK_MENU.get(),id);machine=m;size=m.bulk.getSlots();
-        for(int i=0;i<size;i++){final int index=i;addSlot(new SlotItemHandler(new ItemStackHandler(size),i,16+(i%9)*24,40+(i/9)*30){
+        for(int i=0;i<size;i++){final int index=i;addSlot(new InventorySlot(new BasicInventory(size),i,16+(i%9)*24,40+(i/9)*30){
             public ItemStack getItem(){
                 if(inv.player.level().isClientSide())return super.getItem();
                 ItemStack sample=m.bulk.getStackInSlot(index);

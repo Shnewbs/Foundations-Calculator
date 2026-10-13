@@ -1,0 +1,14 @@
+{
+  "model": {
+    "type": "minecraft:condition",
+    "property": "foundations_calculator:tool_models",
+    "on_true": {
+      "type": "minecraft:model",
+      "model": "foundations_calculator:item/flawless_diamond_shovel"
+    },
+    "on_false": {
+      "type": "minecraft:model",
+      "model": "foundations_calculator:flat_tools/flawless_diamond_shovel"
+    }
+  }
+}

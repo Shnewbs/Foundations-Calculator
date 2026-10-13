@@ -4,11 +4,11 @@ import java.util.*;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.*;
 import net.minecraft.world.item.ItemStack;
-import net.neoforged.neoforge.items.IItemHandler;
+import com.foundations.calculator.core.ItemInventory;
 import com.foundations.calculator.content.Content;
 
 /** Counts are separate from ItemStack so saves and network stacks always remain legal. */
-public final class BulkStorage implements IItemHandler {
+public final class BulkStorage implements ItemInventory {
     private final ItemStack[] samples;private final int[] amounts;private final java.util.function.IntSupplier capacity;private final boolean circuits;private final Runnable dirty;
     public BulkStorage(boolean circuits,Runnable dirty){this(circuits,circuits?1024:256,dirty);}
     public BulkStorage(boolean circuits,int limit,Runnable dirty){this(circuits,()->limit,dirty);}

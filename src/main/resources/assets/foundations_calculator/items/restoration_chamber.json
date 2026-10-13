@@ -1,0 +1,10 @@
+{
+  "model": {
+    "type": "minecraft:special",
+    "base": "foundations_calculator:item/restoration_chamber",
+    "model": {
+      "type": "foundations_calculator:machine",
+      "kind": "restoration_chamber"
+    }
+  }
+}

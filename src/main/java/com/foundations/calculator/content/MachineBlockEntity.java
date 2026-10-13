@@ -15,14 +15,14 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.*;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.capabilities.Capabilities;
-import net.neoforged.neoforge.items.*;
+import com.foundations.calculator.core.*;
 import com.foundations.calculator.api.EnergyPort;
 
 public class MachineBlockEntity extends BlockEntity implements MenuProvider {
     public static final int SIZE=25;
     public final StoredEnergy energy;
     public final BulkStorage bulk;
-    public final ItemStackHandler inventory=new ItemStackHandler(SIZE){
+    public final BasicInventory inventory=new BasicInventory(SIZE){
         protected void onContentsChanged(int slot){setChanged();if(kind().equals("module_workstation"))ModuleWorkstation.changed(MachineBlockEntity.this,slot);}
         public boolean isItemValid(int slot,ItemStack stack){
             if(kind().equals("module_workstation"))return slot==20?Content.path(stack).equals("flawless_calculator"):slot<CalculatorConfig.integer("module.flawless_calculator.maxModules",16)&&ModuleWorkstation.isModule(stack);
@@ -154,9 +154,9 @@ public class MachineBlockEntity extends BlockEntity implements MenuProvider {
         public int getEnergyStored(){return (int)Math.min(Integer.MAX_VALUE,power.stored());}public int getMaxEnergyStored(){return (int)Math.min(Integer.MAX_VALUE,power.capacity());}
         public boolean canReceive(){return power.canReceive();}public boolean canExtract(){return power.canExtract();}
     };}
-    public IItemHandler automation(Direction face){
-        IItemHandler base=bulkInventory()?bulk:inventory;
-        return new IItemHandler(){
+    public ItemInventory automation(Direction face){
+        ItemInventory base=bulkInventory()?bulk:inventory;
+        return new ItemInventory(){
             public int getSlots(){return base.getSlots();}
             public ItemStack getStackInSlot(int slot){return base.getStackInSlot(slot);}
             private boolean extra(int slot,boolean output){
@@ -213,7 +213,7 @@ public class MachineBlockEntity extends BlockEntity implements MenuProvider {
         RecipeHolder<ProcessRecipe> holder=found.get();ProcessRecipe recipe=holder.value();
         long cost=upgradeEnergyCost(CalculatorConfig.energyLong(k,RecipePolicies.energy(holder,k.equals("docking_station")?10:0)));
         totalTicks=upgradeProcessTicks(CalculatorConfig.ticks(k,recipe.ticks()));
-        if(!activeRecipe.equals(holder.id().toString())){progress=0;activeRecipe=holder.id().toString();}
+        if(!activeRecipe.equals(holder.id().identifier().toString())){progress=0;activeRecipe=holder.id().identifier().toString();}
         if(energy.stored()<cost){if(!CalculatorConfig.machineFlag(k,"retainProgressWithoutPower"))progress=0;return;}
         if(++progress>=totalTicks){
             // Revalidate against live inputs at commit, even when the selector was cached.
@@ -308,7 +308,7 @@ public class MachineBlockEntity extends BlockEntity implements MenuProvider {
         long cost=upgradeEnergyCost(CalculatorConfig.energyLong(kind(),500));
         if(r.isEmpty()){progress=0;return;}
         if(energy.stored()<cost){if(!CalculatorConfig.machineFlag(kind(),"retainProgressWithoutPower"))progress=0;return;}
-        String recipeId=r.get().id().toString();if(!activeRecipe.equals(recipeId)){activeRecipe=recipeId;progress=0;}
+        String recipeId=r.get().id().identifier().toString();if(!activeRecipe.equals(recipeId)){activeRecipe=recipeId;progress=0;}
         totalTicks=upgradeProcessTicks(CalculatorConfig.ticks(kind(),200));
         if(++progress>=totalTicks){
             ItemStack out=r.get().value().assemble(new SingleRecipeInput(in));

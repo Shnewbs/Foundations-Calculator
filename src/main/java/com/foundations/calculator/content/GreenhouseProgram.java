@@ -15,7 +15,7 @@ import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.*;
 import net.neoforged.neoforge.capabilities.Capabilities;
-import net.neoforged.neoforge.items.*;
+import com.foundations.calculator.core.*;
 
 /** Greenhouse validation, resource-consuming construction and powered crop tending. */
 public final class GreenhouseProgram {
@@ -184,7 +184,7 @@ public final class GreenhouseProgram {
             Direction outputFace=forward(m).getOpposite();BlockPos front=m.getBlockPos().relative(outputFace);
             if(m.itemOutput(outputFace)&&m.getLevel().hasChunkAt(front)){
                 var dest=com.foundations.calculator.core.MachineItemHandler.neighbor(m.getLevel(),front,forward(m));
-                if(dest!=null)stack=ItemHandlerHelper.insertItemStacked(dest,stack,false);
+                if(dest!=null)stack=ItemInventories.insertItemStacked(dest,stack,false);
             }
             if(!stack.isEmpty())m.pending.add(stack);
         }
@@ -193,7 +193,7 @@ public final class GreenhouseProgram {
         Direction inputFace=forward(m).getOpposite();
         if(!m.itemInput(inputFace))return;
         BlockPos front=m.getBlockPos().relative(inputFace);if(!m.getLevel().hasChunkAt(front))return;
-        IItemHandler source=com.foundations.calculator.core.MachineItemHandler.neighbor(m.getLevel(),front,forward(m));if(source==null)return;
+        ItemInventory source=com.foundations.calculator.core.MachineItemHandler.neighbor(m.getLevel(),front,forward(m));if(source==null)return;
         for(int slot=0;slot<source.getSlots();slot++){
             ItemStack seed=source.extractItem(slot,32,true);if(!FoundationsPlants.accepts(seed,tier(m)))continue;
             for(int dest=tier(m)==3?0:4;dest<14;dest++){

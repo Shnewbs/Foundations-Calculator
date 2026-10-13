@@ -2,7 +2,7 @@ package com.foundations.calculator.core;
 
 import net.minecraft.world.item.*;
 import net.neoforged.neoforge.capabilities.Capabilities;
-import net.neoforged.neoforge.items.ItemStackHandler;
+import com.foundations.calculator.core.BasicInventory;
 
 /** The consumable discharge values formerly supplied by Sonar Core. */
 public final class EnergyItems {
@@ -23,10 +23,10 @@ public final class EnergyItems {
         var energy=com.foundations.calculator.api.FoundationsEnergy.item(stack);
         return energy!=null && energy.canReceive();
     }
-    public static int discharge(ItemStackHandler inventory,int slot,StoredEnergy destination,int limit) {
+    public static int discharge(BasicInventory inventory,int slot,StoredEnergy destination,int limit) {
         return (int)Math.min(Integer.MAX_VALUE,discharge(inventory,slot,destination,(long)limit));
     }
-    public static long discharge(ItemStackHandler inventory,int slot,StoredEnergy destination,long limit) {
+    public static long discharge(BasicInventory inventory,int slot,StoredEnergy destination,long limit) {
         ItemStack stack=inventory.getStackInSlot(slot);
         if(stack.getItem() instanceof com.foundations.calculator.content.CalculatorItem && !PowerPolicy.FE.input(PowerPolicy.Scope.ITEM))return 0;
         var battery=com.foundations.calculator.api.FoundationsEnergy.longItem(stack);

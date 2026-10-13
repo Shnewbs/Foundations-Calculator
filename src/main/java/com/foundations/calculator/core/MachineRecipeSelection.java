@@ -4,7 +4,7 @@ import java.util.*;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.Level;
-import net.neoforged.neoforge.items.ItemStackHandler;
+import com.foundations.calculator.core.BasicInventory;
 
 /** One bounded selector per machine. Input copies include count and components, not just item ID. */
 public final class MachineRecipeSelection {
@@ -13,7 +13,7 @@ public final class MachineRecipeSelection {
     private UUID owner;
     private long recipes = Long.MIN_VALUE, research = Long.MIN_VALUE, config = Long.MIN_VALUE;
     private Optional<RecipeHolder<ProcessRecipe>> selected = Optional.empty();
-    public Optional<RecipeHolder<ProcessRecipe>> find(Level level,String family,UUID owner,ItemStackHandler inventory,int count) {
+    public Optional<RecipeHolder<ProcessRecipe>> find(Level level,String family,UUID owner,BasicInventory inventory,int count) {
         long r = RecipeIndex.revision(), u = ResearchData.revision(level), c = CalculatorConfig.revision();
         boolean same = Objects.equals(this.family,family) && Objects.equals(this.owner,owner)
             && recipes == r && research == u && config == c && inputs.size() == count;

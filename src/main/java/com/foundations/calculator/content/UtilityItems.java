@@ -72,14 +72,14 @@ public final class UtilityItems {
         }
         if(kind.equals("end_diamond")){
             if(!CalculatorConfig.flag("module.end_diamond.enabled",true)||player.getCooldowns().isOnCooldown(battery))return true;
-            var pearl=new net.minecraft.world.entity.projectile.throwableitemprojectile.ThrownEnderpearl(level,player,stack);pearl.shootFromRotation(player,player.getXRot(),player.getYRot(),0,(float)CalculatorConfig.decimal("module.end_diamond.velocity",1.5),1);
+            var pearl=new net.minecraft.world.entity.projectile.throwableitemprojectile.ThrownEnderpearl(level,player,new ItemStack(Items.ENDER_PEARL));pearl.shootFromRotation(player,player.getXRot(),player.getYRot(),0,(float)CalculatorConfig.decimal("module.end_diamond.velocity",1.5),1);
             if(level.addFreshEntity(pearl)){player.getCooldowns().addCooldown(battery,CalculatorConfig.integer("module.end_diamond.cooldown",10));level.playSound(null,player.blockPosition(),SoundEvents.ENDER_PEARL_THROW,SoundSource.PLAYERS,.5f,1);}
             return true;
         }
         if(kind.equals("ender_pearl")&&stack!=battery){
             int cost=CalculatorConfig.integer("module.ender_pearl.cost",1000);if(player.getCooldowns().isOnCooldown(battery))return true;
             if(!(battery.getItem() instanceof CalculatorItem item)||!player.isCreative()&&item.energy(battery)<cost)return true;
-            var pearl=new net.minecraft.world.entity.projectile.throwableitemprojectile.ThrownEnderpearl(level,player,stack);pearl.shootFromRotation(player,player.getXRot(),player.getYRot(),0,(float)CalculatorConfig.decimal("module.ender_pearl.velocity",1.5),1);if(level.addFreshEntity(pearl)&&!player.isCreative()){item.storage(battery).extractEnergy(cost,false);player.getCooldowns().addCooldown(battery,CalculatorConfig.integer("module.ender_pearl.cooldown",10));}return true;
+            var pearl=new net.minecraft.world.entity.projectile.throwableitemprojectile.ThrownEnderpearl(level,player,new ItemStack(Items.ENDER_PEARL));pearl.shootFromRotation(player,player.getXRot(),player.getYRot(),0,(float)CalculatorConfig.decimal("module.ender_pearl.velocity",1.5),1);if(level.addFreshEntity(pearl)&&!player.isCreative()){item.storage(battery).extractEnergy(cost,false);player.getCooldowns().addCooldown(battery,CalculatorConfig.integer("module.ender_pearl.cooldown",10));}return true;
         }
         if(kind.equals("grenade")||kind.equals("baby_grenade")){
             if(!CalculatorConfig.GRENADES.get())return true;

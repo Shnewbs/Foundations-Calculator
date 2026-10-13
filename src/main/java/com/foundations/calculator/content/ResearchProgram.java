@@ -11,7 +11,7 @@ public final class ResearchProgram {
         var input=new ProcessInput(List.of(m.inventory.getStackInSlot(0)));
         var recipe=RecipeIndex.forMachine(m.getLevel(),"research").stream().filter(r->r.value().matches(input,m.getLevel())&&!data.groups(owner).contains(r.value().researchGroup())).findFirst();
         if(recipe.isEmpty()){m.progress=0;return;}
-        var r=recipe.get();String id=r.id().toString();
+        var r=recipe.get();String id=r.id().identifier().toString();
         if(!id.equals(m.program.getStringOr("ResearchRecipe",""))){m.progress=0;m.program.putString("ResearchRecipe",id);}
         m.totalTicks=CalculatorConfig.ticks(m.kind(),r.value().ticks());
         long cost=CalculatorConfig.flag("research.consumeEnergy",true)?CalculatorConfig.energyLong(m.kind(),RecipePolicies.energy(r,0)):0;

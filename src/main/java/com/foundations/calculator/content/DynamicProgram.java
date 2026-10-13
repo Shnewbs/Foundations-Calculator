@@ -5,7 +5,7 @@ import net.minecraft.core.*;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.state.BlockState;
-import net.neoforged.neoforge.items.ItemStackHandler;
+import com.foundations.calculator.core.BasicInventory;
 /** Three independent calculator recipe lanes within the original 7x7x7 housing. */
 public final class DynamicProgram {
     private DynamicProgram() {}
@@ -30,7 +30,7 @@ public final class DynamicProgram {
             List<ItemStack> inputs=new ArrayList<>();for(int i=0;i<sizes[lane];i++)inputs.add(m.inventory.getStackInSlot(starts[lane]+i));var input=new ProcessInput(inputs);String type=types[lane];
             var found=RecipeIndex.forMachine(m.getLevel(),type,m.owner()).stream().filter(r->r.value().matches(input,m.getLevel())).findFirst();if(found.isEmpty())continue;
             var recipe=found.get().value();long cost=CalculatorConfig.energyLong(m.kind(),RecipePolicies.energy(found.get(),1));if(m.energy.stored()<cost)continue;
-            ItemStackHandler temporary=new ItemStackHandler(25);for(int i=0;i<sizes[lane];i++)temporary.setStackInSlot(i,inputs.get(i).copy());
+            BasicInventory temporary=new BasicInventory(25);for(int i=0;i<sizes[lane];i++)temporary.setStackInSlot(i,inputs.get(i).copy());
             var results=ProcessTransactions.consume(temporary,recipe.allocation(input),recipe,m.getLevel());
             for(int i=0;i<sizes[lane];i++)m.inventory.setStackInSlot(starts[lane]+i,temporary.getStackInSlot(i));
             m.energy.extract(cost,false);m.pending.addAll(results);ResearchData.completed(m.getLevel(),m.owner(),type);m.setChanged();break;

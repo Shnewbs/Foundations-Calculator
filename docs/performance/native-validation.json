@@ -1,0 +1,177 @@
+{
+  "date_utc": "2026-10-13",
+  "main": {
+    "commit": "c5491c982d37416b8eccca0f2e45f9e3030370ec",
+    "run": 38408010160,
+    "artifact": 11819014979,
+    "unit_tests": {
+      "tests": 33,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "gametests": {
+      "gametest-integrations.log": [
+        "144"
+      ],
+      "gametest-standalone.log": [
+        "144"
+      ]
+    },
+    "release_eligible": false,
+    "source_sha256": "94d4660e085fbe34f8a6b28a1564cf4ac02de5510991d37e94099d35304d719a",
+    "beta_acceptance": {
+      "passed": false,
+      "pending_gates": [
+        "client",
+        "copied_world",
+        "survival_multiplayer",
+        "performance",
+        "port_26_1_2",
+        "port_26_3"
+      ]
+    },
+    "jars": [
+      "build/libs/FoundationsCalculator-0.1.0beta-sources.jar",
+      "build/libs/FoundationsCalculator-0.1.0beta.jar"
+    ]
+  },
+  "ports": [
+    {
+      "artifact": 11820180250,
+      "unit_tests": {
+        "tests": 43,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "native_reports": [
+        {
+          "native_regression_assertions": 56,
+          "integrations_enabled": true,
+          "server_started": true,
+          "exit_code": 0,
+          "loaded_recipes": 2916,
+          "calculator_recipes": 909,
+          "authored_calculator_recipes": 910,
+          "required_calculator_recipes": 909,
+          "conditional_calculator_recipes": 1,
+          "resource_errors": [],
+          "passed": true
+        },
+        {
+          "native_regression_assertions": 56,
+          "integrations_enabled": false,
+          "server_started": true,
+          "exit_code": 0,
+          "loaded_recipes": 2424,
+          "calculator_recipes": 909,
+          "authored_calculator_recipes": 910,
+          "required_calculator_recipes": 909,
+          "conditional_calculator_recipes": 1,
+          "resource_errors": [],
+          "passed": true
+        }
+      ],
+      "jars": [
+        "build/libs/FoundationsCalculator-26.1.2-0.1.0beta-port.1-sources.jar",
+        "build/libs/FoundationsCalculator-26.1.2-0.1.0beta-port.1.jar"
+      ],
+      "target": "26.1.2",
+      "commit": "8986ef8383a77aef05238b016474b3fa2077c756",
+      "run": 38407536817
+    },
+    {
+      "artifact": 11820425041,
+      "unit_tests": {
+        "tests": 43,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "native_reports": [
+        {
+          "native_tree_features": 4,
+          "native_regression_assertions": 56,
+          "integrations_enabled": true,
+          "server_started": true,
+          "exit_code": 0,
+          "loaded_recipes": 0,
+          "calculator_recipes": 909,
+          "authored_calculator_recipes": 910,
+          "required_calculator_recipes": 909,
+          "conditional_calculator_recipes": 1,
+          "resource_errors": [],
+          "passed": true
+        },
+        {
+          "native_tree_features": 4,
+          "native_regression_assertions": 56,
+          "integrations_enabled": false,
+          "server_started": true,
+          "exit_code": 0,
+          "loaded_recipes": 0,
+          "calculator_recipes": 909,
+          "authored_calculator_recipes": 910,
+          "required_calculator_recipes": 909,
+          "conditional_calculator_recipes": 1,
+          "resource_errors": [],
+          "passed": true
+        }
+      ],
+      "jars": [
+        "build/libs/FoundationsCalculator-0.1.0beta-port.2-sources.jar",
+        "build/libs/FoundationsCalculator-0.1.0beta-port.2.jar"
+      ],
+      "target": "26.3",
+      "commit": "9748801ef6469662ca7898b119700b24ce4ad50c",
+      "run": 38407540953
+    }
+  ],
+  "curseforge": {
+    "run": 38408036276,
+    "upload_performed": false,
+    "reason": "No published release for v0.1.0beta; candidate acceptance pending."
+  },
+  "real_client": {
+    "run": 38408010593,
+    "artifact": 11820076271,
+    "screenshots": 21,
+    "reports": {
+      "validation/beta-client/client-checks.json": {
+        "missing_screenshots": [],
+        "client_exit_code": 0,
+        "markers": {
+          "FOUNDATIONS_CLIENT_MACHINE_INTERACTIONS_PASSED": true,
+          "FOUNDATIONS_CLIENT_CIRCUIT_PROCESSING_PASSED": true,
+          "FOUNDATIONS_CLIENT_R4_FEATURES_PASSED": true,
+          "FOUNDATIONS_CLIENT_SMOKE_PASSED": true
+        },
+        "screenshots": [
+          "validation/screenshots/01-world-models.png",
+          "validation/screenshots/02-greenhouse-menu.png",
+          "validation/screenshots/03-module-workstation.png",
+          "validation/screenshots/04-bulk-storage.png",
+          "validation/screenshots/05-weather-controls.png",
+          "validation/screenshots/06-field-guide.png",
+          "validation/screenshots/07-item-gallery.png",
+          "validation/screenshots/08-furnace-needs-power.png",
+          "validation/screenshots/09-furnace-processing.png",
+          "validation/screenshots/10-furnace-output.png",
+          "validation/screenshots/11-cube-charging.png",
+          "validation/screenshots/12-dirty-chip-processing.png",
+          "validation/screenshots/13-circuit-board-output.png",
+          "validation/screenshots/14-portable-smelting.png",
+          "validation/screenshots/17-research-browser.png",
+          "validation/screenshots/18-config-screen.png",
+          "validation/screenshots/19-animated-chest-menu.png",
+          "validation/screenshots/20-portable-smelting-output.png",
+          "validation/screenshots/21-flat-tool-models.png",
+          "validation/screenshots/22-classic-palette.png",
+          "validation/screenshots/23-mastery-browser.png"
+        ],
+        "passed": true
+      }
+    }
+  }
+}

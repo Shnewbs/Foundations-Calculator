@@ -25,6 +25,8 @@ jobs:
           set -o pipefail
           chmod +x gradlew
           ./gradlew testPortEnergy compileJava jar sourcesJar --console=plain 2>&1 | tee port-compile.log
+      - name: Native dedicated server and recipe loading
+        run: python3 tools/check_port_startup.py
       - name: Capture native API signatures for the remaining migration
         if: always()
         shell: bash
@@ -39,5 +41,7 @@ jobs:
             port-compile.log
             port-api.log
             build/libs/
+            build/port-startup.*
+            run/logs/
             build/test-results/testPortEnergy/
             build/reports/tests/testPortEnergy/

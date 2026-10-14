@@ -112,3 +112,9 @@ The scan hoists block and config lookups once per traversal and reuses its priva
 direction table. Loaded-chunk checks, maturity and protection events stay live.
 Unit tests verify unchanged cadence, the opt-out, and a spread of scheduled scans
 for 1,000 positions; this is scheduling evidence, not a measured TPS claim.
+
+## Alpha R2: preserve gameplay while reducing recipe allocations
+
+R2 changes only graph representation, count-extraction loops and input-list
+capacity. It preserves R1 schedules and gameplay rules. See [R2 evidence](releases/0.1.0alpha.R2.md)
+for the exact R1 comparison, native checks and publishing receipts.

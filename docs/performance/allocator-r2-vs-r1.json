@@ -1,0 +1,52 @@
+{
+  "baseline_commit": "16de6fb8fb50b0e095adeecb0f8a4b36684afcd0",
+  "differential_cases": 100000,
+  "java": "openjdk version \"21.0.9\" 2025-10-21 LTS\nOpenJDK Runtime Environment Zulu21.46+19-CA (build 21.0.9+10-LTS)\nOpenJDK 64-Bit Server VM Zulu21.46+19-CA (build 21.0.9+10-LTS, mixed mode, sharing)",
+  "scope": "Mixed single-ingredient, insufficient-count and overlapping-ingredient allocator calls; not world TPS.",
+  "samples": {
+    "before": [
+      {
+        "ns_per_call": 62.511606,
+        "allocated_bytes_per_call": 89.6
+      },
+      {
+        "ns_per_call": 63.850002,
+        "allocated_bytes_per_call": 89.6
+      },
+      {
+        "ns_per_call": 62.191253,
+        "allocated_bytes_per_call": 89.6
+      },
+      {
+        "ns_per_call": 66.168853,
+        "allocated_bytes_per_call": 89.6
+      },
+      {
+        "ns_per_call": 61.983179,
+        "allocated_bytes_per_call": 89.6
+      }
+    ],
+    "after": [
+      {
+        "ns_per_call": 30.132676,
+        "allocated_bytes_per_call": 65.6
+      },
+      {
+        "ns_per_call": 29.166621,
+        "allocated_bytes_per_call": 65.6
+      },
+      {
+        "ns_per_call": 30.070683,
+        "allocated_bytes_per_call": 65.6
+      },
+      {
+        "ns_per_call": 28.650854,
+        "allocated_bytes_per_call": 65.6
+      },
+      {
+        "ns_per_call": 30.060067,
+        "allocated_bytes_per_call": 65.6
+      }
+    ]
+  }
+}

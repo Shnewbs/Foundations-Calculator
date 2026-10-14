@@ -43,11 +43,16 @@ public record ProcessRecipe(String machine, List<CountedIngredient> inputs, List
         Codec.string(0,256).optionalFieldOf("research_group","").forGetter(ProcessRecipe::researchGroup)
     ).apply(i,ProcessRecipe::new));
     public int[] allocation(ProcessInput input) {
-        int[] available=input.stacks().stream().mapToInt(ItemStack::getCount).toArray();
-        int[] required=inputs.stream().mapToInt(CountedIngredient::count).toArray();
+        int[] available=new int[input.size()];
+        for(int slot=0;slot<available.length;slot++)available[slot]=input.getItem(slot).getCount();
+        int[] required=new int[inputs.size()];
+        for(int ingredient=0;ingredient<required.length;ingredient++)required[ingredient]=inputs.get(ingredient).count();
         return IngredientAllocation.allocate(available,required,(i,s)->inputs.get(i).test(input.getItem(s)));
     }
-    public boolean matches(ProcessInput input,Level level){return input.stacks().stream().allMatch(RecipePolicies::itemEnabled)&&allocation(input)!=null;}
+    public boolean matches(ProcessInput input,Level level){
+        for(ItemStack stack:input.stacks())if(!RecipePolicies.itemEnabled(stack))return false;
+        return allocation(input)!=null;
+    }
     public ItemStack assemble(ProcessInput input){return outputs.isEmpty()?ItemStack.EMPTY:outputs.getFirst().stack().copy();}
     public boolean canCraftInDimensions(int width,int height){return width*height>=inputs.size();}
     public ItemStack getResultItem(HolderLookup.Provider lookup){return outputs.isEmpty()?ItemStack.EMPTY:outputs.getFirst().stack();}

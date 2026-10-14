@@ -1,5 +1,8 @@
 # 0.1.0beta development candidate
 
+Latest published update: **alpha R2** on 1.21.1, 26.1.2 and 26.3.
+See [R2 validation, performance comparison and accepted upload receipts](docs/releases/0.1.0alpha.R2.md).
+
 The source target is 0.1.0beta. The last published GitHub/CurseForge binary remains 0.0.5a.R2; full beta acceptance is pending.
 
 Minecraft 1.21.1 builds native binary/source JARs and passes 31 JUnit tests, 142 standalone GameTests and 142 combined-integration GameTests including GTCEu. The hosted real OpenGL client walkthrough reaches all completion markers and captures 21 base-client screenshots. Screenshot review caught a clipped Field Guide chapter strip and a stale portable-output capture. Both fixes are verified by the final base-client run; the viewport fix is also pushed and compiled on both port branches.

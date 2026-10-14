@@ -46,4 +46,11 @@ public class IngredientAllocationTest {
         }
         return false;
     }
+    @Test void playerSizedInventoryPreservesExactSlotAllocation(){
+        int[] available=new int[63],required=new int[14],expected=new int[63];
+        java.util.Arrays.fill(available,1);java.util.Arrays.fill(required,2);
+        for(int slot=0;slot<28;slot++)expected[slot]=1;
+        assertArrayEquals(expected,IngredientAllocation.allocate(available,required,(ingredient,slot)->slot==ingredient||slot==ingredient+14));
+        assertEquals(63,java.util.Arrays.stream(available).sum());
+    }
 }

@@ -3,13 +3,17 @@
 Needs javac/java (17+), Git history containing the baseline, and no Minecraft stubs.
 Reports CPU time and JVM thread allocation; this is not a whole-mod TPS benchmark.
 """
+import argparse
 import json
 from pathlib import Path
 import subprocess
 import tempfile
 
 ROOT = Path(__file__).resolve().parents[1]
-BASELINE = '0a56675493cf836b4ce035fc1a8e7653e9648b64'
+parser=argparse.ArgumentParser()
+parser.add_argument('--baseline',default='0a56675493cf836b4ce035fc1a8e7653e9648b64')
+args=parser.parse_args()
+BASELINE=args.baseline
 SOURCE = 'src/main/java/com/foundations/calculator/core/IngredientAllocation.java'
 HARNESS = r'''
 package com.foundations.calculator.core;
@@ -42,7 +46,7 @@ public final class AllocationBenchmark {
     public static void main(String[] args){
         var random=new Random(1734096);
         for(int trial=0;trial<100000;trial++){
-            int[] available=new int[random.nextInt(7)],required=new int[random.nextInt(5)];
+            int[] available=new int[random.nextInt(trial%10==0?64:7)],required=new int[random.nextInt(trial%10==0?15:5)];
             for(int s=0;s<available.length;s++)available[s]=random.nextInt(8);
             for(int i=0;i<required.length;i++)required[i]=random.nextInt(8);
             boolean[][] matches=new boolean[required.length][available.length];

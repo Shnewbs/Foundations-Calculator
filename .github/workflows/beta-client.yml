@@ -10,6 +10,10 @@ on:
       - 'src/main/java/com/foundations/calculator/core/ResearchData.java'
       - 'src/main/java/com/foundations/calculator/core/ResearchEvents.java'
       - 'src/main/java/com/foundations/calculator/core/EnergyDisplay.java'
+      - 'gradle.properties'
+      - 'src/main/java/com/foundations/calculator/core/IngredientAllocation.java'
+      - 'src/main/java/com/foundations/calculator/core/ProcessRecipe.java'
+      - 'src/main/java/com/foundations/calculator/core/ProcessTransactions.java'
   workflow_dispatch:
 permissions:
   contents: read

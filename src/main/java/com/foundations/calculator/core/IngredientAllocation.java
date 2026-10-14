@@ -19,24 +19,25 @@ public final class IngredientAllocation {
             return remaining==0?used:null;
         }
         int slots=available.length,ingredients=required.length,sink=slots+ingredients+1,size=sink+1;
-        int[][] residual=new int[size][size];
+        // Row-major storage preserves edge order with one graph array instead of one per node.
+        int[] residual=new int[Math.multiplyExact(size,size)];
         for(int s=0;s<slots;s++){
-            residual[0][s+1]=Math.min(available[s],target);
-            for(int i=0;i<ingredients;i++)if(accepts.test(i,s))residual[s+1][1+slots+i]=Math.min(available[s],required[i]);
+            residual[s+1]=Math.min(available[s],target);
+            for(int i=0;i<ingredients;i++)if(accepts.test(i,s))residual[(s+1)*size+1+slots+i]=Math.min(available[s],required[i]);
         }
-        for(int i=0;i<ingredients;i++)residual[1+slots+i][sink]=required[i];
+        for(int i=0;i<ingredients;i++)residual[(1+slots+i)*size+sink]=required[i];
         int total=0;int[] parent=new int[size],queue=new int[size];
         while(total<target){
             Arrays.fill(parent,-1);parent[0]=0;
             int read=0,write=1;
-            while(read<write&&parent[sink]<0){int node=queue[read++];for(int n=1;n<size;n++)if(parent[n]<0&&residual[node][n]>0){parent[n]=node;queue[write++]=n;}}
+            while(read<write&&parent[sink]<0){int node=queue[read++];for(int n=1;n<size;n++)if(parent[n]<0&&residual[node*size+n]>0){parent[n]=node;queue[write++]=n;}}
             if(parent[sink]<0)return null;
             int flow=target-total;
-            for(int n=sink;n!=0;n=parent[n])flow=Math.min(flow,residual[parent[n]][n]);
-            for(int n=sink;n!=0;n=parent[n]){residual[parent[n]][n]-=flow;residual[n][parent[n]]+=flow;}
+            for(int n=sink;n!=0;n=parent[n])flow=Math.min(flow,residual[parent[n]*size+n]);
+            for(int n=sink;n!=0;n=parent[n]){residual[parent[n]*size+n]-=flow;residual[n*size+parent[n]]+=flow;}
             total+=flow;
         }
-        int[] used=new int[slots];for(int s=0;s<slots;s++)used[s]=Math.min(available[s],target)-residual[0][s+1];return used;
+        int[] used=new int[slots];for(int s=0;s<slots;s++)used[s]=Math.min(available[s],target)-residual[s+1];return used;
     }
     private IngredientAllocation(){}
 }

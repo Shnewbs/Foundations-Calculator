@@ -33,6 +33,8 @@ def main():
 **{kind.title()} prerelease.** Built for this exact Minecraft/NeoForge target.
 Includes recipe allocation and lane-cache improvements, research packet batching,
 idle transfer fast paths, staggered nutrition scans and fewer scan lookups.
+R2 further reduces recipe-allocation objects using a flat graph and direct count
+loops, preserving slot order, recipe matching, timings, costs and scan schedules.
 
 Native unit tests: {audit['unit_tests']}. Runtime evidence is attached in release_checks.json.
 World-upgrade, broader client gameplay, multiplayer/protection and full-world

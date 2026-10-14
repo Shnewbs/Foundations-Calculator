@@ -36,6 +36,12 @@ jobs:
             echo "A newer main commit exists; waiting for its validation."
             exit 0
           fi
+          client_run=$(gh run list --workflow beta-client.yml --json databaseId,headSha --limit 20 | jq -r --arg sha "$VALIDATED_COMMIT" '[.[] | select(.headSha == $sha)][0].databaseId // empty')
+          if test -z "$client_run"; then
+            echo "No real-client validation for this source; refusing to publish it."
+            exit 1
+          fi
+          gh run watch "$client_run" --exit-status
           python tools/publish_prerelease.py --directory validated/build/libs --audit "validated/validation/$version/release_checks.json" --version "$version"
       - name: Retain CurseForge receipt
         if: always()

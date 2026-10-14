@@ -7,7 +7,7 @@ import com.foundations.calculator.core.BasicInventory;
 
 public final class ProcessTransactions {
     public static ProcessInput input(BasicInventory inventory,int slots){
-        List<ItemStack> result=new ArrayList<>();for(int i=0;i<slots;i++)result.add(inventory.getStackInSlot(i));return new ProcessInput(result);
+        List<ItemStack> result=new ArrayList<>(Math.max(0,slots));for(int i=0;i<slots;i++)result.add(inventory.getStackInSlot(i));return new ProcessInput(result);
     }
     /** Commit only on the server, after a fresh allocation; never accept client-provided results. */
     public static List<ItemStack> consume(BasicInventory inv,int[] used,ProcessRecipe recipe,Level level){

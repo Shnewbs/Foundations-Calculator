@@ -49,7 +49,7 @@ public final class PortClientSmoke {
         if(!started&&screen instanceof TitleScreen){started=true;mc.createWorldOpenFlows().openWorld("FoundationsPortClient",()->{throw new IllegalStateException("Native smoke world refused to open");});return;}
         if(mc.level==null||mc.player==null)return;ticks++;
         if(ticks==20)mc.getSingleplayerServer().execute(()->{
-            var player=mc.getSingleplayerServer().getPlayerList().getPlayers().getFirst();var level=player.level();player.setGameMode(GameType.CREATIVE);level.setDayTime(6000);
+            var player=mc.getSingleplayerServer().getPlayerList().getPlayers().getFirst();var level=player.level();player.setGameMode(GameType.CREATIVE);com.foundations.calculator.core.PlatformWorld.setDayTime(level,6000);
             for(int x=-10;x<=10;x++)for(int z=-10;z<=10;z++)level.setBlockAndUpdate(ORIGIN.offset(x,-1,z),Blocks.STONE.defaultBlockState());
             int i=0;for(String kind:java.util.List.of("extraction_chamber","precision_chamber","research_chamber","reinforced_chest"))level.setBlockAndUpdate(ORIGIN.offset(-3+2*i++,0,-3),Content.block(kind).defaultBlockState());
             var m=(MachineBlockEntity)level.getBlockEntity(ORIGIN.offset(-3,0,-3));m.outputBuffer.set(6,new ItemStack(Items.DIAMOND,7));

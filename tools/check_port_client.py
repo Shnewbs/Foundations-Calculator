@@ -55,7 +55,7 @@ def launch(arguments, logfile, timeout, stop_on_ready=False):
 evidence=Path('validation/port-client');evidence.mkdir(parents=True,exist_ok=True)
 run=Path('run');run.mkdir(exist_ok=True)
 (run/'eula.txt').write_text('eula=true\n')
-(run/'server.properties').write_text('online-mode=false\nlevel-name=FoundationsPortClient\nview-distance=2\nsimulation-distance=2\n')
+(run/'server.properties').write_text('online-mode=false\nlevel-name=FoundationsPortClient\nlevel-type=minecraft:flat\ngenerator-settings={"layers":[{"block":"minecraft:bedrock","height":1},{"block":"minecraft:dirt","height":2},{"block":"minecraft:grass_block","height":1}],"biome":"minecraft:plains","features":false,"lakes":false,"structure_overrides":[]}\nview-distance=2\nsimulation-distance=2\n')
 code,log,ready=launch(['runServer'],evidence/'world-creation.log',300,True)
 if code!=0 or not ready:raise SystemExit('Native client smoke world could not be saved')
 (run/'options.txt').write_text('onboardAccessibility:false\nguiScale:2\ntutorialStep:none\nrenderDistance:4\nsimulationDistance:3\nmaxFps:60\n')

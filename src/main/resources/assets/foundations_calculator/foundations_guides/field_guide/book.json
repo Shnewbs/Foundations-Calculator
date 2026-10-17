@@ -4,7 +4,7 @@
   "owner": "foundations_calculator",
   "title": "Calculator Field Guide",
   "icon": "foundations_calculator:info_calculator",
-  "revision": "26.3-0.1.0alpha.R5",
+  "revision": "26.3-0.1.0alpha.R6",
   "landing": "foundations_calculator:getting_started/welcome",
   "chapters": [
     "chapters/getting_started.json",

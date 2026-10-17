@@ -1,3 +1,10 @@
+# 26.3-0.1.0alpha.R6 — separate native vertex tint and outline requests
+
+- Corrects the R5 model-part rendering regression: the neutral vertex tint is -1 (opaque white), while outline color zero disables outlines. R5 had treated the model-part tint argument as an outline argument, producing black chamber frames.
+- Uses each Minecraft version's explicit model-part submission signature. Keeps normal models untinted with NO_OVERLAY and no outline, and forwards genuine item outlines independently.
+- Client regressions now assert overlay, neutral vertex tint, normal outline and explicit colored-outline forwarding for chambers and chests.
+- Retains the performance pass, translated names and verified wider NeoForge ranges. All three versions remain alpha.
+
 # 26.3-0.1.0alpha.R5 — normal native model outlines
 
 - Fixes forced white model outlines on the 26.x renderer. Normal world models use outline color zero; actual item outline requests are forwarded from Minecraft. This fixes the solid-white reinforced chest found during R4 screenshot review.

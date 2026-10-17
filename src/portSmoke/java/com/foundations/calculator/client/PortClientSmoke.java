@@ -30,18 +30,22 @@ public final class PortClientSmoke {
         var machine=(MachineBlockEntity)mc.level.getBlockEntity(ORIGIN.offset(-3,0,-3));
         require(machine!=null,"World chamber must exist before render checks");
         var renderer=(MachineRenderer)(Object)mc.getBlockEntityRenderDispatcher().getRenderer(machine);
-        var calls=new AtomicInteger();
+        var calls=new AtomicInteger();var expectedOutline=new AtomicInteger();
         var collector=(net.minecraft.client.renderer.SubmitNodeCollector)java.lang.reflect.Proxy.newProxyInstance(PortClientSmoke.class.getClassLoader(),new Class<?>[]{net.minecraft.client.renderer.SubmitNodeCollector.class},(proxy,method,args)->{
             if(method.getName().equals("order"))return proxy;
             if(method.getName().equals("submitModelPart")||method.getName().equals("submitModel")){
                 int overlay=(Integer)args[method.getName().equals("submitModelPart")?4:5];
-                require(overlay==net.minecraft.client.renderer.texture.OverlayTexture.NO_OVERLAY,"World model must use NO_OVERLAY rather than the red hurt texture");require((Integer)args[6]==0,"Normal models must not force an opaque white outline");calls.incrementAndGet();
+                require(overlay==net.minecraft.client.renderer.texture.OverlayTexture.NO_OVERLAY,"World model must use NO_OVERLAY rather than the red hurt texture");if(method.getName().equals("submitModelPart")){require((Integer)args[6]==-1,"Model parts retain neutral white vertex color, never zero/black");require((Integer)args[7]==expectedOutline.get(),"Model part outline matches the actual request");}
+                else require((Integer)args[6]==expectedOutline.get(),"Chest outline matches the actual request");calls.incrementAndGet();
             }return null;
         });
         var state=new MachineRenderer.State();state.kind="extraction_chamber";state.blockPos=machine.getBlockPos();state.lightCoords=15728880;
         renderer.submit(state,new com.mojang.blaze3d.vertex.PoseStack(),collector,new net.minecraft.client.renderer.state.level.CameraRenderState());
         state.kind="reinforced_chest";renderer.submit(state,new com.mojang.blaze3d.vertex.PoseStack(),collector,new net.minecraft.client.renderer.state.level.CameraRenderState());
         require(calls.get()>=3,"Both chamber frame and mechanism must be checked");
+        expectedOutline.set(0xff123456);state.kind="extraction_chamber";
+        renderer.submitGeometry(state,new com.mojang.blaze3d.vertex.PoseStack(),collector,15728880,net.minecraft.client.renderer.texture.OverlayTexture.NO_OVERLAY,expectedOutline.get());
+        state.kind="reinforced_chest";renderer.submitGeometry(state,new com.mojang.blaze3d.vertex.PoseStack(),collector,15728880,net.minecraft.client.renderer.texture.OverlayTexture.NO_OVERLAY,expectedOutline.get());
         System.out.println("FOUNDATIONS_PORT_RENDER_OVERLAYS_PASSED");
     }
     @SubscribeEvent public static void tick(ClientTickEvent.Post event){

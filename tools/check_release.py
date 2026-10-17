@@ -19,6 +19,8 @@ evidence=root/'validation'/version
 evidence.mkdir(parents=True,exist_ok=True)
 jar=root/'build'/'libs'/f'FoundationsCalculator-{version}.jar'
 assert jar.is_file(),'No native JAR; run tools/validate_release.py first.'
+compatibility=json.loads((root/'validation/neoforge-minimum/neoforge-compatibility.json').read_text())
+assert compatibility['passed'] and compatibility['declared_range'] in (root/'src/main/resources/META-INF/neoforge.mods.toml').read_text(),'Minimum NeoForge validation is missing'
 receipt=json.loads((evidence/'build-receipt.json').read_text())
 assert receipt['version']==version and receipt['source_sha256']==source_fingerprint(root),'Source changed after validation'
 assert receipt['jar_sha256']==hashlib.sha256(jar.read_bytes()).hexdigest(),'Binary differs from fresh validation receipt'
@@ -97,6 +99,7 @@ report={
     'validation_finished_utc':receipt['finished_utc'],
     'native_build_and_current_source_match':True,
     'unit_tests':unit_count,
+    'neoforge_compatibility':compatibility,
     'gametests':counts,
     'required_gametests':required_tests,
     'recipes':910,

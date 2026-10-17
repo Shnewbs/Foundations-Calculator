@@ -66,7 +66,7 @@ destination = run / 'saves/FoundationsSmoke'
 destination.parent.mkdir(exist_ok=True)
 shutil.copytree(run / 'FoundationsSmoke', destination, dirs_exist_ok=True)
 code, client_log, _ = launch(['runClient', '-PclientSmoke'], evidence / 'client.log', 900)
-markers = ['FOUNDATIONS_CLIENT_EXPANDED_OUTPUTS_PASSED', 'FOUNDATIONS_CLIENT_MACHINE_INTERACTIONS_PASSED',
+markers = ['FOUNDATIONS_CLIENT_ITEM_NAMES_PASSED', 'FOUNDATIONS_CLIENT_EXPANDED_OUTPUTS_PASSED', 'FOUNDATIONS_CLIENT_MACHINE_INTERACTIONS_PASSED',
            'FOUNDATIONS_CLIENT_CIRCUIT_PROCESSING_PASSED',
            'FOUNDATIONS_CLIENT_R4_FEATURES_PASSED', 'FOUNDATIONS_CLIENT_SMOKE_PASSED']
 screenshots = sorted(str(path) for path in Path('validation/screenshots').glob('*.png'))

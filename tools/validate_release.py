@@ -32,6 +32,8 @@ def main():
     started = datetime.datetime.now(datetime.timezone.utc).isoformat()
     for script in ['generate_config.py', 'generate_config_docs.py', 'author_field_guide.py', 'validate_assets.py', 'validate_progression.py']:
         subprocess.run([sys.executable, 'tools/' + script], check=True)
+    subprocess.run([sys.executable,'tools/benchmark_discount_cache.py'],check=True)
+    subprocess.run([sys.executable,'tools/check_neoforge_compatibility.py'],check=True)
     fingerprint = source_fingerprint(ROOT)
     phases = [('native-build', ['clean', 'test', 'build']),
               ('gametest-standalone', ['runGameTestServer']),

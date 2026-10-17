@@ -9,17 +9,21 @@ import net.minecraft.world.item.ItemStack;
 public final class MachineOutputs {
     public static final int MAX=54, EXTRA=MAX-6;
     private final MachineBlockEntity machine;
+    private final String capacityKey;
     private final ItemStack[] extra=new ItemStack[EXTRA];
     public static boolean supports(String kind){return kind.equals("extraction_chamber")||kind.equals("precision_chamber");}
-    public MachineOutputs(MachineBlockEntity machine){this.machine=machine;java.util.Arrays.fill(extra,ItemStack.EMPTY);}
+    public MachineOutputs(MachineBlockEntity machine){this.machine=machine;capacityKey="machine."+machine.kind()+".outputSlots";java.util.Arrays.fill(extra,ItemStack.EMPTY);}
     private static void check(int slot){if(slot<0||slot>=MAX)throw new IndexOutOfBoundsException(slot);}
-    public int configured(){return Math.clamp(CalculatorConfig.integer("machine."+machine.kind()+".outputSlots",6),6,MAX);}
+    public int configured(){return Math.clamp(CalculatorConfig.integer(capacityKey,6),6,MAX);}
     /** Lowered capacity never hides or destroys previously saved stacks. */
-    public int visible(){int count=configured();for(int i=extra.length-1;i>=0;i--)if(!extra[i].isEmpty())return Math.max(count,i+7);return count;}
+    public int visible(){int count=configured();if(count==MAX)return count;for(int i=extra.length-1;i>=0;i--)if(!extra[i].isEmpty())return Math.max(count,i+7);return count;}
     public ItemStack get(int slot){check(slot);return slot<6?machine.inventory.getStackInSlot(14+slot):extra[slot-6];}
     public void set(int slot,ItemStack stack){check(slot);if(slot<6)machine.inventory.setStackInSlot(14+slot,stack);else{extra[slot-6]=stack;machine.setChanged();}}
     public ItemStack insert(int slot,ItemStack stack,boolean simulate){
         check(slot);if(slot>=configured()||stack.isEmpty())return stack;
+        return insertConfigured(slot,stack,simulate);
+    }
+    private ItemStack insertConfigured(int slot,ItemStack stack,boolean simulate){
         if(slot<6)return machine.inventory.insertItem(14+slot,stack,simulate);
         var into=get(slot);
         if(!into.isEmpty()&&!ItemStack.isSameItemSameComponents(into,stack))return stack;
@@ -37,8 +41,10 @@ public final class MachineOutputs {
         return result;
     }
     public void flush(java.util.List<ItemStack> pending){
+        if(pending.isEmpty())return;
+        int capacity=configured();
         for(var it=pending.listIterator();it.hasNext();){
-            var stack=it.next();for(int slot=0;slot<configured()&&!stack.isEmpty();slot++)stack=insert(slot,stack,false);
+            var stack=it.next();for(int slot=0;slot<capacity&&!stack.isEmpty();slot++)stack=insertConfigured(slot,stack,false);
             if(stack.isEmpty())it.remove();else it.set(stack);
         }
     }

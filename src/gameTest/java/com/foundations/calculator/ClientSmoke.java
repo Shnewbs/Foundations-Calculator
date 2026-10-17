@@ -48,6 +48,7 @@ public final class ClientSmoke {
             for(String id:List.of("basic_greenhouse","module_workstation","reinforced_chest","weather_controller")){BlockPos p=origin.offset(10,0,List.of("basic_greenhouse","module_workstation","reinforced_chest","weather_controller").indexOf(id)*2);level.setBlockAndUpdate(p,Content.block(id).defaultBlockState());}
             player.teleportTo(origin.getX()+.5,origin.getY()+2,origin.getZ()+6.5);player.setYRot(180);player.setXRot(18);
         });}
+        if(ticks==120){for(var entry:Content.ITEMS_BY_ID.entrySet()){String name=new ItemStack(entry.getValue().get()).getHoverName().getString();require(!name.startsWith("item.foundations_calculator.")&&!name.startsWith("block.foundations_calculator."),"Untranslated item "+entry.getKey());}require(new ItemStack(Content.item("research_chamber")).getHoverName().getString().equals("Research Chamber"),"Research Chamber is translated");System.out.println("FOUNDATIONS_CLIENT_ITEM_NAMES_PASSED");}
         if(ticks==120){mc.player.setYRot(180);mc.player.setXRot(18);mc.setScreen(null);}
         if(ticks==160)capture(mc,"01-world-models.png");
         if(ticks==180)open(mc,"basic_greenhouse",0);

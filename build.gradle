@@ -7,7 +7,7 @@ group = 'com.foundations.calculator'
 base { archivesName = 'FoundationsCalculator' }
 java { toolchain.languageVersion = JavaLanguageVersion.of(21); withSourcesJar() }
 neoForge {
-    version = '21.1.250'
+    version = providers.gradleProperty('neoforgeVersion').getOrElse('21.1.250')
     runs {
         client {
             client()

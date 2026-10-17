@@ -16,13 +16,15 @@ import net.minecraft.world.phys.AABB;
 
 public final class MachineRenderer implements BlockEntityRenderer<MachineBlockEntity> {
     public static final Set<String> MODELED=MachineBlock.MODELED;
+    private final Map<String,net.minecraft.resources.ResourceLocation> textures=new HashMap<>();
+    private net.minecraft.resources.ResourceLocation texture(String name){return textures.computeIfAbsent(name,key->Content.id("textures/legacy_calculator/model/"+key+".png"));}
     private final Map<String,ModelPart> meshes=new HashMap<>();
     public MachineRenderer(BlockEntityRendererProvider.Context ctx){
         meshes.put("reinforced_chest",ctx.bakeLayer(net.minecraft.client.model.geom.ModelLayers.CHEST));
         meshes.put("chamber",LegacyModels.chamber());meshes.put("processing",LegacyModels.processing());meshes.put("split",LegacyModels.split());
         meshes.put("conductor_mast",LegacyModels.conductorMast());meshes.put("transmitter",LegacyModels.transmitter());meshes.put("scarecrow",LegacyModels.scarecrow());meshes.put("docking_station",LegacyModels.dockingStation());meshes.put("crank_handle",LegacyModels.crankHandle());meshes.put("weather_station",LegacyModels.weatherStationBase());meshes.put("dish",LegacyModels.weatherStationDish());meshes.put("magnetic_flux",LegacyModels.magneticFlux());meshes.put("arm",LegacyModels.fabricationArm());
     }
-    private void mesh(String name,String texture,PoseStack pose,MultiBufferSource buffers,int light,int overlay){meshes.get(name).render(pose,buffers.getBuffer(RenderType.entityCutoutNoCull(Content.id("textures/legacy_calculator/model/"+texture+".png"))),light,overlay);}
+    private void mesh(String name,String texture,PoseStack pose,MultiBufferSource buffers,int light,int overlay){meshes.get(name).render(pose,buffers.getBuffer(RenderType.entityCutoutNoCull(texture(texture))),light,overlay);}
     public void render(MachineBlockEntity m,float partial,PoseStack pose,MultiBufferSource buffers,int light,int overlay){
         String kind=m.kind();double clock=m.getLevel()==null?0:(m.getLevel().getGameTime()+partial)*ClientConfig.animationSpeed();
         if(kind.equals("reinforced_chest")){chest(m,partial,pose,buffers,light,overlay);return;}
@@ -61,7 +63,7 @@ public final class MachineRenderer implements BlockEntityRenderer<MachineBlockEn
     private void chest(MachineBlockEntity m,float partial,PoseStack pose,MultiBufferSource buffers,int light,int overlay){
         pose.pushPose();pose.translate(.5,.5,.5);pose.mulPose(Axis.YP.rotationDegrees(-m.getBlockState().getValue(MachineBlock.FACING).toYRot()));pose.translate(-.5,-.5,-.5);
         var model=meshes.get("reinforced_chest");float open=net.minecraft.util.Mth.lerp(partial,m.previousLid,m.lid);open=1-(1-open)*(1-open)*(1-open);model.getChild("lid").xRot=-open*(float)Math.PI/2;model.getChild("lock").xRot=model.getChild("lid").xRot;
-        model.render(pose,buffers.getBuffer(RenderType.entityCutout(Content.id("textures/legacy_calculator/model/reinforced_chest.png"))),light,overlay);pose.popPose();
+        model.render(pose,buffers.getBuffer(RenderType.entityCutout(texture("reinforced_chest"))),light,overlay);pose.popPose();
     }
     public int getViewDistance(){return ClientConfig.SPEC.isLoaded()?ClientConfig.RENDER_DISTANCE.get():64;}
     private void display(MachineBlockEntity m,PoseStack pose,MultiBufferSource buffers,int light){

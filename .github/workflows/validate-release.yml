@@ -30,6 +30,7 @@ jobs:
         with:
           name: calculator-validation
           path: |
+            build/neoforge-compatibility*
             build/libs/
             build/test-results/
             build/gametest-output.log

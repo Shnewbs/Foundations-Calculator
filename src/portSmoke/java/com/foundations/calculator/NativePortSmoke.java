@@ -65,11 +65,42 @@ public final class NativePortSmoke {
         try{data.unlock(id,group);var unlocked=data.snapshot(id);check(unlocked.groups().contains(group)&&!after.equals(unlocked),"Unlock changes packet contents");}
         finally{data.revoke(id,group);}
     }
+    @SuppressWarnings("unchecked") private static void expandedOutputs(ServerLevel level,BlockPos pos){
+        for(String kind:List.of("extraction_chamber","precision_chamber")){
+            var setting=(net.neoforged.neoforge.common.ModConfigSpec.ConfigValue<Integer>)CalculatorConfig.value("machine."+kind+".outputSlots").orElseThrow();int before=setting.get();
+            var m=place(level,pos,kind);check(m.outputBuffer.configured()==6,"Default output capacity remains six");
+            try{setting.set(54);CalculatorConfig.settingsChanged();
+                for(int i=0;i<6;i++)m.inventory.setStackInSlot(14+i,new ItemStack(Items.COBBLESTONE,64));
+                m.pending.add(new ItemStack(Items.DIAMOND,12));m.outputBuffer.flush(m.pending);
+                check(m.pending.isEmpty()&&m.outputBuffer.get(6).getCount()==12,"Pending results enter expanded bank");
+                m.outputBuffer.set(53,new ItemStack(Items.EMERALD,5));m.inventory.setStackInSlot(20,new ItemStack(Items.REDSTONE));
+                var saved=m.saveWithFullMetadata(level.registryAccess());var copy=(MachineBlockEntity)BlockEntity.loadStatic(pos,m.getBlockState(),saved,level.registryAccess());
+                check(copy!=null&&copy.outputBuffer.get(6).getCount()==12&&copy.outputBuffer.get(53).getCount()==5,"Native ValueIO preserves both ends of the extra bank");
+                check(copy.inventory.getStackInSlot(14).getCount()==64&&copy.inventory.getStackInSlot(20).is(Items.REDSTONE),"Legacy output and battery indices stay unchanged");
+                var out=level.getCapability(Capabilities.Item.BLOCK,pos,Direction.DOWN);var resource=ItemResource.of(new ItemStack(Items.DIAMOND));
+                check(out!=null&&out.size()==73,"Native automation exposes all output slots");
+                try(var transaction=Transaction.openRoot()){check(out.extract(25,resource,4,transaction)==4,"Native extraction reaches first extra slot");}
+                check(m.outputBuffer.get(6).getCount()==12,"Aborted native extraction restores extra outputs");
+                try(var transaction=Transaction.openRoot()){check(out.extract(25,resource,4,transaction)==4,"Committed extra output extraction succeeds");transaction.commit();}
+                check(m.outputBuffer.get(6).getCount()==8,"Committed extra output extraction subtracts once");
+                try(var transaction=Transaction.openRoot()){check(out.insert(25,resource,4,transaction)==0,"Native insertion into extra output is rejected");transaction.commit();}
+                m.program.putInt("Side"+Direction.DOWN.get3DDataValue(),3);
+                try(var transaction=Transaction.openRoot()){check(out.extract(25,resource,4,transaction)==0,"Cached native extra output follows disabled side");transaction.commit();}
+                m.program.putInt("Side"+Direction.DOWN.get3DDataValue(),0);
+                setting.set(6);CalculatorConfig.settingsChanged();check(m.outputBuffer.visible()==54,"Reduced capacity keeps saved overflow accessible");
+                try(var transaction=Transaction.openRoot()){check(out.extract(72,ItemResource.of(new ItemStack(Items.EMERALD)),5,transaction)==5,"Saved last output can be drained after capacity reduction");transaction.commit();}
+                m.outputBuffer.extract(6,64,false);check(m.outputBuffer.visible()==6,"Draining overflow restores the original six-slot view");
+                saved.remove("ExtendedOutputs");var legacy=(MachineBlockEntity)BlockEntity.loadStatic(pos,m.getBlockState(),saved,level.registryAccess());
+                check(legacy!=null&&legacy.outputBuffer.get(53).isEmpty()&&legacy.inventory.getStackInSlot(14).getCount()==64,"Legacy save without extra output key loads safely");
+            }finally{setting.set(before);CalculatorConfig.settingsChanged();}
+        }
+    }
     @SubscribeEvent public static void started(ServerStartedEvent event){
         if(!Boolean.getBoolean("foundations.portSmoke"))return;
         assertions=0;
         var level=event.getServer().overworld();
         var pos=new BlockPos(128,96,128);
+        expandedOutputs(level,pos.offset(20,0,0));
         var machine=place(level,pos,"processing_chamber");
         performance(level,machine);
         machine.inventory.setStackInSlot(0,ItemStack.EMPTY);

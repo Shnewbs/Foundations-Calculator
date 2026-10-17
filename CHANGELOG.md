@@ -1,3 +1,13 @@
+# 26.3-0.1.0alpha.R3 — configurable chamber outputs
+
+- Extraction Chamber and Precision Chamber each support 6–54 output slots through their own `machine.<id>.outputSlots` server setting. Default capacity stays six.
+- Expanded outputs scroll by mouse wheel or the scrollbar. Each viewer selects their own row; shift-clicking and automation use the same saved inventory.
+- Existing six output slots, batteries and upgrades retain their saved indices. Extra outputs use a separate save key. Lowering capacity leaves previously saved overflow accessible until collected.
+- Process recipes accept up to 54 independently rolled results. The 1.21.1 KubeJS schema and CraftTweaker builder accept larger tables; native ports support datapacks. JEI/EMI layouts accommodate the full table.
+- Existing 910 authored recipes, probabilities, timings, energy costs and progression are unchanged. Custom sieve/ore recipes are opt-in pack additions.
+- Adds native save, capacity, automation, rollback, menu and codec checks plus a real 1.21.1 client walkthrough for both chamber scroll controls.
+- Requires matching client/server versions. This is an alpha revision; broader beta acceptance remains pending.
+
 # 0.0.5a.R2 — native bank transfers and continued 26.3 migration
 
 - Removed the standard FE integer ceiling from direct transfers between Calculator storage banks. Live long-valued sender/receiver limits and exact fill-fraction balancing now apply.

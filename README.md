@@ -1,4 +1,4 @@
-# Foundations Calculator 26.3-0.1.0alpha.R4
+# Foundations Calculator 26.3-0.1.0alpha.R5
 
 Minecraft **26.3**, NeoForge. This alpha adds optional expanded output storage and scrolling to both the Extraction Chamber and Precision Chamber. Their default capacity remains six slots; existing recipes and processing mechanics are unchanged.
 

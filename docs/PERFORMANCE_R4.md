@@ -24,8 +24,8 @@ The pass covers processing and recipe lookup, long energy math and routing, outp
 ## Reported bugs and compatibility
 
 - Raw `item.foundations_calculator.research_chamber` names: 26.x block items now use the block description prefix. Every declared block and standalone item has an English name; block item-key aliases cover saved/external queries. Native client tests resolve the actual hover names, including Research Chamber.
-- Red chamber models: the 26.x world submission path incorrectly passed overlay 0. It now passes `OverlayTexture.NO_OVERLAY`; client tests inspect submitted overlays and capture real world images.
-- NeoForge range: minimums under test are 21.1.219 for Minecraft 1.21.1, 26.1.2.100 for 26.1.2, and 26.3.0.39-beta for 26.3. Current development pins remain 21.1.250, 26.1.2.114 and 26.3.0.52-beta. Each minimum must compile and run native tests before publication. Minecraft target ranges remain exact; 26.4 compatibility is not inferred.
+- Red chamber models: the 26.x world submission path incorrectly passed overlay 0. It now passes `OverlayTexture.NO_OVERLAY`; client tests inspect submitted overlays and capture real world images. R5 also removes the forced white outline (zero means no outline) while forwarding genuine item outline requests.
+- NeoForge range: verified minimums are 21.1.219 for Minecraft 1.21.1, 26.1.2.100 for 26.1.2, and 26.3.0.39-beta for 26.3. Current development pins remain 21.1.250, 26.1.2.114 and 26.3.0.52-beta. Each minimum must compile and run native tests before publication. Minecraft target ranges remain exact; 26.4 compatibility is not inferred.
 
 ## Validation and remaining profiling
 

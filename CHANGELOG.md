@@ -1,3 +1,10 @@
+# 26.3-0.1.0alpha.R5 — normal native model outlines
+
+- Fixes forced white model outlines on the 26.x renderer. Normal world models use outline color zero; actual item outline requests are forwarded from Minecraft. This fixes the solid-white reinforced chest found during R4 screenshot review.
+- Extends client regression checks to both chamber geometry and chest model submissions, validating NO_OVERLAY and the absence of a forced outline.
+- Includes R4's performance pass, translated block-item names and expanded NeoForge compatibility ranges. All three Minecraft binaries stay on the same revision.
+- The 26.x platform unit suites now also run the cached arithmetic's varied-input and validation regressions.
+
 # 26.3-0.1.0alpha.R4 — performance, names and native rendering fixes
 
 - Fixes untranslated block-item names in 26.x with the proper block description prefix; adds English item-key aliases for existing stacks and external item-name queries.

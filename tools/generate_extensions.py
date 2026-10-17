@@ -61,3 +61,6 @@ print('Added research groups, repaired conversions, recipes and content resource
 
 # Keep modern block item transforms after standalone data generation.
 runpy.run_path(str(p/"tools/fix_item_transforms.py"))
+
+# Retain item-key aliases for legacy saved display components and external item-name queries.
+lang=res/assets/'lang/en_us.json';names=json.loads(lang.read_text());names.update({'item.'+key.removeprefix('block.'):value for key,value in list(names.items()) if key.startswith('block.'+N+'.')});lang.write_text(json.dumps(names,indent=2)+'\n')

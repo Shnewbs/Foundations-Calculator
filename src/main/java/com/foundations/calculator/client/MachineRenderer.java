@@ -28,6 +28,8 @@ public final class MachineRenderer implements BlockEntityRenderer<MachineBlockEn
         final ItemStackRenderState input=new ItemStackRenderState();
     }
     @FunctionalInterface private interface MeshSink {void draw(ModelPart part,PoseStack pose,String texture,int light,int overlay);}
+    private final Map<String,net.minecraft.resources.Identifier> textures=new HashMap<>();
+    private net.minecraft.resources.Identifier texture(String name){return textures.computeIfAbsent(name,key->Content.id("textures/legacy_calculator/model/"+key+".png"));}
     private final Map<String,ModelPart> meshes=new HashMap<>();private final Map<String,AABB> itemBounds=new HashMap<>();
     private final ItemModelResolver resolver;private final ChestModel chest;
     private static final class ChestModel extends Model<State> {
@@ -70,11 +72,11 @@ public final class MachineRenderer implements BlockEntityRenderer<MachineBlockEn
         pose.popPose();
     }
     private void chestPose(State state,PoseStack pose){pose.translate(.5,.5,.5);pose.rotate(Axis.YP.rotationDegrees(-state.facing.toYRot()));pose.translate(-.5,-.5,-.5);}
-    @Override public void submit(State state,PoseStack pose,SubmitNodeCollector collector,CameraRenderState camera){submitGeometry(state,pose,collector,state.lightCoords,0);}
+    @Override public void submit(State state,PoseStack pose,SubmitNodeCollector collector,CameraRenderState camera){submitGeometry(state,pose,collector,state.lightCoords,net.minecraft.client.renderer.texture.OverlayTexture.NO_OVERLAY);}
     public void submitGeometry(State state,PoseStack pose,SubmitNodeCollector collector,int light,int overlay){
-        if(state.kind.equals("reinforced_chest")){pose.pushPose();chestPose(state,pose);collector.submitModel(chest,state,pose,RenderTypes.entityCutout(Content.id("textures/legacy_calculator/model/reinforced_chest.png")),light,overlay,-1);if(state.breakProgress!=null)collector.submitCrumblingOverlay(chest,state,pose,RenderTypes.entityCutout(Content.id("textures/legacy_calculator/model/reinforced_chest.png")),light,overlay,-1,state.breakProgress);pose.popPose();return;}
+        if(state.kind.equals("reinforced_chest")){pose.pushPose();chestPose(state,pose);collector.submitModel(chest,state,pose,RenderTypes.entityCutout(texture("reinforced_chest")),light,overlay,-1);if(state.breakProgress!=null)collector.submitCrumblingOverlay(chest,state,pose,RenderTypes.entityCutout(texture("reinforced_chest")),light,overlay,-1,state.breakProgress);pose.popPose();return;}
         if(state.kind.equals("calculator_screen_block")){display(state,pose,collector,light);return;}
-        geometry(state,pose,(part,p,texture,l,o)->{var type=RenderTypes.entityCutout(Content.id("textures/legacy_calculator/model/"+texture+".png"));collector.submitModelPart(part,p,type,l,o,null,-1);if(state.breakProgress!=null)collector.submitCrumblingOverlay(part,p,type,l,o,-1,state.breakProgress);},light,overlay);
+        geometry(state,pose,(part,p,texture,l,o)->{var type=RenderTypes.entityCutout(texture(texture));collector.submitModelPart(part,p,type,l,o,null,-1);if(state.breakProgress!=null)collector.submitCrumblingOverlay(part,p,type,l,o,-1,state.breakProgress);},light,overlay);
         if(!state.input.isEmpty()){pose.pushPose();pose.translate(.5,.4,.5);pose.scale(.4f,.4f,.4f);pose.rotate(Axis.YP.rotationDegrees((float)(state.clock*2)));state.input.submit(pose,collector,light,overlay,0);pose.popPose();}
     }
     public AABB itemBounds(String kind){return itemBounds.computeIfAbsent(kind,key->{State state=new State();state.kind=key;state.blockPos=BlockPos.ZERO;var bounds=new ItemMeshBounds();var pose=new PoseStack();if(key.equals("reinforced_chest")){chestPose(state,pose);chest.setupAnim(state);chest.parts.render(pose,bounds,15728880,0);}else geometry(state,pose,(part,p,texture,l,o)->part.render(p,bounds,l,o),15728880,0);return bounds.bounds();});}

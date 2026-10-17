@@ -66,7 +66,7 @@ finally:
     required = expected - conditional
     report = {'native_tree_features': max(tree_counts, default=0), 'native_regression_assertions': max(native_assertions, default=0), 'integrations_enabled': integrations, 'server_started': started, 'exit_code': process.returncode,
               'loaded_recipes': max(counts, default=0), 'calculator_recipes': max(native_counts, default=0), 'authored_calculator_recipes': expected, 'required_calculator_recipes': required, 'conditional_calculator_recipes': conditional, 'resource_errors': errors,
-              'passed': started and process.returncode == 0 and not errors and required <= max(native_counts, default=0) <= expected and max(native_assertions, default=0) >= 88 and max(tree_counts, default=0) == 4}
+              'passed': started and process.returncode == 0 and not errors and required <= max(native_counts, default=0) <= expected and max(native_assertions, default=0) >= 220 and max(tree_counts, default=0) == 4}
     Path(f'build/port-startup{suffix}.json').write_text(json.dumps(report, indent=2) + '\n')
 if not report['passed']:
     raise SystemExit('Native server startup or recipe loading failed; see build/port-startup.log')

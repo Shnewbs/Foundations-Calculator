@@ -10,7 +10,7 @@ description='''Foundations Calculator for Minecraft 26.3. Calculator, its requir
 [[dependencies.foundations_calculator]]
 modId="neoforge"
 type="required"
-versionRange="[26.3.0.52-beta,26.4)"
+versionRange="[26.3.0.39-beta,26.4)"
 ordering="NONE"
 side="BOTH"
 [[dependencies.foundations_calculator]]

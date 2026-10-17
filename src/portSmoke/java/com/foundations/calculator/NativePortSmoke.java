@@ -95,11 +95,28 @@ public final class NativePortSmoke {
             }finally{setting.set(before);CalculatorConfig.settingsChanged();}
         }
     }
+    private static void performanceR4(ServerLevel level,BlockPos pos){
+        var pipe=Content.block("amethyst_piping");
+        for(int mask=0;mask<64;mask++){
+            var state=pipe.defaultBlockState();var expected=net.minecraft.world.level.block.Block.box(5,5,5,11,11,11);
+            for(Direction d:Direction.values()){
+                boolean connected=(mask&(1<<d.get3DDataValue()))!=0;state=state.setValue(com.foundations.calculator.content.ConnectedDecorBlock.SIDES.get(d),connected);
+                if(connected)expected=net.minecraft.world.phys.shapes.Shapes.or(expected,switch(d){case UP->net.minecraft.world.level.block.Block.box(5,11,5,11,16,11);case DOWN->net.minecraft.world.level.block.Block.box(5,0,5,11,5,11);case EAST->net.minecraft.world.level.block.Block.box(11,5,5,16,11,11);case WEST->net.minecraft.world.level.block.Block.box(0,5,5,5,11,11);case NORTH->net.minecraft.world.level.block.Block.box(5,5,0,11,11,5);case SOUTH->net.minecraft.world.level.block.Block.box(5,5,11,11,11,16);});
+            }
+            var shape=state.getShape(level,pos);check(shape==state.getShape(level,pos),"Pipe mask reuses an immutable shape");
+            check(!net.minecraft.world.phys.shapes.Shapes.joinIsNotEmpty(shape,expected,net.minecraft.world.phys.shapes.BooleanOp.NOT_SAME),"Cached pipe mask retains exactly the original geometry");
+        }
+        var m=place(level,pos,"extraction_chamber");m.inventory.setStackInSlot(21,new ItemStack(Content.item("energy_upgrade"),4));
+        check(m.upgradeEnergyCost(500)==357&&m.upgradeEnergyCost(500)==357,"Repeated machine discount preserves exact arithmetic");
+        m.inventory.getStackInSlot(21).setCount(8);check(m.upgradeEnergyCost(500)==277,"In-place upgrade stack mutations invalidate the numeric cache");
+        var kind=m.kind();m.setBlockState(m.getBlockState().setValue(com.foundations.calculator.content.MachineBlock.ACTIVE,true));check(kind==m.kind(),"Active state does not repeat the machine registry lookup");
+    }
     @SubscribeEvent public static void started(ServerStartedEvent event){
         if(!Boolean.getBoolean("foundations.portSmoke"))return;
         assertions=0;
         var level=event.getServer().overworld();
         var pos=new BlockPos(128,96,128);
+        performanceR4(level,pos.offset(24,0,0));
         expandedOutputs(level,pos.offset(20,0,0));
         var machine=place(level,pos,"processing_chamber");
         performance(level,machine);

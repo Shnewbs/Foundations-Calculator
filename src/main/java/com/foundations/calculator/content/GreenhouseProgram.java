@@ -19,6 +19,7 @@ import com.foundations.calculator.core.*;
 
 /** Greenhouse validation, resource-consuming construction and powered crop tending. */
 public final class GreenhouseProgram {
+    private static final int[][] GROWTH_INTERVALS={{400,300,200,150,80},{300,200,100,50,15},{200,100,50,25,15}};
     private GreenhouseProgram() {}
     public static int tier(MachineBlockEntity m){return m.kind().equals("basic_greenhouse")?1:m.kind().equals("advanced_greenhouse")?2:3;}
     private static Direction forward(MachineBlockEntity m){return m.getBlockState().getValue(MachineBlock.FACING).getOpposite();}
@@ -45,7 +46,8 @@ public final class GreenhouseProgram {
             else{
                 int range=tier==1?1:3,front=tier==1?2:4;
                 for(int x=-range;x<=range;x++)for(int z=-range;z<=range;z++)for(int y=0;y<(tier==1?3:5);y++){
-                    if(l.hasChunkAt(relative(m,x,front+z,y))&&l.getBlockEntity(relative(m,x,front+z,y)) instanceof MachineBlockEntity lamp&&lamp.kind().equals("gas_lantern_off")&&lamp.getBlockState().getValue(MachineBlock.ACTIVE))lanterns++;
+                    BlockPos lampPos=relative(m,x,front+z,y);
+                    if(l.hasChunkAt(lampPos)&&l.getBlockEntity(lampPos) instanceof MachineBlockEntity lamp&&lamp.kind().equals("gas_lantern_off")&&lamp.getBlockState().getValue(MachineBlock.ACTIVE))lanterns++;
                 }gas=(int)Math.min(Integer.MAX_VALUE,(long)lanterns*CalculatorConfig.integer("greenhouse.lanternCarbon",50));
             }
             int effective=tier==2?plants/5:plants;
@@ -55,8 +57,7 @@ public final class GreenhouseProgram {
         int plantInterval=tier==1?CalculatorConfig.integer("greenhouse.basicPlantInterval",60):tier==2?CalculatorConfig.integer("greenhouse.advancedPlantInterval",10):CalculatorConfig.integer("greenhouse.flawlessPlantInterval",2);
         if(m.workDue(plantInterval))tend(m,area);
         int oxygen=100000-m.program.getIntOr("Carbon",0),band=oxygen>=90000?0:oxygen>=50000?1:oxygen>=30000?2:oxygen>=10000?3:4;
-        int[][] intervals={{400,300,200,150,80},{300,200,100,50,15},{200,100,50,25,15}};
-        m.totalTicks=CalculatorConfig.ticks(m.kind(),CalculatorConfig.integer("greenhouse."+(tier==1?"basic":tier==2?"advanced":"flawless")+"GrowthBand"+band,intervals[tier-1][band]));
+        m.totalTicks=CalculatorConfig.ticks(m.kind(),CalculatorConfig.integer("greenhouse."+(tier==1?"basic":tier==2?"advanced":"flawless")+"GrowthBand"+band,GROWTH_INTERVALS[tier-1][band]));
         if(++m.progress>=m.totalTicks){
             m.progress=0;for(int i=0;i<(tier==3?Math.max(1,geometry(m).length):1)&&!area.isEmpty();i++){
                 BlockPos p=area.get(l.getRandom().nextInt(area.size()));if(m.energy.stored()>=CalculatorConfig.energyLong(m.kind(),CalculatorConfig.integer("greenhouse.growEnergy",150))&&l.hasChunkAt(p)&&MachinePrograms.grow(m,p)){m.energy.extract(CalculatorConfig.energyLong(m.kind(),CalculatorConfig.integer("greenhouse.growEnergy",150)),false);m.program.putInt("Grown",m.program.getIntOr("Grown",0)+1);}

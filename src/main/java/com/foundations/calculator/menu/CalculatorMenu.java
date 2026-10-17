@@ -69,25 +69,27 @@ public final class CalculatorMenu extends AbstractContainerMenu {
                 if(i==40)return scrollableOutputs()?machine.outputBuffer.visible():6;
                 if(i==41)return outputRow();
                 if(i==27)return machine==null?0:machine.redstoneMode();
-                long longEnergy=machine!=null&&kind.equals("calculator_screen_block")?machine.program.getLongOr("ScreenEnergy",0L):machine==null&&held.getItem() instanceof CalculatorItem c?c.energyLong(held):machine==null?0:machine.energy.stored();
-                long longCapacity=machine!=null&&kind.equals("calculator_screen_block")?machine.program.getLongOr("ScreenCapacity",0L):machine==null&&held.getItem() instanceof CalculatorItem c?c.maxEnergyLong(held):machine==null?0:machine.energy.capacity();
-                if(i>=28&&i<32)return (int)((longEnergy>>>((i-28)*16))&65535L);
-                if(i>=32&&i<36)return (int)((longCapacity>>>((i-32)*16))&65535L);
                 if(i==24)return diagnostic().status().ordinal();
                 if(i>=36&&i<40)return (int)((diagnostic().requiredEnergy()>>>((i-36)*16))&65535L);
                 if(i==25)return (int)Math.min(Integer.MAX_VALUE,diagnostic().requiredEnergy())&65535;
                 if(i==26)return (int)Math.min(Integer.MAX_VALUE,diagnostic().requiredEnergy())>>>16;
-                int energy=(int)Math.min(Integer.MAX_VALUE,longEnergy);
-                int capacity=(int)Math.min(Integer.MAX_VALUE,longCapacity);
+                if(i<4||i>=28&&i<36){
+                    boolean stored=i<2||i>=28&&i<32;
+                    long value=stored?storedEnergy():storedCapacity();
+                    if(i>=28)return (int)((value>>>((i-(stored?28:32))*16))&65535L);
+                    int bounded=(int)Math.min(Integer.MAX_VALUE,value);return (i&1)==0?bounded&65535:bounded>>>16;
+                }
                 int progress=machine==null?0:machine.progress,time=machine==null?1:machine.totalTicks,points=machine==null?0:machine.nutrient;
                 if(i>=18&&machine!=null)return machine.program.getIntOr("Side"+(i-18),0);
                 if(i>=10&&machine!=null){var s=machine.program;return switch(i){case 10->s.getIntOr("HouseState",0);case 11->s.getIntOr("Carbon",0)&65535;case 12->s.getIntOr("Carbon",0)>>>16;case 13->s.getIntOr("Mode",0);case 14->s.getBooleanOr("Target",false)?1:0;case 15->s.getBooleanOr("Paused",false)?1:0;case 16->s.getBooleanOr("Whitelist",false)?1:0;default->s.getBooleanOr("MatchTags",false)?1:0;};}
-                return switch(i){case 0->energy&65535;case 1->energy>>>16;case 2->capacity&65535;case 3->capacity>>>16;case 4->progress&65535;case 5->progress>>>16;case 6->time&65535;case 7->time>>>16;case 8->points&65535;default->points>>>16;};
+                return switch(i){case 4->progress&65535;case 5->progress>>>16;case 6->time&65535;case 7->time>>>16;case 8->points&65535;default->points>>>16;};
             }
             public void set(int i,int v){} public int getCount(){return 42;}
         };
         addDataSlots(data);
     }
+    private long storedEnergy(){return machine!=null&&kind.equals("calculator_screen_block")?machine.program.getLongOr("ScreenEnergy",0L):machine==null&&held.getItem() instanceof CalculatorItem c?c.energyLong(held):machine==null?0:machine.energy.stored();}
+    private long storedCapacity(){return machine!=null&&kind.equals("calculator_screen_block")?machine.program.getLongOr("ScreenCapacity",0L):machine==null&&held.getItem() instanceof CalculatorItem c?c.maxEnergyLong(held):machine==null?0:machine.energy.capacity();}
     public boolean scrollableOutputs(){return machine!=null&&machine.outputBuffer!=null;}
     public int outputSlots(){return !scrollableOutputs()?6:playerInventory.player.level().isClientSide()?(data==null?6:Math.max(6,data.get(40))):machine.outputBuffer.visible();}
     public int maxOutputRow(){return Math.max(0,(outputSlots()+2)/3-2);}

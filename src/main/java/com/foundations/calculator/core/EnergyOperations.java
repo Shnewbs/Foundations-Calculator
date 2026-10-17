@@ -34,6 +34,21 @@ public final class EnergyOperations {
         return bounded(BigDecimal.valueOf(base).divide(divisor, 0, RoundingMode.DOWN));
     }
 
+    /** One entry per consumer: no global key growth and no stale live settings. */
+    public static final class DiscountCache {
+        private boolean initialized;
+        private long base,result,discountBits;
+        private int upgrades;
+        public long apply(long base,int upgrades,double discount){
+            if(base<=0||upgrades<=0||discount==0)return discounted(base,upgrades,discount);
+            long bits=Double.doubleToLongBits(discount);
+            if(initialized&&this.base==base&&this.upgrades==upgrades&&discountBits==bits)return result;
+            long computed=discounted(base,upgrades,discount);
+            this.base=base;this.upgrades=upgrades;discountBits=bits;result=computed;initialized=true;
+            return computed;
+        }
+    }
+
     private static long bounded(BigDecimal result) {
         return result.compareTo(MAX) >= 0 ? Long.MAX_VALUE : result.longValue();
     }

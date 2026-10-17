@@ -7,11 +7,15 @@ group = 'com.foundations.calculator'
 base { archivesName = 'FoundationsCalculator' }
 java { toolchain.languageVersion = JavaLanguageVersion.of(25); withSourcesJar() }
 neoForge {
-    version = '26.3.0.52-beta'
+    version = providers.gradleProperty('neoforgeVersion').getOrElse('26.3.0.52-beta')
     accessTransformers.from(file('src/main/resources/META-INF/accesstransformer.cfg'))
     runs {
         client {
             client()
+            if(project.hasProperty('portClientSmoke')) {
+                systemProperty 'foundations.portClientSmoke','true'
+                programArguments.addAll('--width','1280','--height','960')
+            }
             if(project.hasProperty('powerSmoke')) {
                 systemProperty 'foundations.powerSmoke','true'
                 systemProperty 'neoforge.enableGameTest','true'
@@ -299,4 +303,4 @@ sourceSets {
         runtimeClasspath += sourceSets.main.output + sourceSets.main.runtimeClasspath
     }
 }
-if(project.hasProperty('portSmoke')) neoForge.mods.foundations_calculator.sourceSet(sourceSets.portSmoke)
+if(project.hasProperty('portSmoke')||project.hasProperty('portClientSmoke')) neoForge.mods.foundations_calculator.sourceSet(sourceSets.portSmoke)

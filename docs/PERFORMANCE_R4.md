@@ -32,3 +32,7 @@ The pass covers processing and recipe lookup, long energy math and routing, outp
 Publication requires current-pin native tests, minimum-version native tests, translation coverage, source/binary audits, and client walkthroughs. The main suite keeps the prior processing, save, upgrade, protection, KubeJS and overflow regressions; new checks cover geometry, idle display dirtying and live arithmetic inputs. The 26.x clients verify names, render overlays and actual paged output packets.
 
 Further gains in large farms, item magnets, foreign energy networks and huge KubeJS packs should be driven by profiles of a representative player world. This pass does not reduce gameplay work or claim completion of copied-world, multiplayer and long-duration soak acceptance.
+
+## Native rendering follow-ups
+
+R5 corrected the chest's forced white outline but incorrectly reused the outline value as the model-part vertex tint, making chamber frames black. R6 separates those arguments using each native API's explicit signature: white vertex tint (-1), no normal outline (0), and NO_OVERLAY. Genuine special-item outline colors are forwarded independently. Real-client assertions now check all three values and explicit colored-outline forwarding; screenshots remain a required review artifact.

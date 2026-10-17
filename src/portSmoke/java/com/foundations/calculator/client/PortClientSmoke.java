@@ -35,12 +35,13 @@ public final class PortClientSmoke {
             if(method.getName().equals("order"))return proxy;
             if(method.getName().equals("submitModelPart")||method.getName().equals("submitModel")){
                 int overlay=(Integer)args[method.getName().equals("submitModelPart")?4:5];
-                require(overlay==net.minecraft.client.renderer.texture.OverlayTexture.NO_OVERLAY,"World model must use NO_OVERLAY rather than the red hurt texture");calls.incrementAndGet();
+                require(overlay==net.minecraft.client.renderer.texture.OverlayTexture.NO_OVERLAY,"World model must use NO_OVERLAY rather than the red hurt texture");require((Integer)args[6]==0,"Normal models must not force an opaque white outline");calls.incrementAndGet();
             }return null;
         });
         var state=new MachineRenderer.State();state.kind="extraction_chamber";state.blockPos=machine.getBlockPos();state.lightCoords=15728880;
         renderer.submit(state,new com.mojang.blaze3d.vertex.PoseStack(),collector,new net.minecraft.client.renderer.state.level.CameraRenderState());
-        require(calls.get()>=2,"Both chamber frame and mechanism must be checked");
+        state.kind="reinforced_chest";renderer.submit(state,new com.mojang.blaze3d.vertex.PoseStack(),collector,new net.minecraft.client.renderer.state.level.CameraRenderState());
+        require(calls.get()>=3,"Both chamber frame and mechanism must be checked");
         System.out.println("FOUNDATIONS_PORT_RENDER_OVERLAYS_PASSED");
     }
     @SubscribeEvent public static void tick(ClientTickEvent.Post event){

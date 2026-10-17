@@ -24,6 +24,7 @@ public class MachineBlockEntity extends BlockEntity implements MenuProvider {
     private static final Set<String> ENERGY_PUSHERS=Set.of("power_cube","advanced_power_cube","creative_power_cube","hand_cranked_generator","analysing_chamber");
     public final StoredEnergy energy;
     public final BulkStorage bulk;
+    public final MachineOutputs outputBuffer=MachineOutputs.supports(kind())?new MachineOutputs(this):null;
     public final ItemStackHandler inventory=new ItemStackHandler(SIZE){
         protected void onContentsChanged(int slot){setChanged();if(kind().equals("module_workstation"))ModuleWorkstation.changed(MachineBlockEntity.this,slot);}
         public boolean isItemValid(int slot,ItemStack stack){
@@ -121,7 +122,7 @@ public class MachineBlockEntity extends BlockEntity implements MenuProvider {
     public String kind(){return net.minecraft.core.registries.BuiltInRegistries.BLOCK.getKey(getBlockState().getBlock()).getPath();}
     public int inputCount(){return MachineDefinition.forMachine(kind()).inputCount();}
     public boolean bulkInventory(){return storage()||kind().equals("algorithm_assimilator");}
-    private void flushResults(){if(!bulkInventory()){ProcessTransactions.flush(pending,inventory);return;}for(var iterator=pending.listIterator();iterator.hasNext();){ItemStack stack=iterator.next();for(int i=0;i<bulk.getSlots()&&!stack.isEmpty();i++)stack=bulk.insertItem(i,stack,false);if(stack.isEmpty())iterator.remove();else iterator.set(stack);}}
+    private void flushResults(){if(outputBuffer!=null){outputBuffer.flush(pending);return;}if(!bulkInventory()){ProcessTransactions.flush(pending,inventory);return;}for(var iterator=pending.listIterator();iterator.hasNext();){ItemStack stack=iterator.next();for(int i=0;i<bulk.getSlots()&&!stack.isEmpty();i++)stack=bulk.insertItem(i,stack,false);if(stack.isEmpty())iterator.remove();else iterator.set(stack);}}
     public boolean storage(){return kind().equals("reinforced_chest")||kind().equals("storage_chamber");}
     public boolean hasOutputs(){return MachineDefinition.forMachine(kind()).outputs();}
     public boolean hasBatterySlot(){return MachineDefinition.forMachine(kind()).batterySlot();}
@@ -158,21 +159,23 @@ public class MachineBlockEntity extends BlockEntity implements MenuProvider {
     public IItemHandler automation(Direction face){
         IItemHandler base=bulkInventory()?bulk:inventory;
         return new IItemHandler(){
-            public int getSlots(){return base.getSlots();}
-            public ItemStack getStackInSlot(int slot){return base.getStackInSlot(slot);}
+            public int getSlots(){return base.getSlots()+(outputBuffer==null?0:MachineOutputs.EXTRA);}
+            public ItemStack getStackInSlot(int slot){return slot>=base.getSlots()&&outputBuffer!=null?outputBuffer.get(slot-base.getSlots()+6):base.getStackInSlot(slot);}
             private boolean extra(int slot,boolean output){
                 int mode=face==null?0:program.getInt("Side"+face.get3DDataValue());
                 return mode==(output?2:1)&&(slot==20&&hasBatterySlot()&&CalculatorConfig.flag("automation.allowBatterySlotAccess",true)||slot>=21&&supportsUpgrades()&&CalculatorConfig.flag("automation.allowUpgradeSlotAccess",false));
             }
             public ItemStack insertItem(int slot,ItemStack stack,boolean simulate){
+                if(slot>=base.getSlots()&&outputBuffer!=null)return stack;
                 boolean normal=slot<inputCount()&&(face!=Direction.DOWN||program.getInt("Side"+Direction.DOWN.get3DDataValue())==1);
                 return itemInput(face)&&(bulkInventory()||normal||extra(slot,false))?base.insertItem(slot,stack,simulate):stack;
             }
             public ItemStack extractItem(int slot,int count,boolean simulate){
+                if(slot>=base.getSlots()&&outputBuffer!=null)return itemOutput(face)?outputBuffer.extract(slot-base.getSlots()+6,count,simulate):ItemStack.EMPTY;
                 return itemOutput(face)&&(bulkInventory()||slot>=14&&slot<20||extra(slot,true))?base.extractItem(slot,count,simulate):ItemStack.EMPTY;
             }
-            public int getSlotLimit(int slot){return base.getSlotLimit(slot);}
-            public boolean isItemValid(int slot,ItemStack stack){return itemInput(face)&&base.isItemValid(slot,stack)&&(bulkInventory()||
+            public int getSlotLimit(int slot){return slot>=base.getSlots()&&outputBuffer!=null?64:base.getSlotLimit(slot);}
+            public boolean isItemValid(int slot,ItemStack stack){return !(slot>=base.getSlots()&&outputBuffer!=null)&&itemInput(face)&&base.isItemValid(slot,stack)&&(bulkInventory()||
                     slot<inputCount()&&(face!=Direction.DOWN||program.getInt("Side"+Direction.DOWN.get3DDataValue())==1)||extra(slot,false));}
         };
     }
@@ -226,7 +229,7 @@ public class MachineBlockEntity extends BlockEntity implements MenuProvider {
                 energy.extract(cost,false);
                 pending.addAll(ProcessTransactions.consume(inventory,used,recipe,level));
                 ResearchData.completed(level,owner(),machine);
-                ProcessTransactions.flush(pending,inventory);
+                flushResults();
             }
             progress=0;
         }setChanged();
@@ -375,16 +378,17 @@ public class MachineBlockEntity extends BlockEntity implements MenuProvider {
         if(kind().equals("module_workstation")){ModuleWorkstation.flush(this);updatingModules=true;for(int i=0;i<16;i++)inventory.setStackInSlot(i,ItemStack.EMPTY);}
         for(int i=0;i<SIZE;i++){Containers.dropItemStack(level,worldPosition.getX()+.5,worldPosition.getY()+.5,worldPosition.getZ()+.5,inventory.getStackInSlot(i));inventory.setStackInSlot(i,ItemStack.EMPTY);}
         if(bulkInventory())for(int i=0;i<bulk.getSlots();i++)while(bulk.count(i)>0)Containers.dropItemStack(level,worldPosition.getX()+.5,worldPosition.getY()+.5,worldPosition.getZ()+.5,bulk.extractItem(i,64,false));
+        if(outputBuffer!=null){for(ItemStack stack:outputBuffer.snapshot())Containers.dropItemStack(level,worldPosition.getX()+.5,worldPosition.getY()+.5,worldPosition.getZ()+.5,stack);outputBuffer.restore(java.util.stream.IntStream.range(0,MachineOutputs.EXTRA).mapToObj(i->ItemStack.EMPTY).toArray(ItemStack[]::new));}
         for(ItemStack s:pending)Containers.dropItemStack(level,worldPosition.getX()+.5,worldPosition.getY()+.5,worldPosition.getZ()+.5,s);
         pending.clear();
     }
     protected void saveAdditional(CompoundTag tag,HolderLookup.Provider lookup){
-        super.saveAdditional(tag,lookup);tag.put("Program",program.copy());if(bulkInventory())tag.put("Bulk",bulk.save(lookup));tag.put("Inventory",inventory.serializeNBT(lookup));tag.putLong("Energy",energy.stored());
+        super.saveAdditional(tag,lookup);if(outputBuffer!=null)tag.put("ExtendedOutputs",outputBuffer.save(lookup));tag.put("Program",program.copy());if(bulkInventory())tag.put("Bulk",bulk.save(lookup));tag.put("Inventory",inventory.serializeNBT(lookup));tag.putLong("Energy",energy.stored());
         tag.putInt("Progress",progress);tag.putInt("BurnTime",burnTime);tag.putInt("Nutrient",nutrient);tag.putString("Recipe",activeRecipe);
         ListTag list=new ListTag();for(ItemStack s:pending)if(!s.isEmpty())list.add(s.save(lookup));tag.put("Pending",list);
     }
     protected void loadAdditional(CompoundTag tag,HolderLookup.Provider lookup){
-        super.loadAdditional(tag,lookup);program=tag.getCompound("Program").copy();
+        super.loadAdditional(tag,lookup);if(outputBuffer!=null)outputBuffer.load(tag.getCompound("ExtendedOutputs"),lookup);program=tag.getCompound("Program").copy();
         chestOpeners.clear();program.remove("LidOpen");program.remove("Checked");program.remove("DynamicFormed");
         greenhouseGeometry=null;recipeSelection.clear();clientProgram.clear();
         inventory.deserializeNBT(lookup,tag.getCompound("Inventory"));energy.load(tag.getLong("Energy"));

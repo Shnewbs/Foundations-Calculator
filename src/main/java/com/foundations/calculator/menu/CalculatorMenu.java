@@ -21,6 +21,7 @@ public final class CalculatorMenu extends AbstractContainerMenu {
     private final InteractionHand hand;
     private final int heldSlot;
     private final ContainerData data;
+    private int outputRow;
     private long diagnosticTick=Long.MIN_VALUE;
     private MachineDiagnostics.Snapshot diagnostic;
     private MachineDiagnostics.Snapshot diagnostic(){
@@ -41,6 +42,7 @@ public final class CalculatorMenu extends AbstractContainerMenu {
         handler=machine==null?new ItemStackHandler(25):machine.inventory;
         kind=machine==null?(selectedKind==null?Content.path(held):selectedKind):machine.kind();
         inputs=machine!=null?machine.inputCount():(kind.equals("dynamic_module")?7:kind.equals("flawless_calculator")?4:kind.equals("atomic_calculator")?3:2);
+        ItemStackHandler outputView=scrollableOutputs()?(inv.player.level().isClientSide?new ItemStackHandler(6):new PagedOutputHandler(machine.outputBuffer,this::outputRow)):handler;
         for(int i=0;i<25;i++){
             final int slot=i;
             int x,y;
@@ -49,8 +51,8 @@ public final class CalculatorMenu extends AbstractContainerMenu {
             else if(i<20){x=160+(i-14)%3*18;y=45+(i-14)/3*18;}
             else if(i==20){x=16;y=99;}
             else{x=88+(i-21)*18;y=99;}
-            addSlot(new SlotItemHandler(handler,i,x,y){
-                public boolean isActive(){return kind.equals("module_workstation")?slot<16||slot==20:slot<14?slot<inputs:slot<20?(machine==null||machine.hasOutputs()):slot==20?machine!=null&&machine.hasBatterySlot():machine!=null&&machine.supportsUpgrades();}
+            addSlot(new SlotItemHandler(scrollableOutputs()&&i>=14&&i<20?outputView:handler,scrollableOutputs()&&i>=14&&i<20?i-14:i,x,y){
+                public boolean isActive(){if(scrollableOutputs()&&slot>=14&&slot<20)return outputRow()*3+slot-14<outputSlots();return kind.equals("module_workstation")?slot<16||slot==20:slot<14?slot<inputs:slot<20?(machine==null||machine.hasOutputs()):slot==20?machine!=null&&machine.hasBatterySlot():machine!=null&&machine.supportsUpgrades();}
                 public void setChanged(){super.setChanged();diagnosticTick=Long.MIN_VALUE;if(machine!=null){machine.setChanged();if(kind.equals("module_workstation"))ModuleWorkstation.changed(machine,slot);}}
                 public boolean mayPickup(Player player){return isActive()&&super.mayPickup(player);}
                 public boolean mayPlace(ItemStack s){
@@ -61,9 +63,11 @@ public final class CalculatorMenu extends AbstractContainerMenu {
         for(int r=0;r<3;r++)for(int col=0;col<9;col++)addSlot(new Slot(inv,col+r*9+9,35+col*18,157+r*18));
         for(int col=0;col<9;col++)addSlot(new Slot(inv,col,35+col*18,215));
         if(machine==null)HeldItemLock.install(this,inv,heldSlot);
-        if(inv.player.level().isClientSide)data=new SimpleContainerData(40);
+        if(inv.player.level().isClientSide)data=new SimpleContainerData(42);
         else data=new ContainerData(){
             public int get(int i){
+                if(i==40)return scrollableOutputs()?machine.outputBuffer.visible():6;
+                if(i==41)return outputRow();
                 if(i==27)return machine==null?0:machine.redstoneMode();
                 long longEnergy=machine!=null&&kind.equals("calculator_screen_block")?machine.program.getLong("ScreenEnergy"):machine==null&&held.getItem() instanceof CalculatorItem c?c.energyLong(held):machine==null?0:machine.energy.stored();
                 long longCapacity=machine!=null&&kind.equals("calculator_screen_block")?machine.program.getLong("ScreenCapacity"):machine==null&&held.getItem() instanceof CalculatorItem c?c.maxEnergyLong(held):machine==null?0:machine.energy.capacity();
@@ -80,10 +84,15 @@ public final class CalculatorMenu extends AbstractContainerMenu {
                 if(i>=10&&machine!=null){var s=machine.program;return switch(i){case 10->s.getInt("HouseState");case 11->s.getInt("Carbon")&65535;case 12->s.getInt("Carbon")>>>16;case 13->s.getInt("Mode");case 14->s.getBoolean("Target")?1:0;case 15->s.getBoolean("Paused")?1:0;case 16->s.getBoolean("Whitelist")?1:0;default->s.getBoolean("MatchTags")?1:0;};}
                 return switch(i){case 0->energy&65535;case 1->energy>>>16;case 2->capacity&65535;case 3->capacity>>>16;case 4->progress&65535;case 5->progress>>>16;case 6->time&65535;case 7->time>>>16;case 8->points&65535;default->points>>>16;};
             }
-            public void set(int i,int v){} public int getCount(){return 40;}
+            public void set(int i,int v){} public int getCount(){return 42;}
         };
         addDataSlots(data);
     }
+    public boolean scrollableOutputs(){return machine!=null&&machine.outputBuffer!=null;}
+    public int outputSlots(){return !scrollableOutputs()?6:playerInventory.player.level().isClientSide?(data==null?6:Math.max(6,data.get(40))):machine.outputBuffer.visible();}
+    public int maxOutputRow(){return Math.max(0,(outputSlots()+2)/3-2);}
+    public int outputRow(){return playerInventory.player.level().isClientSide?Math.clamp(data==null?0:data.get(41),0,maxOutputRow()):outputRow;}
+    @Override public void broadcastChanges(){if(scrollableOutputs()&&!playerInventory.player.level().isClientSide)outputRow=Math.clamp(outputRow,0,maxOutputRow());super.broadcastChanges();}
     public MachineStatus status(){return MachineStatus.decode(data.get(24));}
     public long requiredEnergy(){return longWords(36);}
     public int state(int index){return data.get(index);}
@@ -132,6 +141,11 @@ public final class CalculatorMenu extends AbstractContainerMenu {
     }
     public boolean clickMenuButton(Player player,int button){
         if(player.level().isClientSide||!stillValid(player))return false;
+        if(button>=1000){
+            if(!scrollableOutputs()||button>1016||!player.level().mayInteract(player,machine.getBlockPos()))return false;
+            outputRow=Math.clamp(button-1000,0,maxOutputRow());
+            broadcastFullState();return true;
+        }
         if(machine!=null)return machine.action(player,button);
         if(kind.equals("dynamic_module"))return dynamicCalculation(player,button);
         if(button!=0)return false;

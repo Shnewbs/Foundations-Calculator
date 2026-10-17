@@ -63,7 +63,7 @@ ServerEvents.recipes(event => {
 | `machine` | Recipe family; one of the supported machine/family IDs |
 | `ingredients` | One to fourteen entries; each `ingredient` accepts a vanilla/NeoForge ingredient and optional `count` from 1 to 64 |
 | `circuit_state` | 0: no circuit-state restriction; 1: analysed; 2: analysed and stable |
-| `results` | Zero to six results; `stack` uses 1.21.1 item-stack JSON (`id`, `count`, optional `components`) |
+| `results` | Zero to 54 results; `stack` uses 1.21.1 item-stack JSON (`id`, `count`, optional `components`) |
 | `chance` | Independent output chance, from 0 to 1; defaults to 1 |
 | `random_circuit` | Optional `circuit_board`, `circuit_dirty`, or `circuit_damaged`; selects a random subtype from 0–13 |
 | `energy` | Total machine FE cost; special meaning for analysis rewards described below |
@@ -99,3 +99,30 @@ Official references: https://kubejs.com/wiki/tutorials/recipes and https://docs.
 A study recipe has `machine: "research"`, `research_group: "your_group"`, sample ingredients and empty results. Keep `research: false` on the study itself. Put `research: true` and the same group on conversions it unlocks. The study’s `energy` and `ticks` fields apply, with the same per-recipe and `machine.research_chamber` profiles as other processes. Research recipes and samples appear in the built-in guide and recipe viewers.
 
 The server’s per-shipped-recipe switches can suppress a scripted replacement using the same recipe ID. New script IDs do not gain TOML keys automatically; set their fields in your script. Global and applicable per-machine profiles still apply.
+
+## Extraction and Precision Chamber sieve recipes
+
+Both `extraction_chamber` and `precision_chamber` accept the same process recipe format. Each result rolls independently; chances need not sum to one. Up to 54 result entries are supported. Set each machine's `machine.<id>.outputSlots` server setting to 6–54 when a pack needs more than six inventory slots. Default capacity, stock recipes, energy and processing times remain unchanged. Full outputs retain pending results and stop further processing; an installed Void Upgrade retains its existing intentional-discard behavior.
+
+The following optional 1.21.1 KubeJS example adds gravel processing to both chambers. Change items, counts, chances, FE and ticks to suit your pack:
+
+```js
+ServerEvents.recipes(event => {
+  for (const machine of ['extraction_chamber', 'precision_chamber']) {
+    event.recipes.foundations_calculator.process(machine,
+      [{ ingredient: 'minecraft:gravel', count: 1 }],
+      [
+        { stack: 'minecraft:raw_iron', chance: 0.12 },
+        { stack: 'minecraft:raw_copper', chance: 0.18 },
+        { stack: 'minecraft:raw_gold', chance: 0.04 },
+        { stack: 'minecraft:coal', chance: 0.10 },
+        { stack: 'minecraft:redstone', chance: 0.06 },
+        { stack: 'minecraft:lapis_lazuli', chance: 0.04 },
+        { stack: 'minecraft:diamond', chance: 0.005 },
+        { stack: 'minecraft:emerald', chance: 0.005 }
+      ]).energy(5000).ticks(1000).id('my_pack:' + machine + '_gravel_sieve')
+  }
+})
+```
+
+For 26.x, provide a native datapack process recipe with the corresponding machine ID, `ingredients` and `results` fields; use that Minecraft version's item-stack/ingredient format. KubeJS is not a required dependency. Saved extra stacks remain scrollable and extractable even after lowering capacity; fresh processing only fills the configured capacity.

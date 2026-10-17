@@ -11,6 +11,7 @@ import net.minecraft.world.entity.player.Inventory;
 
 public final class CalculatorScreen extends AbstractContainerScreen<CalculatorMenu>{
     private boolean sidesOpen;
+    private boolean draggingOutputs;
     private final java.util.Map<Integer,Button> controls=new java.util.HashMap<>();
     public CalculatorScreen(CalculatorMenu menu,Inventory inv,Component title){super(menu,inv,title);imageWidth=232;imageHeight=238;inventoryLabelX=35;inventoryLabelY=145;titleLabelX=12;titleLabelY=22;}
     protected void init(){super.init();controls.clear();
@@ -49,6 +50,11 @@ public final class CalculatorScreen extends AbstractContainerScreen<CalculatorMe
         g.drawString(font,"FOUNDATIONS CALCULATOR",leftPos+12,topPos+7,ClientConfig.color(ClientConfig.TEXT,0xa5e6ec),false);
         for(var slot:menu.slots)if(slot.isActive()){
             int sx=leftPos+slot.x,sy=topPos+slot.y;g.fill(sx-1,sy-1,sx+17,sy+17,0xff728896);g.fill(sx,sy,sx+16,sy+16,ClientConfig.color(ClientConfig.SLOT,0x101820));
+        }
+        if(menu.maxOutputRow()>0){
+            int track=topPos+45,thumb=track+(int)Math.round(28.0*menu.outputRow()/menu.maxOutputRow());
+            g.fill(leftPos+217,track,leftPos+224,track+36,ClientConfig.color(ClientConfig.SLOT,0x101820));
+            g.fill(leftPos+217,thumb,leftPos+224,thumb+8,ClientConfig.color(ClientConfig.ACCENT,0x47acb9));
         }
         String inputLabel=menu.kind.equals("module_workstation")?"Modules":MachineProfiles.storage(menu.kind)?"Discharge":"Inputs";
         if(menu.inputs>0)g.drawString(font,inputLabel,leftPos+16,topPos+34,ClientConfig.color(ClientConfig.MUTED,0xa9bbc8),false);
@@ -96,6 +102,16 @@ public final class CalculatorScreen extends AbstractContainerScreen<CalculatorMe
             String help=slotHint(hoveredSlot.index);if(!help.isEmpty())g.renderTooltip(font,font.split(Component.literal(help),210),x,y);
         }
     }
+    private boolean outputTrack(double x,double y){return menu.maxOutputRow()>0&&x>=leftPos+216&&x<leftPos+226&&y>=topPos+44&&y<topPos+82;}
+    private void outputRow(int row){if(minecraft!=null&&minecraft.gameMode!=null)minecraft.gameMode.handleInventoryButtonClick(menu.containerId,1000+Math.clamp(row,0,menu.maxOutputRow()));}
+    private void dragOutputs(double y){outputRow((int)Math.round((y-topPos-49)*menu.maxOutputRow()/28.0));}
+    @Override public boolean mouseScrolled(double x,double y,double dx,double dy){
+        if(menu.maxOutputRow()>0&&x>=leftPos+159&&x<leftPos+226&&y>=topPos+44&&y<topPos+82){if(dy!=0)outputRow(menu.outputRow()-(dy>0?1:-1));return true;}
+        return super.mouseScrolled(x,y,dx,dy);
+    }
+    @Override public boolean mouseClicked(double x,double y,int button){if(button==0&&outputTrack(x,y)){draggingOutputs=true;dragOutputs(y);return true;}return super.mouseClicked(x,y,button);}
+    @Override public boolean mouseDragged(double x,double y,int button,double dx,double dy){if(draggingOutputs&&button==0){dragOutputs(y);return true;}return super.mouseDragged(x,y,button,dx,dy);}
+    @Override public boolean mouseReleased(double x,double y,int button){if(button==0)draggingOutputs=false;return super.mouseReleased(x,y,button);}
     private boolean isOverControl(int x,int y){for(Button b:controls.values())if(b.visible&&b.isMouseOver(x,y))return true;return false;}
     private String slotHint(int slot){
         if(slot==0){String circuit=switch(menu.kind){

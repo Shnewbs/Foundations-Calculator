@@ -1281,6 +1281,13 @@
     "description": "machine / dynamic_calculator / energyOutput"
   },
   {
+    "key": "machine.extraction_chamber.outputSlots",
+    "default": 6,
+    "description": "Output slots available for processing; six retain legacy capacity. Previously saved overflow remains recoverable after lowering this setting.",
+    "min": 6,
+    "max": 54
+  },
+  {
     "key": "machine.extraction_chamber.enabled",
     "default": true,
     "description": "Allow this machine to operate. Existing inventory and block remain recoverable."
@@ -1978,6 +1985,13 @@
     "key": "machine.power_cube.energyOutput",
     "default": true,
     "description": "machine / power_cube / energyOutput"
+  },
+  {
+    "key": "machine.precision_chamber.outputSlots",
+    "default": 6,
+    "description": "Output slots available for processing; six retain legacy capacity. Previously saved overflow remains recoverable after lowering this setting.",
+    "min": 6,
+    "max": 54
   },
   {
     "key": "machine.precision_chamber.enabled",

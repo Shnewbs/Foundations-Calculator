@@ -32,7 +32,7 @@ public record ProcessRecipe(String machine, List<CountedIngredient> inputs, List
     public static final MapCodec<ProcessRecipe> CODEC=RecordCodecBuilder.mapCodec(i->i.group(
         Codec.STRING.fieldOf("machine").forGetter(ProcessRecipe::machine),
         CountedIngredient.CODEC.listOf(1,14).fieldOf("ingredients").forGetter(ProcessRecipe::inputs),
-        Result.CODEC.listOf(0,6).fieldOf("results").forGetter(ProcessRecipe::outputs),
+        Result.CODEC.listOf(0,54).fieldOf("results").forGetter(ProcessRecipe::outputs),
         Codec.intRange(0,Integer.MAX_VALUE).optionalFieldOf("energy",0).forGetter(ProcessRecipe::energy),
         Codec.intRange(1,1000000).optionalFieldOf("ticks",200).forGetter(ProcessRecipe::ticks),
         Codec.intRange(0,Integer.MAX_VALUE).optionalFieldOf("value",0).forGetter(ProcessRecipe::value),

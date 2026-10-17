@@ -32,13 +32,13 @@ public final class EmiIntegration implements EmiPlugin {
         public ResourceLocation getId(){return view.holder().id();}
         public List<EmiIngredient> getInputs(){return view.recipe().inputs().stream().map(i->EmiIngredient.of(RecipeView.inputs(i).stream().map(s->EmiStack.of(s.copyWithCount(1))).toList(),i.count())).toList();}
         public List<EmiStack> getOutputs(){List<EmiStack> outputs=new ArrayList<>();for(var result:view.recipe().outputs())for(var s:RecipeView.outputs(result))outputs.add(EmiStack.of(s).setChance((float)(result.chance()/(result.randomCircuit().isEmpty()?1:14))));return outputs;}
-        public int getDisplayWidth(){return 228;}public int getDisplayHeight(){return 102;}
+        public int getDisplayWidth(){return view.recipe().outputs().size()>6?334:228;}public int getDisplayHeight(){return view.recipe().outputs().size()>6?154:102;}
         public boolean supportsRecipeTree(){return !view.recipe().outputs().isEmpty()&&!view.recipe().machine().startsWith("analysis_");}
         public net.minecraft.world.item.crafting.RecipeHolder<?> getBackingRecipe(){return view.holder();}
         public void addWidgets(WidgetHolder widgets){
             var inputs=getInputs();for(int i=0;i<inputs.size();i++)widgets.addSlot(inputs.get(i),i%7*18,6+i/7*18);
-            for(int i=0;i<view.recipe().outputs().size();i++){var output=view.recipe().outputs().get(i);widgets.addSlot(EmiIngredient.of(RecipeView.outputs(output).stream().map(EmiStack::of).toList()).setChance((float)output.chance()),164+i%3*18,6+i/3*18).recipeContext(this).appendTooltip(Component.literal(output.randomCircuit().isEmpty()?String.format("Chance: %.2f%%",output.chance()*100):"One random circuit variant"));}
-            widgets.addText(Component.literal("→"),140,18,0xff555555,false);widgets.addText(Component.literal(view.cost()),2,60,0xff555555,false);widgets.addText(Component.literal(view.detail()),2,76,0xff555555,false);
+            for(int i=0;i<view.recipe().outputs().size();i++){var output=view.recipe().outputs().get(i);widgets.addSlot(EmiIngredient.of(RecipeView.outputs(output).stream().map(EmiStack::of).toList()).setChance((float)output.chance()),164+i%(view.recipe().outputs().size()>6?9:3)*18,6+i/(view.recipe().outputs().size()>6?9:3)*18).recipeContext(this).appendTooltip(Component.literal(output.randomCircuit().isEmpty()?String.format("Chance: %.2f%%",output.chance()*100):"One random circuit variant"));}
+            widgets.addText(Component.literal("→"),140,18,0xff555555,false);widgets.addText(Component.literal(view.cost()),2,getDisplayHeight()-30,0xff555555,false);widgets.addText(Component.literal(view.detail()),2,getDisplayHeight()-14,0xff555555,false);
         }
     }
     private static final class Handler implements EmiRecipeHandler<CalculatorMenu> {

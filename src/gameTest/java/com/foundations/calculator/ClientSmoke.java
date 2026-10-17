@@ -130,8 +130,30 @@ public final class ClientSmoke {
         if(ticks==3140){mc.player.closeContainer();mc.getSingleplayerServer().execute(()->{var player=mc.getSingleplayerServer().getPlayerList().getPlayers().getFirst();player.teleportTo(.5,64,5.5);});}
         if(ticks==3160)mc.player.lookAt(net.minecraft.commands.arguments.EntityAnchorArgument.Anchor.EYES,origin.offset(0,0,3).getCenter());
         if(ticks==3200&&net.neoforged.fml.ModList.get().isLoaded("jade"))capture(mc,"24-jade-machine-hud.png");
-        if(ticks==3240){com.foundations.calculator.core.ClientConfig.TOOL_MODELS.set(true);com.foundations.calculator.core.ClientConfig.THEME.set(com.foundations.calculator.core.ClientConfig.Theme.FOUNDATIONS);com.mojang.logging.LogUtils.getLogger().info("FOUNDATIONS_CLIENT_SMOKE_PASSED");mc.stop();}
+        if(ticks==3240)prepareOutputs(mc,"extraction_chamber");
+        if(ticks==3260)useBlock(mc,origin.offset(0,0,3));
+        if(ticks==3300){var menu=machineMenu(mc,"extraction_chamber");require(menu.outputSlots()==54&&menu.outputRow()==0,"Expanded output capacity must synchronize");var screen=(CalculatorScreen)mc.screen;screen.mouseScrolled((screen.width-232)/2+180,(screen.height-238)/2+60,0,-1);}
+        if(ticks==3320){var menu=machineMenu(mc,"extraction_chamber");require(menu.outputRow()==1&&menu.slots.get(17).getItem().is(Items.DIAMOND),"Mouse wheel must reveal the first overflow row");capture(mc,"25-extraction-scrolled-outputs.png");}
+        if(ticks==3330)click(mc,17,ClickType.QUICK_MOVE);
+        if(ticks==3350){verifyOutputs(mc,Items.DIAMOND,7,6);prepareOutputs(mc,"precision_chamber");}
+        if(ticks==3370)useBlock(mc,origin.offset(0,0,3));
+        if(ticks==3410){machineMenu(mc,"precision_chamber");var screen=(CalculatorScreen)mc.screen;double x=(screen.width-232)/2+220,y=(screen.height-238)/2+80;screen.mouseClicked(x,y,0);screen.mouseReleased(x,y,0);}
+        if(ticks==3430){var menu=machineMenu(mc,"precision_chamber");require(menu.outputRow()==16&&menu.slots.get(19).getItem().is(Items.EMERALD),"Scrollbar must reveal the last output row");capture(mc,"26-precision-last-output-row.png");}
+        if(ticks==3440)click(mc,19,ClickType.QUICK_MOVE);
+        if(ticks==3460){verifyOutputs(mc,Items.EMERALD,5,53);mc.player.closeContainer();mc.getSingleplayerServer().execute(()->{for(String kind:List.of("extraction_chamber","precision_chamber")){var value=(net.neoforged.neoforge.common.ModConfigSpec.IntValue)com.foundations.calculator.core.CalculatorConfig.value("machine."+kind+".outputSlots").orElseThrow();value.set(6);}com.foundations.calculator.core.CalculatorConfig.settingsChanged();com.mojang.logging.LogUtils.getLogger().info("FOUNDATIONS_CLIENT_EXPANDED_OUTPUTS_PASSED");});}
+        if(ticks==3500){com.foundations.calculator.core.ClientConfig.TOOL_MODELS.set(true);com.foundations.calculator.core.ClientConfig.THEME.set(com.foundations.calculator.core.ClientConfig.Theme.FOUNDATIONS);com.mojang.logging.LogUtils.getLogger().info("FOUNDATIONS_CLIENT_SMOKE_PASSED");mc.stop();}
     }
+    private static void prepareOutputs(Minecraft mc,String kind){mc.player.closeContainer();mc.setScreen(null);mc.getSingleplayerServer().execute(()->{
+       var player=mc.getSingleplayerServer().getPlayerList().getPlayers().getFirst();var level=player.serverLevel();var pos=origin.offset(0,0,3);
+       var value=(net.neoforged.neoforge.common.ModConfigSpec.IntValue)com.foundations.calculator.core.CalculatorConfig.value("machine."+kind+".outputSlots").orElseThrow();value.set(54);com.foundations.calculator.core.CalculatorConfig.settingsChanged();
+       if(level.getBlockEntity(pos) instanceof MachineBlockEntity old)old.suppressDrops=true;level.setBlockAndUpdate(pos,Blocks.AIR.defaultBlockState());level.setBlockAndUpdate(pos,Content.block(kind).defaultBlockState());
+       var machine=(MachineBlockEntity)level.getBlockEntity(pos);machine.outputBuffer.set(0,new ItemStack(Items.IRON_INGOT,2));machine.outputBuffer.set(6,new ItemStack(Items.DIAMOND,7));machine.outputBuffer.set(53,new ItemStack(Items.EMERALD,5));
+       player.getInventory().clearContent();player.inventoryMenu.broadcastChanges();player.teleportTo(.5,64,5.5);
+   });}
+   private static void verifyOutputs(Minecraft mc,Item item,int count,int output){mc.getSingleplayerServer().execute(()->{
+       var player=mc.getSingleplayerServer().getPlayerList().getPlayers().getFirst();var machine=(MachineBlockEntity)player.serverLevel().getBlockEntity(origin.offset(0,0,3));
+       require(machine.outputBuffer.get(output).isEmpty()&&machine.outputBuffer.get(0).getCount()==2&&player.getInventory().countItem(item)==count,"Scrolled shift-click must transfer once and preserve the base output");
+   });}
     private static void require(boolean condition,String detail){if(!condition)throw new IllegalStateException(detail);}
     private static CalculatorMenu machineMenu(Minecraft mc,String kind){require(mc.player.containerMenu instanceof CalculatorMenu,"Right-click must open a machine menu");var menu=(CalculatorMenu)mc.player.containerMenu;require(menu.kind.equals(kind),"Opened wrong machine: "+menu.kind);return menu;}
     private static void useBlock(Minecraft mc,BlockPos p){mc.gameMode.useItemOn(mc.player,InteractionHand.MAIN_HAND,new BlockHitResult(p.getCenter(),Direction.UP,p,false));}

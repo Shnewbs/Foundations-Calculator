@@ -33,13 +33,13 @@ public final class JeiIntegration implements IModPlugin {
     public void registerRecipeCatalysts(IRecipeCatalystRegistration r){types.forEach((family,type)->r.addRecipeCatalyst(RecipeView.icon(family),type));}
     public void registerRecipeTransferHandlers(IRecipeTransferRegistration r){types.forEach((family,type)->r.addRecipeTransferHandler(new Transfer(type,r.getTransferHelper()),type));}
     private record Category(RecipeType<RecipeView> getRecipeType,String family,IDrawable getIcon) implements IRecipeCategory<RecipeView> {
-        public Component getTitle(){return RecipeView.title(family);}public int getWidth(){return 228;}public int getHeight(){return 102;}
+        public Component getTitle(){return RecipeView.title(family);}public int getWidth(){return 334;}public int getHeight(){return 154;}
         public ResourceLocation getRegistryName(RecipeView recipe){return recipe.holder().id();}
         public void setRecipe(IRecipeLayoutBuilder b,RecipeView view,IFocusGroup focus){
             var recipe=view.recipe();for(int i=0;i<recipe.inputs().size();i++){var input=recipe.inputs().get(i);b.addSlot(RecipeIngredientRole.INPUT,2+i%7*18,8+i/7*18).addItemStacks(RecipeView.inputs(input)).setStandardSlotBackground().addTooltipCallback((slot,tip)->{if(input.circuitState()>0)tip.add(Component.literal(input.circuitState()==2?"Analysed and stable":"Analysed"));});}
-            for(int i=0;i<recipe.outputs().size();i++){var output=recipe.outputs().get(i);b.addSlot(RecipeIngredientRole.OUTPUT,166+i%3*18,8+i/3*18).addItemStacks(RecipeView.outputs(output)).setStandardSlotBackground().addTooltipCallback((slot,tip)->{tip.add(Component.literal(String.format("Chance: %.2f%%",output.chance()*100)));if(!output.randomCircuit().isEmpty())tip.add(Component.literal("One random circuit variant"));});}
+            for(int i=0;i<recipe.outputs().size();i++){var output=recipe.outputs().get(i);b.addSlot(RecipeIngredientRole.OUTPUT,166+i%9*18,8+i/9*18).addItemStacks(RecipeView.outputs(output)).setStandardSlotBackground().addTooltipCallback((slot,tip)->{tip.add(Component.literal(String.format("Chance: %.2f%%",output.chance()*100)));if(!output.randomCircuit().isEmpty())tip.add(Component.literal("One random circuit variant"));});}
         }
-        public void draw(RecipeView view,IRecipeSlotsView slots,GuiGraphics g,double x,double y){var font=Minecraft.getInstance().font;g.drawString(font,"→",140,18,0xff555555,false);g.drawString(font,view.cost(),2,60,0xff555555,false);g.drawString(font,font.plainSubstrByWidth(view.detail(),224),2,76,0xff555555,false);}
+        public void draw(RecipeView view,IRecipeSlotsView slots,GuiGraphics g,double x,double y){var font=Minecraft.getInstance().font;g.drawString(font,"→",140,18,0xff555555,false);g.drawString(font,view.cost(),2,124,0xff555555,false);g.drawString(font,font.plainSubstrByWidth(view.detail(),330),2,140,0xff555555,false);}
     }
     private record Transfer(RecipeType<RecipeView> getRecipeType,IRecipeTransferHandlerHelper helper) implements IRecipeTransferHandler<CalculatorMenu,RecipeView>{
         public Class<? extends CalculatorMenu> getContainerClass(){return CalculatorMenu.class;}public Optional<MenuType<CalculatorMenu>> getMenuType(){return Optional.of(Content.MENU.get());}

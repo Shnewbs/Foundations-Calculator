@@ -1,0 +1,70 @@
+{
+  "type": "foundations_calculator:process",
+  "machine": "precision_chamber",
+  "ingredients": [
+    {
+      "ingredient": {
+        "item": "minecraft:barrier"
+      },
+      "count": 1
+    }
+  ],
+  "results": [
+    {
+      "stack": {
+        "id": "minecraft:iron_ingot",
+        "count": 64
+      }
+    },
+    {
+      "stack": {
+        "id": "minecraft:gold_ingot",
+        "count": 64
+      }
+    },
+    {
+      "stack": {
+        "id": "minecraft:copper_ingot",
+        "count": 64
+      }
+    },
+    {
+      "stack": {
+        "id": "minecraft:coal",
+        "count": 64
+      }
+    },
+    {
+      "stack": {
+        "id": "minecraft:redstone",
+        "count": 64
+      }
+    },
+    {
+      "stack": {
+        "id": "minecraft:lapis_lazuli",
+        "count": 64
+      }
+    },
+    {
+      "stack": {
+        "id": "minecraft:diamond",
+        "count": 64
+      }
+    },
+    {
+      "stack": {
+        "id": "minecraft:emerald",
+        "count": 64
+      }
+    },
+    {
+      "stack": {
+        "id": "minecraft:nether_star"
+      },
+      "chance": 0
+    }
+  ],
+  "energy": 17,
+  "ticks": 1
+}

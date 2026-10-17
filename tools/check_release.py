@@ -55,7 +55,7 @@ with zipfile.ZipFile(jar) as z:
     assert 'data/foundations_calculator/patchouli_books/field_guide/book.json' in names
 
 catalog=json.loads((root/'tools/configuration_catalog.json').read_text())
-assert len(catalog)==4272 and len({v['key'] for v in catalog})==4272,'Server configuration key count changed unexpectedly'
+assert len(catalog)==4274 and len({v['key'] for v in catalog})==4274,'Server configuration key count changed unexpectedly'
 assert catalog==json.loads((root/'src/main/resources/foundations/configuration.json').read_text()),'Runtime config catalog differs from generator catalog'
 book=json.loads((root/'src/main/resources/assets/foundations_calculator/foundations_guides/field_guide/book.json').read_text())
 assert book.get('revision')==version,'Guide revision does not match mod version'

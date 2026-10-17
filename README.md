@@ -1,11 +1,9 @@
-# Foundations Calculator 0.1.0beta — development candidate
+# Foundations Calculator 0.1.0alpha.R3
 
-Minecraft 1.21.1 · NeoForge 21.1.250 · Java 21.
+Minecraft **1.21.1**, NeoForge. This alpha adds optional expanded output storage and scrolling to both the Extraction Chamber and Precision Chamber. Their default capacity remains six slots; existing recipes and processing mechanics are unchanged.
 
-This candidate adds long-valued processing costs, portable calculations and native item charging/discharging to the cumulative 0.0.5a.R2 line. Machine screens, Jade and recipe/guide displays report the full effective cost. The standard NeoForge FE interface remains bounded by its API contract. Client/server gameplay protocol is now 7; install matching versions on both sides.
+Set `machine.extraction_chamber.outputSlots` and/or `machine.precision_chamber.outputSlots` to a value from 6 to 54 in the server configuration. Scroll over the output grid or drag its scrollbar to collect additional results. Automation and Transfer Upgrades can extract off-screen items. Lowering capacity retains saved overflow until it is collected.
 
-Build with `BUILD.bat` or `bash gradlew clean test build`. Validate with `python tools/validate_release.py`; the command regenerates maintained configuration/guide resources, builds binary/source JARs, runs JUnit plus standalone and integration GameTests, and audits the exact source and artifacts. Local validation works independently of GitHub Actions.
+Process recipes support up to 54 independently rolled results. See [pack recipe examples](docs/KUBEJS.md) and the [configuration reference](docs/CONFIG_REFERENCE.md). KubeJS/CraftTweaker runtime support is tested on 1.21.1; use native datapacks on the 26.x ports.
 
-Native candidate verification: **31 JUnit tests, 142 standalone GameTests and 142 integration GameTests excluding GTCEu pass**. The combined integration JVM was killed with exit 137. See [validation evidence](docs/0.1.0beta_VALIDATION.md).
-
-The last published release is **0.0.5a.R2**. The 0.1.0beta release gates are tracked in [the beta checklist](docs/0.1.0beta_ACCEPTANCE.md). A version string alone does not certify those gates. Separate 26.1.2 and 26.3 branches remain under migration; 26.4 compatibility is unverified.
+All three Minecraft versions have separate branches and binaries. Install matching mod versions on client and server. Builds must pass their native validation before GitHub/CurseForge publication; alpha does not imply completion of the beta acceptance checklist.

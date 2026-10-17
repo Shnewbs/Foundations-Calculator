@@ -77,7 +77,7 @@ public final class MachineRenderer implements BlockEntityRenderer<MachineBlockEn
     public void submitGeometry(State state,PoseStack pose,SubmitNodeCollector collector,int light,int overlay,int outline){
         if(state.kind.equals("reinforced_chest")){pose.pushPose();chestPose(state,pose);collector.submitModel(chest,state,pose,RenderTypes.entityCutout(texture("reinforced_chest")),light,overlay,outline,state.breakProgress);pose.popPose();return;}
         if(state.kind.equals("calculator_screen_block")){display(state,pose,collector,light);return;}
-        geometry(state,pose,(part,p,texture,l,o)->collector.submitModelPart(part,p,RenderTypes.entityCutout(texture(texture)),l,o,null,outline,state.breakProgress),light,overlay);
+        geometry(state,pose,(part,p,texture,l,o)->collector.submitModelPart(part,p,RenderTypes.entityCutout(texture(texture)),l,o,null,false,false,-1,state.breakProgress,outline),light,overlay);
         if(!state.input.isEmpty()){pose.pushPose();pose.translate(.5,.4,.5);pose.scale(.4f,.4f,.4f);pose.mulPose(Axis.YP.rotationDegrees((float)(state.clock*2)));state.input.submit(pose,collector,light,overlay,0);pose.popPose();}
     }
     public AABB itemBounds(String kind){return itemBounds.computeIfAbsent(kind,key->{State state=new State();state.kind=key;state.blockPos=BlockPos.ZERO;var bounds=new ItemMeshBounds();var pose=new PoseStack();if(key.equals("reinforced_chest")){chestPose(state,pose);chest.setupAnim(state);chest.parts.render(pose,bounds,15728880,0);}else geometry(state,pose,(part,p,texture,l,o)->part.render(p,bounds,l,o),15728880,0);return bounds.bounds();});}

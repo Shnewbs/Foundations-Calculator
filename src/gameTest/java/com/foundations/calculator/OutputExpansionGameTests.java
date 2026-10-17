@@ -23,8 +23,12 @@ public final class OutputExpansionGameTests {
             h.assertTrue(m.pending.size()==1&&m.outputBuffer.get(6).isEmpty(),"Default capacity leaves blocked results pending");
             R6GameTests.setting("machine."+kind+".outputSlots",54,()->{m.outputBuffer.flush(m.pending);m.outputBuffer.set(53,new ItemStack(Items.EMERALD,3));h.assertTrue(m.pending.isEmpty()&&m.outputBuffer.get(6).getCount()==9,"Expanded bank receives pending results");});
             h.assertTrue(m.outputBuffer.visible()==54,"Lowered capacity keeps occupied last row accessible");
-            var output=m.automation(Direction.DOWN);h.assertTrue(output.extractItem(72,3,false).getCount()==3,"Automation can drain saved output above lowered capacity");
-            h.assertTrue(output.extractItem(25,9,false).getCount()==9&&m.outputBuffer.visible()==6,"Draining saved overflow restores six visible slots");
+            var player=h.makeMockPlayer(GameType.SURVIVAL);player.setPos(m.getBlockPos().getCenter());var menu=CalculatorMenu.forMachine(1,player.getInventory(),m);
+            h.assertTrue(menu.clickMenuButton(player,1016),"Saved overflow can be paged after lowering capacity");menu.quickMoveStack(player,19);
+            h.assertTrue(player.getInventory().countItem(Items.EMERALD)==3&&m.outputBuffer.get(53).isEmpty(),"Shift-click drains the last saved row once");
+            for(int i=0;i<6;i++)h.assertTrue(m.outputBuffer.get(i).getCount()==64,"A disappearing last row cannot clear legacy outputs during shift-click");
+            var output=m.automation(Direction.DOWN);
+            h.assertTrue(output.extractItem(25,9,false).getCount()==9&&m.outputBuffer.visible()==6,"Automation drains overflow and restores six visible slots");
         }h.succeed();
     }
     @GameTest(template="large",batch="expanded_outputs") public static void fullBankBackpressureAndLiveAutomationGates(GameTestHelper h){

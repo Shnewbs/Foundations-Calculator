@@ -30,6 +30,10 @@ def main():
         receipt.parent.mkdir(exist_ok=True)
         receipt.write_text(json.dumps({'source_sha256': fingerprint()}))
         return
+    compatibility=json.loads((ROOT/'validation/neoforge-minimum/neoforge-compatibility.json').read_text())
+    assert compatibility['passed'] and compatibility['declared_range'] in (ROOT/'src/main/resources/META-INF/neoforge.mods.toml').read_text(),'Minimum NeoForge validation is missing'
+    client=json.loads((ROOT/'validation/port-client/client-checks.json').read_text())
+    assert client['passed'],'Native client validation is missing'
     digest = fingerprint()
     if json.loads(receipt.read_text())['source_sha256'] != digest:
         raise ValueError('Source changed while native port validation ran')
@@ -44,7 +48,7 @@ def main():
         assert target in {'26.1.2', '26.3'} and mc==f'[{target}]'
         for n in z.namelist():
             if n.endswith('.class') and n.startswith('com/foundations/calculator/'):
-                assert 'NativePortSmoke' not in n and 'GameTests' not in n
+                assert 'NativePortSmoke' not in n and 'PortClientSmoke' not in n and 'GameTests' not in n
                 assert struct.unpack('>H',z.read(n)[6:8])[0]==69
                 assert z.read(n)==(ROOT/'build/classes/java/main'/n).read_bytes()
     with zipfile.ZipFile(sources) as z:
@@ -65,14 +69,14 @@ def main():
     assert tests>=43
     reports=[json.loads((ROOT/f'build/port-startup{suffix}.json').read_text()) for suffix in ['', '-integrations']]
     assert {r['integrations_enabled'] for r in reports}=={False,True}
-    assert all(r['passed'] and r['native_regression_assertions']>=56 and not r['resource_errors'] for r in reports)
+    assert all(r['passed'] and r['native_regression_assertions']>=220 and not r['resource_errors'] for r in reports)
     release_type=candidate_type(version)
     audit={'version':version,'minecraft_version':target,'release_type':release_type,
            'release_eligible':release_type=='alpha','native_build_and_current_source_match':True,
            'source_sha256':digest,'jar_sha256':hashlib.sha256(jar.read_bytes()).hexdigest(),
            'sources_sha256':hashlib.sha256(sources.read_bytes()).hexdigest(),
-           'unit_tests':tests,'native_reports':reports,
-           'manual_acceptance':'Pending port client gameplay, copied-world upgrade, multiplayer/protection and performance soak.'}
+           'unit_tests':tests,'native_reports':reports,'neoforge_compatibility':compatibility,'native_client':client,
+           'manual_acceptance':'Pending broader port client gameplay, copied-world upgrade, multiplayer/protection and performance soak.'}
     (ROOT/'build/release_checks.json').write_text(json.dumps(audit,indent=2)+'\n')
     print(json.dumps(audit,indent=2))
 

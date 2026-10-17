@@ -363,7 +363,7 @@ public final class Content {
     }
     private static void addBlock(String id,Supplier<Block> factory,boolean machine,boolean pending){
         var b=BLOCKS.register(id,factory);BLOCKS_BY_ID.put(id,b);if(machine)MACHINE_BLOCKS.add(b);
-        if(!id.startsWith("crop_"))ITEMS_BY_ID.put(id,ITEMS.register(id,()->new BlockItem(b.get(),ContentProperties.item(id,new Item.Properties())){
+        if(!id.startsWith("crop_"))ITEMS_BY_ID.put(id,ITEMS.register(id,()->new BlockItem(b.get(),ContentProperties.item(id,new Item.Properties().useBlockDescriptionPrefix())){
             public void appendHoverText(ItemStack s,TooltipContext c,net.minecraft.world.item.component.TooltipDisplay display,java.util.function.Consumer<Component> tooltip,TooltipFlag f){super.appendHoverText(s,c,display,tooltip,f);if(pending)tooltip.accept(Component.literal("Port pending — not functional in this alpha").withStyle(net.minecraft.ChatFormatting.RED));}
         }));
     }

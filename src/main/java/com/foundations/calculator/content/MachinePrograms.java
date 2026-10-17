@@ -53,10 +53,11 @@ public final class MachinePrograms {
     }
     public static void export(MachineBlockEntity m) {
         if(!CalculatorConfig.machineFlag(m.kind(),"itemAutomation")||m.upgrades("transfer_upgrade")==0)return;
+        int outputSlots=m.outputBuffer==null?6:MachineOutputs.MAX;
         // Bulk machines expose a different backing store; preserve their existing export path.
         if(!m.bulkInventory()){
             boolean output=false;
-            for(int slot=0;slot<(m.outputBuffer==null?6:m.outputBuffer.visible());slot++)if(!(m.outputBuffer==null?m.inventory.getStackInSlot(14+slot):m.outputBuffer.get(slot)).isEmpty()){output=true;break;}
+            for(int slot=0;slot<outputSlots;slot++)if(!(m.outputBuffer==null?m.inventory.getStackInSlot(14+slot):m.outputBuffer.get(slot)).isEmpty()){output=true;break;}
             if(!output)return;
         }
         int remaining=(int)Math.min(CalculatorConfig.integer("upgrades.maxTransfer",64),(long)m.upgrades("transfer_upgrade")*CalculatorConfig.integer("upgrades.itemsPerTransfer",4));
@@ -67,7 +68,7 @@ public final class MachinePrograms {
             IItemHandler other=com.foundations.calculator.core.MachineItemHandler.neighbor(m.getLevel(),target,side.getOpposite());
             if(other==null)continue;
             IItemHandler source=m.automation(side);
-            for(int outputIndex=0;outputIndex<(m.outputBuffer==null?6:m.outputBuffer.visible())&&remaining>0;outputIndex++){
+            for(int outputIndex=0;outputIndex<outputSlots&&remaining>0;outputIndex++){
                 int i=outputIndex<6?14+outputIndex:25+outputIndex-6;
                 ItemStack offered=source.extractItem(i,remaining,true);if(offered.isEmpty())continue;
                 ItemStack left=ItemHandlerHelper.insertItemStacked(other,offered,false);
@@ -94,7 +95,10 @@ public final class MachinePrograms {
     private static void screen(MachineBlockEntity m){
         var face=m.getBlockState().getValue(MachineBlock.FACING);var p=m.getBlockPos().relative(face.getOpposite());
         var energy=com.foundations.calculator.api.FoundationsEnergy.longBlock(m.getLevel(),p,face);
-        m.program.putLong("ScreenEnergy",energy==null?0:Math.max(0L,energy.stored()));m.program.putLong("ScreenCapacity",energy==null?0:Math.max(0L,energy.capacity()));m.setChanged();
+        long stored=energy==null?0:Math.max(0L,energy.stored()),capacity=energy==null?0:Math.max(0L,energy.capacity());
+        if(!m.program.contains("ScreenEnergy")||!m.program.contains("ScreenCapacity")||m.program.getLongOr("ScreenEnergy",0L)!=stored||m.program.getLongOr("ScreenCapacity",0L)!=capacity){
+            m.program.putLong("ScreenEnergy",stored);m.program.putLong("ScreenCapacity",capacity);m.setChanged();
+        }
     }
     private static void lantern(MachineBlockEntity m) {
         if(m.burnTime==0){ItemStack fuel=m.inventory.getStackInSlot(0);int duration=fuel.getBurnTime(RecipeType.SMELTING,m.getLevel().fuelValues());
@@ -273,8 +277,8 @@ public final class MachinePrograms {
         m.setChanged();
     }
     private static void weatherStation(MachineBlockEntity m){
-        if(m.getLevel().getGameTime()%CalculatorConfig.integer("generation.structureCheckInterval",25)!=0)return;BlockPos best=null;double distance=Double.MAX_VALUE;
-        for(BlockPos p:BlockPos.betweenClosed(m.getBlockPos().offset(-CalculatorConfig.integer("generation.weatherStationRadius",10),0,-CalculatorConfig.integer("generation.weatherStationRadius",10)),m.getBlockPos().offset(CalculatorConfig.integer("generation.weatherStationRadius",10),0,CalculatorConfig.integer("generation.weatherStationRadius",10)))){
+        if(m.getLevel().getGameTime()%CalculatorConfig.integer("generation.structureCheckInterval",25)!=0)return;BlockPos best=null;double distance=Double.MAX_VALUE;int radius=CalculatorConfig.integer("generation.weatherStationRadius",10);
+        for(BlockPos p:BlockPos.betweenClosed(m.getBlockPos().offset(-radius,0,-radius),m.getBlockPos().offset(radius,0,radius))){
             if(!m.getLevel().hasChunkAt(p)||!(m.getLevel().getBlockEntity(p) instanceof MachineBlockEntity other)||!other.kind().equals("conductor_mast"))continue;
             double d=m.getBlockPos().distSqr(p);if(d<distance){distance=d;best=p.immutable();}
         }
@@ -283,8 +287,8 @@ public final class MachinePrograms {
     private static void conductor(MachineBlockEntity m){
         CompoundTag s=m.program;int wait=s.getIntOr("StrikeWait",0);
         if(wait<=0&&m.energy.stored()<m.energy.capacity()){
-            int transmitters=0,stations=0;
-            for(BlockPos p:BlockPos.betweenClosed(m.getBlockPos().offset(-CalculatorConfig.integer("generation.mastRadius",20),0,-CalculatorConfig.integer("generation.mastRadius",20)),m.getBlockPos().offset(CalculatorConfig.integer("generation.mastRadius",20),0,CalculatorConfig.integer("generation.mastRadius",20)))){
+            int transmitters=0,stations=0,radius=CalculatorConfig.integer("generation.mastRadius",20);
+            for(BlockPos p:BlockPos.betweenClosed(m.getBlockPos().offset(-radius,0,-radius),m.getBlockPos().offset(radius,0,radius))){
                 if(!m.getLevel().hasChunkAt(p)||!(m.getLevel().getBlockEntity(p) instanceof MachineBlockEntity other))continue;
                 if(other.kind().equals("transmitter"))transmitters++;
                 else if(other.kind().equals("weather_station")&&other.program.contains("Mast")&&other.program.getLongOr("Mast",0L)==m.getBlockPos().asLong())stations++;

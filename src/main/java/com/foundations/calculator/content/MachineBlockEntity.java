@@ -22,6 +22,10 @@ public class MachineBlockEntity extends BlockEntity implements MenuProvider {
     public static final int SIZE=25;
     private static final Set<String> EARLY_ENERGY_PUSHERS=Set.of("calculator_locator","conductor_mast");
     private static final Set<String> ENERGY_PUSHERS=Set.of("power_cube","advanced_power_cube","creative_power_cube","hand_cranked_generator","analysing_chamber");
+    private static final Direction[] DIRECTIONS=Direction.values();
+    private net.minecraft.world.level.block.Block kindBlock;
+    private String cachedKind;
+    private final EnergyOperations.DiscountCache energyDiscount=new EnergyOperations.DiscountCache();
     public final StoredEnergy energy;
     public final BulkStorage bulk;
     public final MachineOutputs outputBuffer=MachineOutputs.supports(kind())?new MachineOutputs(this):null;
@@ -119,7 +123,11 @@ public class MachineBlockEntity extends BlockEntity implements MenuProvider {
     }
     public int redstoneMode(){return program.contains("RedstoneMode")?program.getIntOr("RedstoneMode",0):CalculatorConfig.machine(kind(),"defaultRedstoneMode",0);}
     public java.util.UUID owner(){return com.foundations.calculator.core.UuidTags.has(program,"Owner")?com.foundations.calculator.core.UuidTags.get(program,"Owner"):null;}
-    public String kind(){return net.minecraft.core.registries.BuiltInRegistries.BLOCK.getKey(getBlockState().getBlock()).getPath();}
+    public String kind(){
+        var block=getBlockState().getBlock();
+        if(block!=kindBlock){cachedKind=net.minecraft.core.registries.BuiltInRegistries.BLOCK.getKey(block).getPath();kindBlock=block;}
+        return cachedKind;
+    }
     public int inputCount(){return MachineDefinition.forMachine(kind()).inputCount();}
     public boolean bulkInventory(){return storage()||kind().equals("algorithm_assimilator");}
     private void flushResults(){if(outputBuffer!=null){outputBuffer.flush(pending);return;}if(!bulkInventory()){ProcessTransactions.flush(pending,inventory);return;}for(var iterator=pending.listIterator();iterator.hasNext();){ItemStack stack=iterator.next();for(int i=0;i<bulk.getSlots()&&!stack.isEmpty();i++)stack=bulk.insertItem(i,stack,false);if(stack.isEmpty())iterator.remove();else iterator.set(stack);}}
@@ -133,7 +141,7 @@ public class MachineBlockEntity extends BlockEntity implements MenuProvider {
     public int upgradeEnergyCost(int base){return (int)Math.min(Integer.MAX_VALUE,upgradeEnergyCost((long)base));}
     public long upgradeEnergyCost(long base){
         int amount=supportsUpgrades()?upgrades("energy_upgrade"):0;
-        return EnergyOperations.discounted(base,amount,CalculatorConfig.decimal("upgrades.energyDiscount",.1));
+        return energyDiscount.apply(base,amount,CalculatorConfig.decimal("upgrades.energyDiscount",.1));
     }
     /** Effective processing duration after installed Speed Upgrades. */
     public int upgradeProcessTicks(int base){
@@ -254,7 +262,7 @@ public class MachineBlockEntity extends BlockEntity implements MenuProvider {
     public final com.foundations.calculator.core.TransferBudget euInputBudget=new com.foundations.calculator.core.TransferBudget();
     public final com.foundations.calculator.core.TransferBudget euOutputBudget=new com.foundations.calculator.core.TransferBudget();
     private void pushEnergy(){
-        for(Direction side:Direction.values()){
+        for(Direction side:DIRECTIONS){
             if(energy.stored()<=0)break;
             if(!energySideOutput(side))continue;
             if(!level.hasChunkAt(worldPosition.relative(side)))continue;

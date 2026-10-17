@@ -1,6 +1,6 @@
 # Complete server configuration reference
 
-Generated from the same catalog loaded by the mod: **4,272 settings**. See [CONFIGURATION.md](../CONFIGURATION.md) for precedence, file locations, reload behavior and examples. Values shown here are shipped defaults; recipe-specific `-1` means inherit.
+Generated from the same catalog loaded by the mod: **4,274 settings**. See [CONFIGURATION.md](../CONFIGURATION.md) for precedence, file locations, reload behavior and examples. Values shown here are shipped defaults; recipe-specific `-1` means inherit.
 
 ## machines
 
@@ -221,6 +221,7 @@ Generated from the same catalog loaded by the mod: **4,272 settings**. See [CONF
 | `machine.dynamic_calculator.itemAutomation` | `true` | true / false | Allow item capabilities to insert/extract through configured faces. |
 | `machine.dynamic_calculator.energyInput` | `true` | true / false | Allow external energy insertion through eligible faces. |
 | `machine.dynamic_calculator.energyOutput` | `true` | true / false | Allow external energy extraction through eligible faces. |
+| `machine.extraction_chamber.outputSlots` | `6` | 6 … 54 | Output slots available for processing; six retain legacy capacity. Previously saved overflow remains recoverable after lowering this setting. |
 | `machine.extraction_chamber.enabled` | `true` | true / false | Allow this machine to operate. Existing inventory and block remain recoverable. |
 | `machine.extraction_chamber.capacity` | `50000` | 1 … 2147483647 | Maximum stored FE; existing excess is preserved. |
 | `machine.extraction_chamber.transferRate` | `3200` | 1 … 2147483647 | Maximum FE per tick per block connection; global positive transfer override takes precedence. |
@@ -334,6 +335,7 @@ Generated from the same catalog loaded by the mod: **4,272 settings**. See [CONF
 | `machine.power_cube.itemAutomation` | `true` | true / false | Allow item capabilities to insert/extract through configured faces. |
 | `machine.power_cube.energyInput` | `true` | true / false | Allow external energy insertion through eligible faces. |
 | `machine.power_cube.energyOutput` | `true` | true / false | Allow external energy extraction through eligible faces. |
+| `machine.precision_chamber.outputSlots` | `6` | 6 … 54 | Output slots available for processing; six retain legacy capacity. Previously saved overflow remains recoverable after lowering this setting. |
 | `machine.precision_chamber.enabled` | `true` | true / false | Allow this machine to operate. Existing inventory and block remain recoverable. |
 | `machine.precision_chamber.capacity` | `50000` | 1 … 2147483647 | Maximum stored FE; existing excess is preserved. |
 | `machine.precision_chamber.transferRate` | `3200` | 1 … 2147483647 | Maximum FE per tick per block connection; global positive transfer override takes precedence. |

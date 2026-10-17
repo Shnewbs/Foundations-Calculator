@@ -56,7 +56,7 @@ public final class MachinePrograms {
         // Bulk machines expose a different backing store; preserve their existing export path.
         if(!m.bulkInventory()){
             boolean output=false;
-            for(int slot=14;slot<20;slot++)if(!m.inventory.getStackInSlot(slot).isEmpty()){output=true;break;}
+            for(int slot=0;slot<(m.outputBuffer==null?6:m.outputBuffer.visible());slot++)if(!(m.outputBuffer==null?m.inventory.getStackInSlot(14+slot):m.outputBuffer.get(slot)).isEmpty()){output=true;break;}
             if(!output)return;
         }
         int remaining=(int)Math.min(CalculatorConfig.integer("upgrades.maxTransfer",64),(long)m.upgrades("transfer_upgrade")*CalculatorConfig.integer("upgrades.itemsPerTransfer",4));
@@ -67,7 +67,8 @@ public final class MachinePrograms {
             IItemHandler other=com.foundations.calculator.core.MachineItemHandler.neighbor(m.getLevel(),target,side.getOpposite());
             if(other==null)continue;
             IItemHandler source=m.automation(side);
-            for(int i=14;i<20&&remaining>0;i++){
+            for(int outputIndex=0;outputIndex<(m.outputBuffer==null?6:m.outputBuffer.visible())&&remaining>0;outputIndex++){
+                int i=outputIndex<6?14+outputIndex:25+outputIndex-6;
                 ItemStack offered=source.extractItem(i,remaining,true);if(offered.isEmpty())continue;
                 ItemStack left=ItemHandlerHelper.insertItemStacked(other,offered,false);
                 int moved=offered.getCount()-left.getCount();source.extractItem(i,moved,false);remaining-=moved;

@@ -12,12 +12,12 @@ import net.neoforged.neoforge.transfer.item.ItemResource;
 import net.neoforged.neoforge.transfer.transaction.*;
 /** Native transactions retain sided rules, bulk counts and module state on abort. */
 public final class MachineItemHandler extends SnapshotJournal<MachineItemHandler.State> implements ResourceHandler<ItemResource> {
-    record State(ItemStack[] inventory,CompoundTag bulk,CompoundTag program,List<ItemStack> pending) {}
+    record State(ItemStack[] inventory,CompoundTag bulk,CompoundTag program,List<ItemStack> pending,ItemStack[] outputs) {}
     private final MachineBlockEntity machine;private final IItemHandler slots;
     public MachineItemHandler(MachineBlockEntity machine,Direction face){this.machine=machine;slots=machine.automation(face);}
     public static IItemHandler neighbor(Level level,BlockPos pos,Direction face){var handler=level.getCapability(Capabilities.Item.BLOCK,pos,face);return handler==null?null:IItemHandler.of(handler);}
-    @Override protected State createSnapshot(){ItemStack[] inventory=new ItemStack[machine.inventory.getSlots()];for(int i=0;i<inventory.length;i++)inventory[i]=machine.inventory.getStackInSlot(i).copy();return new State(inventory,machine.bulk.save(machine.getLevel().registryAccess()),machine.program.copy(),machine.pending.stream().map(ItemStack::copy).toList());}
-    @Override protected void revertToSnapshot(State state){machine.restoreAutomationInventory(state.inventory,state.bulk,state.program,state.pending);}
+    @Override protected State createSnapshot(){ItemStack[] inventory=new ItemStack[machine.inventory.getSlots()];for(int i=0;i<inventory.length;i++)inventory[i]=machine.inventory.getStackInSlot(i).copy();return new State(inventory,machine.bulk.save(machine.getLevel().registryAccess()),machine.program.copy(),machine.pending.stream().map(ItemStack::copy).toList(),machine.outputBuffer==null?new ItemStack[0]:machine.outputBuffer.snapshot());}
+    @Override protected void revertToSnapshot(State state){machine.restoreAutomationInventory(state.inventory,state.bulk,state.program,state.pending);if(machine.outputBuffer!=null)machine.outputBuffer.restore(state.outputs);}
     public int size(){return slots.getSlots();}
     public ItemResource getResource(int slot){return ItemResource.of(slots.getStackInSlot(slot));}
     public long getAmountAsLong(int slot){return machine.bulkInventory()?machine.bulk.count(slot):slots.getStackInSlot(slot).getCount();}

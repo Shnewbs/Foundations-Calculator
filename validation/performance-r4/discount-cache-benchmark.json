@@ -1,0 +1,66 @@
+{
+  "scope": "Production exact arithmetic; 99.9% repeated numeric inputs with regular base and upgrade changes; isolated JVM, not whole-mod TPS/FPS",
+  "equivalence_cases": 20000,
+  "samples": [
+    {
+      "mode": "cached",
+      "cpu_ns_per_op": 2.3673,
+      "allocated_bytes_per_op": 0.32396
+    },
+    {
+      "mode": "direct",
+      "cpu_ns_per_op": 169.95709,
+      "allocated_bytes_per_op": 323.2
+    },
+    {
+      "mode": "direct",
+      "cpu_ns_per_op": 74.231915,
+      "allocated_bytes_per_op": 323.2
+    },
+    {
+      "mode": "cached",
+      "cpu_ns_per_op": 2.45238,
+      "allocated_bytes_per_op": 0.3232
+    },
+    {
+      "mode": "cached",
+      "cpu_ns_per_op": 2.25028,
+      "allocated_bytes_per_op": 0.3232
+    },
+    {
+      "mode": "direct",
+      "cpu_ns_per_op": 72.55578,
+      "allocated_bytes_per_op": 323.2
+    },
+    {
+      "mode": "direct",
+      "cpu_ns_per_op": 75.05518,
+      "allocated_bytes_per_op": 323.2
+    },
+    {
+      "mode": "cached",
+      "cpu_ns_per_op": 2.502305,
+      "allocated_bytes_per_op": 0.3232
+    },
+    {
+      "mode": "cached",
+      "cpu_ns_per_op": 2.329445,
+      "allocated_bytes_per_op": 0.3232
+    },
+    {
+      "mode": "direct",
+      "cpu_ns_per_op": 79.850025,
+      "allocated_bytes_per_op": 323.2
+    }
+  ],
+  "median": {
+    "direct": {
+      "cpu_ns_per_op": 75.05518,
+      "allocated_bytes_per_op": 323.2
+    },
+    "cached": {
+      "cpu_ns_per_op": 2.3673,
+      "allocated_bytes_per_op": 0.3232
+    }
+  }
+}

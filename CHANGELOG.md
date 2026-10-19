@@ -6,6 +6,7 @@ Release candidate (GitHub prerelease / CurseForge beta), not stable. See docs/RC
 - Respect disabled nutrition/carrier items and open portable calculations; stop disabled manual cranking.
 - Invalidate storage menus when selected module changes.
 - Avoid idle smelting data writes, unchanged nutrition component writes and filtered analysis/nutrition recipe lists.
+- Stop allocating 16 empty module slots for ordinary calculator energy queries, and register client lid tickers only for chests.
 - Consolidate duplicate leaf yields and remove unreachable duplicate energy routing.
 - Preserve existing recipes, defaults, chances, timing, output paging and all R6 rendering fixes.
 - Add actual runtime cancellation/resource conservation/config/menu/idle-module regressions on all supported targets. Full player-world/multiplayer/long soak acceptance remains open.

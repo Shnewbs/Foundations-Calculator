@@ -1,4 +1,4 @@
-> Current candidate: **0.1.0-rc.1** for Minecraft 1.21.1, 26.1.2 and 26.3. [Current audit and acceptance limits](docs/RC1_AUDIT.md). Historical status below is retained for provenance.
+> Published release candidate: **0.1.0-rc.1** for Minecraft 1.21.1, 26.1.2 and 26.3. [Validation and upload receipts](docs/RC1_VALIDATION.md) · [Audit and acceptance limits](docs/RC1_AUDIT.md). Historical status below is retained for provenance.
 
 # Foundations Calculator 26.3-0.1.0alpha.R6
 

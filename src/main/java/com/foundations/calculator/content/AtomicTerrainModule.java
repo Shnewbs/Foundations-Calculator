@@ -10,9 +10,6 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.block.*;
-import net.neoforged.neoforge.common.NeoForge;
-import net.neoforged.neoforge.common.util.BlockSnapshot;
-import net.neoforged.neoforge.event.level.BlockEvent;
 
 /** Two-step material binding; replacements respect break/place protection and never copy block entities. */
 public final class AtomicTerrainModule {
@@ -34,12 +31,10 @@ public final class AtomicTerrainModule {
         if(consume){for(int i=0;i<player.getInventory().getNonEquipmentItems().size();i++)if(player.getInventory().getItem(i).is(replacement.getBlock().asItem())){slot=i;break;}if(slot<0){player.sendOverlayMessage(Component.literal("A replacement block is required in your inventory."));return InteractionResult.FAIL;}}
         int cost=CalculatorConfig.integer("module.atomic_terrain_module.cost",1);
         if(!(battery.getItem() instanceof CalculatorItem power)||!player.isCreative()&&power.energy(battery)<cost)return InteractionResult.FAIL;
-        if(NeoForge.EVENT_BUS.post(new net.neoforged.neoforge.event.level.block.BreakBlockEvent(level,pos,state,player)).isCanceled())return InteractionResult.FAIL;
-        var snapshot=BlockSnapshot.create(level.dimension(),level,pos);
-        if(!level.setBlock(pos,replacement,2))return InteractionResult.FAIL;
-        if(NeoForge.EVENT_BUS.post(new BlockEvent.EntityPlaceEvent(snapshot,level.getBlockState(pos.below()),player)).isCanceled()){
-            snapshot.restore(3);return InteractionResult.FAIL;
-        }
+        final int replacementSlot=slot;
+        if(!PlayerWorldActions.replace(c,pos,state,replacement,()->
+            (player.isCreative()||power.energyLong(battery)>=cost)
+            &&(!consume||player.getInventory().getItem(replacementSlot).is(replacement.getBlock().asItem()))))return InteractionResult.FAIL;
         if(consume)player.getInventory().removeItem(slot,1);
         if(!player.isCreative())power.storage(battery).extractEnergy(cost,false);
         if(CalculatorConfig.flag("module.atomic_terrain_module.dropOriginal",true)&&!player.isCreative())for(ItemStack drop:Block.getDrops(state,(ServerLevel)level,pos,null,player,player.getMainHandItem()))player.getInventory().placeItemBackInInventory(drop,net.minecraft.util.Prediction.SERVER_ONLY);

@@ -116,23 +116,28 @@ public class CalculatorItem extends Item {
     }
     public boolean canFitInsideContainerItems(){return !kind.equals("storage_module")&&!kind.equals("smelting_module")&&!kind.equals("flawless_calculator");}
     public void inventoryTick(ItemStack stack,Level level,net.minecraft.world.entity.Entity entity,int slot,boolean selected){
+        if(!CalculatorConfig.enabled(kind))return;
         if(!level.isClientSide()&&CalculatorConfig.flag("module.smelting_module.backgroundProcessing",true)){
             boolean open=entity instanceof Player p&&p.containerMenu instanceof com.foundations.calculator.menu.SmeltingModuleMenu menu&&menu.carrier==stack;
             if(kind.equals("smelting_module")&&!open)SmeltingModule.tick(stack,stack,level);
             if(kind.equals("flawless_calculator")&&!open){
                 var installed=net.minecraft.core.NonNullList.withSize(16,ItemStack.EMPTY);stack.getOrDefault(Content.MODULES.get(),net.minecraft.world.item.component.ItemContainerContents.EMPTY).copyInto(installed);
                 for(int i=0;i<CalculatorConfig.integer("module.flawless_calculator.maxModules",16);i++)if(Content.path(installed.get(i)).equals("smelting_module")){
-                    ItemStack smelter=installed.get(i);SmeltingModule.tick(smelter,stack,level);
+                    ItemStack smelter=installed.get(i),before=smelter.copy();SmeltingModule.tick(smelter,stack,level);
+                    if(ItemStack.matches(before,smelter))continue;
                     var latest=net.minecraft.core.NonNullList.withSize(16,ItemStack.EMPTY);stack.getOrDefault(Content.MODULES.get(),net.minecraft.world.item.component.ItemContainerContents.EMPTY).copyInto(latest);latest.set(i,smelter);stack.set(Content.MODULES.get(),net.minecraft.world.item.component.ItemContainerContents.fromItems(latest));
                 }
             }
         }
         if(kind.equals("flawless_calculator")&&!level.isClientSide()&&level.getGameTime()%CalculatorConfig.integer("nutrition.restoreInterval",10)==0&&entity instanceof Player player){
             var modules=net.minecraft.core.NonNullList.withSize(16,ItemStack.EMPTY);stack.getOrDefault(Content.MODULES.get(),net.minecraft.world.item.component.ItemContainerContents.EMPTY).copyInto(modules);
-            for(ItemStack module:modules){
-                if(Content.path(module).equals("nutrition_module"))NutritionData.restore(player,module,CalculatorConfig.integer("nutrition.automaticRestoreLimit",2));
-                
-            }stack.set(Content.MODULES.get(),net.minecraft.world.item.component.ItemContainerContents.fromItems(modules));
+            boolean changed=false;
+            for(ItemStack module:modules)if(Content.path(module).equals("nutrition_module")){
+                int health=NutritionData.get(module,"health"),hunger=NutritionData.get(module,"hunger");
+                NutritionData.restore(player,module,CalculatorConfig.integer("nutrition.automaticRestoreLimit",2));
+                changed|=health!=NutritionData.get(module,"health")||hunger!=NutritionData.get(module,"hunger");
+            }
+            if(changed)stack.set(Content.MODULES.get(),net.minecraft.world.item.component.ItemContainerContents.fromItems(modules));
         }
         if(kind.equals("nutrition_module")&&!level.isClientSide()&&level.getGameTime()%CalculatorConfig.integer("nutrition.restoreInterval",10)==0&&entity instanceof Player player)NutritionData.restore(player,stack,CalculatorConfig.integer("nutrition.automaticRestoreLimit",2));
     }

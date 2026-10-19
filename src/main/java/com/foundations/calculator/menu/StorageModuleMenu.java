@@ -13,7 +13,7 @@ public final class StorageModuleMenu extends ChestMenu {
     private final Inventory inventory;
     private final InteractionHand hand;
     private final ItemStack module,carrier;
-    private final int heldSlot;
+    private final int heldSlot,selectedSlot;
 
     public StorageModuleMenu(int id, Inventory inventory, InteractionHand hand) {
         this(id,inventory,hand,inventory.player.getItemInHand(hand),()->{});
@@ -24,6 +24,7 @@ public final class StorageModuleMenu extends ChestMenu {
         this.hand = hand;
         this.module=module;carrier = inventory.player.getItemInHand(hand);
         heldSlot = hand == InteractionHand.MAIN_HAND ? inventory.getSelectedSlot() : 40;
+        selectedSlot=com.foundations.calculator.core.CircuitData.tag(carrier).getIntOr("SelectedModule",0);
         HeldItemLock.install(this, inventory, heldSlot);
         for (int i = 0; i < 54; i++) {
             Slot original = slots.get(i);
@@ -45,7 +46,7 @@ public final class StorageModuleMenu extends ChestMenu {
         return container;
     }
     public boolean stillValid(Player player) {
-        return player.getItemInHand(hand) == carrier && (hand != InteractionHand.MAIN_HAND || inventory.getSelectedSlot() == heldSlot);
+        return com.foundations.calculator.core.CircuitData.tag(carrier).getIntOr("SelectedModule",0)==selectedSlot && player.getItemInHand(hand) == carrier && (hand != InteractionHand.MAIN_HAND || inventory.getSelectedSlot() == heldSlot);
     }
     private boolean locked(int slot) {
         return slot >= 54 && slot < slots.size() && slots.get(slot).getContainerSlot() == heldSlot;

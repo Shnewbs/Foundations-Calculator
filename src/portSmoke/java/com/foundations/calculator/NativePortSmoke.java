@@ -120,6 +120,7 @@ public final class NativePortSmoke {
         expandedOutputs(level,pos.offset(20,0,0));
         var machine=place(level,pos,"processing_chamber");
         performance(level,machine);
+        Rc1Assertions.run(level,pos.offset(12,0,12),NativePortSmoke::check);
         machine.inventory.setStackInSlot(0,ItemStack.EMPTY);
         machine.inventory.setStackInSlot(2,ItemStack.EMPTY);
         var resource=ItemResource.of(new ItemStack(Items.DIAMOND));

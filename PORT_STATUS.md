@@ -1,3 +1,5 @@
+> Current candidate: **0.1.0-rc.1** for Minecraft 1.21.1, 26.1.2 and 26.3. [Current audit and acceptance limits](docs/RC1_AUDIT.md). Historical status below is retained for provenance.
+
 # 0.1.0beta-port.2 — beta source synchronization checkpoint
 
 Latest published update: **alpha R2** on 1.21.1, 26.1.2 and 26.3.

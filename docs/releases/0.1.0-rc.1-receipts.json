@@ -1,0 +1,44 @@
+[
+  {
+    "project_id": 1734096,
+    "file_id": 9252180,
+    "version": "0.1.0-rc.1",
+    "jar_sha256": "79efdf533341117dc026a676a10548d82a5391e1bcc79ffe9a0dfbb1996df960",
+    "release_type": "beta",
+    "game_version_ids": [
+      11779,
+      10150,
+      11135,
+      9638,
+      9639
+    ]
+  },
+  {
+    "project_id": 1734096,
+    "file_id": 9252189,
+    "version": "26.1.2-0.1.0-rc.1",
+    "jar_sha256": "bee9f1c76eb50304cfd4dd55e0396f070ef5cfe4de1eaef2f43c5f264b7df05a",
+    "release_type": "beta",
+    "game_version_ids": [
+      16082,
+      10150,
+      14454,
+      9638,
+      9639
+    ]
+  },
+  {
+    "project_id": 1734096,
+    "file_id": 9252179,
+    "version": "26.3-0.1.0-rc.1",
+    "jar_sha256": "63368c7611b8f5955ca222645b6e71f3fc0a0f039bae375e2c33512bc7741b13",
+    "release_type": "beta",
+    "game_version_ids": [
+      17045,
+      10150,
+      14454,
+      9638,
+      9639
+    ]
+  }
+]

@@ -35,6 +35,7 @@ public class MachineBlock extends BaseEntityBlock {
     protected RenderShape getRenderShape(BlockState s){return MODELED.contains(kind())?RenderShape.INVISIBLE:RenderShape.MODEL;}
     public BlockEntity newBlockEntity(BlockPos p,BlockState s){return new MachineBlockEntity(p,s);}
     @Nullable public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level,BlockState s,BlockEntityType<T> type){
+        if(level.isClientSide()&&!kind().equals("reinforced_chest"))return null;
         return level.isClientSide()?createTickerHelper(type,Content.MACHINE_ENTITY.get(),MachineBlockEntity::clientTick):createTickerHelper(type,Content.MACHINE_ENTITY.get(),MachineBlockEntity::tick);
     }
     protected InteractionResult useItemOn(net.minecraft.world.item.ItemStack stack,BlockState state,Level level,BlockPos pos,Player player,net.minecraft.world.InteractionHand hand,BlockHitResult hit){

@@ -13,9 +13,14 @@ public final class SmeltingModule {
     public static NonNullList<ItemStack> contents(ItemStack module){var items=NonNullList.withSize(3,ItemStack.EMPTY);module.getOrDefault(DataComponents.CONTAINER,ItemContainerContents.EMPTY).copyInto(items);return items;}
     public static int ticks(){return CalculatorConfig.integer("module.smelting_module.ticks",1000);}
     public static void tick(ItemStack module,ItemStack battery,Level level){
-        if(level.isClientSide||!CalculatorConfig.enabled("smelting_module")||!(battery.getItem() instanceof CalculatorItem power))return;
-        var tag=CircuitData.tag(module);if(tag.contains("SmeltTick")&&tag.getLong("SmeltTick")==level.getGameTime())return;tag.putLong("SmeltTick",level.getGameTime());
-        var items=contents(module);var input=items.get(0);var recipe=level.getRecipeManager().getRecipeFor(RecipeType.SMELTING,new SingleRecipeInput(input),level);
+        if(level.isClientSide||!CalculatorConfig.enabled("smelting_module")||!CalculatorConfig.enabled(Content.path(battery))||!(battery.getItem() instanceof CalculatorItem power))return;
+        var items=contents(module);var input=items.get(0);var tag=CircuitData.tag(module);
+        if(input.isEmpty()){
+            if(tag.getInt("SmeltProgress")!=0){tag.putInt("SmeltProgress",0);UtilityItems.put(module,tag);}
+            return;
+        }
+        if(tag.contains("SmeltTick")&&tag.getLong("SmeltTick")==level.getGameTime())return;tag.putLong("SmeltTick",level.getGameTime());
+        var recipe=level.getRecipeManager().getRecipeFor(RecipeType.SMELTING,new SingleRecipeInput(input),level);
         if(recipe.isEmpty()||!RecipePolicies.enabled(recipe.get(),level)){tag.putInt("SmeltProgress",0);UtilityItems.put(module,tag);return;}
         String id=recipe.get().id().toString();if(!tag.getString("SmeltRecipe").equals(id)){tag.putString("SmeltRecipe",id);tag.putInt("SmeltProgress",0);}
         ItemStack output=recipe.get().value().assemble(new SingleRecipeInput(input),level.registryAccess()),remainder=input.getCraftingRemainingItem();

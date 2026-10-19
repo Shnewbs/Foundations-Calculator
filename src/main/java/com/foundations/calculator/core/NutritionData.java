@@ -29,7 +29,7 @@ public final class NutritionData {
         stack.set(DataComponents.CUSTOM_DATA, CustomData.of(tag));
     }
     public static void restore(Player player, ItemStack stack, int limit) {
-        if (player.level().isClientSide || !player.isAlive()) return;
+        if (player.level().isClientSide || !player.isAlive() || !CalculatorConfig.enabled(Content.path(stack))) return;
         int hunger = Math.min(limit, Math.min(20 - player.getFoodData().getFoodLevel(), get(stack, "hunger")));
         if (hunger > 0) {
             player.getFoodData().eat(hunger,(float)CalculatorConfig.decimal("nutrition.foodSaturation",0.2));

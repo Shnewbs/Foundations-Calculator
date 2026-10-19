@@ -7,7 +7,7 @@ It intentionally does not certify the manual copied-world/client/performance che
 from pathlib import Path
 import json,re,zipfile,hashlib,struct,xml.etree.ElementTree as ET
 
-from release_versions import candidate_type
+from release_versions import candidate_type, candidate_stage
 from release_inputs import source_fingerprint
 from beta_acceptance import acceptance_status
 
@@ -88,10 +88,15 @@ for mode in ['standalone','integrations']:
     counts[mode]=int(matches[-1])
 
 beta_passed,beta_pending=acceptance_status(root,evidence,receipt['source_sha256']) if release_type=='beta' else (True,[])
+rc=candidate_stage(version)=='release_candidate'
+if rc:
+    assert required_tests>=154 and all('FOUNDATIONS_RC1_REGRESSIONS_PASSED' in (evidence/f'gametest-{mode}.log').read_text() for mode in counts),'RC tool/module runtime evidence is missing'
 report={
+    'candidate_stage':candidate_stage(version),
+    'rc_runtime_regressions':rc,
     'version':version,
     'release_type':release_type,
-    'release_eligible':beta_passed,
+    'release_eligible':beta_passed or rc,
     'beta_acceptance':{'passed':beta_passed,'pending_gates':beta_pending},
     'source_sha256':receipt['source_sha256'],
     'sources_sha256':receipt['sources_sha256'],

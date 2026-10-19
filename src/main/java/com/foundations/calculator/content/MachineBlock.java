@@ -43,6 +43,7 @@ public class MachineBlock extends BaseEntityBlock {
     }
     protected InteractionResult useWithoutItem(BlockState state,Level level,BlockPos pos,Player player,BlockHitResult hit){
         if(level.getBlockEntity(pos) instanceof MachineBlockEntity machine){
+            if(!CalculatorConfig.machineEnabled(machine.kind()))return InteractionResult.FAIL;
             if(!level.isClientSide){
                 if(!level.mayInteract(player,pos)||!player.mayUseItemAt(pos,hit.getDirection(),player.getMainHandItem()))return InteractionResult.FAIL;
                 if(!machine.program.hasUUID("Owner")){machine.program.putUUID("Owner",player.getUUID());machine.setChanged();}

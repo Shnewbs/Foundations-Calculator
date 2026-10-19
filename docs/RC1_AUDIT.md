@@ -28,6 +28,7 @@ The base is current Git, not the attached historical 0.0.2a.R2 archive. Original
 
 Primary references: [26.1 migration primer](https://docs.neoforged.net/primer/docs/26.1/), [26.3 primer](https://docs.neoforged.net/primer/docs/26.3/), [26.1 loader changes](https://neoforged.net/news/26.1release/) and [NeoForge transfer rework](https://neoforged.net/news/21.9release/). Follow actual target APIs; migration guides are non-exhaustive.
 
+- The [official Mojang version manifest](https://piston-meta.mojang.com/mc/game/version_manifest_v2.json) and its per-version metadata identify all three targets as releases, with Java 21 for 1.21.1 and Java 25 for both 26.x targets. Those runtime boundaries are retained.
 - 1.21.1 retains int FE capabilities with bounded long facades. 26.x uses native transaction-aware inventory/energy handlers and ValueInput/ValueOutput persistence; aborts, side changes, simulation and shared canonical storage remain covered by native runtime assertions.
 - 26.x uses BreakBlockEvent; 1.21.1 uses BlockEvent.BreakEvent. The shared player-action policy has a target-specific event construction, rather than reflection or nonexistent compatibility fallbacks.
 - 26.x item IDs/properties, block name prefixes, recipe/feature registry changes, component serialization, render-state extraction/submission, overlays, vertex colors and outlines remain target-native. R6 renderer fixes and actual client checks are retained.

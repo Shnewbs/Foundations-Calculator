@@ -287,13 +287,6 @@ public class MachineBlockEntity extends BlockEntity implements MenuProvider {
             EnergyPort other=com.foundations.calculator.api.FoundationsEnergy.block(level,worldPosition.relative(side),side.getOpposite());
             if(other==null||!other.canReceive())continue;
             int n=(int)Math.min(energy.stored(),MachineProfiles.transfer(kind()));
-            // Automatic storage ports equalize banks instead of sending the same FE
-            // backwards every tick. Explicit input/output sides retain forced routing.
-            if(CalculatorConfig.flag("automation.balanceCubes",true)&&MachineProfiles.storage(kind())&&program.getIntOr("Side"+side.get3DDataValue(),0)==0
-                &&level.getBlockEntity(worldPosition.relative(side)) instanceof MachineBlockEntity bank
-                &&MachineProfiles.storage(bank.kind())&&bank.program.getIntOr("Side"+side.getOpposite().get3DDataValue(),0)==0){
-                n=(int)EnergyBalancing.transfer(energy.stored(),energy.capacity(),bank.energy.stored(),bank.energy.capacity(),n);
-            }
             energy.extractEnergy(Math.clamp(other.receiveEnergy(n,false),0,n),false);
         }
     }
@@ -352,8 +345,7 @@ public class MachineBlockEntity extends BlockEntity implements MenuProvider {
         ProcessInput input=new ProcessInput(List.of(circuit));
         for(int category=0;category<=6;category++){
             int roll=tag.getIntOr(category==0?"Energy":"Item"+category,0);
-            var reward=RecipeIndex.forMachine(level,"analysis_"+category).stream()
-                .filter(r->r.value().value()==roll&&r.value().matches(input,level)).findFirst();
+            var reward=RecipeIndex.firstMatch(level,"analysis_"+category,null,input,r->r.value()==roll);
             if(reward.isPresent()){
                 ProcessRecipe recipe=reward.get().value();
                 for(var result:recipe.outputs()){ItemStack out=result.roll(level.getRandom());if(!out.isEmpty())pending.add(out);}
@@ -372,7 +364,7 @@ public class MachineBlockEntity extends BlockEntity implements MenuProvider {
         if(points>0){int n=Math.min(CalculatorConfig.integer("nutrition.machineTransfer",4),Math.min(points,Integer.MAX_VALUE-nutrient));NutritionData.set(in,type,points-n);nutrient+=n;setChanged();}
         else if(NutritionData.capacity(in,type)==0&&!in.isEmpty()){
             ProcessInput input=new ProcessInput(List.of(in));
-            var recipe=RecipeIndex.forMachine(level,kind()).stream().filter(r->r.value().matches(input,level)).findFirst();
+            var recipe=RecipeIndex.firstMatch(level,kind(),null,input);
             int value=recipe.isPresent()?recipe.get().value().value():0;
             int count=recipe.isPresent()?recipe.get().value().allocation(input)[0]:1;
             if(recipe.isEmpty()&&type.equals("hunger")){

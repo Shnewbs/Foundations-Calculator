@@ -24,12 +24,12 @@ public final class UtilityItems {
         Level level=c.getLevel();BlockPos pos=c.getClickedPos();if(!player.mayUseItemAt(pos,c.getClickedFace(),stack)||!level.mayInteract(player,pos))return InteractionResult.FAIL;
         var state=level.getBlockState(pos);
         if((kind.equals("soil")||kind.equals("small_stone"))&&player.isShiftKeyDown()&&(state.is(Blocks.DIRT)||state.is(Blocks.GRASS_BLOCK))){
-            if(!level.isClientSide()&&level.setBlockAndUpdate(pos,(kind.equals("soil")?Blocks.FARMLAND:Blocks.GRAVEL).defaultBlockState())&&!player.isCreative())stack.shrink(1);return InteractionResult.SUCCESS;
+            if(!level.isClientSide()&&PlayerWorldActions.replace(c,pos,state,(kind.equals("soil")?Blocks.FARMLAND:Blocks.GRAVEL).defaultBlockState(),()->!stack.isEmpty())&&!player.isCreative())stack.shrink(1);return InteractionResult.SUCCESS;
         }
         if(kind.equals("calculator_screen")){
             if(!c.getClickedFace().getAxis().isHorizontal()||com.foundations.calculator.api.FoundationsEnergy.block(level,pos,c.getClickedFace())==null)return InteractionResult.FAIL;
             BlockPos placed=pos.relative(c.getClickedFace());if(!level.getBlockState(placed).canBeReplaced()||!player.mayUseItemAt(placed,c.getClickedFace(),stack))return InteractionResult.FAIL;
-            if(!level.isClientSide()&&level.setBlockAndUpdate(placed,Content.block("calculator_screen_block").defaultBlockState().setValue(MachineBlock.FACING,c.getClickedFace()))&&!player.isCreative())stack.shrink(1);
+            if(!level.isClientSide()&&PlayerWorldActions.replace(c,placed,level.getBlockState(placed),Content.block("calculator_screen_block").defaultBlockState().setValue(MachineBlock.FACING,c.getClickedFace()),()->!stack.isEmpty())&&!player.isCreative())stack.shrink(1);
             return InteractionResult.SUCCESS;
         }
         if(kind.equals("atomic_terrain_module"))return AtomicTerrainModule.use(stack,battery,c);
@@ -42,16 +42,16 @@ public final class UtilityItems {
             Block selected=choices.get(mode);if(!choices.contains(state.getBlock())||state.is(selected))return InteractionResult.PASS;
             int cost=CalculatorConfig.integer("module."+kind+".cost",1);
             if(!player.isCreative()&&(!(battery.getItem() instanceof CalculatorItem item)||item.energy(battery)<cost))return InteractionResult.FAIL;
-            if(!level.isClientSide()&&level.setBlockAndUpdate(pos,selected.defaultBlockState())&&!player.isCreative())((CalculatorItem)battery.getItem()).storage(battery).extractEnergy(cost,false);
+            if(!level.isClientSide()&&PlayerWorldActions.replace(c,pos,state,selected.defaultBlockState(),()->player.isCreative()||battery.getItem() instanceof CalculatorItem power&&power.energyLong(battery)>=cost)&&!player.isCreative())((CalculatorItem)battery.getItem()).storage(battery).extractEnergy(cost,false);
             return InteractionResult.SUCCESS;
         }
         if(kind.equals("sickle")){
             if(!(state.getBlock() instanceof HarvestLeaves))return InteractionResult.PASS;
-            if(!level.isClientSide())for(ItemStack drop:MachinePrograms.harvestLeaves(level,pos))player.getInventory().placeItemBackInInventory(drop);
+            if(!level.isClientSide()&&!MachinePrograms.harvestDrops(state).isEmpty()&&PlayerWorldActions.replace(c,pos,state,state.setValue(HarvestLeaves.AGE,CalculatorConfig.integer("plants.leafHarvestResetAge",0)),()->true))for(ItemStack drop:MachinePrograms.harvestDrops(state))player.getInventory().placeItemBackInInventory(drop);
             return InteractionResult.SUCCESS;
         }
         if(kind.equals("obsidian_key")&&(state.is(Blocks.OBSIDIAN)||state.is(Content.block("purified_obsidian")))){
-            if(!level.isClientSide()){level.destroyBlock(pos,true,player);if(!player.isCreative())stack.hurtAndBreak(CalculatorConfig.integer("tools.obsidianKeyDamage",1),player,c.getHand()==InteractionHand.MAIN_HAND?EquipmentSlot.MAINHAND:EquipmentSlot.OFFHAND);}
+            if(!level.isClientSide()){if(PlayerWorldActions.destroy(c,pos,state)&&!player.isCreative())stack.hurtAndBreak(CalculatorConfig.integer("tools.obsidianKeyDamage",1),player,c.getHand()==InteractionHand.MAIN_HAND?EquipmentSlot.MAINHAND:EquipmentSlot.OFFHAND);}
             return InteractionResult.SUCCESS;
         }
         if(kind.equals("warp_module")&&player.isShiftKeyDown()&&(!CalculatorConfig.flag("module.warp_module.requireStableBlock",true)||stable(level,pos))){
@@ -60,7 +60,7 @@ public final class UtilityItems {
         }
         String nutrient=state.is(Content.block("amethyst_leaves"))?"hunger":state.is(Content.block("tanzanite_leaves"))?"health":"";
         if(!nutrient.isEmpty()&&NutritionData.capacity(stack,nutrient)>NutritionData.get(stack,nutrient)&&state.getValue(HarvestLeaves.AGE)>=CalculatorConfig.integer("plants.leafMatureAge",2)){
-            if(!level.isClientSide()){NutritionData.add(stack,nutrient,CalculatorConfig.integer("nutrition.leafYield",1));level.setBlockAndUpdate(pos,state.setValue(HarvestLeaves.AGE,CalculatorConfig.integer("plants.leafHarvestResetAge",0)));}return InteractionResult.SUCCESS;
+            if(!level.isClientSide()){if(PlayerWorldActions.replace(c,pos,state,state.setValue(HarvestLeaves.AGE,CalculatorConfig.integer("plants.leafHarvestResetAge",0)),()->NutritionData.capacity(stack,nutrient)>NutritionData.get(stack,nutrient)))NutritionData.add(stack,nutrient,CalculatorConfig.integer("nutrition.leafYield",1));}return InteractionResult.SUCCESS;
         }return InteractionResult.PASS;
     }
     public static boolean use(String kind,ItemStack stack,ItemStack battery,Level level,Player player){

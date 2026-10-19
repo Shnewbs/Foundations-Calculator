@@ -7,7 +7,7 @@ import struct
 import tomllib
 import xml.etree.ElementTree as ET
 import zipfile
-from release_versions import candidate_type
+from release_versions import candidate_type, candidate_stage
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -70,9 +70,12 @@ def main():
     reports=[json.loads((ROOT/f'build/port-startup{suffix}.json').read_text()) for suffix in ['', '-integrations']]
     assert {r['integrations_enabled'] for r in reports}=={False,True}
     assert all(r['passed'] and r['native_regression_assertions']>=220 and not r['resource_errors'] for r in reports)
+    if candidate_stage(version)=='release_candidate':
+        for mode in ['', '-integrations']:
+            assert 'FOUNDATIONS_RC1_REGRESSIONS_PASSED' in (ROOT/f'build/port-startup{mode}.log').read_text(),'Missing native RC regression marker'
     release_type=candidate_type(version)
     audit={'version':version,'minecraft_version':target,'release_type':release_type,
-           'release_eligible':release_type=='alpha','native_build_and_current_source_match':True,
+           'candidate_stage':candidate_stage(version),'release_eligible':release_type=='alpha' or candidate_stage(version)=='release_candidate','native_build_and_current_source_match':True,
            'source_sha256':digest,'jar_sha256':hashlib.sha256(jar.read_bytes()).hexdigest(),
            'sources_sha256':hashlib.sha256(sources.read_bytes()).hexdigest(),
            'unit_tests':tests,'native_reports':reports,'neoforge_compatibility':compatibility,'native_client':client,

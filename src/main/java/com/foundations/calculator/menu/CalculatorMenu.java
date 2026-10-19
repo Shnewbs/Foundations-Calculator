@@ -142,7 +142,7 @@ public final class CalculatorMenu extends AbstractContainerMenu {
         return moveItemStackTo(stack,0,inputs,false);
     }
     public boolean clickMenuButton(Player player,int button){
-        if(player.level().isClientSide()||!stillValid(player))return false;
+        if(player.level().isClientSide()||!stillValid(player)||!CalculatorConfig.machineEnabled(kind)||machine==null&&!CalculatorConfig.enabled(Content.path(held)))return false;
         if(button>=1000){
             if(!scrollableOutputs()||button>1016||!player.level().mayInteract(player,machine.getBlockPos()))return false;
             outputRow=Math.clamp(button-1000,0,maxOutputRow());

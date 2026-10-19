@@ -191,19 +191,21 @@ public final class MachinePrograms {
         boolean pear=state.is(Content.block("pear_leaves"));if(!pear&&!state.is(Content.block("diamond_leaves")))return List.of();
         if(!MachineWorldActions.replace(machine,pos,state,state.setValue(HarvestLeaves.AGE,CalculatorConfig.integer("plants.leafHarvestResetAge",0)),
             ItemStack.EMPTY,MachineWorldActions.Action.LEAF_HARVEST))return List.of();
+        return harvestDrops(state);
+    }
+    /** Shared legacy leaf yields; callers commit a permitted world change before granting these drops. */
+    public static List<ItemStack> harvestDrops(BlockState state){
+        if(!(state.getBlock() instanceof HarvestLeaves)||state.getValue(HarvestLeaves.AGE)<CalculatorConfig.integer("plants.leafMatureAge",2))return List.of();
+        boolean pear=state.is(Content.block("pear_leaves"));if(!pear&&!state.is(Content.block("diamond_leaves")))return List.of();
         int age=state.getValue(HarvestLeaves.AGE);List<ItemStack> drops=new ArrayList<>();
         if(age<4)drops.add(new ItemStack(Content.item(pear?"pear":"weakened_diamond")));
         if(age>=3)drops.add(new ItemStack(Content.item(pear?"rotten_pear":"flawless_diamond")));
         return drops;
     }
-    /** Raw addon helper; machine callers use the guarded overload. */
+    /** Raw addon helper; machine and player tools use their permission-checked paths. */
     public static List<ItemStack> harvestLeaves(Level level,BlockPos pos){
-        BlockState s=level.getBlockState(pos);if(!(s.getBlock() instanceof HarvestLeaves)||s.getValue(HarvestLeaves.AGE)<CalculatorConfig.integer("plants.leafMatureAge",2))return List.of();
-        boolean pear=s.is(Content.block("pear_leaves"));if(!pear&&!s.is(Content.block("diamond_leaves")))return List.of();
-        List<ItemStack> drops=new ArrayList<>();int age=s.getValue(HarvestLeaves.AGE);
-        if(age<4)drops.add(new ItemStack(Content.item(pear?"pear":"weakened_diamond")));
-        if(age>=3)drops.add(new ItemStack(Content.item(pear?"rotten_pear":"flawless_diamond")));
-        level.setBlockAndUpdate(pos,s.setValue(HarvestLeaves.AGE,CalculatorConfig.integer("plants.leafHarvestResetAge",0)));return drops;
+        var state=level.getBlockState(pos);var drops=harvestDrops(state);
+        return !drops.isEmpty()&&level.setBlockAndUpdate(pos,state.setValue(HarvestLeaves.AGE,CalculatorConfig.integer("plants.leafHarvestResetAge",0)))?drops:List.of();
     }
     public static void nutritionNetwork(MachineBlockEntity m,String type){
         if(!m.workDue(CalculatorConfig.integer("nutrition.networkInterval",20))||m.nutrient==Integer.MAX_VALUE)return;

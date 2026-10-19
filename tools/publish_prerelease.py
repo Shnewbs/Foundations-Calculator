@@ -7,7 +7,7 @@ from pathlib import Path
 import shutil
 import subprocess
 import tempfile
-from release_versions import candidate_type
+from release_versions import candidate_type, candidate_stage
 from publish_curseforge import metadata
 
 def gh(*args):
@@ -28,18 +28,26 @@ def main():
     sources=jar.with_name(f'FoundationsCalculator-{args.version}-sources.jar')
     assert audit['sources_sha256']==hashlib.sha256(sources.read_bytes()).hexdigest()
     tag='v'+args.version
+    stage='Release candidate' if candidate_stage(args.version)=='release_candidate' else kind.title()
     notes=f'''Foundations Calculator — Minecraft {target} — {args.version}
 
-**{kind.title()} prerelease.** Built for this exact Minecraft/NeoForge target.
-Includes recipe allocation and lane-cache improvements, research packet batching,
-idle transfer fast paths, staggered nutrition scans and fewer scan lookups.
-R2 further reduces recipe-allocation objects using a flat graph and direct count
-loops, preserving slot order, recipe matching, timings, costs and scan schedules.
+**{stage} prerelease.** CurseForge category: {kind}. This is not a stable release.
 
-Native unit tests: {audit['unit_tests']}. Runtime evidence is attached in release_checks.json.
-World-upgrade, broader client gameplay, multiplayer/protection and full-world
-performance acceptance remain incomplete. This is an experimental playable build.
-Use a backed-up or new test world. Requires Java {'21' if target=='1.21.1' else '25'}.
+Fixes protection preflight for terrain tools, soil/stone conversion, energy screen
+placement, sickles, nutrition leaves and obsidian keys. Denied actions preserve
+resources; callback target/resource changes are rechecked before committing.
+Disabled nutrition, carrier items, cranking and open portable calculations obey
+live server settings. Storage menus invalidate when their selected module changes.
+Idle smelters avoid per-tick data writes; analysis and nutrition use allocation-free
+first-match family selection. Shared leaf rules and unreachable routing are cleaned up.
+Recipe costs, yields, chances, default capacities and machine scan cadence are retained.
+
+Native unit tests: {audit['unit_tests']}. Server/integration, minimum-loader and
+real-client evidence is required by the publication workflows. Audit attached.
+Full player-world migration, survival/multiplayer playthrough and long-world soak
+acceptance remain open; these are not claimed complete by the RC label.
+See docs/RC1_AUDIT.md for original 1.12.2 comparisons and deliberate port differences.
+Requires Java {'21' if target=='1.21.1' else '25'}.
 '''
     if target!='1.21.1':
         notes+='\nMatching JEI, Jade, AE2 and GuideMe were tested. KubeJS, CraftTweaker and the other 1.21.1 energy integrations are not supported on this port.\n'

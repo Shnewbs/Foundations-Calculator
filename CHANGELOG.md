@@ -1,3 +1,15 @@
+# 0.1.0-rc.1
+
+Release candidate (GitHub prerelease / CurseForge beta), not stable. See docs/RC1_AUDIT.md.
+
+- Preflight player terrain, soil/stone, screen, sickle, leaf and obsidian-key world writes through protection events; recheck callback changes before committing resources.
+- Respect disabled nutrition/carrier items and open portable calculations; stop disabled manual cranking.
+- Invalidate storage menus when selected module changes.
+- Avoid idle smelting data writes, unchanged nutrition component writes and filtered analysis/nutrition recipe lists.
+- Consolidate duplicate leaf yields and remove unreachable duplicate energy routing.
+- Preserve existing recipes, defaults, chances, timing, output paging and all R6 rendering fixes.
+- Add actual runtime cancellation/resource conservation/config/menu/idle-module regressions on all supported targets. Full player-world/multiplayer/long soak acceptance remains open.
+
 # 26.1.2-0.1.0alpha.R6 — separate native vertex tint and outline requests
 
 - Corrects the R5 model-part rendering regression: the neutral vertex tint is -1 (opaque white), while outline color zero disables outlines. R5 had treated the model-part tint argument as an outline argument, producing black chamber frames.

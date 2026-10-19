@@ -20,7 +20,7 @@ public final class PlayerWorldActions {
             ||level.getBlockEntity(pos)!=null||expected.getDestroySpeed(level,pos)<0
             ||!level.getBlockState(pos).equals(expected)||!ready.getAsBoolean()
             ||!level.mayInteract(player,pos)||!player.mayUseItemAt(pos,context.getClickedFace(),held))return false;
-        if(!expected.isAir()&&NeoForge.EVENT_BUS.post(new BlockEvent.BreakEvent(level,pos,expected,player)).isCanceled())return false;
+        if(!expected.isAir()&&NeoForge.EVENT_BUS.post(new net.neoforged.neoforge.event.level.block.BreakBlockEvent(level,pos,expected,player)).isCanceled())return false;
         if(replacement!=null&&!replacement.isAir()){
             var snapshot=BlockSnapshot.create(level.dimension(),level,pos);
             var event=new BlockEvent.EntityPlaceEvent(snapshot,level.getBlockState(pos.below()),player){

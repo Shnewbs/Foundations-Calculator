@@ -50,7 +50,7 @@ public final class Rc1Assertions {
         check.accept(AtomicTerrainModule.use(module,battery,context)==InteractionResult.CONSUME,"Authorized atomic terrain still works");
         check.accept(level.getBlockState(pos).is(Blocks.STONE)&&power.energyLong(battery)==initial-1&&player.getInventory().getItem(8).getCount()==3,"Authorized atomic terrain commits exactly once");
 
-        Consumer<BlockEvent.BreakEvent> denyBreak=event->{if(event.getPos().equals(pos))event.setCanceled(true);};
+        Consumer<net.neoforged.neoforge.event.level.block.BreakBlockEvent> denyBreak=event->{if(event.getPos().equals(pos))event.setCanceled(true);};
         NeoForge.EVENT_BUS.addListener(denyBreak);
         try{
             var terrain=new ItemStack(Content.item("terrain_module"));
@@ -67,7 +67,7 @@ public final class Rc1Assertions {
         try{check.accept(AtomicTerrainModule.use(module,battery,context)==InteractionResult.FAIL,"Permission callback resource changes are revalidated");}
         finally{NeoForge.EVENT_BUS.unregister(drain);}
         check.accept(level.getBlockState(pos).is(Blocks.DIRT)&&player.getInventory().getItem(8).getCount()==3,"Resource change cannot grant free terrain replacement");
-        Consumer<BlockEvent.BreakEvent> mutate=event->{if(event.getPos().equals(pos))level.setBlockAndUpdate(pos,Blocks.GOLD_BLOCK.defaultBlockState());};
+        Consumer<net.neoforged.neoforge.event.level.block.BreakBlockEvent> mutate=event->{if(event.getPos().equals(pos))level.setBlockAndUpdate(pos,Blocks.GOLD_BLOCK.defaultBlockState());};
         NeoForge.EVENT_BUS.addListener(mutate);
         try{check.accept(!PlayerWorldActions.replace(context,pos,level.getBlockState(pos),Blocks.STONE.defaultBlockState(),()->true),"Permission listener target mutations abort the tool");}
         finally{NeoForge.EVENT_BUS.unregister(mutate);}

@@ -29,7 +29,7 @@ The base is current Git, not the attached historical 0.0.2a.R2 archive. Original
 Primary references: [26.1 migration primer](https://docs.neoforged.net/primer/docs/26.1/), [26.3 primer](https://docs.neoforged.net/primer/docs/26.3/), [26.1 loader changes](https://neoforged.net/news/26.1release/) and [NeoForge transfer rework](https://neoforged.net/news/21.9release/). Follow actual target APIs; migration guides are non-exhaustive.
 
 - 1.21.1 retains int FE capabilities with bounded long facades. 26.x uses native transaction-aware inventory/energy handlers and ValueInput/ValueOutput persistence; aborts, side changes, simulation and shared canonical storage remain covered by native runtime assertions.
-- 26.3 uses BreakBlockEvent; earlier targets use BlockEvent.BreakEvent. The shared player-action policy has a target-specific event construction, rather than reflection or nonexistent compatibility fallbacks.
+- 26.x uses BreakBlockEvent; 1.21.1 uses BlockEvent.BreakEvent. The shared player-action policy has a target-specific event construction, rather than reflection or nonexistent compatibility fallbacks.
 - 26.x item IDs/properties, block name prefixes, recipe/feature registry changes, component serialization, render-state extraction/submission, overlays, vertex colors and outlines remain target-native. R6 renderer fixes and actual client checks are retained.
 - Minimums remain tested ranges: 1.21.1 NeoForge `[21.1.219,21.2)`, 26.1.2 `[26.1.2.100,26.1.3)`, 26.3 `[26.3.0.39-beta,26.4)`. Development pins remain 21.1.250, 26.1.2.114 and 26.3.0.52-beta. Newer loader availability alone does not justify changing compatibility claims.
 

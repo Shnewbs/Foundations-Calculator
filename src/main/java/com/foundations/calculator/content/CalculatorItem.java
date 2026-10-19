@@ -39,7 +39,7 @@ public class CalculatorItem extends Item {
         stack.set(Content.ENERGY_LONG.get(),n);
         stack.set(Content.ENERGY.get(),(int)Math.min(Integer.MAX_VALUE,n));
     }
-    private net.minecraft.core.NonNullList<ItemStack> batteries(ItemStack stack){var list=net.minecraft.core.NonNullList.withSize(16,ItemStack.EMPTY);if(kind.equals("flawless_calculator"))stack.getOrDefault(Content.MODULES.get(),net.minecraft.world.item.component.ItemContainerContents.EMPTY).copyInto(list);return list;}
+    private List<ItemStack> batteries(ItemStack stack){if(!kind.equals("flawless_calculator"))return List.of();var list=net.minecraft.core.NonNullList.withSize(16,ItemStack.EMPTY);if(kind.equals("flawless_calculator"))stack.getOrDefault(Content.MODULES.get(),net.minecraft.world.item.component.ItemContainerContents.EMPTY).copyInto(list);return list;}
     public long energyLong(ItemStack stack){long total=internalEnergyLong(stack);for(ItemStack module:batteries(stack))if(Content.path(module).equals("energy_module")&&module.getItem() instanceof CalculatorItem item){long add=item.internalEnergyLong(module);total=add>Long.MAX_VALUE-total?Long.MAX_VALUE:total+add;}return total;}
     public long maxEnergyLong(ItemStack stack){long total=configuredCapacityLong();for(ItemStack module:batteries(stack))if(Content.path(module).equals("energy_module")&&module.getItem() instanceof CalculatorItem item){long add=item.configuredCapacityLong();total=add>Long.MAX_VALUE-total?Long.MAX_VALUE:total+add;}return total;}
     public int energy(ItemStack stack){return (int)Math.min(Integer.MAX_VALUE,energyLong(stack));}
